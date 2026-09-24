@@ -30,3 +30,14 @@ otherwise document the limitation in CONTENT_SCHEMA.md. Update this file's
 | 22 | p5 | daw-task: no reference-comparison check, no duration/tempo, no key relative to learner's key, no timer, no project continuity across checkpoints | `matches-reference` {similarity}, `duration-seconds` {min}, `in-key` with `"key":"project"`, `"timerMin"` spec field, `"projectRef": "<slug>"` to continue the same saved project | open |
 | 23 | p5 | no guitar/distortion instrument; examples lack volume/pan | add `guitar` (distorted) patch; envelope tracks accept `volume`,`pan` | open |
 | 24 | p5 | `chords` block: two chords per bar, slash chords undocumented | allow `"C G/B"` in one bar string; document slash chords | open |
+| 25 | p3/p4 | No section markers in projects/templates | project `markers: [{bar, name}]`; template accepts them; `sections` check | open |
+| 26 | p3/p4 | `in-key`/`build-scale`/`play-scale` scale names: accept all `ear-scale` ids; `uses-rhythm` dotted values like `"8."` | accept + document | open |
+| 27 | p3/p4 | `ear-chord` lacks dim7, 6, add9, 9, 11, 13 | extend qualities (merge with row 19) | open |
+| 28 | p3/p4 | drum-pattern ambiguity: clap vs snare, "at least" vs "exactly", "no snare", bar ranges | add `mode: "at-least"|"exact"`, `forbid: {snare:[2,4]}`, `bars: [from,to]`; clap counts only as clap | open |
+| 29 | p3 | no flag to hide notation in an example (dictation) | example `"hidden": true` → play-only with Reveal button | open |
+| 30 | p3 | `play-notes` single note set; can't drill a list of voicings | `play-notes` accepts `sets: [[...],[...]]` | open |
+| 31 | p4 | `play-chord` requires all chord tones: can't grade shell/rootless voicings | `play-chord` gains `voicing: "shell"|"rootless-a"|"rootless-b"|"any-required": ["3","7"]` | open |
+| 32 | p4 | no meter identification exercise | `ear-meter` { meters: ["3/4","4/4","5/4","6/8","7/8"] } | open |
+| 33 | p4 | no synth parameters (osc/filter/envelope) | per-track `synth: {osc, cutoff, attack, release}` for lead/pad/bass/pluck | open |
+| 34 | p4 | no tempo change inside a snippet; no lyrics display | `tempoChanges` in envelope; example `lyrics` line under staff | open |
+| 35 | p4 | `ear-melody` rejects `"key":"random"` | accept | open |
