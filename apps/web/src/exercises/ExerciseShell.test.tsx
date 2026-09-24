@@ -68,10 +68,10 @@ describe('ExerciseShell', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it('shows a coming-soon card for unimplemented types', () => {
-    const block = { id: 's', type: 'ear-scale', spec: { scales: ['major'] } } as ExerciseBlock;
+  it('shows a coming-soon card for unknown types', () => {
+    const block = { id: 's', type: 'ear-bogus', spec: {} } as unknown as ExerciseBlock;
     render(<ExerciseShell block={block} lessonId="x" />);
-    expect(screen.getByTestId('coming-soon').textContent).toContain('ear-scale');
+    expect(screen.getByTestId('coming-soon').textContent).toContain('ear-bogus');
   });
 
   it('play-notes listens to the note input bus', () => {

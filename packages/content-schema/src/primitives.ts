@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {
   INSTRUMENT_IDS, checkSeq, isChordQuality, isIntervalId, isNoteName, isScaleId, isValidKey, parseTimeSig,
-  tryParseChordSymbol, tryRomanToChord, isDegree, isDurationToken,
+  tryParseChordSymbol, tryRomanToChord, isDegree, isDurationToken, resolveScaleId,
 } from '@music/core';
 
 /** Lesson id: wNN-lM-slug (docs use both l2 and l02). */
@@ -38,7 +38,16 @@ export const seq = z.string().superRefine((s, ctx) => {
 });
 
 export const intervalId = z.string().refine(isIntervalId, { message: 'expected an interval id (P1 m2 M2 m3 M3 P4 TT P5 m6 M6 m7 M7 P8, compound m9..M13)' });
-export const scaleId = z.string().refine((s) => isScaleId(s) || s === 'minor', { message: 'unknown scale id (see CONTENT_SCHEMA ear-scale)' });
+/** Any ear-scale id plus the aliases minor / ionian / aeolian (docs/SCHEMA_GAPS.md #26). */
+export const scaleId = z.string().refine((s) => {
+  if (isScaleId(s)) return true;
+  try {
+    resolveScaleId(s);
+    return true;
+  } catch {
+    return false;
+  }
+}, { message: 'unknown scale id (see CONTENT_SCHEMA ear-scale)' });
 export const chordQuality = z.string().refine(isChordQuality, { message: 'unknown chord quality (maj min dim aug maj7 min7 dom7 m7b5 sus2 sus4 …)' });
 export const chordSymbol = z.string().refine((s) => tryParseChordSymbol(s) !== null, { message: 'invalid chord symbol (e.g. C, Dm, G7, Cmaj7, F#m7b5, Bb/D)' });
 export const romanNumeral = z.string().refine((s) => tryRomanToChord(s, 'C') !== null, { message: 'invalid roman numeral (e.g. I, ii, V7, bVII, iv, V/V, vii°)' });

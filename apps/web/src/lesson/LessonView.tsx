@@ -5,6 +5,7 @@ import { api } from '../api/client';
 import { useProgressStore } from '../stores/progress';
 import { LessonContext, type LessonContextValue } from './LessonContext';
 import { LessonRenderer } from './LessonRenderer';
+import { Warmup } from './Warmup';
 
 export interface LessonViewProps {
   lesson: ParsedLessonDTO;
@@ -39,13 +40,17 @@ export function LessonView({ lesson, record = true }: LessonViewProps) {
     [lesson.blocks],
   );
 
-  const ctx: LessonContextValue = {
-    lessonId: lesson.id,
-    blocks: lesson.blocks,
-    record,
-    ...(typeof fm.key === 'string' ? { keyName: fm.key } : {}),
-    onExerciseComplete: (id, s) => setLocal((l) => ({ ...l, [id]: s })),
-  };
+  // stable context value: consumers (every lesson block) must not re-render on progress updates
+  const ctx: LessonContextValue = useMemo(
+    () => ({
+      lessonId: lesson.id,
+      blocks: lesson.blocks,
+      record,
+      ...(typeof fm.key === 'string' ? { keyName: fm.key } : {}),
+      onExerciseComplete: (id: string, s: SetSummary) => setLocal((l) => ({ ...l, [id]: s })),
+    }),
+    [lesson.id, lesson.blocks, record, fm.key],
+  );
 
   const status = (id: string) => {
     const l = local[id];
@@ -115,6 +120,7 @@ export function LessonView({ lesson, record = true }: LessonViewProps) {
               </details>
             )}
           </header>
+          {record && <Warmup lessonId={lesson.id} />}
           <LessonRenderer body={lesson.body} />
           <footer className="lesson-footer card">
             {lessonDone ? <p>✓ Lesson complete. Nice work!</p> : <p>Finished the exercises? Mark the lesson complete.</p>}

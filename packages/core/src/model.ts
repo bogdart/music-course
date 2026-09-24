@@ -21,7 +21,7 @@ export interface NoteEvent {
   velocity: number;
 }
 
-export const INSTRUMENT_IDS = ['piano', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'drums'] as const;
+export const INSTRUMENT_IDS = ['piano', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'guitar', 'drums'] as const;
 export type InstrumentId = (typeof INSTRUMENT_IDS)[number];
 
 export function isInstrumentId(v: unknown): v is InstrumentId {
@@ -55,6 +55,13 @@ export interface Project {
   key?: string;
   tracks: Track[];
   loop?: { startTick: number; endTick: number };
+  /** Section markers (DAW): 1-based bar + label ("Verse", "Chorus") */
+  markers?: ProjectMarker[];
+}
+
+export interface ProjectMarker {
+  bar: number;
+  name: string;
 }
 
 /**
@@ -66,6 +73,8 @@ export interface Snippet {
   timeSig: TimeSig;
   key?: string;
   tracks: SnippetTrack[];
+  /** Tempo changes (ticks from the start, ascending); `bpm` applies before the first one */
+  tempoChanges?: { tick: number; bpm: number }[];
 }
 
 export interface SnippetTrack {
@@ -73,6 +82,8 @@ export interface SnippetTrack {
   events: NoteEvent[];
   /** 0..1, default 1 */
   volume?: number;
+  /** -1 (left) .. 1 (right), default 0 */
+  pan?: number;
 }
 
 /** JSON envelope used in content (`example` blocks, templates): tracks carry `seq` strings. */
@@ -80,7 +91,11 @@ export interface SnippetEnvelope {
   bpm?: number;
   timeSig?: string;
   key?: string;
-  tracks: { instrument: InstrumentId; seq: string; volume?: number }[];
+  /** 0 = straight … 1 = full triplet swing of off-beat 8ths */
+  swing?: number;
+  /** Tempo changes at 1-based bars */
+  tempoChanges?: { bar: number; bpm: number }[];
+  tracks: { instrument: InstrumentId; seq: string; volume?: number; pan?: number }[];
 }
 
 /** Drum map (General MIDI) — drum names usable in seq strings on drum tracks. */

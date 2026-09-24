@@ -57,15 +57,20 @@ export const envelopeTrackSchema = obj({
   instrument,
   seq,
   volume: z.number().min(0).max(1).optional(),
+  pan: z.number().min(-1).max(1).optional(),
 });
+
+/** Tempo change at a 1-based bar (docs/SCHEMA_GAPS.md #34). */
+export const tempoChangeSchema = obj({ bar: z.number().int().min(1), bpm });
 
 export const envelopeSchema = obj({
   bpm: bpm.optional(),
-  /** 0 = straight, 1 = full triplet swing of 8ths (playback support pending) */
+  /** 0 = straight, 1 = full triplet swing of off-beat 8ths */
   swing: z.number().min(0).max(1).optional(),
   timeSig: timeSig.optional(),
   key: key.optional(),
   tracks: z.array(envelopeTrackSchema).min(1),
+  tempoChanges: z.array(tempoChangeSchema).optional(),
 });
 
 export const exampleBlockSchema = envelopeSchema.extend({
@@ -74,6 +79,10 @@ export const exampleBlockSchema = envelopeSchema.extend({
   loop: z.boolean().optional(),
   clef: z.enum(['treble', 'bass']).optional(),
   caption: z.string().optional(),
+  /** Play-only (dictation): notation/keyboard hidden until "Reveal" */
+  hidden: z.boolean().optional(),
+  /** Lyrics under the staff: syllables separated by spaces, one per note of the first track ("Twin- kle twin- kle") */
+  lyrics: z.string().optional(),
 });
 
 const colorRole = z.enum(['root', 'third', 'fifth', 'seventh', 'other']);
@@ -156,6 +165,8 @@ export const DAW_CHECK_KINDS = [
   // proposed in docs/SCHEMA_GAPS.md #8 (accepted by the validator; predicates implemented with the DAW milestone)
   'has-rest', 'min-leap', 'plays-progression', 'is-transposition', 'voice-leading', 'chord-has-seventh', 'uses-chord',
   'tempo', 'syncopation',
+  // docs/SCHEMA_GAPS.md #22 / #25
+  'matches-reference', 'duration-seconds', 'sections',
 ] as const;
 
 export const dawCheckSchema = obj({
@@ -168,7 +179,7 @@ export const dawCheckSchema = obj({
     const r = schema.safeParse(a[field]);
     if (!r.success) ctx.addIssue({ code: 'custom', message: `${c.kind}.${field}: ${r.error.issues[0]?.message}`, path: [field] });
   };
-  check('key', key);
+  if (a.key !== 'project') check('key', key);
   check('scale', scaleId);
   check('low', noteWithOctave);
   check('high', noteWithOctave);
@@ -177,7 +188,9 @@ export const dawCheckSchema = obj({
   check('progression', z.array(romanNumeral));
   check('values', z.array(durationToken));
   check('instruments', z.array(instrument));
-  check('shape', z.enum(['arch', 'ascending', 'descending', 'wave']));
+  check('shape', z.enum(['arch', 'ascending', 'descending', 'wave', 'valley']));
+  check('reference', obj({ tracks: z.array(obj({ instrument, seq })).min(1) }));
+  check('markers', z.array(obj({ bar: z.number().int().min(1), name: z.string().min(1) })));
   check('requires', z.array(z.string()));
   if (c.kind === 'custom' && typeof a.id !== 'string') ctx.addIssue({ code: 'custom', message: 'custom check needs an "id"' });
 });
@@ -212,29 +225,46 @@ export const specSchemas = {
     key: keyOrRandom.optional(), mode: mode.optional(), length: z.number().int().min(1).max(16).optional(),
     chords: z.array(romanNumeral).min(1), style: z.enum(['block', 'arpeggio', 'pad-bass']).optional(), bpm: bpm.optional(),
     inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
+    example: exampleBlockSchema.optional(), progression: z.array(romanNumeral).min(1).optional(), instrument: instrument.optional(),
+  }).superRefine((s, ctx) => {
+    if (s.example && !s.progression) ctx.addIssue({ code: 'custom', message: 'with "example", give the answer as "progression" (numerals in order)', path: ['progression'] });
   }),
   'ear-melody': obj({
-    key, mode: mode.optional(), degrees: z.array(degree).min(1), length: z.number().int().min(1).max(32).optional(),
+    key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1), length: z.number().int().min(1).max(32).optional(),
     rhythm: z.enum(['quarters', 'simple', 'free']).optional(), answer: z.enum(['play', 'degrees']).optional(),
     bpm: bpm.optional(), instrument: instrument.optional(),
+    chromatic: z.boolean().optional(), backing: z.array(romanNumeral).min(1).optional(), maxLeap: z.number().int().min(1).max(24).optional(),
+    example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
   }),
   'ear-rhythm': obj({
     timeSig: timeSig.optional(), bars: z.number().int().min(1).max(8).optional(), subdivision: z.enum(['q', '8', '16', '8t']).optional(),
     rests: z.boolean().optional(), answer: z.enum(['tap', 'choose']).optional(), bpm: bpm.optional(),
     choices: z.number().int().min(2).max(4).optional(),
+    voices: z.array(z.enum(['kick', 'snare', 'clap', 'hh', 'hihat', 'ohat', 'tom', 'ride', 'crash'])).min(1).max(4).optional(),
   }),
   'ear-bass': obj({
     key, mode: mode.optional(), chords: z.array(romanNumeral).min(1), answer: z.enum(['play', 'name']).optional(),
     length: z.number().int().min(1).max(16).optional(), bpm: bpm.optional(),
     inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
+    example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
+  }),
+  'ear-tempo': obj({
+    range: z.tuple([bpm, bpm]).optional(), tolerance: z.number().min(1).max(30).optional(),
+    style: z.enum(['click', 'drums', 'groove']).optional(), timeSig: timeSig.optional(), bars: z.number().int().min(1).max(8).optional(),
+  }),
+  'ear-meter': obj({
+    meters: z.array(timeSig).min(2), bpm: bpm.optional(), bars: z.number().int().min(1).max(8).optional(),
+    style: z.enum(['drums', 'piano', 'mixed']).optional(),
   }),
   'play-notes': obj({
     prompt: z.enum(['names', 'staff', 'degrees']).optional(),
-    notes: z.union([z.array(noteName).min(1), z.array(z.array(noteName).min(1)).min(1)]),
+    notes: z.union([z.array(noteName).min(1), z.array(z.array(noteName).min(1)).min(1)]).optional(),
+    sets: z.array(z.array(noteName).min(1)).min(1).optional(),
     ordered: z.boolean().optional(), key: key.optional(), octave: z.enum(['exact', 'any']).optional(),
     clef: z.enum(['treble', 'bass']).optional(),
   }).superRefine((s, ctx) => {
     if (s.prompt === 'degrees' && !s.key) ctx.addIssue({ code: 'custom', message: 'prompt "degrees" requires "key"', path: ['key'] });
+    if (!s.notes && !s.sets) ctx.addIssue({ code: 'custom', message: 'play-notes needs "notes" or "sets"', path: ['notes'] });
   }),
   'play-scale': obj({
     root: z.union([z.literal('random'), noteName]).optional(), scale: scaleId, octaves: z.number().int().min(1).max(3).optional(),
@@ -244,11 +274,14 @@ export const specSchemas = {
   'play-chord': obj({
     chords: z.array(chordSymbol).min(1), inversion: z.union([z.enum(['any', 'root']), z.number().int().min(0).max(3)]).optional(), sequence: z.boolean().optional(),
     bpm: bpm.optional(), key: key.optional(),
+    voicing: z.enum(['full', 'shell', 'rootless', 'rootless-a', 'rootless-b']).optional(),
+    required: z.array(z.union([z.number().int().min(1).max(13), z.string().regex(/^[b#]?(1|3|5|7|9|11|13|2|4|6)$/, 'chord degree like "3", "7", "b9"')])).min(1).optional(),
   }),
   'play-melody': obj({
     bpm: bpm.optional(), timeSig: timeSig.optional(), key: key.optional(), seq, showStaff: z.boolean().optional(),
     showKeyboard: z.boolean().optional(), countIn: z.number().int().min(0).max(4).optional(),
     backing: obj({ instrument, seq }).optional(), instrument: instrument.optional(),
+    tracks: z.array(obj({ instrument, seq })).optional(), swing: z.number().min(0).max(1).optional(),
   }),
   'rhythm-tap': obj({
     bpm: bpm.optional(), timeSig: timeSig.optional(), seq, showNotation: z.boolean().optional(),
@@ -274,10 +307,11 @@ export const specSchemas = {
   'read-note': obj({
     clef: z.enum(['treble', 'bass', 'both']), range: range.optional(), accidentals: z.boolean().optional(),
     answer: z.enum(['play', 'name']).optional(), timed: z.number().min(0).optional(),
+    mode: z.enum(['note', 'interval']).optional(), intervals: z.array(intervalId).min(1).optional(), harmonic: z.boolean().optional(),
   }),
   'read-rhythm': obj({
-    timeSig: timeSig.optional(), bars: z.number().int().min(1).max(8).optional(), subdivision: z.enum(['8', '16', '8t']).optional(),
-    bpm: bpm.optional(),
+    timeSig: timeSig.optional(), bars: z.number().int().min(1).max(8).optional(), subdivision: z.enum(['q', '8', '16', '8t']).optional(),
+    bpm: bpm.optional(), rests: z.boolean().optional(), countIn: z.number().int().min(0).max(4).optional(),
   }),
   quiz: obj({ questions: z.array(quizQuestion).min(1), shuffle: z.boolean().optional() }),
   'quiz-input': obj({ questions: z.array(quizInputQuestion).min(1) }),
@@ -291,6 +325,7 @@ export const specSchemas = {
   'daw-task': obj({
     template: z.record(z.string(), z.unknown()).optional(), task: z.string().min(1), checks: z.array(dawCheckSchema).optional(),
     minBars: z.number().int().min(1).optional(), maxBars: z.number().int().min(1).optional(),
+    timerMin: z.number().positive().max(240).optional(), projectRef: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, 'projectRef: lowercase slug').optional(),
   }).superRefine((s, ctx) => {
     const tracks = (s.template as { tracks?: unknown } | undefined)?.tracks;
     if (Array.isArray(tracks)) {

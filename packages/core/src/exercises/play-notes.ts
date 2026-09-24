@@ -3,7 +3,9 @@ import { pcToDegree } from '../theory/keys.js';
 import type { ExerciseDefinition } from './types.js';
 import { melodic } from './util.js';
 
-function sets(notes: string[] | string[][]): string[][] {
+function sets(notes: string[] | string[][] | undefined, alt?: string[][]): string[][] {
+  if (alt?.length) return alt;
+  if (!notes) return [];
   if (notes.length > 0 && Array.isArray(notes[0])) return notes as string[][];
   return [notes as string[]];
 }
@@ -12,11 +14,12 @@ export const playNotes: ExerciseDefinition<'play-notes'> = {
   type: 'play-notes',
   implemented: true,
   naturalCount(block) {
-    return sets(block.spec.notes).length;
+    return sets(block.spec.notes, block.spec.sets).length;
   },
   generate(block, _rng, ctx) {
     const s = block.spec;
-    const all = sets(s.notes);
+    const all = sets(s.notes, s.sets);
+    if (all.length === 0) throw new Error('play-notes: needs "notes" or "sets"');
     const notes = all[ctx.index % all.length]!.map(cleanNoteName);
     if (notes.length === 0) throw new Error('play-notes: notes must not be empty');
     const hasOctaves = notes.every((n) => isNoteName(n, true));

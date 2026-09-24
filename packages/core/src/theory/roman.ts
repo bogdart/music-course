@@ -16,7 +16,7 @@ export interface RomanChord extends ParsedChord {
 }
 
 const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
-const ROMAN_RE = /^([b#♭♯]?)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)(°|o|ø|\+|dim|aug)?(maj7|M7|Δ7|sus4|sus2|add9|7|9|65|64|6|43|42|2)?$/;
+const ROMAN_RE = /^([b#♭♯]?)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)(°|o|ø|\+|dim|aug)?(maj9|maj7|M7|Δ7|7sus4|sus4|sus2|add9|13|11|7|9|65|64|6|43|42|2)?$/;
 
 interface ParsedNumeral {
   acc: number;
@@ -45,6 +45,10 @@ function qualityOf(p: ParsedNumeral): { quality: ChordQuality; inversion: number
   const inversion = { '': 0, '7': 0, '6': 1, '64': 2, '65': 1, '43': 2, '42': 3, '2': 3 }[f] ?? 0;
   let quality: ChordQuality;
   if (f === 'maj7' || f === 'M7' || f === 'Δ7') quality = p.upper ? 'maj7' : 'minmaj7';
+  else if (f === 'maj9') quality = p.upper ? 'maj9' : 'min9';
+  else if (f === '7sus4') quality = 'dom7sus4';
+  else if (f === '13') quality = p.upper ? 'dom13' : 'min13';
+  else if (f === '11') quality = p.upper ? 'dom11' : 'min11';
   else if (f === 'sus4') quality = 'sus4';
   else if (f === 'sus2') quality = 'sus2';
   else if (f === 'add9') quality = p.upper ? 'add9' : 'min9';
@@ -123,11 +127,12 @@ const MINOR_DEGREE_BY_ST: Record<number, [string, number]> = {
 
 function numeralFor(acc: string, degree: number, quality: ChordQuality): string {
   const base = NUMERALS[degree - 1]!;
-  const lower = ['min', 'dim', 'min7', 'm7b5', 'dim7', 'minmaj7', 'min6', 'min9'].includes(quality);
+  const lower = ['min', 'dim', 'min7', 'm7b5', 'dim7', 'minmaj7', 'min6', 'min9', 'min11', 'min13'].includes(quality);
   const n = acc + (lower ? base.toLowerCase() : base);
   const suffix: Partial<Record<ChordQuality, string>> = {
     dim: '°', aug: '+', maj7: 'maj7', min7: '7', dom7: '7', m7b5: 'ø7', dim7: '°7', minmaj7: 'maj7',
-    sus2: 'sus2', sus4: 'sus4', dom9: '9', min9: '9', add9: 'add9',
+    sus2: 'sus2', sus4: 'sus4', dom9: '9', min9: '9', add9: 'add9', maj9: 'maj9', dom7sus4: '7sus4', dom13: '13', min13: '13',
+    dom11: '11', min11: '11',
   };
   return n + (suffix[quality] ?? '');
 }

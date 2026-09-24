@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import type { ExerciseType } from '@music/core';
 import { pcToDegree } from '@music/core';
 import { Keyboard } from '../components/Keyboard/Keyboard';
-import { useNoteInput } from '../input/useNoteInput';
+import { useExerciseNoteInput } from './focus';
 import { ChoiceButtons } from './ChoiceButtons';
 import type { ExerciseComponentProps } from './types';
 
-type ChoiceType = 'ear-note' | 'ear-octave' | 'ear-interval' | 'ear-chord';
+type ChoiceType = 'ear-note' | 'ear-octave' | 'ear-interval' | 'ear-chord' | 'ear-scale' | 'ear-meter' | 'ear-chord-root' | 'key-signature';
 
 function itemMidis(item: ExerciseComponentProps<ChoiceType>['item']): number[] {
   if ('midis' in item && Array.isArray(item.midis)) return item.midis;
@@ -15,7 +15,8 @@ function itemMidis(item: ExerciseComponentProps<ChoiceType>['item']): number[] {
 }
 
 /**
- * Generic multiple-choice ear exercise (ear-note, ear-octave, ear-interval, ear-chord).
+ * Generic multiple-choice exercise (ear-note, ear-octave, ear-interval, ear-chord, ear-scale, ear-meter, ear-chord-root
+ * "name", key-signature).
  * For ear-note with degree answers the learner may also answer by playing the note on any keyboard.
  */
 export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentProps<T>) {
@@ -36,13 +37,13 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
   };
 
   const earNote = item.type === 'ear-note' ? (item as ExerciseComponentProps<'ear-note'>['item']) : null;
-  useNoteInput((e) => {
+  useExerciseNoteInput((e) => {
     if (!earNote || e.type !== 'on' || disabled) return;
     const value = earNote.answerKind === 'degree' ? pcToDegree(e.midi, earNote.key, earNote.mode) : null;
     if (value && item.choices?.some((c) => c.value === value)) choose(value);
   }, !!earNote && !disabled);
 
-  const answer = (item as { answer?: string }).answer ?? null;
+  const answer = (item as { answer?: string }).answer ?? (item as { rootName?: string }).rootName ?? null;
   const showSolution = disabled && (revealed || result?.correct);
   const midis = itemMidis(item);
   const lo = Math.min(...midis, 60);

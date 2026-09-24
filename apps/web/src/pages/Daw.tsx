@@ -1,15 +1,73 @@
-import { Keyboard } from '../components/Keyboard/Keyboard';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { projectFromEnvelope } from '@music/core';
+import { api } from '../api/client';
+import { DawWorkspace } from '../daw/DawWorkspace';
+import { takePendingSnippet } from '../daw/io';
+import { openNew, openProject, useAutosave } from '../daw/persistence';
+import { blankProject, isLessonProject, ProjectBar } from '../daw/ProjectBar';
+import { DawContext, getDawStore, type DawStore } from '../daw/store';
 
-/** Placeholder — the micro-DAW (milestone M3) mounts here. */
+/** Initial loads in flight, keyed by URL params (React StrictMode runs effects twice in dev). */
+const inflight = new Map<string, Promise<{ status: string | null; setUrl: boolean }>>();
+
+async function initialLoad(store: DawStore, want: string | null, fromSnippet: boolean): Promise<{ status: string | null; setUrl: boolean }> {
+  try {
+    const snippet = fromSnippet ? takePendingSnippet() : null;
+    const st = store.getState();
+    if (snippet) {
+      await openNew(store, projectFromEnvelope(snippet, { name: snippet.title ?? 'Snippet' }));
+      return { status: null, setUrl: true };
+    }
+    if (want && want !== st.project.id) {
+      if (await openProject(store, want)) return { status: null, setUrl: false };
+      await openNew(store, blankProject());
+      return { status: `Project "${want}" was not found — started a new one.`, setUrl: true };
+    }
+    if (!st.persistent) {
+      const list = (await api.projects()).filter((p) => !isLessonProject(p.id));
+      if (list[0]) await openProject(store, list[0].id);
+      else await openNew(store, blankProject());
+    }
+    return { status: null, setUrl: true };
+  } catch (e) {
+    return { status: `Server unreachable (${(e as Error).message}) — working locally, changes are not saved.`, setUrl: false };
+  }
+}
+
+/** The micro-DAW page: /daw, /daw?project=<id>, /daw?snippet=1 (see daw/io.ts openSnippetInDaw). */
 export function Daw() {
+  const store = getDawStore('main');
+  const [params, setParams] = useSearchParams();
+  const [status, setStatus] = useState<string | null>('Loading…');
+  useAutosave(store);
+
+  useEffect(() => {
+    let cancelled = false;
+    const key = `${params.get('project') ?? ''}|${params.get('snippet') ?? ''}`;
+    let job = inflight.get(key);
+    if (!job) {
+      job = initialLoad(store, params.get('project'), !!params.get('snippet')).finally(() => setTimeout(() => inflight.delete(key), 0));
+      inflight.set(key, job);
+    }
+    job.then((r) => {
+      if (cancelled) return;
+      setStatus(r.status);
+      if (r.setUrl && params.get('project') !== store.getState().project.id) setParams({ project: store.getState().project.id }, { replace: true });
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.get('project'), params.get('snippet')]);
+
   return (
-    <div className="page">
-      <h1>DAW</h1>
-      <div className="card">
-        <p>The micro-DAW is under construction (tracks, piano roll, recording, mixer, MIDI export).</p>
-        <p className="muted small">Meanwhile, jam on the keyboard below — MIDI and computer keys work too.</p>
-      </div>
-      <Keyboard showQwerty />
+    <div className="page daw-page">
+      <DawContext.Provider value={store}>
+        <ProjectBar onOpened={(id) => setParams({ project: id }, { replace: true })} />
+      </DawContext.Provider>
+      {status && <p className="muted small">{status}</p>}
+      <DawWorkspace store={store} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type {
   AttemptInput, CurriculumDTO, ExerciseCompleteInput, GlossaryTerm, ParsedLessonDTO, ProgressSummaryDTO,
-  ProjectDTO, ProjectSummaryDTO, Settings, SrsDueDTO,
+  JournalEntryDTO, ProjectDTO, ProjectSummaryDTO, Settings, SrsDueDTO,
 } from '@music/core';
 
 export class ApiError extends Error {
@@ -41,7 +41,9 @@ export const api = {
   attempt: (a: AttemptInput) => req<{ ok: true; id: number }>('POST', '/progress/attempts', a),
   exerciseComplete: (c: ExerciseCompleteInput) => req<{ ok: true }>('POST', '/progress/exercises/complete', c),
   lessonComplete: (id: string) => req<{ ok: true }>('POST', `/progress/lessons/${encodeURIComponent(id)}/complete`),
-  srsDue: (limit = 20) => req<SrsDueDTO>('GET', `/srs/due?limit=${limit}`),
+  srsDue: (limit = 20, newLimit?: number) => req<SrsDueDTO>('GET', `/srs/due?limit=${limit}${newLimit !== undefined ? `&newLimit=${newLimit}` : ''}`),
+  journal: (lessonId: string, exerciseId: string, limit = 5) =>
+    req<JournalEntryDTO[]>('GET', `/progress/attempts?lessonId=${encodeURIComponent(lessonId)}&exerciseId=${encodeURIComponent(exerciseId)}&limit=${limit}`),
   srsReview: (cardId: number, grade: number) => req<{ card: unknown }>('POST', '/srs/review', { cardId, grade }),
   projects: () => req<ProjectSummaryDTO[]>('GET', '/projects'),
   project: (id: string) => req<ProjectDTO>('GET', `/projects/${encodeURIComponent(id)}`),

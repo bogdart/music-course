@@ -317,12 +317,38 @@ export function snippetFromEnvelope(env: SnippetEnvelope, ppq = PPQ): Snippet {
     bpm: env.bpm ?? 90,
     timeSig,
     ...(env.key ? { key: env.key } : {}),
+    ...(env.tempoChanges?.length
+      ? { tempoChanges: env.tempoChanges.map((c) => ({ tick: (c.bar - 1) * ticksPerBar(timeSig, ppq), bpm: c.bpm })).sort((a, b) => a.tick - b.tick) }
+      : {}),
     tracks: env.tracks.map((t) => ({
       instrument: t.instrument,
-      events: parseSeq(t.seq, { ppq, timeSig }),
+      events: applySwing(parseSeq(t.seq, { ppq, timeSig }), env.swing ?? 0, ppq),
       ...(t.volume !== undefined ? { volume: t.volume } : {}),
+      ...(t.pan !== undefined ? { pan: t.pan } : {}),
     })),
   };
+}
+
+/**
+ * Swing off-beat 8ths: an event starting exactly half-way through a beat is delayed by `swing × ppq/6` ticks
+ * (swing 1 = triplet feel, 2:1), and an on-beat event that ends there is lengthened to meet it.
+ * Other events are unchanged. Returns new events (input untouched).
+ */
+export function applySwing(events: NoteEvent[], swing: number, ppq = PPQ): NoteEvent[] {
+  const s = Math.max(0, Math.min(1, swing || 0));
+  if (s === 0) return events;
+  const half = ppq / 2;
+  const shift = Math.round((s * ppq) / 6);
+  return events.map((e) => {
+    const pos = e.startTick % ppq;
+    const end = e.startTick + e.durationTicks;
+    if (pos === half) {
+      const endsOnOff = end % ppq === half;
+      return { ...e, startTick: e.startTick + shift, durationTicks: Math.max(1, e.durationTicks - shift + (endsOnOff ? shift : 0)) };
+    }
+    if (end % ppq === half) return { ...e, durationTicks: e.durationTicks + shift };
+    return e;
+  });
 }
 
 /** Length in ticks of a snippet (end of last event). */

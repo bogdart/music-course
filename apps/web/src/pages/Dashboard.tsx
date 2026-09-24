@@ -7,7 +7,10 @@ export function Dashboard() {
   useEffect(() => {
     void refresh();
   }, [refresh]);
-  const nextId = summary?.nextLessonId ?? summary?.lastLessonId ?? curriculum?.weeks.flatMap((w) => w.lessons).find((l) => l.exists)?.id;
+  // resume the lesson last worked on unless it is finished; otherwise the first unfinished lesson
+  const last = summary?.lastLessonId ?? null;
+  const resuming = !!last && summary?.lessons[last]?.status !== 'completed';
+  const nextId = (resuming ? last : null) ?? summary?.nextLessonId ?? last ?? curriculum?.weeks.flatMap((w) => w.lessons).find((l) => l.exists)?.id;
   const next = curriculum?.weeks.flatMap((w) => w.lessons.map((l) => ({ ...l, week: w.week }))).find((l) => l.id === nextId);
   const t = summary?.totals;
   return (
@@ -22,7 +25,7 @@ export function Dashboard() {
               <h2>{next.title}</h2>
               <div className="muted small">Week {next.week}</div>
               <Link className="btn primary big" to={`/lesson/${next.id}`}>
-                {summary?.lastLessonId ? 'Continue lesson' : 'Start lesson'} →
+                {last ? 'Continue lesson' : 'Start lesson'} →
               </Link>
             </>
           ) : (

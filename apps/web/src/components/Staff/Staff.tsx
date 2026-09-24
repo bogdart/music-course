@@ -12,13 +12,21 @@ export interface StaffProps {
   colors?: Record<number, string>;
   barsPerLine?: number;
   className?: string;
+  showTimeSig?: boolean;
+  lyrics?: string[] | undefined;
 }
 
 /** VexFlow notation for a seq string. VexFlow is lazy-loaded (code-split). */
-export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, barsPerLine, className }: StaffProps) {
+export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, barsPerLine, className, showTimeSig, lyrics }: StaffProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  // a wide score scrolls horizontally: the scroll container must then be keyboard-reachable (WCAG scrollable-region-focusable)
+  const [overflowing, setOverflowing] = useState(false);
+  const checkOverflow = () => {
+    const el = ref.current;
+    if (el) setOverflowing(el.scrollWidth > el.clientWidth + 1);
+  };
 
   useEffect(() => {
     const el = ref.current;
@@ -40,8 +48,9 @@ export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, ba
         if (cancelled) return;
         const draw = () => {
           try {
-            m.renderStaff(el, { seq, clef, key: keySig, timeSig, highlight, colors, width, barsPerLine });
+            m.renderStaff(el, { seq, clef, key: keySig, timeSig, highlight, colors, width, barsPerLine, showTimeSig, lyrics });
             setError(null);
+            checkOverflow();
           } catch (e) {
             setError((e as Error).message);
           }
@@ -57,10 +66,16 @@ export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, ba
     return () => {
       cancelled = true;
     };
-  }, [seq, clef, keySig, timeSig, highlight, colors, width, barsPerLine]);
+  }, [seq, clef, keySig, timeSig, highlight, colors, width, barsPerLine, showTimeSig, lyrics?.join(' ')]);
 
   return (
-    <div ref={ref} className={`${styles.staff} ${className ?? ''}`} data-testid="staff" data-seq={seq}>
+    <div
+      ref={ref}
+      className={`${styles.staff} ${className ?? ''}`}
+      data-testid="staff"
+      data-seq={seq}
+      {...(overflowing ? { tabIndex: 0, role: 'region', 'aria-label': 'Notation (scroll horizontally)' } : {})}
+    >
       <div data-staff-canvas />
       {error && <div className={styles.error}>Notation error: {error}</div>}
     </div>

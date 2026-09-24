@@ -24,12 +24,33 @@ export function srsRoutes(db: Db, content: ContentStore, sessions: Sessions): Ho
     };
   };
 
+  /**
+   * Due cards. With `newLimit`, reviewed cards and new cards (never reviewed) are balanced: at most `newLimit` new
+   * cards, interleaved one new after every two reviews; new cards may be pulled in even if not yet due.
+   */
   r.get('/due', (c) => {
     const limit = Math.max(1, Math.min(100, Number(c.req.query('limit') ?? 20) || 20));
+    const newLimitRaw = c.req.query('newLimit');
     const session = sessions.touch();
-    const rows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND due_session <= ?').all(session) as unknown as CardRow[];
-    const due = dueCards(rows.map((r) => ({ ...r, dueSession: r.due_session })), session, limit);
-    const dto: SrsDueDTO = { session, cards: due.map(toDto) };
+    if (newLimitRaw === undefined) {
+      const rows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND due_session <= ?').all(session) as unknown as CardRow[];
+      const due = dueCards(rows.map((r) => ({ ...r, dueSession: r.due_session })), session, limit);
+      const dto: SrsDueDTO = { session, cards: due.map(toDto) };
+      return c.json(dto);
+    }
+    const newLimit = Math.max(0, Math.min(limit, Number(newLimitRaw) || 0));
+    const reviewRows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NOT NULL AND due_session <= ?').all(session) as unknown as CardRow[];
+    const reviews = dueCards(reviewRows.map((r) => ({ ...r, dueSession: r.due_session })), session, limit);
+    const newRows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NULL ORDER BY due_session, id LIMIT ?').all(newLimit) as unknown as CardRow[];
+    const fresh = newRows.slice(0, Math.max(0, Math.min(newLimit, limit - Math.min(reviews.length, limit - newLimit))));
+    const mixed: CardRow[] = [];
+    let ri = 0;
+    let ni = 0;
+    while (mixed.length < limit && (ri < reviews.length || ni < fresh.length)) {
+      if (ri < reviews.length && (mixed.length % 3 !== 2 || ni >= fresh.length)) mixed.push(reviews[ri++]!);
+      else if (ni < fresh.length) mixed.push(fresh[ni++]!);
+    }
+    const dto: SrsDueDTO = { session, cards: mixed.map(toDto) };
     return c.json(dto);
   });
 

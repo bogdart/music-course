@@ -27,3 +27,5 @@ export const liveNoteOn = vi.fn((...args: unknown[]) => rec('liveNoteOn')(...arg
 export const liveNoteOff = vi.fn((...args: unknown[]) => rec('liveNoteOff')(...args));
 export const configureEngine = vi.fn(async () => {});
 export const audioNow = () => performance.now() / 1000;
+/** Fake: AudioContext time t (s) is heard at performance time t*1000 ms (play() returns startTime 0). */
+export const audioTimeToPerf = (t: number) => t * 1000;

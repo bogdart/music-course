@@ -1,5 +1,5 @@
 import {
-  Accidental, Articulation, Beam, Dot, Formatter, Renderer, Stave, StaveNote, StaveTie, Tuplet, Voice, type StemmableNote,
+  Accidental, Annotation, Articulation, Beam, Dot, Formatter, Renderer, Stave, StaveNote, StaveTie, Tuplet, Voice, type StemmableNote,
 } from 'vexflow/bravura';
 import { parseKey, parseSeqDetailed, parseTimeSig, ticksPerBar, type SeqItem } from '@music/core';
 
@@ -15,6 +15,10 @@ export interface StaffRenderOptions {
   width: number;
   /** Max bars per line (default: fit by width) */
   barsPerLine?: number;
+  /** Draw the time signature (default true) */
+  showTimeSig?: boolean;
+  /** Lyrics: one syllable per note (rests skipped, tied continuations skipped), shown under the staff */
+  lyrics?: string[];
 }
 
 const DUR: Record<string, string> = { w: 'w', h: 'h', q: 'q', '8': '8', '16': '16', '32': '32', '64': '64' };
@@ -83,13 +87,27 @@ export function renderStaff(el: HTMLElement, opts: StaffRenderOptions): number {
   });
   if (cur.length) lines.push(cur);
 
-  const lineHeight = 120;
+  const lineHeight = opts.lyrics?.length ? 145 : 120;
   const height = lines.length * lineHeight + 20;
   const renderer = new Renderer(el as HTMLDivElement, Renderer.Backends.SVG);
   renderer.resize(width, height);
   const ctx = renderer.getContext();
 
   const allNotes = new Map<number, StaveNote>();
+  // lyrics: syllables assigned to sounding (non-rest, non-tied-continuation) items in order
+  const lyricOf = new Map<number, string>();
+  if (opts.lyrics?.length) {
+    let k = 0;
+    let prevTie = false;
+    for (const it of items) {
+      if (it.kind === 'rest') {
+        prevTie = false;
+        continue;
+      }
+      if (!prevTie && k < opts.lyrics.length) lyricOf.set(it.index, opts.lyrics[k++]!);
+      prevTie = it.tie;
+    }
+  }
   lines.forEach((line, li) => {
     const natural = line.reduce((a, i) => a + barWidths[i]!, 0) + firstExtra;
     const scale = Math.min(1.6, (width - 10) / natural);
@@ -101,7 +119,7 @@ export function renderStaff(el: HTMLElement, opts: StaffRenderOptions): number {
       if (isFirst) {
         stave.addClef(clef);
         if (clef !== 'percussion') stave.addKeySignature(keySpec);
-        if (li === 0) stave.addTimeSignature(`${ts.num}/${ts.den}`);
+        if (li === 0 && opts.showTimeSig !== false) stave.addTimeSignature(`${ts.num}/${ts.den}`);
       }
       if (bi === bars.length - 1) stave.setEndBarType(3);
       stave.setContext(ctx).draw();
@@ -118,6 +136,8 @@ export function renderStaff(el: HTMLElement, opts: StaffRenderOptions): number {
         const n = new StaveNote({ keys, duration: d.duration + (rest ? 'r' : ''), clef: clef === 'percussion' ? 'percussion' : clef, autoStem: true });
         if (d.dots) Dot.buildAndAttach([n], { all: true });
         if (it.accent && !rest) n.addModifier(new Articulation('a>').setPosition(3), 0);
+        const syl = lyricOf.get(it.index);
+        if (syl) n.addModifier(new Annotation(syl).setVerticalJustification(Annotation.VerticalJustify.BOTTOM).setFont('sans-serif', 12), 0);
         const colour = opts.highlight === it.index ? '#e0463c' : opts.colors?.[it.index];
         if (colour) n.setStyle({ fillStyle: colour, strokeStyle: colour });
         allNotes.set(it.index, n);

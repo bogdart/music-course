@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { isInstrumentId, parseSeqDetailed, snippetFromEnvelope, type SnippetEnvelope } from '@music/core';
 import { Keyboard } from '../../components/Keyboard/Keyboard';
 import { Staff } from '../../components/Staff/Staff';
@@ -10,11 +10,18 @@ export interface ExampleData extends SnippetEnvelope {
   show?: ('staff' | 'keyboard' | 'pianoroll')[];
   loop?: boolean;
   description?: string;
+  /** Dictation: play-only until the learner presses "Reveal" */
+  hidden?: boolean;
+  /** Syllables separated by spaces, one per note of the first track */
+  lyrics?: string;
 }
 
 export function ExampleBlock({ data }: { data: ExampleData }) {
   const snippet = useMemo(() => snippetFromEnvelope({ ...data, tracks: data.tracks.filter((t) => isInstrumentId(t.instrument)) }), [data]);
   const { playing, sounding, current, start, stop } = usePlayback();
+  const [revealed, setRevealed] = useState(false);
+  const hide = !!data.hidden && !revealed;
+  const lyrics = useMemo(() => data.lyrics?.trim().split(/\s+/).filter(Boolean), [data.lyrics]);
   const first = data.tracks.find((t) => t.instrument !== 'drums') ?? data.tracks[0];
   const firstIndex = first ? data.tracks.indexOf(first) : 0;
   const show = data.show ?? (first && first.instrument !== 'drums' ? ['staff'] : []);
@@ -40,11 +47,17 @@ export function ExampleBlock({ data }: { data: ExampleData }) {
         </figcaption>
       </div>
       {data.description && <p className="small">{data.description}</p>}
-      {show.includes('staff') && first && first.instrument !== 'drums' && (
-        <Staff seq={first.seq} timeSig={data.timeSig ?? '4/4'} {...(data.key ? { keySig: data.key } : {})} highlight={highlight} />
+      {data.hidden && !revealed && (
+        <button type="button" className="btn ghost" onClick={() => setRevealed(true)}>
+          Reveal notation
+        </button>
       )}
-      {show.includes('pianoroll') && <PianoRoll snippet={snippet} sounding={sounding} />}
-      {show.includes('keyboard') && (
+      {!hide && show.includes('staff') && first && first.instrument !== 'drums' && (
+        <Staff seq={first.seq} timeSig={data.timeSig ?? '4/4'} {...(data.key ? { keySig: data.key } : {})} highlight={highlight} lyrics={lyrics} />
+      )}
+      {!hide && !show.includes('staff') && lyrics?.length ? <p className="lyrics">{lyrics.join(' ').replace(/- /g, '')}</p> : null}
+      {!hide && show.includes('pianoroll') && <PianoRoll snippet={snippet} sounding={sounding} />}
+      {!hide && show.includes('keyboard') && (
         <Keyboard range={[Math.min(lo - (lo % 12), 60), Math.max(hi + (11 - (hi % 12)), 71)]} highlight={sounding} {...(data.key ? { keyName: data.key } : {})} height={130} />
       )}
     </figure>

@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import { LessonView } from './LessonView';
 import { loadDemoLesson } from './demo';
+import { EXERCISE_TYPES } from '@music/core';
 
 // VexFlow needs real SVG text metrics; stub the renderer so the Staff component stays testable.
 vi.mock('../components/Staff/renderStaff', () => ({ renderStaff: vi.fn(() => 100) }));
@@ -12,7 +13,10 @@ describe('lesson renderer (dev fixture)', () => {
 
   it('parses the fixture without problems', () => {
     expect(lesson.problems).toEqual([]);
-    expect(lesson.blocks.map((b) => b.lang)).toEqual(['example', 'keyboard', 'staff', 'chords', ...Array(9).fill('exercise')]);
+    expect(lesson.blocks.map((b) => b.lang)).toEqual(['example', 'keyboard', 'staff', 'chords', ...Array(9).fill('exercise'), 'example', ...Array(22).fill('exercise')]);
+    // every catalogue type except daw-task has a demo exercise
+    const types = new Set(lesson.exercises.map((e) => e.type));
+    for (const t of EXERCISE_TYPES) if (t !== 'daw-task') expect(types.has(t), t).toBe(true);
   });
 
   it('renders every block type, inline helpers and the exercise rail', () => {
@@ -22,25 +26,26 @@ describe('lesson renderer (dev fixture)', () => {
       </MemoryRouter>,
     );
     expect(screen.getByRole('heading', { level: 1, name: /Dev Demo/ })).toBeTruthy();
-    expect(screen.getByTestId('example-block')).toBeTruthy();
+    expect(screen.getAllByTestId('example-block').length).toBeGreaterThan(1);
+    expect(screen.getByText('Reveal notation')).toBeTruthy();
     expect(screen.getByTestId('keyboard-block')).toBeTruthy();
     expect(screen.getByTestId('staff-block')).toBeTruthy();
     const chords = screen.getByTestId('chords-block');
     expect(within(chords).getByText('G7')).toBeTruthy();
     expect(within(chords).getByText('V7')).toBeTruthy();
-    for (const id of ['ear-note-1', 'ear-octave-1', 'ear-interval-1', 'ear-chord-1', 'play-notes-1', 'quiz-1', 'quiz-input-1', 'read-note-1']) {
+    for (const id of ['ear-note-1', 'ear-octave-1', 'ear-interval-1', 'ear-chord-1', 'play-notes-1', 'quiz-1', 'quiz-input-1', 'read-note-1', 'ear-scale-1']) {
       expect(screen.getByTestId(`exercise-${id}`)).toBeTruthy();
     }
-    expect(screen.getByTestId('coming-soon').textContent).toContain('ear-scale');
+    expect(screen.queryByTestId('coming-soon')).toBeNull();
     // inline helpers
     expect(screen.getByRole('button', { name: '♪ C#4' })).toBeTruthy();
     expect(screen.getByRole('button', { name: /🎹 Cmaj7/ })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'octave' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'next lesson' }).getAttribute('href')).toBe('/lesson/w01-l2-pitch-and-octaves');
     // GFM table
-    expect(screen.getByRole('table')).toBeTruthy();
-    // rail lists all 9 exercises
-    expect(within(screen.getByRole('complementary', { name: 'Exercises' })).getAllByRole('listitem')).toHaveLength(9);
+    expect(screen.getAllByRole('table').some((t) => t.closest('.lesson-body') && !t.closest('.exercise'))).toBe(true);
+    // rail lists all 31 exercises
+    expect(within(screen.getByRole('complementary', { name: 'Exercises' })).getAllByRole('listitem')).toHaveLength(31);
   });
 
   it('shows an error card for broken blocks instead of crashing', () => {

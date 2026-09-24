@@ -21,7 +21,7 @@ function contentFixture(): string {
   };
   const ex = (o: object) => '```exercise\n' + JSON.stringify(o) + '\n```\n';
   lesson('w01-l1-welcome', 1, `# Hi\n\n${ex({ id: 'e1', type: 'ear-octave', spec: { notes: ['C'], octaves: [3, 4], mode: 'same-or-different' } })}${ex({ id: 'e2', type: 'quiz', spec: { questions: [{ q: 'a', choices: ['x', 'y'], answer: 0 }] } })}`);
-  lesson('w01-l2-octaves', 2, `# Two\n\n${ex({ id: 'e1', type: 'play-notes', spec: { notes: ['C4'] } })}`);
+  lesson('w01-l2-octaves', 2, `# Two\n\n${ex({ id: 'e1', type: 'play-notes', spec: { notes: ['C4'] } })}${ex({ id: 'e2', type: 'ear-note', spec: { key: 'C', degrees: [1, 3] } })}${ex({ id: 'r1', type: 'reflect', spec: { prompt: 'p' } })}`);
   writeFileSync(join(dir, 'lessons', 'w01-l1-welcome', 'assets', 'pic.svg'), '<svg/>');
   return dir;
 }
@@ -75,6 +75,12 @@ describe('progress + SRS', () => {
     const a = await post('/api/progress/attempts', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', correct: true, score: 1, answer: 'same', durationMs: 1200, itemIndex: 0 });
     expect(a.status).toBe(201);
     expect((await post('/api/progress/attempts', { lessonId: 'x' })).status).toBe(400);
+    // unknown lessons / exercises are rejected (QA BUG-05)
+    const bad = { exerciseId: 'e1', type: 'quiz', correct: true, score: 1 };
+    expect((await post('/api/progress/attempts', { ...bad, lessonId: 'w09-l9-nope' })).status).toBe(404);
+    expect((await post('/api/progress/attempts', { ...bad, lessonId: 'w01-l1-welcome', exerciseId: 'nope' })).status).toBe(404);
+    expect((await post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'zz', type: 'quiz', score: 1, passed: true, correct: 1, total: 1 })).status).toBe(404);
+    expect((await post('/api/progress/lessons/w09-l9-nope/complete', {})).status).toBe(404);
     const c1 = await json<{ srsCardId: number | null }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 0.9, passed: true, correct: 9, total: 10 }));
     expect(c1.srsCardId).toBeGreaterThan(0);
     const c2 = await json<{ srsCardId: number | null }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e2', type: 'quiz', score: 1, passed: true, correct: 1, total: 1 }));
@@ -109,6 +115,42 @@ describe('progress + SRS', () => {
     expect((await json<SrsDueDTO>(app.request('/api/srs/due'))).cards).toHaveLength(0);
     expect((await post('/api/srs/review', { cardId: 999, grade: 3 })).status).toBe(404);
     expect((await post('/api/srs/review', { cardId: card.id, grade: 9 })).status).toBe(400);
+  });
+});
+
+describe('health', () => {
+  it('reports whether piano samples are installed', async () => {
+    expect(await json(app.request('/api/health'))).toMatchObject({ ok: true, pianoSamples: false });
+    const dir = mkdtempSync(join(tmpdir(), 'samples-'));
+    writeFileSync(join(dir, 'C4.mp3'), '');
+    const withSamples = createApp({ db, content: new ContentStore(contentFixture(), () => {}), pianoSampleDirs: [dir] });
+    expect(await json(withSamples.request('/api/health'))).toMatchObject({ pianoSamples: true });
+  });
+});
+
+describe('SRS sessions with new cards and the journal', () => {
+  it('interleaves new cards (never reviewed) with due reviews, limited by newLimit', async () => {
+    await post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 1, passed: true, correct: 1, total: 1 });
+    now += 3 * 3600_000;
+    let due = await json<SrsDueDTO>(app.request('/api/srs/due'));
+    await post('/api/srs/review', { cardId: due.cards[0]!.id, grade: 5 });
+    now += 3 * 3600_000; // review card due again (interval 1)
+    // a brand-new card, created this session (not yet due by schedule)
+    await post('/api/progress/exercises/complete', { lessonId: 'w01-l2-octaves', exerciseId: 'e2', type: 'ear-note', score: 1, passed: true, correct: 1, total: 1 });
+    due = await json<SrsDueDTO>(app.request('/api/srs/due'));
+    expect(due.cards.map((c) => c.exerciseId)).toEqual(['e1']);
+    due = await json<SrsDueDTO>(app.request('/api/srs/due?limit=10&newLimit=2'));
+    expect(due.cards.map((c) => `${c.lessonId}/${c.exerciseId}`).sort()).toEqual(['w01-l1-welcome/e1', 'w01-l2-octaves/e2']);
+    due = await json<SrsDueDTO>(app.request('/api/srs/due?limit=10&newLimit=0'));
+    expect(due.cards).toHaveLength(1);
+  });
+
+  it('lists attempts of an exercise (reflect journal), newest first', async () => {
+    await post('/api/progress/attempts', { lessonId: 'w01-l2-octaves', exerciseId: 'r1', type: 'reflect', correct: true, score: 1, answer: 'first thoughts' });
+    await post('/api/progress/attempts', { lessonId: 'w01-l2-octaves', exerciseId: 'r1', type: 'reflect', correct: true, score: 1, answer: 'second thoughts' });
+    const list = await json<{ answer: unknown; type: string }[]>(app.request('/api/progress/attempts?lessonId=w01-l2-octaves&exerciseId=r1&limit=5'));
+    expect(list.map((a) => a.answer)).toEqual(['second thoughts', 'first thoughts']);
+    expect((await app.request('/api/progress/attempts?lessonId=x')).status).toBe(400);
   });
 });
 

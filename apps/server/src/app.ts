@@ -19,6 +19,8 @@ export interface AppDeps {
   sessions?: Sessions;
   /** Serve the built SPA from here (prod). */
   webDist?: string;
+  /** Directories that may hold the optional sampled piano (`C4.mp3` …); reported by /api/health */
+  pianoSampleDirs?: string[];
 }
 
 export function createApp(deps: AppDeps): Hono {
@@ -34,7 +36,8 @@ export function createApp(deps: AppDeps): Hono {
   });
 
   const api = new Hono();
-  api.get('/health', (c) => c.json({ ok: true, contentVersion: content.version }));
+  // `pianoSamples` lets the web app load the sampled piano without probing a (404-ing) URL
+  api.get('/health', (c) => c.json({ ok: true, contentVersion: content.version, pianoSamples: (deps.pianoSampleDirs ?? []).some((d) => existsSync(join(d, 'C4.mp3'))) }));
   api.route('/content', contentRoutes(content, progress));
   api.route('/progress', progressRoutes(progress));
   api.route('/srs', srsRoutes(db, content, sessions));

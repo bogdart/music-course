@@ -7,13 +7,24 @@ export function progressRoutes(progress: ProgressService): Hono {
 
   r.get('/', (c) => c.json(progress.summary()));
 
+  r.get('/attempts', (c) => {
+    const lessonId = c.req.query('lessonId');
+    const exerciseId = c.req.query('exerciseId');
+    if (!lessonId || !exerciseId) badRequest('"lessonId" and "exerciseId" query parameters are required');
+    const limit = Math.max(1, Math.min(100, Number(c.req.query('limit') ?? 20) || 20));
+    return c.json(progress.attempts(lessonId!, exerciseId!, limit));
+  });
+
   r.post('/attempts', async (c) => {
     const b = await jsonBody(c.req);
     const source = b.source === undefined ? 'lesson' : b.source;
     if (source !== 'lesson' && source !== 'practice') badRequest('"source" must be "lesson" or "practice"');
+    const lessonId = str(b, 'lessonId', { max: 200 });
+    const exerciseId = str(b, 'exerciseId', { max: 200 });
+    progress.assertKnown(lessonId, exerciseId);
     const id = progress.recordAttempt({
-      lessonId: str(b, 'lessonId', { max: 200 }),
-      exerciseId: str(b, 'exerciseId', { max: 200 }),
+      lessonId,
+      exerciseId,
       type: str(b, 'type', { max: 50 }),
       correct: bool(b, 'correct'),
       score: num(b, 'score', { min: 0, max: 1 })!,
@@ -27,9 +38,12 @@ export function progressRoutes(progress: ProgressService): Hono {
 
   r.post('/exercises/complete', async (c) => {
     const b = await jsonBody(c.req);
+    const lessonId = str(b, 'lessonId', { max: 200 });
+    const exerciseId = str(b, 'exerciseId', { max: 200 });
+    progress.assertKnown(lessonId, exerciseId);
     const res = progress.completeExercise({
-      lessonId: str(b, 'lessonId', { max: 200 }),
-      exerciseId: str(b, 'exerciseId', { max: 200 }),
+      lessonId,
+      exerciseId,
       type: str(b, 'type', { max: 50 }),
       score: num(b, 'score', { min: 0, max: 1 })!,
       passed: bool(b, 'passed'),
@@ -38,6 +52,7 @@ export function progressRoutes(progress: ProgressService): Hono {
   });
 
   r.post('/lessons/:id/complete', (c) => {
+    progress.assertKnown(c.req.param('id'));
     const lesson = progress.completeLesson(c.req.param('id'));
     return c.json({ ok: true, lesson });
   });

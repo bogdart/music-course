@@ -109,3 +109,99 @@ A lesson link: [next lesson](../w01-l2-pitch-and-octaves/).
 { "id": "ear-scale-1", "type": "ear-scale", "title": "Which scale?",
   "spec": { "scales": ["major", "natural-minor"], "play": "asc" } }
 ```
+
+## Every M2 exercise type
+
+```example
+{ "title": "Hidden dictation with lyrics", "bpm": 90, "key": "C", "hidden": true, "lyrics": "Twin- kle twin- kle lit- tle star",
+  "tracks": [ { "instrument": "piano", "seq": "C4:q C4:q G4:q G4:q | A4:q A4:q G4:h" }, { "instrument": "guitar", "seq": "[C3 G3]:w | [F3 C4]:h [C3 G3]:h", "pan": -0.4 } ] }
+```
+
+```exercise
+{ "id": "ear-chord-root-1", "type": "ear-chord-root", "count": 3, "spec": { "qualities": ["maj", "min"], "answer": "play", "inversions": [0, 1] } }
+```
+
+```exercise
+{ "id": "ear-progression-1", "type": "ear-progression", "count": 3, "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "length": 4, "style": "pad-bass" } }
+```
+
+```exercise
+{ "id": "ear-melody-1", "type": "ear-melody", "count": 3, "spec": { "key": "G", "degrees": [1, 2, 3, 5], "length": 4, "answer": "degrees", "backing": ["I", "V"] } }
+```
+
+```exercise
+{ "id": "ear-rhythm-1", "type": "ear-rhythm", "count": 3, "spec": { "subdivision": "8", "answer": "choose", "choices": 3 } }
+```
+
+```exercise
+{ "id": "ear-rhythm-2", "type": "ear-rhythm", "count": 2, "spec": { "voices": ["kick", "snare", "hihat"], "subdivision": "8" } }
+```
+
+```exercise
+{ "id": "ear-rhythm-3", "type": "ear-rhythm", "count": 2, "spec": { "subdivision": "8", "answer": "tap" } }
+```
+
+```exercise
+{ "id": "ear-bass-1", "type": "ear-bass", "count": 3, "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "answer": "play" } }
+```
+
+```exercise
+{ "id": "ear-tempo-1", "type": "ear-tempo", "count": 3, "spec": { "range": [70, 140] } }
+```
+
+```exercise
+{ "id": "ear-meter-1", "type": "ear-meter", "count": 3, "spec": { "meters": ["3/4", "4/4", "6/8"] } }
+```
+
+```exercise
+{ "id": "play-scale-1", "type": "play-scale", "spec": { "root": "G", "scale": "major", "direction": "asc", "tempo": 72 } }
+```
+
+```exercise
+{ "id": "play-chord-1", "type": "play-chord", "spec": { "chords": ["C", "Am", "F", "G7"], "sequence": true, "inversion": "any" } }
+```
+
+```exercise
+{ "id": "play-melody-1", "type": "play-melody", "spec": { "bpm": 80, "key": "C", "seq": "E4:q D4:q C4:q D4:q | E4:q E4:q E4:h", "tracks": [{ "instrument": "piano", "seq": "C3:w | C3:w" }], "backing": { "instrument": "pad", "seq": "[E3 G3]:w | [E3 G3]:w" } } }
+```
+
+```exercise
+{ "id": "rhythm-tap-1", "type": "rhythm-tap", "spec": { "bpm": 90, "seq": "x:q x:8 x:8 r:q x:q", "loops": 2 } }
+```
+
+```exercise
+{ "id": "build-chord-1", "type": "build-chord", "count": 3, "spec": { "chords": ["Cmaj7", "Dm7", "G7"], "root": "given" } }
+```
+
+```exercise
+{ "id": "build-scale-1", "type": "build-scale", "count": 2, "spec": { "roots": ["D", "Bb"], "scale": "major" } }
+```
+
+```exercise
+{ "id": "build-interval-1", "type": "build-interval", "count": 3, "spec": { "intervals": ["M3", "P5"], "direction": "asc" } }
+```
+
+```exercise
+{ "id": "read-rhythm-1", "type": "read-rhythm", "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "8" } }
+```
+
+```exercise
+{ "id": "key-signature-1", "type": "key-signature", "count": 3, "spec": { "keys": ["G", "D", "F", "Bb"], "prompt": "staff", "answer": "name" } }
+```
+
+```exercise
+{ "id": "roman-analysis-1", "type": "roman-analysis", "spec": { "key": "C", "chords": ["C", "Am", "D7", "G7"] } }
+```
+
+```exercise
+{ "id": "listen-1", "type": "listen", "spec": { "examples": [ { "title": "Major", "tracks": [{ "instrument": "piano", "seq": "[C4 E4 G4]:w" }] }, { "title": "Minor", "tracks": [{ "instrument": "piano", "seq": "[C4 Eb4 G4]:w" }] } ],
+  "questions": [{ "q": "Which sounds darker?", "choices": ["Major", "Minor"], "answer": 1 }] } }
+```
+
+```exercise
+{ "id": "reflect-1", "type": "reflect", "spec": { "prompt": "How do major and minor feel different to you?", "minWords": 5 } }
+```
+
+```exercise
+{ "id": "read-note-2", "type": "read-note", "count": 3, "spec": { "clef": "treble", "mode": "interval", "intervals": ["M2", "M3", "P4", "P5"] } }
+```

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   createRng, evaluate, generate, generateSet, getExercise, implementedTypes, isImplemented, isSrsEligible, itemCount,
-  NotImplementedError, srsKey, summarise, EXERCISE_TYPES, type ExerciseBlock, type ExerciseBlockOf, type Item,
+  NotImplementedError, notImplemented, srsKey, summarise, EXERCISE_TYPES, type ExerciseBlock, type ExerciseBlockOf, type Item,
   noteToMidi, pitchClass, INTERVAL_SEMITONES, type IntervalId, CHORD_INTERVALS, type ChordQuality, identifyChord,
 } from '../src/index.js';
 
@@ -17,13 +17,14 @@ function many<T extends ExerciseBlock['type']>(b: ExerciseBlockOf<T>, n = 50): I
 describe('registry', () => {
   it('registers every catalogue type', () => {
     for (const t of EXERCISE_TYPES) expect(getExercise(t).type).toBe(t);
-    expect(implementedTypes().sort()).toEqual(['ear-chord', 'ear-interval', 'ear-note', 'ear-octave', 'play-notes', 'quiz', 'quiz-input', 'read-note']);
+    expect(implementedTypes().sort()).toEqual([...EXERCISE_TYPES].sort());
   });
   it('stubs throw a clear error', () => {
-    expect(isImplemented('ear-scale')).toBe(false);
-    const b = block('ear-scale', { scales: ['major'] });
-    expect(() => generate(b, createRng(1))).toThrow(NotImplementedError);
-    expect(() => generate(b, createRng(1))).toThrow(/ear-scale.*not implemented/);
+    const stub = notImplemented('ear-scale');
+    expect(stub.implemented).toBe(false);
+    expect(() => stub.generate(block('ear-scale', { scales: ['major'] }), createRng(1), { index: 0, count: 1 })).toThrow(NotImplementedError);
+    expect(() => stub.generate(block('ear-scale', { scales: ['major'] }), createRng(1), { index: 0, count: 1 })).toThrow(/ear-scale.*not implemented/);
+    expect(isImplemented('nonsense')).toBe(false);
   });
   it('is deterministic for a seed', () => {
     const b = block('ear-interval', { intervals: ['M2', 'M3', 'P5'], direction: 'mixed' });

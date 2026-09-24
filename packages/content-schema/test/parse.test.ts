@@ -115,6 +115,8 @@ describe('schemas', () => {
       'ear-melody': { key: 'C', degrees: [1, 2, 3, 5], length: 4, rhythm: 'quarters', answer: 'play' },
       'ear-rhythm': { timeSig: '4/4', bars: 1, subdivision: '8', rests: true, answer: 'tap' },
       'ear-bass': { key: 'C', chords: ['I', 'IV', 'V', 'vi'], answer: 'play' },
+      'ear-tempo': { range: [60, 160], tolerance: 4 },
+      'ear-meter': { meters: ['3/4', '4/4', '6/8'] },
       'play-notes': { prompt: 'names', notes: ['C4', 'E4', 'G4'], ordered: true, key: 'C' },
       'play-scale': { root: 'random', scale: 'major', octaves: 1, direction: 'asc-desc', hands: 'right', tempo: 60, metronome: true },
       'play-chord': { chords: ['C', 'G', 'Am', 'F'], inversion: 'any', sequence: true, bpm: 60 },

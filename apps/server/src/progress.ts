@@ -1,12 +1,19 @@
-import type { ExerciseProgress, LessonProgress, LessonStatus, ProgressSummaryDTO } from '@music/core';
+import type { ExerciseProgress, JournalEntryDTO, LessonProgress, LessonStatus, ProgressSummaryDTO } from '@music/core';
 import { isSrsEligible, newCardState, srsKey } from '@music/core';
 import type { ContentStore } from './content.js';
 import { nowIso, type Db } from './db.js';
+import { notFound } from './http.js';
 import type { Sessions } from './session.js';
 
 /** Progress + SRS persistence logic shared by routes. */
 export class ProgressService {
   constructor(private readonly db: Db, private readonly content: ContentStore, private readonly sessions: Sessions) {}
+
+  /** Throws 404 unless the lesson (and exercise, when given) exists in the loaded content. */
+  assertKnown(lessonId: string, exerciseId?: string): void {
+    if (!this.content.hasLesson(lessonId)) notFound(`Unknown lesson "${lessonId}"`);
+    if (exerciseId !== undefined && !this.content.exercise(lessonId, exerciseId)) notFound(`Unknown exercise "${exerciseId}" in lesson "${lessonId}"`);
+  }
 
   lessonStatus(id: string): LessonProgress | undefined {
     const r = this.db.prepare('SELECT status, best_score, completed_at, updated_at FROM lesson_progress WHERE lesson_id = ?').get(id) as
@@ -67,6 +74,23 @@ export class ProgressService {
     return { srsCardId: Number(r.lastInsertRowid) };
   }
 
+  /** Recent attempts of one exercise, newest first (used as the `reflect` journal). */
+  attempts(lessonId: string, exerciseId: string, limit = 20): JournalEntryDTO[] {
+    const rows = this.db.prepare(`SELECT id, lesson_id, exercise_id, type, answer, score, created_at FROM attempts
+      WHERE lesson_id = ? AND exercise_id = ? ORDER BY id DESC LIMIT ?`).all(lessonId, exerciseId, limit) as {
+      id: number; lesson_id: string; exercise_id: string; type: string; answer: string | null; score: number; created_at: string;
+    }[];
+    return rows.map((r) => {
+      let answer: unknown = null;
+      try {
+        answer = r.answer === null ? null : JSON.parse(r.answer);
+      } catch {
+        answer = r.answer;
+      }
+      return { id: r.id, lessonId: r.lesson_id, exerciseId: r.exercise_id, type: r.type, answer, score: r.score, createdAt: r.created_at };
+    });
+  }
+
   completeLesson(lessonId: string): LessonProgress {
     this.sessions.touch();
     const r = this.db.prepare('SELECT AVG(best_score) AS s FROM exercise_progress WHERE lesson_id = ?').get(lessonId) as { s: number | null };
@@ -105,13 +129,14 @@ export class ProgressService {
       lessons,
       exercises: this.exercises(),
       totals: {
-        lessonsCompleted: Object.values(lessons).filter((l) => l.status === 'completed').length,
+        // only lessons that exist in the content count (stale/unknown ids are ignored)
+        lessonsCompleted: existing.filter((id) => lessons[id]?.status === 'completed').length,
         lessonsTotal: order.length,
         attempts: totals.n,
         accuracy: totals.n ? totals.c / totals.n : 0,
         streakDays: this.streakDays(),
       },
-      lastLessonId: last?.lesson_id ?? null,
+      lastLessonId: last && this.content.hasLesson(last.lesson_id) ? last.lesson_id : null,
       nextLessonId,
       srs: { due: srsDue, total: srsTotal, session },
     };

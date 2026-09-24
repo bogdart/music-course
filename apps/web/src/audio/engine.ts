@@ -99,6 +99,11 @@ export async function configureEngine(opts: { volume?: number; liveInstrument?: 
   if (loaded) applyConfig(loaded, opts);
 }
 
+/** performance.now() timestamp (ms) at which audio scheduled at AudioContext time `t` will be heard. */
+export function audioTimeToPerf(t: number): number {
+  return loaded ? loaded.audioTimeToPerf(t) : performance.now();
+}
+
 export function audioNow(): number {
   return loaded?.now() ?? performance.now() / 1000;
 }

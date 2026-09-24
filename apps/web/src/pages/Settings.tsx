@@ -83,7 +83,7 @@ export function Settings() {
             </button>
           ))}
         </div>
-        <div className="row">
+        <div className="row wrap">
           <input className="text-input short" value={lo} onChange={(e) => setLo(e.target.value)} aria-label="Lowest note" />
           <input className="text-input short" value={hi} onChange={(e) => setHi(e.target.value)} aria-label="Highest note" />
           <button type="button" className="btn" disabled={!isNoteName(lo, true) || !isNoteName(hi, true)} onClick={() => set({ keyboardRange: [lo, hi] })}>

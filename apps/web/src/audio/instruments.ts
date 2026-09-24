@@ -147,6 +147,18 @@ export function createInstrument(id: InstrumentId): Instrument {
       s.chain(vib, f);
       return { ...poly('strings', s, f), dispose: () => [s, f, vib].forEach((n) => n.dispose()) };
     }
+    case 'guitar': {
+      // overdriven electric guitar: bright plucked saw → distortion → cab-ish low-pass
+      const s = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: 'fatsawtooth', count: 2, spread: 12 },
+        envelope: { attack: 0.004, decay: 0.5, sustain: 0.35, release: 0.35 },
+        volume: -22,
+      });
+      const dist = new Tone.Distortion({ distortion: 0.55, wet: 0.85 });
+      const cab = new Tone.Filter(3200, 'lowpass', -24);
+      s.chain(dist, cab);
+      return { ...poly('guitar', s, cab), dispose: () => [s, dist, cab].forEach((n) => n.dispose()) };
+    }
     case 'drums':
       return createDrumKit();
   }

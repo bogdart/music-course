@@ -76,6 +76,17 @@ clickable note name that plays; `{{chord:Cmaj7}}` likewise.
 
 Drum tracks: `{ "instrument": "drums", "seq": "kick:q snare:q kick:8 kick:8 snare:q" }`.
 
+Optional envelope fields (also valid wherever an envelope/example is embedded, e.g. `listen`, `ear-*.example`):
+
+* `"swing": 0..1` — delays off-beat 8ths (1 = triplet feel); applied to playback and to `play-melody` targets.
+* `"tempoChanges": [{ "bar": 9, "bpm": 120 }]` — tempo change at the start of a 1-based bar.
+* per track `"volume": 0..1` and `"pan": -1..1`.
+* `"hidden": true` — dictation: the example is play-only; notation/keyboard/piano roll appear after "Reveal notation".
+* `"lyrics": "Twin- kle twin- kle lit- tle star"` — one syllable per sounding note of the first track (rests and
+  tied continuations are skipped), shown under the staff.
+
+Instruments: `piano epiano bass pad lead pluck strings guitar drums` (`guitar` = overdriven electric).
+
 ### `keyboard` — static keyboard diagram
 
 ```keyboard
@@ -127,21 +138,23 @@ may only use these types and fields.
 | `ear-octave` | `{ "notes": ["C","G"], "octaves": [2,3,4,5,6], "mode": "same-or-different"\|"which-octave" }` | `same`/`different` or octave number |
 | `ear-interval` | `{ "intervals": ["m2","M2","m3","M3","P4","TT","P5","m6","M6","m7","M7","P8"], "direction": "asc"\|"desc"\|"harmonic"\|"mixed", "root": "random"\|"C4", "range": ["C3","C5"] }` | interval id |
 | `ear-chord` | `{ "qualities": ["maj","min","dim","aug","maj7","min7","dom7","m7b5","sus2","sus4"], "inversions": [0], "voicing": "close"\|"open"\|"mixed", "range": ["C3","C5"] }` | quality id (and inversion index if `inversions` has >1) |
-| `ear-chord-root` | `{ "qualities": ["maj","min"], "answer": "play"\|"name", "range": ["C3","C5"] }` | learner plays/names the root note (pitch class) |
+| `ear-chord-root` | `{ "qualities": ["maj","min"], "answer": "play"\|"name", "range": ["C3","C5"], "inversions": [0,1,2] }` | learner plays/names the root note (pitch class, any octave) |
 | `ear-scale` | `{ "scales": ["major","natural-minor","harmonic-minor","melodic-minor","dorian","mixolydian","lydian","phrygian","locrian","major-pentatonic","minor-pentatonic","blues","whole-tone","diminished"], "play": "asc"\|"asc-desc"\|"melody" }` | scale id |
-| `ear-progression` | `{ "key": "random"\|"C", "mode": "major"\|"minor", "length": 4, "chords": ["I","ii","iii","IV","V","vi","V7","bVII","iv"], "style": "block"\|"arpeggio"\|"pad-bass" }` | array of roman numerals |
-| `ear-melody` | `{ "key": "C", "degrees": [1,2,3,5], "length": 4, "rhythm": "quarters"\|"simple"\|"free", "answer": "play"\|"degrees" }` | learner plays melody back on keyboard, or enters degrees |
-| `ear-rhythm` | `{ "timeSig": "4/4", "bars": 1, "subdivision": "8"\|"16"\|"8t", "rests": true, "answer": "tap"\|"choose" }` | tap it back (timing scored ±80 ms/beat-proportional) or choose among 4 notations |
-| `ear-bass` | `{ "key":"C", "chords":["I","IV","V","vi"], "answer":"play" }` | play the bass root of each chord heard |
+| `ear-progression` | `{ "key": "random"\|"C", "mode": "major"\|"minor", "length": 4, "chords": ["I","ii","iii","IV","V","vi","V7","bVII","iv"], "style": "block"\|"arpeggio"\|"pad-bass", "inversions": [0,1], "example": {…}, "progression": [...] }` | array of roman numerals |
+| `ear-melody` | `{ "key": "C"\|"random", "mode": "major", "degrees": [1,2,3,5], "length": 4, "rhythm": "quarters"\|"simple"\|"free", "answer": "play"\|"degrees", "chromatic": false, "backing": ["I","V"], "maxLeap": 7, "example": {…}, "track": 0 }` | learner plays melody back on keyboard, or enters degrees |
+| `ear-rhythm` | `{ "timeSig": "4/4", "bars": 1, "subdivision": "q"\|"8"\|"16"\|"8t", "rests": true, "answer": "tap"\|"choose", "choices": 4, "voices": ["kick","snare","hihat"] }` | tap it back (timing scored ±25% of a beat) or choose among 2–4 notations; with `voices`: fill a drum step grid |
+| `ear-bass` | `{ "key":"C", "mode": "major", "chords":["I","IV","V","vi"], "answer":"play"\|"name", "length": 4, "inversions": [0,1], "example": {…}, "track": 1 }` | play (or name as degrees) the bass note of each chord heard |
+| `ear-tempo` | `{ "range": [60,160], "tolerance": 4, "style": "click"\|"drums"\|"groove", "timeSig": "4/4", "bars": 2 }` | BPM (± tolerance); tap-tempo helper in the UI |
+| `ear-meter` | `{ "meters": ["3/4","4/4","6/8","7/8"], "bpm": 96, "bars": 4, "style": "drums"\|"piano"\|"mixed" }` | the time signature |
 
 #### Keyboard performance
 
 | type | spec | answer |
 |------|------|--------|
-| `play-notes` | `{ "prompt": "names"\|"staff"\|"degrees", "notes": ["C4","E4","G4"], "ordered": true, "key": "C" }` | play the listed notes; order/octave strictness per flags |
+| `play-notes` | `{ "prompt": "names"\|"staff"\|"degrees", "notes": ["C4","E4","G4"], "ordered": true, "key": "C" }` (or `"sets": [[...],[...]]`) | play the listed notes; order/octave strictness per flags |
 | `play-scale` | `{ "root": "random"\|"C", "scale": "major", "octaves": 1, "direction": "asc-desc", "hands": "right", "tempo": 60, "metronome": true }` | correct pitches in order; timing scored if `tempo` set |
-| `play-chord` | `{ "chords": ["C","G","Am","F"], "inversion": "any"\|"root", "sequence": true, "bpm": 60 }` | all chord tones held together |
-| `play-melody` | `{ "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | ...", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument":"pad", "seq":"[C3 E3 G3]:w" } }` | play with metronome/backing; pitch + timing scored |
+| `play-chord` | `{ "chords": ["C","G","Am","F"], "inversion": "any"\|"root"\|0-3, "sequence": true, "bpm": 60, "key": "C", "voicing": "full"\|"shell"\|"rootless"\|"rootless-a"\|"rootless-b", "required": ["3","7"] }` | chord tones held together |
+| `play-melody` | `{ "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | ...", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument":"pad", "seq":"[C3 E3 G3]:w" }, "tracks": [{ "instrument": "piano", "seq": "C3:w" }], "swing": 0.5 }` | play with metronome/backing; pitch + timing scored |
 | `rhythm-tap` | `{ "bpm": 90, "timeSig": "4/4", "seq": "x:q x:8 x:8 r:q x:q", "showNotation": true, "countIn": 1, "loops": 2 }` | tap (space / any key / pad) in time |
 | `build-chord` | `{ "chords": ["Cmaj7","Dm","G7"], "root": "given"\|"any", "prompt": "symbol"\|"roman", "key":"C" }` | select/play the pitch classes |
 | `build-scale` | `{ "roots": ["C","G","D","F"], "scale": "major", "prompt":"name" }` | select the 7 pitch classes on keyboard |
@@ -151,8 +164,8 @@ may only use these types and fields.
 
 | type | spec | answer |
 |------|------|--------|
-| `read-note` | `{ "clef": "treble"\|"bass"\|"both", "range": ["C4","G5"], "accidentals": false, "answer": "play"\|"name", "timed": 0 }` | play or name the shown note |
-| `read-rhythm` | `{ "timeSig":"4/4", "bars":1, "subdivision":"8" }` | tap the shown rhythm |
+| `read-note` | `{ "clef": "treble"\|"bass"\|"both", "range": ["C4","G5"], "accidentals": false, "answer": "play"\|"name", "timed": 0, "mode": "note"\|"interval", "intervals": ["M2","M3"], "harmonic": false }` | play or name the shown note (interval mode: name the interval) |
+| `read-rhythm` | `{ "timeSig":"4/4", "bars":1, "subdivision":"q"\|"8"\|"16"\|"8t", "rests": true, "bpm": 70, "countIn": 1 }` | tap the shown rhythm |
 | `quiz` | `{ "questions": [ { "q": "How many half steps in a perfect fifth?", "choices": ["5","6","7","8"], "answer": 2, "explain": "..." } ] }` | choice index (multiple correct via `"answers":[..]`) |
 | `quiz-input` | `{ "questions": [ { "q": "Name the 5th degree of D major", "answer": ["A"], "kind": "note"\|"text"\|"number" } ] }` | free text, normalised (enharmonic-aware for notes) |
 | `key-signature` | `{ "keys": ["G","D","F","Bb"], "prompt": "staff"\|"name", "answer": "name"\|"count" }` | key name or #/b count |
@@ -162,28 +175,84 @@ may only use these types and fields.
 
 | type | spec | answer |
 |------|------|--------|
-| `daw-task` | `{ "template": { project JSON or `{"bpm":100,"key":"C","tracks":[{"instrument":"piano","seq":""}]}` }, "task": "Write a 4-bar melody using only C-major notes, ending on C.", "checks": [ ...predicates ], "minBars": 4, "maxBars": 4 }` | project state checked by predicates; free-form otherwise |
-| `listen` | `{ "example": {...example block...}, "questions": [ quiz questions ] }` | guided listening; optional quiz |
+| `daw-task` | `{ "template": { project JSON or `{"bpm":100,"key":"C","timeSig":"4/4","tracks":[{"instrument":"piano","seq":""}]}` }, "task": "Write a 4-bar melody using only C-major notes, ending on C.", "checks": [ ...predicates ], "minBars": 4, "maxBars": 4, "timerMin"?: 20, "projectRef"?: "w45-song" }` | answer `{ project, selfChecks }`; score = passed checks / total |
+| `listen` | `{ "example": {...example block...}` or `"examples": [...]`, `"questions": [ quiz questions ] }` | guided listening; optional quiz |
 | `reflect` | `{ "prompt": "Describe what you hear ..." , "minWords": 20 }` | free text saved to journal (auto-pass) |
 
-`daw-task.checks` predicates (all optional, ANDed; each `{ "kind": ..., ...args, "track"?: 0 }`):
+`daw-task` spec fields:
+
+| field | meaning |
+|-------|---------|
+| `template` | starting project: an envelope `{ "bpm", "timeSig", "key", "tracks": [{ "instrument", "seq", "volume"? }], "markers"?: [{ "bar": 1, "name": "Verse" }] }` (one track + one clip per envelope track, clip ≥ `minBars` long) or a full project JSON (tracks with clips). Default: 100 BPM, C, one empty piano track. |
+| `task` | the task text (shown as the prompt) |
+| `checks` | predicates below; the score is *passed / total* (self-check `custom` checks count) |
+| `minBars`, `maxBars` | an implicit `bars` check is added when `checks` has none; `minBars` also sets the template clip length |
+| `timerMin` | optional countdown (minutes) shown above the DAW; informational, never blocks |
+| `projectRef` | slug (`"w45-song"`): every task with the same `projectRef` opens and saves the *same* project (server id `ref-<slug>`), so checkpoint tasks continue one song; the first task to open it creates it from its own template. Without it each task saves to `task-<lessonId>-<exerciseId>`. |
+
+`daw-task.checks` predicates (all ANDed; each `{ "kind": ..., ...args, "track"?: 0 }`). `track` (0-based
+index into the project's tracks, in template order) is accepted by every predicate. Without `track`:
+*line* predicates (`ends-on starts-on max-leap min-leap contour repetition has-rest syncopation voice-leading
+uses-rhythm chord-tones-on-beats plays-progression`) use the first non-drum track with notes; *note-set*
+predicates (`in-key range chord-has-seventh uses-chord`) use all non-drum tracks together; `note-count` uses
+all tracks; `drum-pattern` the first drum track. A `key` argument defaults to the project key, then the
+template key, then C; `"key": "project"` means the learner's current project key. Positions tolerate ±1/32
+note. Chord-based predicates take roman numerals in the key (or chord symbols).
 
 ```
-{ "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false }
+{ "kind": "in-key", "key": "C"|"Am"|"project", "scale": "major", "allowPassing": false }
+    every note's pitch class is in the scale (any `ear-scale` id; default: major, or natural-minor for a minor key).
+    allowPassing: a note ≤ 1 beat long, approached and left by ≤ 2 semitones from in-scale notes, is tolerated.
 { "kind": "note-count", "min": 8, "max": 32 }
 { "kind": "range", "low": "C4", "high": "C6" }
-{ "kind": "bars", "min": 4, "max": 8 }
-{ "kind": "ends-on", "degree": 1 }
-{ "kind": "starts-on", "degrees": [1,3,5] }
+{ "kind": "bars", "min": 4, "max": 8 }                  length = last note end rounded up to bars (1/32 tolerance)
+{ "kind": "ends-on", "degree": 1, "key"?: "G" }         top or bottom note of the last onset
+{ "kind": "starts-on", "degrees": [1,3,5] }             top or bottom note of the first onset
 { "kind": "chord-tones-on-beats", "beats": [1,3], "progression": ["I","V","vi","IV"], "barsPerChord": 1, "minRatio": 0.75 }
-{ "kind": "uses-rhythm", "values": ["8","q"], "minDistinct": 2 }
-{ "kind": "max-leap", "semitones": 7 }
-{ "kind": "has-tracks", "instruments": ["drums","bass","piano"] }
-{ "kind": "drum-pattern", "requires": ["kick","snare"], "kickOnBeats": [1,3], "snareOnBeats": [2,4] }
-{ "kind": "no-parallel-fifths", "tracks": [0,1] }
-{ "kind": "repetition", "motifBars": 1, "minRepeats": 2, "allowTransposed": true }
-{ "kind": "contour", "shape": "arch"|"ascending"|"descending"|"wave" }
-{ "kind": "custom", "id": "...", "note": "explained in task text; evaluated as pass with self-check" }
+    notes sounding on those beats of each bar are tones of that bar's chord; the progression LOOPS over the
+    whole piece; ratio = chord tones / notes sounding on the beats.
+{ "kind": "uses-rhythm", "values": ["8","q","8.","8t"], "minDistinct": 2 }
+    at least minDistinct of the values occur as a note duration or as the gap between onsets (±8 %); any
+    duration token incl. dotted/triplet. Default minDistinct 1.
+{ "kind": "max-leap", "semitones": 7 }                  between consecutive notes of the melody (top line)
+{ "kind": "min-leap", "semitones": 5, "min": 1 }        at least `min` leaps of ≥ semitones
+{ "kind": "has-tracks", "instruments": ["drums","bass","piano"] }   a track with notes per listed instrument (repeats need several tracks)
+{ "kind": "drum-pattern", "requires": ["kick","snare"], "kickOnBeats": [1,3], "snareOnBeats": [2,4],
+  "clapOn": [2,4], "hatOn": "8"|"16"|"q"|"offbeats"|[1,2,3,4], "on": { "ride": "q", "ohat": [4.5] },
+  "forbid": { "snare": [1,3] }, "mode": "at-least"|"exact", "bars": [1,8], "minRatio": 0.75 }
+    requires: each drum is used somewhere. *On lists are 1-based beats (fractions allowed: 2.5 = the "and" of 2);
+    a string is a grid (every 8th …). Each expectation must hold in ≥ minRatio of the bars that contain drums
+    (within `bars` [from,to], 1-based inclusive). mode "exact": that drum plays ONLY on the listed positions.
+    forbid: no hits of that drum on those beats. Drums are distinct: a clap never counts as a snare,
+    `hihat`/`hh` = closed hat (42), `ohat` = open hat (46).
+{ "kind": "no-parallel-fifths", "tracks": [0,1], "octaves"?: false }  top voice of the first vs bottom voice of the second track
+{ "kind": "repetition", "motifBars": 1, "minRepeats": 2, "allowTransposed": true, "minSimilarity"?: 0.8 }
+    the piece is cut into motifBars-long chunks; some chunk must match ≥ minRepeats chunks (itself included,
+    same onsets ±1/32 and pitches; with allowTransposed any transposition ±12)
+{ "kind": "contour", "shape": "arch"|"ascending"|"descending"|"wave"|"valley" }
+    arch/valley: highest/lowest note in the middle, ≥ 2 semitones above/below both ends; ascending/descending:
+    ends ≥ 3 semitones higher/lower and the overall trend agrees; wave: ≥ 3 changes of direction.
+{ "kind": "has-rest", "minDuration": "8", "min": 1 }   gaps inside the track (or to the end of its last bar)
+{ "kind": "plays-progression", "progression": ["I","V","vi","IV"], "barsPerChord": 1, "mode": "chords"|"roots", "minRatio": 0.75 }
+    chords: each chord span contains the root and ≥ 3 chord tones (all tones for smaller chords);
+    roots: its first/lowest note is the root (default for bass tracks). The progression loops; a piece shorter
+    than the progression fails the missing chords.
+{ "kind": "is-transposition", "of": 0, "track": 1, "semitones"?: 7, "sameTime"?: false, "octave"?: "exact"|"any", "minRatio": 0.9 }
+    track is the `of` track moved by a constant interval (≠ 0 unless allowSame); by default it may start
+    later (first notes are aligned).
+{ "kind": "voice-leading", "maxMove": 2, "minRatio": 1 }  between consecutive chords (≥ 2 notes) every voice moves ≤ maxMove semitones
+{ "kind": "chord-has-seventh", "min": 1 }               sounding sets of ≥ 3 pitch classes that form a 7th chord
+{ "kind": "uses-chord", "roman": "iv"|["iv","bVI"], "chord"?: "Fm", "min": 1 }  all tones (first 4) sound together, across tracks if no `track`
+{ "kind": "tempo", "min": 80, "max": 100 }              project BPM
+{ "kind": "syncopation", "minOffbeatRatio": 0.25 }      share of onsets that are not on a beat
+{ "kind": "matches-reference", "reference": { envelope like `example` }, "track"?: 0, "refTrack"?: 0,
+  "minSimilarity": 0.7, "octave": "any"|"exact", "transpose"?: false, "startBar"?: 1, "tolerance"?: "16" }
+    similarity = matched notes / max(reference notes, learner notes); a match is the same pitch class (same MIDI
+    note with octave "exact"; drums always exact) with an onset within `tolerance`. Without `track` every
+    reference track i is compared with learner track i and the mean is used. `transpose` tries all 12 keys.
+{ "kind": "duration-seconds", "min": 150, "max": 240 }  length (bars × tempo) in seconds
+{ "kind": "sections", "names"?: ["verse","chorus"], "min"?: 2 }  project section markers (case-insensitive prefix match)
+{ "kind": "custom", "id": "...", "note": "explained in task text" }  a self-check checkbox; passes when ticked
 ```
 
 ## Authoring rules
@@ -221,13 +290,24 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   `subdivision: "q"` and `choices` 2–4; `inversions` on `ear-chord-root`, `ear-bass`, `ear-progression`;
   `play-chord.inversion` may be a number 0–3; `listen.examples: [...]`; extra `daw-task` check kinds
   `has-rest min-leap plays-progression is-transposition voice-leading chord-has-seventh uses-chord tempo
-  syncopation`. See SCHEMA_GAPS.md for which ones the engine already honours.
+  syncopation matches-reference duration-seconds sections`, `daw-task.timerMin`, `daw-task.projectRef`,
+  `in-key` `"key":"project"`, template `markers`. All are implemented (M3).
 * **Chord symbols**: `C Cm Cdim Caug C7 Cmaj7 Cm7 Cm7b5 (Cø7) Cdim7 CmMaj7 Csus2 Csus4 C7sus4 C6 Cm6 C6/9
   Cadd9 Cmadd9 C9 Cmaj9 Cm9 C9sus4 C11 Cm11 C13 Cmaj13 Cm13 C13sus4 C7b9 C7#9 C7#11 C7b13 C7#5 C7b5 C7alt
   Cmaj7#11 Cmaj7#5 C5`, slash bass `C/E`. Quality ids for `ear-chord` etc. are
   `maj min dim aug maj7 min7 dom7 m7b5 sus2 sus4 dim7 minmaj7 maj6 min6 dom9 maj9 min9 add9 dom7sus4 power
   madd9 six9 dom9sus4 dom11 min11 dom13 maj13 min13 dom7b9 dom7s9 dom7s11 dom7b13 dom7s5 dom7b5 alt maj7s11 maj7s5 dom13sus4`.
-* **Roman numerals**: case = quality (`ii` minor), `°`/`ø`/`+`, suffixes `7 maj7 9 add9 sus2 sus4`,
+* **Item counts** (when `count` is omitted): quiz / quiz-input / listen = number of questions (listen without
+  questions: 1); play-notes = number of note sets; play-chord = number of chords; roman-analysis = 1; ear-bass /
+  ear-melody / ear-progression with an attached `example` = 1; play-melody, rhythm-tap, daw-task, reflect,
+  play-scale = 1; everything else 10. List-based types (play-chord, build-chord, build-scale, key-signature)
+  walk their list in a freshly shuffled order per set (`play-chord` with `sequence: true` walks it in order).
+* **Keys** everywhere accept `"C"`, `"Bb"`, `"F#"`, `"Am"`, `"C# minor"`, `"E minor"`; a separate `mode` applies
+  only when the key string has no suffix. `ear-progression.key` and `ear-melody.key` may be `"random"`.
+  **Scale ids** everywhere (`ear-scale`, `build-scale`, `play-scale`, `in-key`) accept every `ear-scale` id plus the
+  aliases `minor`, `ionian`, `aeolian`.
+* **Roman numerals**: case = quality (`ii` minor), `°`/`ø`/`+`, suffixes `7 maj7 maj9 9 11 13 7sus4 add9 sus2 sus4`
+  (`Imaj7 ii7 V7 vi7 iii7 IVmaj7 Vsus4 V7sus4 V13 VI7 v7 bVI bVII bII7` …),
   figured-bass inversions `6 64 65 43 42`, secondary chords `V/V V7/ii vii°/V`. Accidentals: `b` is
   relative to the *major* scale of the tonic (`bIII bVI bVII`, also valid in minor); without accidentals,
   minor keys use natural-minor degrees (`III VI VII`), except `vii°`/`vii°7` which use the raised leading
@@ -248,8 +328,76 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   accepted answer has an octave; `number` compares numerically.
 * **`read-note`**: default ranges treble `C4–G5`, bass `E2–C4`; with `clef: "both"` treble items stay ≥ C4 and
   bass items ≤ C4. Black keys (with `accidentals: true`) are shown as sharps or flats at random.
-* **`chords` block**: a bar may hold several chords separated by spaces (`"C G"`), `%` repeats the previous
-  bar, `N.C.` = no chord. Optional `mode`, `timeSig`, `instrument`, `title`.
+* **`chords` block**: a bar may hold several chords separated by spaces (`"C G"`, `"C G/B"` — the bar is split
+  evenly), slash chords play their bass note, `%` repeats the previous bar, `N.C.` = no chord. Optional `mode`,
+  `timeSig`, `instrument`, `title`.
+
+### Exercise engine behaviour (M2)
+
+* **Timing & performance** (`play-melody`, `rhythm-tap`, `read-rhythm`, `ear-rhythm` tap mode, `play-scale` with
+  `tempo`): the learner presses Start, hears a count-in (`countIn` bars, default 1; metronome on) and plays/taps.
+  Taps come from the space bar, any computer key, the on-screen TAP pad or any MIDI key. Each target note is
+  matched to the nearest played note: tolerance ±25% of a beat (capped at 45% of the shortest gap between notes,
+  ≥ 40 ms); within ±1 tolerance = in time, within ±2 = early/late (half timing credit), beyond = 20%. A wrong pitch
+  scores 0, a right note in the wrong octave half; extra notes count half a note against the total. Correct =
+  ≥ 85% with nothing missed or wrong. Results are shown on the staff (coloured notes), keyboard and a timeline.
+  `play-melody` checks exact octaves; `play-scale` is octave-lenient; without `tempo` it only checks pitch order.
+  `play-scale.hands: "both"` expects both hands an octave apart; one note per beat.
+* **`play-melody`**: `tracks` are extra parts the learner plays too (e.g. left hand; all voices are scored,
+  drums tracks are treated as backing); `backing` is accompaniment played by the app; `swing` shifts off-beat 8ths
+  of targets and playback. A "Listen first" button plays the demo (not offered for `read-rhythm`).
+* **`rhythm-tap`**: `seq` is the rhythm (`x`, drum names or notes — pitch is ignored); `loops` repeats it;
+  `showNotation: false` makes it a dictation (listen first, then tap).
+* **Ear "play" answers** (`ear-melody`, `ear-bass`, `ear-chord-root`): pitch classes in any octave; sequences are
+  aligned (longest common subsequence) so one wrong note costs one note. `ear-melody`/`ear-bass` with
+  `answer: "degrees"`/`"name"` fill degree slots (answer by button or by playing the note).
+* **`ear-chord-root`**: `inversions` put the 3rd/5th/7th in the bass (the answer is still the root).
+* **`ear-progression` / `ear-bass`**: a cadence in the key plays first; the progression starts on the tonic when
+  the chord list has one; chords are voice-led around middle C with the bass below. `inversions` put the chord's
+  3rd/5th in the bass: for `ear-progression` answers are still plain numerals (compared by chord, root-only = half
+  credit); for `ear-bass` the answer is the **lowest note heard** (the inversion's bass). Figured-bass numerals
+  (`V6`, `I64`) always sound in that inversion. Minor keys: `"key": "Am"` or `"mode": "minor"`.
+* **Attached mixes** (`example` on `ear-progression`, `ear-melody`, `ear-bass`): the example envelope is played
+  instead of a generated question (1 item). `ear-progression` then needs `progression` (the answer, in order;
+  `chords` stays the button palette). `ear-melody` transcribes the top line of track `track` (default: first
+  non-drum track); `ear-bass` the lowest line of `track` (default: first `bass` track).
+* **`ear-melody`**: melodies start on 1 when it is in `degrees`, move to the nearest octave of each degree, may end
+  on 1; `rhythm` shapes durations (`simple`: quarters/halves/eighth pairs; `free`: adds dotted figures);
+  `maxLeap` limits leaps (semitones); `chromatic: true` adds chromatic neighbour/passing tones that resolve by half
+  step and shows all 12 degree buttons; `backing` numerals are spread evenly under the melody on a pad.
+* **`ear-rhythm`**: rhythms are built from beat cells of the requested `subdivision` (`q`, `8`, `16`, `8t`; x/8
+  meters are grouped 2+2+3 etc.), always start with a hit and use the subdivision at least once; `rests` allows
+  rests. `choose` shows `choices` (default 4) notations that *sound* different. `voices` (kick, snare, clap, hh,
+  hihat, ohat, tom, ride, crash; 1–4) switches to a step-grid dictation (steps = subdivision; a pattern played
+  twice), scored per cell.
+* **`ear-tempo`**: a groove at a random BPM in `range` (default 60–160); correct within ±`tolerance` (default 4);
+  half/double-time answers are pointed out; partial credit fades out over 3×tolerance.
+* **`ear-meter`**: accented grooves (downbeat kick/bass, x/8 meters grouped 2+2+3…); choose among `meters`.
+* **`play-chord`**: the answer is the set of notes held together (submitted when enough notes are held for a
+  moment, or on release). Doubled notes are fine. `inversion: "root"` / 0–3 checks the lowest note; slash chords
+  (`G/B`) require their bass. `voicing`: `full` (default; the 5th may be omitted in 5+-note chords), `shell`
+  (root, 3rd, 7th), `rootless` (3rd, 7th, 9th required, 5th/13th allowed, no root), `rootless-a` (3rd lowest),
+  `rootless-b` (7th lowest); `required: ["3","7"]` lists the chord degrees that must sound (others optional).
+  Right notes with the wrong bass = half credit. `chords` may be numerals when `key` is set.
+* **`build-chord` / `build-scale`**: select pitch classes (click keys or play them), then Check; partial credit =
+  overlap. `root: "given"` (default) marks the root. **`build-interval`**: root shown; play the target note
+  (exact octave; right note in the wrong octave = half). Default range `C3–C6`.
+* **`key-signature`**: `prompt: "staff"` (default) shows the signature, `"name"` names the key; `answer: "name"`
+  (default) chooses the key, `"count"` the number of ♯/♭ (`"2#"`, `"3b"`, `"0"`). `prompt: "name"` +
+  `answer: "name"` asks for the **relative** major/minor. Keys like `"Em"` drill minor signatures.
+* **`roman-analysis`**: one item for the whole progression; the palette holds the key's diatonic triads (and
+  7ths if any chord has one) plus the right answers (secondary dominants `V7/V`, borrowed `bVI`…). Compared by
+  chord (`II7` ≡ `V7/V`); right root, wrong quality = half. `prompt: "play"` hides the symbols and plays them.
+* **`read-note`** `mode: "interval"`: two notes (natural root, correctly spelled second note) melodic or
+  `harmonic: true`; choose among `intervals` (default m2…P8).
+* **`listen`**: all examples are shown (each with its own play button); each question is one item. Without
+  questions the learner confirms "I've listened" (auto-pass).
+* **`reflect`**: text is saved as the attempt answer (the journal; the last entry is shown next time) and passes
+  once `minWords` is reached.
+* **SRS warm-up**: the lesson runner shows a 2-minute warm-up of due SRS cards at the top of each lesson (skippable;
+  hidden when nothing is due). Authors never write it.
+* **Practice**: `/practice` mixes due reviews with up to 5 new cards and adapts each card's difficulty from its
+  rolling accuracy (> 85% → widen option sets / add octaves / inversions / length; < 60% → narrow).
 * **Glossary**: `content/glossary.md` plus any `content/glossary/*.md` fragments are merged. Each term is a
   `## Term` (or `###`) heading followed by its definition; aliases via `## Term (alias, alias)` or an
   `Aliases: a, b` line. One-line entries `- **Term**: definition` also work. `[[term]]` matching is

@@ -1,7 +1,8 @@
 import { networkInterfaces } from 'node:os';
 import { serve } from '@hono/node-server';
 import { createApp } from './app.js';
-import { loadConfig } from './config.js';
+import { join, resolve } from 'node:path';
+import { loadConfig, ROOT } from './config.js';
 import { ContentStore } from './content.js';
 import { openDb } from './db.js';
 
@@ -9,7 +10,10 @@ const cfg = loadConfig();
 const db = openDb(cfg.dbFile);
 const content = new ContentStore(cfg.contentDir);
 if (cfg.watch) content.watch();
-const app = createApp({ db, content, ...(cfg.prod ? { webDist: cfg.webDist } : {}) });
+const app = createApp({
+  db, content, ...(cfg.prod ? { webDist: cfg.webDist } : {}),
+  pianoSampleDirs: cfg.prod ? [join(cfg.webDist, 'samples', 'piano')] : [resolve(ROOT, 'apps/web/public/samples/piano')],
+});
 
 const server = serve({ fetch: app.fetch, hostname: cfg.host, port: cfg.port }, (info) => {
   const lan = Object.values(networkInterfaces())

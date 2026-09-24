@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { pitchClass } from '@music/core';
 import { Keyboard, type KeyMark } from '../components/Keyboard/Keyboard';
 import { Staff } from '../components/Staff/Staff';
-import { useNoteInput } from '../input/useNoteInput';
+import { useExerciseNoteInput } from './focus';
 import type { ExerciseComponentProps } from './types';
 
 /** Play the listed notes (names / staff / degrees). Collects note-ons until as many notes as targets are played. */
@@ -26,7 +26,7 @@ export function PlayNotes({ item, onAnswer, result, disabled, revealed }: Exerci
 
   const matches = (m: number, t: number) => (item.octave === 'any' ? pitchClass(m) === pitchClass(t) : m === t);
 
-  useNoteInput((e) => {
+  useExerciseNoteInput((e) => {
     if (e.type !== 'on' || disabled) return;
     const base = awaitingRetry.current ? [] : playedRef.current;
     awaitingRetry.current = false;

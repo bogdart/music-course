@@ -17,6 +17,8 @@ export interface ScheduleOptions {
   metronome?: boolean;
   /** Override tempo */
   bpm?: number;
+  /** Exact length in ticks (loop length / end of playback) instead of the end of the last note (DAW loop regions, recording) */
+  lengthTicks?: number;
 }
 
 export interface PlaybackHandle {
@@ -45,5 +47,7 @@ export interface AudioEngineApi {
   readonly liveInstrument: InstrumentId;
   /** AudioContext time now (seconds) — use to timestamp input for timing exercises */
   now(): number;
+  /** performance.now() ms at which audio scheduled at AudioContext time `t` is heard */
+  audioTimeToPerf(t: number): number;
   metronome: { on(): void; off(): void; readonly enabled: boolean; setVolume(v: number): void };
 }

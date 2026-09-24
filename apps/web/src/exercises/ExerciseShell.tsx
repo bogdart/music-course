@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import {
   evaluate, generateSet, isExerciseType, passScoreOf, summarise,
   type Answer, type EvalResult, type ExerciseBlock, type ExerciseType, type Item, type SetSummary, type Snippet,
@@ -9,6 +9,7 @@ import type { PlaybackHandle } from '../audio/types';
 import { useAudioStore } from '../stores/audio';
 import { ComingSoon } from './ComingSoon';
 import { getExerciseComponent } from './registry';
+import { ExerciseIdContext, useExerciseFocus } from './focus';
 
 export interface ExerciseShellProps {
   block: ExerciseBlock;
@@ -23,6 +24,8 @@ export interface ExerciseShellProps {
   /** Autoplay item audio when a new item appears (default true, requires unlocked audio) */
   autoplay?: boolean;
   onComplete?: (summary: SetSummary) => void;
+  /** Called with the first result of each item (reveal = score 0) — e.g. for rolling accuracy */
+  onItemResult?: (result: EvalResult, index: number) => void;
 }
 
 interface ItemState {
@@ -57,6 +60,20 @@ export function ExerciseShell(props: ExerciseShellProps) {
   const [hints, setHints] = useState(0);
   const [summary, setSummary] = useState<SetSummary | null>(null);
   const audioStarted = useAudioStore((s) => s.started);
+  // note-input focus (only the active exercise on the page reacts to played notes)
+  const uid = useId();
+  const isActive = useExerciseFocus((s) => s.active === uid);
+  // autoplay only after the learner has engaged with this exercise (practice cards: from the start)
+  const engaged = useRef(mode === 'practice');
+  const claim = useCallback(() => {
+    engaged.current = true;
+    if (useExerciseFocus.getState().active !== uid) useExerciseFocus.getState().setActive(uid);
+  }, [uid]);
+  useEffect(() => {
+    // practice cards (Practice page, lesson warm-up) take focus when they appear; lesson exercises only if none has it
+    useExerciseFocus.getState().register(uid, mode === 'practice');
+    return () => useExerciseFocus.getState().unregister(uid);
+  }, [uid, mode]);
   const playing = useRef<PlaybackHandle | null>(null);
 
   useEffect(() => {
@@ -80,14 +97,16 @@ export function ExerciseShell(props: ExerciseShellProps) {
     if (item) void playParts([item.reference, item.audio]);
   }, [item, playParts]);
 
-  // autoplay each new item
+  // autoplay each new item — only for the exercise the learner is working on (focused and engaged), and never merely
+  // because audio got unlocked (that would start every exercise on the page at once)
   useEffect(() => {
-    if (!item || !autoplay || !audioStarted || summary) return;
+    if (!item || !autoplay || !useAudioStore.getState().started || summary) return;
     if (!item.audio && !item.reference) return;
+    if (!engaged.current || useExerciseFocus.getState().active !== uid) return;
     const t = setTimeout(replay, 250);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item, audioStarted]);
+  }, [item]);
 
   useEffect(() => () => playing.current?.stop(), []);
 
@@ -107,6 +126,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
       const first = st.attempts === 0;
       setSt((s) => ({ ...s, result, attempts: s.attempts + 1, firstResult: s.firstResult ?? result }));
       if (first) {
+        props.onItemResult?.(result, index);
         setFirsts((f) => {
           const n = [...f];
           n[index] = result;
@@ -128,6 +148,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
     if (!item) return;
     const r: EvalResult = { correct: false, score: 0, feedback: `Answer: ${item.solution}`, expected: item.solution };
     if (st.attempts === 0) {
+      props.onItemResult?.(r, index);
       setFirsts((f) => {
         const n = [...f];
         n[index] = r;
@@ -190,7 +211,13 @@ export function ExerciseShell(props: ExerciseShellProps) {
   }
 
   return (
-    <section className="card exercise" data-testid={`exercise-${block.id}`} data-type={block.type}>
+    <section
+      className={`card exercise ${isActive ? 'input-active' : ''}`}
+      data-testid={`exercise-${block.id}`}
+      data-type={block.type}
+      onPointerDownCapture={claim}
+      onFocusCapture={claim}
+    >
       <header className="exercise-head">
         <h3>{title}</h3>
         <span className="muted small" aria-label="progress">
@@ -221,6 +248,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
           )}
         </div>
       )}
+      <ExerciseIdContext.Provider value={uid}>
       <Component
         key={`${run}-${index}`}
         item={item as never}
@@ -231,6 +259,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
         revealed={st.revealed}
         disabled={done}
       />
+      </ExerciseIdContext.Provider>
       {st.result && (
         <div className={`feedback ${st.result.correct ? 'ok' : 'bad'}`} role="status">
           {st.result.feedback}
@@ -274,7 +303,12 @@ function defaultTitle(type: string): string {
   const names: Record<string, string> = {
     'ear-note': 'Hear the scale degree', 'ear-octave': 'Octaves', 'ear-interval': 'Hear the interval',
     'ear-chord': 'Hear the chord', 'play-notes': 'Play the notes', quiz: 'Quiz', 'quiz-input': 'Quick questions',
-    'read-note': 'Read the note',
+    'read-note': 'Read the note', 'ear-chord-root': 'Find the root', 'ear-scale': 'Hear the scale',
+    'ear-progression': 'Hear the progression', 'ear-melody': 'Melodic dictation', 'ear-rhythm': 'Rhythmic dictation',
+    'ear-bass': 'Hear the bass line', 'ear-tempo': 'Guess the tempo', 'ear-meter': 'Hear the meter', 'play-scale': 'Play the scale',
+    'play-chord': 'Play the chord', 'play-melody': 'Play the melody', 'rhythm-tap': 'Tap the rhythm', 'build-chord': 'Build the chord',
+    'build-scale': 'Build the scale', 'build-interval': 'Build the interval', 'read-rhythm': 'Read the rhythm',
+    'key-signature': 'Key signatures', 'roman-analysis': 'Roman numeral analysis', listen: 'Listen', reflect: 'Reflect',
   };
   return names[type] ?? type;
 }

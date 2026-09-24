@@ -101,9 +101,9 @@ export class AudioEngine implements AudioEngineApi {
 
   private async tryLoadSampledPiano(): Promise<void> {
     try {
-      const res = await fetch(SAMPLE_BASE + 'C4.mp3', { method: 'HEAD' });
-      const type = res.headers.get('content-type') ?? '';
-      if (!res.ok || type.includes('text/html')) return;
+      // the server says whether samples are installed (probing C4.mp3 directly logs a 404 when they are not)
+      const health = (await (await fetch('/api/health')).json()) as { pianoSamples?: boolean };
+      if (!health.pianoSamples) return;
       const [a, b] = await Promise.all([createSampledPiano(SAMPLE_BASE), createSampledPiano(SAMPLE_BASE)]);
       for (const [map, inst] of [[this.playback, a], [this.live, b]] as const) {
         map.get('piano')?.dispose();
@@ -133,6 +133,18 @@ export class AudioEngine implements AudioEngineApi {
 
   private getLive(id: InstrumentId): Instrument {
     return this.getFrom(this.live, id);
+  }
+
+  /**
+   * Map an AudioContext time (s) to a performance.now() timestamp (ms) at which that audio is *heard*
+   * (uses getOutputTimestamp, so output latency is accounted for). Used to align input events with playback.
+   */
+  audioTimeToPerf(t: number): number {
+    const ctx = Tone.getContext().rawContext as AudioContext;
+    const ts = typeof ctx.getOutputTimestamp === 'function' ? ctx.getOutputTimestamp() : null;
+    if (ts && ts.performanceTime && ts.contextTime !== undefined) return ts.performanceTime + (t - ts.contextTime) * 1000;
+    const out = (ctx.outputLatency ?? 0) + (ctx.baseLatency ?? 0);
+    return performance.now() + (t - ctx.currentTime + out) * 1000;
   }
 
   now(): number {
@@ -201,6 +213,7 @@ export class AudioEngine implements AudioEngineApi {
     const transport = Tone.getTransport();
     this.resetTransport();
     const bpm = opts.bpm ?? snippet.bpm;
+    transport.bpm.cancelScheduledValues(0);
     transport.bpm.value = bpm;
     const { num, den } = snippet.timeSig;
     transport.timeSignature = [num, den];
@@ -209,7 +222,7 @@ export class AudioEngine implements AudioEngineApi {
     const beatTicks = (PPQ * 4) / den;
     const barTicks = beatTicks * num;
     const offset = Math.max(0, opts.countIn ?? 0) * barTicks;
-    const length = Math.max(snippetLength(snippet), 1);
+    const length = Math.max(opts.lengthTicks ?? snippetLength(snippet), 1);
     const draw = Tone.getDraw();
 
     let resolveDone!: () => void;
@@ -223,6 +236,7 @@ export class AudioEngine implements AudioEngineApi {
       if (this.current === cur) this.current = null;
       this.resetTransport();
       if (tempMetronome) this.metro.off();
+      if (temp.length) setTimeout(() => temp.forEach((n) => n.dispose()), 4000);
       opts.onEnd?.();
       onInternalEnd(reason);
       resolveDone();
@@ -230,17 +244,36 @@ export class AudioEngine implements AudioEngineApi {
     const cur: Current = { finish };
     this.current = cur;
 
-    // count-in clicks
-    for (let i = 0; i < (opts.countIn ?? 0) * num; i++) {
+    // tempo changes (snippet.tempoChanges, ignored when the caller overrides bpm)
+    const changes = opts.bpm === undefined ? [...(snippet.tempoChanges ?? [])].sort((a, b) => a.tick - b.tick) : [];
+    const bpmAt = (tick: number) => {
+      let v = bpm;
+      for (const c of changes) if (c.tick <= tick) v = c.bpm;
+      return v;
+    };
+    for (const c of changes) transport.schedule((time) => transport.bpm.setValueAtTime(c.bpm, time), `${offset + c.tick}i`);
+
+    // count-in clicks (the metronome, when on, already clicks through the count-in: never trigger the click twice)
+    const metronomeWillClick = !!opts.metronome || this.metro.enabled;
+    for (let i = 0; !metronomeWillClick && i < (opts.countIn ?? 0) * num; i++) {
       transport.schedule((t) => this.metro.click(t, i % num === 0), `${i * beatTicks}i`);
     }
 
+    // panned tracks get their own instrument instance → panner (disposed after playback)
+    const temp: { dispose(): void }[] = [];
     snippet.tracks.forEach((track, ti) => {
-      const inst = this.getInstrument(track.instrument);
+      let inst = this.getInstrument(track.instrument);
+      if (track.pan) {
+        const own = createInstrument(track.instrument);
+        const panner = new Tone.Panner(Math.max(-1, Math.min(1, track.pan))).connect(this.master);
+        own.output.connect(panner);
+        temp.push(own, panner);
+        inst = own;
+      }
       const vol = track.volume ?? 1;
       const events: NoteEvent[] = [...track.events].sort((a, b) => a.startTick - b.startTick || a.midi - b.midi);
       events.forEach((ev, idx) => {
-        const dur = Math.max(0.03, ticksToSeconds(ev.durationTicks, bpm) * 0.98);
+        const dur = Math.max(0.03, ticksToSeconds(ev.durationTicks, bpmAt(ev.startTick)) * 0.98);
         transport.schedule((time) => {
           inst.attackRelease(ev.midi, dur, time, Math.max(0.02, ev.velocity * vol));
           if (opts.onNote) draw.schedule(() => opts.onNote?.(ev, ti, idx), time);
@@ -259,7 +292,7 @@ export class AudioEngine implements AudioEngineApi {
     else this.metro.refresh();
 
     if (opts.loop) {
-      const loopLen = Math.ceil(length / barTicks) * barTicks;
+      const loopLen = opts.lengthTicks ? length : Math.ceil(length / barTicks) * barTicks;
       transport.loop = true;
       transport.loopStart = `${offset}i`;
       transport.loopEnd = `${offset + loopLen}i`;

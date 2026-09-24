@@ -168,6 +168,17 @@ export interface SrsDueDTO {
   cards: SrsCardDTO[];
 }
 
+/** A recorded attempt (journal entries of `reflect` exercises are attempts whose answer is the text). */
+export interface JournalEntryDTO {
+  id: number;
+  lessonId: string;
+  exerciseId: string;
+  type: string;
+  answer: unknown;
+  score: number;
+  createdAt: string;
+}
+
 export interface SrsReviewInput {
   cardId: number;
   /** 0..5 */

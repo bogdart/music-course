@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Keyboard } from '../components/Keyboard/Keyboard';
 import { Staff } from '../components/Staff/Staff';
-import { useNoteInput } from '../input/useNoteInput';
+import { useExerciseNoteInput } from './focus';
 import { ChoiceButtons } from './ChoiceButtons';
 import type { ExerciseComponentProps } from './types';
 
@@ -27,7 +27,7 @@ export function ReadNote({ item, onAnswer, result, disabled, revealed }: Exercis
     return () => clearTimeout(t);
   }, [left, item, disabled, onAnswer]);
 
-  useNoteInput((e) => {
+  useExerciseNoteInput((e) => {
     if (e.type === 'on' && item.answerKind === 'play' && !disabled) onAnswer(e.midi);
   }, item.answerKind === 'play' && !disabled);
 
@@ -46,7 +46,7 @@ export function ReadNote({ item, onAnswer, result, disabled, revealed }: Exercis
             onAnswer(v);
           }}
           wrong={wrong}
-          correct={disabled && (revealed || result?.correct) ? item.solution : null}
+          correct={disabled && (revealed || result?.correct) ? (item.intervalMode ? item.interval ?? null : item.solution) : null}
           disabled={disabled}
         />
       ) : (

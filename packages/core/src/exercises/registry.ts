@@ -7,6 +7,18 @@ import { playNotes } from './play-notes.js';
 import { quiz } from './quiz.js';
 import { quizInput } from './quiz-input.js';
 import { readNote } from './read-note.js';
+import { earChordRoot } from './ear-chord-root.js';
+import { earScale } from './ear-scale.js';
+import { earProgression } from './ear-progression.js';
+import { earMelody } from './ear-melody.js';
+import { earRhythm } from './ear-rhythm.js';
+import { earBass } from './ear-bass.js';
+import { earTempo } from './ear-tempo.js';
+import { earMeter } from './ear-meter.js';
+import { playScale, playMelody, rhythmTap, readRhythm } from './perform.js';
+import { playChord } from './play-chord.js';
+import { buildChord, buildScale, buildInterval } from './build.js';
+import { keySignature, romanAnalysis, listen, reflect } from './theory-types.js';
 import {
   EXERCISE_TYPES, type Answer, type EvalResult, type ExerciseBlock, type ExerciseBlockOf, type ExerciseDefinition,
   type ExerciseType, type GenerateContext, type Item,
@@ -41,7 +53,11 @@ export function registerExercise<T extends ExerciseType>(def: ExerciseDefinition
   (registry as unknown as Record<string, ExerciseDefinition<ExerciseType>>)[def.type] = def as unknown as ExerciseDefinition<ExerciseType>;
 }
 
-for (const def of [earNote, earOctave, earInterval, earChord, playNotes, quiz, quizInput, readNote]) {
+for (const def of [
+  earNote, earOctave, earInterval, earChord, earChordRoot, earScale, earProgression, earMelody, earRhythm, earBass, earTempo,
+  earMeter, playNotes, playScale, playChord, playMelody, rhythmTap, buildChord, buildScale, buildInterval, quiz, quizInput,
+  readNote, readRhythm, keySignature, romanAnalysis, listen, reflect,
+]) {
   registerExercise(def as ExerciseDefinition<ExerciseType>);
 }
 

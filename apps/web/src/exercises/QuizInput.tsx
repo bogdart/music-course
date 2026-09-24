@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { midiToNote } from '@music/core';
-import { useNoteInput } from '../input/useNoteInput';
+import { useExerciseNoteInput } from './focus';
 import type { ExerciseComponentProps } from './types';
 
 export function QuizInput({ item, onAnswer, disabled }: ExerciseComponentProps<'quiz-input'>) {
@@ -11,7 +11,7 @@ export function QuizInput({ item, onAnswer, disabled }: ExerciseComponentProps<'
     ref.current?.focus({ preventScroll: true });
   }, [item]);
   // For note answers, playing a key fills in its name
-  useNoteInput((e) => {
+  useExerciseNoteInput((e) => {
     if (e.type === 'on') setValue(midiToNote(e.midi).replace(/-?\d+$/, ''));
   }, item.kind === 'note' && !disabled);
   return (
