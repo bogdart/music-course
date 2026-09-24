@@ -1,0 +1,84 @@
+.scroller {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  max-width: 100%;
+}
+.keyboard {
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: 8px;
+  background: #0b0c10;
+  padding-top: 6px;
+  box-sizing: border-box;
+}
+.white,
+.black {
+  position: absolute;
+  top: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 60ms linear, transform 60ms linear;
+}
+.white {
+  bottom: 0;
+  background: linear-gradient(#fafafa, #e8e8e8);
+  border: 1px solid #555;
+  border-radius: 0 0 6px 6px;
+  z-index: 1;
+  color: #333;
+}
+.black {
+  height: 62%;
+  background: linear-gradient(#2a2c33, #111216);
+  border: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  z-index: 2;
+  color: #ddd;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.black .label {
+  font-size: 10px;
+}
+.qwerty {
+  font-size: 10px;
+  opacity: 0.55;
+  margin-bottom: 4px;
+  pointer-events: none;
+  font-family: ui-monospace, monospace;
+}
+.middleC::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #999;
+}
+.white.role_root { background: linear-gradient(#ff8a80, #e05b52); color: #fff; }
+.white.role_third { background: linear-gradient(#8fd3ff, #4aa3e0); color: #fff; }
+.white.role_fifth { background: linear-gradient(#a5e6a0, #5cb356); color: #fff; }
+.white.role_seventh { background: linear-gradient(#e1b3ff, #a970d6); color: #fff; }
+.white.role_other { background: linear-gradient(#ffe38a, #e6be3c); }
+.black.role_root { background: linear-gradient(#e0574d, #9c2c25); }
+.black.role_third { background: linear-gradient(#3f95d4, #1d5f91); }
+.black.role_fifth { background: linear-gradient(#4fa54a, #286f25); }
+.black.role_seventh { background: linear-gradient(#9b5fcc, #5e2f86); }
+.black.role_other { background: linear-gradient(#d9ad2a, #8d6c0e); }
+.mark_target { box-shadow: inset 0 -6px 0 #f3c945; }
+.mark_correct { background: linear-gradient(#7ee08a, #2fa84a) !important; color: #fff; }
+.mark_wrong { background: linear-gradient(#ff8f8f, #d33d3d) !important; color: #fff; }
+.held.white { background: linear-gradient(#cfd8ff, #93a4f5); transform: translateY(2px); }
+.held.black { background: linear-gradient(#5361b8, #2c3677); transform: translateY(2px); }

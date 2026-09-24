@@ -1,0 +1,45 @@
+{
+  "name": "@music/content-schema",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Zod schemas for content/ plus parseLesson and the validate CLI.",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./node": {
+      "source": "./src/node.ts",
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    },
+    "./glossary": {
+      "source": "./src/glossary.ts",
+      "types": "./dist/glossary.d.ts",
+      "default": "./dist/glossary.js"
+    }
+  },
+  "bin": {
+    "validate-content": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@music/core": "*",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "yaml": "^2.8.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4"
+  }
+}

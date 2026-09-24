@@ -37,7 +37,11 @@ music_course/
 ## Runtime
 
 * **Dev:** `npm run dev` → Vite on :5173 (host 0.0.0.0) proxying `/api` to
-  the server on :3001. Content directory watched; lessons hot-reload.
+  the server on :3001 (`tsx watch`). Content directory watched; lessons hot-reload.
+  No build of `packages/*` is needed in dev: workspace packages export a `"source"`
+  condition (→ `src/*.ts`) used by tsx (`--conditions=source`), Vite/Vitest (aliases)
+  and `tsc` typechecking (`customConditions`). `npm run build` compiles `packages/*`
+  to `dist/` (the default export condition) which the prod server uses.
 * **Prod:** `npm run build && npm start` → single Node process on
   `0.0.0.0:8080` serving `apps/web/dist` + API. SQLite file at `data/app.db`.
 * No auth (trusted LAN). Single learner profile; schema allows more later.
@@ -78,7 +82,16 @@ kick:q snare:q hh:8 hh:8  drum names on drum tracks
 ```
 
 Envelope (JSON) around a snippet: `{ "bpm": 90, "timeSig": "4/4", "key": "C", "tracks": [{ "instrument": "piano", "seq": "..." }] }`.
-`packages/core` exposes `parseSeq(seq): NoteEvent[]` and `toSeq(events)`.
+`packages/core` exposes `parseSeq(seq, {ppq?, timeSig?, velocity?, offset?}): NoteEvent[]` (ties merged),
+`parseSeqDetailed(seq)` → `{items, events, totalTicks, bars}` (items keep rests/durations/ties for notation),
+`checkSeq(seq)` → error string | null, `toSeq(events, {flats?, drums?, rhythm?, timeSig?})`,
+`snippetFromEnvelope(env)` → `Snippet` (`{bpm, timeSig, key?, tracks:[{instrument, events}]}`, what
+`AudioEngine.schedule()` plays).
+
+Implementation details: if `:duration` is omitted the previous token's duration is reused (initially `q`);
+`h..`-style double dots are accepted; `hihat` is an alias of `hh`; `x` (generic hit) is MIDI 76; note names
+without an octave in a seq default to octave 4; `toSeq` handles monophonic lines and block chords (true
+polyphony with different durations is not representable and is emitted with the shortest duration).
 
 ## Audio engine (`apps/web/src/audio`)
 
@@ -89,6 +102,34 @@ Envelope (JSON) around a snippet: `{ "bpm": 90, "timeSig": "4/4", "key": "C", "t
 * All time via Tone.Transport with PPQ 480 to match the domain model.
 * Latency: `Tone.context.lookAhead = 0.01` for live play; `interactive` latency hint.
 
+### Web implementation notes (M1)
+
+* **Audio facade.** Components import from `audio/engine.ts` (`preloadAudio`, `startAudio`, `play`,
+  `playSequence`, `stopPlayback`, `playNote`, `liveNoteOn/Off`, `configureEngine`, `audioNow`), not the
+  `AudioEngine` class, so Tone.js stays out of the main bundle and tests can use `test/fakeEngine.ts`.
+  `AudioEngine.get()` offers `start`, `playNote(instr, midi, vel?, durSec?)`, `noteOn/noteOff(midi, vel?, instr?)`,
+  `allNotesOff`, `schedule(snippet|project, {loop, onBeat(beat, bar), onNote(ev, trackIdx, idx), onEnd, countIn,
+  metronome, bpm}) → {stop, done, startTime}`, `playSequence(parts, {gapSec, onEnd})`, `stop`, `setBpm`,
+  `setVolume`, `setLiveInstrument`, `metronome.{on,off,enabled,setVolume}`, `getInstrument(id)`;
+  `projectToSnippet()` honours mute/solo/volume. Live play and playback use separate instrument instances.
+  The sampled piano is used when `/samples/piano/C4.mp3` exists (checked by content type).
+* **Input.** `noteInputBus.subscribe(fn) → unsubscribe`, `emit/noteOn/noteOff/held/releaseAll`,
+  hook `useNoteInput(handler, enabled)`. MIDI handles hot-plug, `settings.midiInput`, sustain (CC64).
+* **Exercise components** (`apps/web/src/exercises/registry.ts`): one component per type receiving
+  `ExerciseComponentProps<T> { item, block, onAnswer(answer), result, attempts, revealed, disabled }`; add a
+  type by writing one file and one line in `exerciseComponents`. Types missing there or not implemented in
+  core render a "coming soon" card. `ExerciseShell {block, lessonId, mode?: 'lesson'|'practice', record?, count?,
+  seed?, autoplay?, onComplete?}` generates/evaluates, handles replay (reference then audio), hints, reveal,
+  retries (only the first attempt per item is scored and posted) and posts the set result to
+  `/api/progress/exercises/complete`. `play-notes` evaluates once as many notes as targets were played.
+* **Stores (zustand).** `useSettingsStore {settings, loaded, load, update(patch)}` (optimistic PUT,
+  localStorage fallback offline), `useProgressStore {summary, curriculum, glossary, loading, error, refresh,
+  loadGlossary}`, `useInputStore` (MIDI devices, held notes, qwerty octave), `useAudioStore` (started,
+  sampledPiano, server status).
+* **Routes.** `/`, `/curriculum`, `/lesson/:id`, `/practice`, `/settings`, `/daw` (placeholder), `/dev/demo`
+  (renders `src/lesson/__fixtures__/demo-lesson.md` without the server — covers every block type).
+  Lesson links `../wNN-lM-slug/` map to `/lesson/:id`; `assets/x` to `/api/content/lessons/:id/assets/x`.
+
 ## Input (`apps/web/src/input`)
 
 * `NoteInputBus`: emits `{type:'on'|'off', midi, velocity, source:'midi'|'screen'|'qwerty', time}`.
@@ -98,10 +139,28 @@ Envelope (JSON) around a snippet: `{ "bpm": 90, "timeSig": "4/4", "key": "C", "t
 
 ## Exercise engine
 
-Each exercise type has, in `packages/core/src/exercises/<type>.ts`:
+Each exercise type has, in `packages/core/src/exercises/<type>.ts`, an `ExerciseDefinition<T>`
+registered in `exercises/registry.ts` (types in `exercises/types.ts`):
 
-* `generate(spec, rng): Instance` — deterministic given a seed.
-* `evaluate(instance, answer): Result { correct: boolean; score: 0..1; feedback: string; details? }`.
+* `generate(block, rng, {index, count}): Item<T>` — ONE question of the set, deterministic given the
+  RNG state (`createRng(seed)`, mulberry32). `index` lets list-based types (quiz, quiz-input,
+  play-notes with several note sets) walk their list.
+* `evaluate(item, answer): EvalResult { correct; score 0..1; feedback; expected?; details? }`.
+* optional `naturalCount(block)` (e.g. number of quiz questions).
+
+Registry helpers: `generate`, `evaluate`, `generateSet(block, seed?) → {seed, items}`,
+`itemCount(block)` (`count` → natural count → 10), `passScoreOf(block)` (default 0.7),
+`isSrsEligible(block)`, `srsKey(block)` (`type:hash(spec)`), `summarise(results, passScore)`,
+`isImplemented(type)`, `registerExercise(def)`. Unimplemented types are registered as
+`notImplemented(type)` stubs whose generate/evaluate throw `NotImplementedError`; the web renders a
+"coming soon" card for them. Every item has `type, prompt, solution` and optionally `audio`, `reference`
+(e.g. cadence), `choices: {value,label}[]`, `solutionAudio` (all audio as `Snippet`s). Answer payloads
+per type are in `AnswerMap` (e.g. `play-notes`: MIDI numbers played in order; `ear-chord`: `"maj"` or
+`"maj:1"`; `quiz`: choice index or indices).
+
+Implemented in M1: `ear-note`, `ear-octave`, `ear-interval`, `ear-chord`, `play-notes`, `quiz`,
+`quiz-input`, `read-note`. The content validator also runs `generateSet` for every implemented exercise
+in `content/` so broken specs fail validation.
 
 And in `apps/web/src/exercises/<Type>.tsx` a component taking `Instance`,
 rendering prompt + input UI, calling `evaluate`, reporting `Attempt` to the
@@ -116,6 +175,14 @@ SM-2 variant with intervals in *sessions* rather than days (1, 2, 4, 8…
 sessions), because the learner practises several times per week. Practice
 page pulls due cards, mixes in new ones, and adapts difficulty (e.g. widen
 interval set, add octaves) based on rolling accuracy.
+
+Implementation (`packages/core/src/srs`): `review(state, grade 0..5, session)` — grade < 3 resets to
+interval 1 (lapse); otherwise reps 1 → 1 session, 2 → 2, then `round(interval × ease × 0.8)` (so 1, 2, 4,
+8, 16 at the default ease 2.5); ease updated per SM-2, min 1.3. A *session* starts after ≥ 2 h of
+inactivity (server `Sessions.touch()` on any activity). A card is created (due next session) when an
+eligible exercise set is completed (`POST /api/progress/exercises/complete`); the card stores the
+exercise block so Practice regenerates fresh items from it. Map set scores to grades with
+`gradeFromScore(score)`. Adaptive difficulty is not implemented yet.
 
 ## DAW (`apps/web/src/daw`)
 
@@ -134,20 +201,38 @@ interval set, add octaves) based on rolling accuracy.
 ## Server API (Hono)
 
 ```
-GET  /api/content/curriculum            → weeks, lessons, status
-GET  /api/content/lessons/:id           → parsed lesson (markdown AST + blocks)
-GET  /api/progress                      → summary
-POST /api/progress/attempts             → {lessonId, exerciseId, type, correct, score, answer, durationMs}
+GET  /api/health                        → {ok, contentVersion}
+GET  /api/content/curriculum            → CurriculumDTO (weeks, lessons incl. exists=false for unwritten, status)
+GET  /api/content/lessons/:id           → ParsedLessonDTO {id, frontmatter, body (markdown), blocks, exercises, sections, problems, prev, next}
+GET  /api/content/lessons/:id/assets/*  → files from the lesson's assets/ folder
+GET  /api/content/glossary              → {terms: GlossaryTerm[]} (glossary.md + glossary/*.md merged)
+GET  /api/content/problems              → validation problems of the loaded content
+GET  /api/progress                      → ProgressSummaryDTO
+POST /api/progress/attempts             → AttemptInput {lessonId, exerciseId, type, correct, score, answer, durationMs, itemIndex?, source?}
+POST /api/progress/exercises/complete   → ExerciseCompleteInput {lessonId, exerciseId, type, score, passed, correct, total}; creates SRS card if eligible
 POST /api/progress/lessons/:id/complete
-GET  /api/srs/due?limit=20              → cards
-POST /api/srs/review                    → {cardId, grade 0..5}
-GET/POST/PUT/DELETE /api/projects[/:id] → DAW projects (JSON blobs)
-GET  /api/settings, PUT /api/settings   → midi device, keyboard range, volume…
+GET  /api/srs/due?limit=20              → SrsDueDTO {session, cards}
+GET  /api/srs/cards                     → all cards
+POST /api/srs/review                    → {cardId, grade 0..5} → {card}
+GET/POST/PUT/DELETE /api/projects[/:id] → DAW projects (JSON blobs; GET list → ProjectSummaryDTO[])
+GET  /api/settings, PUT /api/settings   → Settings (partial PUT, validated): midiInput, keyboardRange, volume, liveInstrument, keyLabels, metronomeVolume, qwertyOctave
 ```
+
+All request/response shapes are TypeScript types in `packages/core/src/api.ts`, shared by server and
+web. Errors are `{error: string}` with a 4xx/5xx status. SQLite schema lives in
+`apps/server/src/db.ts` as ordered migrations (`schema_migrations` table): `attempts`,
+`exercise_progress`, `lesson_progress`, `srs_cards`, `srs_reviews`, `projects`, `settings`, `meta`
+(session counter). The server builds the Hono app with `createApp({db, content, sessions?, webDist?})`
+(testable via `app.request()`).
 
 ## Testing
 
 * `packages/core`: vitest unit tests for theory helpers, `parseSeq`,
   every `generate`/`evaluate`, SRS scheduler.
-* `packages/content-schema`: validator run over `content/` in CI (`npm run validate:content`).
+* `packages/content-schema`: schema/parser unit tests; validator run over `content/` (`npm run validate:content`).
+  `parseLesson(markdown, {id?})` (browser-safe) returns the lesson DTO plus mdast, warnings and inline refs;
+  `loadContent(dir)` (`@music/content-schema/node`) adds cross-file checks (curriculum membership, week/phase,
+  prerequisites, lesson links, glossary terms, authoring rules, exercise generation). Objects are *loose*:
+  unknown fields are accepted with a warning; known fields, ids, notes, keys, chords, numerals, seqs are strict.
+* `apps/server`: API tests with an in-memory DB and a temporary content fixture.
 * `apps/web`: component tests for Keyboard and exercise shells (vitest + testing-library); Playwright smoke (stretch).

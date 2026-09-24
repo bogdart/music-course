@@ -1,0 +1,16 @@
+.staff {
+  background: #f7f3ea;
+  border-radius: 10px;
+  padding: 6px;
+  overflow-x: auto;
+  min-height: 60px;
+  color: #111;
+}
+.staff svg {
+  display: block;
+}
+.error {
+  color: #b3261e;
+  font-size: 13px;
+  padding: 6px;
+}

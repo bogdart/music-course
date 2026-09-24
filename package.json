@@ -1,0 +1,28 @@
+{
+  "name": "music-course",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c blue,magenta \"npm run dev -w @music/server\" \"npm run dev -w @music/web\"",
+    "build": "npm run build -w @music/core -w @music/content-schema && npm run build -w @music/server -w @music/web",
+    "start": "npm run start -w @music/server",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "npm run typecheck --workspaces",
+    "validate:content": "tsx --conditions=source packages/content-schema/src/cli.ts content"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.23.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.1"
+  }
+}
