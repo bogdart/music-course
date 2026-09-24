@@ -21,3 +21,12 @@ otherwise document the limitation in CONTENT_SCHEMA.md. Update this file's
 | 13 | p2 | `ear-note` chromatic degrees unspecified | document: adds b2 #2/b3 #4 b6 b7 | done: chromatic shows all 12 degrees (major: 1 b2 2 b3 3 4 #4 5 b6 6 b7 7); documented |
 | 14 | p2 | `play-chord` cannot ask for a specific inversion | `inversion` accepts number | schema done (`inversion` may be 0–3); engine pending (M2) |
 | 15 | p2 | `listen` holds one example only | allow `examples: [...]` | schema done (`examples: [...]` or `example`); engine pending (M2) |
+| 16 | p5 | No full-mix dictation: `ear-bass`/`ear-melody`/`ear-progression` cannot take an attached `example` mix | add optional `example` (envelope) to these types: play the mix, ask about it | open |
+| 17 | p5/p2 | `ear-bass`, `ear-melody` lack `mode`; minor key form `"Em"` unclear for example/roman-analysis/daw-task | accept `"Em"`/`"E minor"` everywhere a key is taken; document | open |
+| 18 | p5 | `ear-melody`: no chromatic option, no backing harmony, no leap control | add `chromatic`, `backing` (progression), `maxLeap` | open |
+| 19 | p5 | `ear-chord` qualities stop at sus4; add9/9/13/6 not testable | extend qualities list to all core-supported | open |
+| 20 | p5 | `ear-rhythm` single line; no multi-voice drum dictation | add `"voices": ["kick","snare","hihat"]` mode → answer per voice | open |
+| 21 | p5 | no tempo (BPM) identification exercise | `ear-tempo` { "range":[60,160], "tolerance": 4 } | open |
+| 22 | p5 | daw-task: no reference-comparison check, no duration/tempo, no key relative to learner's key, no timer, no project continuity across checkpoints | `matches-reference` {similarity}, `duration-seconds` {min}, `in-key` with `"key":"project"`, `"timerMin"` spec field, `"projectRef": "<slug>"` to continue the same saved project | open |
+| 23 | p5 | no guitar/distortion instrument; examples lack volume/pan | add `guitar` (distorted) patch; envelope tracks accept `volume`,`pan` | open |
+| 24 | p5 | `chords` block: two chords per bar, slash chords undocumented | allow `"C G/B"` in one bar string; document slash chords | open |
