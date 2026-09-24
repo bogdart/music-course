@@ -1,0 +1,517 @@
+{
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Foundations",
+      "weeks": [
+        1,
+        8
+      ],
+      "goal": "Play, name and hear notes; octave equivalence; intervals to the octave; major scale; major/minor triads; steady time; first melodies and first DAW sketch."
+    },
+    {
+      "id": "p2",
+      "title": "Harmony & Songs",
+      "weeks": [
+        9,
+        16
+      ],
+      "goal": "Minor keys, all intervals, 7th chords, inversions, functional harmony, pop progressions; hear bass and chord roots; both hands; bass clef; first pop analyses."
+    },
+    {
+      "id": "p3",
+      "title": "Songwriting & Arrangement",
+      "weeks": [
+        17,
+        26
+      ],
+      "goal": "Write complete songs: form, hook, melody, harmony, bass, drums, layering; arrange; transcribe simple melodies and bass lines."
+    },
+    {
+      "id": "p4",
+      "title": "Composition Studio & Jazz",
+      "weeks": [
+        27,
+        40
+      ],
+      "goal": "Fluent composition across styles; jazz harmony and voicings; improvisation basics; production-minded arrangement; portfolio."
+    },
+    {
+      "id": "p5",
+      "title": "Transcription & Mastery",
+      "weeks": [
+        41,
+        52
+      ],
+      "goal": "Decompose real pop songs by ear and write finished songs quickly and reliably."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Sound, pitch and the keyboard",
+      "lessons": [
+        "w01-l1-welcome-and-setup",
+        "w01-l2-pitch-and-octaves",
+        "w01-l3-first-melody-by-ear"
+      ]
+    },
+    {
+      "week": 2,
+      "title": "Note names, steps and the beat",
+      "lessons": [
+        "w02-l1-white-keys-and-landmarks",
+        "w02-l2-black-keys-and-half-steps",
+        "w02-l3-pulse-tempo-first-daw"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "The major scale and scale degrees",
+      "lessons": [
+        "w03-l1-major-scale-pattern",
+        "w03-l2-scale-degrees-and-solfege",
+        "w03-l3-ode-to-joy-and-daw-melody"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Rhythm and notation basics",
+      "lessons": [
+        "w04-l1-note-values-and-rests",
+        "w04-l2-time-signatures-and-counting",
+        "w04-l3-reading-rhythm-and-treble-clef"
+      ]
+    },
+    {
+      "week": 5,
+      "title": "Intervals I",
+      "lessons": [
+        "w05-l1-seconds-and-thirds",
+        "w05-l2-fourths-and-fifths",
+        "w05-l3-intervals-on-staff-and-drone-daw"
+      ]
+    },
+    {
+      "week": 6,
+      "title": "Triads",
+      "lessons": [
+        "w06-l1-major-triads",
+        "w06-l2-minor-triads",
+        "w06-l3-diatonic-triads-and-roman-numerals"
+      ]
+    },
+    {
+      "week": 7,
+      "title": "Keys and key signatures I",
+      "lessons": [
+        "w07-l1-g-and-f-major",
+        "w07-l2-transposing-melodies",
+        "w07-l3-same-melody-three-keys-daw"
+      ]
+    },
+    {
+      "week": 8,
+      "title": "Consolidation and first song",
+      "lessons": [
+        "w08-l1-phrases-and-cadences",
+        "w08-l2-phase-1-review-and-ear-assessment",
+        "w08-l3-first-eight-bar-song-daw"
+      ]
+    },
+    {
+      "week": 9,
+      "title": "Minor keys",
+      "lessons": [
+        "w09-l1-natural-minor-and-relative-keys",
+        "w09-l2-harmonic-and-melodic-minor",
+        "w09-l3-greensleeves-and-minor-daw"
+      ]
+    },
+    {
+      "week": 10,
+      "title": "Intervals II and bass clef",
+      "lessons": [
+        "w10-l1-sixths-sevenths-tritone",
+        "w10-l2-harmonic-intervals",
+        "w10-l3-bass-clef-and-left-hand"
+      ]
+    },
+    {
+      "week": 11,
+      "title": "Inversions and voice leading",
+      "lessons": [
+        "w11-l1-triad-inversions",
+        "w11-l2-hearing-the-root",
+        "w11-l3-hands-together-and-revoicing-daw"
+      ]
+    },
+    {
+      "week": 12,
+      "title": "Seventh chords",
+      "lessons": [
+        "w12-l1-maj7-dom7-min7",
+        "w12-l2-dominant-function-v7-to-i",
+        "w12-l3-ii-v-i-and-ballad-daw"
+      ]
+    },
+    {
+      "week": 13,
+      "title": "Functional harmony and pop progressions",
+      "lessons": [
+        "w13-l1-functions-and-cadences",
+        "w13-l2-the-four-chords",
+        "w13-l3-analysing-three-pop-songs"
+      ]
+    },
+    {
+      "week": 14,
+      "title": "Rhythm II and groove",
+      "lessons": [
+        "w14-l1-eighths-sixteenths-syncopation",
+        "w14-l2-drum-kit-and-basic-beats",
+        "w14-l3-three-genre-grooves-daw"
+      ]
+    },
+    {
+      "week": 15,
+      "title": "Melody and harmony together",
+      "lessons": [
+        "w15-l1-chord-tones-and-non-chord-tones",
+        "w15-l2-contour-and-phrasing",
+        "w15-l3-harmonising-melodies-daw"
+      ]
+    },
+    {
+      "week": 16,
+      "title": "Circle of fifths and modulation basics",
+      "lessons": [
+        "w16-l1-circle-of-fifths",
+        "w16-l2-relative-parallel-and-borrowed",
+        "w16-l3-phase-2-review-and-sixteen-bar-song"
+      ]
+    },
+    {
+      "week": 17,
+      "title": "Song form",
+      "lessons": [
+        "w17-l1-sections-and-forms",
+        "w17-l2-analysing-forms-of-pop-songs",
+        "w17-l3-blocking-out-a-form-daw"
+      ]
+    },
+    {
+      "week": 18,
+      "title": "Writing melodies",
+      "lessons": [
+        "w18-l1-motif-repetition-variation",
+        "w18-l2-range-climax-hook",
+        "w18-l3-chorus-hook-daw"
+      ]
+    },
+    {
+      "week": 19,
+      "title": "Bass lines",
+      "lessons": [
+        "w19-l1-roots-fifths-octaves",
+        "w19-l2-bass-dictation",
+        "w19-l3-three-bass-styles-daw"
+      ]
+    },
+    {
+      "week": 20,
+      "title": "Drums and groove design",
+      "lessons": [
+        "w20-l1-kick-snare-hat-vocabulary",
+        "w20-l2-genre-grooves",
+        "w20-l3-drum-arrangement-with-fills-daw"
+      ]
+    },
+    {
+      "week": 21,
+      "title": "Layering and arrangement",
+      "lessons": [
+        "w21-l1-frequency-roles-and-doubling",
+        "w21-l2-textural-build",
+        "w21-l3-arrange-thirty-two-bars-daw"
+      ]
+    },
+    {
+      "week": 22,
+      "title": "Modes",
+      "lessons": [
+        "w22-l1-dorian-and-mixolydian",
+        "w22-l2-lydian-and-phrygian",
+        "w22-l3-modal-sketches-daw"
+      ]
+    },
+    {
+      "week": 23,
+      "title": "Pentatonic, blues and riffs",
+      "lessons": [
+        "w23-l1-pentatonic-scales",
+        "w23-l2-twelve-bar-blues",
+        "w23-l3-riff-and-solo-daw"
+      ]
+    },
+    {
+      "week": 24,
+      "title": "Secondary dominants and chromaticism",
+      "lessons": [
+        "w24-l1-secondary-dominants",
+        "w24-l2-chromatic-passing-chords",
+        "w24-l3-reharmonise-your-song-daw"
+      ]
+    },
+    {
+      "week": 25,
+      "title": "Songwriting workshop",
+      "lessons": [
+        "w25-l1-idea-to-sketch-workflow",
+        "w25-l2-writing-session-with-checklist"
+      ]
+    },
+    {
+      "week": 26,
+      "title": "Phase 3 capstone",
+      "lessons": [
+        "w26-l1-capstone-song-one",
+        "w26-l2-capstone-song-two",
+        "w26-l3-listening-review-and-ear-assessment"
+      ]
+    },
+    {
+      "week": 27,
+      "title": "Extended chords",
+      "lessons": [
+        "w27-l1-ninths-elevenths-thirteenths",
+        "w27-l2-add9-and-sixth-chords",
+        "w27-l3-neo-soul-progression-daw"
+      ]
+    },
+    {
+      "week": 28,
+      "title": "Jazz voicings I",
+      "lessons": [
+        "w28-l1-shell-voicings",
+        "w28-l2-rootless-voicings",
+        "w28-l3-ii-v-i-around-the-cycle"
+      ]
+    },
+    {
+      "week": 29,
+      "title": "Jazz standards structure",
+      "lessons": [
+        "w29-l1-aaba-and-rhythm-changes",
+        "w29-l2-jazz-blues",
+        "w29-l3-comping-a-standard-daw"
+      ]
+    },
+    {
+      "week": 30,
+      "title": "Modal interchange and reharmonisation",
+      "lessons": [
+        "w30-l1-borrowed-chords",
+        "w30-l2-tritone-substitution-and-passing-diminished",
+        "w30-l3-reharmonise-three-ways-daw"
+      ]
+    },
+    {
+      "week": 31,
+      "title": "Melody over changes",
+      "lessons": [
+        "w31-l1-chord-scales-and-guide-tones",
+        "w31-l2-approach-notes-and-enclosures",
+        "w31-l3-improvised-chorus-daw"
+      ]
+    },
+    {
+      "week": 32,
+      "title": "Counterpoint basics",
+      "lessons": [
+        "w32-l1-two-voice-writing",
+        "w32-l2-contrary-motion-and-parallels",
+        "w32-l3-counter-melody-daw"
+      ]
+    },
+    {
+      "week": 33,
+      "title": "Electronic music production",
+      "lessons": [
+        "w33-l1-synthesis-basics",
+        "w33-l2-arps-and-gating",
+        "w33-l3-build-and-drop-daw"
+      ]
+    },
+    {
+      "week": 34,
+      "title": "Rhythm III",
+      "lessons": [
+        "w34-l1-odd-meters",
+        "w34-l2-polyrhythm-and-metric-modulation",
+        "w34-l3-seven-eight-groove-daw"
+      ]
+    },
+    {
+      "week": 35,
+      "title": "Songwriting in genres I",
+      "lessons": [
+        "w35-l1-pop-idioms",
+        "w35-l2-rock-and-folk-idioms",
+        "w35-l3-three-genre-sketches-daw"
+      ]
+    },
+    {
+      "week": 36,
+      "title": "Songwriting in genres II",
+      "lessons": [
+        "w36-l1-hip-hop-and-trap",
+        "w36-l2-house-and-lo-fi",
+        "w36-l3-three-electronic-sketches-daw"
+      ]
+    },
+    {
+      "week": 37,
+      "title": "Film and game cues",
+      "lessons": [
+        "w37-l1-mood-mode-tempo-orchestration",
+        "w37-l2-ostinati-and-leitmotif",
+        "w37-l3-sixty-second-cue-daw"
+      ]
+    },
+    {
+      "week": 38,
+      "title": "Advanced form and development",
+      "lessons": [
+        "w38-l1-motif-development-techniques",
+        "w38-l2-through-composed-forms",
+        "w38-l3-develop-a-motif-daw"
+      ]
+    },
+    {
+      "week": 39,
+      "title": "Voice and lyric awareness",
+      "lessons": [
+        "w39-l1-stress-range-prosody",
+        "w39-l2-topline-writing",
+        "w39-l3-toplines-over-beats-daw"
+      ]
+    },
+    {
+      "week": 40,
+      "title": "Portfolio review",
+      "lessons": [
+        "w40-l1-polish-song-one",
+        "w40-l2-polish-songs-two-and-three",
+        "w40-l3-self-critique-and-ear-assessment"
+      ]
+    },
+    {
+      "week": 41,
+      "title": "Transcription method",
+      "lessons": [
+        "w41-l1-the-transcription-workflow",
+        "w41-l2-finding-key-and-tempo",
+        "w41-l3-mystery-song-one"
+      ]
+    },
+    {
+      "week": 42,
+      "title": "Hearing the bass",
+      "lessons": [
+        "w42-l1-bass-in-full-mixes",
+        "w42-l2-root-vs-inversion-in-context",
+        "w42-l3-bass-lines-of-named-songs"
+      ]
+    },
+    {
+      "week": 43,
+      "title": "Hearing chord qualities in context",
+      "lessons": [
+        "w43-l1-qualities-within-progressions",
+        "w43-l2-sevenths-and-sus-in-context",
+        "w43-l3-borrowed-chords-in-four-keys"
+      ]
+    },
+    {
+      "week": 44,
+      "title": "Hearing melody",
+      "lessons": [
+        "w44-l1-leaps-and-chromatic-notes",
+        "w44-l2-melody-over-harmony",
+        "w44-l3-eight-bar-dictation"
+      ]
+    },
+    {
+      "week": 45,
+      "title": "Hearing groove and arrangement",
+      "lessons": [
+        "w45-l1-drum-pattern-dictation",
+        "w45-l2-identifying-layers-and-sections",
+        "w45-l3-recreate-a-mix-daw"
+      ]
+    },
+    {
+      "week": 46,
+      "title": "Transcribe 1: pop ballad",
+      "lessons": [
+        "w46-l1-ballad-form-and-chords",
+        "w46-l2-ballad-bass-and-melody",
+        "w46-l3-ballad-reference-analysis"
+      ]
+    },
+    {
+      "week": 47,
+      "title": "Transcribe 2: dance pop",
+      "lessons": [
+        "w47-l1-dance-form-and-chords",
+        "w47-l2-dance-bass-and-hooks",
+        "w47-l3-dance-reference-analysis"
+      ]
+    },
+    {
+      "week": 48,
+      "title": "Transcribe 3: R&B and neo-soul",
+      "lessons": [
+        "w48-l1-extended-harmony-by-ear",
+        "w48-l2-syncopated-groove-by-ear",
+        "w48-l3-rnb-reference-analysis"
+      ]
+    },
+    {
+      "week": 49,
+      "title": "Transcribe 4: rock and indie",
+      "lessons": [
+        "w49-l1-riffs-and-power-chords",
+        "w49-l2-mixolydian-and-flat-seven-by-ear",
+        "w49-l3-rock-reference-analysis"
+      ]
+    },
+    {
+      "week": 50,
+      "title": "Speed songwriting",
+      "lessons": [
+        "w50-l1-speed-song-from-a-hook",
+        "w50-l2-speed-song-from-a-beat",
+        "w50-l3-speed-song-from-chords"
+      ]
+    },
+    {
+      "week": 51,
+      "title": "Final project",
+      "lessons": [
+        "w51-l1-final-song-writing",
+        "w51-l2-final-song-arranging",
+        "w51-l3-final-song-review"
+      ]
+    },
+    {
+      "week": 52,
+      "title": "Graduation",
+      "lessons": [
+        "w52-l1-final-assessments",
+        "w52-l2-retrospective-and-next-steps"
+      ]
+    }
+  ]
+}
