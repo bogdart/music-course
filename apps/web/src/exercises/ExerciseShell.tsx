@@ -9,6 +9,7 @@ import type { PlaybackHandle } from '../audio/types';
 import { useAudioStore } from '../stores/audio';
 import { ComingSoon } from './ComingSoon';
 import { getExerciseComponent } from './registry';
+import { e2eHook } from '../testHooks';
 
 export interface ExerciseShellProps {
   block: ExerciseBlock;
@@ -68,6 +69,12 @@ export function ExerciseShell(props: ExerciseShellProps) {
   }, [set]);
 
   const item = set?.items[index] as Item | undefined;
+
+  // e2e test hook (inert in normal use): expose the current item so Playwright can answer it
+  useEffect(() => {
+    const h = e2eHook();
+    if (h && item) (h.items ??= {})[block.id] = { index, total: set?.items.length ?? 0, item };
+  }, [item, index, block.id, set]);
 
   const playParts = useCallback(async (parts: (Snippet | undefined)[]) => {
     const list = parts.filter((p): p is Snippet => !!p);

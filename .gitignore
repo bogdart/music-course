@@ -5,3 +5,6 @@ data/
 .DS_Store
 apps/web/public/samples/
 .env
+# Playwright output (screenshots referenced from docs/QA_REPORT.md are kept)
+e2e/artifacts/*
+!e2e/artifacts/screenshots/
