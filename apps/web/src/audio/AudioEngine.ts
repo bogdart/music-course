@@ -2,6 +2,7 @@ import * as Tone from 'tone';
 import { PPQ, snippetLength, ticksToSeconds, type InstrumentId, type NoteEvent, type Project, type Snippet } from '@music/core';
 import { createInstrument, createSampledPiano, type Instrument } from './instruments';
 import { Metronome } from './metronome';
+import { e2eAudio } from '../testHooks';
 import type { AudioEngineApi, Playable, PlaybackHandle, ScheduleOptions } from './types';
 
 const SAMPLE_BASE = '/samples/piano/';
@@ -153,6 +154,7 @@ export class AudioEngine implements AudioEngineApi {
 
   playNote(instrument: InstrumentId, midi: number, velocity = 0.8, durationSec = 0.6): void {
     if (!this._started) return;
+    e2eAudio({ kind: 'playNote', instrument, midi, velocity });
     this.getLive(instrument).attackRelease(midi, durationSec, Tone.immediate(), velocity);
   }
 
@@ -161,6 +163,7 @@ export class AudioEngine implements AudioEngineApi {
     const prev = this.held.get(midi);
     if (prev) this.getLive(prev).release(midi, Tone.immediate());
     this.held.set(midi, instrument);
+    e2eAudio({ kind: 'noteOn', instrument, midi, velocity });
     this.getLive(instrument).attack(midi, Tone.immediate(), Math.max(0.05, velocity));
   }
 
@@ -168,6 +171,7 @@ export class AudioEngine implements AudioEngineApi {
     const id = instrument ?? this.held.get(midi);
     this.held.delete(midi);
     if (!id || !this._started) return;
+    e2eAudio({ kind: 'noteOff', instrument: id, midi });
     this.getLive(id).release(midi, Tone.immediate());
   }
 
@@ -179,6 +183,7 @@ export class AudioEngine implements AudioEngineApi {
 
   setLiveInstrument(id: InstrumentId): void {
     this._liveInstrument = id;
+    e2eAudio({ kind: 'liveInstrument', instrument: id });
     if (this._started) this.getLive(id);
   }
 
@@ -187,6 +192,7 @@ export class AudioEngine implements AudioEngineApi {
   }
 
   setVolume(v: number): void {
+    e2eAudio({ kind: 'volume', value: v });
     this.master.volume.value = v <= 0 ? -Infinity : Tone.gainToDb(Math.min(1, v));
   }
 
@@ -210,6 +216,7 @@ export class AudioEngine implements AudioEngineApi {
   private scheduleInternal(source: Playable, opts: ScheduleOptions, onInternalEnd: (r: EndReason) => void): PlaybackHandle {
     this.stop();
     const snippet = toSnippet(source);
+    e2eAudio({ kind: 'schedule', notes: snippet.tracks.reduce((n, t) => n + t.events.length, 0) });
     const transport = Tone.getTransport();
     this.resetTransport();
     const bpm = opts.bpm ?? snippet.bpm;
@@ -276,6 +283,7 @@ export class AudioEngine implements AudioEngineApi {
         const dur = Math.max(0.03, ticksToSeconds(ev.durationTicks, bpmAt(ev.startTick)) * 0.98);
         transport.schedule((time) => {
           inst.attackRelease(ev.midi, dur, time, Math.max(0.02, ev.velocity * vol));
+          e2eAudio({ kind: 'scheduled', instrument: track.instrument, midi: ev.midi });
           if (opts.onNote) draw.schedule(() => opts.onNote?.(ev, ti, idx), time);
         }, `${offset + ev.startTick}i`);
       });
