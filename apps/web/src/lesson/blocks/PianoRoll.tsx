@@ -1,6 +1,7 @@
 import { snippetLength, type Snippet } from '@music/core';
 
-const COLORS = ['#7aa2ff', '#ff9f68', '#7ee0a0', '#e38cff', '#ffd166', '#6fd6e0'];
+/** Per-track colours (themed CSS variables, styles/global.css) */
+const COLORS = ['--roll-c1', '--roll-c2', '--roll-c3', '--roll-c4', '--roll-c5', '--roll-c6'].map((v) => `var(${v})`);
 
 /** Read-only mini piano roll of a snippet. */
 export function PianoRoll({ snippet, sounding = [] }: { snippet: Snippet; sounding?: number[] }) {
@@ -16,7 +17,7 @@ export function PianoRoll({ snippet, sounding = [] }: { snippet: Snippet; soundi
   return (
     <svg className="pianoroll" viewBox={`0 0 1000 ${h}`} preserveAspectRatio="none" role="img" aria-label="Piano roll" style={{ height: h }}>
       {Array.from({ length: Math.ceil(len / bar) + 1 }, (_, i) => (
-        <line key={i} x1={(i * bar * 1000) / len} x2={(i * bar * 1000) / len} y1={0} y2={h} stroke="#333a48" />
+        <line key={i} x1={(i * bar * 1000) / len} x2={(i * bar * 1000) / len} y1={0} y2={h} style={{ stroke: 'var(--roll-bar-line)' }} />
       ))}
       {events.map((e, i) => (
         <rect
@@ -26,7 +27,7 @@ export function PianoRoll({ snippet, sounding = [] }: { snippet: Snippet; soundi
           width={Math.max(2, (e.durationTicks * 1000) / len - 1)}
           height={Math.max(2, rowH - 1)}
           rx={2}
-          fill={sounding.includes(e.midi) ? '#fff' : COLORS[e.ti % COLORS.length]}
+          style={{ fill: sounding.includes(e.midi) ? 'var(--roll-sounding)' : COLORS[e.ti % COLORS.length] }}
         />
       ))}
     </svg>

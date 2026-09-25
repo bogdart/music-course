@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { StaffRenderOptions } from './renderStaff';
 import styles from './Staff.module.css';
+import { useTheme } from '../../theme';
 
 export interface StaffProps {
   seq: string;
@@ -19,6 +20,8 @@ export interface StaffProps {
 /** VexFlow notation for a seq string. VexFlow is lazy-loaded (code-split). */
 export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, barsPerLine, className, showTimeSig, lyrics }: StaffProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // notation is drawn with resolved theme colours: redraw when the theme changes
+  const theme = useTheme();
   const [width, setWidth] = useState(0);
   const [error, setError] = useState<string | null>(null);
   // a wide score scrolls horizontally: the scroll container must then be keyboard-reachable (WCAG scrollable-region-focusable)
@@ -66,7 +69,7 @@ export function Staff({ seq, clef, keySig, timeSig, highlight = null, colors, ba
     return () => {
       cancelled = true;
     };
-  }, [seq, clef, keySig, timeSig, highlight, colors, width, barsPerLine, showTimeSig, lyrics?.join(' ')]);
+  }, [seq, clef, keySig, timeSig, highlight, colors, width, barsPerLine, showTimeSig, lyrics?.join(' '), theme]);
 
   return (
     <div

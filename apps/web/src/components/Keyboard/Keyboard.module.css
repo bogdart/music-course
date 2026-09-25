@@ -10,7 +10,7 @@
   user-select: none;
   -webkit-user-select: none;
   border-radius: 8px;
-  background: #0b0c10;
+  background: var(--kbd-case);
   padding-top: 6px;
   box-sizing: border-box;
 }
@@ -29,19 +29,20 @@
 }
 .white {
   bottom: 0;
-  background: linear-gradient(#fafafa, #e8e8e8);
-  border: 1px solid #555;
+  background: var(--key-white);
+  border: 1px solid var(--key-white-border);
   border-radius: 0 0 6px 6px;
+  box-shadow: var(--key-shadow);
   z-index: 1;
-  color: #333;
+  color: var(--key-white-text);
 }
 .black {
   height: 62%;
-  background: linear-gradient(#2a2c33, #111216);
-  border: 1px solid #000;
+  background: var(--key-black);
+  border: 1px solid var(--key-black-border);
   border-radius: 0 0 5px 5px;
   z-index: 2;
-  color: #ddd;
+  color: var(--key-black-text);
 }
 .label {
   font-size: 12px;
@@ -65,20 +66,20 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #999;
+  background: var(--key-middle-c);
 }
-.white.role_root { background: linear-gradient(#ff8a80, #e05b52); color: #fff; }
-.white.role_third { background: linear-gradient(#8fd3ff, #4aa3e0); color: #fff; }
-.white.role_fifth { background: linear-gradient(#a5e6a0, #5cb356); color: #fff; }
-.white.role_seventh { background: linear-gradient(#e1b3ff, #a970d6); color: #fff; }
-.white.role_other { background: linear-gradient(#ffe38a, #e6be3c); }
-.black.role_root { background: linear-gradient(#e0574d, #9c2c25); }
-.black.role_third { background: linear-gradient(#3f95d4, #1d5f91); }
-.black.role_fifth { background: linear-gradient(#4fa54a, #286f25); }
-.black.role_seventh { background: linear-gradient(#9b5fcc, #5e2f86); }
-.black.role_other { background: linear-gradient(#d9ad2a, #8d6c0e); }
-.mark_target { box-shadow: inset 0 -6px 0 #f3c945; }
-.mark_correct { background: linear-gradient(#7ee08a, #2fa84a) !important; color: #fff; }
-.mark_wrong { background: linear-gradient(#ff8f8f, #d33d3d) !important; color: #fff; }
-.held.white { background: linear-gradient(#cfd8ff, #93a4f5); transform: translateY(2px); }
-.held.black { background: linear-gradient(#5361b8, #2c3677); transform: translateY(2px); }
+.white.role_root { background: var(--key-highlight-root); color: var(--key-role-text); }
+.white.role_third { background: var(--key-highlight-third); color: var(--key-role-text); }
+.white.role_fifth { background: var(--key-highlight-fifth); color: var(--key-role-text); }
+.white.role_seventh { background: var(--key-highlight-seventh); color: var(--key-role-text); }
+.white.role_other { background: var(--key-highlight-other); }
+.black.role_root { background: var(--key-highlight-root-black); }
+.black.role_third { background: var(--key-highlight-third-black); }
+.black.role_fifth { background: var(--key-highlight-fifth-black); }
+.black.role_seventh { background: var(--key-highlight-seventh-black); }
+.black.role_other { background: var(--key-highlight-other-black); }
+.mark_target { box-shadow: inset 0 -6px 0 var(--key-target); }
+.mark_correct { background: var(--key-correct) !important; color: var(--key-role-text); }
+.mark_wrong { background: var(--key-wrong) !important; color: var(--key-role-text); }
+.held.white { background: var(--key-held-white); transform: translateY(2px); }
+.held.black { background: var(--key-held-black); transform: translateY(2px); }

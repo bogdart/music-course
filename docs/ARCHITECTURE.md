@@ -135,6 +135,17 @@ polyphony with different durations is not representable and is emitted with the 
   localStorage fallback offline), `useProgressStore {summary, curriculum, glossary, loading, error, refresh,
   loadGlossary}`, `useInputStore` (MIDI devices, held notes, qwerty octave), `useAudioStore` (started,
   sampledPiano, server status).
+* **Theme (light / dark).** `settings.theme: 'system' | 'light' | 'dark'` (default `'system'`; core
+  `resolveTheme(pref, systemPrefersDark)`). `apps/web/src/theme.ts` `applyTheme(pref)` (called by `App` whenever the
+  setting changes) sets `data-theme="light|dark"` (+ `data-theme-pref`) on `<html>`, updates `<meta theme-color>`,
+  follows `prefers-color-scheme` live for `'system'`, and mirrors the preference to `localStorage['music-course.theme']`.
+  An inline script in `apps/web/index.html` reads that key and sets `data-theme` before the app bundle runs (no flash).
+  **Every colour is a semantic CSS variable** defined for both themes at the top of `styles/global.css`
+  (surfaces/text, `--key-*` piano, `--staff-*` notation, `--perf-*` performance strip, `--roll-*` lesson piano roll,
+  `--grid-*`/`--note-*`/`--clip-*`/`--playhead` DAW, …); never hard-code a colour in CSS or TSX. SVG drawn in React
+  uses `style={{ fill: 'var(--x)' }}` (attributes don't accept `var()`), so it follows the theme without a redraw.
+  VexFlow draws with resolved colours: `renderStaff` reads `--staff-ink/-line/-ledger/-highlight` (and `var(--x)`
+  per-note colours) via `getComputedStyle` (`cssVar()` in theme.ts) and `Staff` redraws on `useTheme()` changes.
 * **Routes.** `/`, `/curriculum`, `/lesson/:id`, `/practice`, `/settings`, `/daw` (micro-DAW; `?project=<id>`, `?snippet=1`), `/dev/demo`
   (renders `src/lesson/__fixtures__/demo-lesson.md` without the server — covers every block type).
   Lesson links `../wNN-lM-slug/` map to `/lesson/:id`; `assets/x` to `/api/content/lessons/:id/assets/x`.
@@ -300,7 +311,7 @@ GET  /api/srs/cards                     → all cards
 POST /api/srs/review                    → {cardId, grade 0..5} → {card}
 GET/POST/PUT/DELETE /api/projects[/:id] → DAW projects (JSON blobs; GET list → ProjectSummaryDTO[];
                                            GET /:id?ifExists=1 → 200 null instead of 404 for "open or create")
-GET  /api/settings, PUT /api/settings   → Settings (partial PUT, validated): midiInput, keyboardRange, volume, liveInstrument, keyLabels, metronomeVolume, qwertyOctave
+GET  /api/settings, PUT /api/settings   → Settings (partial PUT, validated): midiInput, keyboardRange, volume, liveInstrument, keyLabels, metronomeVolume, qwertyOctave, theme
 ```
 
 All request/response shapes are TypeScript types in `packages/core/src/api.ts`, shared by server and

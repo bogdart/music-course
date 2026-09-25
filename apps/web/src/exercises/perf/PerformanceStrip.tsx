@@ -1,14 +1,15 @@
 import { PPQ, secondsToTicks, type NoteStatus, type PerformanceResult, type PerformanceSpec, type PlayedNote } from '@music/core';
 
+/** Status colours as CSS variable references (themed in styles/global.css; resolved by the browser, or by renderStaff for VexFlow). */
 export const STATUS_COLOR: Record<NoteStatus | 'extra' | 'pending', string> = {
-  ok: '#43c26b',
-  early: '#f3c945',
-  late: '#ff9f43',
-  octave: '#c38cff',
-  wrong: '#e5534b',
-  missed: '#e5534b',
-  extra: '#e5534b',
-  pending: '#7a8499',
+  ok: 'var(--perf-ok)',
+  early: 'var(--perf-early)',
+  late: 'var(--perf-late)',
+  octave: 'var(--perf-octave)',
+  wrong: 'var(--perf-wrong)',
+  missed: 'var(--perf-wrong)',
+  extra: 'var(--perf-wrong)',
+  pending: 'var(--perf-pending)',
 };
 
 export const STATUS_LABEL: Record<NoteStatus | 'extra', string> = {
@@ -55,7 +56,7 @@ export function PerformanceStrip({ spec, played, result, position }: Performance
     <div className="perf-strip" data-testid="perf-strip">
       <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ height: Math.min(200, H * 1.2) }} role="img" aria-label="Performance timeline">
         {Array.from({ length: beats + 1 }, (_, b) => (
-          <line key={b} x1={X(b * beatTicks)} x2={X(b * beatTicks)} y1={0} y2={H} stroke={(b * beatTicks) % bar === 0 ? '#4a5263' : '#2c323e'} strokeWidth={(b * beatTicks) % bar === 0 ? 2 : 1} />
+          <line key={b} x1={X(b * beatTicks)} x2={X(b * beatTicks)} y1={0} y2={H} style={{ stroke: (b * beatTicks) % bar === 0 ? 'var(--perf-grid-bar)' : 'var(--perf-grid-beat)' }} strokeWidth={(b * beatTicks) % bar === 0 ? 2 : 1} />
         ))}
         {spec.targets.map((t, i) => {
           const st = result?.notes[i]?.status;
@@ -63,10 +64,10 @@ export function PerformanceStrip({ spec, played, result, position }: Performance
           const w = Math.max(4, X(t.startTick + (taps ? Math.min(t.durationTicks, beatTicks / 4) : t.durationTicks)) - X(t.startTick) - 2);
           return (
             <g key={`t${i}`}>
-              {result && tolTicks > 0 && <rect x={X(t.startTick - tolTicks)} y={Y(t.midi) - 1} width={X(t.startTick + tolTicks) - X(t.startTick - tolTicks)} height={(taps ? 26 : rowH) + 2} fill="#ffffff" opacity={0.05} />}
+              {result && tolTicks > 0 && <rect x={X(t.startTick - tolTicks)} y={Y(t.midi) - 1} width={X(t.startTick + tolTicks) - X(t.startTick - tolTicks)} height={(taps ? 26 : rowH) + 2} style={{ fill: 'var(--perf-tolerance)' }} />}
               <rect
                 x={X(t.startTick)} y={Y(t.midi)} width={w} height={taps ? 24 : rowH - 2} rx={3}
-                fill={st && st !== 'missed' ? color : 'none'} fillOpacity={0.35} stroke={color} strokeWidth={2}
+                style={{ fill: st && st !== 'missed' ? color : 'none', stroke: color }} fillOpacity={0.35} strokeWidth={2}
                 strokeDasharray={st === 'missed' ? '5 4' : undefined}
                 data-status={st ?? 'pending'}
               >
@@ -77,20 +78,20 @@ export function PerformanceStrip({ spec, played, result, position }: Performance
         })}
         {played.map((p, i) => {
           const st = statusOfPlayed.get(i);
-          const color = st ? STATUS_COLOR[st] : '#e8eaf0';
+          const color = st ? STATUS_COLOR[st] : 'var(--perf-played)';
           const x = X(secondsToTicks(p.time, spec.bpm));
           const y = Y(taps ? null : p.midi) + (taps ? 12 : rowH / 2 - 1);
           return st === 'extra' ? (
-            <g key={`p${i}`} stroke={color} strokeWidth={3}>
+            <g key={`p${i}`} style={{ stroke: color }} strokeWidth={3}>
               <line x1={x - 6} x2={x + 6} y1={y - 6} y2={y + 6} />
               <line x1={x - 6} x2={x + 6} y1={y + 6} y2={y - 6} />
             </g>
           ) : (
-            <circle key={`p${i}`} cx={x} cy={y} r={taps ? 7 : Math.max(3, rowH / 2 - 1)} fill={color} stroke="#0b0c10" strokeWidth={1.5} />
+            <circle key={`p${i}`} cx={x} cy={y} r={taps ? 7 : Math.max(3, rowH / 2 - 1)} style={{ fill: color, stroke: 'var(--perf-marker-stroke)' }} strokeWidth={1.5} />
           );
         })}
         {position !== null && position !== undefined && position >= -0.5 && (
-          <line x1={X(position * beatTicks)} x2={X(position * beatTicks)} y1={0} y2={H} stroke="#7aa2ff" strokeWidth={3} />
+          <line x1={X(position * beatTicks)} x2={X(position * beatTicks)} y1={0} y2={H} style={{ stroke: 'var(--accent)' }} strokeWidth={3} />
         )}
       </svg>
       {result && (

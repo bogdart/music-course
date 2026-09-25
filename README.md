@@ -41,6 +41,9 @@ npm start          # http://0.0.0.0:24800 — prints the LAN URLs on startup
 
 Environment overrides: `PORT`, `HOST`, `CONTENT_DIR`, `DATA_DIR` (SQLite at `data/app.db`), `WEB_DIST`, `WATCH_CONTENT=1`.
 
+**Light / dark theme:** Settings → *Appearance* (System / Light / Dark). *System* follows the device's
+light/dark setting and switches live.
+
 Audio in browsers only starts after a user gesture: tap the **"Tap to enable audio"** banner once.
 Web MIDI (and Web Audio on some phones) requires a *secure context*: `localhost` is fine; for
 other LAN devices run `npm run start:https` and open `https://<LAN-IP>:24800`.

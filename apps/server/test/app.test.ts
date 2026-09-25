@@ -187,6 +187,13 @@ describe('settings', () => {
     expect((await post('/api/settings', { bogus: 1 }, 'PUT')).status).toBe(400);
     expect((await post('/api/settings', { liveInstrument: 'banjo' }, 'PUT')).status).toBe(400);
   });
+  it('stores the theme preference (default system)', async () => {
+    expect(await json<Settings>(app.request('/api/settings'))).toMatchObject({ theme: 'system' });
+    expect(await json<Settings>(post('/api/settings', { theme: 'light' }, 'PUT'))).toMatchObject({ theme: 'light' });
+    expect(await json<Settings>(app.request('/api/settings'))).toMatchObject({ theme: 'light' });
+    expect((await post('/api/settings', { theme: 'sepia' }, 'PUT')).status).toBe(400);
+    await post('/api/settings', { theme: 'system' }, 'PUT');
+  });
 });
 
 describe('db', () => {

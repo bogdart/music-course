@@ -332,7 +332,7 @@ test.describe('projects CRUD', () => {
 test.describe('settings', () => {
   test('GET defaults, partial PUT, persistence', async ({ api }) => {
     const s = await (await api.get('/api/settings')).json();
-    expect(s).toEqual({ midiInput: 'all', keyboardRange: ['C3', 'C5'], volume: 0.8, liveInstrument: 'piano', keyLabels: 'names', metronomeVolume: 0.6, qwertyOctave: 4 });
+    expect(s).toEqual({ midiInput: 'all', keyboardRange: ['C3', 'C5'], volume: 0.8, liveInstrument: 'piano', keyLabels: 'names', metronomeVolume: 0.6, qwertyOctave: 4, theme: 'system' });
     const r = await api.put('/api/settings', { data: { volume: 0.25, keyboardRange: ['A0', 'C8'], liveInstrument: 'epiano' } });
     expect(r.status()).toBe(200);
     expect(await r.json()).toMatchObject({ volume: 0.25, keyboardRange: ['A0', 'C8'], liveInstrument: 'epiano', keyLabels: 'names' });
@@ -341,7 +341,8 @@ test.describe('settings', () => {
   });
 
   const bad: [string, unknown][] = [
-    ['unknown key', { theme: 'dark' }],
+    ['unknown key', { colourScheme: 'dark' }],
+    ['bad theme', { theme: 'sepia' }],
     ['volume > 1', { volume: 2 }],
     ['volume string', { volume: '0.5' }],
     ['bad instrument', { liveInstrument: 'kazoo' }],

@@ -1,6 +1,7 @@
 import {
   Accidental, Annotation, Articulation, Beam, Dot, Formatter, Renderer, Stave, StaveNote, StaveTie, Tuplet, Voice, type StemmableNote,
 } from 'vexflow/bravura';
+import { cssVar } from '../../theme';
 import { parseKey, parseSeqDetailed, parseTimeSig, ticksPerBar, type SeqItem } from '@music/core';
 
 export interface StaffRenderOptions {
@@ -10,7 +11,7 @@ export interface StaffRenderOptions {
   timeSig?: string;
   /** Highlight this item index (SeqItem.index) */
   highlight?: number | null;
-  /** Per-item colours (item index → css colour) */
+  /** Per-item colours (item index → css colour or `var(--x)` reference, resolved against the element) */
   colors?: Record<number, string>;
   width: number;
   /** Max bars per line (default: fit by width) */
@@ -40,6 +41,31 @@ export function autoClef(items: SeqItem[]): 'treble' | 'bass' | 'percussion' {
   if (pitched.length === 0) return items.some((i) => i.kind === 'drum' || i.kind === 'hit') ? 'percussion' : 'treble';
   const avg = pitched.reduce((a, b) => a + b, 0) / pitched.length;
   return avg < 57 ? 'bass' : 'treble';
+}
+
+/**
+ * VexFlow draws in fixed colours (context default black, stave lines #999999, ledger lines #444). Map them onto
+ * the theme's --staff-ink / --staff-line / --staff-ledger so notation follows light/dark (Staff redraws on change).
+ */
+function applyInk(el: HTMLElement) {
+  const ink = cssVar('--staff-ink', el, '#000000');
+  const map: Record<string, string> = {
+    black: ink,
+    '#000': ink,
+    '#000000': ink,
+    '#999999': cssVar('--staff-line', el, '#999999'),
+    '#444': cssVar('--staff-ledger', el, '#444'),
+  };
+  const svg = el.querySelector('svg');
+  if (!svg) return;
+  // the root <svg> carries the defaults (fill/stroke black) that most shapes inherit
+  [svg, ...svg.querySelectorAll('*')].forEach((n) => {
+    for (const a of ['fill', 'stroke']) {
+      const v = n.getAttribute(a);
+      const to = v ? map[v.toLowerCase()] : undefined;
+      if (to) n.setAttribute(a, to);
+    }
+  });
 }
 
 /** Render a seq to an SVG inside `el` (cleared first). Returns the rendered height. */
@@ -138,7 +164,8 @@ export function renderStaff(el: HTMLElement, opts: StaffRenderOptions): number {
         if (it.accent && !rest) n.addModifier(new Articulation('a>').setPosition(3), 0);
         const syl = lyricOf.get(it.index);
         if (syl) n.addModifier(new Annotation(syl).setVerticalJustification(Annotation.VerticalJustify.BOTTOM).setFont('sans-serif', 12), 0);
-        const colour = opts.highlight === it.index ? '#e0463c' : opts.colors?.[it.index];
+        const custom = opts.colors?.[it.index];
+        const colour = opts.highlight === it.index ? cssVar('--staff-highlight', el, '#e0463c') : custom ? cssVar(custom, el, '#e0463c') : undefined;
         if (colour) n.setStyle({ fillStyle: colour, strokeStyle: colour });
         allNotes.set(it.index, n);
         return n;
@@ -183,6 +210,7 @@ export function renderStaff(el: HTMLElement, opts: StaffRenderOptions): number {
       /* ties across lines may fail; ignore */
     }
   });
+  applyInk(el);
   return height;
 }
 

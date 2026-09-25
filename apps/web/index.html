@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#14161c" />
     <title>Music Course</title>
+    <script>
+      // Set the colour theme before first paint (no dark/light flash). Mirrors resolveTheme() in
+      // packages/core/src/api.ts; the preference is written to localStorage by apps/web/src/theme.ts.
+      (function () {
+        var p = 'system';
+        try { p = localStorage.getItem('music-course.theme') || 'system'; } catch (e) {}
+        var sys = !window.matchMedia || matchMedia('(prefers-color-scheme: dark)').matches;
+        var t = p === 'light' || p === 'dark' ? p : sys ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-theme-pref', p);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'light' ? '#f6f3ee' : '#14161c');
+      })();
+    </script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♪</text></svg>" />
   </head>
   <body>

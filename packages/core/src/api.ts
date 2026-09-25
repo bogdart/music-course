@@ -209,6 +209,22 @@ export interface Settings {
   metronomeVolume: number;
   /** QWERTY base octave (lower row starts at C of this octave) */
   qwertyOctave: number;
+  /** Colour theme: 'system' follows the OS (prefers-color-scheme) */
+  theme: ThemePref;
+}
+
+export type ThemePref = 'system' | 'light' | 'dark';
+export type ResolvedTheme = 'light' | 'dark';
+export const THEME_PREFS: readonly ThemePref[] = ['system', 'light', 'dark'];
+
+export function isThemePref(v: unknown): v is ThemePref {
+  return v === 'system' || v === 'light' || v === 'dark';
+}
+
+/** The theme actually shown: an explicit choice wins, 'system' (or anything unknown) follows the OS. */
+export function resolveTheme(pref: unknown, systemPrefersDark: boolean): ResolvedTheme {
+  if (pref === 'light' || pref === 'dark') return pref;
+  return systemPrefersDark ? 'dark' : 'light';
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -219,4 +235,5 @@ export const DEFAULT_SETTINGS: Settings = {
   keyLabels: 'names',
   metronomeVolume: 0.6,
   qwertyOctave: 4,
+  theme: 'system',
 };

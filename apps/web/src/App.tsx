@@ -8,6 +8,7 @@ import { useInputStore } from './stores/input';
 import { useProgressStore } from './stores/progress';
 import { useSettingsStore } from './stores/settings';
 import Dashboard from './pages/Dashboard';
+import { applyTheme } from './theme';
 
 const Curriculum = lazy(() => import('./pages/Curriculum'));
 const LessonPage = lazy(() => import('./pages/Lesson'));
@@ -42,6 +43,8 @@ function InputIndicator() {
 }
 
 export function App() {
+  const theme = useSettingsStore((s) => s.settings.theme);
+  useEffect(() => applyTheme(theme), [theme]);
   useEffect(() => {
     const teardown = setupInput();
     // preload Tone.js so the first tap can unlock audio synchronously

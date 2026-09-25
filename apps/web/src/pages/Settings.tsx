@@ -1,4 +1,4 @@
-import { INSTRUMENT_IDS, isNoteName, type InstrumentId, type Settings as SettingsT } from '@music/core';
+import { INSTRUMENT_IDS, isNoteName, THEME_PREFS, type InstrumentId, type Settings as SettingsT } from '@music/core';
 import { useState } from 'react';
 import { configureEngine, playNote } from '../audio/engine';
 import { Keyboard } from '../components/Keyboard/Keyboard';
@@ -6,6 +6,8 @@ import { useAudioStore } from '../stores/audio';
 import { connectMidi } from '../input/setup';
 import { useInputStore } from '../stores/input';
 import { useSettingsStore } from '../stores/settings';
+
+const THEME_LABEL = { system: 'System', light: 'Light', dark: 'Dark' } as const;
 
 const RANGES: [string, string][] = [['C4', 'C5'], ['C3', 'C5'], ['F3', 'F5'], ['C3', 'C6'], ['C2', 'C6'], ['A0', 'C8']];
 
@@ -22,6 +24,17 @@ export function Settings() {
   return (
     <div className="page settings">
       <h1>Settings</h1>
+      <section className="card form" aria-labelledby="appearance-h">
+        <h2 id="appearance-h">Appearance</h2>
+        <div className="row wrap" role="group" aria-label="Theme">
+          {THEME_PREFS.map((t) => (
+            <button key={t} type="button" aria-pressed={settings.theme === t} className={`btn ${settings.theme === t ? 'primary' : 'ghost'}`} onClick={() => set({ theme: t })}>
+              {THEME_LABEL[t]}
+            </button>
+          ))}
+        </div>
+        <p className="muted small">System follows your device’s light/dark setting.</p>
+      </section>
       <section className="card form">
         <h2>MIDI keyboard</h2>
         <div className="row wrap" data-testid="midi-status">

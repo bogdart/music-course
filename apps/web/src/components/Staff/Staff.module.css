@@ -1,16 +1,17 @@
 .staff {
-  background: #f7f3ea;
+  background: var(--staff-paper);
+  box-shadow: 0 0 0 1px var(--staff-border);
   border-radius: 10px;
   padding: 6px;
   overflow-x: auto;
   min-height: 60px;
-  color: #111;
+  color: var(--staff-ink);
 }
 .staff svg {
   display: block;
 }
 .error {
-  color: #b3261e;
+  color: var(--staff-error);
   font-size: 13px;
   padding: 6px;
 }
