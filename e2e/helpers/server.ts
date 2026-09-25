@@ -37,14 +37,15 @@ export interface ServerHandle {
 }
 
 /** `host: null` = don't set HOST at all (test the server's default binding). */
-export async function startServer(opts: { host?: string | null; env?: Record<string, string> } = {}): Promise<ServerHandle> {
+/** `https: true` starts `npm run start:https` mode (self-signed cert in the temp dir); `url` is then https. */
+export async function startServer(opts: { host?: string | null; env?: Record<string, string>; https?: boolean } = {}): Promise<ServerHandle> {
   const dir = mkdtempSync(join(process.env.E2E_TMP ?? tmpdir(), 'srv-'));
   const port = await freePort();
   const host = opts.host === undefined ? '0.0.0.0' : opts.host;
   let n = 0;
   let proc: ChildProcess | null = null;
   const handle: ServerHandle = {
-    url: `http://127.0.0.1:${port}`,
+    url: `${opts.https ? 'https' : 'http'}://127.0.0.1:${port}`,
     port,
     host,
     dbFile: join(dir, `db-${n}.sqlite`),
@@ -70,7 +71,7 @@ export async function startServer(opts: { host?: string | null; env?: Record<str
     proc = spawn(process.execPath, [join(ROOT, 'apps/server/dist/index.js')], {
       cwd: ROOT,
       env: (() => {
-        const env: Record<string, string | undefined> = { ...process.env, NODE_ENV: 'production', PORT: String(port), DB_FILE: handle.dbFile, WATCH_CONTENT: '0', ...opts.env };
+        const env: Record<string, string | undefined> = { ...process.env, NODE_ENV: 'production', PORT: String(port), DB_FILE: handle.dbFile, WATCH_CONTENT: '0', ...(opts.https ? { HTTPS: '1', DATA_DIR: dir } : {}), ...opts.env };
         if (host === null) delete env.HOST;
         else env.HOST = host;
         return env;
@@ -84,8 +85,11 @@ export async function startServer(opts: { host?: string | null; env?: Record<str
     while (Date.now() < deadline) {
       if (p.exitCode !== null) throw new Error(`server exited early (${p.exitCode}):\n${handle.logs.join('')}`);
       try {
-        const r = await fetch(`${handle.url}/api/health`);
-        if (r.ok) return;
+        // https mode: the self-signed cert fails Node's fetch, so probe the plain-http redirect instead
+        const r = opts.https
+          ? await fetch(`http://127.0.0.1:${port}/api/health`, { redirect: 'manual' })
+          : await fetch(`${handle.url}/api/health`);
+        if (opts.https ? r.status === 308 : r.ok) return;
       } catch {
         /* not up yet */
       }

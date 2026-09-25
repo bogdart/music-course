@@ -60,6 +60,32 @@ test('Web MIDI is unavailable over plain http on a LAN IP (insecure context) and
   await ctx.close();
 });
 
+test('HTTPS mode (npm run start:https): https works on the LAN IP with Web MIDI, and http:// on the same port redirects', async ({ browser }) => {
+  test.skip(lanIps.length === 0, 'no LAN interface');
+  const s = await startServer({ https: true });
+  try {
+    const lan = `${lanIps[0]}:${s.port}`;
+    // plain http → 308 to https, path kept (phones default to http://)
+    const redirect = await fetch(`http://${lan}/lesson/w01-l1-welcome-and-setup?x=1`, { redirect: 'manual' });
+    expect(redirect.status).toBe(308);
+    expect(redirect.headers.get('location')).toBe(`https://${lan}/lesson/w01-l1-welcome-and-setup?x=1`);
+    expect(s.logs.join('')).toContain(`https://${lanIps[0]}:${s.port}`);
+
+    const ctx = await browser.newContext({ ignoreHTTPSErrors: true });
+    const page = await ctx.newPage();
+    await page.goto(`http://${lan}/settings`); // typed without https
+    expect(page.url()).toBe(`https://${lan}/settings`);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Settings');
+    expect(await page.evaluate(() => window.isSecureContext && typeof navigator.requestMIDIAccess === 'function')).toBe(true);
+    await expect(page.getByTestId('midi-status')).not.toContainText('not available on this address');
+    const health = await page.request.get(`https://${lan}/api/health`);
+    expect(health.ok()).toBe(true);
+    await ctx.close();
+  } finally {
+    await s.stop();
+  }
+});
+
 test('HOST env override binds only that interface', async () => {
   const local = await startServer({ host: '127.0.0.1' });
   try {
