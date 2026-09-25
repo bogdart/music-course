@@ -254,6 +254,36 @@ test.describe('Web MIDI (fake device)', () => {
     });
   });
 
+  test('MIDI permission denied: Settings explains how to allow it and Connect MIDI retries', async ({ page }) => {
+    // First request is refused (as when the user dismisses/blocks Chromium's prompt), later ones succeed.
+    await page.addInitScript(() => {
+      const real = navigator.requestMIDIAccess.bind(navigator);
+      let calls = 0;
+      Object.defineProperty(navigator, 'requestMIDIAccess', {
+        configurable: true,
+        value: (opts?: MIDIOptions) =>
+          ++calls === 1 ? Promise.reject(new DOMException('Permission to use Web MIDI API was not granted.', 'NotAllowedError')) : real(opts),
+      });
+    });
+    await goto(page, '/settings');
+    await expect(page.locator('.input-indicator')).toContainText('MIDI blocked');
+    await expect(page.getByTestId('midi-status')).toContainText('blocked for this site');
+    await expect(page.getByRole('alert')).toContainText('MIDI device control');
+    await page.getByRole('button', { name: 'Connect MIDI' }).click();
+    await expect(page.getByTestId('midi-status')).toContainText('ready');
+    await expect(page.locator('.input-indicator')).toContainText('MIDI ×1');
+    await expect(page.getByRole('button', { name: 'Rescan MIDI' })).toBeVisible();
+  });
+
+  test('insecure origin (plain http on a LAN IP): Settings says to use localhost or HTTPS', async ({ page }) => {
+    await page.addInitScript(() => Object.defineProperty(window, 'isSecureContext', { configurable: true, get: () => false }));
+    await goto(page, '/settings');
+    await expect(page.getByTestId('midi-status')).toContainText('not available on this address');
+    await expect(page.getByRole('alert')).toContainText('localhost');
+    await expect(page.getByRole('alert')).toContainText('start:https');
+    await expect(page.getByRole('button', { name: 'Connect MIDI' })).toHaveCount(0);
+  });
+
   test('selecting a device in Settings persists across reload and filters other devices', async ({ page, api }) => {
     await goto(page, '/settings');
     await midi.add(page, 'e2e-keys-2', 'Second Keys');

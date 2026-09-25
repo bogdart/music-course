@@ -53,7 +53,10 @@ test('Web MIDI is unavailable over plain http on a LAN IP (insecure context) and
   await page.goto(`http://${lanIps[0]}:${srv.port}/settings`);
   const secure = await page.evaluate(() => window.isSecureContext);
   expect(secure).toBe(false);
-  await expect(page.getByText(/Web MIDI/)).toBeVisible();
+  await expect(page.getByTestId('midi-status')).toContainText('not available on this address');
+  await expect(page.getByRole('alert')).toContainText(`http://localhost:${srv.port}`);
+  await expect(page.getByRole('alert')).toContainText('start:https');
+  await expect(page.locator('.input-indicator')).toContainText('MIDI blocked');
   await ctx.close();
 });
 

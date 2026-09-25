@@ -70,5 +70,6 @@ export class MidiManager {
     if (!this.access) return;
     this.access.onstatechange = null;
     this.access.inputs.forEach((i) => (i.onmidimessage = null));
+    this.access = null;
   }
 }

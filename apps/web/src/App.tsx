@@ -30,11 +30,12 @@ function ServerBanner() {
 }
 
 function InputIndicator() {
-  const { midiInputs, lastSource, held, qwertyOctave } = useInputStore();
-  const connected = midiInputs.filter((i) => i.state === 'connected').length;
+  const { midiInputs, lastSource, held, qwertyOctave, midiStatus } = useInputStore();
+  const connected = midiInputs.filter((i) => i.state === 'connected' && !/midi through/i.test(i.name)).length;
+  const label = connected ? `MIDI ×${connected}` : midiStatus === 'denied' || midiStatus === 'insecure' ? 'MIDI blocked' : 'no MIDI';
   return (
     <span className="input-indicator muted small" title={`QWERTY octave ${qwertyOctave}`}>
-      <span className={`led ${held.length ? 'on' : ''}`} /> {connected ? `MIDI ×${connected}` : 'no MIDI'}
+      <span className={`led ${held.length ? 'on' : ''}`} /> {label}
       {lastSource ? ` · ${lastSource}` : ''}
     </span>
   );

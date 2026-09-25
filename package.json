@@ -13,6 +13,7 @@
     "dev": "concurrently -k -n server,web -c blue,magenta \"npm run dev -w @music/server\" \"npm run dev -w @music/web\"",
     "build": "npm run build -w @music/core -w @music/content-schema && npm run build -w @music/server -w @music/web",
     "start": "npm run start -w @music/server",
+    "start:https": "HTTPS=1 npm run start -w @music/server",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "npm run typecheck --workspaces",

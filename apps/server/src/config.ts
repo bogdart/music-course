@@ -13,6 +13,8 @@ export interface ServerConfig {
   dbFile: string;
   webDist: string;
   watch: boolean;
+  /** Serve over HTTPS with a self-signed certificate (needed for Web MIDI on non-localhost addresses). */
+  https: boolean;
 }
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): ServerConfig {
@@ -26,6 +28,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): ServerConfig {
     dataDir,
     dbFile: env.DB_FILE ?? resolve(dataDir, 'app.db'),
     webDist: resolve(env.WEB_DIST ?? resolve(ROOT, 'apps/web/dist')),
+    https: env.HTTPS === '1' || env.HTTPS === 'true',
     watch: env.WATCH_CONTENT ? env.WATCH_CONTENT === '1' : !prod,
   };
 }

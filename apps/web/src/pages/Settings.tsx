@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { configureEngine, playNote } from '../audio/engine';
 import { Keyboard } from '../components/Keyboard/Keyboard';
 import { useAudioStore } from '../stores/audio';
+import { connectMidi } from '../input/setup';
 import { useInputStore } from '../stores/input';
 import { useSettingsStore } from '../stores/settings';
 
@@ -23,7 +24,21 @@ export function Settings() {
       <h1>Settings</h1>
       <section className="card form">
         <h2>MIDI keyboard</h2>
-        {midi.midiSupported === false && <p className="muted">{midi.midiError}</p>}
+        <div className="row wrap" data-testid="midi-status">
+          <span>
+            Status:{' '}
+            <strong>
+              {{ unknown: 'checking…', requesting: 'waiting for permission…', ready: 'ready', insecure: 'not available on this address',
+                 unsupported: 'not supported by this browser', denied: 'blocked for this site', error: 'error' }[midi.midiStatus]}
+            </strong>
+          </span>
+          {midi.midiStatus !== 'insecure' && midi.midiStatus !== 'unsupported' && (
+            <button type="button" className="btn" onClick={() => void connectMidi()} disabled={midi.midiStatus === 'requesting'}>
+              {midi.midiStatus === 'ready' ? 'Rescan MIDI' : 'Connect MIDI'}
+            </button>
+          )}
+        </div>
+        {midi.midiError && <p className="muted" role="alert">{midi.midiError}</p>}
         <label>
           Input device
           <select value={settings.midiInput} onChange={(e) => set({ midiInput: e.target.value })}>
