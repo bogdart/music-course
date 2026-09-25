@@ -23,7 +23,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): ServerConfig {
   return {
     prod,
     host: env.HOST ?? '0.0.0.0',
-    port: Number(env.PORT ?? (prod ? 8080 : 3001)),
+    port: Number(env.PORT ?? (prod ? 24800 : 3001)),
     contentDir: resolve(env.CONTENT_DIR ?? resolve(ROOT, 'content')),
     dataDir,
     dbFile: env.DB_FILE ?? resolve(dataDir, 'app.db'),

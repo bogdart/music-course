@@ -28,23 +28,23 @@ npm run dev
 * API server: `http://localhost:3001` (Vite proxies `/api` to it).
 * `content/` is watched: edits to lessons reload automatically.
 * Find your LAN IP with `ip -4 addr` (Linux; `hostname -I` is missing on Arch) or `ipconfig getifaddr en0` (macOS). The server also prints its LAN URLs at start.
-* **MIDI keyboard:** browsers only expose Web MIDI on secure pages. On the computer the keyboard is plugged into, open `http://localhost:8080` (not the IP address) and click *Allow* when the browser asks about MIDI devices. If you dismissed that prompt, open Settings → *Connect MIDI*, or allow "MIDI device control" in the browser's site settings.
-* To use MIDI from other devices on the network, run `npm run start:https` and open `https://<lan-ip>:8080`. The certificate is self-signed (created with openssl in `data/tls/`), so accept the browser warning once per device.
+* **MIDI keyboard:** browsers only expose Web MIDI on secure pages. On the computer the keyboard is plugged into, open `http://localhost:24800` (not the IP address) and click *Allow* when the browser asks about MIDI devices. If you dismissed that prompt, open Settings → *Connect MIDI*, or allow "MIDI device control" in the browser's site settings.
+* To use MIDI from other devices on the network, run `npm run start:https` and open `https://<lan-ip>:24800`. The certificate is self-signed (created with openssl in `data/tls/`), so accept the browser warning once per device.
 * Dev fixture lesson exercising every block type: `http://localhost:5173/dev/demo`.
 
 ## Run (production, single process)
 
 ```bash
 npm run build
-npm start          # http://0.0.0.0:8080 — prints the LAN URLs on startup
+npm start          # http://0.0.0.0:24800 — prints the LAN URLs on startup
 ```
 
 Environment overrides: `PORT`, `HOST`, `CONTENT_DIR`, `DATA_DIR` (SQLite at `data/app.db`), `WEB_DIST`, `WATCH_CONTENT=1`.
 
 Audio in browsers only starts after a user gesture: tap the **"Tap to enable audio"** banner once.
 Web MIDI (and Web Audio on some phones) requires a *secure context*: `localhost` is fine; for
-other LAN devices use Chrome's `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
-with `http://<LAN-IP>:8080`, or put the app behind a local HTTPS proxy.
+other LAN devices run `npm run start:https` and open `https://<LAN-IP>:24800`.
+Set `PORT=<n>` to use a different port.
 
 ### Optional: sampled piano
 

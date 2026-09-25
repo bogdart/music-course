@@ -23,7 +23,7 @@ music_course/
 │   │       └── pages/           # Home/Dashboard, Curriculum, Lesson, Practice (SRS), DAW, Settings
 │   └── server/                  # Node 26 + Hono
 │       └── src/
-│           ├── index.ts         # serves API + built web app on 0.0.0.0:8080
+│           ├── index.ts         # serves API + built web app on 0.0.0.0:24800
 │           ├── db.ts            # node:sqlite, migrations
 │           ├── routes/          # /api/content, /api/progress, /api/srs, /api/projects
 │           └── content.ts       # loads + validates content/ at startup, watches in dev
@@ -43,7 +43,7 @@ music_course/
   and `tsc` typechecking (`customConditions`). `npm run build` compiles `packages/*`
   to `dist/` (the default export condition) which the prod server uses.
 * **Prod:** `npm run build && npm start` → single Node process on
-  `0.0.0.0:8080` serving `apps/web/dist` + API. SQLite file at `data/app.db`.
+  `0.0.0.0:24800` serving `apps/web/dist` + API. SQLite file at `data/app.db`.
 * No auth (trusted LAN). Single learner profile; schema allows more later.
 
 ## Core domain model (`packages/core`)

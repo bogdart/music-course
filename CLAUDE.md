@@ -44,7 +44,7 @@
 
 ```
 apps/web               Vite + React + TS SPA: audio (Tone.js), input (Web MIDI), keyboard, staff (VexFlow), lesson runner, exercises, DAW
-apps/server            Node 26 + Hono + node:sqlite: content API, progress, SRS, DAW projects; serves built web app on 0.0.0.0:8080
+apps/server            Node 26 + Hono + node:sqlite: content API, progress, SRS, DAW projects; serves built web app on 0.0.0.0:24800
 packages/core          Pure TS (no DOM): theory helpers (tonal), seq mini-language parser, exercise generate/evaluate, daw-task predicates, SRS
 packages/content-schema Zod schemas + `validate` CLI for content/
 content/               curriculum.json, glossary.md, lessons/<wNN-lM-slug>/lesson.md
@@ -65,7 +65,7 @@ data/                  runtime SQLite (gitignored)
   Run `npm run validate:content` before finishing any content work.
 * Tests: vitest. `npm test` at root runs all workspaces.
 * Commands: `npm install`, `npm run dev` (web :5173 + server :3001),
-  `npm run build`, `npm start` (:8080), `npm test`, `npm run validate:content`.
+  `npm run build`, `npm start` (:24800), `npm test`, `npm run validate:content`.
 
 ## Working agreements for agents
 
