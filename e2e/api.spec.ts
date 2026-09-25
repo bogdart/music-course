@@ -4,7 +4,10 @@
  */
 import type { APIRequestContext, APIResponse } from '@playwright/test';
 import { test, expect } from './fixtures';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { curriculum, lessons } from './helpers/content';
+import { ROOT } from './helpers/server';
 
 test.use({ isolated: true });
 
@@ -30,7 +33,10 @@ test.describe('content', () => {
     const r = await api.get('/api/health');
     expect(r.status()).toBe(200);
     expect(r.headers()['content-type']).toContain('application/json');
-    expect(await r.json()).toEqual({ ok: true, contentVersion: expect.any(Number) });
+    // pianoSamples: whether the optional sampled piano is installed in the served web dist (BUG-01 fix: the client
+    // reads this instead of probing /samples/piano/C4.mp3)
+    const hasSamples = existsSync(join(ROOT, 'apps/web/dist/samples/piano/C4.mp3'));
+    expect(await r.json()).toEqual({ ok: true, contentVersion: expect.any(Number), pianoSamples: hasSamples });
   });
 
   test('GET /api/content/curriculum: 5 phases, 52 weeks, every lesson exists', async ({ api }) => {
@@ -176,9 +182,10 @@ test.describe('progress', () => {
     // idempotent: same card again
     const r3 = await post(api, '/api/progress/exercises/complete', { lessonId: firstEar.l.id, exerciseId: firstEar.e.id, type: firstEar.e.type, score: 1, passed: true, correct: 10, total: 10 });
     expect((await r3.json()).srsCardId).toBe(srsCardId);
-    // unknown exercise: progress stored, no card
+    // unknown exercise: rejected since the BUG-05 fix (nothing stored, no card)
     const r4 = await post(api, '/api/progress/exercises/complete', { lessonId: firstEar.l.id, exerciseId: 'nope', type: 'ear-note', score: 1, passed: true, correct: 1, total: 1 });
-    expect((await r4.json()).srsCardId).toBeNull();
+    expect(r4.status()).toBe(404);
+    expect((await (await api.get('/api/progress')).json()).exercises[firstEar.l.id]?.nope).toBeUndefined();
 
     for (const bad of [{}, { lessonId: 'a', exerciseId: 'b', type: 'quiz', score: 2, passed: true }, { lessonId: 'a', exerciseId: 'b', type: 'quiz', score: 1, passed: 'y' }]) {
       await expectError(post(api, '/api/progress/exercises/complete', bad), 400);
@@ -201,8 +208,7 @@ test.describe('progress', () => {
   });
 
   test('completing an unknown lesson is rejected (404)', async ({ api }) => {
-    // BUG-05 (docs/QA_REPORT.md#bug-05): any id is accepted and counted in totals.lessonsCompleted
-    test.fail();
+    // regression for BUG-05 (fixed) (docs/QA_REPORT.md#bug-05): any id is accepted and counted in totals.lessonsCompleted
     const before = (await (await api.get('/api/progress')).json()).totals.lessonsCompleted;
     const r = await api.post('/api/progress/lessons/not-a-real-lesson/complete');
     const after = (await (await api.get('/api/progress')).json()).totals.lessonsCompleted;
@@ -211,8 +217,7 @@ test.describe('progress', () => {
   });
 
   test('attempts for unknown lessons/exercises are rejected (404/400)', async ({ api }) => {
-    // BUG-05: attempts for unknown lessons are stored and become lastLessonId (Dashboard "Continue" target)
-    test.fail();
+    // regression for BUG-05 (fixed): attempts for unknown lessons are stored and become lastLessonId (Dashboard "Continue" target)
     const r = await post(api, '/api/progress/attempts', { ...validAttempt, lessonId: 'w99-l9-ghost' });
     expect([400, 404]).toContain(r.status());
   });
@@ -296,6 +301,11 @@ test.describe('projects CRUD', () => {
     expect(await del.json()).toEqual({ ok: true });
     await expectError(api.get(`/api/projects/${id}`), 404);
     await expectError(api.delete(`/api/projects/${id}`), 404);
+    // "open or create" lookup used by daw-task / ?project=: 200 null for a missing project, the project otherwise
+    const q = await api.get(`/api/projects/${id}?ifExists=1`);
+    expect(q.status()).toBe(200);
+    expect(await q.json()).toBeNull();
+    expect(await (await api.get('/api/projects/chosen?ifExists=1')).json()).toMatchObject({ id: 'chosen', name: 'Chosen' });
   });
 
   const bad: [string, unknown][] = [

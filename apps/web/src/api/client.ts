@@ -47,6 +47,8 @@ export const api = {
   srsReview: (cardId: number, grade: number) => req<{ card: unknown }>('POST', '/srs/review', { cardId, grade }),
   projects: () => req<ProjectSummaryDTO[]>('GET', '/projects'),
   project: (id: string) => req<ProjectDTO>('GET', `/projects/${encodeURIComponent(id)}`),
+  /** The project, or null when it does not exist (200 null — no 404 in the console). */
+  projectIfExists: (id: string) => req<ProjectDTO | null>('GET', `/projects/${encodeURIComponent(id)}?ifExists=1`),
   createProject: (p: Partial<ProjectDTO>) => req<ProjectDTO>('POST', '/projects', p),
   saveProject: (p: ProjectDTO) => req<ProjectDTO>('PUT', `/projects/${encodeURIComponent(p.id)}`, p),
   deleteProject: (id: string) => req<{ ok: true }>('DELETE', `/projects/${encodeURIComponent(id)}`),

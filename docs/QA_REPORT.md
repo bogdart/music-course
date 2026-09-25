@@ -1,6 +1,7 @@
 # QA Report — Playwright end-to-end suite
 
-Date: 2026-09-25 · Build: branch `worktree-agent-ad33a8e93691ecdb4` (based on `bcc2134`) · Browser: Chromium 151 (system `/usr/bin/chromium`), headless
+Date: 2026-09-25 · Build: `master` after `3281b17` (all 29 exercise types, Practice + warm-up, focused note input, micro-DAW + daw-task,
+fixes for BUG-01…07 + A11Y-01) · Browser: Chromium 151 (system `/usr/bin/chromium`), headless · 4 workers
 
 ## How to run
 
@@ -8,7 +9,7 @@ Date: 2026-09-25 · Build: branch `worktree-agent-ad33a8e93691ecdb4` (based on `
 npm install
 npm run test:e2e                      # builds (npm run build), starts the prod server, runs everything
 E2E_SKIP_BUILD=1 npm run test:e2e     # reuse an existing build
-npm run test:e2e -- e2e/api.spec.ts   # one file;  -g "<title>" to filter
+npm run test:e2e -- e2e/daw.spec.ts   # one file;  -g "<title>" to filter
 npm run test:e2e:ui                   # Playwright UI mode
 npm run typecheck:e2e                 # tsc over e2e/ + playwright.config.ts
 ```
@@ -18,210 +19,177 @@ Env: `PW_CHROMIUM_PATH` (browser binary; default `/usr/bin/chromium` if present,
 Output: `e2e/artifacts/` (HTML report `html-report/`, `results.json`, traces/screenshots of failures in `test-results/`,
 per-type render stats `render-stats.json`, axe results `a11y/*.json`). Only `e2e/artifacts/screenshots/` is committed.
 
-## Result (latest full run)
+## Result (3 consecutive full runs, 4 workers)
 
-| | count |
-|---|---|
-| tests | **502** |
-| passed | **349** |
-| expected failures (`test.fail`, = confirmed bugs below) | **11** |
-| skipped (exercise types still "coming soon" ×7 checks, DAW specs while the placeholder is shown) | **142** |
-| unexpected failures / flaky | **0 / 0** (3 consecutive full runs, 4 and 8 workers) |
+| run | passed | skipped | expected failures (`test.fail`) | unexpected / flaky | wall time |
+|---|---:|---:|---:|---:|---:|
+| 1 (`npm run test:e2e`, incl. build) | 573 | 20 | 0 | 0 / 0 | 8.1 min |
+| 2 (`E2E_SKIP_BUILD=1`) | 573 | 20 | 0 | 0 / 0 | 8.0 min |
+| 3 (`E2E_SKIP_BUILD=1`) | 573 | 20 | 0 | 0 / 0 | 8.0 min |
 
-Runtime ≈ 3 min with 4 workers (plus ~15 s build).
+**Open bugs pinned by `test.fail()`: none** (all known bugs are fixed; see below). The 20 skips are not missing coverage: 17 are
+"replay/autoplay" checks for types whose items have no audio (keyboard / reading / quiz / DAW / reflect types — the test first asserts that
+no audio row is shown), 2 are the "wrong answer" checks of `reflect` (it cannot be answered wrongly — Save is disabled below `minWords`,
+which has its own test) and 1 is `listen` without questions (no such block in content; covered on /dev/demo).
+
+Previous run of the old suite against this build: 323 passed, 95 skipped, 84 unexpected. What those 84 were:
+
+| group | count | verdict | action |
+|---|---:|---|---|
+| `test.fail()` markers for fixed bugs "unexpectedly passing" | 10 | bugs really fixed (each re-verified) | markers removed; tests kept as regression tests (BUG-01…07, A11Y-01) |
+| console error `GET /api/projects/task-<lesson>-<ex>` 404 on every lesson with a daw-task | ~30 | **app bug** (BUG-08) | fixed in the app (see below), no console filtering |
+| lessons.spec `example-block` count one too high | 39 | **test** was wrong | `listen` exercises render their examples as `ExampleBlock`s inside the exercise card; the spec now counts top-level examples only and separately checks each `listen` card shows `example`/`examples.length` players |
+| DAW specs written against the placeholder | 3+2 | test | `e2e/daw.spec.ts` rewritten against the real DAW (13 tests) |
+| `/api/health` has `pianoSamples` | 1 | test (BUG-01 fix) | asserted, and must match whether `dist/samples/piano/C4.mp3` exists |
+| exercises/complete for an unknown exercise: `srsCardId` `undefined` vs `null` | 1 | test (BUG-05 fix: now 404) | asserts 404 and nothing stored |
+| settings: live-instrument options | 1 | test | `guitar` was added to the instruments |
+| smoke: `/daw` has no `<h1>` | 2 | **app** (BUG-11) | visually hidden `<h1>DAW</h1>` |
+| smoke: /dev/demo "8 real + 1 coming soon" | 1 | test | data-driven from the fixture: 31 exercise blocks, 0 coming soon |
+| play-chord: `getByLabel('progress')` also matched `aria-label="Progression"` | 1 | test | `exact: true` |
+| ear-note answered by MIDI / quiz-input filled from a key | 1 | test (BUG-02 fix) | note input goes to the *focused* exercise; the tests focus it first |
+| "failing the set (all wrong)" read `passed` (sticky best) | 1 | test (order-dependent) | asserts this completion's `lastScore` |
+| Practice showed a card right after passing an ear exercise | 1 | test | by design Practice mixes due reviews with up to 5 *new* cards (docs/CONTENT_SCHEMA.md) |
 
 ## Infrastructure
 
-* `playwright.config.ts` — `webServer` runs `npm run build && node apps/server/dist/index.js` with `NODE_ENV=production`,
-  `HOST=0.0.0.0`, a random `PORT` and `DB_FILE` in a fresh temp dir (the server already supported `PORT/HOST/DB_FILE/DATA_DIR/WATCH_CONTENT`
-  — **no change to `apps/server/src/config.ts` was needed**). Chromium flags `--autoplay-policy=no-user-gesture-required
-  --use-fake-ui-for-media-stream`.
+* `playwright.config.ts` — `webServer` runs `npm run build && node apps/server/dist/index.js` (`NODE_ENV=production`, `HOST=0.0.0.0`,
+  random `PORT`, `DB_FILE` in a fresh temp dir). Chromium flags `--autoplay-policy=no-user-gesture-required --use-fake-ui-for-media-stream`.
 * `e2e/fixtures.ts`
-  * `test.use({ isolated: true })` → the spec **file** gets its own server process + fresh SQLite DB (free port; restarted
-    with a new DB whenever a worker moves to another file). `server.handle.restart()` restarts it on the same DB
-    (persistence tests). Read-only specs (smoke, lessons, curriculum) use the shared `webServer`.
-  * every page gets the fake Web MIDI + test hooks (`helpers/browser-shims.ts`);
-  * console errors / uncaught page errors fail any test (allow-list per test with `consoleAllow`; `KNOWN_CONSOLE_NOISE` holds BUG-01).
-* `helpers/browser-shims.ts` — fake `navigator.requestMIDIAccess`; drive it with `window.__fakeMidi.addInput/removeInput/noteOn/noteOff/cc/send`
-  (wrapped by `helpers/app.ts` `midi.*`). Disconnected ports stay listed with `state: 'disconnected'` like Chromium.
-* `helpers/app.ts` — `goto`, `unlockAudio`, audio log (`audioLog`, `expectSound`, `clearAudio`), `clickKey`, `keyLocator`.
-* `helpers/exercises.ts` — `currentItem`, `answer(page, id, correct)`, `completeSet`, `revealAll`, and **`ANSWERERS`**: one entry per
-  exercise type turning the generated item into a correct or wrong UI interaction. **When a new type is implemented, add an answerer there**;
-  until then the generic checks (render/reveal/next/finish) already run for it.
-* `helpers/content.ts` — reads `content/` from disk (block counts, exercises, inline refs) so specs are data-driven.
-* `global-setup.ts` / `global-teardown.ts` — aggregate the per-lesson render stats and print the per-type table.
+  * `test.use({ isolated: true })` → the spec **file** gets its own server process + fresh SQLite DB; `server.handle.restart({ freshDb })`
+    for per-test isolation (practice.spec) or persistence tests.
+  * **new** `test.use({ contentFixture: true })` → that server gets `CONTENT_DIR` = a temp copy of `content/` plus the fixture lessons in
+    `e2e/fixture-content/` (listed in week 1 of the copied curriculum). Used for daw-task `projectRef` / `timerMin`, which no lesson uses yet.
+  * every page gets the fake Web MIDI + test hooks; console errors / page errors fail any test. `KNOWN_CONSOLE_NOISE` is now **empty**.
+* `helpers/browser-shims.ts` — fake `navigator.requestMIDIAccess` (`window.__fakeMidi.addInput/removeInput/noteOn/noteOff/cc/send`).
+* `helpers/exercises.ts` — `currentItem`, `answer(page, id, correct)`, `completeSet`, `revealAll`, `claimFocus`, `perform` and
+  **`ANSWERERS` for all 29 types** (see coverage table). Timed types: `perform()` presses Start, reads the count-in clock from the e2e hook
+  (`perf.t0` = `performance.now()` of tick 0) and schedules fake-MIDI note-ons **inside the page** with `setTimeout` at the target times
+  (no Playwright round-trip jitter); options `shiftBeats` (late/early), `transpose` (wrong pitches), `only` (missed notes), `waitForEnd`.
+  `lateShiftBeats(spec)` mirrors core's tolerance formula to pick a lateness outside the tolerance but still nearest its own target.
+* `helpers/daw.ts` — DAW store snapshot (`daw(page, key)`), `dawDo` (run a store action), piano-roll geometry (`rollPoint` / `clickRoll` /
+  `dragRoll`, scrolling the roll only when needed), `transportClock` + `playMidiAt` for recording in time.
+* `helpers/smf.ts` — an **independent** Standard MIDI File reader (not the app's importer) to verify exported `.mid` downloads.
+* `helpers/content.ts` — reads `content/` (block counts, exercises, inline refs) + the /dev/demo fixture (`demoLesson()`).
 
-### App source touched (test hooks only — no behaviour change)
+### App source touched for testability (inert unless `window.__MC_E2E__` is defined before load)
 
-| file | change |
+| file | hook |
 |---|---|
-| `apps/web/src/testHooks.ts` (new) | `e2eHook()`, `e2eAudio()`; inert unless the page defines `window.__MC_E2E__` before load |
-| `apps/web/src/audio/AudioEngine.ts` | 7 one-line `e2eAudio({...})` calls: `playNote`, `noteOn`, `noteOff`, `setLiveInstrument`, `setVolume`, `schedule` start, each scheduled note as it sounds |
-| `apps/web/src/exercises/ExerciseShell.tsx` | one `useEffect` exposing the current item as `window.__MC_E2E__.items[block.id]` (+ import) |
+| `apps/web/src/testHooks.ts` | types for the new hook fields |
+| `apps/web/src/daw/store.ts` | `__MC_E2E__.daw[storeKey]` = the DAW zustand store ("main", "task:<lesson>:<exercise>") |
+| `apps/web/src/exercises/perf/usePerformance.ts` | `__MC_E2E__.perf = { t0, phase, bpm }` — the count-in clock of the running take |
+| `apps/web/src/daw/transport.ts` | `__MC_E2E__.transport = { startPerf, bpm, fromTick, recording }` — clock of DAW playback/recording |
 
-No `data-testid`s had to be added: existing ones (`exercise-<id>`, `data-type`, `example-block`, `staff-block`, `keyboard-block`,
-`chords-block`, `coming-soon`, `block-error`, `exercise-summary`, `key-<midi>`/`data-midi`, `staff`) plus roles/labels were enough.
-Root: `package.json` (devDeps `@playwright/test`, `@axe-core/playwright`; scripts `test:e2e`, `test:e2e:ui`, `typecheck:e2e`), `.gitignore`.
+(Existing: audio log in `AudioEngine`, `items[exerciseId]` in `ExerciseShell`.) Known hook limitation: `items` is keyed by exercise id,
+so a warm-up card and a lesson exercise with the same id overwrite each other — the warm-up tests pick lessons without id clashes.
 
 ## Coverage summary
 
 | # | area | spec | what is checked |
 |---|---|---|---|
-| 1 | Smoke | `smoke.spec.ts` | 7 pages render with no console errors/unhandled rejections; nav; SPA 404; unknown lesson; audio gate (click + key); `/api/health`; hashed assets; `/dev/demo` renders every block and posts nothing |
-| 2 | Curriculum | `curriculum.spec.ts` | 5 phases, 52 weeks, 154 lessons in order with titles; every lesson opened from the page (per phase); Dashboard phase anchors; Next/Previous walk all 154 lessons; scroll-to-top |
-| 3 | All lessons | `lessons.spec.ts` | 154 data-driven tests: title, goals count, block counts per type = lesson.md, staff SVG drawn / no "Notation error", no raw ``` / JSON / `{{…}}` / `[[…]]` leaking, rail entries, glossary terms resolve + popover, note/chord chips enabled and sound, first example plays; per-type real vs coming-soon stats |
-| 4 | Exercises | `exercises.spec.ts` | for **every catalogue type** (27): render, Skip disabled before answering, Reveal (+ stored as wrong), Next, reveal-all finish (not passed), correct answer (feedback, dots, attempt API), wrong answer + retry (only first attempt scored), full correct set → passed + best score + rail + SRS card iff eligible, all-wrong set → not passed, replay/"question only"/autoplay play the item's notes. Plus hints, ear-note answered by MIDI, enharmonic quiz-input, quiz-input filled from a key, play-notes marks/reset |
-| 5 | Input | `input.spec.ts` | mouse press/release, black keys, glissando drag, multi-touch chord, phone tap, full QWERTY map, key-repeat, octave shift persisted + clamped, no notes while typing, MIDI note on/off/velocity, velocity-0, CC123, sustain CC64, MIDI before audio unlock, hot-plug add/remove/re-add, no-device state, device selection persisted + filtering |
-| 6 | Progress / SRS | `progress.spec.ts` | fresh Dashboard, Practice empty state, exercise + lesson completion survive reload **and server restart** (lesson page, Curriculum ●/100 %, Dashboard 1/154), Continue after completing, SRS card due next session (session advanced by editing `meta.last_activity`), Practice review → grade/interval, practice attempts not counted as lesson attempts, lapse on failed review |
-| 7 | Settings | `settings.spec.ts` | volume (persisted + applied to engine), metronome volume, range presets / custom / invalid / reversed, live instrument (persisted + used by live notes & Test sound), key labels, survives server restart, offline fallback to localStorage + banner |
-| 8 | Responsive | `responsive.spec.ts` | phone 390×844 and tablet 820×1180: no horizontal scroll on 8 pages, nav links visible/tappable, key size + tap plays, exercise choices tappable |
-| 9 | API | `api.spec.ts` | every route in ARCHITECTURE.md: health, curriculum, all 154 lesson DTOs + prev/next chain, assets 404 + path traversal, glossary, problems, unknown routes; progress/attempts (12 invalid bodies), exercises/complete (best score, SRS card idempotent), lessons complete; srs due/cards/review (+ invalid); projects full CRUD + upsert + duplicate + 7 invalid bodies + >5 MB; settings defaults/partial/12 invalid values/atomicity; malformed JSON → 400 on all 6 write routes |
-| 10 | Accessibility | `a11y.spec.ts` | axe (WCAG 2.0/2.1 A+AA) on 8 pages; Tab reachability; `role=status` feedback; keyboard accessible names |
-| 11 | LAN | `lan.spec.ts` | default binding logs `0.0.0.0` + LAN URLs; API/SPA reachable on every non-loopback IPv4; `HOST=127.0.0.1` binds only loopback; Web MIDI unavailable (insecure context) on a LAN IP and the app says so |
-| – | DAW | `daw.spec.ts` | placeholder jam keyboard (MIDI/QWERTY); `micro-DAW` specs (transport, tracks, piano roll, recording, save/export) skip while the placeholder is shown — **extend these as the DAW lands** |
+| 1 | Smoke | `smoke.spec.ts` | 7 pages render with no console errors; nav; SPA 404; unknown lesson; audio gate (click + key); `/api/health`; hashed assets; `/dev/demo` renders all 31 fixture exercise blocks as real components and posts nothing; no 404 for the optional sampled piano (BUG-01) |
+| 2 | Curriculum | `curriculum.spec.ts` | 5 phases, 52 weeks, 154 lessons; every lesson opened from the page (now also free of daw-task 404s); Next/Previous walk; anchors |
+| 3 | All lessons | `lessons.spec.ts` | 154 data-driven tests: title, goals, top-level block counts = lesson.md, `listen` cards show their examples, staff SVG drawn, no raw markdown/JSON, glossary, chips sound, first example plays; per-type render stats (**0 coming soon, 0 broken**) |
+| 4 | Exercises | `exercises.spec.ts` | per type (29): render / Skip / Reveal / Next, reveal-all → 0 % not passed, correct answer (attempt scored 1), wrong answer (scored < 1) + retry (first attempt counts), full correct set → summary "100 % Passed ✓" + passed + rail + SRS card iff eligible, all-wrong set → "Need …", replay / reference / autoplay audio. Every **answer mode** used by content gets correct / wrong / full-set checks too. **Timing**: for rhythm-tap, play-melody, read-rhythm, timed play-scale, ear-rhythm tap: in time → 100 %, late (outside tolerance) → < 85 % and "bad"; missed taps and wrong pitches score lower. Shell details: summary + Practice again (BUG-03), other exercises keep their state (BUG-03), hints, ear-note by MIDI, enharmonic quiz-input, quiz-input from a key, play-notes marks, **unlocking audio autoplays nothing; Next autoplays only the engaged exercise** (BUG-07), reflect min-words + journal, play-chord arpeggiated, build-chord toggle/Clear/octaves. **/dev/demo**: all 31 blocks answered right and (fresh page) wrong, incl. `ear-tempo`, `ear-meter`, `ear-rhythm` grid |
+| 5 | Input | `input.spec.ts` | mouse / touch / QWERTY / MIDI input as before; **focus**: exactly one exercise has input focus, clicking or tabbing into another moves it, MIDI and QWERTY reach only the focused exercise, nothing recorded for the others (BUG-02) |
+| 6 | Progress / SRS | `progress.spec.ts` | persistence across reload + server restart, Dashboard Continue (incl. BUG-04), SRS card due next session, Practice review, lapse |
+| 7 | **Practice + warm-up** | `practice.spec.ts` (new) | cards earned by finishing ear exercises in lessons (UI); Practice: new tags, level tag, lesson title link, 5 items per card, per-type session summary, reps / due sessions, "Practice more" → nothing due; **adaptive**: correct streak → "harder +1" next session with one more interval to choose from, misses → back to standard → "easier -1", lapses recorded; **warm-up**: hidden without cards, offered with a card, Skip, Start (3 items, timer, card n/m), done once per lesson, hidden when nothing is due; warm-up owns note input (MIDI answers it, not the lesson's play-notes) and hands focus back |
+| 8 | **micro-DAW** | `daw.spec.ts` (rewritten) | transport (play schedules notes, playhead moves, stop, loop region + looping audio, metronome, BPM, time signature); tracks (add with instrument, rename, change instrument, **mute/solo decide which instruments sound**, volume, delete, last track undeletable); piano roll (draw, move, resize, right-click delete, Del, chord stamp); **drum lanes** (named lanes, drawing writes kick/snare/hihat, plays); undo/redo (buttons, Ctrl+Z/Y/Shift+Z, redo cleared by an edit, track add); **record** from fake MIDI with a 1-bar count-in (count-in note ignored, 4 notes within ±60 ticks, lengths, one undo removes the take); input quantize 1/4 snaps a sloppy take; Quantize command; **autosave** to `/api/projects` + reload via `?project=`, flush on leave, Open… list, unknown project message; **export .mid** (download event → independent SMF parse: format 1, 3 tracks, tempo, time sig, notes, drums on channel 10); **import .mid** (roundtrip + broken file error); **shortcuts** (arrows, Shift+arrows, Ctrl+D, Ctrl+A, Del, Esc, Space, Enter; not while typing); live notes through the armed track's instrument; **phone 390×844**: no page overflow, tap targets inside the screen, tap play/stop, tap-tap opens a clip, tap draws a note |
+| 9 | **daw-task** | `daw-task.spec.ts` (new) | in-lesson embed: project created under `task-<lesson>-<ex>` without console 404, Check lists every predicate ✓/✗ with "n/N checks passed", partial Submit → scored share of checks, melody **drawn in the embedded piano roll** → all ✓ → Submit "All N checks passed", first attempt's score stands, autosave, summary after Finish, reload keeps the work, Start over (+ undo); **projectRef**: project continued across two lessons (both ways), bass track added in the embed, self-check counts in the score; **timerMin**: `page.clock` countdown 2:00 → 1:30 → "soon" → "Time's up", Submit still allowed, restart, kept across reload; 6 curriculum daw-tasks render + Check |
+| 10 | API | `api.spec.ts` | every route; BUG-05 404s; malformed body 400 before the unknown-id 404; `GET /api/projects/:id?ifExists=1` → 200 null / the project |
+| 11 | Accessibility | `a11y.spec.ts` | axe WCAG 2.0/2.1 A+AA on 8 pages + **/daw while editing** (roll open, 2 tracks, loop), **/practice with a card**, **lesson with a daw-task embed**; Tab reachability; role=status; keyboard names |
+| 12 | Responsive / LAN / Settings | `responsive.spec.ts`, `lan.spec.ts`, `settings.spec.ts` | as before (BUG-06 regression now a plain test); settings list all 9 instruments |
 
-## Exercise types: rendered component vs "coming soon" (all 154 lessons, 980 exercise blocks)
+## Exercise rendering across the curriculum
 
-**228 real · 752 coming soon · 0 broken.** 8 of 27 types implemented.
+**980 exercise blocks in 154 lessons: 980 real components · 0 coming soon · 0 broken** (all 29 types implemented; regenerated every run in
+`e2e/artifacts/render-stats.json`).
 
-| type | real | coming soon | broken | lessons using it |
-|---|---:|---:|---:|---:|
-| `daw-task` | 0 | 145 | 0 | 102 |
-| `play-melody` | 0 | 106 | 0 | 84 |
-| `ear-progression` | 0 | 79 | 0 | 65 |
-| `quiz` | 69 | 0 | 0 | 69 |
-| `play-chord` | 0 | 57 | 0 | 53 |
-| `ear-melody` | 0 | 53 | 0 | 49 |
-| `reflect` | 0 | 47 | 0 | 45 |
-| `ear-chord` | 44 | 0 | 0 | 41 |
-| `ear-rhythm` | 0 | 40 | 0 | 37 |
-| `listen` | 0 | 39 | 0 | 39 |
-| `rhythm-tap` | 0 | 35 | 0 | 29 |
-| `ear-note` | 31 | 0 | 0 | 28 |
-| `ear-scale` | 0 | 30 | 0 | 29 |
-| `ear-bass` | 0 | 29 | 0 | 26 |
-| `ear-interval` | 27 | 0 | 0 | 19 |
-| `quiz-input` | 24 | 0 | 0 | 24 |
-| `build-chord` | 0 | 22 | 0 | 22 |
-| `roman-analysis` | 0 | 22 | 0 | 21 |
-| `play-scale` | 0 | 18 | 0 | 15 |
-| `play-notes` | 15 | 0 | 0 | 13 |
-| `ear-octave` | 10 | 0 | 0 | 6 |
-| `build-interval` | 0 | 9 | 0 | 7 |
-| `read-note` | 8 | 0 | 0 | 5 |
-| `ear-chord-root` | 0 | 8 | 0 | 7 |
-| `build-scale` | 0 | 7 | 0 | 7 |
-| `read-rhythm` | 0 | 3 | 0 | 3 |
-| `key-signature` | 0 | 3 | 0 | 2 |
+## Per-exercise-type coverage
 
-(Regenerated on every run: `e2e/artifacts/render-stats.json` and the table printed at the end of `npm run test:e2e`.)
+"Generic" = the 7 per-type checks of item 4 on the first lesson using the type; "modes" = extra answer modes (3 checks each: correct, wrong + retry,
+full set). Answer method = how the e2e answerer drives the real UI.
 
-## Bugs
+| type | content blocks | primary use | modes covered in lessons | /dev/demo blocks | answer method | timing checks |
+|---|---:|---|---|---:|---|---|
+| `ear-note` | 31 | w03-l2#e3 | degree (+ answered by MIDI) | 1 | choice button; MIDI note (focused) | – |
+| `ear-octave` | 10 | w01-l1#e4 | which-octave, same-or-different | 1 | choice | – |
+| `ear-interval` | 27 | w02-l2#e5 | – | 1 | choice | – |
+| `ear-chord` | 44 | w06-l2#e4 | – | 1 | choice | – |
+| `ear-chord-root` | 8 | w11-l1#e6 | play, name | 1 | MIDI root (any octave) / choice | – |
+| `ear-scale` | 30 | w09-l1#e1 | – | 1 | choice | – |
+| `ear-progression` | 79 | w08-l1#e2 | generated | 1 | palette → slots → Check (wrong = every slot wrong) | – |
+| `ear-melody` | 53 | w01-l3#e4 | play, degrees | 1 | MIDI play-back (octave-free) / palette slots | – |
+| `ear-rhythm` | 40 | w04-l1#e4 | choose, tap | 3 (choose, tap, grid) | notation choice / timed taps / drum-grid cells | in time 100 % vs late |
+| `ear-bass` | 29 | w10-l3#e4 | play | 1 | MIDI play-back / palette slots (demo) | – |
+| `ear-tempo` | 0 | – (demo only) | – | 1 | BPM field (wrong = beyond 3× tolerance) | – |
+| `ear-meter` | 0 | – (demo only) | – | 1 | choice | – |
+| `play-notes` | 15 | w01-l1#e2 | – | 1 | on-screen keys / MIDI | – |
+| `play-scale` | 18 | w03-l1#e3 (timed) | timed (untimed on demo) | 1 | timed MIDI performance / notes in order | in time vs late |
+| `play-chord` | 57 | w06-l1#e3 | sequence, full | 1 | MIDI chord held (settle), also arpeggiated | – |
+| `play-melody` | 106 | w01-l2#e6 | solo, backing | 1 | timed MIDI performance | in time vs late; wrong pitches < 50 % |
+| `rhythm-tap` | 35 | w02-l3#e1 | notation, dictation | 1 | timed taps (MIDI → tap) | in time vs late; half the taps missing |
+| `build-chord` | 22 | w06-l1#e2 | symbol, roman | 1 | MIDI toggles pitch classes → Check | – |
+| `build-scale` | 7 | w03-l1#e2 | – | 1 | MIDI toggles → Check | – |
+| `build-interval` | 9 | w02-l2#e4 | – | 1 | MIDI target note | – |
+| `read-note` | 8 | w04-l3#e1 | name, play | 2 (+ interval) | choice / keys / interval choice | – |
+| `read-rhythm` | 3 | w04-l2#e3 | – | 1 | timed taps | in time vs late |
+| `quiz` | 69 | w01-l1#e1 | – | 1 | choice / multi + Check | – |
+| `quiz-input` | 24 | w02-l1#e3 | – | 1 | text field (+ enharmonic, + from a key) | – |
+| `key-signature` | 3 | w07-l1#e2 | staff/name, name/count | 1 | choice | – |
+| `roman-analysis` | 22 | w06-l3#e2 | – | 1 | palette slots | – |
+| `daw-task` | 145 | w02-l3#e7 | + fixture: projectRef, timerMin, custom self-check | 0 | project via the DAW store (generic) / **drawn in the embedded piano roll** (daw-task.spec) → Submit | timer via `page.clock` |
+| `listen` | 39 | w03-l1#e5 | questions | 1 | choice (demo: "I've listened") | – |
+| `reflect` | 47 | w01-l1#e6 | – | 1 | textarea → Save (no wrong answer) | – |
 
-Each is pinned by a `test.fail()` test; when it is fixed that test starts "unexpectedly passing" — remove the `test.fail()` then.
+## Bugs found and fixed in this round
 
-### BUG-02
-**High — keyboard input is global: playing into one exercise answers every other keyboard-driven exercise on the page.**
-`PlayNotes`, `ReadNote` (play), `ChoiceExercise` for `ear-note` (degree) and `QuizInput` (note) all use `useNoteInput` on the
-app-wide `NoteInputBus` with no notion of focus/active exercise. On-screen keys of exercise A, QWERTY and MIDI all feed every mounted exercise.
-* Repro: open `/lesson/w01-l1-welcome-and-setup`, play C4 on the keyboard of "Find middle C" (e2) → e3's played count moves and an attempt for e3 is
-  posted (`GET /api/progress` shows `exercises[...].e3`). Same for ear-note exercises answered by notes played elsewhere.
-* Expected: only the exercise the learner is working on receives notes. Actual: all of them do; wrong attempts are recorded, scores polluted.
-* Affected lessons (≥ 2 keyboard-driven exercises): w01-l1, w02-l1, w03-l2, w04-l3, w05-l3, w07-l1, w07-l2, w08-l1, w08-l2; every lesson mixing
-  ear-note with play-notes/read-note. Will get worse as play-scale/play-chord/play-melody/build-* land (and the DAW recorder).
-* Test: `input.spec.ts` › "notes played for one exercise do not answer another exercise on the same page".
-* Fix: an "active exercise" in the shell (focus/last interaction/in-viewport, one at a time) and `useNoteInput(handler, enabled && isActive)`.
+| id | severity | bug | before → after | files |
+|---|---|---|---|---|
+| BUG-08 | Medium | Every lesson with a `daw-task` looked up its not-yet-created project with `GET /api/projects/task-…`, which 404s → a console error on ~100 lessons (and on `/daw?project=<unknown>`) | `openProject` → `GET /api/projects/:id?ifExists=1` returns **200 `null`** when missing; the embed then creates it from the template (PUT) — no failed request | `apps/server/src/routes/projects.ts`, `apps/web/src/api/client.ts`, `apps/web/src/daw/persistence.ts`, unit test in `apps/server/test/app.test.ts`, `docs/ARCHITECTURE.md` |
+| BUG-09 | Medium | Pressing Start on a timed exercise (tap it back, play the melody…) within ~250 ms of the item appearing: the pending **autoplay** of the question started afterwards, replaced the take's count-in/backing and ended the take with **no notes → first attempt scored 0 %** | any pointer/focus interaction inside the exercise cancels a pending autoplay; found by the ear-rhythm tap full-set test (item 2 always 0/6 hits) | `apps/web/src/exercises/ExerciseShell.tsx` |
+| BUG-10 | Low | `/daw?project=<missing>`: the "Project … was not found — started a new one." message was wiped immediately, because the follow-up URL update re-ran the load and reset the status | the re-run for the project that is already open keeps the message | `apps/web/src/pages/Daw.tsx` |
+| BUG-11 | Low | `/daw` had no `<h1>` (every other page has one; screen-reader heading navigation) | visually hidden `<h1>DAW</h1>` (+ `.sr-only` utility) | `apps/web/src/pages/Daw.tsx`, `apps/web/src/styles/global.css` |
+| A11Y-02 | Serious (axe) | Piano-roll scroller (`.daw-roll-scroll`) was a scrollable region without keyboard access, on /daw and in every daw-task embed | `tabIndex=0`, `role="region"`, `aria-label="Piano roll: <clip>"` | `apps/web/src/daw/PianoRoll.tsx` |
+| BUG-12 | Low | DAW project name: clearing the field snapped back to "Untitled" at once, so a name could not be cleared and retyped | the field may be empty while typing; empty → "Untitled" on blur, and saves always send a name | `apps/web/src/daw/ProjectBar.tsx`, `apps/web/src/daw/persistence.ts` |
+| BUG-13 | Low | Since the BUG-05 fix, a malformed progress body with an unknown lesson id got **404** instead of **400** (existence checked before the body) | body validated first, then existence | `apps/server/src/routes/progress.ts`, unit test |
 
-### BUG-03
-**High — finishing any exercise remounts every block of the lesson: the result summary never shows and all exercises restart.**
-`LessonRenderer` builds its react-markdown `components` object (and `div`/`span`/… component functions) inside render, so every re-render of
-`LessonView` gives react-markdown new component types → React unmounts/remounts the whole body. `LessonView` re-renders on `onExerciseComplete`
-(local state) and on every progress-store `summary` change.
-* Repro: `/lesson/w01-l1-welcome-and-setup`, answer all 6 quiz questions, press Finish → the "100 % · Passed ✓ · Practice again" card flashes or
-  never appears; the quiz is back at "1 / 6" with a new random set; the in-progress item of every other exercise is reset too.
-  Also happens at page load when the progress summary arrives after the lesson (so an early tap can be lost; the suite waits for `networkidle` to avoid this race).
-* Server-side progress is still recorded (the POST happens before), and the Practice page is unaffected (it renders `ExerciseShell` directly).
-* Tests: `exercises.spec.ts` › "finishing a set shows the score summary…", "finishing one exercise does not reset progress in the other exercises…".
-* Fix: hoist `components` out of render (read `lessonId` through context) or `useMemo(() => components, [lessonId])`; memoise the `LessonContext` value.
+### Previously reported, re-verified fixed (tests now plain regression tests)
 
-### BUG-07
-**Medium — unlocking audio on a lesson autoplays every ear exercise at once.** Each `ExerciseShell` autoplays its item when `audioStarted`
-flips to true, so a lesson with N ear exercises starts N sequences within ~250 ms; each cancels the previous and the learner hears the exercise
-furthest down the page (usually off-screen). Repro: `/lesson/w01-l2-pitch-and-octaves`, tap the "Tap to enable audio" banner → 3 schedules in the
-audio log. Test: `exercises.spec.ts` › "unlocking audio on a lesson autoplays at most one exercise". Fix: autoplay only on item *change*
-(not on unlock), or only for the active/visible exercise.
+BUG-01 (sampled-piano 404) · BUG-02 (note input to every exercise → focused exercise only) · BUG-03 (lesson remount on finish) ·
+BUG-04 (Dashboard Continue) · BUG-05 (unknown lesson/exercise ids) · BUG-06 (Settings overflow on phones) · BUG-07 (autoplay on unlock;
+the test is now stricter: **0** sequences on unlock, and Next autoplays only the engaged exercise) · A11Y-01 (overflowing staff).
 
-### BUG-04
-**Medium — Dashboard "Continue lesson" ignores the lesson you were working on.** The hero uses `summary.nextLessonId` (first not-completed lesson
-in curriculum order) before `lastLessonId`; the label says "Continue lesson" whenever `lastLessonId` exists. Repro: fresh DB, answer an exercise in
-week 5 → Dashboard "Continue lesson" links to lesson 1. Expected: resume `lastLessonId` if not completed (or show both "Continue" and "Next up").
-Test: `progress.spec.ts` › "Dashboard "Continue" resumes the lesson the learner was last working on". File: `apps/web/src/pages/Dashboard.tsx`.
+## Open issues / observations (no failing test)
 
-### BUG-05
-**Low/Medium — the progress API accepts unknown lessons/exercises.** `POST /api/progress/lessons/<anything>/complete` returns 200 and increments
-`totals.lessonsCompleted` (can exceed the number of real lessons); `POST /api/progress/attempts` for a non-existent lesson is stored and becomes
-`lastLessonId`. Expected 404 (or 400). Tests: `api.spec.ts` › "completing an unknown lesson is rejected (404)", "attempts for unknown
-lessons/exercises are rejected". Fix: validate `lessonId` (and `exerciseId`) against `ContentStore` in `apps/server/src/routes/progress.ts`
-(also count only known lessons in `summary().totals`).
+* **Low — warm-up / Practice offer brand-new cards in the same session.** A card created by passing an ear exercise is due "next session",
+  but the warm-up (`srsDue(6, 1)`: up to 1 new card) and Practice (up to 5 new cards) show it immediately. CONTENT_SCHEMA says the warm-up
+  uses "due SRS cards … hidden when nothing is due". The suite pins the implemented behaviour (offered as `new`; hidden once nothing is due
+  or new). Decide whether a card learned minutes ago should be reviewed right away; if not, restrict new cards to `due_session <= session`.
+* **Risk (untested by content)** — two `daw-task`s sharing a `projectRef` **on the same page** would each autosave their own store to the
+  same project id (last writer wins). No lesson does this today; the fixture puts them in different lessons.
+* Other notes from the last report are resolved: lesson bodies no longer add a second `<h1>` (the renderer demotes `# Title`), Practice
+  links show lesson titles (asserted in progress/practice specs).
 
-### BUG-06
-**Low — Settings page scrolls horizontally on phones.** At 390 px the custom-range row (`Lowest note` / `Highest note` inputs + Apply) does not wrap
-(right edge ≈ 611 px) and the floating "Tap to enable audio" button pokes out (≈ 422 px). The top nav also stacks vertically and takes ~280 px of height.
-Screenshot: `e2e/artifacts/screenshots/overflow-phone-settings.png`. Test: `responsive.spec.ts` › phone › "/settings: no horizontal page scroll".
-Fix: `flex-wrap: wrap` / `min-width: 0` on the `.row` with `.text-input.short`; constrain `.audio-gate` width.
+## Not verifiable in headless Chromium — please check on real devices
 
-### BUG-01
-**Low — console error on every audio unlock when no piano samples are installed (the default).** `AudioEngine.tryLoadSampledPiano` does
-`HEAD /samples/piano/C4.mp3`, which 404s; Chromium logs "Failed to load resource: 404". Harmless but noisy (and hides real errors in the console).
-Test: `smoke.spec.ts` › "unlocking audio does not log a 404 for the optional sampled piano" (the generic console check ignores it via `KNOWN_CONSOLE_NOISE`).
-Fix: have the server expose sample availability (e.g. in `/api/health`) or build-time flag instead of probing.
-
-## Accessibility (axe-core, WCAG 2.0/2.1 A + AA)
-
-| page | serious/critical | other |
-|---|---|---|
-| `/`, `/curriculum`, `/lesson/w01-l1…`, `/practice`, `/settings`, `/daw` | none | none |
-| `/lesson/w08-l2-phase-1-review-and-ear-assessment` | **A11Y-01** (2 nodes) | – |
-| `/dev/demo` | **A11Y-01** (3 nodes) | – |
-
-### A11Y-01
-**Serious — `scrollable-region-focusable`: staff notation that overflows horizontally is a scroll container that keyboard users cannot reach**
-(`[data-testid="staff"]` with overflow; e.g. the `A4:w` read-note staff and wide example staffs). Fix: `tabIndex={0}` + `role="region"` +
-`aria-label="Notation"` on the Staff wrapper when it overflows, or wrap instead of scrolling. Tests: `a11y.spec.ts` (2 × `test.fail`).
-Details per page: `e2e/artifacts/a11y/*.json`.
-
-Other findings (not axe violations): lesson pages have **two `<h1>`** (header title + the lesson body's `# Title`) — demote the body heading or skip it
-in the renderer; Practice shows the raw lesson id as the "from" link text (use the title); on-screen keys are `role="button"` divs that cannot
-be focused or activated from the keyboard (acceptable since QWERTY/MIDI cover it, but worth an `aria-hidden`/hint decision).
-
-## Not verifiable / caveats
-
-* **Multi-touch under full phone emulation**: with `isMobile: true` the CDP `Input.dispatchTouchEvent` hit-test targets the wrong element for
-  touches after the first (reports `div.page` although `elementFromPoint` returns the key), so the multi-touch chord test runs on a
-  1024×768 touch screen instead (passes). Please spot-check two-finger chords on a real phone/tablet.
-* Audio is verified through the engine's hook (notes triggered on Tone instruments), not by analysing the output signal.
-* Real Web MIDI hardware is replaced by the shim; the insecure-context behaviour on a LAN IP is verified with the real browser API.
-
-## Flaky tests
-
-None observed across three consecutive full runs (4 and 8 workers). Known race avoided by design: BUG-03's late remount at page load — `goto()`
-waits for `networkidle` before interacting. If BUG-03 is fixed this wait can stay (cheap) or be dropped.
-
-## Suggested fixes (priority order)
-
-1. BUG-03 — memoise `LessonRenderer` components / context value (one-line class of fix, big UX win).
-2. BUG-02 — introduce an active-exercise notion for note input (needed before play-scale/play-chord/play-melody/build-* ship).
-3. BUG-07 — don't autoplay on audio unlock; autoplay only the active exercise on item change.
-4. BUG-04 — Dashboard: prefer `lastLessonId` when not completed.
-5. BUG-05 — validate lesson/exercise ids in progress routes.
-6. A11Y-01, BUG-06, BUG-01 — small CSS/markup fixes.
+* **Real audio output / latency**: audio is verified through the engine's log (notes triggered on Tone instruments), not by listening. Check
+  that the metronome, count-in and backing are audible and in sync on the target devices, and the sampled piano when installed.
+* **Timing against a real MIDI keyboard**: timed tests inject MIDI at exact `performance.now()` times; real USB-MIDI latency, Bluetooth
+  MIDI and audio output latency (`audioTimeToPerf` compensation) should be spot-checked (play along a metronome, check the timeline is
+  centred, not systematically late).
+* **Hardware Web MIDI**: device enumeration, hot-plug and multiple devices are verified against the shim only; the insecure-context message on
+  a LAN IP is verified with the real API.
+* **Multi-touch on phones/tablets**: two-finger chords and DAW touch gestures (drag notes / resize with a finger, pinch not supported) —
+  touch *taps* are tested at phone size, drags only with a mouse. `isMobile: true` emulation mis-targets second touches (see previous report).
+* **iOS Safari audio unlock** (AudioContext resumed inside the gesture) and Safari's lack of Web MIDI.
+* **Downloads on mobile browsers** (`.mid` export uses a blob link; verified via Playwright's download event on desktop Chromium only).
 
 ## For the developers landing new work
 
-* **New exercise type**: nothing to do for rendering/reveal/finish coverage — `exercises.spec.ts` picks it up from `content/` and stops skipping it.
-  Add an entry to `ANSWERERS` in `e2e/helpers/exercises.ts` to enable the answer/score/pass/SRS tests. Keep `data-testid="exercise-<id>"` + `data-type`
-  on the shell and `.feedback.ok/.bad`, `.choice-grid button`, the Reveal/Next buttons and `aria-label="progress"` — the helpers rely on them.
-* **Practice page**: `progress.spec.ts` expects "Nothing due right now", "Check again", "Card X of Y", "Session done — N card(s) reviewed…";
-  update those strings in one place if the page is redesigned.
-* **DAW**: fill the `micro-DAW` describe in `e2e/daw.spec.ts` (it auto-activates when the placeholder text disappears). The audio log records
-  `schedule` starts and each `scheduled` note, and `window.__fakeMidi` can drive recording.
+* **New exercise type**: add an entry to `ANSWERERS` in `e2e/helpers/exercises.ts` (the generic tests fail with "ANSWERERS has an entry for
+  <type>" otherwise) and, if it has answer modes, a line in `VARIANT` in `exercises.spec.ts`. Keep `data-testid="exercise-<id>"` +
+  `data-type`, `.feedback.ok/.bad`, `.choice-grid button`, Reveal/Next, `aria-label="progress"`, `perf-start`/`perf-stop`/`tap-pad`,
+  and the `input-active` class on the focused exercise.
+* **DAW**: helpers in `e2e/helpers/daw.ts`; selectors are the accessible names (Transport toolbar, "Piano roll grid", Mute/Solo/Arm titles).
+* **Fixture content**: add lessons under `e2e/fixture-content/<id>/lesson.md` for features the curriculum does not use yet.

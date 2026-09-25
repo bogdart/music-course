@@ -284,11 +284,11 @@ test.describe('Web MIDI (fake device)', () => {
 
 test.describe('input routing inside lessons', () => {
   test('notes played for one exercise do not answer another exercise on the same page', async ({ page, api }) => {
-    // BUG-02 (docs/QA_REPORT.md#bug-02): every keyboard-driven exercise subscribes to the global NoteInputBus, so
-    // playing into one play-notes exercise also feeds (and records attempts for) all others on the page.
-    test.fail();
+    // Regression for BUG-02 (fixed): every keyboard-driven exercise used to subscribe to the global NoteInputBus, so
+    // playing into one play-notes exercise also fed (and recorded attempts for) all others on the page.
     const lesson = lessons().find((l) => l.exercises.filter((e) => e.type === 'play-notes').length >= 2)!;
     const [a, b] = lesson.exercises.filter((e) => e.type === 'play-notes');
+    const beforeB = ((await (await api.get('/api/progress')).json()).exercises[lesson.id] ?? {})[b!.id]?.attempts ?? 0;
     await goto(page, `/lesson/${lesson.id}`);
     const { item } = await currentItem(page, a!.id);
     const sectionA = exerciseLocator(page, a!.id);
@@ -299,7 +299,46 @@ test.describe('input routing inside lessons', () => {
     await expect(sectionA.locator('.feedback')).toBeVisible();
     await page.waitForTimeout(500);
     const prog = await (await api.get('/api/progress')).json();
-    expect(prog.exercises[lesson.id]?.[b!.id], `exercise ${b!.id} must not receive notes played for ${a!.id}`).toBeUndefined();
+    expect(prog.exercises[lesson.id]?.[b!.id]?.attempts ?? 0, `exercise ${b!.id} must not receive notes played for ${a!.id}`).toBe(beforeB);
     await expect(exerciseLocator(page, b!.id).getByText(/Played: 0\//)).toBeVisible();
+  });
+
+  test('note input follows focus: one exercise holds it, clicking / tabbing into another moves it (MIDI and QWERTY)', async ({ page, api }) => {
+    const lesson = lessons().find((l) => l.id === 'w01-l1-welcome-and-setup')!;
+    const aId = 'e3'; // play C3 C4 C5
+    const bId = 'e2'; // play C4
+    const before = (await (await api.get('/api/progress')).json()).exercises[lesson.id] ?? {};
+    await goto(page, `/lesson/${lesson.id}`);
+    const A = exerciseLocator(page, aId);
+    const B = exerciseLocator(page, bId);
+    await expect(page.locator('section.exercise.input-active')).toHaveCount(1);
+    await A.locator('.exercise-head h3').click();
+    await expect(A).toHaveClass(/input-active/);
+    await expect(B).not.toHaveClass(/input-active/);
+    await expect(page.locator('section.exercise.input-active')).toHaveCount(1);
+    const itemA = (await currentItem(page, aId)).item.midis as number[];
+    expect(itemA.length).toBeGreaterThanOrEqual(3);
+    await midi.noteOn(page, itemA[0]!, 90);
+    await midi.noteOff(page, itemA[0]!);
+    await expect(A.getByText(`Played: 1/${itemA.length}`)).toBeVisible();
+    await expect(B.getByText('Played: 0/1')).toBeVisible();
+    // click B: QWERTY now goes to B only (z = C4)
+    await B.locator('.exercise-head h3').click();
+    await expect(B).toHaveClass(/input-active/);
+    await expect(A).not.toHaveClass(/input-active/);
+    await page.keyboard.press('z');
+    await expect(B.locator('.feedback.ok')).toBeVisible();
+    await expect(A.getByText(`Played: 1/${itemA.length}`)).toBeVisible();
+    // tabbing into A (keyboard focus) gives it input focus back
+    await A.getByRole('button', { name: 'Reveal' }).focus();
+    await expect(A).toHaveClass(/input-active/);
+    await midi.noteOn(page, itemA[1]!, 90);
+    await midi.noteOff(page, itemA[1]!);
+    await expect(A.getByText(`Played: 2/${itemA.length}`)).toBeVisible();
+    await page.waitForTimeout(300);
+    const prog = await (await api.get('/api/progress')).json();
+    // (other tests in this file may have answered these exercises before: compare with the snapshot)
+    expect(prog.exercises[lesson.id]?.[aId]?.attempts ?? 0, `${aId} has not been answered yet`).toBe(before[aId]?.attempts ?? 0);
+    expect(prog.exercises[lesson.id]?.[bId]).toMatchObject({ attempts: (before[bId]?.attempts ?? 0) + 1, correct: (before[bId]?.correct ?? 0) + 1 });
   });
 });

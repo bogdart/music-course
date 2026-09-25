@@ -10,7 +10,8 @@
 import {
   PPQ, quantizeTick, ticksPerBar, trackNotes, type NoteEvent, type Project, type Snippet,
 } from '@music/core';
-import { audioNow, play as enginePlay, stopPlayback } from '../audio/engine';
+import { audioNow, audioTimeToPerf, play as enginePlay, stopPlayback } from '../audio/engine';
+import { e2eHook } from '../testHooks';
 import type { PlaybackHandle } from '../audio/types';
 import { noteInputBus, type NoteInputEvent } from '../input/NoteInputBus';
 import { findTrack, type DawStore } from './store';
@@ -136,7 +137,13 @@ export async function play(store: DawStore): Promise<void> {
     return;
   }
   s.handle = handle;
+  exposeClock(s, false);
   startRaf(s);
+}
+
+function exposeClock(s: Session, recording: boolean) {
+  const h = e2eHook();
+  if (h && s.handle) h.transport = { startPerf: audioTimeToPerf(s.handle.startTime), bpm: s.bpm, fromTick: s.startTick, recording };
 }
 
 export function togglePlay(store: DawStore): void {
@@ -230,6 +237,7 @@ export async function record(store: DawStore): Promise<void> {
     return;
   }
   s.handle = handle;
+  exposeClock(s, true);
   startRaf(s);
 }
 

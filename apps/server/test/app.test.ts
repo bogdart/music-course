@@ -81,6 +81,9 @@ describe('progress + SRS', () => {
     expect((await post('/api/progress/attempts', { ...bad, lessonId: 'w01-l1-welcome', exerciseId: 'nope' })).status).toBe(404);
     expect((await post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'zz', type: 'quiz', score: 1, passed: true, correct: 1, total: 1 })).status).toBe(404);
     expect((await post('/api/progress/lessons/w09-l9-nope/complete', {})).status).toBe(404);
+    // a malformed body is a 400 even when the lesson is unknown too (body validated before the lookup)
+    expect((await post('/api/progress/exercises/complete', { lessonId: 'w09-l9-nope', exerciseId: 'b', type: 'quiz', score: 2, passed: true })).status).toBe(400);
+    expect((await post('/api/progress/attempts', { ...bad, lessonId: 'w09-l9-nope', score: 'x' })).status).toBe(400);
     const c1 = await json<{ srsCardId: number | null }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 0.9, passed: true, correct: 9, total: 10 }));
     expect(c1.srsCardId).toBeGreaterThan(0);
     const c2 = await json<{ srsCardId: number | null }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e2', type: 'quiz', score: 1, passed: true, correct: 1, total: 1 }));
@@ -165,6 +168,12 @@ describe('projects', () => {
     expect((await post('/api/projects', { tracks: [] })).status).toBe(400);
     expect((await app.request(`/api/projects/${created.id}`, { method: 'DELETE' })).status).toBe(200);
     expect((await app.request(`/api/projects/${created.id}`)).status).toBe(404);
+    // "open or create" lookup: 200 null instead of a 404 (no failed request in the browser console)
+    const missing = await app.request(`/api/projects/${created.id}?ifExists=1`);
+    expect(missing.status).toBe(200);
+    expect(await missing.json()).toBeNull();
+    const again = await json<{ id: string }>(post('/api/projects', { name: 'Song 2', tracks: [] }));
+    expect(await json(app.request(`/api/projects/${again.id}?ifExists=1`))).toMatchObject({ name: 'Song 2' });
   });
 });
 

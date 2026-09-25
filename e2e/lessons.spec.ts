@@ -29,7 +29,12 @@ async function check(page: import('@playwright/test').Page, l: SourceLesson) {
 
   // ---- blocks ----
   const body = page.locator('.lesson-body');
-  await expect(body.getByTestId('example-block')).toHaveCount(l.blocks.example);
+  // top-level ```example blocks only: `listen` exercises render their own examples inside the exercise card
+  await expect(body.locator('[data-testid="example-block"]:not(section.exercise [data-testid="example-block"])')).toHaveCount(l.blocks.example);
+  for (const ex of l.exercises.filter((e) => e.type === 'listen')) {
+    const n = ex.spec.example ? 1 : ((ex.spec.examples as unknown[] | undefined)?.length ?? 0);
+    await expect(body.locator(`[data-testid="exercise-${ex.id}"] [data-testid="example-block"]`), `listen ${ex.id} examples`).toHaveCount(n);
+  }
   await expect(body.getByTestId('keyboard-block')).toHaveCount(l.blocks.keyboard);
   await expect(body.getByTestId('staff-block')).toHaveCount(l.blocks.staff);
   await expect(body.getByTestId('chords-block')).toHaveCount(l.blocks.chords);
@@ -109,7 +114,7 @@ async function check(page: import('@playwright/test').Page, l: SourceLesson) {
   }
   if (l.blocks.example) {
     await clearAudio(page);
-    const ex = body.getByTestId('example-block').first();
+    const ex = body.locator('[data-testid="example-block"]:not(section.exercise [data-testid="example-block"])').first();
     await ex.getByRole('button', { name: 'Play' }).click();
     await expectSound(page, { kinds: ['scheduled'], message: 'first example block plays' });
     const stop = ex.getByRole('button', { name: 'Stop' });

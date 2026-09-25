@@ -96,7 +96,7 @@ test('live instrument persists and is used for live notes', async ({ page, api }
   await expect.poll(async () => (await audioLog(page)).find((e) => e.kind === 'playNote')?.instrument).toBe('epiano');
   // every instrument is selectable
   const options = await page.getByLabel('Live instrument').locator('option').allTextContents();
-  expect(options.map((o) => o.replace(/\s*\(sampled\)/, '').trim())).toEqual(['piano', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'drums']);
+  expect(options.map((o) => o.replace(/\s*\(sampled\)/, '').trim())).toEqual(['piano', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'guitar', 'drums']);
 });
 
 test('key labels setting changes the on-screen keyboard labels and persists', async ({ page, api }) => {

@@ -24,6 +24,9 @@ export function projectRoutes(db: Db): Hono {
 
   r.get('/:id', (c) => {
     const row = db.prepare('SELECT * FROM projects WHERE id = ?').get(c.req.param('id')) as Row | undefined;
+    // `?ifExists=1`: "open or create" lookups (daw-task, /daw?project=) get 200 null instead of a 404,
+    // so a not-yet-created project does not log a failed request in the browser console
+    if (!row && c.req.query('ifExists') !== undefined) return c.json(null);
     if (!row) notFound('Project not found');
     return c.json(JSON.parse(row.data));
   });

@@ -94,9 +94,8 @@ test('Dashboard "Continue" goes to the first unfinished lesson after completing 
 });
 
 test('Dashboard "Continue" resumes the lesson the learner was last working on', async ({ page, api }) => {
-  // BUG-04 (docs/QA_REPORT.md#bug-04): the hero uses nextLessonId (first not-completed lesson in curriculum order)
-  // and ignores lastLessonId, so after working in week 5 "Continue lesson" sends you back to lesson 2.
-  test.fail();
+  // Regression for BUG-04 (fixed): the hero used nextLessonId (first not-completed lesson in curriculum order)
+  // and ignored lastLessonId.
   const target = all[12]!;
   const ex = target.exercises.find((e) => canAnswer(e.type))!;
   await api.post('/api/progress/attempts', { data: { lessonId: target.id, exerciseId: ex.id, type: ex.type, correct: true, score: 1 } });
@@ -115,10 +114,11 @@ test('SRS: passing an ear exercise creates a card that is due next session; Prac
   expect(card).toBeTruthy();
   const session0 = (await (await api.get('/api/srs/due')).json()).session as number;
   expect(card.dueSession).toBe(session0 + 1);
-  // same session → not due yet
+  // same session → not due yet as a review; the Practice page may still offer it as one of its (≤5) *new* cards
   expect((await (await api.get('/api/srs/due')).json()).cards).toEqual([]);
   await goto(page, '/practice');
-  await expect(page.getByText('Nothing due right now')).toBeVisible();
+  await expect(page.getByText(/Card 1 of \d+/)).toBeVisible();
+  await expect(page.locator('.tag.new')).toBeVisible();
 
   advanceSession(server.dbFile);
   const due = await (await api.get('/api/srs/due')).json();
@@ -130,13 +130,13 @@ test('SRS: passing an ear exercise creates a card that is due next session; Prac
   const attemptsBefore = (await progress(api)).exercises[l.id][e.id].attempts;
   await goto(page, '/practice');
   await expect(page.getByText(`Card 1 of ${due.cards.length}`)).toBeVisible();
-  await expect(page.getByRole('link', { name: l.id })).toBeVisible();
+  await expect(page.getByRole('link', { name: l.title })).toHaveAttribute('href', `/lesson/${l.id}`);
   const { total } = await currentItem(page, e.id);
   expect(total).toBe(Math.min(5, e.count ?? 5));
   await completeSet(page, e.id);
   // Practice keeps the shell mounted, so the summary shows here
   expect(await summaryText(page, e.id, 1000)).toContain('100%');
-  if (due.cards.length === 1) await expect(page.getByText(/Session done — 1 card\(s\) reviewed, average grade 5\.0 \/ 5/)).toBeVisible({ timeout: 5000 });
+  if (due.cards.length === 1) await expect(page.getByText(/Session done — 1 card\(s\) reviewed in \d+ min · all remembered/)).toBeVisible({ timeout: 5000 });
   await expect.poll(async () => ((await (await api.get('/api/srs/cards')).json()).cards as typeof cards).find((c) => c.id === card.id)?.reps).toBe(1);
   const after = ((await (await api.get('/api/srs/cards')).json()).cards as typeof cards).find((c) => c.id === card.id)!;
   expect(after.dueSession).toBe(session0 + 2);

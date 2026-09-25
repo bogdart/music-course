@@ -5,6 +5,11 @@ import type { DawStore } from './store';
 
 const DEBOUNCE_MS = 1000;
 
+/** The project as saved: a name is required by the server (the name field may be momentarily empty while typing). */
+function forSave(p: Project): Project {
+  return p.name.trim() ? p : { ...p, name: 'Untitled' };
+}
+
 /** Save now (PUT /api/projects/:id). */
 export async function saveNow(store: DawStore): Promise<void> {
   const st = store.getState();
@@ -12,7 +17,7 @@ export async function saveNow(store: DawStore): Promise<void> {
   const project = st.project;
   st.set({ saveState: 'saving' });
   try {
-    await api.saveProject(project);
+    await api.saveProject(forSave(project));
     // only mark saved if nothing changed meanwhile
     if (store.getState().project === project) store.getState().set({ saveState: 'saved', saveError: null });
     else store.getState().set({ saveState: 'dirty' });
@@ -44,7 +49,7 @@ export function useAutosave(store: DawStore): void {
       if (!timer) return;
       const p = store.getState().project;
       try {
-        void fetch(`/api/projects/${encodeURIComponent(p.id)}`, { method: 'PUT', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(p) });
+        void fetch(`/api/projects/${encodeURIComponent(p.id)}`, { method: 'PUT', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(forSave(p)) });
       } catch {
         /* ignore */
       }
@@ -61,7 +66,8 @@ export function useAutosave(store: DawStore): void {
 /** Load a project from the server into the store. Returns false if it doesn't exist. */
 export async function openProject(store: DawStore, id: string): Promise<boolean> {
   try {
-    const p = await api.project(id);
+    const p = await api.projectIfExists(id);
+    if (!p) return false;
     store.getState().load(p as Project, { persistent: true });
     return true;
   } catch (e) {

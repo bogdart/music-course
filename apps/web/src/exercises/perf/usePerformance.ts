@@ -3,6 +3,7 @@ import { beatSeconds, tickSeconds, type PerformanceSpec, type PlayedNote, type S
 import { audioTimeToPerf, play } from '../../audio/engine';
 import type { PlaybackHandle } from '../../audio/types';
 import { noteInputBus, type NoteInputEvent } from '../../input/NoteInputBus';
+import { e2eHook } from '../../testHooks';
 
 export type PerfPhase = 'idle' | 'countin' | 'recording' | 'done';
 
@@ -51,6 +52,8 @@ export function usePerformanceCapture(spec: PerformanceSpec, opts: { backing?: S
   const setP = (p: PerfPhase) => {
     phaseRef.current = p;
     setPhase(p);
+    const h = e2eHook();
+    if (h) h.perf = { t0: p === 'countin' ? null : t0.current, phase: p, bpm: spec.bpm, startedAt: performance.now() };
   };
 
   const beatSec = beatSeconds(spec.bpm, spec.timeSig);
@@ -142,6 +145,8 @@ export function usePerformanceCapture(spec: PerformanceSpec, opts: { backing?: S
     handle.current = h;
     // tick 0 (after the count-in) in performance.now() time
     t0.current = audioTimeToPerf(h.startTime);
+    const hook = e2eHook();
+    if (hook?.perf) hook.perf.t0 = t0.current;
     if (typeof requestAnimationFrame === 'function') raf.current = requestAnimationFrame(tick);
     // safety net if the engine never reports the end
     const total = (t0.current - performance.now()) / 1000 + endSec + 1.5;

@@ -298,7 +298,8 @@ POST /api/progress/lessons/:id/complete
 GET  /api/srs/due?limit=20[&newLimit=5]  → SrsDueDTO {session, cards} (newLimit: mix in never-reviewed cards)
 GET  /api/srs/cards                     → all cards
 POST /api/srs/review                    → {cardId, grade 0..5} → {card}
-GET/POST/PUT/DELETE /api/projects[/:id] → DAW projects (JSON blobs; GET list → ProjectSummaryDTO[])
+GET/POST/PUT/DELETE /api/projects[/:id] → DAW projects (JSON blobs; GET list → ProjectSummaryDTO[];
+                                           GET /:id?ifExists=1 → 200 null instead of 404 for "open or create")
 GET  /api/settings, PUT /api/settings   → Settings (partial PUT, validated): midiInput, keyboardRange, volume, liveInstrument, keyLabels, metronomeVolume, qwertyOctave
 ```
 

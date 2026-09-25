@@ -21,8 +21,8 @@ export function progressRoutes(progress: ProgressService): Hono {
     if (source !== 'lesson' && source !== 'practice') badRequest('"source" must be "lesson" or "practice"');
     const lessonId = str(b, 'lessonId', { max: 200 });
     const exerciseId = str(b, 'exerciseId', { max: 200 });
-    progress.assertKnown(lessonId, exerciseId);
-    const id = progress.recordAttempt({
+    // validate the whole body first (400), then that the lesson/exercise exists (404)
+    const attempt = {
       lessonId,
       exerciseId,
       type: str(b, 'type', { max: 50 }),
@@ -32,7 +32,9 @@ export function progressRoutes(progress: ProgressService): Hono {
       ...(b.durationMs !== undefined ? { durationMs: Math.round(num(b, 'durationMs', { min: 0 })!) } : {}),
       ...(b.itemIndex !== undefined ? { itemIndex: Math.round(num(b, 'itemIndex', { min: 0 })!) } : {}),
       source,
-    });
+    };
+    progress.assertKnown(lessonId, exerciseId);
+    const id = progress.recordAttempt(attempt);
     return c.json({ ok: true, id }, 201);
   });
 
@@ -40,14 +42,15 @@ export function progressRoutes(progress: ProgressService): Hono {
     const b = await jsonBody(c.req);
     const lessonId = str(b, 'lessonId', { max: 200 });
     const exerciseId = str(b, 'exerciseId', { max: 200 });
-    progress.assertKnown(lessonId, exerciseId);
-    const res = progress.completeExercise({
+    const input = {
       lessonId,
       exerciseId,
       type: str(b, 'type', { max: 50 }),
       score: num(b, 'score', { min: 0, max: 1 })!,
       passed: bool(b, 'passed'),
-    });
+    };
+    progress.assertKnown(lessonId, exerciseId);
+    const res = progress.completeExercise(input);
     return c.json({ ok: true, ...res });
   });
 

@@ -65,7 +65,7 @@ export function lessonDirs(): string[] {
   return readdirSync(join(CONTENT, 'lessons')).filter((d) => existsSync(join(CONTENT, 'lessons', d, 'lesson.md')));
 }
 
-function parse(id: string, week: number, src: string): SourceLesson {
+export function parse(id: string, week: number, src: string): SourceLesson {
   const fm = /^---\n([\s\S]*?)\n---\n/.exec(src);
   const front = fm?.[1] ?? '';
   const body = fm ? src.slice(fm[0].length) : src;
@@ -120,8 +120,13 @@ export const CATALOGUE_TYPES = [
   'ear-note', 'ear-octave', 'ear-interval', 'ear-chord', 'ear-chord-root', 'ear-scale', 'ear-progression',
   'ear-melody', 'ear-rhythm', 'ear-bass', 'play-notes', 'play-scale', 'play-chord', 'play-melody', 'rhythm-tap',
   'build-chord', 'build-scale', 'build-interval', 'read-note', 'read-rhythm', 'quiz', 'quiz-input',
-  'key-signature', 'roman-analysis', 'daw-task', 'listen', 'reflect',
+  'key-signature', 'roman-analysis', 'daw-task', 'listen', 'reflect', 'ear-tempo', 'ear-meter',
 ] as const;
+
+/** The /dev/demo fixture lesson (exercises every type client-side, nothing recorded). */
+export function demoLesson(): SourceLesson {
+  return parse('w01-l9-dev-demo', 1, readFileSync(join(ROOT, 'apps/web/src/lesson/__fixtures__/demo-lesson.md'), 'utf8'));
+}
 
 const PC: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
 /** Pitch class of a note name ("C#", "Bb4", "E#"), or NaN. */

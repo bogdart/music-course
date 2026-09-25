@@ -9,9 +9,10 @@ import { blankProject, isLessonProject, ProjectBar } from '../daw/ProjectBar';
 import { DawContext, getDawStore, type DawStore } from '../daw/store';
 
 /** Initial loads in flight, keyed by URL params (React StrictMode runs effects twice in dev). */
-const inflight = new Map<string, Promise<{ status: string | null; setUrl: boolean }>>();
+const inflight = new Map<string, Promise<{ status: string | null | undefined; setUrl: boolean }>>();
 
-async function initialLoad(store: DawStore, want: string | null, fromSnippet: boolean): Promise<{ status: string | null; setUrl: boolean }> {
+/** `status: undefined` = nothing was loaded (e.g. the URL was just updated to the current project): keep the message. */
+async function initialLoad(store: DawStore, want: string | null, fromSnippet: boolean): Promise<{ status: string | null | undefined; setUrl: boolean }> {
   try {
     const snippet = fromSnippet ? takePendingSnippet() : null;
     const st = store.getState();
@@ -24,6 +25,7 @@ async function initialLoad(store: DawStore, want: string | null, fromSnippet: bo
       await openNew(store, blankProject());
       return { status: `Project "${want}" was not found — started a new one.`, setUrl: true };
     }
+    if (want && want === st.project.id && st.persistent) return { status: undefined, setUrl: false };
     if (!st.persistent) {
       const list = (await api.projects()).filter((p) => !isLessonProject(p.id));
       if (list[0]) await openProject(store, list[0].id);
@@ -52,7 +54,8 @@ export function Daw() {
     }
     job.then((r) => {
       if (cancelled) return;
-      setStatus(r.status);
+      // keep a "not found" message when the follow-up URL update re-runs this effect for the project just created
+      setStatus((cur) => (r.status !== undefined ? r.status : cur === 'Loading…' ? null : cur));
       if (r.setUrl && params.get('project') !== store.getState().project.id) setParams({ project: store.getState().project.id }, { replace: true });
     });
     return () => {
@@ -63,6 +66,7 @@ export function Daw() {
 
   return (
     <div className="page daw-page">
+      <h1 className="sr-only">DAW</h1>
       <DawContext.Provider value={store}>
         <ProjectBar onOpened={(id) => setParams({ project: id }, { replace: true })} />
       </DawContext.Provider>

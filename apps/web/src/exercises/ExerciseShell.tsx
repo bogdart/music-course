@@ -66,8 +66,15 @@ export function ExerciseShell(props: ExerciseShellProps) {
   const isActive = useExerciseFocus((s) => s.active === uid);
   // autoplay only after the learner has engaged with this exercise (practice cards: from the start)
   const engaged = useRef(mode === 'practice');
+  const autoplayTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const claim = useCallback(() => {
     engaged.current = true;
+    // the learner is already doing something here (e.g. pressed Start on a timed take): a pending autoplay would
+    // replace the take's count-in / backing and end the take with no notes
+    if (autoplayTimer.current) {
+      clearTimeout(autoplayTimer.current);
+      autoplayTimer.current = null;
+    }
     if (useExerciseFocus.getState().active !== uid) useExerciseFocus.getState().setActive(uid);
   }, [uid]);
   useEffect(() => {
@@ -110,7 +117,11 @@ export function ExerciseShell(props: ExerciseShellProps) {
     if (!item || !autoplay || !useAudioStore.getState().started || summary) return;
     if (!item.audio && !item.reference) return;
     if (!engaged.current || useExerciseFocus.getState().active !== uid) return;
-    const t = setTimeout(replay, 250);
+    const t = setTimeout(() => {
+      autoplayTimer.current = null;
+      replay();
+    }, 250);
+    autoplayTimer.current = t;
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item]);

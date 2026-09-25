@@ -9,6 +9,7 @@
  */
 import { test as base, expect, request as pwRequest, type APIRequestContext, type ConsoleMessage } from '@playwright/test';
 import { installShims, type FakeMidiInputInit } from './helpers/browser-shims';
+import { e2eContentDir } from './helpers/content-fixture';
 import { startServer, type ServerHandle } from './helpers/server';
 
 export interface ServerInfo {
@@ -21,6 +22,8 @@ export interface ServerInfo {
 
 interface Options {
   isolated: boolean;
+  /** isolated server with CONTENT_DIR = content/ + e2e/fixture-content (see helpers/content-fixture.ts) */
+  contentFixture: boolean;
   midiInputs: FakeMidiInputInit[];
   checkConsole: boolean;
   consoleAllow: RegExp[];
@@ -38,14 +41,15 @@ interface WorkerFixtures {
 
 /**
  * Console noise from known bugs, ignored by the generic console check (each has its own failing test).
- * BUG-01 (docs/QA_REPORT.md): the optional sampled-piano probe 404s on every audio unlock.
+ * Empty: BUG-01 (sampled-piano probe 404) is fixed.
  */
-export const KNOWN_CONSOLE_NOISE: RegExp[] = [/samples\/piano\/C4\.mp3/];
+export const KNOWN_CONSOLE_NOISE: RegExp[] = [];
 
 export const DEFAULT_MIDI: FakeMidiInputInit[] = [{ id: 'e2e-keys-1', name: 'E2E Keys' }];
 
 export const test = base.extend<Options & Fixtures, WorkerFixtures>({
   isolated: [false, { option: true }],
+  contentFixture: [false, { option: true }],
   midiInputs: [DEFAULT_MIDI, { option: true }],
   checkConsole: [true, { option: true }],
   consoleAllow: [[], { option: true }],
@@ -59,18 +63,20 @@ export const test = base.extend<Options & Fixtures, WorkerFixtures>({
     { scope: 'worker' },
   ],
 
-  server: async ({ isolated, isoServer }, use, testInfo) => {
+  server: async ({ isolated, contentFixture, isoServer }, use, testInfo) => {
     if (!isolated) {
       await use({ url: `http://127.0.0.1:${process.env.E2E_PORT}`, dbFile: process.env.E2E_SHARED_DB!, isolated: false, handle: null });
       return;
     }
+    const want = `${testInfo.file}|${contentFixture}`;
     if (!isoServer.handle) {
-      isoServer.handle = await startServer();
-      isoServer.file = testInfo.file;
-    } else if (isoServer.file !== testInfo.file) {
-      // new spec file in this worker → fresh DB
-      await isoServer.handle.restart({ freshDb: true });
-      isoServer.file = testInfo.file;
+      isoServer.handle = await startServer(contentFixture ? { env: { CONTENT_DIR: e2eContentDir() } } : {});
+      isoServer.file = want;
+    } else if (isoServer.file !== want) {
+      // new spec file in this worker → fresh DB (and the right content dir)
+      await isoServer.handle.stop();
+      isoServer.handle = await startServer(contentFixture ? { env: { CONTENT_DIR: e2eContentDir() } } : {});
+      isoServer.file = want;
     }
     const h = isoServer.handle;
     await use({ url: h.url, dbFile: h.dbFile, isolated: true, handle: h });

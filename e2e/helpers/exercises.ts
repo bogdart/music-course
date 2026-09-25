@@ -35,6 +35,12 @@ async function clickChoiceAt(section: Locator, i: number) {
   await section.locator('.choice-grid button').nth(i).click();
 }
 
+/** Give note-input focus to this exercise (only the focused exercise hears MIDI / QWERTY / on-screen notes). */
+export async function claimFocus(section: Locator): Promise<void> {
+  await section.locator('.exercise-head h3').click();
+  await expect(section).toHaveClass(/input-active/);
+}
+
 async function pressNotes(page: Page, section: Locator, notes: number[]) {
   for (const n of notes) {
     const onScreen = await section.locator(`[data-midi="${n}"]`).count();
@@ -46,6 +52,127 @@ async function pressNotes(page: Page, section: Locator, notes: number[]) {
   }
 }
 
+/** Play notes one after another on the fake MIDI keyboard (the exercise must have input focus). */
+export async function midiNotes(page: Page, notes: number[]): Promise<void> {
+  for (const n of notes) {
+    await midi.noteOn(page, n, 100);
+    await midi.noteOff(page, n);
+  }
+}
+
+// ---------------- timing ----------------
+
+export const PPQ = 480;
+export interface PerfTarget { midi: number | null; startTick: number; durationTicks: number; voice?: number }
+export interface PerfSpec {
+  timed: boolean; bpm: number; timeSig: { num: number; den: number }; countIn: number; targets: PerfTarget[];
+  lengthTicks: number; pitchMode: string; input: 'notes' | 'taps'; tolerance: number;
+}
+export const tickSec = (tick: number, bpm: number) => (tick / PPQ) * (60 / bpm);
+
+/** Timing tolerance of a spec in seconds (same formula as packages/core scorePerformance). */
+export function toleranceSec(spec: PerfSpec): number {
+  const beat = 60 / spec.bpm / (spec.timeSig.den / 4);
+  const onsets = [...new Set(spec.targets.map((t) => Math.round(tickSec(t.startTick, spec.bpm) * 1000)))].sort((a, b) => a - b);
+  let minGap = Infinity;
+  for (let i = 1; i < onsets.length; i++) minGap = Math.min(minGap, (onsets[i]! - onsets[i - 1]!) / 1000);
+  return Math.max(0.04, Math.min(spec.tolerance * beat, minGap * 0.45));
+}
+
+/** A lateness (in beats) that is clearly outside the tolerance but still closer to its own target than to the next one. */
+export function lateShiftBeats(spec: PerfSpec): number {
+  const beat = 60 / spec.bpm / (spec.timeSig.den / 4);
+  const tol = toleranceSec(spec);
+  const onsets = [...new Set(spec.targets.map((t) => tickSec(t.startTick, spec.bpm)))].sort((a, b) => a - b);
+  let minGap = Infinity;
+  for (let i = 1; i < onsets.length; i++) minGap = Math.min(minGap, onsets[i]! - onsets[i - 1]!);
+  return Math.min(1.6 * tol, 0.48 * minGap) / beat;
+}
+
+export interface PerformOptions {
+  /** shift every note by this many beats (positive = late) */
+  shiftBeats?: number;
+  /** transpose every note (semitones) — a wrong-pitch performance */
+  transpose?: number;
+  /** play only the targets for which this returns true */
+  only?: (i: number) => boolean;
+  /** let the take run to its natural end instead of pressing Stop right after the last note (default false) */
+  waitForEnd?: boolean;
+}
+
+/**
+ * Perform a PerformanceSpec through the real UI: press Start, wait for the count-in clock (e2e hook `perf.t0`), then
+ * schedule fake-MIDI note-ons *inside the page* at the target times (so Playwright round-trips do not add jitter).
+ * Untimed specs just get the notes in order. Waits until the take has ended (answer submitted).
+ */
+export async function perform(page: Page, section: Locator, spec: PerfSpec, opts: PerformOptions = {}): Promise<void> {
+  await page.evaluate(() => {
+    (window as any).__MC_E2E__.perf = undefined;
+  });
+  await section.getByTestId('perf-start').click();
+  const t0 = await pollPerfT0(page);
+  const beat = 60 / spec.bpm / (spec.timeSig.den / 4);
+  const notes = spec.targets
+    .map((t, i) => ({ t, i }))
+    .filter(({ i }) => !opts.only || opts.only(i))
+    .map(({ t }) => ({
+      midi: (t.midi ?? 60) + (opts.transpose ?? 0),
+      at: spec.timed ? tickSec(t.startTick, spec.bpm) + (opts.shiftBeats ?? 0) * beat : 0,
+      holdMs: spec.timed ? Math.max(30, Math.min(tickSec(t.durationTicks, spec.bpm) * 1000 * 0.6, 250)) : 20,
+    }));
+  if (!spec.timed) {
+    for (const n of notes) {
+      await midi.noteOn(page, n.midi, 100);
+      await midi.noteOff(page, n.midi);
+    }
+    if (notes.length < spec.targets.length) await section.getByTestId('perf-stop').click();
+    return;
+  }
+  await page.evaluate(
+    ({ t0, notes }) => {
+      const fm = (window as any).__fakeMidi;
+      for (const n of notes) {
+        const wait = t0 + n.at * 1000 - performance.now();
+        setTimeout(() => {
+          fm.noteOn(n.midi, 100);
+          setTimeout(() => fm.noteOff(n.midi), n.holdMs);
+        }, Math.max(0, wait));
+      }
+    },
+    { t0, notes },
+  );
+  const perfEl = section.locator('.perform');
+  if (!opts.waitForEnd) {
+    // press Stop once the last note has been released (the take is submitted as played)
+    const lastMs = Math.max(0, ...notes.map((n) => n.at * 1000 + n.holdMs)) + 250;
+    await page.waitForFunction((t) => performance.now() > t, t0 + lastMs, { timeout: 60_000 });
+    if ((await perfEl.getAttribute('data-phase')) !== 'done') await section.getByTestId('perf-stop').click().catch(() => {});
+  }
+  // otherwise the take ends by itself after lengthTicks (engine onEnd / safety timer)
+  const endMs = t0 + tickSec(spec.lengthTicks, spec.bpm) * 1000;
+  const now = await page.evaluate(() => performance.now());
+  await expect(perfEl).toHaveAttribute('data-phase', 'done', { timeout: Math.max(0, endMs - now) + 6000 });
+}
+
+async function pollPerfT0(page: Page): Promise<number> {
+  let t0: number | null = null;
+  await expect
+    .poll(
+      async () => {
+        t0 = await page.evaluate(() => {
+          const p = (window as any).__MC_E2E__.perf;
+          return p && (p.phase === 'countin' || p.phase === 'recording') && typeof p.t0 === 'number' ? (p.t0 as number) : null;
+        });
+        return t0 !== null;
+      },
+      { message: 'performance capture started (count-in clock)', timeout: 10_000, intervals: [50] },
+    )
+    .toBe(true);
+  return t0!;
+}
+
+// ---------------- answerers ----------------
+
 type Answerer = (page: Page, section: Locator, it: ShellItem['item'], correct: boolean) => Promise<void>;
 
 const choiceByValue: Answerer = async (_page, section, it, correct) => {
@@ -55,11 +182,150 @@ const choiceByValue: Answerer = async (_page, section, it, correct) => {
   await clickChoiceAt(section, idx);
 };
 
+/** Fill answer slots from the palette (ear-progression, roman-analysis, ear-melody degrees, ear-bass names). */
+async function fillSlots(section: Locator, palette: { value: string; label: string }[], values: string[], correct: boolean) {
+  // wrong: every slot wrong (a single wrong slot can still score above the pass mark)
+  const wanted = correct ? [...values] : values.map((v) => palette.find((p) => p.value !== v)!.value);
+  const slots = section.locator('.slot-answer');
+  if (await slots.getByRole('button', { name: 'Clear' }).isVisible()) await slots.getByRole('button', { name: 'Clear' }).click();
+  for (const v of wanted) {
+    const i = palette.findIndex((p) => p.value === v);
+    expect(i, `palette value ${v}`).toBeGreaterThanOrEqual(0);
+    await slots.locator('.palette button').nth(i).click();
+  }
+  await slots.getByRole('button', { name: 'Check' }).click();
+}
+
+const perfAnswerer: Answerer = async (page, section, it, correct) => {
+  const spec = it.performance as PerfSpec;
+  // wrong: wrong pitches for note input; for taps, leave out the second half of the rhythm (missed notes)
+  if (correct) await perform(page, section, spec);
+  else if (spec.input === 'taps') await perform(page, section, spec, { only: (i) => i < Math.floor(spec.targets.length / 2) });
+  // wrong notes: the first few notes a semitone off, then Stop (the rest is missed)
+  else await perform(page, section, spec, { transpose: 1, only: (i) => i < 4 });
+};
+
+/** A project that passes the checks used by the curriculum's simple melody tasks (bars / note-count / in-key / range / starts-on / ends-on / quarters). */
+function dawSolutionNotes(it: Record<string, any>): { bars: number; notes: { midi: number; startTick: number; durationTicks: number; velocity: number }[] } {
+  const checks = (it.checks ?? []) as Record<string, any>[];
+  const barsCheck = checks.find((c) => c.kind === 'bars');
+  const bars = Math.max(1, barsCheck?.min ?? it.minBars ?? 4);
+  const nc = checks.find((c) => c.kind === 'note-count');
+  const n = Math.max(nc?.min ?? 0, Math.min(nc?.max ?? Infinity, bars * 4));
+  // C major, C4..C5, stepwise; starts and ends on the tonic
+  const scale = [60, 62, 64, 65, 67, 65, 64, 62];
+  const notes = Array.from({ length: n }, (_, i) => ({ midi: i === n - 1 ? 60 : scale[i % scale.length]!, startTick: i * PPQ, durationTicks: PPQ, velocity: 0.8 }));
+  return { bars, notes };
+}
+
+/** Put notes into the first track of a DAW store through its own actions (undo history + autosave apply). */
+export async function setDawNotes(page: Page, storeKey: string, notes: { midi: number; startTick: number; durationTicks: number; velocity: number }[], bars = 4) {
+  await page.evaluate(
+    ({ storeKey, notes, bars }) => {
+      const store = (window as any).__MC_E2E__.daw?.[storeKey];
+      if (!store) throw new Error(`no DAW store ${storeKey}`);
+      store.getState().mutate((p: any) => {
+        const t = p.tracks[0];
+        t.clips = [{ id: `e2e${Date.now().toString(36)}`, name: 'E2E', startTick: 0, lengthTicks: Math.max(bars, Math.ceil((notes.at(-1)?.startTick ?? 0) / 1920) + 1) * 1920, notes }];
+      });
+    },
+    { storeKey, notes, bars },
+  );
+}
+
+export function dawStoreKey(page: Page, section: Locator): Promise<string> {
+  return section.evaluate((el) => {
+    const id = el.getAttribute('data-testid')!.replace(/^exercise-/, '');
+    return `task:${location.pathname.split('/').pop()}:${id}`;
+  });
+}
+
+const dawTask: Answerer = async (page, section, it, correct) => {
+  await expect(section.locator('.daw-embed')).toBeVisible({ timeout: 15_000 });
+  await expect(section.getByText('Loading your project…')).toHaveCount(0);
+  const key = await dawStoreKey(page, section);
+  const sol = dawSolutionNotes(it);
+  await setDawNotes(page, key, correct ? sol.notes : [], sol.bars);
+  await section.getByRole('button', { name: 'Submit' }).click();
+};
+
 export const ANSWERERS: Record<string, Answerer> = {
   'ear-note': choiceByValue,
   'ear-octave': choiceByValue,
   'ear-interval': choiceByValue,
   'ear-chord': choiceByValue,
+  'ear-scale': choiceByValue,
+  'ear-meter': choiceByValue,
+  'key-signature': choiceByValue,
+  'ear-chord-root': async (page, section, it, correct) => {
+    if (it.answerKind === 'name') {
+      const choices = it.choices ?? [];
+      const idx = choices.findIndex((c) => (c.value === it.rootName) === correct);
+      return clickChoiceAt(section, idx);
+    }
+    await claimFocus(section);
+    await midiNotes(page, [48 + it.rootPc + (correct ? 12 : 1)]);
+  },
+  'ear-progression': (_p, section, it, correct) => fillSlots(section, it.palette, it.slots, correct),
+  'roman-analysis': (_p, section, it, correct) => fillSlots(section, it.palette, it.slots, correct),
+  'ear-melody': async (page, section, it, correct) => {
+    if (it.answerKind === 'play') {
+      await claimFocus(section);
+      return midiNotes(page, (it.midis as number[]).map((m) => m + 12 + (correct ? 0 : 1)));
+    }
+    return fillSlots(section, it.palette, it.slots ?? it.degrees, correct);
+  },
+  'ear-bass': async (page, section, it, correct) => {
+    if (it.answerKind === 'play') {
+      await claimFocus(section);
+      return midiNotes(page, (it.midis as number[]).map((m) => m + 24 + (correct ? 0 : 1)));
+    }
+    return fillSlots(section, it.palette, it.slots, correct);
+  },
+  'ear-rhythm': async (page, section, it, correct) => {
+    if (it.mode === 'tap') return perfAnswerer(page, section, it, correct);
+    if (it.mode === 'grid') {
+      const grid = it.grid as Record<string, boolean[]>;
+      if (correct) {
+        for (const [v, cells] of Object.entries(grid)) {
+          for (let i = 0; i < cells.length; i++) {
+            const cell = section.getByRole('button', { name: `${v} step ${i + 1}`, exact: true });
+            if ((await cell.getAttribute('aria-pressed')) !== String(cells[i])) await cell.click();
+          }
+        }
+      }
+      // wrong: submit the grid untouched (empty on a fresh item)
+      return section.locator('.drum-grid-wrap').getByRole('button', { name: 'Check' }).click();
+    }
+    const choices = it.choices ?? [];
+    const idx = choices.findIndex((c) => (c.value === it.answer) === correct);
+    await section.locator('.rhythm-choice').nth(idx).click();
+  },
+  'ear-tempo': async (_page, section, it, correct) => {
+    const bpm = correct ? it.bpm : it.bpm + 3 * it.tolerance + 9;
+    await section.getByLabel('BPM').fill(String(bpm));
+    await section.locator('form.ear-tempo').getByRole('button', { name: 'Check' }).click();
+  },
+  'play-scale': perfAnswerer,
+  'play-melody': perfAnswerer,
+  'rhythm-tap': perfAnswerer,
+  'read-rhythm': perfAnswerer,
+  'play-chord': async (page, section, it, correct) => {
+    await claimFocus(section);
+    const notes = (it.midis as number[]).map((m) => m + (correct ? 0 : 1));
+    for (const n of notes) await midi.noteOn(page, n, 100);
+    // submitted after the chord is held unchanged for a moment (350 ms)
+    await expect(section.locator('.feedback')).toBeVisible({ timeout: 5000 });
+    for (const n of notes) await midi.noteOff(page, n);
+  },
+  'build-chord': buildNotes,
+  'build-scale': buildNotes,
+  'build-interval': async (page, section, it, correct) => {
+    await claimFocus(section);
+    let n = correct ? it.target : it.target + 1;
+    if (n === it.root) n++;
+    await midiNotes(page, [n]);
+  },
   quiz: async (_page, section, it, correct) => {
     const right: number[] = it.correct;
     const n = (it.choices ?? []).length;
@@ -85,22 +351,70 @@ export const ANSWERERS: Record<string, Answerer> = {
     await section.getByRole('button', { name: 'Check' }).click();
   },
   'read-note': async (page, section, it, correct) => {
+    if (it.intervalMode) {
+      const choices = it.choices ?? [];
+      return clickChoiceAt(section, choices.findIndex((c) => (c.value === it.interval) === correct));
+    }
     if (it.answerKind === 'name') {
       const choices = it.choices ?? [];
       const idx = choices.findIndex((c) => (pcOf(c.value) === it.midi % 12) === correct);
       await clickChoiceAt(section, idx);
     } else {
+      await claimFocus(section);
       await pressNotes(page, section, [correct ? it.midi : it.midi + 2]);
     }
   },
   'play-notes': async (page, section, it, correct) => {
+    await claimFocus(section);
     const targets: number[] = it.midis;
     await pressNotes(page, section, correct ? targets : targets.map((m) => m + 1));
   },
+  listen: async (_page, section, it, correct) => {
+    const q = it.question as { correct: number[]; multi: boolean; choices: string[] } | null;
+    if (!q) {
+      expect(correct, 'listen without questions has no wrong answer').toBe(true);
+      return section.getByRole('button', { name: "✓ I've listened" }).click();
+    }
+    const wrongIdx = q.choices.findIndex((_, i) => !q.correct.includes(i));
+    if (q.multi) {
+      for (const i of correct ? q.correct : [wrongIdx]) await section.locator('.choice-grid button').nth(i).click();
+      return section.locator('.listen').getByRole('button', { name: 'Check' }).click();
+    }
+    await section.locator('.choice-grid button').nth(correct ? q.correct[0]! : wrongIdx).click();
+  },
+  reflect: async (_page, section, it, correct) => {
+    expect(correct, 'reflect has no wrong answer (Save is disabled below minWords)').toBe(true);
+    const words = Array.from({ length: Math.max(1, it.minWords) + 2 }, (_, i) => `word${i}`).join(' ');
+    await section.getByLabel('Your reflection').fill(words);
+    await section.getByRole('button', { name: 'Save to journal' }).click();
+  },
+  'daw-task': dawTask,
 };
+
+async function buildNotes(page: Page, section: Locator, it: ShellItem['item'], correct: boolean) {
+  const clear = section.locator('.build-notes').getByRole('button', { name: 'Clear' });
+  if (await clear.isVisible()) await clear.click();
+  await claimFocus(section);
+  const pcs = (it.pitchClasses as number[]).map((pc) => (pc + (correct ? 0 : 1)) % 12);
+  await midiNotes(page, pcs.map((pc) => 60 + pc));
+  await section.locator('.build-notes').getByRole('button', { name: 'Check' }).click();
+}
 
 export function canAnswer(type: string): boolean {
   return type in ANSWERERS;
+}
+
+/** Can this item be answered wrongly at all? (`listen` without a question and `reflect` always pass.) */
+export function canAnswerWrong(it: ShellItem['item']): boolean {
+  if (it.type === 'reflect') return false;
+  if (it.type === 'listen' && !it.question) return false;
+  return true;
+}
+
+/** Types whose answers take a timed performance (count-in + playing along a clock). */
+export function isTimed(it: ShellItem['item']): boolean {
+  const p = it.performance as PerfSpec | undefined;
+  return !!p?.timed;
 }
 
 /** Answer the current item of exercise `id`; waits for the feedback. */
@@ -110,7 +424,13 @@ export async function answer(page: Page, id: string, correct: boolean): Promise<
   const fn = ANSWERERS[cur.item.type];
   if (!fn) throw new Error(`no answerer for ${cur.item.type}`);
   await fn(page, section, cur.item, correct);
-  await expect(section.locator('.feedback')).toHaveClass(correct ? /\bok\b/ : /\bbad\b/);
+  const fb = section.locator('.feedback');
+  try {
+    await expect(fb).toHaveClass(correct ? /\bok\b/ : /\bbad\b/, { timeout: 15_000 });
+  } catch (e) {
+    const text = await fb.textContent({ timeout: 500 }).catch(() => null);
+    throw new Error(`${cur.item.type} (item ${cur.index}): ${correct ? 'correct' : 'wrong'} answer got feedback ${JSON.stringify(text)}\nitem: ${JSON.stringify(cur.item).slice(0, 1500)}\n${(e as Error).message}`);
+  }
   return cur;
 }
 

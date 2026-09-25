@@ -1,7 +1,10 @@
 /** 1. Smoke: every page loads without console errors / unhandled rejections; audio gate; health. */
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { test, expect } from './fixtures';
 import { audioLog, expectSound, goto, unlockAudio } from './helpers/app';
 import { lessons } from './helpers/content';
+import { ROOT } from './helpers/server';
 
 const first = lessons()[0]!;
 
@@ -98,8 +101,12 @@ test('/dev/demo renders every block type client-side and records no progress', a
   });
   await goto(page, '/dev/demo');
   for (const id of ['example-block', 'keyboard-block', 'staff-block', 'chords-block']) await expect(page.getByTestId(id).first()).toBeVisible();
-  await expect(page.locator('section.exercise[data-type]')).toHaveCount(8);
-  await expect(page.getByTestId('coming-soon')).toHaveCount(1);
+  // every exercise block of the fixture renders a real component (all types are implemented)
+  const fixture = readFileSync(join(ROOT, 'apps/web/src/lesson/__fixtures__/demo-lesson.md'), 'utf8');
+  const nEx = (fixture.match(/^```exercise\s*$/gm) ?? []).length;
+  expect(nEx).toBeGreaterThan(20);
+  await expect(page.locator('section.exercise[data-type]')).toHaveCount(nEx);
+  await expect(page.getByTestId('coming-soon')).toHaveCount(0);
   await expect(page.getByTestId('block-error')).toHaveCount(0);
   const quiz = page.locator('section.exercise[data-type="quiz"]');
   await quiz.getByRole('button', { name: 'Reveal' }).click();
@@ -108,11 +115,10 @@ test('/dev/demo renders every block type client-side and records no progress', a
   expect(posts).toEqual([]);
 });
 
-test.describe('known console noise', () => {
-  // BUG-01 (docs/QA_REPORT.md#bug-01): with no samples installed (the default), unlocking audio probes
-  // /samples/piano/C4.mp3, which 404s, and Chromium logs "Failed to load resource" on every page load.
+test.describe('console noise', () => {
+  // Regression for BUG-01 (fixed): unlocking audio used to probe /samples/piano/C4.mp3, which 404s when no samples
+  // are installed; the client now reads `pianoSamples` from /api/health.
   test('unlocking audio does not log a 404 for the optional sampled piano', async ({ page }) => {
-    test.fail();
     const errors: string[] = [];
     page.on('console', (m) => {
       if (m.type() === 'error') errors.push(`${m.text()} ${m.location().url}`);

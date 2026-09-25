@@ -7,6 +7,7 @@
  */
 import { createContext, useContext } from 'react';
 import { createStore, useStore, type StoreApi } from 'zustand';
+import { e2eHook } from '../testHooks';
 import {
   PPQ, createClip, createProject, createTrack, normalizeProject, ticksPerBar,
   type Clip, type InstrumentId, type NoteEvent, type Project, type Track,
@@ -161,6 +162,8 @@ export function getDawStore(key: string): DawStore {
   if (!s) {
     s = createDawStore(key);
     stores.set(key, s);
+    const h = e2eHook();
+    if (h) (h.daw ??= {})[key] = s;
   }
   return s;
 }

@@ -48,8 +48,7 @@ for (const d of DEVICES) {
     test.use(d.use);
     for (const path of PAGES) {
       test(`${path}: no horizontal page scroll`, async ({ page }) => {
-        // BUG-06 (docs/QA_REPORT.md#bug-06): the Settings custom-range row does not wrap on phones
-        test.fail(d.name === 'phone' && path === '/settings', 'BUG-06');
+        // (phone /settings: regression for BUG-06, fixed)
         await goto(page, path);
         await page.waitForLoadState('networkidle');
         await page.waitForTimeout(300);

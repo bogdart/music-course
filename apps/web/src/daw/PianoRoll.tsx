@@ -354,7 +354,7 @@ export function PianoRoll({ compact = false }: { compact?: boolean }) {
         <button type="button" className="daw-mini" title="Close piano roll" aria-label="Close piano roll" onClick={() => st.set({ openClipId: null, selectedNotes: [] })}>✕</button>
       </div>
       {msg && <div className="small bad-text">{msg}</div>}
-      <div className="daw-roll-scroll" ref={scrollRef} style={{ height: drums ? Math.min(H + VEL_H + 30, compact ? 300 : 420) : compact ? 300 : 420 }}>
+      <div className="daw-roll-scroll" ref={scrollRef} tabIndex={0} role="region" aria-label={`Piano roll: ${clip.name}`} style={{ height: drums ? Math.min(H + VEL_H + 30, compact ? 300 : 420) : compact ? 300 : 420 }}>
         <div className="daw-roll-inner" style={{ width: KEY_W + W }}>
           <div className="daw-roll-ruler" style={{ width: KEY_W + W }}
             onPointerDown={(e) => {

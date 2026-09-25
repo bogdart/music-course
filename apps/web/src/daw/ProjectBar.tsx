@@ -64,7 +64,8 @@ export function ProjectBar({ onOpened }: { onOpened?: (id: string) => void }) {
     <div className="daw-projectbar">
       <div className="row wrap">
         <input className="daw-project-name" value={name} aria-label="Project name" onFocus={() => st.beginGesture()}
-          onChange={(e) => st.mutate((d) => { d.name = e.target.value || 'Untitled'; }, { history: false })} />
+          onChange={(e) => st.mutate((d) => { d.name = e.target.value; }, { history: false })}
+          onBlur={() => { if (!store.getState().project.name.trim()) st.mutate((d) => { d.name = 'Untitled'; }, { history: false }); }} />
         <span className={`small ${saveState === 'error' || saveState === 'offline' ? 'bad-text' : 'muted'}`} title={saveError ?? ''}>{SAVE_LABEL[saveState]}</span>
         <div className="row wrap daw-project-actions">
           <button type="button" className="btn small-btn" disabled={!canUndo} onClick={() => st.undo()} title="Undo (Ctrl+Z)">↶</button>
