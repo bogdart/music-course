@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import {
-  evaluate, generateSet, isExerciseType, passScoreOf, summarise,
+  evaluate, generateSet, isExerciseType, passScoreOf, scoringOf, summarise,
   type Answer, type EvalResult, type ExerciseBlock, type ExerciseType, type Item, type SetSummary, type Snippet,
 } from '@music/core';
 import { api } from '../api/client';
@@ -58,6 +58,8 @@ export function ExerciseShell(props: ExerciseShellProps) {
   const [index, setIndex] = useState(0);
   const [st, setSt] = useState<ItemState>(freshItemState);
   const [firsts, setFirsts] = useState<(EvalResult | null)[]>([]);
+  /** best result per item across retries (used for performance types, see scoringOf) */
+  const [bests, setBests] = useState<(EvalResult | null)[]>([]);
   const [hints, setHints] = useState(0);
   const [summary, setSummary] = useState<SetSummary | null>(null);
   const audioStarted = useAudioStore((s) => s.started);
@@ -88,6 +90,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
     setIndex(0);
     setSt(freshItemState());
     setFirsts([]);
+    setBests([]);
     setHints(0);
     setSummary(null);
   }, [set]);
@@ -143,6 +146,11 @@ export function ExerciseShell(props: ExerciseShellProps) {
       }
       const first = st.attempts === 0;
       setSt((s) => ({ ...s, result, attempts: s.attempts + 1, firstResult: s.firstResult ?? result }));
+      setBests((b) => {
+        const n = [...b];
+        if (!n[index] || result.score > n[index]!.score) n[index] = result;
+        return n;
+      });
       if (first) {
         props.onItemResult?.(result, index);
         setFirsts((f) => {
@@ -174,6 +182,12 @@ export function ExerciseShell(props: ExerciseShellProps) {
       });
       post(() => api.attempt({ lessonId, exerciseId: block.id, type: block.type, correct: false, score: 0, answer: '(revealed)', durationMs: Date.now() - st.startedAt, itemIndex: index, source: mode }));
     }
+    setBests((b) => {
+      if (b[index]) return b;
+      const n = [...b];
+      n[index] = r; // revealed without any take: counts as a miss
+      return n;
+    });
     setSt((s) => ({ ...s, revealed: true, result: s.result?.correct ? s.result : r }));
     if (item.solutionAudio) void playParts([item.solutionAudio]);
   };
@@ -186,7 +200,8 @@ export function ExerciseShell(props: ExerciseShellProps) {
       setSt(freshItemState());
       return;
     }
-    const results = set.items.map((_, i) => firsts[i] ?? { correct: false, score: 0 });
+    const perItem = scoringOf(block.type) === 'best' ? bests : firsts;
+    const results = set.items.map((_, i) => perItem[i] ?? { correct: false, score: 0 });
     const sum = summarise(results, passScoreOf(block));
     setSummary(sum);
     post(() => api.exerciseComplete({ lessonId, exerciseId: block.id, type: block.type, score: sum.score, passed: sum.passed, correct: sum.correct, total: sum.total }));
@@ -218,7 +233,10 @@ export function ExerciseShell(props: ExerciseShellProps) {
         <div className={`summary ${summary.passed ? 'passed' : 'failed'}`} data-testid="exercise-summary">
           <div className="summary-score">{Math.round(summary.score * 100)}%</div>
           <div>
-            {summary.correct}/{summary.total} correct first time · {summary.passed ? 'Passed ✓' : `Need ${Math.round(passScoreOf(block) * 100)}% to pass`}
+            {scoringOf(block.type) === 'best'
+              ? summary.total === 1 ? 'Best take' : `${summary.correct}/${summary.total} correct (best take)`
+              : `${summary.correct}/${summary.total} correct first time`}{' '}
+            · {summary.passed ? 'Passed ✓' : `Need ${Math.round(passScoreOf(block) * 100)}% to pass`}
           </div>
           <button type="button" className="btn" onClick={() => setRun((r) => r + 1)}>
             {summary.passed ? 'Practice again' : 'Try again'}
@@ -244,9 +262,10 @@ export function ExerciseShell(props: ExerciseShellProps) {
       </header>
       {block.instructions && <p className="instructions">{block.instructions}</p>}
       <div className="progress-dots" aria-hidden>
-        {set.items.map((_, i) => (
-          <span key={i} className={`dot ${i === index ? 'current' : ''} ${firsts[i] ? (firsts[i]!.correct ? 'ok' : 'bad') : ''}`} />
-        ))}
+        {set.items.map((_, i) => {
+          const r = scoringOf(block.type) === 'best' ? bests[i] : firsts[i];
+          return <span key={i} className={`dot ${i === index ? 'current' : ''} ${r ? (r.correct ? 'ok' : 'bad') : ''}`} />;
+        })}
       </div>
       <p className="prompt">{item.prompt}</p>
       {(item.audio || item.reference) && (

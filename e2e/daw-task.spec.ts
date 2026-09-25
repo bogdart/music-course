@@ -76,14 +76,15 @@ test('lesson daw-task: Check shows each check ✓/✗, a melody drawn in the emb
   await expect(section.getByText(`${nChecks}/${nChecks} checks passed`)).toBeVisible();
   await section.getByRole('button', { name: 'Submit' }).click();
   await expect(section.locator('.feedback.ok')).toHaveText(`All ${nChecks} checks passed — nice work!`);
-  // retry after a wrong first attempt: accepted, but the first attempt's score stands
+  // the per-attempt log keeps the first attempt's score
   expect((await scores(api, l.id, e.id))[0]).toBe(partial);
   // autosaved
   await expect.poll(async () => ((await serverProject(api, projectId))?.tracks[0].clips as { notes: Note[] }[]).flatMap((c) => c.notes).length).toBe(16);
-  // finishing the 1-item set records the exercise (score = first attempt)
+  // finishing the 1-item set records the exercise: daw-task is a performance type, so the best take counts
   await next(page, e.id);
-  await expect(section.getByTestId('exercise-summary')).toBeVisible();
-  await expect.poll(async () => (await (await api.get('/api/progress')).json()).exercises[l.id]?.[e.id]?.lastScore).toBe(partial);
+  await expect(section.getByTestId('exercise-summary')).toContainText('100%');
+  await expect(section.getByTestId('exercise-summary')).toContainText('Best take');
+  await expect.poll(async () => (await (await api.get('/api/progress')).json()).exercises[l.id]?.[e.id]?.lastScore).toBe(1);
 
   // the work is still there after a reload; "Start over" resets to the template
   await page.reload();

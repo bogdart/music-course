@@ -99,6 +99,17 @@ export function itemCount(block: ExerciseBlock): number {
   return SINGLE_ITEM_TYPES.includes(block.type) ? 1 : 10;
 }
 
+/**
+ * Performance exercises (play in time, tap a rhythm, build in the DAW) are learned by retrying, so a set item counts
+ * its best take. Recognition/recall exercises (ear-*, quizzes, theory) count the first answer, because a retry
+ * after seeing the feedback is a guess, not a skill.
+ */
+export const BEST_TAKE_TYPES: readonly string[] = ['play-scale', 'play-chord', 'play-melody', 'rhythm-tap', 'read-rhythm', 'daw-task', 'reflect'];
+
+export function scoringOf(type: string): 'best' | 'first' {
+  return BEST_TAKE_TYPES.includes(type) ? 'best' : 'first';
+}
+
 export function passScoreOf(block: ExerciseBlock): number {
   return block.passScore ?? 0.7;
 }

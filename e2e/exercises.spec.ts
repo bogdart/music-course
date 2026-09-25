@@ -142,6 +142,10 @@ async function correctAnswerTest(page: Page, api: APIRequestContext, lesson: Sou
   expect(prog.lastLessonId).toBe(lesson.id);
 }
 
+/** Independent oracle for packages/core scoringOf: performance types count the best take, the rest the first answer. */
+const BEST_TAKE = new Set(['play-scale', 'play-chord', 'play-melody', 'rhythm-tap', 'read-rhythm', 'daw-task', 'reflect']);
+const scoringOf = (type: string) => (BEST_TAKE.has(type) ? 'best' : 'first');
+
 async function wrongAnswerTest(page: Page, api: APIRequestContext, lesson: SourceLesson, ex: SourceExercise) {
   await openExercise(page, lesson.id, ex);
   requireAnswerer(ex.type);
@@ -154,13 +158,30 @@ async function wrongAnswerTest(page: Page, api: APIRequestContext, lesson: Sourc
   await expect(section.locator('.exercise-foot button.primary')).toBeEnabled();
   await expect.poll(async () => (await exProgress(api, lesson.id, ex.id))?.attempts ?? 0).toBe((before?.attempts ?? 0) + 1);
   expect((await attemptScores(api, lesson.id, ex.id))[0], 'wrong first attempt scores below 100%').toBeLessThan(1);
-  // retry with the right answer: accepted, but the item stays scored as wrong (first attempt counts)
+  // retry with the right answer. Recognition types: the item stays scored as wrong (first attempt counts).
+  // Performance types (play in time, tap, DAW…): the best take counts, so the item turns green and the set can pass.
   await answer(page, ex.id, true);
   await expect(section.getByText('Attempts: 2')).toBeVisible();
-  await expect(section.locator('.progress-dots .dot').first()).toHaveClass(/bad/);
+  const bestTake = scoringOf(ex.type) === 'best';
+  await expect(section.locator('.progress-dots .dot').first()).toHaveClass(bestTake ? /\bok\b/ : /bad/);
   await page.waitForTimeout(300);
   const p = await exProgress(api, lesson.id, ex.id);
+  // the per-attempt log records only the first attempt either way
   expect([p?.attempts ?? 0, p?.correct ?? 0]).toEqual([(before?.attempts ?? 0) + 1, before?.correct ?? 0]);
+  const { total } = await currentItem(page, ex.id);
+  if (total === 1) {
+    await section.locator('.exercise-foot button.primary').click();
+    const summary = section.getByTestId('exercise-summary');
+    if (bestTake) {
+      // regression: a wrong first take followed by a perfect one used to summarise as 0%
+      await expect(summary).toContainText('100%');
+      await expect(summary).toContainText('Best take');
+      await expect(summary).toContainText('Passed ✓');
+    } else {
+      await expect(summary).toContainText('0%');
+      await expect(summary).toContainText('correct first time');
+    }
+  }
 }
 
 async function fullSetTest(page: Page, api: APIRequestContext, lesson: SourceLesson, ex: SourceExercise) {
@@ -233,7 +254,7 @@ for (const type of CATALOGUE_TYPES) {
       await correctAnswerTest(page, api, lesson, ex);
     });
 
-    test('wrong answer → negative feedback; retry allowed; only the first attempt is scored', async ({ page, api }) => {
+    test('wrong answer → negative feedback; retry allowed; first attempt scored (best take for performance types)', async ({ page, api }) => {
       await wrongAnswerTest(page, api, lesson, ex);
     });
 
