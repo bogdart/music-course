@@ -27,12 +27,17 @@ export function isTonicNumeral(roman: string, tonic: string, mode: Mode): boolea
 }
 
 /**
- * Random progression of `length` numerals from `pool`: starts on the tonic when the pool has one, avoids immediate
- * repeats when possible.
+ * Random progression of `length` numerals from `pool`: with 3+ chords it starts on the tonic when the pool has one
+ * and avoids immediate repeats; with 1–2 chords every combination is possible.
  */
 export function pickProgression(rng: Rng, pool: string[], length: number, tonic: string, mode: Mode): string[] {
   if (pool.length === 0) throw new Error('no chords to choose from');
   const out: string[] = [];
+  // with only two chords (e.g. "I or V?") start-on-tonic + no-repeat would leave exactly one possible answer
+  if (pool.length < 3) {
+    for (let i = 0; i < length; i++) out.push(rng.pick(pool));
+    return out;
+  }
   const tonics = pool.filter((r) => isTonicNumeral(r, tonic, mode));
   for (let i = 0; i < length; i++) {
     if (i === 0 && tonics.length) {

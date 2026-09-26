@@ -302,6 +302,10 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   ear-melody / ear-progression with an attached `example` = 1; play-melody, rhythm-tap, daw-task, reflect,
   play-scale = 1; everything else 10. List-based types (play-chord, build-chord, build-scale, key-signature)
   walk their list in a freshly shuffled order per set (`play-chord` with `sequence: true` walks it in order).
+  A set never repeats a **fixed** item (one with nothing random in it — a given melody, rhythm, scale, note set or
+  progression): `count` above the number of distinct fixed items does not add copies, so don't use `count` to mean
+  "practise it N times" (performance items already keep the best of unlimited retries). Randomised items may repeat
+  by chance.
 * **Keys** everywhere accept `"C"`, `"Bb"`, `"F#"`, `"Am"`, `"C# minor"`, `"E minor"`; a separate `mode` applies
   only when the key string has no suffix. `ear-progression.key` and `ear-melody.key` may be `"random"`.
   **Scale ids** everywhere (`ear-scale`, `build-scale`, `play-scale`, `in-key`) accept every `ear-scale` id plus the

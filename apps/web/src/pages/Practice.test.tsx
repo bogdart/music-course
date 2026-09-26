@@ -5,7 +5,7 @@ import type { ExerciseBlock, SrsCardDTO } from '@music/core';
 import { Practice } from './Practice';
 import { Warmup } from '../lesson/Warmup';
 
-const quizBlock: ExerciseBlock = { id: 'q', type: 'quiz', srs: true, spec: { questions: [{ q: 'Pick A', choices: ['A', 'B'], answer: 0 }] } };
+const quizBlock: ExerciseBlock = { id: 'q', type: 'quiz', srs: true, spec: { questions: [1, 2, 3, 4, 5].map((n) => ({ q: `Pick A (${n})`, choices: ['A', 'B'], answer: 0 })) } };
 const card = (id: number, block: ExerciseBlock, extra: Partial<SrsCardDTO> = {}): SrsCardDTO => ({
   id, key: `k${id}`, type: block.type, lessonId: 'w01-l1-x', exerciseId: block.id, block, ease: 2.5, interval: 1, reps: 1, lapses: 0, dueSession: 1, ...extra,
 });
@@ -83,7 +83,7 @@ describe('lesson warm-up', () => {
     const { unmount } = render(<Warmup lessonId="w02-l1-x" />);
     fireEvent.click(await screen.findByText('Start warm-up'));
     expect(screen.getByText(/2:00 left|1:59 left/)).toBeTruthy();
-    expect(screen.getAllByText('Pick A').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Pick A/).length).toBeGreaterThan(0);
     fireEvent.click(screen.getByText('end warm-up'));
     unmount();
     render(<Warmup lessonId="w02-l1-x" />);

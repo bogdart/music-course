@@ -255,3 +255,20 @@ describe('read-note', () => {
     }
   });
 });
+
+describe('sets never repeat a fixed item', () => {
+  it('a fixed melody / note list with count 6 is one item; note sets cycle only once', () => {
+    expect(generateSet(block('play-melody', { seq: 'C4:q D4:q' }, { count: 6 }), 1).items).toHaveLength(1);
+    expect(generateSet(block('play-notes', { notes: ['C3', 'F3', 'C4'] }, { count: 6 }), 1).items).toHaveLength(1);
+    expect(generateSet(block('play-notes', { notes: [['C4'], ['D4']] }, { count: 6 }), 1).items.map((i) => i.solution)).toEqual(['C4', 'D4']);
+  });
+  it('randomised items keep their count', () => {
+    expect(generateSet(block('play-scale', { root: 'random', scale: 'major' }, { count: 6 }), 1).items).toHaveLength(6);
+    expect(generateSet(block('ear-note', { key: 'C', degrees: [1, 5] }, { count: 6 }), 1).items).toHaveLength(6);
+  });
+  it('a two-chord progression pool gives every combination, not always I–V', () => {
+    const b = block('ear-progression', { key: 'C', mode: 'major', length: 2, chords: ['I', 'V'], style: 'block' }, { count: 40 });
+    const seen = new Set(generateSet(b, 7).items.map((i) => i.numerals.join(' ')));
+    expect(seen).toEqual(new Set(['I I', 'I V', 'V I', 'V V']));
+  });
+});

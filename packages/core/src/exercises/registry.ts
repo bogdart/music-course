@@ -114,14 +114,24 @@ export function passScoreOf(block: ExerciseBlock): number {
   return block.passScore ?? 0.7;
 }
 
-/** Generate a whole set deterministically from a seed (block.seed wins). */
+/**
+ * Generate a whole set deterministically from a seed (block.seed wins). A set never repeats a *fixed* item: when the
+ * exercise has nothing random in it (a given melody, rhythm, scale, note list or progression — every item comes out
+ * the same from differently seeded generators), `count` can't make identical copies; retrying happens within an item.
+ * Randomised exercises keep their count and may repeat an item by chance.
+ */
 export function generateSet<T extends ExerciseType>(block: ExerciseBlockOf<T>, seed?: number): { seed: number; items: Item<T>[] } {
   const s = block.seed ?? seed ?? Math.floor(Math.random() * 0xffffffff);
-  const rng = createRng(s);
   const count = itemCount(block as ExerciseBlock);
-  const items: Item<T>[] = [];
-  for (let i = 0; i < count; i++) items.push(generate(block, rng, { index: i, count }));
-  return { seed: s, items };
+  const run = (sd: number) => {
+    const rng = createRng(sd);
+    return Array.from({ length: count }, (_, i) => generate(block, rng, { index: i, count }));
+  };
+  const items = run(s);
+  if (count < 2) return { seed: s, items };
+  const keys = items.map((it) => JSON.stringify(it));
+  const fixed = [0x9e3779b9, 0x85ebca6b, 0xc2b2ae35].every((salt) => run((s ^ salt) >>> 0).every((it, i) => JSON.stringify(it) === keys[i]));
+  return { seed: s, items: fixed ? items.filter((_, i) => keys.indexOf(keys[i]!) === i) : items };
 }
 
 /** Whether an exercise feeds the SRS deck (default: all ear-* types). */
