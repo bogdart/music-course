@@ -48,25 +48,26 @@ export function createSynthPiano(): Instrument {
 }
 
 /**
- * Warm, near-pure analog-style keys (think Jon Hopkins, *Immunity*): a mostly-sine tone with a touch of 2nd/3rd
- * harmonic, gentle saturation, a soft low-pass, slow tape wow and a warm room. No detuned stack — the "alive"
+ * Warm, near-pure analog-style keys (think Jon Hopkins, *Immunity*): a mostly-sine tone with a touch of upper
+ * harmonics baked into the waveform, a gentle low-pass, slow tape wow and a room. No detuned stack — the "alive"
  * part is per-note analog drift (each note lands a few cents off and with a slightly different attack), which
- * PolySynth can't do per voice, hence the small voice pool.
+ * PolySynth can't do per voice, hence the small voice pool. Everything after the voices is linear (no
+ * saturation on the summed bus — that turns chords into intermodulation mush), and voices are quiet enough
+ * that a 7-note chord at full velocity stays under 0 dBFS, so a chord is just the sum of clean notes.
  */
 export function createWarmSynth(): Instrument {
   const RELEASE = 1.6;
-  const bus = new Tone.Gain(1);
-  const sat = new Tone.Chebyshev({ order: 2, wet: 0.12 });
-  const tone = new Tone.Filter({ frequency: 2600, type: 'lowpass', rolloff: -12, Q: 0.5 });
-  const wow = new Tone.Vibrato({ frequency: 0.3, depth: 0.08 });
-  const room = new Tone.Reverb({ decay: 3.2, preDelay: 0.02, wet: 0.24 });
-  const out = new Tone.Volume(-7);
-  bus.chain(sat, tone, wow, room, out);
+  const bus = new Tone.Gain(0.2);
+  const tone = new Tone.Filter({ frequency: 5200, type: 'lowpass', rolloff: -12, Q: 0.3 });
+  const wow = new Tone.Vibrato({ frequency: 0.3, depth: 0.06 });
+  const room = new Tone.Reverb({ decay: 2.8, preDelay: 0.02, wet: 0.18 });
+  const out = new Tone.Volume(0);
+  bus.chain(tone, wow, room, out);
 
   type Voice = { synth: Tone.Synth; midi: number | null; busyUntil: number };
   const voices: Voice[] = Array.from({ length: 24 }, () => ({
     synth: new Tone.Synth({
-      oscillator: { type: 'custom', partials: [1, 0.16, 0.05, 0.015] },
+      oscillator: { type: 'custom', partials: [1, 0.2, 0.08, 0.04, 0.02] },
       envelope: { attack: 0.012, attackCurve: 'sine', decay: 1.8, sustain: 0.3, release: RELEASE, releaseCurve: 'exponential' },
     }).connect(bus),
     midi: null,
@@ -110,7 +111,7 @@ export function createWarmSynth(): Instrument {
         v.busyUntil = Math.min(v.busyUntil, t + RELEASE);
       }
     },
-    dispose: () => [...voices.map((v) => v.synth), bus, sat, tone, wow, room, out].forEach((n) => n.dispose()),
+    dispose: () => [...voices.map((v) => v.synth), bus, tone, wow, room, out].forEach((n) => n.dispose()),
   };
 }
 
