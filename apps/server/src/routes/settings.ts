@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { DEFAULT_SETTINGS, isInstrumentId, isNoteName, isThemePref, type Settings } from '@music/core';
+import { DEFAULT_SETTINGS, isInstrumentId, isNoteName, isPianoSound, isThemePref, type Settings } from '@music/core';
 import type { Db } from '../db.js';
 import { badRequest, jsonBody } from '../http.js';
 
@@ -13,6 +13,7 @@ const VALIDATORS: Record<keyof Settings, Validator> = {
   metronomeVolume: (v) => typeof v === 'number' && v >= 0 && v <= 1,
   qwertyOctave: (v) => typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 8,
   theme: (v) => isThemePref(v),
+  pianoSound: (v) => isPianoSound(v),
 };
 
 export function readSettings(db: Db): Settings {

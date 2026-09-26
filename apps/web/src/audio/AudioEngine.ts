@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { PPQ, snippetLength, ticksToSeconds, type InstrumentId, type NoteEvent, type Project, type Snippet } from '@music/core';
+import { PPQ, snippetLength, ticksToSeconds, type InstrumentId, type PianoSound, type NoteEvent, type Project, type Snippet } from '@music/core';
 import { createInstrument, createSampledPiano, type Instrument } from './instruments';
 import { Metronome } from './metronome';
 import { e2eAudio } from '../testHooks';
@@ -57,6 +57,9 @@ export class AudioEngine implements AudioEngineApi {
   private current: Current | null = null;
   private _started = false;
   private _sampled = false;
+  /** Loaded sampled pianos [playback, live]; kept across piano-sound switches */
+  private samplers: [Instrument, Instrument] | null = null;
+  private _pianoSound: PianoSound = 'warm';
   private _liveInstrument: InstrumentId = 'piano';
   private held = new Map<number, InstrumentId>();
   private metro: Metronome;
@@ -105,22 +108,44 @@ export class AudioEngine implements AudioEngineApi {
       // the server says whether samples are installed (probing C4.mp3 directly logs a 404 when they are not)
       const health = (await (await fetch('/api/health')).json()) as { pianoSamples?: boolean };
       if (!health.pianoSamples) return;
-      const [a, b] = await Promise.all([createSampledPiano(SAMPLE_BASE), createSampledPiano(SAMPLE_BASE)]);
-      for (const [map, inst] of [[this.playback, a], [this.live, b]] as const) {
-        map.get('piano')?.dispose();
-        inst.output.connect(this.master);
-        map.set('piano', inst);
-      }
+      this.samplers = await Promise.all([createSampledPiano(SAMPLE_BASE), createSampledPiano(SAMPLE_BASE)]);
       this._sampled = true;
+      if (this._pianoSound === 'grand') this.dropPianos();
     } catch {
       /* synth piano stays */
     }
   }
 
+  /** Forget the current `piano` instances (samplers are kept, synths disposed); they are rebuilt on next use. */
+  private dropPianos(): void {
+    for (const map of [this.playback, this.live]) {
+      const cur = map.get('piano');
+      if (!cur) continue;
+      map.delete('piano');
+      cur.releaseAll();
+      if (this.samplers?.includes(cur)) cur.output.disconnect();
+      else setTimeout(() => cur.dispose(), 3000); // let release tails ring out
+    }
+  }
+
+  get pianoSound() {
+    return this._pianoSound;
+  }
+
+  /** Switch what `piano` sounds like: 'warm' synth or 'grand' (sampled when loaded, else the synth piano). */
+  setPianoSound(s: PianoSound): void {
+    if (s === this._pianoSound) return;
+    this._pianoSound = s;
+    if (this._started) this.stop();
+    this.dropPianos();
+    if (this._started) this.getLive(this._liveInstrument);
+  }
+
   private getFrom(map: Map<InstrumentId, Instrument>, id: InstrumentId): Instrument {
     let inst = map.get(id);
     if (!inst) {
-      inst = createInstrument(id);
+      const sampler = this.samplers?.[map === this.playback ? 0 : 1];
+      inst = id === 'piano' && this._pianoSound === 'grand' && sampler ? sampler : createInstrument(id, this._pianoSound);
       inst.output.connect(this.master);
       map.set(id, inst);
     }
@@ -271,7 +296,7 @@ export class AudioEngine implements AudioEngineApi {
     snippet.tracks.forEach((track, ti) => {
       let inst = this.getInstrument(track.instrument);
       if (track.pan) {
-        const own = createInstrument(track.instrument);
+        const own = createInstrument(track.instrument, this._pianoSound);
         const panner = new Tone.Panner(Math.max(-1, Math.min(1, track.pan))).connect(this.master);
         own.output.connect(panner);
         temp.push(own, panner);

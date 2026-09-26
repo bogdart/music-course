@@ -51,7 +51,7 @@ export function App() {
     void preloadAudio();
     void useSettingsStore.getState().load().then(() => {
       const s = useSettingsStore.getState().settings;
-      void configureEngine({ volume: s.volume, liveInstrument: s.liveInstrument, metronomeVolume: s.metronomeVolume });
+      void configureEngine({ volume: s.volume, liveInstrument: s.liveInstrument, metronomeVolume: s.metronomeVolume, pianoSound: s.pianoSound });
     });
     void useProgressStore.getState().refresh();
     return teardown;

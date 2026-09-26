@@ -211,6 +211,16 @@ export interface Settings {
   qwertyOctave: number;
   /** Colour theme: 'system' follows the OS (prefers-color-scheme) */
   theme: ThemePref;
+  /** What the `piano` instrument sounds like everywhere (lessons, exercises, DAW) */
+  pianoSound: PianoSound;
+}
+
+/** 'warm' = near-pure analog-style synth (Jon Hopkins, *Immunity*); 'grand' = sampled grand piano */
+export type PianoSound = 'warm' | 'grand';
+export const PIANO_SOUNDS: readonly PianoSound[] = ['warm', 'grand'];
+
+export function isPianoSound(v: unknown): v is PianoSound {
+  return v === 'warm' || v === 'grand';
 }
 
 export type ThemePref = 'system' | 'light' | 'dark';
@@ -236,4 +246,5 @@ export const DEFAULT_SETTINGS: Settings = {
   metronomeVolume: 0.6,
   qwertyOctave: 4,
   theme: 'system',
+  pianoSound: 'warm',
 };

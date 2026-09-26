@@ -194,6 +194,12 @@ describe('settings', () => {
     expect((await post('/api/settings', { theme: 'sepia' }, 'PUT')).status).toBe(400);
     await post('/api/settings', { theme: 'system' }, 'PUT');
   });
+  it('stores the piano sound (default warm)', async () => {
+    expect(await json<Settings>(app.request('/api/settings'))).toMatchObject({ pianoSound: 'warm' });
+    expect(await json<Settings>(post('/api/settings', { pianoSound: 'grand' }, 'PUT'))).toMatchObject({ pianoSound: 'grand' });
+    expect((await post('/api/settings', { pianoSound: 'harpsichord' }, 'PUT')).status).toBe(400);
+    await post('/api/settings', { pianoSound: 'warm' }, 'PUT');
+  });
 });
 
 describe('db', () => {

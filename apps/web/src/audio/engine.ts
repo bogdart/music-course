@@ -2,7 +2,7 @@
  * Lazy facade over the AudioEngine singleton. Components import from here, never from './AudioEngine'
  * directly, so Tone.js is code-split and tests can mock this module (see src/test/fakeEngine.ts).
  */
-import type { InstrumentId } from '@music/core';
+import type { InstrumentId, PianoSound } from '@music/core';
 import type { AudioEngine } from './AudioEngine';
 import type { Playable, PlaybackHandle, ScheduleOptions } from './types';
 import { useAudioStore } from '../stores/audio';
@@ -12,7 +12,8 @@ type EngineModule = typeof import('./AudioEngine');
 let mod: EngineModule | null = null;
 let modLoading: Promise<EngineModule> | null = null;
 let loaded: AudioEngine | null = null;
-let pending: { volume?: number; liveInstrument?: InstrumentId; metronomeVolume?: number } = {};
+type EngineConfig = { volume?: number; liveInstrument?: InstrumentId; metronomeVolume?: number; pianoSound?: PianoSound };
+let pending: EngineConfig = {};
 
 /** Load Tone.js + the engine module without creating an AudioContext (call early, e.g. on app start). */
 export function preloadAudio(): Promise<EngineModule> {
@@ -31,6 +32,7 @@ function construct(m: EngineModule): AudioEngine {
 
 function applyConfig(e: AudioEngine, c: typeof pending) {
   if (c.volume !== undefined) e.setVolume(c.volume);
+  if (c.pianoSound) e.setPianoSound(c.pianoSound);
   if (c.liveInstrument) e.setLiveInstrument(c.liveInstrument);
   if (c.metronomeVolume !== undefined) e.metronome.setVolume(c.metronomeVolume);
 }
@@ -93,8 +95,8 @@ export function liveNoteOff(midi: number): void {
   getLoadedEngine()?.noteOff(midi);
 }
 
-/** Apply volume / live instrument / metronome volume now, or when the engine is created. */
-export async function configureEngine(opts: { volume?: number; liveInstrument?: InstrumentId; metronomeVolume?: number }): Promise<void> {
+/** Apply volume / live instrument / metronome volume / piano sound now, or when the engine is created. */
+export async function configureEngine(opts: EngineConfig): Promise<void> {
   pending = { ...pending, ...opts };
   if (loaded) applyConfig(loaded, opts);
 }

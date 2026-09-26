@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import type { InstrumentId } from '@music/core';
+import type { InstrumentId, PianoSound } from '@music/core';
 
 /** A playable voice. Pitches are MIDI numbers. */
 export interface Instrument {
@@ -47,6 +47,73 @@ export function createSynthPiano(): Instrument {
   return { ...poly('piano', s, room), dispose: () => [s, tone, room].forEach((n) => n.dispose()) };
 }
 
+/**
+ * Warm, near-pure analog-style keys (think Jon Hopkins, *Immunity*): a mostly-sine tone with a touch of 2nd/3rd
+ * harmonic, gentle saturation, a soft low-pass, slow tape wow and a warm room. No detuned stack — the "alive"
+ * part is per-note analog drift (each note lands a few cents off and with a slightly different attack), which
+ * PolySynth can't do per voice, hence the small voice pool.
+ */
+export function createWarmSynth(): Instrument {
+  const RELEASE = 1.6;
+  const bus = new Tone.Gain(1);
+  const sat = new Tone.Chebyshev({ order: 2, wet: 0.12 });
+  const tone = new Tone.Filter({ frequency: 2600, type: 'lowpass', rolloff: -12, Q: 0.5 });
+  const wow = new Tone.Vibrato({ frequency: 0.3, depth: 0.08 });
+  const room = new Tone.Reverb({ decay: 3.2, preDelay: 0.02, wet: 0.24 });
+  const out = new Tone.Volume(-7);
+  bus.chain(sat, tone, wow, room, out);
+
+  type Voice = { synth: Tone.Synth; midi: number | null; busyUntil: number };
+  const voices: Voice[] = Array.from({ length: 24 }, () => ({
+    synth: new Tone.Synth({
+      oscillator: { type: 'custom', partials: [1, 0.16, 0.05, 0.015] },
+      envelope: { attack: 0.012, attackCurve: 'sine', decay: 1.8, sustain: 0.3, release: RELEASE, releaseCurve: 'exponential' },
+    }).connect(bus),
+    midi: null,
+    busyUntil: 0,
+  }));
+  const pick = (t: number): Voice => voices.find((v) => v.busyUntil <= t) ?? voices.reduce((a, b) => (b.busyUntil < a.busyUntil ? b : a));
+  const start = (v: Voice, m: number, t: number, vel: number) => {
+    v.synth.detune.setValueAtTime((Math.random() - 0.5) * 7, t);
+    v.synth.envelope.attack = 0.008 + Math.random() * 0.01;
+    v.synth.triggerAttack(freq(m), t, vel);
+  };
+
+  return {
+    id: 'piano',
+    output: out,
+    attack: (m, t, vel) => {
+      const v = voices.find((x) => x.midi === m) ?? pick(t);
+      start(v, m, t, vel);
+      v.midi = m;
+      v.busyUntil = Infinity;
+    },
+    release: (m, t) => {
+      const v = voices.find((x) => x.midi === m);
+      if (!v) return;
+      v.synth.triggerRelease(t);
+      v.midi = null;
+      v.busyUntil = t + RELEASE;
+    },
+    attackRelease: (m, d, t, vel) => {
+      const v = pick(t);
+      start(v, m, t, vel);
+      v.synth.triggerRelease(t + d);
+      v.midi = null;
+      v.busyUntil = t + d + RELEASE;
+    },
+    releaseAll: () => {
+      const t = Tone.now();
+      for (const v of voices) {
+        v.synth.triggerRelease(t);
+        v.midi = null;
+        v.busyUntil = Math.min(v.busyUntil, t + RELEASE);
+      }
+    },
+    dispose: () => [...voices.map((v) => v.synth), bus, sat, tone, wow, room, out].forEach((n) => n.dispose()),
+  };
+}
+
 /** Salamander-style sample map: every third semitone from A0 (A, C, D#, F#). */
 export function salamanderUrls(): Record<string, string> {
   const urls: Record<string, string> = {};
@@ -87,10 +154,11 @@ export async function createSampledPiano(baseUrl: string): Promise<Instrument> {
   });
 }
 
-export function createInstrument(id: InstrumentId): Instrument {
+/** `pianoSound` picks the `piano` patch; 'grand' here is the synth fallback (the engine swaps in samples). */
+export function createInstrument(id: InstrumentId, pianoSound: PianoSound = 'warm'): Instrument {
   switch (id) {
     case 'piano':
-      return createSynthPiano();
+      return pianoSound === 'warm' ? createWarmSynth() : createSynthPiano();
     case 'epiano': {
       const s = new Tone.PolySynth(Tone.FMSynth, {
         harmonicity: 3.01,

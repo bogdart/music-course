@@ -1,4 +1,4 @@
-import { INSTRUMENT_IDS, isNoteName, THEME_PREFS, type InstrumentId, type Settings as SettingsT } from '@music/core';
+import { INSTRUMENT_IDS, isNoteName, PIANO_SOUNDS, THEME_PREFS, type InstrumentId, type Settings as SettingsT } from '@music/core';
 import { useState } from 'react';
 import { configureEngine, playNote } from '../audio/engine';
 import { Keyboard } from '../components/Keyboard/Keyboard';
@@ -8,6 +8,7 @@ import { useInputStore } from '../stores/input';
 import { useSettingsStore } from '../stores/settings';
 
 const THEME_LABEL = { system: 'System', light: 'Light', dark: 'Dark' } as const;
+const PIANO_LABEL = { warm: 'Warm synth', grand: 'Grand piano' } as const;
 
 const RANGES: [string, string][] = [['C4', 'C5'], ['C3', 'C5'], ['F3', 'F5'], ['C3', 'C6'], ['C2', 'C6'], ['A0', 'C8']];
 
@@ -70,13 +71,33 @@ export function Settings() {
       </section>
       <section className="card form">
         <h2>Sound</h2>
+        <div className="row wrap" role="group" aria-label="Piano sound">
+          {PIANO_SOUNDS.map((p) => (
+            <button
+              key={p}
+              type="button"
+              aria-pressed={settings.pianoSound === p}
+              className={`btn ${settings.pianoSound === p ? 'primary' : 'ghost'}`}
+              onClick={() => {
+                set({ pianoSound: p });
+                void playNote('piano', 60);
+              }}
+            >
+              {PIANO_LABEL[p]}
+            </button>
+          ))}
+        </div>
+        <p className="muted small">
+          The <code>piano</code> used in every lesson, exercise and the DAW. Warm synth: a soft, near-pure analog-style tone (Jon Hopkins’ <i>Immunity</i>).
+          Grand piano: {sampled ? 'recorded Salamander grand.' : 'recorded grand once samples are installed (npm run fetch:samples); a synth piano until then.'}
+        </p>
         <label>
           Live instrument
           <select value={settings.liveInstrument} onChange={(e) => set({ liveInstrument: e.target.value as InstrumentId })}>
             {INSTRUMENT_IDS.map((i) => (
               <option key={i} value={i}>
                 {i}
-                {i === 'piano' && sampled ? ' (sampled)' : ''}
+                {i === 'piano' ? ` (${settings.pianoSound === 'grand' && sampled ? 'sampled' : PIANO_LABEL[settings.pianoSound].toLowerCase()})` : ''}
               </option>
             ))}
           </select>
