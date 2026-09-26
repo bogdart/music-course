@@ -93,17 +93,21 @@ export class AudioEngine implements AudioEngineApi {
     return this._liveInstrument;
   }
 
-  /** Unlock audio (must be called from a user gesture). Also tries to load the sampled piano. */
+  /** Unlock audio (must be called from a user gesture). Also loads the sampled piano if 'grand' is chosen. */
   async start(): Promise<void> {
     if (this._started) return;
     await Tone.start();
     this._started = true;
     // warm up the live instrument so the first key press is instant
     this.getLive(this._liveInstrument);
-    void this.tryLoadSampledPiano();
+    if (this._pianoSound === 'grand') void this.tryLoadSampledPiano();
   }
 
+  private samplersLoading = false;
+
   private async tryLoadSampledPiano(): Promise<void> {
+    if (this.samplers || this.samplersLoading) return;
+    this.samplersLoading = true;
     try {
       // the server says whether samples are installed (probing C4.mp3 directly logs a 404 when they are not)
       const health = (await (await fetch('/api/health')).json()) as { pianoSamples?: boolean };
@@ -113,6 +117,8 @@ export class AudioEngine implements AudioEngineApi {
       if (this._pianoSound === 'grand') this.dropPianos();
     } catch {
       /* synth piano stays */
+    } finally {
+      this.samplersLoading = false;
     }
   }
 
@@ -138,7 +144,10 @@ export class AudioEngine implements AudioEngineApi {
     this._pianoSound = s;
     if (this._started) this.stop();
     this.dropPianos();
-    if (this._started) this.getLive(this._liveInstrument);
+    if (this._started) {
+      this.getLive(this._liveInstrument);
+      if (s === 'grand') void this.tryLoadSampledPiano();
+    }
   }
 
   private getFrom(map: Map<InstrumentId, Instrument>, id: InstrumentId): Instrument {

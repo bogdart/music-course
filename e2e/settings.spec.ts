@@ -5,7 +5,7 @@ import { audioLog, clearAudio, expectSound, goto, keyLocator, midi, unlockAudio 
 test.use({ isolated: true });
 
 test.afterEach(async ({ api }) => {
-  await api.put('/api/settings', { data: { volume: 0.8, keyboardRange: ['C3', 'C5'], liveInstrument: 'piano', keyLabels: 'names', metronomeVolume: 0.6, midiInput: 'all', qwertyOctave: 4 } });
+  await api.put('/api/settings', { data: { volume: 0.8, keyboardRange: ['C3', 'C5'], liveInstrument: 'piano', keyLabels: 'names', metronomeVolume: 0.6, midiInput: 'all', qwertyOctave: 4, pianoSound: 'warm' } });
 });
 
 test('volume slider persists across reload and is applied to the engine', async ({ page, api }) => {
@@ -79,10 +79,10 @@ test('custom range given high-to-low is rejected or normalised (no empty keyboar
 
 test('live instrument persists and is used for live notes', async ({ page, api }) => {
   await goto(page, '/settings');
-  await page.getByLabel('Live instrument').selectOption('epiano');
+  await page.getByRole('combobox', { name: 'Instrument', exact: true }).selectOption('epiano');
   await expect.poll(async () => (await (await api.get('/api/settings')).json()).liveInstrument).toBe('epiano');
   await page.reload();
-  await expect(page.getByLabel('Live instrument')).toHaveValue('epiano');
+  await expect(page.getByRole('combobox', { name: 'Instrument', exact: true })).toHaveValue('epiano');
   await unlockAudio(page);
   await clearAudio(page);
   await midi.noteOn(page, 60, 100);
@@ -95,8 +95,19 @@ test('live instrument persists and is used for live notes', async ({ page, api }
   await page.getByRole('button', { name: 'Test sound' }).click();
   await expect.poll(async () => (await audioLog(page)).find((e) => e.kind === 'playNote')?.instrument).toBe('epiano');
   // every instrument is selectable
-  const options = await page.getByLabel('Live instrument').locator('option').allTextContents();
-  expect(options.map((o) => o.replace(/\s*\(.*\)/, '').trim())).toEqual(['piano', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'guitar', 'drums']);
+  const options = await page.getByRole('combobox', { name: 'Instrument', exact: true }).locator('option').allTextContents();
+  expect(options).toEqual(['Piano — warm synth', 'Piano — grand', 'epiano', 'bass', 'pad', 'lead', 'pluck', 'strings', 'guitar', 'drums']);
+});
+
+test('picking a piano in the instrument menu sets the lesson piano sound too', async ({ page, api }) => {
+  await goto(page, '/settings');
+  const menu = page.getByRole('combobox', { name: 'Instrument', exact: true });
+  await menu.selectOption('piano:grand');
+  await expect.poll(async () => (await (await api.get('/api/settings')).json()) as object).toMatchObject({ liveInstrument: 'piano', pianoSound: 'grand' });
+  await menu.selectOption('bass');
+  await expect.poll(async () => (await (await api.get('/api/settings')).json()) as object).toMatchObject({ liveInstrument: 'bass', pianoSound: 'grand' });
+  await menu.selectOption('piano:warm');
+  await expect.poll(async () => (await (await api.get('/api/settings')).json()) as object).toMatchObject({ liveInstrument: 'piano', pianoSound: 'warm' });
 });
 
 test('key labels setting changes the on-screen keyboard labels and persists', async ({ page, api }) => {
@@ -114,11 +125,11 @@ test('key labels setting changes the on-screen keyboard labels and persists', as
 
 test('settings survive a server restart', async ({ page, api, server }) => {
   await goto(page, '/settings');
-  await page.getByLabel('Live instrument').selectOption('strings');
+  await page.getByRole('combobox', { name: 'Instrument', exact: true }).selectOption('strings');
   await expect.poll(async () => (await (await api.get('/api/settings')).json()).liveInstrument).toBe('strings');
   await server.handle!.restart();
   await page.reload();
-  await expect(page.getByLabel('Live instrument')).toHaveValue('strings');
+  await expect(page.getByRole('combobox', { name: 'Instrument', exact: true })).toHaveValue('strings');
 });
 
 test.describe('server unreachable', () => {

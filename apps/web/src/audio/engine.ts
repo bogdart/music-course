@@ -32,7 +32,10 @@ function construct(m: EngineModule): AudioEngine {
 
 function applyConfig(e: AudioEngine, c: typeof pending) {
   if (c.volume !== undefined) e.setVolume(c.volume);
-  if (c.pianoSound) e.setPianoSound(c.pianoSound);
+  if (c.pianoSound) {
+    e.setPianoSound(c.pianoSound);
+    if (c.pianoSound === 'grand') syncSampled(e);
+  }
   if (c.liveInstrument) e.setLiveInstrument(c.liveInstrument);
   if (c.metronomeVolume !== undefined) e.metronome.setVolume(c.metronomeVolume);
 }
@@ -55,10 +58,14 @@ export function startAudio(): Promise<void> {
   const run = async (e: AudioEngine) => {
     await e.start();
     useAudioStore.getState().setStarted(true);
-    // sampled piano loads in the background
-    setTimeout(() => useAudioStore.getState().setSampledPiano(e.sampledPiano), 4000);
+    syncSampled(e);
   };
   return mod ? run(construct(mod)) : loadEngine().then(run);
+}
+
+/** The sampled piano loads in the background (only when 'grand' is chosen); reflect it in the store once done. */
+function syncSampled(e: AudioEngine) {
+  setTimeout(() => useAudioStore.getState().setSampledPiano(e.sampledPiano), 4000);
 }
 
 const idle: PlaybackHandle = { stop() {}, done: Promise.resolve(), startTime: 0 };

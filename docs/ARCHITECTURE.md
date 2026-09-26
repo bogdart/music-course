@@ -119,7 +119,7 @@ polyphony with different durations is not representable and is emitted with the 
   `getOutputTimestamp`; facade `audioTimeToPerf`); `projectToSnippet()` honours mute/solo/volume. Live play and
   playback use separate instrument instances. `schedule` also plays `snippet.tempoChanges` (unless `bpm` is
   overridden), routes tracks with `pan` through a temporary instrument + panner, and honours `lengthTicks`.
-  With `pianoSound: 'grand'`, the sampled piano (fetched once with `npm run fetch:samples`) is used when `/samples/piano/C4.mp3` exists.
+  With `pianoSound: 'grand'`, the sampled piano (fetched once with `npm run fetch:samples`) is loaded lazily (only once 'grand' is chosen) when `/samples/piano/C4.mp3` exists. Settings has one Instrument menu (Piano — warm synth, Piano — grand, then the rest): it sets what the learner's keys play, and a piano pick also sets `pianoSound`.
 * **Input.** `noteInputBus.subscribe(fn) → unsubscribe`, `emit/noteOn/noteOff/held/releaseAll`,
   hook `useNoteInput(handler, enabled)`. MIDI handles hot-plug, `settings.midiInput`, sustain (CC64).
 * **Exercise components** (`apps/web/src/exercises/registry.ts`): one component per type receiving
