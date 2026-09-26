@@ -82,7 +82,7 @@ There is no single right answer. Bar 1 could be C – Am instead of a whole bar 
   "id": "e3", "type": "ear-progression", "title": "Hear the harmonisation",
   "instructions": "I, IV or V? Follow the bass.",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V"], "style": "pad-bass" }
 }
 ```
 

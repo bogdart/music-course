@@ -120,7 +120,7 @@ Chain several and you get the "ragtime" progression, each dominant resolving to 
   "title": "Hear V/V and V/vi",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "V/V", "V/vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "V/V", "V/vi"], "style": "pad-bass" }
 }
 ```
 

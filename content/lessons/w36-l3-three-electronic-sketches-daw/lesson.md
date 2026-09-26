@@ -70,7 +70,7 @@ A reminder of the mood difference in one example — the same two chords as a lo
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "A",
+    "key": "random",
     "mode": "minor",
     "length": 4,
     "chords": [

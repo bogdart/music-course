@@ -90,7 +90,7 @@ Use the same loop-first method as your chorus hook in week 18:
   "title": "Spot the bVII",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "D", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "bVII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "bVII"], "style": "pad-bass" }
 }
 ```
 

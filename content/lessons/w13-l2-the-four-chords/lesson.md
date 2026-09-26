@@ -89,7 +89,7 @@ Before the four chords, there were three. **I – IV – V** is the backbone of 
   "id": "e3", "type": "ear-bass", "title": "Follow the bass",
   "instructions": "Play each root as the chords go by. The bass tells you the progression.",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 
@@ -98,7 +98,7 @@ Before the four chords, there were three. **I – IV – V** is the backbone of 
   "id": "e4", "type": "ear-progression", "title": "Which rotation? (block chords)",
   "instructions": "First chord: major (I or IV) or minor (vi)? Then follow the bass.",
   "count": 10, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "block" }
 }
 ```
 

@@ -75,7 +75,7 @@ Listen to bar 4: the F# in the keys is the giveaway — it's not in F major. A c
   "title": "Loops with a secondary dominant",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "E", "mode": "major", "length": 4, "chords": ["Imaj7", "ii7", "V7", "vi7", "VI7", "IVmaj7"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["Imaj7", "ii7", "V7", "vi7", "VI7", "IVmaj7"], "style": "pad-bass" }
 }
 ```
 

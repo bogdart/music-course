@@ -127,7 +127,7 @@ In C major, the C triad is made of degrees **1, 3 and 5** — exactly the notes 
   "instructions": "After the cadence, one note from the tonic chord.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 3, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```
 

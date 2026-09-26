@@ -80,7 +80,7 @@ Two famous examples. Radiohead's *Creep* (1992, G major, about 92 BPM) loops **G
   "id": "e4", "type": "ear-progression", "title": "Major IV or borrowed iv?",
   "instructions": "The iv sounds like a cloud passing over. Listen for the one note that drops.",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["I", "IV", "iv", "V"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["I", "IV", "iv", "V"], "style": "block" }
 }
 ```
 
@@ -89,7 +89,7 @@ Two famous examples. Radiohead's *Creep* (1992, G major, about 92 BPM) loops **G
   "id": "e5", "type": "ear-progression", "title": "Find the bVII",
   "instructions": "bVII is a major chord a whole step below home — strong and open, not tense like V.",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "bVII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "bVII"], "style": "pad-bass" }
 }
 ```
 

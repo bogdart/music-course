@@ -69,7 +69,7 @@ Adele's *Someone Like You* (2011, A major, about 67 BPM) loops **A – E/G# – 
   "id": "e3", "type": "ear-bass", "title": "Bass of I – V – vi – IV",
   "instructions": "Play each bass note as you hear it.",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "V", "vi", "IV"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "V", "vi", "IV"], "answer": "play" }
 }
 ```
 
@@ -77,7 +77,7 @@ Adele's *Someone Like You* (2011, A major, about 67 BPM) loops **A – E/G# – 
 {
   "id": "e4", "type": "ear-progression", "title": "Four-chord order",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "block" }
 }
 ```
 

@@ -91,7 +91,7 @@ The chorus melody is deliberately hidden from the staff: dictate it before you l
   "title": "Held notes: which degree?",
   "count": 10,
   "passScore": 0.8,
-  "spec": { "key": "Eb", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [4, 5], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [4, 5], "instrument": "piano" }
 }
 ```
 

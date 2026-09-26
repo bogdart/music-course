@@ -93,7 +93,7 @@ In the last four bars: B1 approaches A from above, G1 approaches F from above, F
   "title": "Play the bass roots",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 

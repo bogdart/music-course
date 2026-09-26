@@ -92,7 +92,7 @@ All of them contain one of the minor-scale notes Eb, Ab or Bb. That single "wron
   "title": "Find the borrowed chord",
   "instructions": "Each progression starts on I. Listen for the moment the light changes.",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "iv", "V7", "bVI", "bVII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "iv", "V7", "bVI", "bVII"], "style": "pad-bass" }
 }
 ```
 

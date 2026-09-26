@@ -69,7 +69,7 @@ Give each sketch about 12 minutes: 3 minutes choosing idioms and chords, 6 minut
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "D",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [

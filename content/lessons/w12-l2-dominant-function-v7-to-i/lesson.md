@@ -52,7 +52,7 @@ B and F are a tritone apart — the restless interval from week 10. When G7 move
   "id": "e2", "type": "ear-note", "title": "The tendency tones",
   "instructions": "Degree 7 leans up to 1; degree 4 leans down to 3. After naming, sing where each note wants to go.",
   "count": 10, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 3, 4, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 4, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```
 
@@ -95,7 +95,7 @@ Tension has a sound. Listen for the chord that makes you lean forward. In the ne
   "id": "e5", "type": "ear-progression", "title": "Where's the V7?",
   "instructions": "Three chords starting on I. Is the middle chord IV (gentle lift), V (lean) or V7 (strong lean)?",
   "count": 9, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["I", "IV", "V", "V7"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["I", "IV", "V", "V7"], "style": "block" }
 }
 ```
 
@@ -103,7 +103,7 @@ Tension has a sound. Listen for the chord that makes you lean forward. In the ne
 {
   "id": "e6", "type": "ear-progression", "title": "V7 in minor",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "A", "mode": "minor", "length": 3, "chords": ["i", "iv", "V7"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "minor", "length": 3, "chords": ["i", "iv", "V7"], "style": "pad-bass" }
 }
 ```
 

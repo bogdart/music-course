@@ -94,7 +94,7 @@ Strong beats (1 and 3) mostly land on chord tones; weak beats carry the in-betwe
   "id": "e4", "type": "ear-note", "title": "Chord tone or not?",
   "instructions": "After the cadence, one note plays. Name the degree — then say 'stable' (a note of the I chord: 1, 3, 5) or 'moving' (2, 4, 6).",
   "count": 10, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 
@@ -111,6 +111,6 @@ Strong beats (1 and 3) mostly land on chord tones; weak beats carry the in-betwe
 {
   "id": "e6", "type": "ear-melody", "title": "Stepwise lines, play them back",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
 }
 ```

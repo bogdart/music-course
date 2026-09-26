@@ -74,7 +74,7 @@ The motif (8th rest, approach, target, leap, fall back) appears in bars 1, 3, 5 
   "type": "ear-melody",
   "title": "Echo short blues phrases",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "F", "degrees": [1, 3, 4, 5, 6], "length": 4, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 3, 4, 5, 6], "length": 4, "rhythm": "simple", "answer": "play" }
 }
 ```
 

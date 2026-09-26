@@ -97,7 +97,7 @@ Three habits separate a comper from someone just playing chords. **Stay out of t
   "type": "ear-progression",
   "title": "Spot the minor iv",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "iv", "V7", "vi"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "iv", "V7", "vi"], "style": "block" }
 }
 ```
 
@@ -107,7 +107,7 @@ Three habits separate a comper from someone just playing chords. **Stay out of t
   "type": "ear-melody",
   "title": "Saints-style fragments",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 

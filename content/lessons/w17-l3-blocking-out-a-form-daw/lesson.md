@@ -143,7 +143,7 @@ In AABA the A melody must come back *exactly*, so the listener recognises home. 
   "title": "Progressions with ii",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi"], "style": "block" }
 }
 ```
 

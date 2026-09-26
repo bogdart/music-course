@@ -134,7 +134,7 @@ Degree 4 sits right above 3, only a half step away, and it leans heavily **down*
   "instructions": "4 is tense and wants to fall to 3.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

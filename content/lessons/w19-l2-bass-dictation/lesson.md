@@ -105,7 +105,7 @@ Listen for the bass in these songs (on your own player):
   "title": "Minor progressions",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "A", "mode": "minor", "length": 4, "chords": ["i", "iv", "VI", "III", "VII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "VI", "III", "VII"], "style": "pad-bass" }
 }
 ```
 

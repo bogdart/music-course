@@ -182,7 +182,7 @@ Untrained voices are comfortable across roughly **an octave to a 10th**. For a g
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "C",
+    "key": "random",
     "degrees": [
       1,
       2,

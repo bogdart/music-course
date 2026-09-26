@@ -130,7 +130,7 @@ Here is Mystery Song #4 in three sections. Same chords in verse and chorus — o
   "title": "Minor-key loops",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "A", "mode": "minor", "length": 4, "chords": ["i", "iv", "v", "VI", "III", "VII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "v", "VI", "III", "VII"], "style": "pad-bass" }
 }
 ```
 

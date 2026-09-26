@@ -154,6 +154,6 @@ Also: a 4th up and a 5th up from the same note add up to an octave (C–F–C, o
   "title": "Degrees 1–5 (review)",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```

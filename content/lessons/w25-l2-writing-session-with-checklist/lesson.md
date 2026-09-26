@@ -79,7 +79,7 @@ Fill in this [[arrangement map]] (or your own version):
   "count": 8,
   "passScore": 0.75,
   "spec": {
-    "key": "G",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [

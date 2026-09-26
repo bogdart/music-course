@@ -76,7 +76,7 @@ Notice the trap: the loop *starts* on an A minor chord, but the melody and bass 
   "instructions": "Hear the cadence, then a note. Name its degree. Degree 1 is 'home'.",
   "count": 10,
   "passScore": 0.8,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```
 
@@ -88,7 +88,7 @@ Notice the trap: the loop *starts* on an A minor chord, but the melody and bass 
   "instructions": "Play the bass root of each chord you hear. Hum it first, then find it on the keyboard.",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 
@@ -99,7 +99,7 @@ Notice the trap: the loop *starts* on an A minor chord, but the melody and bass 
   "title": "Roots become a progression",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
 }
 ```
 

@@ -114,7 +114,7 @@ And here is an original A minor pentatonic melody (A C D E G) over Am – F – 
   "title": "Pentatonic melodic dictation",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 5, 6], "length": 6, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 5, 6], "length": 6, "rhythm": "simple", "answer": "play" }
 }
 ```
 

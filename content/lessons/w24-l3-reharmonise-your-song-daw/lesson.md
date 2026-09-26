@@ -104,7 +104,7 @@ What happened, bar by bar: E7 replaces G (the melody's D is E7's 7th) and pulls 
   "title": "Borrowed and secondary chords",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "iv", "V/vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "iv", "V/vi"], "style": "pad-bass" }
 }
 ```
 

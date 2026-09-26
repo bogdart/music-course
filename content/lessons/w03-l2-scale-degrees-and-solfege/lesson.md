@@ -108,10 +108,10 @@ Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" s
   "id": "e3",
   "type": "ear-note",
   "title": "1 or 3?",
-  "instructions": "After the cadence, one note. Home (1) or bright-but-not-home (3)?",
+  "instructions": "After the cadence, one note. Home (1) or bright-but-not-home (3)? From now on the key changes every time — the cadence tells you where home is, and 1 still sounds like 1.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 3], "reference": "cadence", "octaves": [4], "instrument": "piano" },
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 3], "reference": "cadence", "octaves": [4], "instrument": "piano" },
   "hints": ["Sing down to home: did you need two steps?"]
 }
 ```
@@ -124,7 +124,7 @@ Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" s
   "instructions": "Now 2 (restless, wants to fall) joins in.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 
@@ -136,7 +136,7 @@ Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" s
   "instructions": "Three notes using 1, 2 and 3. Enter the degrees you hear.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 3, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "random", "degrees": [1, 2, 3], "length": 3, "rhythm": "quarters", "answer": "degrees" }
 }
 ```
 

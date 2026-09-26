@@ -100,7 +100,7 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
   "instructions": "Three chords. Name each: I (home), IV (opening up) or V (tension).",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["I", "IV", "V"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["I", "IV", "V"], "style": "block" }
 }
 ```
 

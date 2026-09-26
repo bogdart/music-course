@@ -121,7 +121,7 @@ Listen to each song on your own player with this lesson open. Count bars; don't 
   "title": "Echo the A phrase",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "F", "degrees": [1, 2, 3, 4, 5, 6], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 4, "rhythm": "quarters", "answer": "play" }
 }
 ```
 

@@ -80,7 +80,7 @@ The big idea for today: **form by layers**. The seed never changes; the song mov
   "title": "Roots for the chorus (relative major G)",
   "count": 8,
   "passScore": 0.8,
-  "spec": { "key": "G", "chords": ["vi", "I", "IV", "V", "iii"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["vi", "I", "IV", "V", "iii"], "answer": "play" }
 }
 ```
 

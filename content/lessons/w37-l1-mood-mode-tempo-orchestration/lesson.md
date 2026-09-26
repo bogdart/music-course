@@ -220,7 +220,7 @@ Real cues pull several levers at once, and the strongest effects come from **con
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "D",
+    "key": "random",
     "degrees": [
       1,
       2,

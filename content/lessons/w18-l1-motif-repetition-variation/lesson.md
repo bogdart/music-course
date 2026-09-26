@@ -92,7 +92,7 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
   "title": "Echo the motif",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 
@@ -149,6 +149,6 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
   "title": "Write the degrees",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
 }
 ```

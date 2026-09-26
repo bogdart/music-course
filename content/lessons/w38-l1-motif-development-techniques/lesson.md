@@ -222,7 +222,7 @@ Practical tip: when you develop, change **one dimension at a time** at first —
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "C",
+    "key": "random",
     "degrees": [
       1,
       2,

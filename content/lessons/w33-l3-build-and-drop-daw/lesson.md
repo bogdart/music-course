@@ -185,7 +185,7 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "C",
+    "key": "random",
     "degrees": [
       1,
       2,

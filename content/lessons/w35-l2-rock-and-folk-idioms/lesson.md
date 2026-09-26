@@ -151,7 +151,7 @@ The D major chord in a minor key (IV instead of iv) is a dorian touch; the E maj
   "count": 8,
   "passScore": 0.7,
   "spec": {
-    "key": "D",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [

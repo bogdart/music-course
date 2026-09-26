@@ -68,7 +68,7 @@ Voice it smoothly and the three chords feel like one gesture. Watch how little t
   "id": "e4", "type": "ear-progression", "title": "ii – V – I or IV – V – I?",
   "instructions": "Both lead to V then home. ii is minor and a bit darker; IV is major and brighter.",
   "count": 9, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["ii", "IV", "V7", "I"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["ii", "IV", "V7", "I"], "style": "pad-bass" }
 }
 ```
 
@@ -100,7 +100,7 @@ Swap the triads of a pop loop for sevenths and it instantly sounds like a slow s
 {
   "id": "e6", "type": "ear-bass", "title": "Bass of the ballad loop",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "vi", "ii", "V"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "vi", "ii", "V"], "answer": "play" }
 }
 ```
 

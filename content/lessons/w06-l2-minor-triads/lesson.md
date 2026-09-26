@@ -143,6 +143,6 @@ Now the same trick applied to a whole melody. Mahler used exactly this in his Fi
   "title": "Degrees by ear (review)",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
 }
 ```

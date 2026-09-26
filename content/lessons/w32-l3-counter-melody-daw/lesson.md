@@ -73,7 +73,7 @@ Notice also the pad: only two notes, low. With a lead and a counter-line, you do
   "type": "ear-bass",
   "title": "Hear the lowest line",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "C", "chords": ["I", "IV", "V", "vi", "iii"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V", "vi", "iii"], "answer": "play" }
 }
 ```
 
@@ -83,7 +83,7 @@ Notice also the pad: only two notes, low. With a lead and a counter-line, you do
   "type": "ear-progression",
   "title": "Progressions with borrowed colours",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "iv", "bVII"], "style": "arpeggio" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "iv", "bVII"], "style": "arpeggio" }
 }
 ```
 

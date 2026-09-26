@@ -111,7 +111,7 @@ In a minor key, ii is half-diminished (m7b5) and V is a dominant 7th borrowed fr
   "type": "ear-progression",
   "title": "Minor-key progressions with V7",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "A", "mode": "minor", "length": 4, "chords": ["i", "iv", "V7", "bVI", "bVII"], "style": "block" }
+  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "V7", "bVI", "bVII"], "style": "block" }
 }
 ```
 

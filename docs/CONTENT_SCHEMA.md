@@ -307,7 +307,10 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   "practise it N times" (performance items already keep the best of unlimited retries). Randomised items may repeat
   by chance.
 * **Keys** everywhere accept `"C"`, `"Bb"`, `"F#"`, `"Am"`, `"C# minor"`, `"E minor"`; a separate `mode` applies
-  only when the key string has no suffix. `ear-progression.key` and `ear-melody.key` may be `"random"`.
+  only when the key string has no suffix. `ear-progression.key`, `ear-melody.key`, `ear-note.key` and `ear-bass.key` may be `"random"` (a fresh key per
+  item; keep `mode` for minor). Convention: from week 3 degree / roman-numeral ear exercises use `"random"` (the
+  answer doesn't depend on the key); play-back dictation (`ear-melody`/`ear-bass` with `answer: "play"`) from week 9.
+  Keep a fixed key only when the exercise text is about that key.
   **Scale ids** everywhere (`ear-scale`, `build-scale`, `play-scale`, `in-key`) accept every `ear-scale` id plus the
   aliases `minor`, `ionian`, `aeolian`.
 * **Roman numerals**: case = quality (`ii` minor), `°`/`ø`/`+`, suffixes `7 maj7 maj9 9 11 13 7sus4 add9 sus2 sus4`

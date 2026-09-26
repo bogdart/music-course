@@ -72,7 +72,7 @@ Hear the three lift tricks: the melody climbs to A5, the kick doubles its speed,
   "count": 8,
   "passScore": 0.75,
   "spec": {
-    "key": "G",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [
@@ -95,7 +95,7 @@ Hear the three lift tricks: the melody climbs to A5, the kick doubles its speed,
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "A",
+    "key": "random",
     "mode": "minor",
     "length": 4,
     "chords": [

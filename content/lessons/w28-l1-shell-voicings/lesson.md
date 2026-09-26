@@ -105,7 +105,7 @@ Playing chords rhythmically behind a melody or soloist is called [[comping]] (fr
   "title": "Spot the ii–V–I",
   "instructions": "Some of these contain ii–V7–I; some don't.",
   "count": 6, "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "block" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "block" }
 }
 ```
 

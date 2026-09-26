@@ -106,7 +106,7 @@ Bar 2 is the C chord (bVII), with the melody resting on C. Bar 4 starts on C ove
   "title": "Spot the b7",
   "count": 12,
   "passScore": 0.75,
-  "spec": { "key": "D", "mode": "major", "degrees": [1, 3, 4, 5, 6, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 4, 5, 6, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

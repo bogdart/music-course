@@ -153,7 +153,7 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
   "title": "Hook-first training: hear it, find it",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 7, "rhythm": "free", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 7, "rhythm": "free", "answer": "play" }
 }
 ```
 
@@ -164,7 +164,7 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
   "title": "Chord-first training: name the loop",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "D", "mode": "minor", "length": 4, "chords": ["i", "iv", "v", "VI", "III", "VII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "v", "VI", "III", "VII"], "style": "pad-bass" }
 }
 ```
 

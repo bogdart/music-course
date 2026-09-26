@@ -170,7 +170,7 @@ A good leitmotif is **short** (2–4 bars), has a **memorable rhythm** and a **d
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "C",
+    "key": "random",
     "degrees": [
       1,
       2,

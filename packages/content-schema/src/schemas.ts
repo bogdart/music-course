@@ -197,7 +197,7 @@ export const dawCheckSchema = obj({
 
 export const specSchemas = {
   'ear-note': obj({
-    key, mode: mode.optional(), degrees: z.array(degree).min(1),
+    key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1),
     reference: z.enum(['cadence', 'tonic', 'none']).optional(), octaves: z.array(z.number().int().min(0).max(8)).min(1).optional(),
     instrument: instrument.optional(), chromatic: z.boolean().optional(), answer: z.enum(['degree', 'name']).optional(),
   }),
@@ -243,7 +243,7 @@ export const specSchemas = {
     voices: z.array(z.enum(['kick', 'snare', 'clap', 'hh', 'hihat', 'ohat', 'tom', 'ride', 'crash'])).min(1).max(4).optional(),
   }),
   'ear-bass': obj({
-    key, mode: mode.optional(), chords: z.array(romanNumeral).min(1), answer: z.enum(['play', 'name']).optional(),
+    key: keyOrRandom, mode: mode.optional(), chords: z.array(romanNumeral).min(1), answer: z.enum(['play', 'name']).optional(),
     length: z.number().int().min(1).max(16).optional(), bpm: bpm.optional(),
     inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
     example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),

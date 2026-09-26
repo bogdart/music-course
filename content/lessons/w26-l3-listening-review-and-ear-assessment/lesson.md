@@ -61,7 +61,7 @@ Phase 4 opens the composer's studio: extended chords, jazz voicings, reharmonisa
   "title": "Assessment 1: melodic dictation (one octave)",
   "count": 10,
   "passScore": 0.8,
-  "spec": { "key": "A", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 8, "rhythm": "free", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 8, "rhythm": "free", "answer": "play" }
 }
 ```
 
@@ -72,7 +72,7 @@ Phase 4 opens the composer's studio: extended chords, jazz voicings, reharmonisa
   "title": "Assessment 2: bass lines",
   "count": 10,
   "passScore": 0.8,
-  "spec": { "key": "E", "chords": ["I", "ii", "iii", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "ii", "iii", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 
@@ -94,7 +94,7 @@ Phase 4 opens the composer's studio: extended chords, jazz voicings, reharmonisa
   "title": "Assessment 4: progressions with secondary dominants",
   "count": 10,
   "passScore": 0.8,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi", "V/V", "V/vi", "bVII"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi", "V/V", "V/vi", "bVII"], "style": "pad-bass" }
 }
 ```
 

@@ -170,7 +170,7 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "A",
+    "key": "random",
     "mode": "minor",
     "length": 4,
     "chords": [

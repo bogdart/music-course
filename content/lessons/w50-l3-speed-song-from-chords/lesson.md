@@ -64,7 +64,7 @@ Two chord sections from one progression, fast:
   "title": "Warm-up: IV or iv? (5 min)",
   "count": 6,
   "passScore": 0.75,
-  "spec": { "key": "F", "mode": "major", "length": 4, "chords": ["Imaj7", "iii7", "IV", "iv", "ii7", "vi7"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["Imaj7", "iii7", "IV", "iv", "ii7", "vi7"], "style": "pad-bass" }
 }
 ```
 

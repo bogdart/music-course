@@ -99,7 +99,7 @@ When an answer comes back wrong, don't just retry: ask *which pass* failed. A wr
   "title": "Pass 4: roots + qualities",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "G", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
 }
 ```
 
@@ -111,7 +111,7 @@ When an answer comes back wrong, don't just retry: ask *which pass* failed. A wr
   "instructions": "Short fragments in the style of the song's melody. Play them back.",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 4, 5, 6], "length": 4, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 4, "rhythm": "simple", "answer": "play" }
 }
 ```
 

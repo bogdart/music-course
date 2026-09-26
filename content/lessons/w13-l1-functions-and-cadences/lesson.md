@@ -107,7 +107,7 @@ The deceptive cadence works because vi is a tonic-family chord: it shares two no
   "id": "e4", "type": "ear-progression", "title": "Hear the ending",
   "instructions": "Focus on the last two chords: full stop (V–I), amen (IV–I), comma (–V) or surprise (V–vi)?",
   "count": 10, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
 }
 ```
 
@@ -116,7 +116,7 @@ The deceptive cadence works because vi is a tonic-family chord: it shares two no
   "id": "e5", "type": "ear-bass", "title": "Bass roots with function",
   "instructions": "Play the roots. For each, say T, S or D.",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "ii", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "ii", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 

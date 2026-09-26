@@ -111,7 +111,7 @@ The bass plays the classic boogie shape 1-3-5-6-b7-6-5-3, moved to each chord. T
   "title": "I, IV or V?",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "V7"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "V7"], "style": "pad-bass" }
 }
 ```
 

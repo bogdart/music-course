@@ -114,7 +114,7 @@ The second tool fills a whole step in the bass. Between Cmaj7 and Dm7, slip in *
   "type": "ear-progression",
   "title": "V7 or bII7 into I?",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "ii", "V7", "bII7", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "V7", "bII7", "vi"], "style": "pad-bass" }
 }
 ```
 

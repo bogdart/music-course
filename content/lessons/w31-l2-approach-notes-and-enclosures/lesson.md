@@ -112,7 +112,7 @@ Notice where the chromatic notes fall: always on the last 8th of the bar, always
   "type": "ear-melody",
   "title": "Melodic dictation: landing notes",
   "count": 6, "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 

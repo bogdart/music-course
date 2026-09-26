@@ -118,7 +118,7 @@ The verse starts every phrase on the "and" of 1 and rests at the end of each bar
   "count": 6,
   "passScore": 0.75,
   "spec": {
-    "key": "D",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [
@@ -141,7 +141,7 @@ The verse starts every phrase on the "and" of 1 and rests at the end of each bar
   "count": 6,
   "passScore": 0.7,
   "spec": {
-    "key": "D",
+    "key": "random",
     "degrees": [
       1,
       2,

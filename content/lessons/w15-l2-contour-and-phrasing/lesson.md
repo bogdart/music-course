@@ -97,7 +97,7 @@ Melodies are built in phrases (you met them in week 8) — musical sentences, us
   "id": "e4", "type": "ear-melody", "title": "Dictation: 5-note phrases",
   "instructions": "Hear it, sing it, trace its shape with your hand, then play it.",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 
@@ -119,6 +119,6 @@ One more colour: a neighbour note from *outside* the scale. A half step below a 
   "id": "e5", "type": "ear-note", "title": "Degrees with chromatic notes",
   "instructions": "Some notes are outside the scale. Answer with # or b (e.g. #4, b7).",
   "count": 10, "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 3, 4, 5, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 4, 5, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```

@@ -531,7 +531,7 @@ A [[mix]] makes every part audible. Two tools are enough for now, both on each t
   "count": 8,
   "passScore": 0.7,
   "spec": {
-    "key": "F",
+    "key": "random",
     "mode": "major",
     "length": 4,
     "chords": [

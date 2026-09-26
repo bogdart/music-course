@@ -116,7 +116,7 @@ Whole form: A (8) · A (8) · B (8) · A (8) = 32 bars, bridge starting at bar 1
   "type": "ear-progression",
   "title": "Hear I–vi–ii–V loops",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "Bb", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "pad-bass" }
 }
 ```
 

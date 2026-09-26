@@ -2,6 +2,7 @@ import { noteToMidi, pcToName, samePitchClass, isNoteName } from '../theory/note
 import { degreeEquals, degreeToNoteName, degreeToSemitones, parseKey, SOLFEGE } from '../theory/keys.js';
 import type { ExerciseDefinition, Choice } from './types.js';
 import { cadence, melodic, tonicReference } from './util.js';
+import { resolveKey } from './harmony.js';
 
 const ALL_DEGREES = { major: ['1', 'b2', '2', 'b3', '3', '4', '#4', '5', 'b6', '6', 'b7', '7'], minor: ['1', 'b2', '2', '3', '#3', '4', '#4', '5', '6', '#6', '7', '#7'] };
 
@@ -10,7 +11,9 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
   implemented: true,
   generate(block, rng) {
     const s = block.spec;
-    const k = parseKey(s.key, s.mode);
+    // "random": a fresh key per item (degree answers don't depend on the key)
+    const r = s.key === 'random' ? resolveKey(rng, 'random', s.mode) : null;
+    const k = r ? parseKey(r.tonic, r.mode) : parseKey(s.key, s.mode);
     const mode = k.mode;
     const degrees = s.degrees.map(String);
     if (degrees.length === 0) throw new Error('ear-note: degrees must not be empty');

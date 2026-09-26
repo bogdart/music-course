@@ -121,7 +121,7 @@ Sometimes the chord stays the same and **one voice moves chromatically inside it
   "title": "Bass roots, all diatonic chords",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "ii", "iii", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "ii", "iii", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 

@@ -168,7 +168,7 @@ Before you start, listen to this recap and name each chord colour as it goes by:
   "count": 8,
   "passScore": 0.75,
   "spec": {
-    "key": "Bb",
+    "key": "random",
     "degrees": [
       1,
       2,

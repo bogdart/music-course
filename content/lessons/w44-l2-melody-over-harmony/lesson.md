@@ -105,7 +105,7 @@ Notice the last eighth of bars 1, 2 and 3: each is the first note of the *next* 
   "title": "Syncopated fragments",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 5, 6], "length": 6, "rhythm": "free", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 5, 6], "length": 6, "rhythm": "free", "answer": "play" }
 }
 ```
 

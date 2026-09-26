@@ -104,7 +104,7 @@ Verses and choruses often use the same four chords in a different order. Train y
   "title": "Which order?",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "pad-bass" }
 }
 ```
 
@@ -115,7 +115,7 @@ Verses and choruses often use the same four chords in a different order. Train y
   "title": "Play back a short hook",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
 }
 ```
 

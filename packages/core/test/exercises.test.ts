@@ -272,3 +272,15 @@ describe('sets never repeat a fixed item', () => {
     expect(seen).toEqual(new Set(['I I', 'I V', 'V I', 'V V']));
   });
 });
+
+describe('random keys', () => {
+  it('ear-note with key "random" varies the key per item and keeps degree answers', () => {
+    const items = generateSet(block('ear-note', { key: 'random', mode: 'minor', degrees: [1, 5] }, { count: 30 }), 3).items;
+    expect(new Set(items.map((i) => i.key)).size).toBeGreaterThan(3);
+    expect(items.every((i) => i.mode === 'minor' && ['1', '5'].includes(String(i.answer)))).toBe(true);
+  });
+  it('ear-bass with key "random" varies the key', () => {
+    const items = generateSet(block('ear-bass', { key: 'random', chords: ['I', 'IV', 'V'] }, { count: 20 }), 3).items;
+    expect(new Set(items.map((i) => i.key)).size).toBeGreaterThan(3);
+  });
+});

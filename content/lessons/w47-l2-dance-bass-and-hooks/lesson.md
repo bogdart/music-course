@@ -90,7 +90,7 @@ The *Neon Hours* hook uses the G minor pentatonic: G, Bb, C, D, F. (Those are al
   "instructions": "Answer in the relative major (Bb): the pentatonic notes are degrees 1, 2, 3, 5, 6.",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "key": "Bb", "degrees": [1, 2, 3, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 

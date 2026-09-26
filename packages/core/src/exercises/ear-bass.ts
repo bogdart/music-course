@@ -22,7 +22,7 @@ export const earBass: ExerciseDefinition<'ear-bass'> = {
   },
   generate(block, rng) {
     const s = block.spec;
-    const k = parseKey(s.key, s.mode);
+    const k = s.key === 'random' ? null : parseKey(s.key, s.mode);
     const { tonic, mode } = resolveKey(rng, s.key, s.mode);
     let numerals: string[] = [];
     let midis: number[];
@@ -47,7 +47,7 @@ export const earBass: ExerciseDefinition<'ear-bass'> = {
     return {
       type: 'ear-bass', key: tonic, mode, answerKind, numerals, midis, names,
       prompt: answerKind === 'play'
-        ? `Key of ${k.tonic === tonic ? k.name : `${tonic} ${mode}`}: play the ${midis.length} bass notes you hear (any octave).`
+        ? `Key of ${k && k.tonic === tonic ? k.name : `${tonic} ${mode}`}: play the ${midis.length} bass notes you hear (any octave).`
         : `Key of ${tonic} ${mode}: name the bass note of each chord as a scale degree.`,
       reference: cadence(tonic, mode),
       audio,

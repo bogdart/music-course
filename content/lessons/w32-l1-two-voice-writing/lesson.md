@@ -103,7 +103,7 @@ Notice the upper line mostly moves opposite to the lower — that's contrary mot
   "type": "ear-melody",
   "title": "Stepwise lines by ear",
   "count": 6, "passScore": 0.75,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "quarters", "answer": "degrees" }
 }
 ```
 

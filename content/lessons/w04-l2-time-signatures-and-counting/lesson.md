@@ -135,7 +135,7 @@ Degree 5 is the second most stable note after 1. It sounds strong and open, but 
   "instructions": "5 is strong and open, 'up on the balcony'. Sing down to 1 if unsure.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

@@ -91,7 +91,7 @@ Pachelbel's *Canon in D* (around 1700) is built on an eight-note bass line repea
   "id": "e4", "type": "ear-bass", "title": "Find the bass note",
   "instructions": "You'll hear a chord with its root in the bass. Play that lowest note. Hum it first — the bass is the note you'd hum along to without thinking.",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "C", "chords": ["I", "IV", "V"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V"], "answer": "play" }
 }
 ```
 

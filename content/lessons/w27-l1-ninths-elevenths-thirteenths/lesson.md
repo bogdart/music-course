@@ -124,7 +124,7 @@ That G13 voicing — root, 7th, 3rd, 13th — is one you will use for the rest o
   "type": "ear-progression",
   "title": "Progressions with V7",
   "count": 6, "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "pad-bass" }
+  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "pad-bass" }
 }
 ```
 

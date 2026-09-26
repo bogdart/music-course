@@ -88,7 +88,7 @@ Walk through it: bar 1 leaps up the C chord (5–1–3). Bar 2 leaps a 5th, A to
   "instructions": "Answer with b or # where the note is outside the key.",
   "count": 12,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "chromatic": true, "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 
@@ -99,7 +99,7 @@ Walk through it: bar 1 leaps up the C chord (5–1–3). Bar 2 leaps a 5th, A to
   "title": "Melodies with leaps",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "simple", "answer": "play" }
 }
 ```
 

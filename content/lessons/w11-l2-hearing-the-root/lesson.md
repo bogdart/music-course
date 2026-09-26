@@ -39,7 +39,7 @@ Most of the time the lowest note is the chord's root. The lowest note is also th
 {
   "id": "e1", "type": "ear-bass", "title": "Stage 1: hum the bass, play it",
   "count": 8, "passScore": 0.75,
-  "spec": { "key": "C", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
+  "spec": { "key": "random", "chords": ["I", "IV", "V", "vi"], "answer": "play" }
 }
 ```
 
