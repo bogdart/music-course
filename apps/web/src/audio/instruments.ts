@@ -48,36 +48,43 @@ export function createSynthPiano(): Instrument {
 }
 
 /**
- * Warm, near-pure analog-style keys (think Jon Hopkins, *Immunity*): a mostly-sine tone with a touch of upper
- * harmonics baked into the waveform, a gentle low-pass, slow tape wow and a room. No detuned stack — the "alive"
- * part is per-note analog drift (each note lands a few cents off and with a slightly different attack), which
- * PolySynth can't do per voice, hence the small voice pool. Everything after the voices is linear (no
- * saturation on the summed bus — that turns chords into intermodulation mush), and voices are quiet enough
- * that a 7-note chord at full velocity stays under 0 dBFS, so a chord is just the sum of clean notes.
+ * Warm analog-style keys after Jon Hopkins' *Immunity* (Korg MS-20 era): each voice is a soft saw-ish wave
+ * through its own resonant 12 dB low-pass whose envelope opens bright on the attack and settles near the
+ * fundamental (key-tracked, so high notes stay as bright as low ones) — lively at the front, almost a pure
+ * tone as it sustains. "Alive" comes from per-note analog drift: each note starts a few cents off and slowly
+ * wanders, with a slightly different attack. No modulated delay (tape wow) and no bus saturation — both put
+ * artefacts on chords — and releases are cosine so they reach true silence before the oscillator stops.
  */
 export function createWarmSynth(): Instrument {
-  const RELEASE = 1.6;
+  const RELEASE = 1.1;
   const bus = new Tone.Gain(0.2);
-  const tone = new Tone.Filter({ frequency: 5200, type: 'lowpass', rolloff: -12, Q: 0.3 });
-  const wow = new Tone.Vibrato({ frequency: 0.3, depth: 0.06 });
-  const room = new Tone.Reverb({ decay: 2.8, preDelay: 0.02, wet: 0.18 });
+  const room = new Tone.Reverb({ decay: 2.2, preDelay: 0.015, wet: 0.13 });
   const out = new Tone.Volume(0);
-  bus.chain(tone, wow, room, out);
+  bus.chain(room, out);
 
-  type Voice = { synth: Tone.Synth; midi: number | null; busyUntil: number };
+  type Voice = { synth: Tone.MonoSynth; midi: number | null; busyUntil: number };
   const voices: Voice[] = Array.from({ length: 24 }, () => ({
-    synth: new Tone.Synth({
-      oscillator: { type: 'custom', partials: [1, 0.2, 0.08, 0.04, 0.02] },
-      envelope: { attack: 0.012, attackCurve: 'sine', decay: 1.8, sustain: 0.3, release: RELEASE, releaseCurve: 'exponential' },
+    synth: new Tone.MonoSynth({
+      oscillator: { type: 'custom', partials: [1, 0.42, 0.24, 0.14, 0.09, 0.06, 0.04, 0.025] },
+      filter: { type: 'lowpass', rolloff: -12, Q: 2.2 },
+      envelope: { attack: 0.006, attackCurve: 'sine', decay: 1.4, sustain: 0.45, release: RELEASE, releaseCurve: 'cosine' },
+      filterEnvelope: { attack: 0.004, decay: 0.45, sustain: 0.25, release: RELEASE, baseFrequency: 500, octaves: 3.2, exponent: 2 },
     }).connect(bus),
     midi: null,
     busyUntil: 0,
   }));
   const pick = (t: number): Voice => voices.find((v) => v.busyUntil <= t) ?? voices.reduce((a, b) => (b.busyUntil < a.busyUntil ? b : a));
   const start = (v: Voice, m: number, t: number, vel: number) => {
-    v.synth.detune.setValueAtTime((Math.random() - 0.5) * 7, t);
-    v.synth.envelope.attack = 0.008 + Math.random() * 0.01;
-    v.synth.triggerAttack(freq(m), t, vel);
+    const f = freq(m);
+    const drift = (Math.random() - 0.5) * 6;
+    v.synth.detune.cancelScheduledValues(t);
+    v.synth.detune.setValueAtTime(drift, t);
+    v.synth.detune.linearRampToValueAtTime(drift + (Math.random() - 0.5) * 5, t + 3);
+    v.synth.envelope.attack = 0.004 + Math.random() * 0.006;
+    // key-tracked filter: settles at ~2.2× the fundamental, opens ~2^3.2≈9× on the attack (softer when played softly)
+    v.synth.filterEnvelope.baseFrequency = Math.min(f * 2.2, 9000);
+    v.synth.filterEnvelope.octaves = 1.8 + 1.4 * vel;
+    v.synth.triggerAttack(f, t, vel);
   };
 
   return {
@@ -111,7 +118,7 @@ export function createWarmSynth(): Instrument {
         v.busyUntil = Math.min(v.busyUntil, t + RELEASE);
       }
     },
-    dispose: () => [...voices.map((v) => v.synth), bus, tone, wow, room, out].forEach((n) => n.dispose()),
+    dispose: () => [...voices.map((v) => v.synth), bus, room, out].forEach((n) => n.dispose()),
   };
 }
 

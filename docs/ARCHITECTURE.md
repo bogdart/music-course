@@ -66,7 +66,7 @@ Instruments (`InstrumentId`): `piano`, `epiano`, `bass`, `pad`, `lead`,
 `pluck`, `strings`, `guitar` (overdriven), `drums` (drum map: `kick`=36, `snare`=38, `hihat`=42,
 `ohat`=46, `clap`=39, `tom`=45, `ride`=51, `crash`=49). Tone.js synth
 patches. What `piano` sounds like is the `pianoSound` setting: `warm` (default; near-pure analog-style
-synth à la Jon Hopkins' *Immunity*: per-note drift, gentle low-pass, tape wow, room) or `grand`
+analog-style synth à la Jon Hopkins' *Immunity* / MS-20: per-voice key-tracked resonant low-pass that opens on the attack, per-note pitch drift, light room) or `grand`
 (sampled Salamander piano if `apps/web/public/samples/piano/` exists, else an FM synth piano).
 
 ## Music snippet mini-language (used everywhere in content)
