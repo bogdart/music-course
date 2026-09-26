@@ -56,9 +56,9 @@ export function createSynthPiano(): Instrument {
  * artefacts on chords — and releases are cosine so they reach true silence before the oscillator stops.
  */
 export function createWarmSynth(): Instrument {
-  const RELEASE = 1.1;
+  const RELEASE = 0.35;
   const bus = new Tone.Gain(0.2);
-  const room = new Tone.Reverb({ decay: 2.2, preDelay: 0.015, wet: 0.13 });
+  const room = new Tone.Reverb({ decay: 1.3, preDelay: 0.01, wet: 0.1 });
   const out = new Tone.Volume(0);
   bus.chain(room, out);
 
@@ -67,8 +67,8 @@ export function createWarmSynth(): Instrument {
     synth: new Tone.MonoSynth({
       oscillator: { type: 'custom', partials: [1, 0.42, 0.24, 0.14, 0.09, 0.06, 0.04, 0.025] },
       filter: { type: 'lowpass', rolloff: -12, Q: 2.2 },
-      envelope: { attack: 0.006, attackCurve: 'sine', decay: 1.4, sustain: 0.45, release: RELEASE, releaseCurve: 'cosine' },
-      filterEnvelope: { attack: 0.004, decay: 0.45, sustain: 0.25, release: RELEASE, baseFrequency: 500, octaves: 3.2, exponent: 2 },
+      envelope: { attack: 0.006, attackCurve: 'sine', decay: 0.7, sustain: 0.2, release: RELEASE, releaseCurve: 'cosine' },
+      filterEnvelope: { attack: 0.004, decay: 0.3, sustain: 0.2, release: RELEASE, baseFrequency: 500, octaves: 3.2, exponent: 2 },
     }).connect(bus),
     midi: null,
     busyUntil: 0,
