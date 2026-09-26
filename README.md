@@ -51,8 +51,9 @@ Set `PORT=<n>` to use a different port.
 
 ### Optional: sampled piano
 
-Put Salamander-style piano samples (`A0.mp3`, `C1.mp3`, `Ds1.mp3`, `Fs1.mp3`, … `C8.mp3`) in
-`apps/web/public/samples/piano/` (gitignored) before `npm run build`; otherwise a synth piano is used.
+Run `npm run fetch:samples` once (downloads the Salamander Grand Piano, ~2 MB, CC-BY 3.0) into
+`apps/web/public/samples/piano/` (gitignored), then `npm run build`. Any Salamander-style set (`A0.mp3`,
+`C1.mp3`, `Ds1.mp3`, `Fs1.mp3`, … `C8.mp3`) works; without samples a synth piano is used.
 
 ## Quality checks
 

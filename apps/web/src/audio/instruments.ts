@@ -30,17 +30,21 @@ function poly(id: InstrumentId, synth: Tone.PolySynth, out: Tone.ToneAudioNode =
 }
 
 export function createSynthPiano(): Instrument {
+  // FM "hammer" over a soft body: brighter attack that mellows as it decays, low-passed and in a small room
   const s = new Tone.PolySynth(Tone.FMSynth, {
-    harmonicity: 2,
-    modulationIndex: 1.5,
-    oscillator: { type: 'triangle' },
-    modulation: { type: 'sine' },
-    envelope: { attack: 0.004, decay: 1.2, sustain: 0.12, release: 0.9 },
-    modulationEnvelope: { attack: 0.002, decay: 0.4, sustain: 0.05, release: 0.5 },
+    harmonicity: 1,
+    modulationIndex: 3.5,
+    oscillator: { type: 'sine' },
+    modulation: { type: 'triangle' },
+    envelope: { attack: 0.003, decay: 2.2, sustain: 0.05, release: 1.1 },
+    modulationEnvelope: { attack: 0.002, decay: 0.6, sustain: 0.1, release: 0.8 },
     volume: -8,
   });
   s.maxPolyphony = 48;
-  return poly('piano', s);
+  const tone = new Tone.Filter(3200, 'lowpass', -12);
+  const room = new Tone.Reverb({ decay: 1.6, preDelay: 0.01, wet: 0.18 });
+  s.chain(tone, room);
+  return { ...poly('piano', s, room), dispose: () => [s, tone, room].forEach((n) => n.dispose()) };
 }
 
 /** Salamander-style sample map: every third semitone from A0 (A, C, D#, F#). */
@@ -58,6 +62,7 @@ export function salamanderUrls(): Record<string, string> {
 }
 
 export async function createSampledPiano(baseUrl: string): Promise<Instrument> {
+  const room = new Tone.Reverb({ decay: 1.8, preDelay: 0.01, wet: 0.15 });
   return new Promise((resolve, reject) => {
     const sampler = new Tone.Sampler({
       urls: salamanderUrls(),
@@ -67,15 +72,18 @@ export async function createSampledPiano(baseUrl: string): Promise<Instrument> {
       onload: () =>
         resolve({
           id: 'piano',
-          output: sampler,
+          output: room,
           attack: (m, t, v) => sampler.triggerAttack(freq(m), t, v),
           release: (m, t) => sampler.triggerRelease(freq(m), t),
           attackRelease: (m, d, t, v) => sampler.triggerAttackRelease(freq(m), d, t, v),
           releaseAll: () => sampler.releaseAll(),
-          dispose: () => sampler.dispose(),
+          dispose: () => [sampler, room].forEach((n) => n.dispose()),
         }),
-      onerror: (e) => reject(e),
-    });
+      onerror: (e) => {
+        room.dispose();
+        reject(e);
+      },
+    }).connect(room);
   });
 }
 
