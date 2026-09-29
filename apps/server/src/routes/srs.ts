@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import type { ExerciseBlock, SrsCardDTO, SrsDueDTO } from '@music/core';
-import { dueCards, review, srsKey } from '@music/core';
+import { dueCards, review } from '@music/core';
 import type { ContentStore } from '../content.js';
 import { nowIso, type Db } from '../db.js';
 import { jsonBody, notFound, num } from '../http.js';
@@ -15,14 +15,18 @@ export function srsRoutes(db: Db, content: ContentStore, sessions: Sessions): Ho
   const r = new Hono();
 
   const toDto = (row: CardRow): SrsCardDTO => {
-    // Prefer the current content version of the exercise when its spec is unchanged (same key)
+    // The current content version of the exercise wins (content fixes reach existing cards); the stored copy is only
+    // a fallback for exercises that were removed or replaced by a different type
     const current = content.exercise(row.lesson_id, row.exercise_id);
-    const block: ExerciseBlock = current && srsKey(current) === row.key ? current : (JSON.parse(row.block) as ExerciseBlock);
+    const block: ExerciseBlock = current && current.type === row.type ? current : (JSON.parse(row.block) as ExerciseBlock);
     return {
       id: row.id, key: row.key, type: row.type, lessonId: row.lesson_id, exerciseId: row.exercise_id, block,
       ease: row.ease, interval: row.interval, reps: row.reps, lapses: row.lapses, dueSession: row.due_session,
     };
   };
+
+  /** A card is live while its exercise still exists in the content (same lesson, id and type). */
+  const live = (row: CardRow) => content.exercise(row.lesson_id, row.exercise_id)?.type === row.type;
 
   /**
    * Due cards. With `newLimit`, reviewed cards and new cards (never reviewed) are balanced: at most `newLimit` new
@@ -33,15 +37,15 @@ export function srsRoutes(db: Db, content: ContentStore, sessions: Sessions): Ho
     const newLimitRaw = c.req.query('newLimit');
     const session = sessions.touch();
     if (newLimitRaw === undefined) {
-      const rows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND due_session <= ?').all(session) as unknown as CardRow[];
+      const rows = (db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND due_session <= ?').all(session) as unknown as CardRow[]).filter(live);
       const due = dueCards(rows.map((r) => ({ ...r, dueSession: r.due_session })), session, limit);
       const dto: SrsDueDTO = { session, cards: due.map(toDto) };
       return c.json(dto);
     }
     const newLimit = Math.max(0, Math.min(limit, Number(newLimitRaw) || 0));
-    const reviewRows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NOT NULL AND due_session <= ?').all(session) as unknown as CardRow[];
+    const reviewRows = (db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NOT NULL AND due_session <= ?').all(session) as unknown as CardRow[]).filter(live);
     const reviews = dueCards(reviewRows.map((r) => ({ ...r, dueSession: r.due_session })), session, limit);
-    const newRows = db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NULL ORDER BY due_session, id LIMIT ?').all(newLimit) as unknown as CardRow[];
+    const newRows = (db.prepare('SELECT * FROM srs_cards WHERE suspended = 0 AND last_session IS NULL ORDER BY due_session, id').all() as unknown as CardRow[]).filter(live).slice(0, newLimit);
     const fresh = newRows.slice(0, Math.max(0, Math.min(newLimit, limit - Math.min(reviews.length, limit - newLimit))));
     const mixed: CardRow[] = [];
     let ri = 0;

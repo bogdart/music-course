@@ -198,12 +198,13 @@ export const dawCheckSchema = obj({
 export const specSchemas = {
   'ear-note': obj({
     key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1),
-    reference: z.enum(['cadence', 'tonic', 'none']).optional(), octaves: z.array(z.number().int().min(0).max(8)).min(1).optional(),
+    reference: z.enum(['cadence', 'scale', 'tonic', 'none']).optional(), octaves: z.array(z.number().int().min(0).max(8)).min(1).optional(),
     instrument: instrument.optional(), chromatic: z.boolean().optional(), answer: z.enum(['degree', 'name']).optional(),
   }),
   'ear-octave': obj({
     notes: z.array(noteName).min(1), octaves: z.array(z.number().int().min(0).max(8)).min(1),
-    mode: z.enum(['same-or-different', 'which-octave', 'higher-or-lower']), instrument: instrument.optional(),
+    mode: z.enum(['same-or-different', 'together', 'match', 'which-octave', 'higher-or-lower']), instrument: instrument.optional(),
+    gap: z.array(z.number().int().min(1).max(2)).min(1).optional(), foils: z.array(z.number().int().min(1).max(11)).min(1).optional(),
   }),
   'ear-interval': obj({
     intervals: z.array(intervalId).min(1), direction: z.enum(['asc', 'desc', 'harmonic', 'mixed']).optional(),
@@ -232,7 +233,7 @@ export const specSchemas = {
   'ear-melody': obj({
     key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1), length: z.number().int().min(1).max(32).optional(),
     rhythm: z.enum(['quarters', 'simple', 'free']).optional(), answer: z.enum(['play', 'degrees']).optional(),
-    bpm: bpm.optional(), instrument: instrument.optional(),
+    bpm: bpm.optional(), instrument: instrument.optional(), reference: z.enum(['cadence', 'scale', 'tonic', 'none']).optional(),
     chromatic: z.boolean().optional(), backing: z.array(romanNumeral).min(1).optional(), maxLeap: z.number().int().min(1).max(24).optional(),
     example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
   }),

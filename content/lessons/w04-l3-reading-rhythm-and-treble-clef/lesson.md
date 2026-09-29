@@ -135,7 +135,7 @@ In today's DAW task you'll write a basic rock/pop beat — the foundation of tho
   "instructions": "The note may now be in octave 3 or 4. Its degree doesn't change with the octave — listen for the colour.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 

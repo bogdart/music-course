@@ -134,14 +134,14 @@ may only use these types and fields.
 
 | type | spec | answer |
 |------|------|--------|
-| `ear-note` | `{ "key": "C", "mode": "major", "degrees": [1,2,3,4,5], "reference": "cadence"\|"tonic"\|"none", "octaves": [3,4], "instrument": "piano" }` | scale degree (1–7, with `b`/`#` when chromatic allowed via `"chromatic": true`) or note name if `"answer": "name"` |
-| `ear-octave` | `{ "notes": ["C","G"], "octaves": [2,3,4,5,6], "mode": "same-or-different"\|"which-octave" }` | `same`/`different` or octave number |
+| `ear-note` | `{ "key": "C", "mode": "major", "degrees": [1,2,3,4,5], "reference": "cadence"\|"scale"\|"tonic"\|"none", "octaves": [3,4], "instrument": "piano" }` | scale degree (1–7, with `b`/`#` when chromatic allowed via `"chromatic": true`) or note name if `"answer": "name"` |
+| `ear-octave` | `{ "notes": ["C","D","E"], "octaves": [3,4,5], "mode": "together"\|"match"\|"same-or-different"\|"which-octave"\|"higher-or-lower", "gap": [1], "foils": [1,6,11] }` | `same`/`different`, `A`/`B` (match), octave number or `higher`/`lower` |
 | `ear-interval` | `{ "intervals": ["m2","M2","m3","M3","P4","TT","P5","m6","M6","m7","M7","P8"], "direction": "asc"\|"desc"\|"harmonic"\|"mixed", "root": "random"\|"C4", "range": ["C3","C5"] }` | interval id |
 | `ear-chord` | `{ "qualities": ["maj","min","dim","aug","maj7","min7","dom7","m7b5","sus2","sus4"], "inversions": [0], "voicing": "close"\|"open"\|"mixed", "range": ["C3","C5"] }` | quality id (and inversion index if `inversions` has >1) |
 | `ear-chord-root` | `{ "qualities": ["maj","min"], "answer": "play"\|"name", "range": ["C3","C5"], "inversions": [0,1,2] }` | learner plays/names the root note (pitch class, any octave) |
 | `ear-scale` | `{ "scales": ["major","natural-minor","harmonic-minor","melodic-minor","dorian","mixolydian","lydian","phrygian","locrian","major-pentatonic","minor-pentatonic","blues","whole-tone","diminished"], "play": "asc"\|"asc-desc"\|"melody" }` | scale id |
 | `ear-progression` | `{ "key": "random"\|"C", "mode": "major"\|"minor", "length": 4, "chords": ["I","ii","iii","IV","V","vi","V7","bVII","iv"], "style": "block"\|"arpeggio"\|"pad-bass", "inversions": [0,1], "example": {…}, "progression": [...] }` | array of roman numerals |
-| `ear-melody` | `{ "key": "C"\|"random", "mode": "major", "degrees": [1,2,3,5], "length": 4, "rhythm": "quarters"\|"simple"\|"free", "answer": "play"\|"degrees", "chromatic": false, "backing": ["I","V"], "maxLeap": 7, "example": {…}, "track": 0 }` | learner plays melody back on keyboard, or enters degrees |
+| `ear-melody` | `{ "key": "C"\|"random", "mode": "major", "degrees": [1,2,3,5], "length": 4, "rhythm": "quarters"\|"simple"\|"free", "answer": "play"\|"degrees", "reference": "cadence"\|"scale"\|"tonic"\|"none", "chromatic": false, "backing": ["I","V"], "maxLeap": 7, "example": {…}, "track": 0 }` | learner plays melody back on keyboard, or enters degrees |
 | `ear-rhythm` | `{ "timeSig": "4/4", "bars": 1, "subdivision": "q"\|"8"\|"16"\|"8t", "rests": true, "answer": "tap"\|"choose", "choices": 4, "voices": ["kick","snare","hihat"] }` | tap it back (timing scored ±25% of a beat) or choose among 2–4 notations; with `voices`: fill a drum step grid |
 | `ear-bass` | `{ "key":"C", "mode": "major", "chords":["I","IV","V","vi"], "answer":"play"\|"name", "length": 4, "inversions": [0,1], "example": {…}, "track": 1 }` | play (or name as degrees) the bass note of each chord heard |
 | `ear-tempo` | `{ "range": [60,160], "tolerance": 4, "style": "click"\|"drums"\|"groove", "timeSig": "4/4", "bars": 2 }` | BPM (± tolerance); tap-tempo helper in the UI |
@@ -308,9 +308,9 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   by chance.
 * **Keys** everywhere accept `"C"`, `"Bb"`, `"F#"`, `"Am"`, `"C# minor"`, `"E minor"`; a separate `mode` applies
   only when the key string has no suffix. `ear-progression.key`, `ear-melody.key`, `ear-note.key` and `ear-bass.key` may be `"random"` (a fresh key per
-  item; keep `mode` for minor). Convention: from week 3 degree / roman-numeral ear exercises use `"random"` (the
-  answer doesn't depend on the key); play-back dictation (`ear-melody`/`ear-bass` with `answer: "play"`) from week 9.
-  Keep a fixed key only when the exercise text is about that key.
+  item; keep `mode` for minor). Convention: weeks 1–8 use fixed keys (C; G/F in week 7) so a beginner has one home
+  to learn; from week 9 degree / roman-numeral ear exercises and play-back dictation use `"random"` (the answer
+  doesn't depend on the key). Keep a fixed key only when the exercise text is about that key.
   **Scale ids** everywhere (`ear-scale`, `build-scale`, `play-scale`, `in-key`) accept every `ear-scale` id plus the
   aliases `minor`, `ionian`, `aeolian`.
 * **Roman numerals**: case = quality (`ii` minor), `°`/`ø`/`+`, suffixes `7 maj7 maj9 9 11 13 7sus4 add9 sus2 sus4`
@@ -323,7 +323,19 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   the key's mode.
 * **`ear-note`**: `mode` defaults to `major` (a key like `"Am"` also sets minor); `answer`: `"degree"`
   (default) | `"name"`; `chromatic: true` shows all 12 degree buttons.
-* **`ear-octave`** `which-octave` plays middle C (C4) as a reference first.
+* **`ear-octave`** `which-octave` plays middle C (C4) as a reference first. Comparison modes: `together` (both
+  notes at once — an octave melts into one sound; the easiest), `match` (a note, then candidates A and B: which is its
+  octave), `same-or-different` (one after the other). `gap`: octave distances (1–2) between the compared notes
+  (default any the `octaves` allow). `foils`: semitone distances (1–11) of the "different" note from the first
+  (default: another name from `notes`); the different note is placed next to the octave position, so the size of the
+  jump never gives the answer away. Pedagogy: start with `together`/`match`, `gap: [1]` and clashing foils `[1, 6, 11]`;
+  add `gap: [1, 2]` and the confusable fifth/fourth foils `[5, 7]` only later. Every comparison item offers
+  "Listen again" aids (both together, the real octave, walking the octaves) after the first answer.
+* **Key references** (`ear-note.reference`, `ear-melody.reference`): `scale` = melodic home run 1 2 3 4 5 4 3 2 1
+  (no chords — use it before chords are taught, weeks 3–5), `cadence` = I–IV–V–I, smoothly voiced (from week 6),
+  `tonic` = the tonic alone (weeks 1–2 echo drills), `none`. All references and the question share the same
+  tonic register (C4–G4 for C…G, A♭3–B3 for A♭…B; `octaves` shifts it), so degree 1 is always exactly the note the
+  reference ends on. `ear-melody` defaults to `cadence`, `ear-note` too.
 * **`play-notes`**: `notes` may also be an array of arrays — one note set per item (item count = number of
   sets unless `count` is given). Optional `"octave": "exact" | "any"` (default `exact` when every note has
   an octave, else `any`) and `"clef"` for `prompt: "staff"`. `prompt: "degrees"` requires `key`.

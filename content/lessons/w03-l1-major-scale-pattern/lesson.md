@@ -136,6 +136,6 @@ The fourth note, F♯, sounds like it's leaning somewhere else. That feeling —
   "instructions": "Four notes from C D E F G. Play them back.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play", "reference": "scale" }
 }
 ```

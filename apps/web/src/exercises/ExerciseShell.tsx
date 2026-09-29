@@ -7,6 +7,8 @@ import { api } from '../api/client';
 import { playSequence, stopPlayback } from '../audio/engine';
 import type { PlaybackHandle } from '../audio/types';
 import { useAudioStore } from '../stores/audio';
+import { useProgressStore } from '../stores/progress';
+import { loadSet, saveSet } from './persist';
 import { ComingSoon } from './ComingSoon';
 import { getExerciseComponent } from './registry';
 import { ExerciseIdContext, useExerciseFocus } from './focus';
@@ -43,25 +45,32 @@ export function ExerciseShell(props: ExerciseShellProps) {
   const { block, lessonId, mode = 'lesson', record = true, autoplay = true } = props;
   const [run, setRun] = useState(0);
   const Component = isExerciseType(block.type) ? getExerciseComponent(block.type) : null;
+  // lesson sets survive a page refresh (same seed → same items; position, results and summary restored)
+  const persist = mode === 'lesson' && record && props.count === undefined && props.seed === undefined;
+  const [saved] = useState(() => (persist ? loadSet(lessonId, block as ExerciseBlock) : null));
+  const restoring = useRef(!!saved);
+  const serverProgress = useProgressStore((s) => (persist ? s.summary?.exercises[lessonId]?.[block.id] : undefined));
 
   const set = useMemo(() => {
     if (!Component) return null;
     try {
       const b = props.count ? { ...block, count: props.count } : block;
-      return { ...generateSet(b as ExerciseBlock, props.seed !== undefined ? props.seed + run : undefined), error: null as string | null };
+      const seed = props.seed !== undefined ? props.seed + run : run === 0 && restoring.current ? saved?.seed : undefined;
+      return { ...generateSet(b as ExerciseBlock, seed), error: null as string | null };
     } catch (e) {
       return { seed: 0, items: [] as Item[], error: (e as Error).message };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [block, run, props.count, props.seed, Component]);
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => Math.min(saved?.index ?? 0, Math.max(0, (set?.items.length ?? 1) - 1)));
   const [st, setSt] = useState<ItemState>(freshItemState);
-  const [firsts, setFirsts] = useState<(EvalResult | null)[]>([]);
+  const [firsts, setFirsts] = useState<(EvalResult | null)[]>(() => saved?.firsts ?? []);
   /** best result per item across retries (used for performance types, see scoringOf) */
-  const [bests, setBests] = useState<(EvalResult | null)[]>([]);
+  const [bests, setBests] = useState<(EvalResult | null)[]>(() => saved?.bests ?? []);
   const [hints, setHints] = useState(0);
-  const [summary, setSummary] = useState<SetSummary | null>(null);
+  // a finished multi-item set comes back as its summary; a single-item one (a DAW task, a piece) reopens on the work
+  const [summary, setSummary] = useState<SetSummary | null>(() => ((set?.items.length ?? 0) > 1 ? saved?.summary ?? null : null));
   const audioStarted = useAudioStore((s) => s.started);
   // note-input focus (only the active exercise on the page reacts to played notes)
   const uid = useId();
@@ -87,6 +96,10 @@ export function ExerciseShell(props: ExerciseShellProps) {
   const playing = useRef<PlaybackHandle | null>(null);
 
   useEffect(() => {
+    if (restoring.current) {
+      restoring.current = false; // the first set is the restored one: keep its state
+      return;
+    }
     setIndex(0);
     setSt(freshItemState());
     setFirsts([]);
@@ -94,6 +107,12 @@ export function ExerciseShell(props: ExerciseShellProps) {
     setHints(0);
     setSummary(null);
   }, [set]);
+
+  useEffect(() => {
+    if (!persist || !set || set.error || restoring.current) return;
+    saveSet(lessonId, block as ExerciseBlock, { seed: set.seed, index, firsts, bests, summary });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [persist, set, index, firsts, bests, summary]);
 
   const item = set?.items[index] as Item | undefined;
 
@@ -256,6 +275,11 @@ export function ExerciseShell(props: ExerciseShellProps) {
     >
       <header className="exercise-head">
         <h3>{title}</h3>
+        {serverProgress && (
+          <span className={`badge small ${serverProgress.passed ? 'ok' : ''}`} data-testid="exercise-best" title="Your best score on this exercise so far">
+            best {Math.round(serverProgress.bestScore * 100)}%{serverProgress.passed ? ' ✓' : ''}
+          </span>
+        )}
         <span className="muted small" aria-label="progress">
           {index + 1} / {total}
         </span>
@@ -300,6 +324,16 @@ export function ExerciseShell(props: ExerciseShellProps) {
       {st.result && (
         <div className={`feedback ${st.result.correct ? 'ok' : 'bad'}`} role="status">
           {st.result.feedback}
+        </div>
+      )}
+      {st.result && item.compare && item.compare.length > 0 && (
+        <div className="row audio-row compare-row">
+          <span className="muted small">Listen again:</span>
+          {item.compare.map((c) => (
+            <button key={c.label} type="button" className="btn ghost" onClick={() => void playParts([c.audio])}>
+              ▶ {c.label}
+            </button>
+          ))}
         </div>
       )}
       {hints > 0 && (

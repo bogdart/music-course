@@ -84,7 +84,7 @@ Here's a secret: those are the same four chords as C major's **vi – IV – I �
 ```exercise
 {
   "id": "e4", "type": "ear-progression", "title": "Minor-key progressions",
-  "instructions": "Always starts on i. Follow the bass: does it drop to VI, or go up to III?",
+  "instructions": "New from here on: the key changes with every question. The cadence at the start sets the new home, and the answers (i, VI, III, VII) mean the same in every key. Always starts on i. Follow the bass: does it drop to VI, or go up to III?",
   "count": 8, "passScore": 0.7,
   "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "VI", "III", "VII"], "style": "pad-bass" }
 }

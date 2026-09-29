@@ -4,7 +4,7 @@ import { degreeEquals, degreeToNoteName, degreeToSemitones, parseKey, pcToDegree
 import { romanToChord } from '../theory/roman.js';
 import { scoreSequence } from '../performance.js';
 import type { Choice, ExerciseDefinition } from './types.js';
-import { cadence, ev, evaluateSlots } from './util.js';
+import { ev, evaluateSlots, keyReference } from './util.js';
 import { lineOf, mixSnippet, partTrack } from './example-mix.js';
 import { resolveKey, voiceUpper } from './harmony.js';
 
@@ -144,7 +144,7 @@ export const earMelody: ExerciseDefinition<'ear-melody'> = {
       prompt: answerKind === 'play'
         ? `Key of ${k.name}: play the melody back (${midis.length} notes, any octave).`
         : `Key of ${k.name}: write the scale degrees of the melody (${midis.length} notes).`,
-      reference: cadence(tonic, mode, instrument),
+      ...((s.reference ?? 'cadence') !== 'none' ? { reference: keyReference(s.reference ?? 'cadence', tonic, mode, instrument) } : {}),
       audio,
       ...(answerKind === 'degrees' ? { slots: degrees, palette } : {}),
       solution: degrees.map((d, i) => `${d} (${names[i]})`).join(' '),

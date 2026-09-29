@@ -65,12 +65,13 @@ The most common weak spots after eight weeks are **P4 vs P5**, **degrees 4 and 6
 
 ```exercise
 {
-  "id": "e1",
+  "id": "e9",
   "type": "ear-octave",
   "title": "Octaves: same name or different?",
+  "instructions": "One or two octaves apart; the different notes sit right next to the octave, or a fifth away.",
   "count": 12,
-  "passScore": 0.8,
-  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [2, 3, 4, 5], "mode": "same-or-different" }
+  "passScore": 0.75,
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [2, 3, 4, 5], "mode": "same-or-different", "gap": [1, 2], "foils": [1, 5, 6, 7, 11] }
 }
 ```
 
@@ -81,7 +82,7 @@ The most common weak spots after eight weeks are **P4 vs P5**, **degrees 4 and 6
   "title": "Scale degrees 1–7",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```
 
@@ -114,7 +115,7 @@ The most common weak spots after eight weeks are **P4 vs P5**, **degrees 4 and 6
   "title": "Melody in degrees",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
 }
 ```
 

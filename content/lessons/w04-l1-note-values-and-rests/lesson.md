@@ -62,13 +62,26 @@ The last two bars are how "Mary Had a Little Lamb" is really written — with a 
 
 ## A new degree: 4 (fa)
 
-Degree 4 sits right above 3, only a half step away, and it leans heavily **down** onto 3. After the cadence it sounds tense, as if it's waiting to resolve. Sing it and let it fall: fa → mi.
+Degree 4 sits right above 3, only a half step away, and it leans heavily **down** onto 3. After the home run it sounds tense, as if it's waiting to resolve. Sing it and let it fall: fa → mi.
 
 ```example
 {
   "title": "Cadence, then 4 resolving to 3",
   "bpm": 80, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h | r:w | F4:h E4:h" } ]
+}
+```
+
+## Octaves, two apart
+
+Your octave drills so far kept the two notes one octave apart. Two octaves (C3 and C5) is much harder — the height difference is huge and the melting effect is weaker. The bridge is to walk it: C3 → C4 → C5. Each step is an octave you can already hear, so the colour carries through. After each answer below, press **Walk up the octaves** and follow the colour step by step.
+
+```example
+{
+  "title": "C3 → C5 directly, then walked: C3 → C4 → C5",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C3:h C5:h | C3:q C4:q C5:h" } ],
+  "show": ["keyboard"]
 }
 ```
 
@@ -134,7 +147,7 @@ Degree 4 sits right above 3, only a half step away, and it leans heavily **down*
   "instructions": "4 is tense and wants to fall to 3.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 
@@ -146,5 +159,18 @@ Degree 4 sits right above 3, only a half step away, and it leans heavily **down*
   "instructions": "Dotted quarter + eighth at the start of lines 1 and 3.",
   "passScore": 0.75,
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:h | D4:q D4:q D4:h | E4:q G4:q G4:h | E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:q E4:q | D4:q D4:q E4:q D4:q | C4:w", "showStaff": true, "showKeyboard": false, "countIn": 1 }
+}
+```
+
+```exercise
+{
+  "id": "e7",
+  "type": "ear-octave",
+  "title": "Which one is the octave? (one or two apart)",
+  "instructions": "A note, then A and B — one or two octaves higher. Which one is the same note?",
+  "count": 10,
+  "passScore": 0.7,
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4, 5], "mode": "match", "gap": [1, 2], "foils": [1, 6, 11] },
+  "hints": ["Two octaves apart: after answering, press 'Walk up the octaves'."]
 }
 ```

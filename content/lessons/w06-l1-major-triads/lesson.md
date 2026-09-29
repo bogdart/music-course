@@ -54,15 +54,40 @@ Notes played one after another like the start of that example are called an [[ar
 
 ## Why 1, 3 and 5 sound stable
 
-In C major, the C triad is made of degrees **1, 3 and 5** — exactly the notes you've been hearing as "stable". That's not a coincidence: the tonic chord *defines* home. Next time you hear a note after the cadence, ask first: "is it one of the chord notes (1, 3, 5), or one of the in-between notes?"
+In C major, the C triad is made of degrees **1, 3 and 5** — exactly the notes you've been hearing as "stable". That's not a coincidence: the chord built on home, the **home chord**, is the most restful sound in the key.
+
+## From the home run to the cadence
+
+Until now, the app set home before each question with the melodic home run (1 2 3 4 5 4 3 2 1). Now that you know chords, it can do the same job with chords — faster, and closer to how real songs set a key. This short chord pattern is called a [[cadence]]. It uses just three chords, each built exactly like the triads above, on degrees 1, 4 and 5 of C major:
+
+| | chord 1 | chord 2 | chord 3 | chord 4 |
+|---|---|---|---|---|
+| built on degree | 1 | 4 | 5 | 1 |
+| chord | C (C E G) | F (C F A) | G (B D G) | C (C E G) |
+| feeling | home | leaving home | tension — "almost there" | home again |
+
+(F and G are played with some notes moved to the nearest octave — C F A instead of F A C — so the hand barely moves. Same chords, smoother sound. You'll learn this trick, called *inversions*, in week 11.)
+
+Listen for the story: **home → away → tension → home**. After it, the last chord (C, home) is ringing in your ear, and any note you hear next is measured against it. The cadence never changes anything about the question — "1" is still C, the note the home chord is built on.
 
 ```example
 {
-  "title": "Cadence, then the tonic chord arpeggiated: 1 3 5 3 1",
+  "title": "Home run (old reference), then the cadence (new reference) — both end on C",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:w | [C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | C4:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+```example
+{
+  "title": "Cadence, then the home chord arpeggiated: 1 3 5 3 1",
   "bpm": 80, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h | C4:q E4:q G4:q E4:q | C4:w" } ]
 }
 ```
+
+When a question sounds after the cadence, ask first: "is it one of the home-chord notes (1, 3, 5), or one of the in-between notes?" If the cadence ever feels confusing, press **Reference** to hear it alone, and hum its last chord's lowest note — that's home.
 
 **Fingering:** right hand 1–3–5 (thumb, middle, little). Keep your hand shape and slide it along to change chords.
 
@@ -124,10 +149,10 @@ In C major, the C triad is made of degrees **1, 3 and 5** — exactly the notes 
   "id": "e5",
   "type": "ear-note",
   "title": "Which chord tone: 1, 3 or 5?",
-  "instructions": "After the cadence, one note from the tonic chord.",
+  "instructions": "After the cadence (C – F – G – C), one note from the home chord C E G.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 3, 5], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

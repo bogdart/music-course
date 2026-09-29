@@ -421,6 +421,9 @@ figure.card > * + * { margin-top: 10px; }
 
 /* exercises */
 .exercise-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.exercise-head .badge { margin-left: auto; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--muted); color: var(--muted); white-space: nowrap; }
+.exercise-head .badge.ok { background: var(--ok-bg); color: var(--ok-fg); border-color: transparent; }
+.compare-row .btn { font-size: 0.85rem; }
 .instructions { color: var(--muted); }
 .prompt { font-size: 1.15rem; font-weight: 600; margin: 10px 0; }
 .question { font-size: 1.1rem; }

@@ -102,7 +102,7 @@ Today your left hand joins in the simplest possible way: it plays the **root** o
   "instructions": "Two chords after the cadence. For each one: home (I) or tension (V)?",
   "count": 10,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 2, "chords": ["I", "V"], "style": "block" }
+  "spec": { "key": "C", "mode": "major", "length": 2, "chords": ["I", "V"], "style": "block" }
 }
 ```
 
@@ -114,7 +114,7 @@ Today your left hand joins in the simplest possible way: it plays the **root** o
   "instructions": "7 is tense and leans hard up to 1.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 5, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 5, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
 }
 ```
 
@@ -126,7 +126,7 @@ Today your left hand joins in the simplest possible way: it plays the **root** o
   "instructions": "Sing down (or up, for 7) to home and count.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

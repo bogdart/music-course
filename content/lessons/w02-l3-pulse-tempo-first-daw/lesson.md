@@ -116,7 +116,7 @@ A [[DAW]] (digital audio workstation) is where you'll build every song this year
   "title": "Echo: four notes from C to G",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play", "reference": "tonic" }
 }
 ```
 

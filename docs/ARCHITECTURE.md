@@ -134,7 +134,10 @@ polyphony with different durations is not representable and is emitted with the 
   core render a "coming soon" card. `ExerciseShell {block, lessonId, mode?: 'lesson'|'practice', record?, count?,
   seed?, autoplay?, onComplete?, onItemResult?}` generates/evaluates, handles replay (reference then audio), hints, reveal,
   retries (only the first attempt per item is scored and posted) and posts the set result to
-  `/api/progress/exercises/complete`. `play-notes` evaluates once as many notes as targets were played.
+  `/api/progress/exercises/complete`. `play-notes` evaluates once as many notes as targets were played. Lesson sets
+  survive a page refresh: seed, position, results and summary are kept per exercise in localStorage
+  (`exercises/persist.ts`, dropped when the spec changes); an exercise finished earlier on another device shows its
+  best server score with "Practice again". Items may carry `compare` listening aids, offered after the first answer.
   **Input focus:** only one exercise on a page reacts to played notes — the first mounted one, then whichever the
   learner last clicked/focused (`exercises/focus.ts`: `useExerciseFocus` store, `ExerciseIdContext`; components
   use `useExerciseNoteInput(handler, enabled)`, which checks focus when the event arrives). The focused exercise
@@ -217,7 +220,9 @@ degrees slots with palette, answer by button or by playing), `PlayBack` (octave-
 ### Spaced repetition (SRS)
 
 Ear-training and recall items (`srs: true` in an exercise spec, or any
-`ear-*` type) create SRS cards keyed by `(type, spec-hash)`. Algorithm:
+`ear-*` type) create SRS cards keyed by `(type, spec-hash)`. The card always plays the *current* content version of
+its exercise (same lesson, id and type — an edited spec updates the card's key and stored block when the exercise is
+next completed); cards whose exercise was removed are left out of `/api/srs/due`. Algorithm:
 SM-2 variant with intervals in *sessions* rather than days (1, 2, 4, 8…
 sessions), because the learner practises several times per week. Practice
 page pulls due cards, mixes in new ones, and adapts difficulty (e.g. widen

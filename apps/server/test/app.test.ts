@@ -148,6 +148,23 @@ describe('SRS sessions with new cards and the journal', () => {
     expect(due.cards).toHaveLength(1);
   });
 
+  it('cards follow content changes and drop removed exercises', async () => {
+    const c = await json<{ srsCardId: number }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 1, passed: true, correct: 1, total: 1 }));
+    // simulate a card made from an older version of the exercise, plus one whose exercise no longer exists
+    const oldBlock = JSON.stringify({ id: 'e1', type: 'ear-octave', spec: { notes: ['C', 'G'], octaves: [3, 5], mode: 'same-or-different' } });
+    db.prepare('UPDATE srs_cards SET key = ?, block = ? WHERE id = ?').run('ear-octave:old', oldBlock, c.srsCardId);
+    db.prepare(`INSERT INTO srs_cards (key, type, lesson_id, exercise_id, block, ease, interval, reps, lapses, due_session, last_session, created_at, updated_at)
+      SELECT 'ear-octave:gone', type, lesson_id, 'gone', block, ease, interval, reps, lapses, due_session, last_session, created_at, updated_at FROM srs_cards WHERE id = ?`).run(c.srsCardId);
+    now += 3 * 3600_000;
+    const due = await json<SrsDueDTO>(app.request('/api/srs/due?limit=10&newLimit=5'));
+    expect(due.cards.map((x) => x.exerciseId)).toEqual(['e1']);
+    expect(due.cards[0]!.block.spec).toMatchObject({ notes: ['C'], octaves: [3, 4] });
+    // completing the new version again updates the existing card instead of adding a second one
+    const again = await json<{ srsCardId: number }>(post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 1, passed: true, correct: 1, total: 1 }));
+    expect(again.srsCardId).toBe(c.srsCardId);
+    expect((db.prepare("SELECT COUNT(*) AS n FROM srs_cards WHERE exercise_id = 'e1'").get() as { n: number }).n).toBe(1);
+  });
+
   it('lists attempts of an exercise (reflect journal), newest first', async () => {
     await post('/api/progress/attempts', { lessonId: 'w01-l2-octaves', exerciseId: 'r1', type: 'reflect', correct: true, score: 1, answer: 'first thoughts' });
     await post('/api/progress/attempts', { lessonId: 'w01-l2-octaves', exerciseId: 'r1', type: 'reflect', correct: true, score: 1, answer: 'second thoughts' });

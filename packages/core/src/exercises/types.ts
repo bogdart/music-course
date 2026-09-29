@@ -26,14 +26,23 @@ export interface ExerciseCommon {
 
 type Range = [string, string];
 
+/** How a key is set before a key-relative question: chord cadence, melodic 1-2-3-4-5-4-3-2-1 run, tonic alone, or nothing. */
+export type KeyReferenceKind = 'cadence' | 'scale' | 'tonic' | 'none';
+
 export interface SpecMap {
   // ---- ear training ----
   'ear-note': {
     key: string; mode?: 'major' | 'minor'; degrees: (number | string)[];
-    reference?: 'cadence' | 'tonic' | 'none'; octaves?: number[]; instrument?: InstrumentId;
+    reference?: KeyReferenceKind; octaves?: number[]; instrument?: InstrumentId;
     chromatic?: boolean; answer?: 'degree' | 'name';
   };
-  'ear-octave': { notes: string[]; octaves: number[]; mode: 'same-or-different' | 'which-octave' | 'higher-or-lower'; instrument?: InstrumentId };
+  'ear-octave': {
+    notes: string[]; octaves: number[]; mode: EarOctaveMode; instrument?: InstrumentId;
+    /** Octave distances (1 or 2) between the two compared notes (`same-or-different`, `together`, `match`) */
+    gap?: number[];
+    /** Semitone distances (1–11, pitch class) of the "different" note from the first; default: another name from `notes` */
+    foils?: number[];
+  };
   'ear-interval': {
     intervals: string[]; direction?: 'asc' | 'desc' | 'harmonic' | 'mixed'; root?: string; range?: Range;
     instrument?: InstrumentId;
@@ -53,6 +62,8 @@ export interface SpecMap {
   'ear-melody': {
     key: string; mode?: 'major' | 'minor'; degrees: (number | string)[]; length?: number;
     rhythm?: 'quarters' | 'simple' | 'free'; answer?: 'play' | 'degrees'; bpm?: number; instrument?: InstrumentId;
+    /** Key reference played first (default `cadence`) */
+    reference?: KeyReferenceKind;
     /** chromatic passing/neighbour tones and a 12-degree answer palette */
     chromatic?: boolean;
     /** Harmony played under the melody: roman numerals spread evenly across it */
@@ -186,13 +197,16 @@ export interface ItemBase<T extends ExerciseType> {
   solution: string;
   /** Audio of the solution (for reveal), if different from `audio` */
   solutionAudio?: Snippet;
+  /** Extra listening aids offered after the first answer (e.g. "both together", "the real octave") */
+  compare?: { label: string; audio: Snippet }[];
 }
 
 export interface EarNoteItem extends ItemBase<'ear-note'> {
   key: string; mode: 'major' | 'minor'; midi: number; answerKind: 'degree' | 'name'; answer: string;
 }
+export type EarOctaveMode = 'same-or-different' | 'together' | 'match' | 'which-octave' | 'higher-or-lower';
 export interface EarOctaveItem extends ItemBase<'ear-octave'> {
-  mode: 'same-or-different' | 'which-octave' | 'higher-or-lower'; midis: number[]; answer: string;
+  mode: EarOctaveMode; midis: number[]; answer: string;
 }
 export interface EarIntervalItem extends ItemBase<'ear-interval'> {
   interval: string; direction: 'asc' | 'desc' | 'harmonic'; midis: [number, number]; answer: string;

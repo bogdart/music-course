@@ -59,7 +59,7 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
   "title": "1, 2 or 3? (review)",
   "count": 12,
   "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 
@@ -110,7 +110,7 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
   "instructions": "Four notes using 1, 2 and 3. Enter the degrees.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3], "length": 4, "rhythm": "quarters", "answer": "degrees" }
+  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 4, "rhythm": "quarters", "answer": "degrees", "reference": "scale" }
 }
 ```
 

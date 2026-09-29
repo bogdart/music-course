@@ -51,13 +51,18 @@ Listen to all seven white keys climbing from C4 to C5. The last note has the sam
 
 ## Octaves, round two
 
-Last week it was only C and G. Today the "different" notes can be *any* white key, including neighbours like C and D that sit very close together. Here's the trap: two notes that are close in height (C4 and D4) are **different**, while two notes far apart (C3 and C5) are the **same name**. Distance is not the clue — the "melting" sound is.
+Last week the "different" note was usually far from the first one in colour (like C and F♯). Today it can be the **key right next to the octave** — C4 then B4, or C4 then D5. These are the hardest "different" notes, because they're almost exactly as high as the real octave. Height can't help you; only the colour can.
+
+Two things still help:
+
+- **Together first.** If you're unsure, press *Both together* after answering: an octave melts, a near-miss rubs and wobbles.
+- **Close-but-different vs far-but-same.** Two notes close in height (C4 and D4) are **different**; two notes further apart (C3 and C4) can be the **same name**. Distance is not the clue.
 
 ```example
 {
-  "title": "Close but different (C4, D4), then far but same (C3, C5)",
+  "title": "Close but different (C4, D4), far but same (C3, C4), octave vs near-miss (C4 → C5, C4 → B4)",
   "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:h D4:h | [C4 D4]:w | C3:h C5:h | [C3 C5]:w" } ],
+  "tracks": [ { "instrument": "piano", "seq": "C4:h D4:h | [C4 D4]:w | C3:h C4:h | [C3 C4]:w | C4:h C5:h | C4:h B4:h | [C4 C5]:w | [C4 B4]:w" } ],
   "show": ["keyboard"]
 }
 ```
@@ -119,14 +124,27 @@ Last week it was only C and G. Today the "different" notes can be *any* white ke
 
 ```exercise
 {
-  "id": "e5",
+  "id": "e7",
   "type": "ear-octave",
-  "title": "Same name or different? (all white keys)",
-  "instructions": "Same note name in any octave, or different notes? Neighbours count as different.",
+  "title": "Octave or near-miss? (together)",
+  "instructions": "Two notes at once: an octave, or a note right next to the octave?",
   "count": 10,
+  "passScore": 0.75,
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4], "mode": "together", "gap": [1], "foils": [1, 11] },
+  "hints": ["Near-misses rub and wobble; the octave is smooth."]
+}
+```
+
+```exercise
+{
+  "id": "e8",
+  "type": "ear-octave",
+  "title": "Octave or near-miss? (one after the other)",
+  "instructions": "Same note an octave away, or the key right next to it? Ignore the height jump — it's the same size either way.",
+  "count": 12,
   "passScore": 0.7,
-  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4, 5], "mode": "same-or-different" },
-  "hints": ["Ignore the distance. Do the two notes melt into one colour?"]
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4, 5], "mode": "same-or-different", "gap": [1], "foils": [1, 6, 11] },
+  "hints": ["Does the second note feel like an echo of the first (same), or like it's pulling away (different)?"]
 }
 ```
 
@@ -138,6 +156,6 @@ Last week it was only C and G. Today the "different" notes can be *any* white ke
   "instructions": "Three-note tunes, now using C, D, E, F and G. Start on C with your thumb.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 3, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 3, "rhythm": "quarters", "answer": "play", "reference": "tonic" }
 }
 ```

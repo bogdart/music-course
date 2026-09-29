@@ -1,5 +1,5 @@
 import { PPQ, type InstrumentId, type NoteEvent, type Snippet } from '../model.js';
-import { chordMidi, CHORD_INTERVALS } from '../theory/chords.js';
+import { CHORD_INTERVALS } from '../theory/chords.js';
 import { parseKey, type Mode } from '../theory/keys.js';
 import { createRng, type Rng } from '../rng.js';
 import type { Choice, EvalResult } from './types.js';
@@ -24,36 +24,63 @@ export function harmonic(midis: number[], opts: { instrument?: InstrumentId; bpm
   return snippet(midis.map((m) => ev(m, 0, d)), opts.instrument, opts.bpm ?? 80);
 }
 
-/** I–IV–V–I (i–iv–V–i in minor) cadence establishing a key, voiced around middle C, plus tonic in the bass. */
-export function cadence(key: string, mode?: Mode, instrument: InstrumentId = 'piano'): Snippet {
+/**
+ * MIDI note of a key's tonic in "octave 4" as every key-based reference and question uses it: C4–G4 for C…G,
+ * A♭3–B3 for A♭…B (so the whole key sits around middle C). `octave` shifts it by whole octaves.
+ */
+export function tonicMidiOf(tonicPc: number, octave = 4): number {
+  const pc = ((tonicPc % 12) + 12) % 12;
+  return 60 + pc - (pc > 7 ? 12 : 0) + 12 * (octave - 4);
+}
+
+/**
+ * I–IV–V–I (i–iv–V–i in minor) cadence establishing a key: smooth close voicing on the tonic of `tonicMidiOf` (the
+ * top voices barely move: 1-3-5 → 1-4-6 → 7-2-5 → 1-3-5) plus the chord roots in the bass.
+ */
+export function cadence(key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet {
   const k = parseKey(key, mode);
-  const tonic = 48 + k.tonicPc; // octave 3
-  const root = (st: number) => {
-    let r = tonic + st;
-    while (r > 55) r -= 12;
-    return r + 12; // chord roots between C4-ish and G4
-  };
+  const t = tonicMidiOf(k.tonicPc, octave);
   const minor = k.mode === 'minor';
+  const third = minor ? 3 : 4;
+  const sixth = minor ? 8 : 9;
   const chords: number[][] = [
-    chordMidi(root(0), minor ? 'min' : 'maj', 0),
-    chordMidi(root(5), minor ? 'min' : 'maj', 0),
-    chordMidi(root(7), 'maj', 0),
-    chordMidi(root(0), minor ? 'min' : 'maj', 0),
+    [t, t + third, t + 7],
+    [t, t + 5, t + sixth],
+    [t - 1, t + 2, t + 7],
+    [t, t + third, t + 7],
   ];
-  const bassSt = [0, 5, 7, 0];
+  const bass = [0, 5, 7, 0].map((st) => t - 12 + st - (st > 0 ? 12 : 0));
   const events: NoteEvent[] = [];
   chords.forEach((c, i) => {
-    const t = i * PPQ;
+    const tick = i * PPQ;
     const dur = i === 3 ? PPQ * 2 : PPQ;
-    for (const m of c) events.push(ev(m, t, dur, 0.6));
-    events.push(ev(tonic - 12 + bassSt[i]!, t, dur, 0.6));
+    for (const m of c) events.push(ev(m, tick, dur, 0.6));
+    events.push(ev(bass[i]!, tick, dur, 0.6));
   });
   return snippet(events, instrument, 100);
 }
 
-export function tonicReference(key: string, mode?: Mode, instrument: InstrumentId = 'piano'): Snippet {
+/** Melodic key reference without chords: 1 2 3 4 5 4 3 2 1 in the key (tonic from `tonicMidiOf`), last note long. */
+export function scaleReference(key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet {
   const k = parseKey(key, mode);
-  return harmonic([60 + ((k.tonicPc + 6) % 12) - 6], { instrument, beats: 2 });
+  const t = tonicMidiOf(k.tonicPc, octave);
+  const steps = k.mode === 'minor' ? [0, 2, 3, 5, 7, 5, 3, 2, 0] : [0, 2, 4, 5, 7, 5, 4, 2, 0];
+  const d = PPQ / 2;
+  return snippet(steps.map((st, i) => ev(t + st, i * d, i === steps.length - 1 ? PPQ * 2 : d, 0.7)), instrument, 100);
+}
+
+/** The key's tonic alone (same register as `cadence` and `scaleReference`). */
+export function tonicReference(key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet {
+  const k = parseKey(key, mode);
+  return harmonic([tonicMidiOf(k.tonicPc, octave)], { instrument, beats: 2 });
+}
+
+/** Key reference by kind (`none` → undefined). */
+export function keyReference(kind: 'cadence' | 'scale' | 'tonic' | 'none', key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet | undefined {
+  if (kind === 'cadence') return cadence(key, mode, instrument, octave);
+  if (kind === 'scale') return scaleReference(key, mode, instrument, octave);
+  if (kind === 'tonic') return tonicReference(key, mode, instrument, octave);
+  return undefined;
 }
 
 /** Chord span in semitones for a quality (for fitting in a range). */

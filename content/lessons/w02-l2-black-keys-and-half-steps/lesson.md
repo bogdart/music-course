@@ -135,12 +135,13 @@ In the app, a half step is labelled **m2** and a whole step **M2** (minor and ma
 
 ```exercise
 {
-  "id": "e6",
+  "id": "e7",
   "type": "ear-octave",
-  "title": "Octaves vs close neighbours",
-  "instructions": "Same note name (any octave) or different? Watch out: notes a half step apart are different.",
-  "count": 10,
+  "title": "Octaves vs half-step neighbours",
+  "instructions": "Same note name an octave away, or a note one half step off? Now with black keys too.",
+  "count": 12,
   "passScore": 0.7,
-  "spec": { "notes": ["C", "C#", "F", "F#"], "octaves": [3, 4, 5], "mode": "same-or-different" }
+  "spec": { "notes": ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "octaves": [3, 4, 5], "mode": "same-or-different", "gap": [1], "foils": [1, 11] },
+  "hints": ["A half step off the octave sounds sour against the first note. Press 'Octave vs this note' after answering."]
 }
 ```

@@ -131,7 +131,7 @@ The vi chord's root is degree **6**. After the cadence, 6 sounds soft and slight
   "instructions": "6 is soft and leans down toward 5.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 5, 6], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 3, 5, 6], "reference": "cadence", "octaves": [4], "instrument": "piano" }
 }
 ```
 

@@ -8,7 +8,7 @@ duration_min: 45
 goals:
   - Read a time signature and feel the difference between 4/4 and 3/4
   - Count and tap rhythms in both meters
-  - Hear degrees 1–5 after a cadence
+  - Hear degrees 1–5 after the home run (1 2 3 4 5 4 3 2 1)
 prerequisites: [w04-l1-note-values-and-rests]
 tags: [rhythm, meter, time-signature, ear]
 songs:
@@ -135,7 +135,7 @@ Degree 5 is the second most stable note after 1. It sounds strong and open, but 
   "instructions": "5 is strong and open, 'up on the balcony'. Sing down to 1 if unsure.",
   "count": 12,
   "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 

@@ -80,6 +80,33 @@ describe('ear-note', () => {
   });
 });
 
+describe('key references', () => {
+  it('degree 1 is exactly the tonic the reference ends on, in every key', () => {
+    for (const key of ['C', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']) {
+      for (const reference of ['cadence', 'scale', 'tonic'] as const) {
+        const item = many(block('ear-note', { key, degrees: [1], reference }), 1)[0]!;
+        const ev = item.reference!.tracks[0]!.events;
+        const lastStart = Math.max(...ev.map((e) => e.startTick));
+        const endNotes = ev.filter((e) => e.startTick === lastStart).map((e) => e.midi);
+        expect(endNotes, `${key} ${reference}`).toContain(item.midi);
+        expect(Math.min(...endNotes.filter((m) => m >= item.midi - 12 + 1)), `${key} ${reference}`).toBe(item.midi);
+      }
+    }
+  });
+  it('the cadence moves smoothly (upper voices move at most 3 semitones)', () => {
+    const item = many(block('ear-note', { key: 'E', degrees: [1], reference: 'cadence' }), 1)[0]!;
+    const ev = item.reference!.tracks[0]!.events;
+    const chords = [...new Set(ev.map((e) => e.startTick))].map((t) => ev.filter((e) => e.startTick === t).map((e) => e.midi).sort((a, b) => a - b).slice(1));
+    for (let i = 1; i < chords.length; i++) chords[i]!.forEach((m, v) => expect(Math.abs(m - chords[i - 1]![v]!)).toBeLessThanOrEqual(3));
+  });
+  it('scale reference is melodic (one note at a time)', () => {
+    const item = many(block('ear-melody', { key: 'C', degrees: [1, 2, 3], length: 3, reference: 'scale' }), 1)[0]!;
+    const starts = item.reference!.tracks[0]!.events.map((e) => e.startTick);
+    expect(new Set(starts).size).toBe(starts.length);
+    expect(many(block('ear-melody', { key: 'C', degrees: [1, 2, 3], length: 3, reference: 'none' }), 1)[0]!.reference).toBeUndefined();
+  });
+});
+
 describe('ear-octave', () => {
   it('same-or-different', () => {
     const b = block('ear-octave', { notes: ['C', 'G'], octaves: [2, 3, 4, 5], mode: 'same-or-different' });
@@ -92,6 +119,41 @@ describe('ear-octave', () => {
       if (same) expect(i.midis[0]).not.toBe(i.midis[1]);
       expect(evaluate(i, i.answer).correct).toBe(true);
       expect(evaluate(i, i.answer === 'same' ? 'different' : 'same').correct).toBe(false);
+    }
+  });
+  it('gap and foils: the "different" note sits right next to the octave position', () => {
+    const b = block('ear-octave', { notes: ['C', 'D', 'E'], octaves: [3, 4, 5], mode: 'same-or-different', gap: [1], foils: [1, 6, 11] });
+    for (const i of many(b, 80)) {
+      const [a, c] = i.midis as [number, number];
+      const d = ((c - a) % 12 + 12) % 12;
+      if (i.answer === 'same') expect(Math.abs(c - a)).toBe(12);
+      else {
+        expect([1, 6, 11]).toContain(d);
+        expect(Math.abs(Math.abs(c - a) - 12)).toBeLessThanOrEqual(6);
+      }
+      expect(i.compare?.length).toBeGreaterThan(0);
+    }
+  });
+  it('together: both notes at once, the lower first', () => {
+    const b = block('ear-octave', { notes: ['C', 'F#'], octaves: [3, 4], mode: 'together', gap: [1] });
+    for (const i of many(b, 40)) {
+      expect(i.midis[1]! - i.midis[0]!).toBeGreaterThan(0);
+      expect(i.audio!.tracks[0]!.events.every((e) => e.startTick === 0)).toBe(true);
+      expect(i.answer).toBe(pitchClass(i.midis[0]!) === pitchClass(i.midis[1]!) ? 'same' : 'different');
+    }
+  });
+  it('match: one candidate is the octave, the other a foil', () => {
+    const b = block('ear-octave', { notes: ['C', 'G'], octaves: [3, 4], mode: 'match', gap: [1], foils: [6] });
+    const items = many(b, 40);
+    expect(new Set(items.map((i) => i.answer))).toEqual(new Set(['A', 'B']));
+    for (const i of items) {
+      const [ref, a, c] = i.midis as [number, number, number];
+      const oct = i.answer === 'A' ? a : c;
+      const foil = i.answer === 'A' ? c : a;
+      expect(oct - ref).toBe(12);
+      expect(((foil - ref) % 12 + 12) % 12).toBe(6);
+      expect(evaluate(i, i.answer).correct).toBe(true);
+      expect(evaluate(i, i.answer === 'A' ? 'B' : 'A').correct).toBe(false);
     }
   });
   it('higher-or-lower', () => {

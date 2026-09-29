@@ -1,6 +1,8 @@
 import { cleanNoteName, midiToNote, noteToMidi, pitchClass, pitchClassName, octaveOf } from '../theory/notes.js';
-import type { ExerciseDefinition } from './types.js';
-import { melodic } from './util.js';
+import type { EarOctaveItem, ExerciseDefinition, SpecMap } from './types.js';
+import { harmonic, melodic } from './util.js';
+import type { Rng } from '../rng.js';
+import type { InstrumentId } from '../model.js';
 
 export const earOctave: ExerciseDefinition<'ear-octave'> = {
   type: 'ear-octave',
@@ -37,33 +39,11 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
         solution: `${answer === 'higher' ? 'Higher' : 'Lower'} — ${midiToNote(a)} then ${midiToNote(b)}`,
       };
     }
-    const first = rng.pick(notes);
-    const o1 = rng.pick(octaves);
-    const same = rng.chance(0.5);
-    let secondName: string;
-    let o2: number;
-    if (same) {
-      secondName = first;
-      const others = octaves.filter((o) => o !== o1);
-      o2 = others.length ? rng.pick(others) : o1;
-    } else {
-      const otherNotes = notes.filter((n) => pitchClass(n) !== pitchClass(first));
-      secondName = otherNotes.length ? rng.pick(otherNotes) : rng.pick(['C', 'D', 'E', 'F', 'G', 'A', 'B'].filter((n) => pitchClass(n) !== pitchClass(first)));
-      o2 = rng.pick(octaves);
-    }
-    const m1 = noteToMidi(`${first}${o1}`);
-    const m2 = noteToMidi(`${secondName}${o2}`);
-    return {
-      type: 'ear-octave', mode: 'same-or-different', midis: [m1, m2], answer: same ? 'same' : 'different',
-      prompt: 'Two notes: are they the same note (maybe in different octaves) or different notes?',
-      audio: melodic([m1, m2], { instrument, beats: 1.5 }),
-      choices: [{ value: 'same', label: 'Same note' }, { value: 'different', label: 'Different notes' }],
-      solution: `${same ? 'Same' : 'Different'} — ${first}${o1} then ${secondName}${o2}`,
-    };
+    return comparePair(s, notes, octaves, instrument, rng);
   },
   evaluate(item, answer) {
     const a = String(answer ?? '').trim().toLowerCase();
-    const correct = a === item.answer;
+    const correct = a === item.answer.toLowerCase();
     const octNote = item.mode === 'which-octave' ? octaveOf(item.midis[0]!) : undefined;
     return {
       correct, score: correct ? 1 : 0,
@@ -73,3 +53,79 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
     };
   },
 };
+
+/**
+ * `same-or-different` (one after the other), `together` (both at once — an octave melts into one sound) and `match`
+ * (a note, then two candidates: which one is its octave?). The second note sits `gap` octaves from the first; a
+ * "different" note is placed right next to that octave position, so how far apart the notes are gives nothing away and
+ * only the note's "colour" decides. Foils come from `foils` (semitones) or else from the other `notes`.
+ */
+function comparePair(s: SpecMap['ear-octave'], notes: string[], octaves: number[], instrument: InstrumentId, rng: Rng): EarOctaveItem {
+  const mode = s.mode as 'same-or-different' | 'together' | 'match';
+  const gaps = s.gap?.length ? s.gap : [1, 2];
+  const dirs = mode === 'same-or-different' ? [1, -1] : [1];
+  const combos: { name: string; o1: number; dir: number; g: number }[] = [];
+  for (const name of notes) for (const o1 of octaves) for (const g of gaps) for (const dir of dirs) {
+    if (octaves.includes(o1 + dir * g)) combos.push({ name, o1, dir, g });
+  }
+  // octave list too narrow for the gap: go up from the lowest octave anyway
+  const c = combos.length ? rng.pick(combos) : { name: rng.pick(notes), o1: Math.min(...octaves), dir: 1, g: gaps[0]! };
+  const m1 = noteToMidi(`${c.name}${c.o1}`);
+  const octave = m1 + c.dir * 12 * c.g;
+  const pc1 = pitchClass(c.name);
+  const foilPcs = s.foils?.length
+    ? [...new Set(s.foils.map((f) => (pc1 + f) % 12))]
+    : [...new Set(notes.map((n) => pitchClass(n)).filter((pc) => pc !== pc1))];
+  const pcs = foilPcs.length ? foilPcs : [(pc1 + 6) % 12];
+  const foil = (() => {
+    const pc = rng.pick(pcs);
+    const up = octave + ((pc - (octave % 12) + 12) % 12); // same pc at or above the octave position
+    const down = up - 12;
+    if (up - octave === octave - down) return rng.chance(0.5) ? up : down;
+    return up - octave < octave - down ? up : down;
+  })();
+  const n = (m: number) => midiToNote(m);
+  const bridge = c.g > 1 ? [{ label: 'Walk up the octaves', audio: melodic(c.dir > 0 ? [m1, m1 + 12, octave] : [m1, m1 - 12, octave], { instrument, beats: 1 }) }] : [];
+
+  if (mode === 'match') {
+    const octaveFirst = rng.chance(0.5);
+    const [a, b] = octaveFirst ? [octave, foil] : [foil, octave];
+    const d = Math.round(1.5 * 480);
+    const events = [m1, a, b].map((m, i) => ({ midi: m, startTick: i === 0 ? 0 : (i + 0.5) * d, durationTicks: d, velocity: 0.8 }));
+    return {
+      type: 'ear-octave', mode, midis: [m1, a, b], answer: octaveFirst ? 'A' : 'B',
+      prompt: 'First a note, then two more (A and B). Which one is the same note, an octave away?',
+      audio: { bpm: 80, timeSig: { num: 4, den: 4 }, tracks: [{ instrument, events }] },
+      choices: [{ value: 'A', label: 'A (first)' }, { value: 'B', label: 'B (second)' }],
+      solution: `${octaveFirst ? 'A' : 'B'} — ${n(m1)}, then A = ${n(a)}, B = ${n(b)}`,
+      compare: [
+        { label: `${n(m1)} + ${n(octave)} together (octave)`, audio: harmonic([m1, octave], { instrument, beats: 2.5 }) },
+        { label: `${n(m1)} + ${n(foil)} together (different)`, audio: harmonic([Math.min(m1, foil), Math.max(m1, foil)], { instrument, beats: 2.5 }) },
+        ...bridge,
+      ],
+    };
+  }
+
+  const same = rng.chance(0.5);
+  const m2 = same ? octave : foil;
+  const together = mode === 'together';
+  const pair = [Math.min(m1, m2), Math.max(m1, m2)];
+  return {
+    type: 'ear-octave', mode, midis: together ? pair : [m1, m2], answer: same ? 'same' : 'different',
+    prompt: together
+      ? 'Two notes at the same time. One note doubled in another octave (they melt into one sound), or two different notes?'
+      : 'Two notes: are they the same note (maybe in different octaves) or different notes?',
+    audio: together ? harmonic(pair, { instrument, beats: 2.5 }) : melodic([m1, m2], { instrument, beats: 1.5 }),
+    choices: together
+      ? [{ value: 'same', label: 'One note (octave)' }, { value: 'different', label: 'Two different notes' }]
+      : [{ value: 'same', label: 'Same note' }, { value: 'different', label: 'Different notes' }],
+    solution: `${same ? 'Same' : 'Different'} — ${n(m1)} ${together ? '+' : 'then'} ${n(m2)}`,
+    compare: [
+      ...(together ? [{ label: 'One after the other', audio: melodic([m1, m2], { instrument, beats: 1.5 }) }] : [{ label: 'Both together', audio: harmonic(pair, { instrument, beats: 2.5 }) }]),
+      ...(same ? bridge : [
+        { label: `The real octave: ${n(m1)} → ${n(octave)}`, audio: melodic([m1, octave], { instrument, beats: 1.5 }) },
+        { label: `Octave vs this note: ${n(octave)}, ${n(m2)}`, audio: melodic([octave, m2], { instrument, beats: 1.5 }) },
+      ]),
+    ],
+  };
+}

@@ -1,7 +1,7 @@
 import { noteToMidi, pcToName, samePitchClass, isNoteName } from '../theory/notes.js';
 import { degreeEquals, degreeToNoteName, degreeToSemitones, parseKey, SOLFEGE } from '../theory/keys.js';
 import type { ExerciseDefinition, Choice } from './types.js';
-import { cadence, melodic, tonicReference } from './util.js';
+import { keyReference, melodic, tonicMidiOf } from './util.js';
 import { resolveKey } from './harmony.js';
 
 const ALL_DEGREES = { major: ['1', 'b2', '2', 'b3', '3', '4', '#4', '5', 'b6', '6', 'b7', '7'], minor: ['1', 'b2', '2', '3', '#3', '4', '#4', '5', '6', '#6', '7', '#7'] };
@@ -19,7 +19,8 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
     if (degrees.length === 0) throw new Error('ear-note: degrees must not be empty');
     const degree = rng.pick(degrees);
     const octave = rng.pick(s.octaves?.length ? s.octaves : [4]);
-    const tonicMidi = noteToMidi(`${k.tonic}${octave}`);
+    // the same tonic the reference uses, so "1" is exactly the note the reference ends on
+    const tonicMidi = tonicMidiOf(noteToMidi(`${k.tonic}4`) % 12, octave);
     const midi = tonicMidi + degreeToSemitones(degree, mode);
     const instrument = s.instrument ?? 'piano';
     const reference = s.reference ?? 'cadence';
@@ -39,8 +40,7 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
       prompt: answerKind === 'name' ? `Which note is this in ${k.name}?` : `Which scale degree is this in ${k.name}?`,
       key: k.tonic, mode, midi, answerKind, answer,
       audio: melodic([midi], { instrument, beats: 2 }),
-      ...(reference === 'cadence' ? { reference: cadence(k.tonic, mode, instrument) } : {}),
-      ...(reference === 'tonic' ? { reference: tonicReference(k.tonic, mode, instrument) } : {}),
+      ...(reference !== 'none' ? { reference: keyReference(reference, k.tonic, mode, instrument, octave) } : {}),
       choices,
       solution: answerKind === 'name' ? answer : `${degree} (${degreeToNoteName(k.tonic, degree, mode)})`,
     };

@@ -21,6 +21,7 @@ let fetchMock: ReturnType<typeof vi.fn>;
 beforeEach(() => {
   fetchMock = vi.fn(async () => new Response(JSON.stringify({ ok: true, id: 1 }), { status: 200 }));
   vi.stubGlobal('fetch', fetchMock);
+  localStorage.clear();
 });
 afterEach(() => vi.unstubAllGlobals());
 
@@ -59,6 +60,31 @@ describe('ExerciseShell', () => {
     expect(attempts).toHaveLength(2); // only first attempts are recorded
     expect(attempts[0]).toMatchObject({ lessonId: 'w01-l1-test', exerciseId: 'q1', type: 'quiz', correct: false });
     expect(posted('/api/progress/exercises/complete')[0]).toMatchObject({ exerciseId: 'q1', correct: 1, total: 2, passed: false });
+  });
+
+  it('resumes a lesson set after a page refresh (same items, same position, finished summary kept)', async () => {
+    const ear: ExerciseBlock = { id: 'o1', type: 'ear-octave', count: 3, spec: { notes: ['C', 'F#'], octaves: [3, 4], mode: 'together', gap: [1] } };
+    const first = render(<ExerciseShell block={ear} lessonId="w01-l2-test" />);
+    const prompt1 = screen.getAllByRole('button').map((b) => b.textContent).join('|');
+    fireEvent.click(screen.getByRole('button', { name: 'One note (octave)' }));
+    if (!screen.queryByText('Next →')) fireEvent.click(screen.getByText('Reveal'));
+    fireEvent.click(screen.getByText('Next →'));
+    expect(screen.getByLabelText('progress').textContent).toContain('2 / 3');
+    first.unmount();
+
+    const again = render(<ExerciseShell block={ear} lessonId="w01-l2-test" />);
+    expect(screen.getByLabelText('progress').textContent).toContain('2 / 3');
+    expect(prompt1).toBeTruthy();
+    for (let i = 0; i < 2; i++) {
+      fireEvent.click(screen.getByText('Reveal'));
+      await act(async () => {
+        fireEvent.click(screen.getByText(i === 0 ? 'Next →' : 'Finish'));
+      });
+    }
+    expect(screen.getByTestId('exercise-summary')).toBeTruthy();
+    again.unmount();
+    render(<ExerciseShell block={ear} lessonId="w01-l2-test" />);
+    expect(screen.getByTestId('exercise-summary')).toBeTruthy();
   });
 
   it('does not record when record=false and supports reveal', () => {

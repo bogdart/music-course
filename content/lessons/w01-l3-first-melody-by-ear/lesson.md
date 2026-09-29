@@ -115,7 +115,7 @@ Wrong notes are information, not failure: if it sounded too high, go down one ke
   "instructions": "Listen to a 3-note tune using only C, D and E. Play it back, starting from what you hear.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 3, "rhythm": "quarters", "answer": "play" },
+  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 3, "rhythm": "quarters", "answer": "play", "reference": "tonic" },
   "hints": ["Hum it first.", "Is the first move up, down or the same?"]
 }
 ```
@@ -139,18 +139,18 @@ Wrong notes are information, not failure: if it sounded too high, go down one ke
   "instructions": "Now four notes, still only C, D and E.",
   "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 4, "rhythm": "quarters", "answer": "play" }
+  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 4, "rhythm": "quarters", "answer": "play", "reference": "tonic" }
 }
 ```
 
 ```exercise
 {
-  "id": "e7",
+  "id": "e8",
   "type": "ear-octave",
-  "title": "Octave check-in",
-  "instructions": "Same note name (maybe in a different octave) or different notes?",
-  "count": 8,
+  "title": "Octave check-in: which one is the octave?",
+  "instructions": "A note, then A and B. Which one is the same note an octave higher? After each answer, use 'Listen again' to compare.",
+  "count": 10,
   "passScore": 0.7,
-  "spec": { "notes": ["C", "G"], "octaves": [3, 4, 5], "mode": "same-or-different" }
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4], "mode": "match", "gap": [1], "foils": [1, 6, 11] }
 }
 ```

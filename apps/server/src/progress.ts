@@ -66,6 +66,14 @@ export class ProgressService {
     const key = srsKey(block);
     const existing = this.db.prepare('SELECT id FROM srs_cards WHERE key = ?').get(key) as { id: number } | undefined;
     if (existing) return { srsCardId: existing.id };
+    // the exercise's spec changed since its card was made: the card follows the new version (keeps its schedule)
+    const old = this.db.prepare('SELECT id FROM srs_cards WHERE lesson_id = ? AND exercise_id = ? AND type = ?').get(e.lessonId, e.exerciseId, block.type) as
+      | { id: number }
+      | undefined;
+    if (old) {
+      this.db.prepare('UPDATE srs_cards SET key = ?, block = ?, updated_at = ? WHERE id = ?').run(key, JSON.stringify(block), nowIso(), old.id);
+      return { srsCardId: old.id };
+    }
     const st = newCardState(session);
     const now = nowIso();
     const r = this.db.prepare(`INSERT INTO srs_cards (key, type, lesson_id, exercise_id, block, ease, interval, reps, lapses, due_session, last_session, created_at, updated_at)

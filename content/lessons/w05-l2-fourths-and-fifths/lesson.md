@@ -71,6 +71,21 @@ P4 and P5 are the most confused pair for beginners: both are hollow and open. Tw
 
 Also: a 4th up and a 5th up from the same note add up to an octave (C–F–C, or C–G–C). They are two halves of the same octave — which is part of why they sound related.
 
+## Why the fifth fools the octave ear
+
+Here's something worth knowing now that you can hear octaves: the note that's **most often mistaken for an octave is the fifth** — especially a fifth plus an octave (C3 → G4). The reason is physics again. A low C already contains a faint G ringing inside it (its third *harmonic*), so C and G blend almost as well as C and C. It isn't a failing of your ear: the fifth genuinely is the "second-most-melting" sound.
+
+The difference: the octave melts completely into **one** note; the fifth melts into a clean, open, hollow **pair** of notes. Listen:
+
+```example
+{
+  "title": "C3 + C4 (one note), then C3 + G3 (open pair), C3 + C4 again, then C3 + G4",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C3 C4]:w | [C3 G3]:w | [C3 C4]:w | [C3 G4]:w" } ],
+  "show": ["keyboard"]
+}
+```
+
 ## Drills
 
 ```exercise
@@ -154,6 +169,18 @@ Also: a 4th up and a 5th up from the same note add up to an octave (C–F–C, o
   "title": "Degrees 1–5 (review)",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
+}
+```
+
+```exercise
+{
+  "id": "e8",
+  "type": "ear-octave",
+  "title": "Octave or fifth?",
+  "instructions": "Same note an octave away, or a 4th/5th away from the octave? Unsure: use 'Both together' after answering — one note, or an open pair?",
+  "count": 12,
+  "passScore": 0.7,
+  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4, 5], "mode": "same-or-different", "gap": [1], "foils": [5, 7] }
 }
 ```

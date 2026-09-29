@@ -21,12 +21,12 @@ first melodies and first DAW sketch.
 
 | Wk | Theme | Lessons |
 |----|-------|---------|
-| 1 | Sound, pitch, the keyboard | welcome + app tour + keyboard setup; pitch high/low & octaves (same-or-different octave ear drill, why octaves sound "the same"); first melody by ear (Hot Cross Buns / Mary Had a Little Lamb, 3 notes) |
+| 1 | Sound, pitch, the keyboard | welcome + app tour + keyboard setup; pitch high/low & octaves (graded octave drills: together → which-of-two → one after the other; honest about octaves *not* sounding the same at first); first melody by ear (Hot Cross Buns / Mary Had a Little Lamb, 3 notes) |
 | 2 | Note names, half/whole steps, beat | white keys & landmark C; black keys, sharps/flats, half & whole steps; pulse, tempo, metronome, first DAW: record 4 bars of quarter notes |
-| 3 | Major scale & scale degrees | W-W-H pattern, C major hands-on; scale degrees & solfège (do re mi), ear: degrees 1-2-3 with cadence reference; play "Ode to Joy" RH; DAW: melody from degrees 1-5 |
+| 3 | Major scale & scale degrees | W-W-H pattern, C major hands-on; scale degrees & solfège (do re mi), "home" by ear, ear: degrees 1-2-3 in C after a melodic home-run reference (1 2 3 4 5 4 3 2 1 — no chords until week 6); play "Ode to Joy" RH; DAW: melody from degrees 1-5 |
 | 4 | Rhythm & notation basics | note values (w h q 8), rests, ties, dotted; 4/4 & 3/4, counting; reading rhythm & tapping; treble clef note reading C4–G5 |
 | 5 | Intervals I | unison/2nds/3rds — ear (M2 vs M3) & play; 4ths/5ths — ear, "Here Comes the Bride"/"Twinkle" reference songs; intervals on staff; DAW: 2-voice exercise (melody + drone) |
-| 6 | Triads | major triad build/hear; minor triad build/hear (maj vs min ear drill); triads on each scale degree of C major, roman numerals I ii iii IV V vi vii°; DAW: I–V–vi–IV block chords + melody |
+| 6 | Triads | major triad build/hear, the I–IV–V–I cadence explained and introduced as the ear reference; minor triad build/hear (maj vs min ear drill); triads on each scale degree of C major, roman numerals I ii iii IV V vi vii°; DAW: I–V–vi–IV block chords + melody |
 | 7 | Keys & key signatures I | G and F major, sharps/flats in key signatures, circle of fifths intro; transposing a melody; ear: degrees 1–5 in G and F; DAW: same melody in 3 keys |
 | 8 | Consolidation & first song | 8-bar song structure (A A'), phrase & cadence (V→I), "Amazing Grace"/"Ode to Joy" full RH+LH root; Phase-1 review + ear assessment (2); DAW: complete first 8-bar song: chords, bass roots, melody, drums |
 
@@ -116,7 +116,7 @@ melody, groove, arrangement) and write finished songs quickly and reliably.
 | Weeks | Cards added |
 |-------|-------------|
 | 1–2 | octave same/different; high/low; 2 vs 3 notes |
-| 3–4 | degrees 1-2-3 → 1-5 with cadence; M2 vs M3 |
+| 3–4 | degrees 1-2-3 → 1-5 in C with the home-run reference; M2 vs M3; octaves two apart |
 | 5–8 | all simple intervals asc; maj vs min triad; degrees 1–8 |
 | 9–12 | intervals desc + harmonic; major vs minor scale; chord root (inversions); maj7/dom7/min7 |
 | 13–16 | 4-chord progressions (major & minor); rhythm dictation 8ths; degrees chromatic neighbours |

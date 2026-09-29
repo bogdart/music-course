@@ -123,7 +123,7 @@ Why C *and* G in the drone? The perfect 5th blends so well that it strengthens "
   "title": "Degrees 1–5 (review)",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 
