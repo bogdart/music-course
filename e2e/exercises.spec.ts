@@ -385,9 +385,11 @@ test.describe('exercise shell details', () => {
 
   test('finishing one exercise does not reset progress in the other exercises of the lesson', async ({ page }) => {
     // Regression for BUG-03 (fixed): every exercise block on the page was remounted when any exercise finished.
-    const lesson = lessons().find((l) => l.exercises.filter((e) => e.type === 'quiz').length >= 1 && l.exercises.filter((e) => canAnswer(e.type) && e.type !== 'quiz').length >= 1)!;
+    // `other` must have several distinct items: a fixed exercise (given melody, note list…) is a single-item set
+    const multi = (e: { type: string; spec: Record<string, unknown> }) => canAnswer(e.type) && e.type.startsWith('ear-') && !e.spec.example;
+    const lesson = lessons().find((l) => l.exercises.some((e) => e.type === 'quiz') && l.exercises.some(multi))!;
     const quiz = lesson.exercises.find((e) => e.type === 'quiz')!;
-    const other = lesson.exercises.find((e) => canAnswer(e.type) && e.type !== 'quiz')!;
+    const other = lesson.exercises.find(multi)!;
     await openExercise(page, lesson.id, other);
     await answer(page, other.id, true);
     await next(page, other.id);

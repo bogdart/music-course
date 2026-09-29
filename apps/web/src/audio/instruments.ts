@@ -14,6 +14,27 @@ export interface Instrument {
 
 const freq = (midi: number) => Tone.Frequency(midi, 'midi').toFrequency();
 
+let room: Tone.Reverb | null = null;
+
+/**
+ * One room reverb shared by the keyboard patches (the engine connects it to the master). A convolver per instrument
+ * instance (live + playback + panned copies) was constant audio-thread load — scratches on phones / Bluetooth.
+ */
+export function sharedRoom(): Tone.Reverb {
+  room ??= new Tone.Reverb({ decay: 1.6, preDelay: 0.01, wet: 1 });
+  return room;
+}
+
+/** `src` → dry `out` (the instrument's output) + a send of `amount` into the shared room. */
+function withRoom(src: Tone.ToneAudioNode, amount: number): { out: Tone.Gain; nodes: Tone.ToneAudioNode[] } {
+  const out = new Tone.Gain(1);
+  const send = new Tone.Gain(amount);
+  src.connect(out);
+  src.connect(send);
+  send.connect(sharedRoom());
+  return { out, nodes: [out, send] };
+}
+
 function poly(id: InstrumentId, synth: Tone.PolySynth, out: Tone.ToneAudioNode = synth): Instrument {
   return {
     id,
@@ -42,9 +63,9 @@ export function createSynthPiano(): Instrument {
   });
   s.maxPolyphony = 48;
   const tone = new Tone.Filter(3200, 'lowpass', -12);
-  const room = new Tone.Reverb({ decay: 1.6, preDelay: 0.01, wet: 0.18 });
-  s.chain(tone, room);
-  return { ...poly('piano', s, room), dispose: () => [s, tone, room].forEach((n) => n.dispose()) };
+  s.connect(tone);
+  const { out, nodes } = withRoom(tone, 0.2);
+  return { ...poly('piano', s, out), dispose: () => [s, tone, ...nodes].forEach((n) => n.dispose()) };
 }
 
 /**
@@ -57,13 +78,15 @@ export function createSynthPiano(): Instrument {
  */
 export function createWarmSynth(): Instrument {
   const RELEASE = 0.35;
+  const MAX_VOICES = 24;
   const bus = new Tone.Gain(0.2);
-  const room = new Tone.Reverb({ decay: 1.3, preDelay: 0.01, wet: 0.1 });
-  const out = new Tone.Volume(0);
-  bus.chain(room, out);
+  const { out, nodes } = withRoom(bus, 0.12);
 
-  type Voice = { synth: Tone.MonoSynth; midi: number | null; busyUntil: number };
-  const voices: Voice[] = Array.from({ length: 24 }, () => ({
+  // voices are built on demand (6 up front): 24 idle MonoSynths per instance kept the audio thread busy for nothing
+  // lastStart: a voice may already hold a note scheduled up to lookAhead in the future; Web Audio refuses a start
+  // earlier than that, so a voice is only reused for notes that start after it
+  type Voice = { synth: Tone.MonoSynth; midi: number | null; busyUntil: number; lastStart: number };
+  const newVoice = (): Voice => ({
     synth: new Tone.MonoSynth({
       oscillator: { type: 'custom', partials: [1, 0.42, 0.24, 0.14, 0.09, 0.06, 0.04, 0.025] },
       filter: { type: 'lowpass', rolloff: -12, Q: 2.2 },
@@ -72,9 +95,22 @@ export function createWarmSynth(): Instrument {
     }).connect(bus),
     midi: null,
     busyUntil: 0,
-  }));
-  const pick = (t: number): Voice => voices.find((v) => v.busyUntil <= t) ?? voices.reduce((a, b) => (b.busyUntil < a.busyUntil ? b : a));
+    lastStart: -1,
+  });
+  const voices: Voice[] = Array.from({ length: 6 }, newVoice);
+  const pick = (t: number): Voice => {
+    const usable = voices.filter((v) => v.lastStart < t);
+    const free = usable.find((v) => v.busyUntil <= t);
+    if (free) return free;
+    if (voices.length < MAX_VOICES || usable.length === 0) {
+      const v = newVoice();
+      voices.push(v);
+      return v;
+    }
+    return usable.reduce((a, b) => (b.busyUntil < a.busyUntil ? b : a));
+  };
   const start = (v: Voice, m: number, t: number, vel: number) => {
+    v.lastStart = t;
     const f = freq(m);
     const drift = (Math.random() - 0.5) * 6;
     v.synth.detune.cancelScheduledValues(t);
@@ -91,7 +127,8 @@ export function createWarmSynth(): Instrument {
     id: 'piano',
     output: out,
     attack: (m, t, vel) => {
-      const v = voices.find((x) => x.midi === m) ?? pick(t);
+      const held = voices.find((x) => x.midi === m && x.lastStart < t);
+      const v = held ?? pick(t);
       start(v, m, t, vel);
       v.midi = m;
       v.busyUntil = Infinity;
@@ -115,10 +152,10 @@ export function createWarmSynth(): Instrument {
       for (const v of voices) {
         v.synth.triggerRelease(t);
         v.midi = null;
-        v.busyUntil = Math.min(v.busyUntil, t + RELEASE);
+        v.busyUntil = Math.min(v.busyUntil, Math.max(t, v.lastStart) + RELEASE);
       }
     },
-    dispose: () => [...voices.map((v) => v.synth), bus, room, out].forEach((n) => n.dispose()),
+    dispose: () => [...voices.map((v) => v.synth), bus, ...nodes].forEach((n) => n.dispose()),
   };
 }
 
@@ -137,8 +174,8 @@ export function salamanderUrls(): Record<string, string> {
 }
 
 export async function createSampledPiano(baseUrl: string): Promise<Instrument> {
-  const room = new Tone.Reverb({ decay: 1.8, preDelay: 0.01, wet: 0.15 });
   return new Promise((resolve, reject) => {
+    let nodes: Tone.ToneAudioNode[] = [];
     const sampler = new Tone.Sampler({
       urls: salamanderUrls(),
       baseUrl,
@@ -147,18 +184,19 @@ export async function createSampledPiano(baseUrl: string): Promise<Instrument> {
       onload: () =>
         resolve({
           id: 'piano',
-          output: room,
+          output: nodes[0]!,
           attack: (m, t, v) => sampler.triggerAttack(freq(m), t, v),
           release: (m, t) => sampler.triggerRelease(freq(m), t),
           attackRelease: (m, d, t, v) => sampler.triggerAttackRelease(freq(m), d, t, v),
           releaseAll: () => sampler.releaseAll(),
-          dispose: () => [sampler, room].forEach((n) => n.dispose()),
+          dispose: () => [sampler, ...nodes].forEach((n) => n.dispose()),
         }),
       onerror: (e) => {
-        room.dispose();
+        nodes.forEach((n) => n.dispose());
         reject(e);
       },
-    }).connect(room);
+    });
+    nodes = withRoom(sampler, 0.17).nodes;
   });
 }
 

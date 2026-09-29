@@ -104,7 +104,13 @@ polyphony with different durations is not representable and is emitted with the 
   keyboard), `schedule(project|snippet, {loop, onBeat, onNote})`,
   `stop()`, `setBpm()`, `metronome.on/off`.
 * All time via Tone.Transport with PPQ 480 to match the domain model.
-* Latency: `Tone.context.lookAhead = 0.01` for live play; `interactive` latency hint.
+* Latency: `interactive` latency hint. Live notes are triggered at `Tone.immediate()` (no lookAhead). Transport
+  playback uses `lookAhead = 0.1` plus a 0.12 s start lead: with 0.01 most notes reached Web Audio after their start
+  time whenever the main thread was busy (React redraws during playback, phones) and were clipped or silent. Clocks
+  that compare "now" with a playback start (`audioNow()`, DAW recording) use `Tone.immediate()`, never `Tone.now()`
+  (which includes the lookAhead).
+* Instruments stay light on the audio thread: one shared room reverb (`sharedRoom()`, send per instrument) instead of
+  a convolver per instance, and the warm synth builds voices on demand (6 up front, max 24).
 
 ### Web implementation notes (M1)
 

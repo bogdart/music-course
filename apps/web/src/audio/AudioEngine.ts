@@ -1,6 +1,6 @@
 import * as Tone from 'tone';
 import { PPQ, snippetLength, ticksToSeconds, type InstrumentId, type PianoSound, type NoteEvent, type Project, type Snippet } from '@music/core';
-import { createInstrument, createSampledPiano, type Instrument } from './instruments';
+import { createInstrument, createSampledPiano, sharedRoom, type Instrument } from './instruments';
 import { Metronome } from './metronome';
 import { e2eAudio } from '../testHooks';
 import type { AudioEngineApi, Playable, PlaybackHandle, ScheduleOptions } from './types';
@@ -67,10 +67,15 @@ export class AudioEngine implements AudioEngineApi {
   metronome: AudioEngineApi['metronome'];
 
   private constructor() {
-    Tone.setContext(new Tone.Context({ latencyHint: 'interactive', lookAhead: 0.01, updateInterval: 0.01 }));
+    // lookAhead: how far ahead transport events are handed to Web Audio. At 10 ms, any main-thread hiccup (React
+    // redrawing the staff/keys during playback, a phone CPU) made notes arrive after their start time — measured 57%
+    // of notes late on a desktop, 100% at 4x CPU throttling — so they were clipped or silent. Live notes use
+    // Tone.immediate() and are unaffected; playback just starts ~0.1 s after the click.
+    Tone.setContext(new Tone.Context({ latencyHint: 'interactive', lookAhead: 0.1, updateInterval: 0.025 }));
     const transport = Tone.getTransport();
     transport.PPQ = PPQ;
     this.master = new Tone.Volume(Tone.gainToDb(0.8)).toDestination();
+    sharedRoom().connect(this.master);
     this.metro = new Metronome(this.master);
     const metro = this.metro;
     this.metronome = {
@@ -95,12 +100,23 @@ export class AudioEngine implements AudioEngineApi {
 
   /** Unlock audio (must be called from a user gesture). Also loads the sampled piano if 'grand' is chosen. */
   async start(): Promise<void> {
-    if (this._started) return;
+    if (this._started) return this.ensureRunning();
     await Tone.start();
     this._started = true;
-    // warm up the live instrument so the first key press is instant
+    // build the live instrument and the playback piano now, so the first key press / first Play isn't spent on setup
     this.getLive(this._liveInstrument);
+    this.getInstrument('piano');
     if (this._pianoSound === 'grand') void this.tryLoadSampledPiano();
+  }
+
+  /** Resume the context if the browser paused it (iOS does after calls, route changes, backgrounding). */
+  async ensureRunning(): Promise<void> {
+    const ctx = Tone.getContext();
+    if (ctx.state !== 'running') await ctx.resume();
+  }
+
+  get running(): boolean {
+    return Tone.getContext().state === 'running';
   }
 
   private samplersLoading = false;
@@ -182,8 +198,9 @@ export class AudioEngine implements AudioEngineApi {
     return performance.now() + (t - ctx.currentTime + out) * 1000;
   }
 
+  /** Current AudioContext time (not Tone.now(), which adds the scheduling lookAhead). */
   now(): number {
-    return Tone.now();
+    return Tone.immediate();
   }
 
   playNote(instrument: InstrumentId, midi: number, velocity = 0.8, durationSec = 0.6): void {
@@ -317,7 +334,7 @@ export class AudioEngine implements AudioEngineApi {
         const dur = Math.max(0.03, ticksToSeconds(ev.durationTicks, bpmAt(ev.startTick)) * 0.98);
         transport.schedule((time) => {
           inst.attackRelease(ev.midi, dur, time, Math.max(0.02, ev.velocity * vol));
-          e2eAudio({ kind: 'scheduled', instrument: track.instrument, midi: ev.midi });
+          e2eAudio({ kind: 'scheduled', instrument: track.instrument, midi: ev.midi, lateMs: Math.round((Tone.getContext().currentTime - time) * 1000) });
           if (opts.onNote) draw.schedule(() => opts.onNote?.(ev, ti, idx), time);
         }, `${offset + ev.startTick}i`);
       });
@@ -342,7 +359,8 @@ export class AudioEngine implements AudioEngineApi {
       transport.schedule((time) => draw.schedule(() => finish('ended'), time + 0.25), `${offset + length}i`);
     }
 
-    const lead = 0.05;
+    // head start after the click: the click itself triggers a React render (heavy on phones) right when the first notes are due
+    const lead = 0.12;
     const startTime = Tone.now() + lead + ticksToSeconds(offset, bpm);
     transport.start(`+${lead}`);
     return { stop: () => finish('stopped'), done, startTime };

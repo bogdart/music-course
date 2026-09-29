@@ -74,6 +74,7 @@ const idle: PlaybackHandle = { stop() {}, done: Promise.resolve(), startTime: 0 
 export async function play(source: Playable, opts: ScheduleOptions = {}): Promise<PlaybackHandle> {
   const e = await loadEngine();
   if (!e.started) await startAudio();
+  else await e.ensureRunning();
   return e.schedule(source, opts);
 }
 
@@ -81,6 +82,7 @@ export async function playSequence(parts: Playable[], opts: { gapSec?: number; o
   if (parts.length === 0) return idle;
   const e = await loadEngine();
   if (!e.started) await startAudio();
+  else await e.ensureRunning();
   return e.playSequence(parts, opts);
 }
 
@@ -91,11 +93,14 @@ export function stopPlayback(): void {
 export async function playNote(instrument: InstrumentId, midi: number, velocity = 0.8, durationSec = 0.8): Promise<void> {
   const e = await loadEngine();
   if (!e.started) await startAudio();
+  else await e.ensureRunning();
   e.playNote(instrument, midi, velocity, durationSec);
 }
 
 export function liveNoteOn(midi: number, velocity: number): void {
-  getLoadedEngine()?.noteOn(midi, velocity);
+  const e = getLoadedEngine();
+  if (e && !e.running) void e.ensureRunning();
+  e?.noteOn(midi, velocity);
 }
 
 export function liveNoteOff(midi: number): void {
