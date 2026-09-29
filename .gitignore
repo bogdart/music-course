@@ -8,3 +8,6 @@ apps/web/public/samples/
 # Playwright output (screenshots referenced from docs/QA_REPORT.md are kept)
 e2e/artifacts/*
 !e2e/artifacts/screenshots/
+
+# local deployment notes (hosts, paths) — the repo is public
+DEPLOYMENT.md

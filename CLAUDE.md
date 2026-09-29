@@ -67,6 +67,11 @@ data/                  runtime SQLite (gitignored)
 * Commands: `npm install`, `npm run dev` (web :5173 + server :3001),
   `npm run build`, `npm start` (:24800), `npm test`, `npm run validate:content`.
 
+## Deployment
+
+The owner's live instance runs on a home server; its details are in `DEPLOYMENT.md` (local, gitignored —
+the repo is public). Read it before deploying, and never put hosts, IPs or paths from it into tracked files.
+
 ## Working agreements for agents
 
 * Stay inside your assigned folder(s); do not edit other workspaces' code
