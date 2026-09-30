@@ -47,8 +47,13 @@ Count up from C4, every key, black and white: C♯, D, D♯, E, F, F♯, G, G♯
 
 **Honest truth:** played one after the other, C4 and C5 will most likely sound like two *different* notes to you —
 one lower, one higher. They are different in height. They share only a quieter quality, which is why they share a
-name. Noticing that quality takes weeks of short practice, for almost everyone. So don't try to hear C4 and C5 as
-"the same" today. There is one place where the octave is easier to hear: when the two notes sound **together**.
+name. Noticing that quality takes weeks of short practice, for almost everyone — research on adults finds it improves
+slowly even with training. So don't try to hear C4 and C5 as "the same" today.
+
+That's why octaves are a **separate strand** in this course: a short octave drill every week or two, for months,
+while everything else you are asked to judge by ear stays inside one octave (C4–C5) until week 7. (Some *reference*
+sounds you only listen to — a low drone, the bass of a chord cadence — sit an octave lower, around C3; lessons say so
+when they appear.) Nothing else depends on octaves yet. There is one place where the octave is easier to hear: when the two notes sound **together**.
 
 ## Octaves melt together
 
@@ -155,5 +160,6 @@ next to your mistake teaches more than a lucky right answer. 60–70% at first i
 - Two **Practice** sessions of about 10 minutes (now pitch and octave both appear).
 - Once a day, one minute at the keyboard: hold a low note, add its octave, then a key next to it. Listen for still
   versus wobbling.
-- Ready for lesson 5 when the octave *together* drill is mostly right. If the dashboard says **practise first**,
-  do one more Practice session before the next lesson.
+- Ready for lesson 5 when the *together* drill is right more often than not — it doesn't need to be solid; the
+  octave strand grows slowly alongside everything else. If the dashboard says **practise first**, do one more
+  Practice session before the next lesson.

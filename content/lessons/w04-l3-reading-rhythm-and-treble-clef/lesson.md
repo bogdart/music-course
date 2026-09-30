@@ -181,5 +181,6 @@ it one sound at a time — kick first, loop it, add the snare, loop it, then the
 
 - Two **Practice** sessions of about 10 minutes.
 - Five minutes of note reading a day: the *See it, play it* exercise, saying the landmark and the count.
-- Ready for week 5 when the dashboard doesn't say **practise first**. Week 5 starts intervals, which build on the
-  half/whole-step and pitch-search skills — if those bars are behind, give them a few extra Practice sessions first.
+- Ready for week 5 when the dashboard doesn't say **practise first**. Week 5 completes the octave: la and ti join
+  do-re-mi-fa-sol, so your degree bar should be on or near *1 to 5* first — if it's behind, give it a few extra
+  Practice sessions.

@@ -9,13 +9,14 @@ goals:
   - Name every white key using the musical alphabet A–G
   - Find any white key fast from two landmarks, C and F
   - Find a heard note among the seven white keys by searching — jump first, then step
+  - Echo short tunes on C to G, hearing steps and skips
 prerequisites: [w01-l5-first-melody-by-ear]
-tags: [note-names, keyboard, octave, ear]
+tags: [note-names, keyboard, melody, ear]
 ---
 
 # White keys and landmarks
 
-Music uses only **seven letters**: A B C D E F G. After G, the alphabet starts again at A — one [[octave]] higher. That's the naming system from last week: same letter, different height. (Remember: to your ear, same-letter notes one after the other will still sound like different notes for a while. The name is a fact first and a sound later.)
+Music uses only **seven letters**: A B C D E F G. After G, the alphabet starts again at A, and the new A is one [[octave]] above the previous A (C to the next C is an octave too). That's the naming system from last week: same letter, different height. (Remember: to your ear, same-letter notes one after the other will still sound like different notes for a while. The name is a fact first and a sound later.)
 
 On a keyboard we usually start counting from C, because the most common scale (next week!) starts there:
 
@@ -90,37 +91,54 @@ normal at first.
 { "skill": "pitch", "unlocks": 8, "intro": "Pitch at your current rung — up to finding the note among all seven white keys." }
 ```
 
-## Echo: four notes
+## Echo: C to G
 
-The next melody rung plays back **four** notes, still C, D and E. Same method as last week: listen twice, say the
-moves, follow them. With four notes, say the moves in a rhythm ("down, same, up") so they stick.
+The next melody rung plays back three notes from **C D E F G** — all five fingers, thumb on C. The new thing: some
+moves now **skip** a key (C → E, G → E), so each move has two questions: *up or down?* and *step or skip?*
 
-```ladder
-{ "skill": "melody", "unlocks": 2, "intro": "Echoes on C, D and E — up to four notes, at your current rung." }
-```
+**Try it:**
 
-## Octaves: the near-miss candidate
-
-The next octave rung is *which one is the octave?* with a harder wrong candidate: the key **right next to** the
-octave (C4, then C5 or B4). Height can't help any more.
-
-**Try it:** play C4 → C5, then C4 → B4. Then press C4 + C5 together (still) and C4 + B4 together (wobbles). After
-each drill answer, use the *together* buttons in **Listen again** — the wobble tells you which was the near-miss.
+1. Play C → D (step up), then C → E (skip up). Say "step" and "skip" out loud.
+2. Play G → F (step down), then G → E (skip down).
+3. Play E → G → C, slowly: "skip up, big jump down". A jump bigger than a skip is fine — the search finds it.
 
 ```example
 {
-  "title": "C4 → C5 vs C4 → B4, then each pair together (melts vs wobbles)",
-  "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:h C5:h | C4:h B4:h | [C4 C5]:w | [C4 B4]:w" } ],
+  "title": "Step, skip: C D, C E, then G F, G E",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:h D4:h | C4:h E4:h | G4:h F4:h | G4:h E4:h" } ],
   "show": ["keyboard"]
 }
 ```
 
-**If you can't hear it yet:** find the first note by search, then count 12 keys up and play it: that's the octave.
-Replay the question and compare A and B with the note you just played.
+### Check it
+
+```exercise
+{
+  "id": "e11",
+  "type": "listen",
+  "title": "Step or skip?",
+  "instructions": "Say the move (up/down, step/skip), then check by playing both notes.",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h F4:h" } ] },
+      { "title": "Pair 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "F4:h E4:h" } ] },
+      { "title": "Pair 3", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G4:h E4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1:", "choices": ["step up", "skip up", "step down", "skip down"], "answer": 1, "explain": "D → F: up, skipping E." },
+      { "q": "Pair 2:", "choices": ["step up", "skip up", "step down", "skip down"], "answer": 2, "explain": "F → E: down to the next key." },
+      { "q": "Pair 3:", "choices": ["step up", "skip up", "step down", "skip down"], "answer": 3, "explain": "G → E: down, skipping F." }
+    ]
+  }
+}
+```
+
+**If a skip confuses you:** play the note you think it is, then the one next to it, right after the question. Same
+method as the search: compare, move, merge. In the echo drill the app plays **C** first as your starting point.
 
 ```ladder
-{ "skill": "octave", "unlocks": 4, "intro": "Octaves at your current rung — up to 'which one is the octave?' with near-misses." }
+{ "skill": "melody", "unlocks": 3, "intro": "Echoes at your current rung — up to three notes from C D E F G." }
 ```
 
 ## Hands

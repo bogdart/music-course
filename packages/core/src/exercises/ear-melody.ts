@@ -46,7 +46,7 @@ export const earMelody: ExerciseDefinition<'ear-melody'> = {
   },
   generate(block, rng) {
     const s = block.spec;
-    const { tonic, mode } = resolveKey(rng, s.key === 'random' ? undefined : s.key ?? s.example?.key, s.mode);
+    const { tonic, mode } = resolveKey(rng, s.key === 'random' ? undefined : s.key ?? s.example?.key, s.mode, s.keys);
     const k = parseKey(tonic, mode);
     const answerKind = s.answer ?? 'play';
     const instrument = s.instrument ?? 'piano';
@@ -61,8 +61,8 @@ export const earMelody: ExerciseDefinition<'ear-melody'> = {
       if (pool.length === 0) throw new Error('ear-melody: degrees must not be empty');
       const n = Math.max(1, s.length ?? 4);
       const tonicMidi = 60 + ((k.tonicPc + 12 - 0) % 12) - (k.tonicPc > 7 ? 12 : 0);
-      const lo = tonicMidi - 7;
-      const hi = tonicMidi + 16;
+      const lo = tonicMidi + (s.span?.[0] ?? -7);
+      const hi = tonicMidi + (s.span?.[1] ?? 16);
       const place = (deg: string, near: number): number => {
         const pc = (tonicMidi + degreeToSemitones(deg, mode)) % 12;
         let best = -1;
@@ -105,6 +105,11 @@ export const earMelody: ExerciseDefinition<'ear-melody'> = {
           if (s.maxLeap === undefined || Math.abs(home - prev) <= s.maxLeap) cands = [home];
         }
         midis.push(rng.pick(cands.length ? cands : [prev]));
+      }
+      // octave transfer: the whole tune sounds an octave (or two) away from the reference; answers are any octave
+      if (s.octaveShift?.length) {
+        const sh = 12 * rng.pick(s.octaveShift);
+        midis = midis.map((m) => m + sh);
       }
       const durs = durations(rng, midis.length, s.rhythm ?? 'quarters');
       const events: NoteEvent[] = [];

@@ -22,7 +22,7 @@ export const earProgression: ExerciseDefinition<'ear-progression'> = {
   },
   generate(block, rng) {
     const s = block.spec;
-    const { tonic, mode } = resolveKey(rng, s.example?.key && (!s.key || s.key === 'random') ? s.example.key : s.key, s.mode);
+    const { tonic, mode } = resolveKey(rng, s.example?.key && (!s.key || s.key === 'random') ? s.example.key : s.key, s.mode, s.keys);
     const pool = [...new Set(s.chords)];
     let numerals: string[];
     let audio;

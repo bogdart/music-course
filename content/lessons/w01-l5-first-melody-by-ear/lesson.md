@@ -94,8 +94,11 @@ In the echo drill, the app plays **C** first as a starting point, then a short t
 **If you can't hear it yet:** take one note at a time. Replay, stop after two notes, and find them with the search.
 Then add the third. Slow is fine — it's the same skill either way.
 
+The echo drill opens two rungs: three notes, then **four** (still C, D, E). For four, say the moves in a rhythm
+("down, same, up") so they stick, and play the first three before adding the last.
+
 ```ladder
-{ "skill": "melody", "unlocks": 1, "intro": "Three notes from C, D and E: play them back." }
+{ "skill": "melody", "unlocks": 2, "intro": "Tunes from C, D and E: three notes, then four. Play them back." }
 ```
 
 ## Mary Had a Little Lamb
@@ -110,31 +113,6 @@ Same three notes plus **G** (your little finger, the fifth white key from C). Sa
   "tracks": [ { "instrument": "piano", "seq": "E4:q D4:q C4:q D4:q | E4:q E4:q E4:h | D4:q D4:q D4:h | E4:q G4:q G4:h | E4:q D4:q C4:q D4:q | E4:q E4:q E4:q E4:q | D4:q D4:q E4:q D4:q | C4:w" } ],
   "show": ["keyboard", "staff"]
 }
-```
-
-## Octaves: pick the octave out of two
-
-This lesson opens the next octave rung. You hear a note, then two candidates, **A** and **B**, one after the other:
-one is the same name an octave higher, the other a clashing note (about halfway up, so here height helps a bit).
-
-**Try it:** play D3, then D4, then D3 again, then G♯3. Then press D3 + D4 together, and D3 + G♯3 together. The
-together test is the one you trust: the octave melts, the other rubs.
-
-```example
-{
-  "title": "D3, then A = D4 (the octave), B = G♯3 (a clash). Then each pair together",
-  "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "D3:h r:h | D4:h G#3:h | [D3 D4]:w | [D3 G#3]:w" } ],
-  "show": ["keyboard"]
-}
-```
-
-Honestly: at first both candidates may sound like "new notes". The drill below runs at your current octave rung —
-you'll meet this one once the *together* rungs are solid. When you do, check each answer with **Listen again →
-together**.
-
-```ladder
-{ "skill": "octave", "unlocks": 3, "intro": "Octaves at your current rung — up to 'which one is the octave?'." }
 ```
 
 ## Hands
@@ -188,6 +166,8 @@ together**.
 ## Between lessons (and the end of week 1)
 
 - Two or three **Practice** sessions of about 10 minutes. Practice mixes pitch, octave and melody at your level.
+- Placement works for melodies too: Dashboard → Placement test → **Melodies**. If the C-D-E echoes are easy, it
+  skips you ahead in one sitting.
 - Play Hot Cross Buns and Mary once a day, saying the moves out loud.
 - Ready for week 2 when the dashboard doesn't say **practise first** and the pitch bar has reached at least the
   *Find it* rungs. If week 1 took two calendar weeks, that's the pace working as intended.

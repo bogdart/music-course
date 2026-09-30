@@ -8,7 +8,7 @@ duration_min: 45
 goals:
   - Name the notes of a key by number (1–7) and by solfège (do re mi fa sol la ti)
   - Feel which note is "home" and use the home run (1 2 3 4 5 4 3 2 1) to set it before a question
-  - Hear degrees 1, 2 and 3 in C major, first over a held low C
+  - Hear do, mi and sol (1, 3, 5) in C major over a held low C
 prerequisites: [w03-l1-major-scale-pattern]
 tags: [scale-degrees, solfege, ear, tonic]
 songs:
@@ -55,7 +55,8 @@ Most people hear the second version as unfinished — you almost want to press C
 
 ## The home run
 
-A single note on its own has no role — it's just a pitch. So before each degree question the app plays the [[home run]] you met last lesson: up from home to 5 and back down, **do re mi fa sol fa mi re do**, ending on a long C. It always ends in the **same octave** as the question note.
+A single note on its own has no role — it's just a pitch. So before each degree question the app plays the [[home run]] — the run you've been hearing before echo tunes since
+week 2: up from home to 5 and back down, **do re mi fa sol fa mi re do**, ending on a long C. It always ends in the **same octave** as the question note.
 
 ```example
 {
@@ -66,20 +67,26 @@ A single note on its own has no role — it's just a pitch. So before each degre
 }
 ```
 
-## 1, 2 and 3
+## Do, mi and sol
+
+The ear learns roles fastest from the notes that feel most at rest, so we start with three of them — not 1-2-3 in a
+row, but **1, 3 and 5**:
 
 - **1 (do)** — finished, resting. It's the note the home run just ended on.
-- **2 (re)** — unfinished. It sounds like it wants to step down to 1.
-- **3 (mi)** — fairly settled, but not quite "the end".
+- **3 (mi)** — settled and bright, sitting on top of home, but not quite "the end".
+- **5 (sol)** — the top of the home run, where it turns round: stable but open, "up in the air", like a second home
+  above.
 
-To make the start easier, the first rungs hold a low C underneath the question — a [[drone]]. With home sounding the whole time, 1 blends into it, while 2 and 3 sit against it.
+To make the start easier, the first rungs hold a low C underneath the question — a [[drone]]. With home sounding the
+whole time, 1 blends into it, while 3 and 5 sit on top of it in different ways. (The drone is the one sound below
+middle C in these weeks: it isn't a note to name, just home held underneath.)
 
 ```example
 {
-  "title": "Home run, then 1, 2 and 3 — each over a held low C (drone)",
+  "title": "Home run, then 1, 3 and 5 — each over a held low C (drone)",
   "bpm": 100, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w | r:w | D4:w | r:w | E4:w" },
+    { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w | r:w | E4:w | r:w | G4:w" },
     { "instrument": "pad", "seq": "r:w | r:w | C3:w | r:w | C3:w | r:w | C3:w", "volume": 0.6 }
   ],
   "show": ["keyboard"]
@@ -90,26 +97,30 @@ To make the start easier, the first rungs hold a low C underneath the question �
 
 1. Hold C3 with your left hand (or play it and let it ring) and play C4 with your right: it blends into the low C.
 2. Keep the low C and play E4: brighter, sitting *on top* of it.
-3. Now D4 over the low C: many people hear it rub a little and want to move — down to C.
-4. Play the home run (C D E F G F E D C), then one of C4, D4, E4 without looking which. Say what you think it
-   was, then look.
+3. Keep the low C and play G4: higher and more open than E — stable, but you could imagine walking down from it.
+4. Walk each one home and count the steps: E D C (two), G F E D C (four). The farther from home, the more open it
+   feels.
+5. Play the home run (C D E F G F E D C), then one of C4, E4, G4 without looking which. Say what you think it was,
+   then look.
 
 ### Check it
 
 ```exercise
 {
-  "id": "e10",
+  "id": "e11",
   "type": "listen",
-  "title": "Home or not?",
+  "title": "Do, mi or sol?",
   "instructions": "Each clip: the home run, then one note over a low C.",
   "spec": {
     "examples": [
       { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] },
-      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] }
+      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] },
+      { "title": "Clip 3", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | G4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] }
     ],
     "questions": [
-      { "q": "Clip 1: the last note is…", "choices": ["1 (home, blends in)", "3 (brighter, on top)"], "answer": 1, "explain": "E = 3." },
-      { "q": "Clip 2: the last note is…", "choices": ["1 (home, blends in)", "3 (brighter, on top)"], "answer": 0, "explain": "C = 1." }
+      { "q": "Clip 1: the last note is…", "choices": ["1 (do)", "3 (mi)", "5 (sol)"], "answer": 1, "explain": "E = 3: bright, on top; two steps from home." },
+      { "q": "Clip 2: the last note is…", "choices": ["1 (do)", "3 (mi)", "5 (sol)"], "answer": 0, "explain": "C = 1: it blends into the drone." },
+      { "q": "Clip 3: the last note is…", "choices": ["1 (do)", "3 (mi)", "5 (sol)"], "answer": 2, "explain": "G = 5: the top of the home run; four steps from home." }
     ]
   }
 }
@@ -117,16 +128,18 @@ To make the start easier, the first rungs hold a low C underneath the question �
 
 **If you can't hear it yet — two tools that work without singing:**
 
-- **Play it.** Find the note on the keyboard with the pitch search (it's C, D or E) — the key tells you the degree:
-  C = 1, D = 2, E = 3.
-- **Listen to the walk home.** After each drill answer, the app walks the note back to 1 (3 → 2 → 1). Count the
-  steps: none = 1, one = 2, two = 3.
+- **Play it.** Find the note on the keyboard with the pitch search (it's C, E or G) — the key tells you the degree:
+  C = 1, E = 3, G = 5.
+- **Listen to the walk home.** After each drill answer, the app walks the note back to 1 (5 → 4 → 3 → 2 → 1). Count
+  the steps: none = 1, two = 3, four = 5.
 
 The drill's **How to do it** box uses the same two tools. The "home" feeling grows slowly for most people; the
-keyboard answer is always available meanwhile.
+keyboard answer is always available meanwhile. The drill opens two rungs: *home or 3?*, then *do, mi or sol*.
+
+**Already name notes in C by ear?** Try **Dashboard → Placement test → Scale degrees**: 10/10 on a rung skips it.
 
 ```ladder
-{ "skill": "degrees", "unlocks": 2, "intro": "After the home run, one note over a low C: which degree is it?" }
+{ "skill": "degrees", "unlocks": 2, "intro": "After the home run, one note over a low C: do, mi or sol?" }
 ```
 
 ## Old tunes, new names

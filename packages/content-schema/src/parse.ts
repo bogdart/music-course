@@ -130,6 +130,27 @@ export function parseLesson(markdown: string, opts: ParseLessonOptions = {}): Pa
     if (node.type !== 'code') return;
     const code = node as Code;
     const line = (code.position?.start.line ?? 0) + bodyLineOffset;
+    if (code.lang === 'reveal') {
+      // ````reveal <label> … ```` : content shown only on request (answers after a verdict-first question).
+      // Its inner blocks are validated here but are not lesson blocks (no exercises/ladders inside).
+      if (!code.meta?.trim()) warnings.push(`line ${line}: \`\`\`\`reveal needs a label, e.g. \`\`\`\`reveal Show the answers`);
+      walk(parseMarkdown(code.value).children, (inner) => {
+        if (inner.type !== 'code') return;
+        const c = inner as Code;
+        if (!isBlockLang(c.lang)) return;
+        if (c.lang === 'exercise' || c.lang === 'ladder') {
+          problems.push(`line ${line}: a \`\`\`${c.lang} block cannot be inside a reveal`);
+          return;
+        }
+        try {
+          const r = blockSchemas[c.lang].safeParse(JSON.parse(c.value));
+          if (!r.success) problems.push(`line ${line}: reveal → \`\`\`${c.lang}: ${formatIssues(r.error).join('; ')}`);
+        } catch (e) {
+          problems.push(`line ${line}: reveal → \`\`\`${c.lang}: invalid JSON: ${(e as Error).message}`);
+        }
+      });
+      return;
+    }
     if (!isBlockLang(code.lang)) {
       if (code.lang && /^(exercise|example|keyboard|staff|chords|ladder)\b/i.test(code.lang)) {
         problems.push(`line ${line}: fenced block language "${code.lang}" — use exactly one of ${BLOCK_LANGS.join(', ')}`);

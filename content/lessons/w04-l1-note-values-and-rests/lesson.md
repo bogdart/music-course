@@ -8,7 +8,7 @@ duration_min: 45
 goals:
   - Know how long whole, half, quarter and eighth notes (and their rests) last
   - Lengthen notes with ties and dots
-  - Hear degree 4 and what it means for a note to resolve
+  - Hear degree 4 (fa) and what it means for a note to resolve
 prerequisites: [w03-l3-ode-to-joy-and-daw-melody]
 tags: [rhythm, notation, note-values, ear]
 ---
@@ -141,40 +141,7 @@ sits — count the steps. The keyboard answer still works: find the key, C D E F
 ```
 
 ```ladder
-{ "skill": "degrees", "unlocks": 4, "intro": "Degrees at your current rung — up to 1 to 4 after the home run." }
-```
-
-## Octaves: near-misses, one after the other
-
-The next octave rung keeps the single pair (same or different?), but the different note may now sit a half step
-from the octave — the near-miss you know from the *together* rungs.
-
-**Try it:** play G3 → G4, then G3 → F♯4, then G3 → G♯4. Only the first is the same letter. Now make an "echo": play
-G3, then G4 on purpose, then replay each pair. Does the second note land on your echo, or next to it?
-
-**If you can't hear it yet:** use the echo test in the drill — find the first note, play it and the key 12 above,
-then replay the question. A near-miss sounds like your echo "bent" up or down.
-
-```exercise
-{
-  "id": "e12",
-  "type": "listen",
-  "title": "Echo or bent?",
-  "spec": {
-    "examples": [
-      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:h A4:h" } ] },
-      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:h G#4:h" } ] }
-    ],
-    "questions": [
-      { "q": "Pair 1:", "choices": ["same letter, an octave up", "a different note"], "answer": 0, "explain": "A3 → A4." },
-      { "q": "Pair 2:", "choices": ["same letter, an octave up", "a different note"], "answer": 1, "explain": "A3 → G♯4, one key below the octave." }
-    ]
-  }
-}
-```
-
-```ladder
-{ "skill": "octave", "unlocks": 7, "intro": "Octaves at your current rung — up to near-misses one after the other." }
+{ "skill": "degrees", "unlocks": 5, "intro": "Degrees at your current rung — up to 1 to 5 after the home run: fa joins." }
 ```
 
 ## Drills

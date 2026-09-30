@@ -15,6 +15,10 @@ tags: [pitch, ear, keyboard]
 
 # Higher, lower, the same
 
+> **Fast path.** If the Placement test (Dashboard → Placement test → Pitch) mastered rungs 1–3, or you already hear
+> which of two notes is higher, even for neighbours: answer the two *Check it* blocks below. All right? Run the pitch
+> drill once and go straight to lesson 3 (10 minutes in total). Anything wrong — read the lesson; it's for you.
+
 Last lesson the two notes were far apart. Today they come closer, and then we add the case where they don't move at
 all. Three answers for any two notes: **up**, **down** or **the same**. Every melody you'll ever play is a chain of
 exactly these three moves.
@@ -173,4 +177,4 @@ twice. Does the pair sound like that? Then it's the same note.
 - Two **Practice** sessions of about 10 minutes. On every pair: replay, move your hand, and after a wrong answer
   use *Slowly, with a pause* and then the keyboard to hear why.
 - Ready for lesson 3 when far and medium jumps are mostly right. Neighbours may still be shaky — that's expected;
-  keep them in Practice.
+  keep them in Practice. (Fast path: if both *Check it* blocks were right, go on now.)

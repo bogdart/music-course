@@ -304,7 +304,15 @@ export function createDrumKit(): Instrument {
   const crash = new Tone.MetalSynth({ envelope: { attack: 0.001, decay: 1.6, release: 0.6 }, harmonicity: 5.1, modulationIndex: 40, resonance: 4000, octaves: 2, volume: -24 }).connect(out);
   const click = new Tone.MembraneSynth({ pitchDecay: 0.005, octaves: 1, envelope: { attack: 0.001, decay: 0.05, sustain: 0 }, volume: -6 }).connect(out);
 
-  const hit = (m: number, t: number, v: number) => {
+  // each drum is one monophonic voice: Tone.js throws when a voice gets two hits that don't strictly move forward in
+  // time (e.g. two tracks hitting the same drum together) — merge exact duplicates, nudge near-simultaneous hits
+  const lastHit = new Map<string, number>();
+  const hit = (m: number, t0: number, v: number) => {
+    const voice = m === 35 || m === 36 ? 'kick' : m === 38 || m === 40 ? 'snare' : m === 42 || m === 44 ? 'hat' : [41, 43, 45, 47, 48, 50].includes(m) ? 'tom' : String(m);
+    const prev = lastHit.get(voice);
+    if (prev !== undefined && Math.abs(t0 - prev) < 1e-6) return;
+    const t = prev !== undefined && t0 <= prev ? prev + 0.001 : t0;
+    lastHit.set(voice, t);
     switch (m) {
       case 35:
       case 36:

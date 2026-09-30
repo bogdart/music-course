@@ -8,6 +8,7 @@ duration_min: 50
 goals:
   - Play "Ode to Joy" with the right hand in C major
   - Read a melody as scale degrees and hear why it ends where it does
+  - Hear re (2) and do-mi-sol without a drone
   - Write a 4-bar melody from degrees 1–5 in the DAW
 prerequisites: [w03-l2-scale-degrees-and-solfege]
 tags: [melody, songs, scale-degrees, daw]
@@ -19,41 +20,48 @@ songs:
 
 Beethoven's "Ode to Joy" (1824) is one of the most famous melodies ever written, and it uses almost nothing: five neighbouring notes, moving mostly by **step**. That's the lesson hiding inside it — a great melody doesn't need big jumps or many notes. It needs a clear shape and a good ending.
 
-## Degrees without the drone
+## Degrees without the drone, and re joins
 
-The next degree rung takes the low C away: after the home run, the note sounds alone, and you keep home "in your
-ear" from the run. It's noticeably harder — expect to drop a little when you get there.
+Two degree rungs open today, one change each:
+
+1. **No drone.** After the home run, do, mi or sol sounds alone; you keep home "in your ear" from the run. It's
+   noticeably harder — expect to drop a little when you get there.
+2. **Re (2) joins.** Re sits one step above home. It doesn't rest: most people hear it as *almost home, but hanging*,
+   as if it wants to fall one step to do. Hot Cross Buns (3 2 1) walks through it.
 
 **Try it:**
 
 1. Play the home run (C D E F G F E D C) and stop on the long C.
-2. Wait two seconds, then play D4. Now walk it home yourself: D → C. One step: degree 2.
-3. Home run again, then E4, walk home: E → D → C. Two steps: degree 3.
+2. Wait two seconds, then play G4. Walk it home yourself: G F E D C. Four steps: degree 5.
+3. Home run again, then D4. Hold it two seconds — does it hang? Now let it fall: D → C. One step: degree 2.
+4. Home run again, then E4: E → D → C. Two steps: degree 3. Compare E (settled, bright) with D (hanging).
 
 ```exercise
 {
-  "id": "e10",
+  "id": "e11",
   "type": "listen",
-  "title": "No drone: 1, 2 or 3?",
+  "title": "No drone: which degree?",
   "instructions": "Answer, then check on the keyboard: find the note and walk it down to C, counting steps.",
   "spec": {
     "examples": [
-      { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | D4:w" } ] },
-      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" } ] }
+      { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | G4:w" } ] },
+      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | D4:w" } ] },
+      { "title": "Clip 3", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" } ] }
     ],
     "questions": [
-      { "q": "Clip 1: the last note is degree…", "choices": ["1", "2", "3"], "answer": 1, "explain": "D = 2: one step above home." },
-      { "q": "Clip 2: the last note is degree…", "choices": ["1", "2", "3"], "answer": 2, "explain": "E = 3: two steps above home." }
+      { "q": "Clip 1: the last note is degree…", "choices": ["1", "2", "3", "5"], "answer": 3, "explain": "G = 5: four steps above home, open." },
+      { "q": "Clip 2: the last note is degree…", "choices": ["1", "2", "3", "5"], "answer": 1, "explain": "D = 2: one step above home, hanging." },
+      { "q": "Clip 3: the last note is degree…", "choices": ["1", "2", "3", "5"], "answer": 2, "explain": "E = 3: two steps above home." }
     ]
   }
 }
 ```
 
 **If you lose home:** press the drill's reference replay, or play C yourself right after the question note. The
-keyboard answer (find the key: C D E = 1 2 3) is always allowed.
+keyboard answer (find the key: C D E G = 1 2 3 5) is always allowed.
 
 ```ladder
-{ "skill": "degrees", "unlocks": 3, "intro": "Degrees 1–3 at your current rung — with or without the low C." }
+{ "skill": "degrees", "unlocks": 4, "intro": "Degrees at your current rung — up to 1, 2, 3 or 5 after the home run, no drone." }
 ```
 
 ## The tune in degrees
@@ -62,9 +70,9 @@ Your right hand sits on C–G (thumb on C, one finger per key), so every finger 
 
 ```example
 {
-  "title": "Ode to Joy (Beethoven), C major",
+  "title": "Ode to Joy (Beethoven), C major — lines 1 and 2",
   "bpm": 100, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h | D4:q D4:q E4:q C4:q | D4:q E4:8 F4:8 E4:q C4:q | D4:q E4:8 F4:8 E4:q D4:q | C4:q D4:q G3:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h" } ],
+  "tracks": [ { "instrument": "piano", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h" } ],
   "show": ["staff", "keyboard"]
 }
 ```
@@ -74,20 +82,20 @@ Degrees of the first line: **3 3 4 5 | 5 4 3 2 | 1 1 2 3 | 3 2 2**. Now compare 
 - Line 1 ends on **2** — unfinished. It sounds like a question.
 - Line 2 ends on **1** — home. It sounds like the answer.
 
-Same notes, different ending, a different feeling — you heard exactly this with Twinkle last lesson. (In bar 12 the melody dips to a low G, degree 5 *below* home. Stretch your thumb down, or shift your hand for that one note.)
+Same notes, different ending, a different feeling — you heard exactly this with Twinkle last lesson. (The tune's
+middle section dips once below home, to a low sol. Notes below do get their own week — week 8 — so today we play
+lines 1 and 2, which are the whole tune's main idea; the last line repeats line 2.)
 
 The long-short rhythm in bars 4 and 8 is a dotted quarter plus an eighth: hold the first note a bit longer, then hurry to the next. You'll learn the maths next week — for now, copy what you hear.
 
-## Writing degrees down
+## Echo, with the tune in your fingers
 
-The next melody rung asks you to **write** what you hear as numbers instead of playing it back: three notes from
-1, 2 and 3. The practical way is two steps: play it back on the keyboard first (as in the echo drill), then
-translate what your fingers did — thumb, index, middle = 1, 2, 3.
-
-**Try it:** play E D C and say "3 2 1"; play C D C and say "1 2 1".
+The melody drill below is a review — echoes from C to G at your current rung. Next week the melody rungs start
+asking you to *write* tunes as degrees; today, just notice that your fingers already do it: thumb to little finger =
+1 to 5.
 
 ```ladder
-{ "skill": "melody", "unlocks": 5, "intro": "Opens \"Write 3 notes as degrees\"; the drill runs at your current melody rung." }
+{ "skill": "melody", "unlocks": 4, "intro": "Echoes at your current melody rung (review: up to four notes from C to G)." }
 ```
 
 ## Composing with five notes
@@ -126,17 +134,6 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
   "instructions": "Thumb on C4. Slow and even.",
   "passScore": 0.75,
   "spec": { "bpm": 72, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1 }
-}
-```
-
-```exercise
-{
-  "id": "e4",
-  "type": "play-melody",
-  "title": "Ode to Joy, complete",
-  "instructions": "All four lines. Watch for the low G3 in bar 12. The soft background is made of chords — you'll learn about them in week 6; for now just play along.",
-  "passScore": 0.7,
-  "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h | D4:q D4:q E4:q C4:q | D4:q E4:8 F4:8 E4:q C4:q | D4:q E4:8 F4:8 E4:q D4:q | C4:q D4:q G3:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h | [B2 D3 G3]:w | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h" } }
 }
 ```
 

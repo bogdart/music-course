@@ -20,7 +20,8 @@
 
 ## Additions / interpretation
 
-* One year of content, 52 weeks × 2–3 lessons (~130 lessons), in 5 phases:
+* About a year of content, 55 weeks × 2–4 lessons (~170 lessons), in 5 phases (re-sequenced Sept 2026 so the ear
+  stages in `docs/EAR_SKILL_MAP.md` get their own weeks):
   Foundations → Harmony & Songs → Songwriting & Arrangement → Composition
   Studio & Jazz → Transcription & Mastery. See `docs/CURRICULUM.md`.
 * Ear training is the spine: every lesson has it, and a spaced-repetition
@@ -55,7 +56,8 @@ same/different was at chance after week 1), and chords were completely new. Rule
 * `docs/ARCHITECTURE.md` — monorepo layout, domain model, audio/input/DAW/API design.
 * `docs/CONTENT_SCHEMA.md` — **the contract** between lesson content and code
   (lesson.md format, fenced block types, exercise catalogue, daw-task predicates).
-* `docs/CURRICULUM.md` — week-by-week outline for all 52 weeks.
+* `docs/CURRICULUM.md` — week-by-week outline for all 55 weeks.
+* `docs/EAR_SKILL_MAP.md` — the ear stages, the research behind their pacing, and the binding per-lesson unlock table.
 
 ## Structure
 

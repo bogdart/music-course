@@ -7,10 +7,14 @@ import { romanToChord, type RomanChord } from '../theory/roman.js';
 export const MAJOR_KEYS = ['C', 'G', 'D', 'A', 'F', 'Bb', 'Eb', 'E'];
 export const MINOR_KEYS = ['A', 'E', 'D', 'B', 'G', 'C', 'F#'];
 
-/** Resolve "random" / key strings to a key + mode. */
-export function resolveKey(rng: Rng, key: string | undefined, mode?: Mode): { tonic: string; mode: Mode } {
+/** Resolve "random" / key strings to a key + mode. With `keys`, "random" picks from that list only. */
+export function resolveKey(rng: Rng, key: string | undefined, mode?: Mode, keys?: string[]): { tonic: string; mode: Mode } {
   if (!key || key === 'random') {
     const m: Mode = mode ?? 'major';
+    if (keys?.length) {
+      const k = parseKey(rng.pick(keys), m);
+      return { tonic: k.tonic, mode: k.mode };
+    }
     return { tonic: rng.pick(m === 'major' ? MAJOR_KEYS : MINOR_KEYS), mode: m };
   }
   const k = parseKey(key, mode);

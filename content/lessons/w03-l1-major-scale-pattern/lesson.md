@@ -34,10 +34,10 @@ C →**W**→ D →**W**→ E →**H**→ F →**W**→ G →**W**→ A →**W**
 }
 ```
 
-Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W→ **F♯** →H→ G. The pattern forces one black key, F♯. You'll play in G properly in week 7.
+Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W→ **F♯** →H→ G. The pattern forces one black key, F♯. You'll play in G properly in week 9.
 
 ```keyboard
-{ "range": ["C3", "C5"], "highlight": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4"], "labels": "names", "colors": { "G3": "root", "G4": "root" } }
+{ "range": ["C4", "C6"], "highlight": ["G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5"], "labels": "names", "colors": { "G4": "root", "G5": "root" } }
 ```
 
 ## Fingering
@@ -59,73 +59,27 @@ F♯ instead of F. Then once more with the real F. Listen at the 4th note each t
 ```
 
 F♯ may sound slightly "off", as if it belongs to a different tune — or you may not notice anything yet. Both are
-normal in week 3. **If you can't hear it:** play the scale with the wrong note and with the right one, back to
-back, three times; then play the pattern W-W-H by eye and check where the step sizes break. The *Spot the wrong
-note* exercise below practises it.
+normal in week 3. **If you can't hear it yet:** put a finger on each key as the example plays (the keyboard picture
+lights them) and play it yourself: C D E F♯, stop. Then C D E F, stop. Go back and forth three times, only the first
+four notes, listening to the last step: E→F is squeezed (a half step), E→F♯ is airy (a whole step). Hearing a wrong
+note inside a scale is a later skill; today it is enough to notice that one key changed. The *Spot the wrong note*
+demo below is a second, unscored try.
 
-## Search across two octaves
+## Ear practice: the scale you already echo
 
-The last pitch rung adds a new first question: **which register?** The mystery note is now anywhere from C3 to B4.
+No new ear rungs today — the scale is the new idea, and your ear needs time with what's open. Notice that the notes
+you echo (C D E F G) are the first five notes of C major, and the run before each echo is the scale's bottom half,
+up and back. The drills below run at your current melody and octave rungs.
 
-**Try it:** play C3, then C4. C3 is low and dark, C4 middle. Then play the guided example below and decide: closer to
-C3 or to C4? (It's **A3** — shown on purpose: lowish, but not as dark as C3.) Start the search in that octave:
-F3, then jump, then step.
-
-```example
-{
-  "title": "Guided search: the mystery note is A3",
-  "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "A3:w" } ],
-  "show": ["keyboard"]
-}
-```
-
-**If you pick the wrong octave:** the search still works — the app says *higher* or *lower*; a note with the right
-letter in the wrong octave gets its own message ("go up by a whole octave").
+**Try it:** play the C major scale up to G and back (C D E F G F E D C). Then play just C, E, G: those are the skips
+inside the run. Your echo tunes are made of exactly these steps and skips.
 
 ```ladder
-{ "skill": "pitch", "unlocks": 10, "intro": "Pitch at your current rung — up to finding the note across two octaves." }
+{ "skill": "melody", "unlocks": 4, "intro": "Echoes at your current melody rung (review: up to four notes from C to G)." }
 ```
-
-## Echo: from C to G
-
-The next two melody rungs use all five fingers, **C D E F G** (thumb on C): three notes, then four. Now some moves
-**skip** a key. For the four-note version the app plays a run **C D E F G F E D C** first, to remind your ear where
-C is (next lesson explains why that run is so useful).
-
-**Try it:** play C → E (a skip up), then C → D (a step up). Then E → C and D → C. Say "step" or "skip" each time. In
-the echo, decide for each move: up or down, then step or skip.
-
-```example
-{
-  "title": "The run the app plays first: C D E F G F E D C",
-  "bpm": 100, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h" } ],
-  "show": ["keyboard"]
-}
-```
-
-**If a skip confuses you:** play the note you think it is, then the one next to it. Same method as the search:
-compare, move, merge.
 
 ```ladder
-{ "skill": "melody", "unlocks": 4, "intro": "Echoes at your current melody rung — up to four notes from C D E F G." }
-```
-
-## Octaves: a single pair
-
-The next octave rung takes the comparison away: two notes one after the other, about an octave apart — **the same
-note again, or a different one?** This is the hardest kind so far.
-
-**Try it:** play D3 → D4 (same letter), then D3 → G♯3 and D3 → G♯4 (different letters). Then hold D3 and add
-each: the octave is still, the other rubs. In the drill, before answering, imagine the first note played again, higher: does the second note
-match that echo?
-
-**If you can't hear it yet:** find the first note by search, count 12 keys up and play it, then replay the question:
-is the second note that key? Use *Both together* after each answer — the together-sound is the clue you trust.
-
-```ladder
-{ "skill": "octave", "unlocks": 6, "intro": "Octaves at your current rung — up to 'same or different, one after the other'." }
+{ "skill": "octave", "unlocks": 3, "intro": "Octaves at your current rung (review: together, and which of two is the octave)." }
 ```
 
 ## Drills
@@ -170,20 +124,26 @@ is the second note that key? Use *Both together* after each answer — the toget
 }
 ```
 
+Another "almost" C major, unscored. Listen, guess which note is odd, then press "Reveal notation" and compare with
+the real scale underneath it. If nothing sounded odd, that's fine — play both on your keyboard, slowly, and listen
+to the last two notes of each.
+
 ```exercise
 {
   "id": "e5",
   "type": "listen",
-  "title": "Spot the wrong note",
+  "title": "Spot the wrong note (demo, not scored)",
   "spec": {
-    "example": { "title": "C major… almost", "bpm": 80, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q F4:q | G4:q A4:q Bb4:q C5:q" } ] },
-    "questions": [
-      { "q": "Which note sounded out of place?", "choices": ["the 3rd", "the 5th", "the 7th"], "answer": 2, "explain": "B♭ replaced B, so the step to C became a whole step." },
-      { "q": "What should the 7th note of C major be?", "choices": ["B", "B♭", "A"], "answer": 0 }
+    "examples": [
+      { "title": "C major… almost", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q F4:q | G4:q A4:q Bb4:q C5:q" } ], "show": ["keyboard"] },
+      { "title": "The real C major", "bpm": 80, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q F4:q | G4:q A4:q B4:q C5:q" } ], "show": ["keyboard"] }
     ]
   }
 }
 ```
+
+After revealing, find the changed key on your keyboard and play its last step up to C: it arrives without the usual
+squeeze.
 
 ## Between lessons
 

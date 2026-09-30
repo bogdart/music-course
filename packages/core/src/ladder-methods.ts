@@ -57,42 +57,58 @@ const M: Record<string, Record<string, string>> = {
       "Take it step by step: 1) Is it smooth like an echo? 2) If far apart, walk the octaves. 3) If smooth but hollow, suspect a fifth. Replay as often as you like.",
   },
   degrees: {
+    'Do, mi or sol (with drone)':
+      "These three are the home chord. 1 blends into the drone and feels finished; 3 sits bright on top; 5 is open and stable, like a second home above. After each answer the note walks home — listen to how far it travels.",
+    'Do, mi or sol':
+      "Keep the end of the home run (C) in your head. Walk down from the note to it: 1 = no steps, 3 = mi-re-do, 5 = sol-fa-mi-re-do. Or find the key on the keyboard (C, E or G).",
+    'Re joins':
+      "2 (re) sits one step above home and feels unfinished — it wants to fall to 1. If the note sounds 'almost home but hanging', it's 2. Check by walking down, or find the key: D = 2.",
+    'All seven after a cadence':
+      "Same notes; chords set home now. The last chord is home: its low bass note (C3) and its top C4 are both 1 — the question note sits in the upper octave. Sort first: at rest (1 3 5) or leaning (2 4 6 7)? Then walk home, or find the key and count from C.",
+    'Do and sol, other octaves':
+      "The note may be an octave lower or higher than the cadence. Don't judge by height — ask: does it feel finished (1) or open and waiting (5)? If unsure, find the note on the keyboard (any octave) and play it next to C: C = 1, G = 5.",
+    'Do, mi, sol, other octaves':
+      "Ignore how high or low it is. Play the note on your keyboard in the cadence's octave (search, then jump by 12 keys) and name it there: C, E or G.",
+    'All seven, other octaves':
+      "First move the note home in your head — or on the keyboard: find it, then jump by 12 keys into the cadence's octave. There, use your usual method: at rest or leaning, then walk home.",
+    'Low sol':
+      "Sol can now sit BELOW home. From low sol, home is a step-and-a-bit up (sol-la-ti-do). If the note sounds low and leads up into home, suspect low sol; compare with the cadence's lowest note.",
+    'Low la and ti':
+      "Low ti leans hard up into do; low la is soft and sad just under it. Walk up to home from them: ti-do (one step) or la-ti-do (two).",
+    'Two octaves around home':
+      "The note may be far from home. Bring it close first: find it on the keyboard and jump by octaves toward the cadence's register, then name it there.",
+    'All seven in G':
+      "Home is G. Hold the cadence's last bass note as 1 and count steps from it — or find the key and count up from G (G A B C D E F♯).",
+    'All seven in F':
+      "Home is F. Same method: the cadence gives home; count from F (F G A B♭ C D E).",
+    'Near keys':
+      "A new home each question. Let the cadence finish and hum or hold its last note in your head as 1 before the question plays. Then use your one-key method; press Reference whenever home slips away.",
+    'Any major key':
+      "Same as near keys, with every key. The degree feels the same in every key — only home moves. Rely on the cadence, not on note names.",
+    'Any key, two octaves':
+      "Two steps: 1) set home from the cadence; 2) bring a far note into home's octave (keyboard: find it, jump by 12), then name it.",
+    'Minor: 1 to 5 in A':
+      "Home is A, the key is minor — darker. The method is the same: hold the cadence's home note, walk from the question note down to it, count the steps. 3 is the dark third.",
+    'Minor: all seven in A':
+      "In A minor, 6 and 7 sit only a whole step apart and 7 doesn't pull as hard. Sort at rest vs leaning, then walk home; find the key and count from A if unsure.",
+    'Minor: near keys':
+      "A, E or D minor. Take home from the minor cadence (its last chord's lowest note), then use the A-minor method.",
+    'Minor: any key':
+      "Any minor key, and the note may be in another octave. Home from the cadence first; bring the note near home; then walk.",
+    'Minor: the raised 7':
+      "In harmonic minor, 7 is raised a half step and pulls hard up into home, like in major. If a note just under home leans up urgently, it's ♯7; the plain (natural) 7 sits lower and relaxed.",
+    'Minor: raised 6 and 7':
+      "Melodic minor raises 6 too: ♯6 sounds brighter, 'hopeful' in a minor key. Compare with the plain 6 by playing both from home.",
+    'The flat 6':
+      "♭6 is a dark, sighing note just above 5 that wants to fall onto 5. If a note leans down onto sol, suspect ♭6.",
     'Home or 3? (with drone)':
       "After the home run, the low C keeps sounding. If the new note blends into it and feels finished, it's 1. If it's brighter and sits on top, it's 3. After answering, listen to the note walk home.",
-    '1, 2 or 3? (with drone)':
-      "Try walking home in your head: from the note, step down the scale to C (mi-re-do). No steps = 1, one step = 2, two steps = 3. The automatic walk home after each answer shows you the path.",
-    '1, 2 or 3?':
-      "No drone now: keep the end of the home run (C) in your head. Walk down from the note to that C: count the steps. Or play it: find the note on the keyboard (C, D or E) — its key tells you the degree.",
-    '1 to 4':
-      "4 (fa) leans heavily down onto 3. If the note feels like it's about to fall one small step, suspect 4. Walk down to home and count steps; or find the key: C D E F = 1 2 3 4.",
     '1 to 5':
       "5 (sol) is stable and open, like a second home above. Walk down from it: sol-fa-mi-re-do (four steps). Finding the key works too: C to G = 1 to 5.",
-    '1 to 5 after a cadence':
-      "Same notes; now chords set home. Remember the last chord's lowest note — that's 1. Then walk down from the question note to it, or find the key: in C, C D E F G = 1 2 3 4 5.",
-    '1, 3, 5 or 6':
-      "1, 3, 5 all belong to the home chord and feel at rest. 6 (la) feels soft and a bit sad and wants to step down to 5. Ask first: at rest, or leaning?",
     '1 to 6':
       "Sort first: at rest (1 3 5) or leaning (2 4 6)? Then walk to home, or find the key on the keyboard and count from C.",
-    '1 to 6 in G':
-      "Home is G now. Don't think letters — think 'home'. Hold the cadence's last bass note in your head as 1 and count steps from it; or find the key and count up from G.",
-    '1 to 6 in F':
-      "Home is F. Same method: the last cadence chord gives home; walk from the note to it, or count keys up from F (F G A B♭ C D).",
-    '1, 2 or 7':
-      "7 (ti) pulls hard UP into home — it sounds like it's about to resolve upward. 2 leans down. Listen for the direction of the pull; the walk home after answering confirms it.",
     'All seven in C':
       "Two-step method: 1) at rest (1 3 5) or leaning (2 4 6 7)? 2) which way does it lean — down (2 4 6) or up (7)? Then walk home to confirm. Or find the key and count from C.",
-    'Minor: 1 to 5':
-      "Home is A, and the key is minor — darker. The method is the same: hold the cadence's home note, walk from the question note down to it, count the steps.",
-    'Minor: all seven':
-      "In A minor, 6 and 7 sit only a whole step apart and 7 doesn't pull as hard. Sort at rest vs leaning, then walk to home; find the key and count from A if unsure.",
-    'Any key: 1 to 5':
-      "A new key every question: the cadence is your map. Let it finish, then hold its last note as home before the question plays. Walk from the question note down to that home and count.",
-    'Any key: all seven':
-      "Same map: the cadence gives home. Sort at rest / leaning, then walk home. If you lose home, press Reference and listen again — that's allowed.",
-    'Any key, any octave':
-      "The note may sound an octave below. Imagine it an octave higher — or find it on the keyboard and play it in the cadence's octave — then walk home as usual.",
-    'Minor, any key':
-      "Minor cadence first, then the note. The home note is the lowest note of the last chord. Walk from the question note to it, counting minor-scale steps.",
     'The flat 7':
       "♭7 sounds like 7 that has 'slumped' — it doesn't pull up into home, it sits a whole step below, bluesy. If a note near the top neither rests nor pulls up, suspect ♭7.",
     'The flat 3':
@@ -103,6 +119,8 @@ const M: Record<string, Record<string, string>> = {
       "First decide: in the key or outside it (a sour 'wrong-colour' note)? For outside notes, find the nearest in-key neighbour it leans to, then name it as that degree raised or lowered.",
   },
   intervals: {
+    'Seconds to fifths, any register':
+      "Same intervals as before, but low or high. Low intervals sound muddier — listen to the size, not the sound. Play the two notes yourself in the middle of the keyboard to check.",
     'Half step or whole step':
       "A half step is squeezed — the two notes almost touch. A whole step has a little air between them. Check on the keyboard: neighbours with no key between = half step.",
     'Whole step or major 3rd':
@@ -147,6 +165,8 @@ const M: Record<string, Record<string, string>> = {
       "Direction first (up, down, together), then size class, then colour or anchor. Play it back on the keyboard to confirm.",
   },
   chords: {
+    'Major or minor, any register':
+      "Low chords blur. Listen to the overall mood, not the notes: bright (major) or dark (minor)? Play the chord's root in the middle and build major and minor on it to compare.",
     'Major or minor':
       "Major is bright and settled; minor is darker, more serious. Play C major and C minor on the keyboard (C E G, then C E♭ G) right after the chord and ask which it matched.",
     'Major, minor or diminished':
@@ -181,6 +201,8 @@ const M: Record<string, Record<string, string>> = {
       "Decide the family first (dreamy major or bluesy dominant), then listen for the extra shimmer on top (the 9th).",
   },
   roots: {
+    'Bass line, near keys':
+      "Find home first: play the cadence's lowest note on the keyboard. Then follow the bass up/down from there, as in C.",
     'Root of a major chord':
       "In a plain major chord the root is the lowest note. Try low keys until one blends like the chord's floor, then press Check.",
     'Root of major or minor':
@@ -213,13 +235,15 @@ const M: Record<string, Record<string, string>> = {
       "Same focus on the bass. Find home from the cadence first, then follow each bass move.",
   },
   progressions: {
+    'Four chords, near keys':
+      "Find home from the cadence (its bass note). Then name each chord by its role — rest (I), lift (IV), pull (V), sad (vi) — checking the bass.",
     'Home or tension: I or V':
       "I sounds at rest; V sounds like it needs to move on. Follow the bass too: C = I, G = V.",
     'I, IV, V':
       "I rests, IV opens up (lifts away), V pulls back home. Follow the bass: C, F, G.",
     'I, IV, V, vi':
       "vi is the sad, minor 'second home' (bass A). Sort each chord: rest (I), lift (IV), pull (V), sad (vi).",
-    'V or V7 (in C)':
+    'V or V7':
       "V7 adds a sharper, bluesy pull on top of V. If the dominant sounds extra hungry to go home, it's V7.",
     'Four chords in G':
       "Same four roles, home is G. Follow the bass from home: G (I), C (IV), D (V), E (vi).",
@@ -255,6 +279,26 @@ const M: Record<string, Record<string, string>> = {
       "Bass first through the band, then colour for major/minor. Replay and listen to one layer at a time.",
   },
   melody: {
+    'Echo the whole octave':
+      "Seven notes to choose from now, still within C4–C5. Find the first note by searching from C, then follow the path: up/down, step or jump.",
+    'The tune in another octave':
+      "The tune plays an octave away from your hand. Don't chase the height: find its first note in the octave you like (search, then jump by 12), and play the same path there.",
+    'Below do':
+      "Some notes dip below home (low sol, la, ti). Put your thumb on G3 instead of C4 so both sides are under your hand; find the first note, then follow the path.",
+    'Two octaves':
+      "Wide tunes: find each big jump's size first (octave? fifth?) using your anchors, then check on the keyboard.",
+    'Five notes in G':
+      "Home is G: start with your hand around G. Find the first note relative to home, then follow the path.",
+    'Five notes in F':
+      "Home is F: hand around F; remember B♭. Find the first note, follow the path.",
+    'Near keys':
+      "Find home from the cadence on the keyboard first, then the first melody note relative to home, then follow the path.",
+    'Any key':
+      "Any key: home first, then the first note, then the path. Break the tune into 3 + 2.",
+    'Any key, any register':
+      "Home first. If the tune is far from home, find its first note and play the path there, any octave.",
+    'Minor, any key':
+      "Minor home from the cadence; minor tunes often fall back to home. Find the first note, then follow the path.",
     'Echo 3 notes (C D E)':
       "Before touching keys, replay and ask of each move: up, down or same? Put your thumb on C, then let your fingers follow that up/down path. A wrong note is information: too high → one key left.",
     'Echo 4 notes (C D E)':
@@ -267,20 +311,10 @@ const M: Record<string, Record<string, string>> = {
       "Play it back on the keyboard first (C = 1, D = 2, E = 3), then write the numbers of the keys you pressed.",
     'Write 4 notes as degrees':
       "Same: find the notes on the keyboard, then translate: C D E F G = 1 2 3 4 5.",
-    'Echo with 6':
-      "A (6) joins. Use home: after the cadence, find the first note by walking from C, then follow the path.",
-    'Echo with 6 in G':
-      "Home is G: put your thumb on G. Find the first note from there and follow the up/down path.",
-    'Echo the whole scale':
-      "Any of seven notes. Find the first note by searching, then follow directions; 7 (B) likes to go up to C.",
     'Five notes':
       "Break it into 3 + 2: play the first three, replay, then add the last two.",
     'Minor tunes in A':
       "Home is A. Put your thumb on A; minor melodies often fall back to A. Find the first note, then follow the path.",
-    'Any key: 4 notes (1–5)':
-      "Find home from the cadence on the keyboard first. Then find the first melody note relative to home and follow the path.",
-    'Any key: 5 notes':
-      "Home first, then the first note, then the path. Break long melodies into chunks.",
     'Any key: write degrees':
       "Play it back first, then count each note's steps up from home.",
     'Six notes with rhythm':

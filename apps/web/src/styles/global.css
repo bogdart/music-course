@@ -569,3 +569,5 @@ figure.card > * + * { margin-top: 10px; }
 .ladder-how { margin: 6px 0 10px; }
 .ladder-how summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
 .ladder-how p { margin: 6px 0 0; }
+.reveal { border-left: 3px solid var(--warn); }
+.reveal.open { border-left-color: var(--ok); }

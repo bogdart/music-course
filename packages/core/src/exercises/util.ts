@@ -35,7 +35,7 @@ export function tonicMidiOf(tonicPc: number, octave = 4): number {
 
 /**
  * I–IV–V–I (i–iv–V–i in minor) cadence establishing a key: smooth close voicing on the tonic of `tonicMidiOf` (the
- * top voices barely move: 1-3-5 → 1-4-6 → 7-2-5 → 1-3-5) plus the chord roots in the bass.
+ * top voices barely move: 1-3-5 → 1-4-6 → 7-2-5 → 1-3-5) plus the chord roots one octave below the tonic (C3 F3 G3 C3).
  */
 export function cadence(key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet {
   const k = parseKey(key, mode);
@@ -49,7 +49,8 @@ export function cadence(key: string, mode?: Mode, instrument: InstrumentId = 'pi
     [t - 1, t + 2, t + 7],
     [t, t + third, t + 7],
   ];
-  const bass = [0, 5, 7, 0].map((st) => t - 12 + st - (st > 0 ? 12 : 0));
+  // bass one octave under the tonic: 1 → 4 → 5 → 1 (C3 F3 G3 C3 in C) — close to the chords, never down in octave 2
+  const bass = [0, 5, 7, 0].map((st) => t - 12 + st);
   const events: NoteEvent[] = [];
   chords.forEach((c, i) => {
     const tick = i * PPQ;

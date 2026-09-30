@@ -42,6 +42,8 @@ const D17 = [1, 2, 3, 4, 5, 6, 7];
 
 const octave = (spec: Record<string, unknown>, instructions: string) => ({ type: 'ear-octave', spec, instructions }) as RungDef['block'];
 const degree = (spec: Record<string, unknown>, instructions: string) => ({ type: 'ear-note', spec: { mode: 'major', octaves: [4], ...spec }, instructions }) as RungDef['block'];
+const intervalNarrow = (intervals: string[], direction: string, instructions: string) =>
+  ({ type: 'ear-interval', spec: { intervals, direction, root: 'random', range: ['C4', 'C5'] }, instructions }) as RungDef['block'];
 const interval = (intervals: string[], direction: string, instructions: string) =>
   ({ type: 'ear-interval', spec: { intervals, direction, root: 'random', range: ['C3', 'C5'] }, instructions }) as RungDef['block'];
 const chord = (qualities: string[], instructions: string, extra: Record<string, unknown> = {}) =>
@@ -58,7 +60,7 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
     title: 'Pitch',
     purpose: 'Hear whether a note goes up or down, and find a note you heard on the keyboard — the ground everything else stands on.',
     rungs: [
-      { title: 'Higher or lower: far apart', step: 'Two notes far apart: did the second go up or down?', block: octave({ notes: ['C', 'G'], octaves: [3, 5], mode: 'higher-or-lower' }, 'Is the second note higher or lower than the first?') },
+      { title: 'Higher or lower: far apart', step: 'Two notes far apart (up to almost an octave): did the second go up or down?', block: octave({ notes: ['C', 'A', 'B'], octaves: [4], mode: 'higher-or-lower' }, 'Is the second note higher or lower than the first?') },
       { title: 'Higher or lower: closer', step: 'The notes are a 3rd to a 5th apart.', block: octave({ notes: ['C', 'E', 'G'], octaves: [4], mode: 'higher-or-lower' }, 'Is the second note higher or lower?') },
       { title: 'Higher or lower: neighbours', step: 'Only a step or two apart.', block: octave({ notes: ['C', 'D', 'E'], octaves: [4], mode: 'higher-or-lower' }, 'Is the second note higher or lower? They are close.') },
       { title: 'Find it: C, D or E', step: 'Hear a note, find the exact key among three.', block: octave({ notes: ['C', 'D', 'E'], octaves: [4], mode: 'seek' }, 'Find the note you heard: C4, D4 or E4.') },
@@ -78,14 +80,14 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
       { title: 'Together: octave or near-miss', step: 'The wrong note is now a half step off the octave.', block: octave({ notes: WHITE, octaves: [3, 4], mode: 'together', gap: [1], foils: [1, 11] }, 'Two notes at once: a clean octave, or a note right next to it (it rubs)?') },
       { title: 'Which one is the octave?', step: 'One after the other: pick the octave out of two candidates.', block: octave({ notes: WHITE, octaves: [3, 4], mode: 'match', gap: [1], foils: [6] }, 'A note, then A and B. Which one is the same note an octave higher?') },
       { title: 'Which one is the octave? (near-misses)', step: 'The wrong candidate can now be a half step off.', block: octave({ notes: WHITE, octaves: [3, 4], mode: 'match', gap: [1], foils: [1, 6, 11] }, 'A note, then A and B. Which one is the octave? The other may be only a half step off.') },
-      { title: 'Find it on your keyboard', step: 'Hear one note, play the same note name in any octave.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'find' }, 'Find the note you hear on your keyboard, in any octave.') },
       { title: 'Same or different, one after the other', step: 'No candidates to compare: judge a single pair.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'same-or-different', gap: [1], foils: [6] }, 'Two notes an octave-ish apart: the same note again, or a different note?') },
       { title: 'Same or different: near-misses', step: 'The different note may be a half step off the octave.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'same-or-different', gap: [1], foils: [1, 6, 11] }, 'Same note an octave away, or a note right next to it?') },
+      { title: 'Find it on your keyboard', step: 'Hear one note, play the same note name in any octave.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'find' }, 'Find the note you hear on your keyboard, in any octave.') },
       { title: 'Find it: black keys too', step: 'All twelve notes, from octave 2 up to 5.', block: octave({ notes: ALL12, octaves: [2, 3, 4, 5], mode: 'find' }, 'Find the note on your keyboard, any octave. Black keys included.') },
-      { title: 'Two octaves apart: which one?', step: 'Candidates may be two octaves up.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'match', gap: [1, 2], foils: [1, 6, 11] }, 'A note, then A and B, one or two octaves higher. Which is the same note?') },
-      { title: 'Two octaves apart: same or different', step: 'Single pairs, one or two octaves apart.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'same-or-different', gap: [1, 2], foils: [1, 6, 11] }, 'Same note one or two octaves away, or a different note?') },
       { title: 'Octave or fifth? (together)', step: 'The wrong note is now a 4th/5th away — the most octave-like sound.', block: octave({ notes: WHITE, octaves: [3, 4], mode: 'together', gap: [1], foils: [5, 7] }, 'Two notes at once: one note (octave), or an open, hollow pair (a fifth)?') },
       { title: 'Octave or fifth? (one after the other)', step: 'The fifth trap, one note after the other.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'same-or-different', gap: [1], foils: [5, 7] }, 'Same note an octave away, or a 4th/5th away from it?') },
+      { title: 'Two octaves apart: which one?', step: 'Candidates may be two octaves up.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'match', gap: [1, 2], foils: [1, 6, 11] }, 'A note, then A and B, one or two octaves higher. Which is the same note?') },
+      { title: 'Two octaves apart: same or different', step: 'Single pairs, one or two octaves apart.', block: octave({ notes: WHITE, octaves: [3, 4, 5], mode: 'same-or-different', gap: [1, 2], foils: [1, 6, 11] }, 'Same note one or two octaves away, or a different note?') },
       { title: 'Find the bass note', step: 'Very low notes (octaves 1–2) on a bass sound.', block: octave({ notes: ALL12, octaves: [1, 2], mode: 'find', instrument: 'bass' }, 'A low bass note: find it on your keyboard, any octave.') },
       { title: 'Everything at once', step: 'All registers, one or two octaves, every kind of wrong note.', block: octave({ notes: WHITE, octaves: [2, 3, 4, 5], mode: 'same-or-different', gap: [1, 2], foils: [1, 5, 6, 7, 11] }, 'Same note or different? Any register, any gap.') },
     ],
@@ -94,41 +96,56 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
     title: 'Scale degrees (home)',
     purpose: 'Hear where a note sits relative to home — the skill behind playing melodies by ear and finding the key of a song.',
     rungs: [
-      { title: 'Home or 3? (with drone)', step: 'C major, the home note held underneath.', block: degree({ key: 'C', degrees: [1, 3], reference: 'scale', drone: true }, 'After the home run, a note over a low C. Home (1) or 3?') },
-      { title: '1, 2 or 3? (with drone)', step: 'Degree 2 joins.', block: degree({ key: 'C', degrees: [1, 2, 3], reference: 'scale', drone: true }, 'After the home run: 1, 2 or 3? Listen to how it walks home afterwards.') },
-      { title: '1, 2 or 3?', step: 'No drone: hold home in your head.', block: degree({ key: 'C', degrees: [1, 2, 3], reference: 'scale' }, 'After the home run: 1, 2 or 3?') },
-      { title: '1 to 4', step: 'Degree 4 (fa) joins — tense, leans down to 3.', block: degree({ key: 'C', degrees: [1, 2, 3, 4], reference: 'scale' }, 'After the home run: 1, 2, 3 or 4?') },
-      { title: '1 to 5', step: 'Degree 5 (sol) joins.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5], reference: 'scale' }, 'After the home run: which degree, 1 to 5?') },
-      { title: '1 to 5 after a cadence', step: 'The reference becomes the chord cadence.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5], reference: 'cadence' }, 'After the cadence (C–F–G–C): which degree, 1 to 5?') },
-      { title: '1, 3, 5 or 6', step: 'Degree 6 (la) joins, against the home chord tones.', block: degree({ key: 'C', degrees: [1, 3, 5, 6], reference: 'cadence' }, 'After the cadence: 1, 3, 5 or 6?') },
-      { title: '1 to 6', step: 'All of 1–6.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5, 6], reference: 'cadence' }, 'After the cadence: which degree, 1 to 6?') },
-      { title: '1 to 6 in G', step: 'Same, in G major.', block: degree({ key: 'G', degrees: [1, 2, 3, 4, 5, 6], reference: 'cadence' }, 'Home is G now. After the cadence: which degree, 1 to 6?') },
-      { title: '1 to 6 in F', step: 'Same, in F major.', block: degree({ key: 'F', degrees: [1, 2, 3, 4, 5, 6], reference: 'cadence' }, 'Home is F now. After the cadence: which degree, 1 to 6?') },
-      { title: '1, 2 or 7', step: 'Degree 7 (ti), the leading tone, against its neighbours.', block: degree({ key: 'C', degrees: [1, 2, 7], reference: 'cadence' }, 'After the cadence: 1, 2 or 7? 7 pulls up hard into home.') },
-      { title: 'All seven in C', step: 'The whole scale.', block: degree({ key: 'C', degrees: D17, reference: 'cadence' }, 'After the cadence: which degree, 1 to 7?') },
-      { title: 'Minor: 1 to 5', step: 'A minor (natural), with a minor cadence.', block: degree({ key: 'A', mode: 'minor', degrees: [1, 2, 3, 4, 5], reference: 'cadence' }, 'A minor. After the cadence: which degree, 1 to 5?') },
-      { title: 'Minor: all seven', step: 'All seven degrees of A natural minor.', block: degree({ key: 'A', mode: 'minor', degrees: D17, reference: 'cadence' }, 'A minor. After the cadence: which degree, 1 to 7?') },
-      { title: 'Any key: 1 to 5', step: 'The key changes every question; the cadence tells you home.', block: degree({ key: 'random', degrees: [1, 2, 3, 4, 5], reference: 'cadence' }, 'A new key every time — listen to the cadence for home. Which degree, 1 to 5?') },
-      { title: 'Any key: all seven', step: 'All seven degrees in random keys.', block: degree({ key: 'random', degrees: D17, reference: 'cadence' }, 'A new key every time. Which degree, 1 to 7?') },
-      { title: 'Any key, any octave', step: 'The note may sound an octave below the cadence.', block: degree({ key: 'random', degrees: D17, reference: 'cadence', octaves: [3, 4] }, 'New key each time; the note may be in a lower octave. Which degree?') },
-      { title: 'Minor, any key', step: 'Minor keys, random.', block: degree({ key: 'random', mode: 'minor', degrees: D17, reference: 'cadence' }, 'A new minor key every time. Which degree, 1 to 7?') },
-      { title: 'The flat 7', step: 'b7 (the Mixolydian / blues note) joins 1–7.', block: degree({ key: 'random', degrees: [...D17, 'b7'], reference: 'cadence' }, 'Major key, but b7 may appear. Which degree?') },
-      { title: 'The flat 3', step: 'b3 (the blue third) joins.', block: degree({ key: 'random', degrees: [...D17, 'b3', 'b7'], reference: 'cadence' }, 'Major key; b3 and b7 may appear. Which degree?') },
-      { title: 'The sharp 4', step: '#4 (Lydian, and the note of V/V) joins.', block: degree({ key: 'random', degrees: [...D17, 'b3', '#4', 'b7'], reference: 'cadence' }, 'Major key; b3, #4 and b7 may appear. Which degree?') },
-      { title: 'All twelve', step: 'Every chromatic degree.', block: degree({ key: 'random', degrees: [...D17, 'b2', 'b3', '#4', 'b6', 'b7'], chromatic: true, reference: 'cadence' }, 'Any of the twelve notes against the key. Which degree?') },
+      // Stage 1 — C major, one octave (do … ti), home run, then the cadence
+      { title: 'Home or 3? (with drone)', step: 'C major, do or mi, the home note held underneath.', block: degree({ key: 'C', degrees: [1, 3], reference: 'scale', drone: true, span: [0, 11] }, 'After the home run, a note over a low C. Home (1) or 3?') },
+      { title: 'Do, mi or sol (with drone)', step: 'Sol joins: the three notes of the home chord.', block: degree({ key: 'C', degrees: [1, 3, 5], reference: 'scale', drone: true, span: [0, 11] }, 'After the home run: 1, 3 or 5?') },
+      { title: 'Do, mi or sol', step: 'No drone: hold home in your head.', block: degree({ key: 'C', degrees: [1, 3, 5], reference: 'scale', span: [0, 11] }, 'After the home run: 1, 3 or 5?') },
+      { title: 'Re joins', step: 'Degree 2, the step above home.', block: degree({ key: 'C', degrees: [1, 2, 3, 5], reference: 'scale', span: [0, 11] }, 'After the home run: 1, 2, 3 or 5?') },
+      { title: '1 to 5', step: 'Fa (4) joins.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5], reference: 'scale', span: [0, 11] }, 'After the home run: which degree, 1 to 5?') },
+      { title: '1 to 6', step: 'La (6) joins.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5, 6], reference: 'scale', span: [0, 11] }, 'After the home run: which degree, 1 to 6?') },
+      { title: 'All seven in C', step: 'Ti (7) joins: the whole octave, do to ti.', block: degree({ key: 'C', degrees: D17, reference: 'scale', span: [0, 11] }, 'After the home run: which degree, 1 to 7?') },
+      { title: 'All seven after a cadence', step: 'Same notes; the reference becomes the chord cadence.', block: degree({ key: 'C', degrees: D17, reference: 'cadence', span: [0, 11] }, 'After the cadence (C–F–G–C): which degree?') },
+      // Stage 2 — register: the same notes in other octaves
+      { title: 'Do and sol, other octaves', step: 'Only 1 and 5, but the note may be an octave below or above the cadence.', block: degree({ key: 'C', degrees: [1, 5], reference: 'cadence', span: [-12, 23] }, 'Home (1) or sol (5)? The note may be in another octave.') },
+      { title: 'Do, mi, sol, other octaves', step: 'The home chord notes in any of three octaves.', block: degree({ key: 'C', degrees: [1, 3, 5], reference: 'cadence', span: [-12, 23] }, '1, 3 or 5 — in any of three octaves.') },
+      { title: 'All seven, other octaves', step: 'Every degree, octave 3, 4 or 5.', block: degree({ key: 'C', degrees: D17, reference: 'cadence', span: [-12, 23] }, 'Which degree? The note may be in another octave.') },
+      // Stage 3 — below do and two octaves
+      { title: 'Low sol', step: 'The range reaches below home: sol under do.', block: degree({ key: 'C', degrees: [1, 2, 3, 4, 5], reference: 'cadence', span: [-5, 11] }, 'Which degree? 5 may sit below home.') },
+      { title: 'Low la and ti', step: 'All seven from low sol up to do\u2032.', block: degree({ key: 'C', degrees: D17, reference: 'cadence', span: [-5, 12] }, 'Which degree? From low sol up to high do.') },
+      { title: 'Two octaves around home', step: 'Any degree, an octave below to an octave above home.', block: degree({ key: 'C', degrees: D17, reference: 'cadence', span: [-12, 12] }, 'Which degree? Anywhere within an octave of home.') },
+      // Stage 4 — keys
+      { title: 'All seven in G', step: 'One new key, one octave.', block: degree({ key: 'G', degrees: D17, reference: 'cadence', span: [0, 11] }, 'Home is G. Which degree?') },
+      { title: 'All seven in F', step: 'Another new key.', block: degree({ key: 'F', degrees: D17, reference: 'cadence', span: [0, 11] }, 'Home is F. Which degree?') },
+      { title: 'Near keys', step: 'C, G, F, D or B\u266d — a new home each question, one octave.', block: degree({ key: 'random', keys: ['C', 'G', 'F', 'D', 'Bb'], degrees: D17, reference: 'cadence', span: [0, 11] }, 'A new home each question (C, G, F, D or B\u266d). Which degree?') },
+      { title: 'Any major key', step: 'Every major key, still one octave.', block: degree({ key: 'random', degrees: D17, reference: 'cadence', span: [0, 11] }, 'Any key. Listen to the cadence for home. Which degree?') },
+      { title: 'Any key, two octaves', step: 'Any key, the note anywhere within an octave of home.', block: degree({ key: 'random', degrees: D17, reference: 'cadence', span: [-12, 12] }, 'Any key, any register. Which degree?') },
+      // Stage 5 — minor
+      { title: 'Minor: 1 to 5 in A', step: 'A minor, one octave: the darker home.', block: degree({ key: 'A', mode: 'minor', degrees: [1, 2, 3, 4, 5], reference: 'cadence', span: [0, 11] }, 'A minor. Which degree, 1 to 5?') },
+      { title: 'Minor: all seven in A', step: 'Natural minor, all seven.', block: degree({ key: 'A', mode: 'minor', degrees: D17, reference: 'cadence', span: [0, 11] }, 'A minor. Which degree?') },
+      { title: 'Minor: near keys', step: 'A, E or D minor.', block: degree({ key: 'random', mode: 'minor', keys: ['A', 'E', 'D'], degrees: D17, reference: 'cadence', span: [0, 11] }, 'A minor key (A, E or D). Which degree?') },
+      { title: 'Minor: any key', step: 'Every minor key, one then two octaves.', block: degree({ key: 'random', mode: 'minor', degrees: D17, reference: 'cadence', span: [-12, 12] }, 'Any minor key. Which degree?') },
+      { title: 'Minor: the raised 7', step: 'Harmonic minor: #7, the leading tone, joins.', block: degree({ key: 'random', mode: 'minor', degrees: [...D17, '#7'], reference: 'cadence', span: [0, 11] }, 'Minor key; 7 may be raised (#7). Which degree?') },
+      { title: 'Minor: raised 6 and 7', step: 'Melodic minor: #6 joins too.', block: degree({ key: 'random', mode: 'minor', degrees: [...D17, '#6', '#7'], reference: 'cadence', span: [0, 11] }, 'Minor key; 6 and 7 may be raised. Which degree?') },
+      // Stage 6 — chromatic notes in major (b3, b7, b6, #4, b2)
+      { title: 'The flat 3', step: '\u266d3, the blue third, joins the major scale.', block: degree({ key: 'random', degrees: [...D17, 'b3'], reference: 'cadence', span: [0, 11] }, 'Major key; \u266d3 may appear. Which degree?') },
+      { title: 'The flat 7', step: '\u266d7 joins.', block: degree({ key: 'random', degrees: [...D17, 'b3', 'b7'], reference: 'cadence', span: [0, 11] }, 'Major key; \u266d3 or \u266d7 may appear.') },
+      { title: 'The flat 6', step: '\u266d6 joins.', block: degree({ key: 'random', degrees: [...D17, 'b3', 'b6', 'b7'], reference: 'cadence', span: [0, 11] }, 'Major key; \u266d3, \u266d6 or \u266d7 may appear.') },
+      { title: 'The sharp 4', step: '\u266f4 joins.', block: degree({ key: 'random', degrees: [...D17, 'b3', '#4', 'b6', 'b7'], reference: 'cadence', span: [0, 11] }, 'Major key; \u266d3, \u266f4, \u266d6 or \u266d7 may appear.') },
+      { title: 'All twelve', step: '\u266d2 joins: every chromatic degree.', block: degree({ key: 'random', degrees: [...D17, 'b2', 'b3', '#4', 'b6', 'b7'], chromatic: true, reference: 'cadence', span: [0, 11] }, 'Any of the twelve notes against the key. Which degree?') },
     ],
   },
   intervals: {
     title: 'Intervals',
     purpose: 'Hear the distance between two notes — useful for melodies and for checking what you hear.',
     rungs: [
-      { title: 'Half step or whole step', step: 'm2 vs M2, going up.', block: interval(['m2', 'M2'], 'asc', 'Two notes going up: a half step (squeezed) or a whole step?') },
-      { title: 'Whole step or major 3rd', step: 'M2 vs M3.', block: interval(['M2', 'M3'], 'asc', 'A step (M2) or a skip (M3)?') },
-      { title: 'Minor or major 3rd', step: 'm3 vs M3 — dark vs bright.', block: interval(['m3', 'M3'], 'asc', 'Minor 3rd (darker) or major 3rd (brighter)?') },
-      { title: '4th or 5th', step: 'P4 vs P5 (Here Comes the Bride vs Twinkle).', block: interval(['P4', 'P5'], 'asc', 'Perfect 4th or perfect 5th?') },
-      { title: '3rd, 4th or 5th', step: 'Three choices.', block: interval(['M3', 'P4', 'P5'], 'asc', 'Major 3rd, 4th or 5th?') },
-      { title: 'Seconds and thirds', step: 'The four small intervals together.', block: interval(['m2', 'M2', 'm3', 'M3'], 'asc', 'Which interval: half step, whole step, minor or major 3rd?') },
-      { title: 'Seconds to fifths', step: 'The 4th and 5th join the small intervals.', block: interval(['m2', 'M2', 'm3', 'M3', 'P4', 'P5'], 'asc', 'Which interval, from half step to fifth?') },
+      { title: 'Half step or whole step', step: 'm2 vs M2, going up.', block: intervalNarrow(['m2', 'M2'], 'asc', 'Two notes going up: a half step (squeezed) or a whole step?') },
+      { title: 'Whole step or major 3rd', step: 'M2 vs M3.', block: intervalNarrow(['M2', 'M3'], 'asc', 'A step (M2) or a skip (M3)?') },
+      { title: 'Minor or major 3rd', step: 'm3 vs M3 — dark vs bright.', block: intervalNarrow(['m3', 'M3'], 'asc', 'Minor 3rd (darker) or major 3rd (brighter)?') },
+      { title: '4th or 5th', step: 'P4 vs P5 (Here Comes the Bride vs Twinkle).', block: intervalNarrow(['P4', 'P5'], 'asc', 'Perfect 4th or perfect 5th?') },
+      { title: '3rd, 4th or 5th', step: 'Three choices.', block: intervalNarrow(['M3', 'P4', 'P5'], 'asc', 'Major 3rd, 4th or 5th?') },
+      { title: 'Seconds and thirds', step: 'The four small intervals together.', block: intervalNarrow(['m2', 'M2', 'm3', 'M3'], 'asc', 'Which interval: half step, whole step, minor or major 3rd?') },
+      { title: 'Seconds to fifths', step: 'The 4th and 5th join the small intervals.', block: intervalNarrow(['m2', 'M2', 'm3', 'M3', 'P4', 'P5'], 'asc', 'Which interval, from half step to fifth?') },
+      { title: 'Seconds to fifths, any register', step: 'The same intervals, now from low to high registers.', block: interval(['m2', 'M2', 'm3', 'M3', 'P4', 'P5'], 'asc', 'Which interval? It may be low or high.') },
       { title: '5th or octave', step: 'P5 vs P8.', block: interval(['P5', 'P8'], 'asc', 'Perfect 5th or octave?') },
       { title: 'Minor or major 6th', step: 'm6 vs M6.', block: interval(['m6', 'M6'], 'asc', 'Minor 6th or major 6th?') },
       { title: '7ths and the octave', step: 'm7, M7, P8.', block: interval(['m7', 'M7', 'P8'], 'asc', 'Minor 7th, major 7th or octave?') },
@@ -149,7 +166,8 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
     title: 'Chord colours',
     purpose: 'Hear a chord’s quality (major, minor, seventh…) — half of knowing any chord in a song.',
     rungs: [
-      { title: 'Major or minor', step: 'Two triads: bright vs dark.', block: chord(['maj', 'min'], 'Major (bright) or minor (dark)?') },
+      { title: 'Major or minor', step: 'Two triads: bright vs dark.', block: chord(['maj', 'min'], 'Major (bright) or minor (dark)?', { range: ['C4', 'C5'] }) },
+      { title: 'Major or minor, any register', step: 'The same two colours, low or high.', block: chord(['maj', 'min'], 'Major or minor? The chord may be low or high.', { range: ['C3', 'C5'] }) },
       { title: 'Major, minor or diminished', step: 'The tense diminished triad joins.', block: chord(['maj', 'min', 'dim'], 'Major, minor or diminished (tense, squeezed)?') },
       { title: 'Triad or seventh?', step: 'Major triad vs dominant 7th.', block: chord(['maj', 'dom7'], 'Plain major triad, or dominant 7th (bluesy, wants to move)?') },
       { title: 'Major 7 or dominant 7', step: 'Two sevenths on a major triad.', block: chord(['maj7', 'dom7'], 'Major 7th (dreamy) or dominant 7th (bluesy)?') },
@@ -171,14 +189,15 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
     title: 'Roots and bass',
     purpose: 'Hear the bass note / the root of a chord — the key to naming chords and hearing progressions.',
     rungs: [
-      { title: 'Root of a major chord', step: 'Play the root of a root-position major triad.', block: root({ qualities: ['maj'], range: ['C3', 'C4'] }, 'A major chord: play its root (the lowest note here), any octave.') },
-      { title: 'Root of major or minor', step: 'Minor chords too.', block: root({ qualities: ['maj', 'min'], range: ['C3', 'C4'] }, 'A major or minor chord: play its root.') },
+      { title: 'Root of a major chord', step: 'Play the root of a root-position major triad.', block: root({ qualities: ['maj'], range: ['C4', 'C5'] }, 'A major chord: play its root (the lowest note here), any octave.') },
+      { title: 'Root of major or minor', step: 'Minor chords too.', block: root({ qualities: ['maj', 'min'], range: ['C4', 'C5'] }, 'A major or minor chord: play its root.') },
       { title: 'Bass line: I and V', step: 'Two chords in C, play their bass notes.', block: bass({ key: 'C', chords: ['I', 'V'], length: 2 }, 'Two chords in C: play the two bass notes you hear.') },
       { title: 'Bass line: I, IV, V', step: 'Three chords in C.', block: bass({ key: 'C', chords: ['I', 'IV', 'V'], length: 3 }, 'Three chords in C: play the bass notes.') },
       { title: 'Bass line: I, IV, V, vi', step: 'Four chords in C, including vi.', block: bass({ key: 'C', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'Four chords in C: play the bass line.') },
       { title: 'Root when the chord is inverted', step: 'The root is no longer the lowest note (major chords).', block: root({ qualities: ['maj'], inversions: [0, 1, 2], range: ['C3', 'C5'] }, 'A major chord, maybe inverted: play its ROOT (not just the lowest note).') },
       { title: 'Inverted major and minor', step: 'Minor chords too.', block: root({ qualities: ['maj', 'min'], inversions: [0, 1, 2], range: ['C3', 'C5'] }, 'Major or minor, maybe inverted: play the root.') },
       { title: 'Bass line in G', step: 'Same four chords in G.', block: bass({ key: 'G', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'Four chords in G: play the bass line.') },
+      { title: 'Bass line, near keys', step: 'C, G, F, D or B\u266d — a new home each time.', block: bass({ key: 'random', keys: ['C', 'G', 'F', 'D', 'Bb'], chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'A new key each time (C, G, F, D or B\u266d): play the bass line.') },
       { title: 'Bass line, any key', step: 'The key changes every time.', block: bass({ key: 'random', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'A new key each time: play the bass line.') },
       { title: 'Bass line with ii and iii', step: 'More chords to choose from.', block: bass({ key: 'random', chords: ['I', 'ii', 'iii', 'IV', 'V', 'vi'], length: 4 }, 'Play the bass line (chords from the whole key).') },
       { title: 'Bass not on the root', step: 'Inversions: the bass may be the 3rd or 5th.', block: bass({ key: 'random', chords: ['I', 'IV', 'V', 'vi'], length: 4, inversions: [0, 1] }, 'Play the bass line — some chords are inverted, so follow the actual lowest note.') },
@@ -195,11 +214,12 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
       { title: 'Home or tension: I or V', step: 'Two chords in C.', block: prog({ key: 'C', chords: ['I', 'V'], length: 2 }, 'Two chords in C: each one I (home) or V (tension)?') },
       { title: 'I, IV, V', step: 'IV joins.', block: prog({ key: 'C', chords: ['I', 'IV', 'V'], length: 3 }, 'Three chords in C: I, IV or V?') },
       { title: 'I, IV, V, vi', step: 'The four pop chords, in C.', block: prog({ key: 'C', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'Four chords in C: which of I, IV, V, vi?') },
-      { title: 'V or V7 (in C)', step: 'The dominant with its seventh.', block: prog({ key: 'C', chords: ['I', 'IV', 'V', 'V7'], length: 3 }, 'Is the dominant plain V, or V7?') },
       { title: 'Four chords in G', step: 'Same, in G.', block: prog({ key: 'G', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'Four chords in G.') },
+      { title: 'Four chords, near keys', step: 'C, G, F, D or B\u266d.', block: prog({ key: 'random', keys: ['C', 'G', 'F', 'D', 'Bb'], chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'A new key each time (C, G, F, D or B\u266d): I, IV, V or vi?') },
       { title: 'Four chords, any key', step: 'Random keys.', block: prog({ key: 'random', chords: ['I', 'IV', 'V', 'vi'], length: 4 }, 'A new key each time: I, IV, V or vi?') },
       { title: 'Adding ii', step: 'ii joins.', block: prog({ key: 'random', chords: ['I', 'ii', 'IV', 'V', 'vi'], length: 4 }, 'I, ii, IV, V or vi?') },
       { title: 'Adding iii', step: 'iii joins.', block: prog({ key: 'random', chords: ['I', 'ii', 'iii', 'IV', 'V', 'vi'], length: 4 }, 'All the major and minor chords of the key.') },
+      { title: 'V or V7', step: 'The dominant with its seventh.', block: prog({ key: 'random', chords: ['I', 'IV', 'V', 'V7'], length: 3 }, 'Is the dominant plain V, or V7?') },
       { title: 'Minor: i, iv, V', step: 'A minor, three chords.', block: prog({ key: 'A', mode: 'minor', chords: ['i', 'iv', 'V'], length: 3 }, 'A minor: i, iv or V?') },
       { title: 'IV or iv?', step: 'The borrowed minor iv.', block: prog({ key: 'random', chords: ['I', 'IV', 'iv', 'V'], length: 3 }, 'Is the IV major (IV) or borrowed minor (iv)?') },
       { title: 'V or bVII?', step: 'The borrowed bVII.', block: prog({ key: 'random', chords: ['I', 'IV', 'V', 'bVII'], length: 4 }, 'I, IV, V or bVII?') },
@@ -218,25 +238,33 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
     title: 'Melodies',
     purpose: 'Play back or write down a melody you hear — the core of playing and transcribing by ear.',
     rungs: [
-      { title: 'Echo 3 notes (C D E)', step: 'Play back 3 notes from C, D, E.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 3, reference: 'tonic' }, 'Play back the 3 notes you hear (C, D and E only).') },
-      { title: 'Echo 4 notes (C D E)', step: 'Four notes.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 4, reference: 'tonic' }, 'Play back the 4 notes (C, D, E).') },
-      { title: 'Echo 3 notes (C to G)', step: 'Five notes to choose from.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 3, reference: 'tonic' }, 'Play back 3 notes from C D E F G.') },
-      { title: 'Echo 4 notes (C to G)', step: 'Four notes from five.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 4, reference: 'scale' }, 'Play back 4 notes from C D E F G.') },
-      { title: 'Write 3 notes as degrees', step: 'Answer with numbers instead of keys.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 3, answer: 'degrees', reference: 'scale' }, 'Write the degrees (1, 2, 3) of the three notes.') },
-      { title: 'Write 4 notes as degrees', step: 'Degrees 1–5.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 4, answer: 'degrees', reference: 'scale' }, 'Write the degrees of the four notes (1–5).') },
-      { title: 'Echo with 6', step: 'Degrees 1–6, after a cadence.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5, 6], length: 4 }, 'Play back 4 notes (C to A).') },
-      { title: 'Echo with 6 in G', step: 'Same range, now in G major.', block: mel({ key: 'G', degrees: [1, 2, 3, 4, 5, 6], length: 4 }, 'G major: play back 4 notes (G to E).') },
-      { title: 'Echo the whole scale', step: 'All seven degrees.', block: mel({ key: 'C', degrees: D17, length: 4 }, 'Play back 4 notes from the C major scale.') },
-      { title: 'Five notes', step: 'Longer: 5 notes.', block: mel({ key: 'C', degrees: D17, length: 5 }, 'Play back 5 notes.') },
-      { title: 'Minor tunes in A', step: 'A natural minor, five notes.', block: mel({ key: 'A', mode: 'minor', degrees: D17, length: 5 }, 'A minor: play back 5 notes.') },
-      { title: 'Any key: 4 notes (1–5)', step: 'Random keys, short.', block: mel({ key: 'random', degrees: [1, 2, 3, 4, 5], length: 4 }, 'A new key each time: play back 4 notes.') },
-      { title: 'Any key: 5 notes', step: 'Random keys, whole scale.', block: mel({ key: 'random', degrees: D17, length: 5 }, 'A new key each time: play back 5 notes.') },
-      { title: 'Any key: write degrees', step: 'Degrees answer in random keys.', block: mel({ key: 'random', degrees: D17, length: 5, answer: 'degrees' }, 'Write the degrees of the 5 notes.') },
-      { title: 'Six notes with rhythm', step: 'Longer, with simple rhythm.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple' }, 'Play back 6 notes (with rhythm).') },
-      { title: 'Leaps', step: 'Melodies that jump up to a 6th.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', maxLeap: 9 }, 'Play back 6 notes — this melody leaps.') },
-      { title: 'Over chords', step: 'A melody with chords underneath.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', backing: ['I', 'IV', 'V', 'I'] }, 'Play back the melody (chords play underneath).') },
-      { title: 'Eight notes', step: 'Longer phrases, freer rhythm.', block: mel({ key: 'random', degrees: D17, length: 8, rhythm: 'free' }, 'Play back 8 notes.') },
-      { title: 'Chromatic notes', step: 'Chromatic neighbour and passing notes.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', chromatic: true }, 'Play back 6 notes — some are outside the key.') },
+      // one octave in C
+      { title: 'Echo 3 notes (C D E)', step: 'Play back 3 notes from do, re, mi.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 3, reference: 'tonic', span: [0, 4] }, 'Play back the 3 notes you hear (C, D and E only).') },
+      { title: 'Echo 4 notes (C D E)', step: 'Four notes.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 4, reference: 'tonic', span: [0, 4] }, 'Play back the 4 notes (C, D, E).') },
+      { title: 'Echo 3 notes (C to G)', step: 'Five notes to choose from, do to sol.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 3, reference: 'tonic', span: [0, 7] }, 'Play back 3 notes from C D E F G.') },
+      { title: 'Echo 4 notes (C to G)', step: 'Four notes from five.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 4, reference: 'scale', span: [0, 7] }, 'Play back 4 notes from C D E F G.') },
+      { title: 'Write 3 notes as degrees', step: 'Answer with numbers instead of keys.', block: mel({ key: 'C', degrees: [1, 2, 3], length: 3, answer: 'degrees', reference: 'scale', span: [0, 4] }, 'Write the degrees (1, 2, 3) of the three notes.') },
+      { title: 'Write 4 notes as degrees', step: 'Degrees 1–5.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 4, answer: 'degrees', reference: 'scale', span: [0, 7] }, 'Write the degrees of the four notes (1–5).') },
+      { title: 'Echo the whole octave', step: 'All seven, do up to do\u2032.', block: mel({ key: 'C', degrees: D17, length: 4, reference: 'scale', span: [0, 12] }, 'Play back 4 notes from C4 up to C5.') },
+      { title: 'Five notes', step: 'Longer: 5 notes, one octave.', block: mel({ key: 'C', degrees: D17, length: 5, span: [0, 12], reference: 'scale' }, 'Play back 5 notes (C major, one octave).') },
+      // register
+      { title: 'The tune in another octave', step: 'The same kind of tune, played an octave lower or higher.', block: mel({ key: 'C', degrees: [1, 2, 3, 4, 5], length: 4, span: [0, 7], octaveShift: [-1, 1] }, 'The tune sounds an octave away — play it back in any octave.') },
+      { title: 'Below do', step: 'Tunes that dip below home (low sol, la, ti).', block: mel({ key: 'C', degrees: D17, length: 5, span: [-5, 12] }, 'Play back 5 notes — some sit below home.') },
+      { title: 'Two octaves', step: 'Tunes spread over two octaves around home.', block: mel({ key: 'C', degrees: D17, length: 5, span: [-12, 12] }, 'Play back 5 notes across two octaves.') },
+      // keys
+      { title: 'Five notes in G', step: 'A new key, one octave.', block: mel({ key: 'G', degrees: D17, length: 5, span: [0, 12] }, 'G major: play back 5 notes.') },
+      { title: 'Five notes in F', step: 'Another key.', block: mel({ key: 'F', degrees: D17, length: 5, span: [0, 12] }, 'F major: play back 5 notes.') },
+      { title: 'Near keys', step: 'C, G, F, D or B\u266d, one octave.', block: mel({ key: 'random', keys: ['C', 'G', 'F', 'D', 'Bb'], degrees: D17, length: 5, span: [0, 12] }, 'A new key each time (C, G, F, D or B\u266d): play back 5 notes.') },
+      { title: 'Any key', step: 'Any major key, one octave.', block: mel({ key: 'random', degrees: D17, length: 5, span: [0, 12] }, 'Any key: play back 5 notes.') },
+      { title: 'Any key: write degrees', step: 'Degrees answer in any key.', block: mel({ key: 'random', degrees: D17, length: 5, answer: 'degrees', span: [0, 12] }, 'Write the degrees of the 5 notes.') },
+      { title: 'Any key, any register', step: 'Any key, tunes over two octaves.', block: mel({ key: 'random', degrees: D17, length: 5, span: [-12, 12] }, 'Any key, any register: play back 5 notes.') },
+      { title: 'Minor tunes in A', step: 'A natural minor, one octave.', block: mel({ key: 'A', mode: 'minor', degrees: D17, length: 5, span: [0, 12] }, 'A minor: play back 5 notes.') },
+      { title: 'Minor, any key', step: 'Any minor key.', block: mel({ key: 'random', mode: 'minor', degrees: D17, length: 5, span: [-5, 12] }, 'A minor key: play back 5 notes.') },
+      { title: 'Six notes with rhythm', step: 'Longer, with simple rhythm.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', span: [-5, 12] }, 'Play back 6 notes (with rhythm).') },
+      { title: 'Leaps', step: 'Melodies that jump up to a 6th.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', maxLeap: 9, span: [-7, 14] }, 'Play back 6 notes — this melody leaps.') },
+      { title: 'Over chords', step: 'A melody with chords underneath.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', backing: ['I', 'IV', 'V', 'I'], span: [-5, 12] }, 'Play back the melody (chords play underneath).') },
+      { title: 'Eight notes', step: 'Longer phrases, freer rhythm.', block: mel({ key: 'random', degrees: D17, length: 8, rhythm: 'free', span: [-7, 14] }, 'Play back 8 notes.') },
+      { title: 'Chromatic notes', step: 'Chromatic neighbour and passing notes.', block: mel({ key: 'random', degrees: D17, length: 6, rhythm: 'simple', chromatic: true, span: [-5, 12] }, 'Play back 6 notes — some are outside the key.') },
     ],
   },
   rhythm: {
@@ -269,12 +297,12 @@ const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef
       { title: 'Major or minor tune', step: 'As a short melody instead of a scale.', block: scale(['major', 'natural-minor'], 'melody', 'Is this tune major or minor?') },
       { title: 'Natural or harmonic minor', step: 'The raised 7th.', block: scale(['natural-minor', 'harmonic-minor'], 'asc', 'Natural or harmonic minor?') },
       { title: 'Three minors', step: 'Natural, harmonic, melodic.', block: scale(['natural-minor', 'harmonic-minor', 'melodic-minor'], 'asc', 'Which minor scale?') },
+      { title: 'Major or pentatonic', step: 'Five notes vs seven.', block: scale(['major', 'major-pentatonic'], 'asc-desc', 'Major scale or major pentatonic?') },
+      { title: 'Minor pentatonic or blues', step: 'The blue note.', block: scale(['minor-pentatonic', 'blues'], 'asc-desc', 'Minor pentatonic or blues scale?') },
       { title: 'Major or Mixolydian', step: 'The b7, on the same root.', block: scale(['major', 'mixolydian'], 'asc-desc', 'Major, or Mixolydian (flat 7)?') },
       { title: 'Minor or Dorian', step: 'The raised 6, on the same root.', block: scale(['natural-minor', 'dorian'], 'asc-desc', 'Natural minor, or Dorian (raised 6)?') },
       { title: 'Major or Lydian', step: 'The #4.', block: scale(['major', 'lydian'], 'asc-desc', 'Major, or Lydian (sharp 4)?') },
       { title: 'Minor or Phrygian', step: 'The b2.', block: scale(['natural-minor', 'phrygian'], 'asc-desc', 'Natural minor, or Phrygian (flat 2)?') },
-      { title: 'Major or pentatonic', step: 'Five notes vs seven.', block: scale(['major', 'major-pentatonic'], 'asc-desc', 'Major scale or major pentatonic?') },
-      { title: 'Minor pentatonic or blues', step: 'The blue note.', block: scale(['minor-pentatonic', 'blues'], 'asc-desc', 'Minor pentatonic or blues scale?') },
       { title: 'Four scales', step: 'Major, minor, Dorian, Mixolydian.', block: scale(['major', 'natural-minor', 'dorian', 'mixolydian'], 'asc-desc', 'Which scale?') },
       { title: 'Six scales', step: 'Lydian and Phrygian join.', block: scale(['major', 'natural-minor', 'dorian', 'mixolydian', 'lydian', 'phrygian'], 'asc-desc', 'Which scale?') },
       { title: 'Six modes as tunes', step: 'Melodies instead of scale runs.', block: scale(['major', 'natural-minor', 'dorian', 'mixolydian', 'lydian', 'phrygian'], 'melody', 'Which mode is this tune in?') },
@@ -310,9 +338,10 @@ export function getRung(id: string): Rung | undefined {
 
 // ---- mastery ------------------------------------------------------------------------------------------------------
 
-/** Rules: a rung is mastered after ≥85% of the last 20 first answers across ≥2 sessions (or ≥95% in one go); it is
- * lost again when the last 10 answers drop below 70%. */
-export const MASTERY = { window: 20, need: 0.85, fast: 0.95, sessions: 2, dropWindow: 10, dropBelow: 0.7 } as const;
+/** Rules: a rung is mastered after ≥85% of the last 20 first answers across ≥2 sessions (or ≥95% in one go); a learner
+ * who already has the skill places out: the first 10 answers on a rung all correct master it at once. It is lost again
+ * when the last 10 answers drop below 70%. */
+export const MASTERY = { window: 20, need: 0.85, fast: 0.95, sessions: 2, dropWindow: 10, dropBelow: 0.7, placement: 10 } as const;
 
 export interface RungResult {
   correct: boolean;
@@ -332,6 +361,10 @@ export function rungStatus(results: RungResult[]): RungStatus {
   for (let i = 0; i < results.length; i++) {
     const upto = results.slice(0, i + 1);
     if (!mastered) {
+      if (upto.length === MASTERY.placement && upto.every((r) => r.correct)) {
+        mastered = true;
+        continue;
+      }
       const w = upto.slice(-MASTERY.window);
       if (w.length < MASTERY.window) continue;
       const acc = w.filter((r) => r.correct).length / w.length;

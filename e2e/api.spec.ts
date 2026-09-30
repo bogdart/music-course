@@ -39,13 +39,14 @@ test.describe('content', () => {
     expect(await r.json()).toEqual({ ok: true, contentVersion: expect.any(Number), pianoSamples: hasSamples });
   });
 
-  test('GET /api/content/curriculum: 5 phases, 52 weeks, every lesson exists', async ({ api }) => {
+  test('GET /api/content/curriculum: 5 phases, every week of curriculum.json, every lesson exists', async ({ api }) => {
     const c = await (await api.get('/api/content/curriculum')).json();
     const src = curriculum();
     expect(c.phases).toHaveLength(5);
     expect(c.phases.map((p: { id: string }) => p.id)).toEqual(['p1', 'p2', 'p3', 'p4', 'p5']);
-    expect(c.weeks).toHaveLength(52);
-    expect(c.weeks.map((w: { week: number }) => w.week)).toEqual(Array.from({ length: 52 }, (_, i) => i + 1));
+    const nWeeks = curriculum().weeks.length;
+    expect(c.weeks).toHaveLength(nWeeks);
+    expect(c.weeks.map((w: { week: number }) => w.week)).toEqual(Array.from({ length: nWeeks }, (_, i) => i + 1));
     const all = c.weeks.flatMap((w: { lessons: unknown[] }) => w.lessons);
     expect(all).toHaveLength(src.weeks.reduce((a, w) => a + w.lessons.length, 0));
     expect(all).toHaveLength(lessons().length);
@@ -53,13 +54,13 @@ test.describe('content', () => {
       expect(l).toMatchObject({ id: expect.stringMatching(/^w\d{2}-l\d+-/), exists: true, title: expect.any(String), status: 'not-started' });
     }
     expect(c.problemCount).toBe(0);
-    // phases cover weeks 1..52 contiguously
+    // phases cover every week contiguously
     let w = 1;
     for (const p of c.phases) {
       expect(p.weeks[0]).toBe(w);
       w = p.weeks[1] + 1;
     }
-    expect(w).toBe(53);
+    expect(w).toBe(nWeeks + 1);
   });
 
   test('GET /api/content/lessons/:id for every lesson: DTO shape, prev/next chain', async ({ api }) => {

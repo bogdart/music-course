@@ -41,7 +41,11 @@ function splitText(value: string): MdNode[] | null {
   return out;
 }
 
-export function remarkLesson() {
+/**
+ * `nested: true` (content of a ````reveal block): interactive blocks get index -1, so they never collide with the
+ * top-level blocks of the parsed lesson and are read from their own JSON.
+ */
+export function remarkLesson(opts: { nested?: boolean } = {}) {
   return (tree: MdNode) => {
     let index = 0;
     const visit = (node: MdNode) => {
@@ -49,11 +53,19 @@ export function remarkLesson() {
       if (!kids) return;
       for (let i = 0; i < kids.length; i++) {
         const c = kids[i]!;
+        if (c.type === 'code' && c.lang === 'reveal' && !opts.nested) {
+          kids[i] = {
+            type: 'paragraph',
+            children: [],
+            data: { hName: 'div', hProperties: { dataMcReveal: 'true', dataLabel: (c as { meta?: string }).meta ?? '', dataRaw: c.value ?? '' } },
+          };
+          continue;
+        }
         if (c.type === 'code' && c.lang && (BLOCK_LANGS as readonly string[]).includes(c.lang)) {
           kids[i] = {
             type: 'paragraph',
             children: [],
-            data: { hName: 'div', hProperties: { dataMcBlock: 'true', dataLang: c.lang, dataIndex: String(index++), dataRaw: c.value ?? '' } },
+            data: { hName: 'div', hProperties: { dataMcBlock: 'true', dataLang: c.lang, dataIndex: opts.nested ? '-1' : String(index++), dataRaw: c.value ?? '' } },
           };
           continue;
         }

@@ -201,7 +201,8 @@ export const specSchemas = {
     key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1),
     reference: z.enum(['cadence', 'scale', 'tonic', 'none']).optional(), octaves: z.array(z.number().int().min(0).max(8)).min(1).optional(),
     instrument: instrument.optional(), chromatic: z.boolean().optional(), answer: z.enum(['degree', 'name']).optional(),
-    drone: z.boolean().optional(),
+    drone: z.boolean().optional(), keys: z.array(key).min(1).optional(),
+    span: z.tuple([z.number().int().min(-24).max(0), z.number().int().min(0).max(24)]).optional(),
   }),
   'ear-octave': obj({
     notes: z.array(noteName).min(1), octaves: z.array(z.number().int().min(0).max(8)).min(1),
@@ -227,7 +228,7 @@ export const specSchemas = {
   'ear-progression': obj({
     key: keyOrRandom.optional(), mode: mode.optional(), length: z.number().int().min(1).max(16).optional(),
     chords: z.array(romanNumeral).min(1), style: z.enum(['block', 'arpeggio', 'pad-bass', 'band']).optional(), bpm: bpm.optional(),
-    inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
+    inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(), keys: z.array(key).min(1).optional(),
     example: exampleBlockSchema.optional(), progression: z.array(romanNumeral).min(1).optional(), instrument: instrument.optional(),
   }).superRefine((s, ctx) => {
     if (s.example && !s.progression) ctx.addIssue({ code: 'custom', message: 'with "example", give the answer as "progression" (numerals in order)', path: ['progression'] });
@@ -236,6 +237,8 @@ export const specSchemas = {
     key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1), length: z.number().int().min(1).max(32).optional(),
     rhythm: z.enum(['quarters', 'simple', 'free']).optional(), answer: z.enum(['play', 'degrees']).optional(),
     bpm: bpm.optional(), instrument: instrument.optional(), reference: z.enum(['cadence', 'scale', 'tonic', 'none']).optional(),
+    keys: z.array(key).min(1).optional(), span: z.tuple([z.number().int().min(-24).max(0), z.number().int().min(0).max(24)]).optional(),
+    octaveShift: z.array(z.number().int().min(-2).max(2)).min(1).optional(),
     chromatic: z.boolean().optional(), backing: z.array(romanNumeral).min(1).optional(), maxLeap: z.number().int().min(1).max(24).optional(),
     example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
   }),
@@ -249,6 +252,7 @@ export const specSchemas = {
     key: keyOrRandom, mode: mode.optional(), chords: z.array(romanNumeral).min(1), answer: z.enum(['play', 'name']).optional(),
     length: z.number().int().min(1).max(16).optional(), bpm: bpm.optional(),
     inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(), style: z.enum(['bass-focus', 'band']).optional(),
+    keys: z.array(key).min(1).optional(),
     example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
   }),
   'ear-tempo': obj({

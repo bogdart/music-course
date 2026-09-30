@@ -9,6 +9,7 @@ goals:
   - Feel a steady beat and tap it with a metronome
   - Understand tempo in beats per minute (BPM), quarter notes and half notes
   - Record four bars of quarter notes in the DAW
+  - Echo four-note tunes on C to G after a reference run
 prerequisites: [w02-l2-black-keys-and-half-steps]
 tags: [rhythm, beat, tempo, daw]
 songs:
@@ -96,6 +97,32 @@ has the same method: tap the beat, count, match.
 **How to stay on the beat when you play:** count out loud and press the key *exactly* with the click — not after it.
 If you drift, stop, listen for one bar, and rejoin on "one". Steady matters far more than fast.
 
+## Echo: four notes, with a run first
+
+The melody ladder opens its next rung today: play back **four** notes from C D E F G. Before the tune, the app now
+plays a quick run **C D E F G F E D C** instead of a single C. It walks through every note you'll need and ends on C,
+so your ear knows exactly where C is and how far the others are from it. (Next week this run gets a name — the
+*home run* — and a job of its own.)
+
+```example
+{
+  "title": "The run the app plays first: C D E F G F E D C",
+  "bpm": 100, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Try it:** play the run yourself with thumb on C (one finger per key). Then, without looking, play C and one of
+the other four keys and say how far it is from C: "one up, two up…". That distance-from-C is what finds the first
+note of a tune. Then the echo method as before: up or down, step or skip, one move at a time.
+
+**If four notes are too many:** play the first two back, replay, add the third, replay, add the fourth.
+
+```ladder
+{ "skill": "melody", "unlocks": 4, "intro": "Echoes at your current melody rung — up to four notes from C D E F G, after the run." }
+```
+
 ## The DAW
 
 A [[DAW]] (digital audio workstation) is where you'll build every song this year. Today you just record:
@@ -174,13 +201,13 @@ A [[DAW]] (digital audio workstation) is where you'll build every song this year
   "title": "Your first recording",
   "spec": {
     "template": { "bpm": 80, "key": "C", "tracks": [ { "instrument": "piano", "seq": "" } ] },
-    "task": "Turn on the metronome at 80 BPM and record exactly 4 bars of quarter notes (16 notes) using white keys only. Start and finish on C. Suggestion: four Cs, four Ds, four Es, four Cs — or invent your own. Quantize to 1/4 if needed, then play it back.",
+    "task": "Turn on the metronome at 80 BPM and record exactly 4 bars of quarter notes (16 notes) using white keys between C4 and C5 only. Start and finish on C. Suggestion: four Cs, four Ds, four Es, four Cs — or invent your own. Quantize to 1/4 if needed, then play it back.",
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "note-count", "min": 16, "max": 16 },
       { "kind": "uses-rhythm", "values": ["q"], "minDistinct": 1 },
       { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false },
-      { "kind": "range", "low": "C3", "high": "C5" },
+      { "kind": "range", "low": "C4", "high": "C5" },
       { "kind": "starts-on", "degrees": [1] },
       { "kind": "ends-on", "degree": 1 }
     ],
@@ -191,8 +218,7 @@ A [[DAW]] (digital audio workstation) is where you'll build every song this year
 
 ## Between lessons (and the end of week 2)
 
-- Two **Practice** sessions of about 10 minutes (pitch, octave, melody, intervals and rhythm take turns at your
-  level).
+- Two **Practice** sessions of about 10 minutes (pitch, octave, melody and rhythm take turns at your level).
 - Replay your DAW recording once a day and tap along; if you like, record a second take.
 - Ready for week 3 when the dashboard doesn't say **practise first**. If it does, spend a lesson slot on Practice
   instead — theory can wait a few days; the ear can't be rushed.

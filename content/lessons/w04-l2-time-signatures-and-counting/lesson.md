@@ -4,11 +4,12 @@ title: Time Signatures and Counting
 week: 4
 order: 2
 phase: p1
-duration_min: 45
+duration_min: 50
 goals:
   - Read a time signature and feel the difference between 4/4 and 3/4
   - Count and tap rhythms in both meters
-  - Meet degree 5 (sol) and write short tunes from 1–5 as degrees
+  - Write short tunes as degrees (1–5), reading them off your fingers
+  - Pick the octave out of two candidates when the wrong one is a near-miss
 prerequisites: [w04-l1-note-values-and-rests]
 tags: [rhythm, meter, time-signature, ear]
 songs:
@@ -66,7 +67,7 @@ A melody in 3/4 has no room for a whole note — the longest note filling a bar 
   "bpm": 100, "timeSig": "3/4", "key": "C",
   "tracks": [
     { "instrument": "piano", "seq": "C4:h E4:q | G4:h E4:q | F4:h D4:q | C4:h. | E4:h G4:q | F4:h D4:q | D4:h E4:q | C4:h." },
-    { "instrument": "bass", "seq": "C3:h. | C3:h. | G3:h. | C3:h. | C3:h. | G3:h. | G3:h. | C3:h." }
+    { "instrument": "drums", "seq": "kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q" }
   ],
   "show": ["staff"]
 }
@@ -107,30 +108,71 @@ groove is in **3 or 4**.
 { "skill": "rhythm", "unlocks": 5, "intro": "Rhythm at your current rung — up to tapping eighths and rests, and 3 or 4." }
 ```
 
-## Degree 5 (sol)
+## Writing tunes as degrees
 
-Degree 5 is G in C major — your little finger. It's the top of the home run, the point where the run turns round. Many people hear it as fairly stable, but "up in the air" compared with 1: it doesn't pull as hard as 2 or 4, yet it isn't the end either. Listen: the home run, then 5, then 5 walking home:
+The next melody rungs ask you to **write** what you hear as numbers instead of playing it back: three notes from 1,
+2 and 3, then four notes from 1–5 — now with fa (4), which joined the degree drill last lesson. The practical way is
+two steps: play it back on the keyboard first (as in the echo drill, thumb on C), then translate what your fingers
+did — thumb to little finger = 1 to 5 (C D E F G).
+
+Fa is the note that most often *moves on*: in a tune it usually steps down to mi (4 → 3), or up to sol on the way
+somewhere.
+
+**Try it:** play E D C and say "3 2 1"; play C D C and say "1 2 1"; play C E G E and say "1 3 5 3"; play G F E C and
+say "5 4 3 1". Then play the little waltz above and say its degrees for bars 1–4: *1 3 | 5 3 | 4 2 | 1*. Notice bar
+3: fa (F) then re (D), both restless, and then bar 4 resolves home.
+
+**If you can't hear it yet:** do it one note at a time — replay, find the first note by searching from C, write it
+down, then the next. Your fingers give the number.
+
+```ladder
+{ "skill": "melody", "unlocks": 6, "intro": "Writing tunes as degrees at your current melody rung — three notes (1–3), then four (1–5)." }
+```
+
+## Octaves: the near-miss candidate
+
+(Past 40 minutes? Stop here and make this section a second short sitting.)
+
+The next octave rung is *which one is the octave?* with a harder wrong candidate: the key **right next to** the
+octave (C4, then C5 or B4). Height can't help any more.
+
+**Try it:** play C4 → C5, then C4 → B4. Then press C4 + C5 together (still) and C4 + B4 together (wobbles). After
+each drill answer, use the *together* buttons in **Listen again** — the wobble tells you which was the near-miss.
 
 ```example
 {
-  "title": "Home run, then sol (5), then 5 4 3 2 1",
-  "bpm": 90, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | G4:w | G4:q F4:q E4:q D4:q | C4:w" } ],
+  "title": "C4 → C5 vs C4 → B4, then each pair together (melts vs wobbles)",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:h C5:h | C4:h B4:h | [C4 C5]:w | [C4 B4]:w" } ],
   "show": ["keyboard"]
 }
 ```
 
-The next melody rung uses it: writing four-note tunes from **1–5** as degrees. Method: play the tune back on the
-keyboard first (thumb on C), then read your fingers — thumb to little finger = 1 to 5.
+```exercise
+{
+  "id": "e13",
+  "type": "listen",
+  "title": "A or B: which is the octave?",
+  "instructions": "Each clip: C4, then candidate A, then candidate B. Replay, and press the pairs together on your keyboard if unsure.",
+  "spec": {
+    "examples": [
+      { "title": "Clip 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:h r:h | B4:h r:h | C5:h r:h" } ] },
+      { "title": "Clip 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:h r:h | C5:h r:h | B4:h r:h" } ] }
+    ],
+    "questions": [
+      { "q": "Clip 1: the octave is…", "choices": ["A", "B"], "answer": 1, "explain": "A = B4 (a half step short), B = C5." },
+      { "q": "Clip 2: the octave is…", "choices": ["A", "B"], "answer": 0, "explain": "A = C5, B = B4 (a half step short)." }
+    ]
+  }
+}
+```
 
-**Try it:** play C E G E and say "1 3 5 3"; play G F E C and say "5 4 3 1". Then play the home run and stop on G:
-does it feel "up in the air" to you, or finished? Either answer is fine — just notice.
-
-**If you can't hear it:** do it one note at a time — replay, find the first note by search from C, write it down,
-then the next.
+**If you can't hear it yet:** find the first note by search, then count 12 keys up and play it: that's the octave.
+Replay the question and compare A and B with the note you just played. This rung may stay open for weeks; that's
+the octave strand's normal pace.
 
 ```ladder
-{ "skill": "melody", "unlocks": 6, "intro": "Melody at your current rung — up to writing 4-note tunes (1–5) as degrees." }
+{ "skill": "octave", "unlocks": 4, "intro": "Octaves at your current rung — up to 'which one is the octave?' with near-misses." }
 ```
 
 ## Drills
@@ -177,12 +219,12 @@ then the next.
 
 ```exercise
 {
-  "id": "e6",
+  "id": "e7",
   "type": "play-melody",
   "title": "Play the little waltz",
   "instructions": "Right hand on C–G. Feel the lean on every beat 1.",
   "passScore": 0.75,
-  "spec": { "bpm": 90, "timeSig": "3/4", "key": "C", "seq": "C4:h E4:q | G4:h E4:q | F4:h D4:q | C4:h. | E4:h G4:q | F4:h D4:q | D4:h E4:q | C4:h.", "showStaff": true, "showKeyboard": false, "countIn": 1, "backing": { "instrument": "bass", "seq": "C3:h. | C3:h. | G3:h. | C3:h. | C3:h. | G3:h. | G3:h. | C3:h." } }
+  "spec": { "bpm": 90, "timeSig": "3/4", "key": "C", "seq": "C4:h E4:q | G4:h E4:q | F4:h D4:q | C4:h. | E4:h G4:q | F4:h D4:q | D4:h E4:q | C4:h.", "showStaff": true, "showKeyboard": false, "countIn": 1, "backing": { "instrument": "drums", "seq": "kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q" } }
 }
 ```
 

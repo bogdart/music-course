@@ -37,6 +37,10 @@ export interface SpecMap {
     chromatic?: boolean; answer?: 'degree' | 'name';
     /** Hold the tonic (an octave below) under the question note */
     drone?: boolean;
+    /** With key "random": pick from these keys only */
+    keys?: string[];
+    /** Register window in semitones around the tonic ([0, 11] = do up to ti); the note is placed anywhere inside it */
+    span?: [number, number];
   };
   'ear-octave': {
     notes: string[]; octaves: number[]; mode: EarOctaveMode; instrument?: InstrumentId;
@@ -58,6 +62,8 @@ export interface SpecMap {
   'ear-progression': {
     key?: string; mode?: 'major' | 'minor'; length?: number; chords: string[];
     style?: 'block' | 'arpeggio' | 'pad-bass' | 'band'; bpm?: number; inversions?: number[];
+    /** With key "random": pick from these keys only */
+    keys?: string[];
     /** Attached mix: play this instead of a generated progression; `progression` is then the answer, in order */
     example?: ExampleEnvelope; progression?: string[]; instrument?: InstrumentId;
   };
@@ -66,6 +72,12 @@ export interface SpecMap {
     rhythm?: 'quarters' | 'simple' | 'free'; answer?: 'play' | 'degrees'; bpm?: number; instrument?: InstrumentId;
     /** Key reference played first (default `cadence`) */
     reference?: KeyReferenceKind;
+    /** With key "random": pick from these keys only */
+    keys?: string[];
+    /** Register window in semitones around the tonic (default [-7, 16]); [0, 12] keeps the tune between do and do' */
+    span?: [number, number];
+    /** Play the whole tune this many octaves up/down (one value picked per item), e.g. [-1, 1] — answers are any octave */
+    octaveShift?: number[];
     /** chromatic passing/neighbour tones and a 12-degree answer palette */
     chromatic?: boolean;
     /** Harmony played under the melody: roman numerals spread evenly across it */
@@ -85,6 +97,8 @@ export interface SpecMap {
     key: string; mode?: 'major' | 'minor'; chords: string[]; answer?: 'play' | 'name'; length?: number; bpm?: number; inversions?: number[];
     /** `bass-focus` (default): chords with a prominent bass; `band`: a full mix (pad, bass, drums, lead) */
     style?: 'bass-focus' | 'band';
+    /** With key "random": pick from these keys only */
+    keys?: string[];
     /** Attached mix: the bass line is track `track` (default: first bass track) of this example */
     example?: ExampleEnvelope; track?: number;
   };

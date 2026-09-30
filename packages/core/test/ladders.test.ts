@@ -23,7 +23,10 @@ describe('ladders', () => {
   it('mastery needs the window across two sessions, or near-perfect in one', () => {
     const run = (n: number, correct: (i: number) => boolean, session: (i: number) => number): RungResult[] =>
       Array.from({ length: n }, (_, i) => ({ correct: correct(i), session: session(i) }));
-    expect(rungStatus(run(19, () => true, () => 1)).mastered).toBe(false);
+    // placement: the first 10 answers all right = already known
+    expect(rungStatus(run(10, () => true, () => 1)).mastered).toBe(true);
+    expect(rungStatus(run(9, () => true, () => 1)).mastered).toBe(false);
+    expect(rungStatus(run(19, (i) => i !== 3, () => 1)).mastered).toBe(false); // one early miss: no placement, window not full
     expect(rungStatus(run(20, () => true, () => 1)).mastered).toBe(true); // 100% ≥ fast
     expect(rungStatus(run(20, (i) => i % 10 !== 0, () => 1)).mastered).toBe(false); // 90%, one session
     expect(rungStatus(run(20, (i) => i % 10 !== 0, (i) => (i < 10 ? 1 : 2))).mastered).toBe(true); // 90%, two sessions

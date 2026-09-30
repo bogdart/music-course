@@ -58,6 +58,14 @@ A lesson link: [next lesson](../w01-l2-higher-lower-same/).
 
 ## Exercises
 
+````reveal Show the answer chart
+The secret loop is **vi–IV–I–V**.
+
+```chords
+{ "key": "C", "bars": ["Am", "F", "C", "G"], "roman": true }
+```
+````
+
 ```exercise
 { "id": "ear-note-1", "type": "ear-note", "title": "Degrees 1–3", "count": 3, "seed": 1,
   "hints": ["Sing the tonic after the cadence.", "3 sounds bright, 2 sounds unfinished."],

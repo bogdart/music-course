@@ -9,13 +9,13 @@ goals:
   - Understand a chord, a triad and its root, 3rd and 5th; build and play major triads (M3 + m3)
   - Find the root of a major chord on the keyboard, by ear or by search
   - Hear the cadence (home → away → tension → home) and use its last chord as home for degree questions
-prerequisites: [w05-l3-intervals-on-staff-and-drone-daw]
+prerequisites: [w05-l3-melody-over-a-drone-daw]
 tags: [chords, triads, major, cadence, ear, keyboard]
 ---
 
 # Major triads and the cadence
 
-Until now you've played one note at a time. A [[chord]] is several notes sounding together. The basic chord of nearly every pop song is the [[triad]]: three notes stacked in 3rds. Today: **build it**, **find its root**, and **the cadence** — four chords that set home before degree questions from now on.
+Until now you've played one note at a time. A [[chord]] is several notes sounding together. The basic chord of nearly every pop song is the [[triad]]: three notes stacked in 3rds. Today: **build it**, **find its root**, and — the main event — **the cadence**: four chords that set home before degree questions from now on.
 
 ## Root, third, fifth
 
@@ -40,7 +40,7 @@ On the keyboard: play a key, skip one white key, play, skip one, play. Right han
 }
 ```
 
-A [[major triad]] is a **major 3rd** (4 half steps) from root to 3rd, then a **minor 3rd** (3) from 3rd to 5th — a **perfect 5th** (7) from root to 5th. C, F and G are major on white keys only; D, E and A need a black key in the middle: D–**F♯**–A, E–**G♯**–B, A–**C♯**–E. If in doubt, count: 4 up, then 3 up.
+A [[major triad]] is a **major 3rd** (4 half steps) from root to 3rd, then a **minor 3rd** (3) from 3rd to 5th — a **perfect 5th** (7) from root to 5th. C, F and G are major triads on white keys only. If in doubt, count: 4 up, then 3 up. (Other roots need black keys; next lesson shows the quick way.)
 
 ```exercise
 {
@@ -50,7 +50,7 @@ A [[major triad]] is a **major 3rd** (4 half steps) from root to 3rd, then a **m
   "instructions": "Select root, major 3rd and perfect 5th.",
   "count": 8,
   "passScore": 0.75,
-  "spec": { "chords": ["C", "F", "G", "D", "A", "E"], "root": "given", "prompt": "symbol", "key": "C" }
+  "spec": { "chords": ["C", "F", "G"], "root": "given", "prompt": "symbol", "key": "C" }
 }
 ```
 
@@ -73,7 +73,7 @@ Played together, the three notes fuse into one sound. Picking out the separate n
 {
   "title": "Chord, then its root alone: C major → C, F major → F, G major → G",
   "bpm": 70, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[C3 E3 G3]:h C3:h | [F3 A3 C4]:h F3:h | [G3 B3 D4]:h G3:h" } ],
+  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h C4:h | [F4 A4 C5]:h F4:h | [G4 B4 D5]:h G4:h" } ],
   "show": ["keyboard"]
 }
 ```
@@ -94,12 +94,12 @@ Played together, the three notes fuse into one sound. Picking out the separate n
   "instructions": "Search for the lowest note on your keyboard before answering.",
   "spec": {
     "examples": [
-      { "title": "Chord 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[F3 A3 C4]:w" } ] },
-      { "title": "Chord 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[G3 B3 D4]:w" } ] }
+      { "title": "Chord 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[F4 A4 C5]:w" } ] },
+      { "title": "Chord 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:w" } ] }
     ],
     "questions": [
       { "q": "Chord 1: its root is…", "choices": ["F", "A", "C"], "answer": 0, "explain": "F–A–C, F major: F is the lowest note." },
-      { "q": "Chord 2: its root is…", "choices": ["G", "B", "D"], "answer": 0, "explain": "G–B–D, G major: G is the lowest note." }
+      { "q": "Chord 2: its root is…", "choices": ["C", "E", "G"], "answer": 0, "explain": "C–E–G, C major: C is the lowest note." }
     ]
   }
 }
@@ -123,24 +123,25 @@ In C major, the C chord is built from degrees **1, 3 and 5** — the most restfu
 | chord | C | F | G | C |
 | role | home | away | tension — "almost there" | home again |
 
-Musicians call a chord ending like this a [[cadence]]. The app plays F and G rearranged (C F A, B D G) so the hand barely moves — same letters, same chords, smoother sound. Week 11 explains how.
+Musicians call a chord ending like this a [[cadence]]. The app plays F and G rearranged (C F A, B D G) so the hand barely moves — same letters, same chords, smoother sound. Week 11 explains how. Under each chord it adds a **bass note**, the chord's root one octave down: **C3 → F3 → G3 → C3**. The bass is a reference sound you only listen to (it sits below middle C); it makes the cadence fuller and gives it a clear floor.
 
 ```example
 {
-  "title": "The cadence in C: C – F – G – C",
+  "title": "The cadence in C: C – F – G – C, bass C3 – F3 – G3 – C3",
   "bpm": 72, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h" } ],
+  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h" }, { "instrument": "piano", "seq": "C3:h F3:h | G3:h C3:h" } ],
   "show": ["keyboard"]
 }
 ```
 
 **Try it:**
 
-1. Play it yourself, slowly: C E G → C F A → B D G → C E G. Your thumb stays on or near C (exercise below).
+1. Play it yourself, slowly: C E G → C F A → B D G → C E G. Your thumb stays on or near C (exercise below). If you
+   like, add the bass with your left hand: C3, F3, G3, C3 — one key per chord.
 2. Play the first three chords and **stop** on B D G. Hold it. Then play C E G. Does the stop feel unfinished and the last chord like arriving?
-3. Play the cadence, then C4 alone. Then the cadence, then B3 alone. Which single note sounds like the natural last word?
+3. Play the cadence, then C4 alone. Then the cadence, then D4 alone. Which single note sounds like the natural last word?
 
-Honest expectation: the lean of G and the settling of C may be faint at first, and four chords may just sound like "four chords". That's fine. For the drill you need only one thing from the cadence: **its last chord is home, and its lowest note (C4) is degree 1.** Hold that C in your head — or play it on your keyboard — and do what you did after the home run: walk from the question note down to it.
+Honest expectation: the lean of G and the settling of C may be faint at first, and four chords may just sound like "four chords". That's fine. For the drill you need only one thing from the cadence: **its last chord is home.** Its lowest note, the bass C3, is degree 1 an octave below middle C, and the C4 at the bottom of the top chord is degree 1 too — same name, same home. Hold C in your head — or play C4 on your keyboard — and do what you did after the home run: walk from the question note to it (1–5 down to do; la and ti up to do').
 
 ```exercise
 {
@@ -161,8 +162,8 @@ Honest expectation: the lean of G and the settling of C may be faint at first, a
   "instructions": "Two short chord sequences. If unsure, play the last chord of each on your keyboard and then C E G after it.",
   "spec": {
     "examples": [
-      { "title": "Sequence 1", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:w" } ] },
-      { "title": "Sequence 2", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h" } ] }
+      { "title": "Sequence 1", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:w" }, { "instrument": "piano", "seq": "C3:h F3:h | G3:w" } ] },
+      { "title": "Sequence 2", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h" }, { "instrument": "piano", "seq": "C3:h F3:h | G3:h C3:h" } ] }
     ],
     "questions": [
       { "q": "Which sequence ends on the home chord?", "choices": ["Sequence 1", "Sequence 2"], "answer": 1, "explain": "Sequence 2 is the full cadence C–F–G–C. Sequence 1 stops on G, the tension chord." }
@@ -173,21 +174,23 @@ Honest expectation: the lean of G and the settling of C may be faint at first, a
 
 ### Before the degree drill
 
-This lesson opens the degree rung that uses the **cadence** instead of the home run. You'll switch to it once 1–5 after the home run is solid; until then the drill stays at your current rung. Both references end on the same C:
+This lesson opens the degree rung that uses the **cadence** instead of the home run — with all seven notes, do to ti, the ones you know from week 5. You'll switch to it once all seven after the home run are solid; until then the drill stays at your current rung. Both references end on the same C:
 
 ```example
 {
   "title": "Home run (old reference), then the cadence (new reference) — both end on C",
   "bpm": 80, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:w | [C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | C4:w" } ],
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:w | [C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | C4:w" }, { "instrument": "piano", "seq": "r:w | r:w | C3:q F3:q G3:q C3:q | r:w" } ],
   "show": ["keyboard"]
 }
 ```
 
-The **How to do it** box for the cadence rung: remember the last chord's lowest note — that's 1; walk down from the question note to it, or find the key (C D E F G = 1 2 3 4 5). **Reference** replays the cadence; **Question only** replays just the note. Expect a small dip when you first reach this rung.
+**Try it:** play the cadence, then A4 and walk up A B C. Play the cadence, then E4 and walk down E D C. Same notes, same walks as after the home run — only the sound that sets home changed.
+
+The **How to do it** box for the cadence rung: the last chord is home — its bass (C3) and the C4 on top are both 1. Sort first — at rest (1 3 5) or leaning (2 4 6 7)? — then walk home, or find the key and count from C. **Reference** replays the cadence; **Question only** replays just the note. Expect a small dip when you first reach this rung: a new reference sound always costs a few sessions.
 
 ```ladder
-{ "skill": "degrees", "unlocks": 6, "intro": "Opens degrees 1 to 5 after the cadence (C–F–G–C); the drill runs at your current rung." }
+{ "skill": "degrees", "unlocks": 8, "intro": "Opens all seven degrees after the cadence (C–F–G–C); the drill runs at your current rung." }
 ```
 
 ## Theory check
@@ -201,7 +204,7 @@ The **How to do it** box for the cadence rung: remember the last chord's lowest 
     { "q": "A triad is built by stacking…", "choices": ["2nds", "3rds", "5ths"], "answer": 1 },
     { "q": "A major triad is…", "choices": ["M3 then m3", "m3 then M3", "M3 then M3"], "answer": 0 },
     { "q": "The notes of G major are…", "choices": ["G B D", "G B♭ D", "G A B"], "answer": 0 },
-    { "q": "D major needs which black key?", "choices": ["F♯", "C♯", "B♭"], "answer": 0 },
+    { "q": "The notes of F major are…", "choices": ["F A C", "F G A", "F A♭ C"], "answer": 0 },
     { "q": "Root to 5th in any major triad is a…", "choices": ["perfect 4th", "perfect 5th", "major 3rd"], "answer": 1 },
     { "q": "In C major, the C chord uses degrees…", "choices": ["1 2 3", "1 3 5", "1 4 5"], "answer": 1 }
   ] },
@@ -226,6 +229,6 @@ The **How to do it** box for the cadence rung: remember the last chord's lowest 
 ## Between lessons
 
 - **Two Practice sessions of about 10 minutes.** The new roots ladder will likely come up first, since it's the furthest behind.
-- **Warm up 2 minutes at the keyboard:** play the cadence the smooth way three times, then a few triads (C, F, G, D) and their roots alone after them.
+- **Warm up 2 minutes at the keyboard:** play the cadence the smooth way three times, then a few triads (C, F, G) and their roots alone after them.
 - **Roots:** search, don't guess. Five tries per chord is fine this week.
 - **Ready?** The roots bar on the Dashboard shows its first rung mastered after two sessions of mostly right answers. Next lesson opens minor chords either way.

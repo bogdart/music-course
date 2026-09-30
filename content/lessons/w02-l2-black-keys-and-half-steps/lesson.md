@@ -8,9 +8,10 @@ duration_min: 45
 goals:
   - Name black keys as sharps or flats of their white neighbours
   - Measure distances on the keyboard in half steps and whole steps
-  - Hear the difference between a half step and a whole step
+  - Hear the difference between a half step and a whole step, checking by counting keys
+  - Meet the next octave rung — which of two notes is the octave?
 prerequisites: [w02-l1-white-keys-and-landmarks]
-tags: [sharps, flats, half-step, whole-step, ear, keyboard]
+tags: [sharps, flats, half-step, whole-step, octave, ear, keyboard]
 ---
 
 # Black keys and steps
@@ -20,7 +21,7 @@ The black keys don't get letters of their own. Each one is named after a white n
 - a [[sharp]] (**♯**, typed `#`) means "one key **higher**": the black key right of C is **C♯**.
 - a [[flat]] (**♭**, typed `b`) means "one key **lower**": the same black key, seen from D, is **D♭**.
 
-So C♯ and D♭ are two names for one key. Which name we use depends on the key you're playing in — week 7 explains the rule, when we meet keys that use sharps and keys that use flats. For now, both are right.
+So C♯ and D♭ are two names for one key. Which name we use depends on the key you're playing in — week 9 explains the rule, when we meet keys that use sharps and keys that use flats. For now, both are right.
 
 ```keyboard
 { "range": ["C4", "C5"], "highlight": ["C#4", "D#4", "F#4", "G#4", "A#4"], "labels": "names" }
@@ -39,7 +40,7 @@ Look closely at the keyboard: between **E and F** and between **B and C** there 
 {
   "title": "Half steps: E–F, B–C. Whole steps: C–D, F–G",
   "bpm": 70, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "E4:h F4:h | B3:h C4:h | C4:h D4:h | F4:h G4:h" } ],
+  "tracks": [ { "instrument": "piano", "seq": "E4:h F4:h | B4:h C5:h | C4:h D4:h | F4:h G4:h" } ],
   "show": ["keyboard"]
 }
 ```
@@ -67,21 +68,19 @@ The difference is small, so always compare them from the same starting note.
 
 ### Check it
 
+Listen to three mystery pairs of white keys. For each, **guess** (squeezed or airy?), then press "Reveal
+notation" and count keys on the keyboard picture to check. This is practice, not a test — nothing is scored.
+
 ```exercise
 {
-  "id": "e10",
+  "id": "e11",
   "type": "listen",
-  "title": "Squeezed or airy?",
+  "title": "Squeezed or airy? (guess, then reveal and count)",
   "spec": {
     "examples": [
-      { "title": "Pair 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "F4:h G4:h" } ] },
-      { "title": "Pair 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "B3:h C4:h" } ] },
-      { "title": "Pair 3", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h E4:h" } ] }
-    ],
-    "questions": [
-      { "q": "Pair 1:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 1, "explain": "F → G, a whole step (F♯ in between)." },
-      { "q": "Pair 2:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 0, "explain": "B → C, a half step (no black key between)." },
-      { "q": "Pair 3:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 1, "explain": "D → E, a whole step." }
+      { "title": "Pair 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "F4:h G4:h" } ], "show": ["keyboard"] },
+      { "title": "Pair 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "B4:h C5:h" } ], "show": ["keyboard"] },
+      { "title": "Pair 3", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h E4:h" } ], "show": ["keyboard"] }
     ]
   }
 }
@@ -92,12 +91,10 @@ count: a key right next door (nothing between) = half step; one key skipped = wh
 unsure answer and the sound starts to attach to the picture. Hearing this pair reliably takes most beginners
 several weeks.
 
-In the app, a half step is labelled **m2** and a whole step **M2** (minor and major second — week 5 explains the
-names). Your interval ladder starts with exactly this pair.
-
-```ladder
-{ "skill": "intervals", "unlocks": 1, "intro": "Two notes going up: a half step (squeezed) or a whole step (airy)?" }
-```
+You'll use half and whole steps constantly from next week on: the major scale is built from them. Hearing them as
+names comes later — in week 12, once you hear notes by their place in the key, distances get their full names (a
+half step is also called a *minor 2nd*, **m2**; a whole step a *major 2nd*, **M2**). For now: count keys, and
+listen for squeezed or airy.
 
 ## Searching with black keys
 
@@ -122,24 +119,33 @@ twice.
 { "skill": "pitch", "unlocks": 9, "intro": "Pitch at your current rung — up to finding the note among all twelve keys." }
 ```
 
-## Find it in any octave
+## Octaves: pick the octave out of two
 
-A new kind of octave rung (you'll meet it once the earlier octave rungs are solid): you hear **one** note, possibly
-very low or high, and play the same letter **in any octave**. The practical way: search at about the same height
-first, as in the pitch drill. If the note seems to sit off the edge of your keyboard, find the key that *blends*
-with it best, then try the same letter 12 keys up or down.
+This lesson opens the next octave rung. Until now both notes sounded **together**; now they come one after the
+other. You hear a note, then two candidates, **A** and **B**: one is the same name an octave higher, the other a
+clashing note (about halfway up, so here height helps a bit).
+
+**Try it:** play C4, then C5, then C4 again, then F♯4. Then press C4 + C5 together, and C4 + F♯4 together. The
+together test is the one you trust: the octave melts, the other rubs.
 
 ```example
 {
-  "title": "E4, then E3 and E5 — same letter, three heights (all correct answers)",
+  "title": "C4, then A = C5 (the octave), B = F♯4 (a clash). Then each pair together",
   "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "E4:h r:h | E3:h E5:h" } ],
+  "tracks": [ { "instrument": "piano", "seq": "C4:h r:h | C5:h F#4:h | [C4 C5]:w | [C4 F#4]:w" } ],
   "show": ["keyboard"]
 }
 ```
 
+Honestly: at first both candidates may sound like "new notes" — that's the octave strand being slow, as lesson 4 of
+week 1 said. The drill runs at your current octave rung; you'll meet this one once the *together* rungs are solid.
+When you do, check each answer with **Listen again → together**.
+
+**If you can't hear it yet:** find the first note by search, count 12 keys up and play it: that's the octave. Replay
+the question and compare A and B with the note you just played.
+
 ```ladder
-{ "skill": "octave", "unlocks": 5, "intro": "Octaves at your current rung — up to 'find it on your keyboard, any octave'." }
+{ "skill": "octave", "unlocks": 3, "intro": "Octaves at your current rung — up to 'which one is the octave?'." }
 ```
 
 ## Hands
@@ -164,13 +170,13 @@ with it best, then try the same letter 12 keys up or down.
 
 ```exercise
 {
-  "id": "e2",
+  "id": "e6",
   "type": "play-notes",
   "title": "Find the black keys",
   "instructions": "Each black key has two names. Find it from either neighbour.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "prompt": "names", "notes": ["C#4", "Eb4", "F#4", "Bb3", "G#4", "Db4", "A#3", "Gb4"], "ordered": true, "key": "C" }
+  "spec": { "prompt": "names", "notes": ["C#4", "Eb4", "F#4", "Bb4", "G#4", "Db4", "A#4", "Gb4"], "ordered": true, "key": "C" }
 }
 ```
 
@@ -193,19 +199,19 @@ with it best, then try the same letter 12 keys up or down.
 
 ```exercise
 {
-  "id": "e4",
+  "id": "e5",
   "type": "build-interval",
   "title": "Play a half or whole step up",
-  "instructions": "m2 = half step up, M2 = whole step up. Play the second note.",
+  "instructions": "The app names a half step 'minor 2nd' and a whole step 'major 2nd'. Count keys: half = the very next key, whole = skip one. Play the second note.",
   "count": 10,
   "passScore": 0.75,
-  "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random" }
+  "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random", "range": ["C4", "C5"] }
 }
 ```
 
 ## Between lessons
 
-- Two **Practice** sessions of about 10 minutes. After each unsure half/whole-step answer, find both notes and
-  count the keys.
-- Once a day, one minute: play half and whole steps up from random white keys and say "squeezed" or "airy".
+- Two **Practice** sessions of about 10 minutes (pitch, melody and octave at your level).
+- Once a day, one minute: play half and whole steps up from random white keys between C4 and C5 and say
+  "squeezed" or "airy"; check any doubt by counting keys.
 - Ready for the next lesson when the dashboard doesn't say **practise first**.

@@ -203,3 +203,15 @@ describe('glossary', () => {
     expect(lookupTerm(idx, 'nothing')).toBeUndefined();
   });
 });
+
+describe('reveal blocks', () => {
+  const fm = '---\nid: w01-l1-x\ntitle: X\nweek: 1\norder: 1\nphase: p1\nduration_min: 30\ngoals: [g]\n---\n';
+  it('validates inner blocks, refuses exercises inside, and keeps top-level block indexes', () => {
+    const md = fm + '# A\n\n````reveal Show the answers\nThe loop is **I–V–vi–IV**.\n\n```chords\n{ "key": "C", "bars": ["C", "G", "Am", "F"] }\n```\n````\n\n```keyboard\n{ "range": ["C4", "C5"] }\n```\n';
+    const l = parseLesson(md, { id: 'w01-l1-x' });
+    expect(l.problems).toEqual([]);
+    expect(l.blocks.map((b) => [b.lang, b.index])).toEqual([['keyboard', 0]]);
+    const bad = parseLesson(fm + '````reveal X\n```exercise\n{ "id": "e1", "type": "quiz", "spec": { "questions": [] } }\n```\n````\n', { id: 'w01-l1-x' });
+    expect(bad.problems.join()).toMatch(/cannot be inside a reveal/);
+  });
+});

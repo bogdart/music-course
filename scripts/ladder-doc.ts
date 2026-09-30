@@ -49,4 +49,27 @@ for (const s of LADDER_SKILLS) {
 const cur = readFileSync(doc, 'utf8');
 const i = cur.indexOf('## Unlock schedule');
 writeFileSync(doc, (i >= 0 ? cur.slice(0, i) : cur + '\n') + out);
+
+// docs/EAR_SKILL_MAP.md: the per-lesson table of rungs each lesson opens (between the table heading and the next heading)
+const mapDoc = join(root, 'docs/EAR_SKILL_MAP.md');
+const opened: [string, string[]][] = [];
+const top2 = new Map<string, number>();
+for (const id of content.order) {
+  const l = content.lessons.get(id);
+  if (!l) continue;
+  const cells: string[] = [];
+  for (const b of l.blocks) {
+    if (b.lang !== 'ladder' || !b.valid) continue;
+    const d = b.data as { skill: string; unlocks: number };
+    if (d.unlocks > (top2.get(d.skill) ?? 0)) cells.push(`${d.skill} ${d.unlocks}`);
+    top2.set(d.skill, Math.max(top2.get(d.skill) ?? 0, d.unlocks));
+  }
+  if (cells.length) opened.push([id.slice(0, 6), cells]);
+}
+const table = `| Lesson | Opens |\n|---|---|\n${opened.map(([k, c]) => `| ${k} | ${c.join(', ')} |`).join('\n')}\n`;
+const m = readFileSync(mapDoc, 'utf8');
+const a = m.indexOf('| Lesson | Opens |');
+const z = m.indexOf('\n## ', a);
+if (a >= 0 && z > a) writeFileSync(mapDoc, m.slice(0, a) + table + m.slice(z));
+console.log(`docs/EAR_SKILL_MAP.md: unlock table for ${opened.length} lessons`);
 console.log(`docs/EAR_LADDERS.md: schedule for ${rows.size} weeks, ${LADDER_SKILLS.length} ladders`);

@@ -13,6 +13,7 @@ import { applyTheme } from './theme';
 const Curriculum = lazy(() => import('./pages/Curriculum'));
 const LessonPage = lazy(() => import('./pages/Lesson'));
 const Practice = lazy(() => import('./pages/Practice'));
+const Placement = lazy(() => import('./pages/Placement'));
 const Settings = lazy(() => import('./pages/Settings'));
 const Daw = lazy(() => import('./pages/Daw'));
 const DevDemo = lazy(() => import('./pages/DevDemo'));
@@ -82,6 +83,7 @@ export function App() {
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/lesson/:id" element={<LessonPage />} />
             <Route path="/practice" element={<Practice />} />
+            <Route path="/placement" element={<Placement />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/daw" element={<Daw />} />
             <Route path="/dev/demo" element={<DevDemo />} />

@@ -106,6 +106,24 @@ Instruments: `piano epiano bass pad lead pluck strings guitar drums` (`guitar` =
 { "key": "C", "bars": ["C", "Am", "F", "G"], "roman": true, "play": true, "bpm": 80 }
 ```
 
+### `reveal` — content shown only when the learner asks
+
+`````markdown
+````reveal Show the answers
+The loop is **vi–IV–I–V** in C …
+
+```chords
+{ "key": "C", "bars": ["Am", "F", "C", "G"], "roman": true }
+```
+````
+`````
+
+A four-backtick fence with language `reveal` and a label. Its content is ordinary lesson markdown (prose, `chords`,
+`keyboard`, `staff`, `example` blocks — **no** `exercise` or `ladder`) rendered collapsed behind a "<label> — only after
+you've answered" button. Use it for anything that would give away an answer the learner is asked for elsewhere on the
+page (facts after a verdict-first quiz, chord charts of a transcribed song, the notes of a mystery tune), because the
+whole lesson page is visible at once.
+
 ### `ladder` — ear training at the learner's own level
 
 ```ladder

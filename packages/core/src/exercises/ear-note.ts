@@ -12,7 +12,7 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
   generate(block, rng) {
     const s = block.spec;
     // "random": a fresh key per item (degree answers don't depend on the key)
-    const r = s.key === 'random' ? resolveKey(rng, 'random', s.mode) : null;
+    const r = s.key === 'random' ? resolveKey(rng, 'random', s.mode, s.keys) : null;
     const k = r ? parseKey(r.tonic, r.mode) : parseKey(s.key, s.mode);
     const mode = k.mode;
     const degrees = s.degrees.map(String);
@@ -21,7 +21,10 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
     const octave = rng.pick(s.octaves?.length ? s.octaves : [4]);
     // the same tonic the reference uses, so "1" is exactly the note the reference ends on
     const tonicMidi = tonicMidiOf(noteToMidi(`${k.tonic}4`) % 12, octave);
-    const midi = tonicMidi + degreeToSemitones(degree, mode);
+    // register window: any placement of the degree inside [span] semitones around the tonic
+    const semis = degreeToSemitones(degree, mode);
+    const places = s.span ? [-2, -1, 0, 1, 2].map((o) => semis + 12 * o).filter((x) => x >= s.span![0] && x <= s.span![1]) : [];
+    const midi = tonicMidi + (places.length ? rng.pick(places) : semis);
     const instrument = s.instrument ?? 'piano';
     const reference = s.reference ?? 'cadence';
     const answerKind = s.answer ?? 'degree';

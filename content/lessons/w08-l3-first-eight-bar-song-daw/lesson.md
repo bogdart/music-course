@@ -8,14 +8,15 @@ duration_min: 50
 goals:
   - Understand the four basic layers of a song (drums, bass, chords, melody)
   - Plan an 8-bar A A' song with a half cadence and an authentic cadence
-  - Build and finish the song in the DAW
-prerequisites: [w08-l2-phase-1-review-and-ear-assessment]
+  - Build and finish the song in the DAW (two sittings if needed)
+  - Echo five-note tunes spread over two octaves around home
+prerequisites: [w08-l2-phrases-and-cadences]
 tags: [songwriting, arrangement, form, daw, capstone]
 ---
 
 # Your first song
 
-Everything from Phase 1 comes together today. You'll make a complete 8-bar piece with four [[layer]]s — the same four that sit at the core of most pop records:
+Everything so far comes together today: C major, triads, the cadence, phrases, and last week's layers in their own registers. You'll make a complete 8-bar piece with four [[layer]]s — the same four that sit at the core of most pop records:
 
 | Layer | Job | Your tools |
 |---|---|---|
@@ -68,7 +69,7 @@ Your song uses three chords, and this lesson opens ear rungs that use them too. 
 
 1. Play I – IV – I – V – I with the right hand (C E G → C F A → C E G → B D G → C E G) and the bass under it (C3, F2, C3, G2, C3).
 2. Stop on IV and hold it; then stop on V and hold it. Many people hear IV as "stepped away, but calm" and V as "wants to go home now". If both just sound "not home", that's fine — use the bass.
-3. Listen to the bass alone: C → F goes **up** a 4th (or down a 5th); C → G goes up a 5th. You don't need to name the jump — just find where it lands.
+3. Listen to the bass alone: C → F moves up three white keys (C D E F), C → G one key further (C D E F G). You don't need to name the jump — just find where it lands.
 
 **If you can't hear it yet:** after each chord, search its bass note: **C = I, F = IV, G = V**. Three possible keys — at most a few tries each.
 
@@ -117,35 +118,22 @@ The roots ladder moves from single chords to **bass lines**: two chords, I and V
 { "skill": "roots", "unlocks": 4, "intro": "Opens bass lines: I and V, then I, IV and V; the drill runs at your current roots rung." }
 ```
 
-## Octaves: two apart
+## Wider echoes
 
-One more octave rung opens today, for later: the candidates may be *two* octaves above the first note (C3 and C5). The height gap is huge, and it's hard to hear directly. The bridge is to **walk** it, one octave at a time — the step you already know, twice.
+Last lesson the degree drill spread over two octaves around home. The melody ladder's matching rung opens today: five-note tunes spread around home, so some moves are big jumps. No new method, one extra habit from the **How to do it** box: for a big jump, first ask: is it *an octave* (the same letter again, like walking the octaves) or a smaller jump? Then check on the keyboard. Answers in any octave count, so keep the tune's shape under one hand when you can.
 
-```example
-{
-  "title": "Two octaves apart: C3 → C5 directly, then walked C3 → C4 → C5",
-  "bpm": 70, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C3:h C5:h | C3:q C4:q C5:h" } ],
-  "show": ["keyboard"]
-}
-```
+**Try it:** play C4 E4 G4 C5, then C4 G4 C4 C3 — say "skip, skip, skip" for the first and "jump, back, octave down" for the second. Then G3 C4 E4 G4 C5: low sol up to high do in four moves.
 
-**Try it:** play C3, C4, C5 slowly, then C3 straight to C5. Then E3, E4, E5 and E3 → E5. Then a trap: C3 → C4 → B4 — does the last step feel like "the same note again", or like a new note?
-
-**If you can't hear it yet:** after the drill's answer, press **Walk up the octaves** and follow along on your own keys (count 12 keys per step). Before answering, play the first note and the note 24 keys above it, then replay the question.
-
-### Before the octave drill
-
-The drill runs at your current octave rung. Its **How to do it** box has the method; for this rung it's *walk it*: imagine the first note, its octave, then the octave above that — does the candidate sit on the last step?
+**If you can't hear it yet:** replay and catch only the first note and whether the big jump goes up or down; find the first note, then try an octave in that direction first — if it doesn't match, move a key at a time toward the first note.
 
 ```ladder
-{ "skill": "octave", "unlocks": 9, "intro": "Opens \"Two octaves apart: which one?\"; the drill runs at your current octave rung." }
+{ "skill": "melody", "unlocks": 11, "intro": "Opens \"Two octaves\": five-note tunes spread around home; the drill runs at your current rung." }
 ```
 
 ## Work order that avoids getting stuck
 
 1. **Chords first** (piano, whole notes). Loop them until the progression feels familiar.
-2. **Bass**: the root of each chord, one or two notes per bar, an octave or two below the chords.
+2. **Bass**: the root of each chord, one or two notes per bar, an octave or two below the chords — as in last week's octave layers.
 3. **Drums**: the basic beat, all 8 bars.
 4. **Melody last**, over the loop. Write a 2-bar idea, repeat it, then shape the endings: bar 4 on 2 or 5 (question), bar 8 on 1 (answer). Chord tones on beats 1 and 3.
 5. **Listen top to bottom**, fix anything that clashes, and save.
@@ -200,7 +188,7 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
   "title": "Finish your first 8-bar song",
   "spec": {
     "template": { "bpm": 90, "key": "C", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "drums", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
-    "task": "Build an 8-bar song in C major, A A' form, over C–F–C–G | C–F–G–C (one chord per bar). Track 1 piano: block triads. Track 2 bass: the root of each bar's chord. Track 3 drums: kick on 1 and 3, snare on 2 and 4, hi-hat eighths. Track 4 lead: your melody — bars 5–6 repeat bars 1–2, bar 4 ends on a question (degree 2 or 5), bar 8 ends on degree 1. Chord tones on beats 1 and 3. Save the project with a title — it's your first song.",
+    "task": "Build an 8-bar song in C major, A A' form (lead between low sol G3 and C5), over C–F–C–G | C–F–G–C (one chord per bar). Track 1 piano: block triads. Track 2 bass: the root of each bar's chord. Track 3 drums: kick on 1 and 3, snare on 2 and 4, hi-hat eighths. Track 4 lead: your melody — bars 5–6 repeat bars 1–2, bar 4 ends on a question (degree 2 or 5), bar 8 ends on degree 1. Chord tones on beats 1 and 3. Save the project with a title — it's your first song.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "bass", "drums", "lead"] },
       { "kind": "bars", "min": 8, "max": 8 },
@@ -212,7 +200,7 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
       { "kind": "chord-tones-on-beats", "beats": [1, 3], "progression": ["I", "IV", "I", "V", "I", "IV", "V", "I"], "barsPerChord": 1, "minRatio": 0.75, "track": 3 },
       { "kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": false, "track": 3 },
       { "kind": "ends-on", "degree": 1, "track": 3 },
-      { "kind": "range", "low": "C4", "high": "C5", "track": 3 }
+      { "kind": "range", "low": "G3", "high": "C5", "track": 3 }
     ],
     "minBars": 8, "maxBars": 8
   }
@@ -223,8 +211,8 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
 {
   "id": "e7",
   "type": "reflect",
-  "title": "Phase 1 in your words",
-  "spec": { "prompt": "Listen to your finished song twice. What do you like about it? What would you change if you had another hour? Then compare: how do octaves, degrees and major vs minor sound to you now compared with week 1?", "minWords": 40 }
+  "title": "Your first song, in your words",
+  "spec": { "prompt": "Listen to your finished song twice. What do you like about it? What would you change if you had another hour? Then compare: how do octaves, notes below home and major vs minor sound to you now compared with week 1?", "minWords": 40 }
 }
 ```
 
@@ -232,4 +220,4 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
 
 - **Finish the song** if it didn't fit today, then listen to it the next day with fresh ears and change one thing.
 - **Two Practice sessions of about 10 minutes.** For bass-line items: play along with the replay using your left hand, as you did with the model song.
-- **Ready for Phase 2?** Look at the Dashboard's ladder bars. None has to be full. If it says *practise first*, give that skill one or two extra sessions before week 9; otherwise start minor keys — the ladders will keep each skill at your pace.
+- **Ready?** Week 9 leaves C major for the first time: G, then F, one key at a time. Look at the Dashboard's ladder bars — none has to be full. If it says *practise first*, give that skill one or two extra sessions first; the ladders keep each skill at your pace.

@@ -23,7 +23,7 @@ export const earBass: ExerciseDefinition<'ear-bass'> = {
   generate(block, rng) {
     const s = block.spec;
     const k = s.key === 'random' ? null : parseKey(s.key, s.mode);
-    const { tonic, mode } = resolveKey(rng, s.key, s.mode);
+    const { tonic, mode } = resolveKey(rng, s.key, s.mode, s.keys);
     let numerals: string[] = [];
     let midis: number[];
     let audio;

@@ -335,8 +335,10 @@ test.describe('input routing inside lessons', () => {
 
   test('note input follows focus: one exercise holds it, clicking / tabbing into another moves it (MIDI and QWERTY)', async ({ page, api }) => {
     const lesson = lessons().find((l) => l.id === 'w01-l1-welcome-and-setup')!;
-    const aId = 'e3'; // play C3 C4 C5
-    const bId = 'e2'; // play C4
+    // A: a play-notes exercise with several notes; B: the one that asks for C4 alone (QWERTY z = C4)
+    const playNotes = lesson.exercises.filter((e) => e.type === 'play-notes');
+    const aId = playNotes.find((e) => ((e.spec.notes as string[] | undefined)?.length ?? 0) >= 3)!.id;
+    const bId = playNotes.find((e) => JSON.stringify(e.spec.notes) === '["C4"]')!.id;
     const before = (await (await api.get('/api/progress')).json()).exercises[lesson.id] ?? {};
     await goto(page, `/lesson/${lesson.id}`);
     const A = exerciseLocator(page, aId);

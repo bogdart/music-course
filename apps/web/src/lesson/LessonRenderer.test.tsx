@@ -19,6 +19,20 @@ describe('lesson renderer (dev fixture)', () => {
     for (const t of EXERCISE_TYPES) if (t !== 'daw-task') expect(types.has(t), t).toBe(true);
   });
 
+  it('keeps a reveal block closed until asked, then renders its markdown and blocks', async () => {
+    const { fireEvent } = await import('@testing-library/react');
+    render(
+      <MemoryRouter>
+        <LessonView lesson={lesson} record={false} />
+      </MemoryRouter>,
+    );
+    const box = screen.getByTestId('reveal');
+    expect(box.textContent).not.toMatch(/secret loop/);
+    fireEvent.click(within(box).getByRole('button', { name: /Show the answer chart/ }));
+    expect(box.textContent).toMatch(/The secret loop is vi–IV–I–V/);
+    expect(within(box).getByTestId('chords-block')).toBeTruthy();
+  });
+
   it('renders every block type, inline helpers and the exercise rail', () => {
     render(
       <MemoryRouter>

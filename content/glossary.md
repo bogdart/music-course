@@ -25,7 +25,7 @@ A group of beats with the strongest beat first (also called a measure). In 4/4 e
 The steady pulse underneath music — what you tap your foot or nod your head to. Rhythms are measured against it.
 
 ## Cadence
-The word has two uses. (1) The musical "punctuation" at the end of a phrase, made by a chord movement: V→I (authentic cadence) sounds final; stopping on V (half cadence) sounds like a question. (2) In ear drills from week 6, "the cadence" is the short reference I–IV–V–I (home → away → tension → home) played first to set the key's home; it ends with an authentic cadence.
+The word has two uses. (1) The musical "punctuation" at the end of a phrase, made by a chord movement: V→I (authentic cadence) sounds final; stopping on V (half cadence) sounds like a question. (2) In ear drills from week 6, "the cadence" is the short reference I–IV–V–I (home → away → tension → home) played first to set the key's home; it ends with an authentic cadence. In C its chords are C E G → C F A → B D G → C E G with a bass an octave lower (C3 → F3 → G3 → C3): both the top chord's C4 and the low C3 are home.
 
 ## Chord
 Three or more notes sounding together. The basic chord is the triad.
@@ -70,7 +70,7 @@ A note lasting two beats in 4/4. Written `h` in the app.
 The smallest distance on the keyboard: from one key to the very next key, black or white (e.g. E–F, C–C♯). Also called a semitone or minor 2nd (m2).
 
 ## Home run
-The melodic reference 1 2 3 4 5 4 3 2 1 (do re mi fa sol fa mi re do) that sets home before degree questions in weeks 3–5, before chords are taught. From week 6 the chord cadence takes over.
+The melodic reference 1 2 3 4 5 4 3 2 1 (do re mi fa sol fa mi re do) that sets home before echo and degree questions in weeks 2–5, before chords are taught. From week 6 the chord cadence takes over for degree questions (the five-note melody drill of week 5 still uses the home run).
 
 ## Interval
 The distance between two notes, named by a number (counting letter names, including both ends: C–E is a 3rd) and a quality (major, minor, perfect).
@@ -85,7 +85,7 @@ The sharps or flats written at the start of each staff line, applying to every n
 One part in an arrangement with its own job, such as drums, bass, chords or melody. Songs are built by stacking layers.
 
 ## Leading tone
-Degree 7 of the major scale, a half step below the tonic (B in C major). It pulls strongly up to 1, which is why V→I sounds so final.
+Degree 7 (ti) of the major scale, a half step below the tonic (B in C major). It pulls strongly up to 1 (ti → do'); from week 6 you hear it inside the V chord, which is why V→I sounds so final.
 
 ## Ledger line
 A short extra line above or below the staff for notes outside it. Middle C (C4) sits on one ledger line below the treble staff.
@@ -125,6 +125,9 @@ How high or low a note sounds, determined by how fast it vibrates.
 
 ## Quarter note
 A note lasting one beat in 4/4. Written `q` in the app.
+
+## Register
+How high or low a note or part sits — which octave it lives in (low, middle, high). The same degree or chord keeps its name and job in any register, but at first it may sound quite different; bass, chords and melody usually each own a register.
 
 ## Rest
 A measured silence that lasts as long as the matching note value (whole, half, quarter, eighth rest). Written `r` in the app.

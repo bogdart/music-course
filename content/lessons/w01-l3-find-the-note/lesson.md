@@ -15,6 +15,10 @@ tags: [pitch, ear, keyboard]
 
 # Find the note you hear
 
+> **Fast path.** If placement mastered pitch rungs 4–5 (*Find it: C, D or E* and *C to G*), or you can already find
+> any note between C4 and G4 in two or three tries: read **The search** (the five steps — later rungs build on them),
+> answer the two *Search* blocks, run the drill once and move on to lesson 4.
+
 Finding on the keyboard a note you just heard is the most useful ear skill in this course: it's how you'll play
 tunes by ear, find bass lines and chords, and later take songs apart. It is **not** a gift you either have or don't.
 It's a **search**, built from the two things you practised last lesson: *up or down?* and *the same note?*

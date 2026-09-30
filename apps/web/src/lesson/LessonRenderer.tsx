@@ -1,4 +1,4 @@
-import { memo, type ReactNode } from 'react';
+import { memo, useState, type ReactNode } from 'react';
 import Markdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
@@ -36,6 +36,7 @@ function LessonImg({ src, alt, ...rest }: JSX.IntrinsicElements['img']) {
  */
 const components: Components = {
   div({ node, children, ...rest }) {
+    if (prop(node, 'dataMcReveal')) return <RevealSection label={prop(node, 'dataLabel') ?? ''} raw={prop(node, 'dataRaw') ?? ''} />;
     if (prop(node, 'dataMcBlock')) {
       return <LessonBlockView lang={prop(node, 'dataLang') ?? ''} index={Number(prop(node, 'dataIndex') ?? -1)} raw={prop(node, 'dataRaw') ?? ''} />;
     }
@@ -75,6 +76,28 @@ const components: Components = {
 };
 
 const remarkPlugins = [remarkGfm, remarkLesson];
+const nestedPlugins: NonNullable<Parameters<typeof Markdown>[0]['remarkPlugins']> = [remarkGfm, [remarkLesson, { nested: true }]];
+
+/** ````reveal block: kept closed until the learner asks — answers and facts after a verdict-first question. */
+function RevealSection({ label, raw }: { label: string; raw: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`card reveal ${open ? 'open' : ''}`} data-testid="reveal">
+      {!open ? (
+        <button type="button" className="btn ghost" onClick={() => setOpen(true)}>
+          {label || 'Show'} — only after you've answered
+        </button>
+      ) : (
+        <>
+          <div className="muted small">{label}</div>
+          <Markdown remarkPlugins={nestedPlugins} components={components}>
+            {raw}
+          </Markdown>
+        </>
+      )}
+    </div>
+  );
+}
 
 /** Markdown body of a lesson. Memoised on `body` so progress updates in the page never re-render/remount it. */
 export const LessonRenderer = memo(function LessonRenderer({ body }: { body: string }) {

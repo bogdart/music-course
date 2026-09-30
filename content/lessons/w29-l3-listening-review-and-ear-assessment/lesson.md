@@ -1,0 +1,216 @@
+---
+id: w29-l3-listening-review-and-ear-assessment
+title: Listening Review and Phase 3 Ear Check
+week: 29
+order: 3
+phase: p3
+duration_min: 100
+goals:
+  - Review your two capstone songs with a three-pass listening method
+  - See where each ear ladder stands after Phase 3 (a diagnostic, not an exam)
+  - Take apart a short hidden mystery song - tempo, backbeat, form, bass and chords - and rebuild its band in the DAW
+prerequisites: [w29-l2-capstone-song-two]
+tags: [review, diagnostic, ear, transcription, daw]
+songs: []
+---
+
+# Listening Review and Phase 3 Ear Check
+
+Ten weeks ago you had never written a chorus; now you have two finished songs. This last lesson of Phase 3 has
+three parts: **listen to your own work like a producer**, **check where your ears are**, and take apart a
+small **mystery song**. It takes **two sittings** of about 50 minutes: Parts 1 and 2 in the first, Part 3 in the second.
+
+## Part 1 — The listening review (sitting 1, 15 min)
+
+Play each capstone song three times, each time with one job:
+
+1. **As a fan** — no stopping. Where did your attention drift? Where did you enjoy it?
+2. **As an arranger** — does every section change something? Is the last chorus (or drop) the biggest?
+3. **As a mixer** — at low volume. Is the lead always clear? Do kick and bass sit together?
+
+Then write **three stars and a wish** per song: three specific things that work, one thing you would change.
+"The bass going silent in the breakdown works" is useful; "it's nice" is not.
+
+```exercise
+{
+  "id": "reflect-stars-wish",
+  "type": "reflect",
+  "spec": { "prompt": "Three stars and a wish for Song One, then for Song Two. Be specific: name the section, the bar or the track.", "minWords": 50 }
+}
+```
+
+## Part 2 — Ear check (sitting 1, 30 min)
+
+This is **diagnostic**: nothing here is a gate. Each drill below runs at your current rung of that ladder, so
+it shows exactly where each skill is. Rungs you haven't mastered stay in your Practice sessions — that is
+where they get better, not by repeating them now. Two ladders open one more rung today:
+
+- **Scale colours** — four scales in one set: major, minor, Dorian and Mixolydian. In week 26 you heard them
+  only in pairs on the same root.
+- **Melodies** — eight-note phrases with freer rhythm. Longer phrases are mostly a memory task.
+
+### Try it (before the scales drill)
+
+1. Play C major, then C Mixolydian (B♭ instead of B), up the scale. Then C minor, then C Dorian (A instead of A♭).
+2. Now play just four notes of each: **1 – 3 – 6 – 7**, then 8. The 3rd tells bright or dark; the 6 or 7 tells
+   plain or altered.
+3. Ask yourself two questions per scale, in order: *bright or dark?* then *plain, or one odd note near the top?*
+
+**Check:** you can sort the four scales you play yourself with those two questions.
+
+**If you can't hear it yet:** on each question in the drill, after the scale ends, play C–E and C–E♭ on your
+keyboard and pick the one that matches the start of the scale. That answers the first question; guess the
+second, then compare after answering.
+
+**Methods** (also in each drill's *How to do it* box): scales — bright/dark first, then Mixolydian's bluesy 7
+or Dorian's hopeful 6. Melodies — chunk the eight notes into two phrases of four; get the first four right on
+the keyboard, then the second four.
+
+If a drill starts at a lower rung than the one opened, that is the ladder doing its job.
+
+```ladder
+{ "skill": "scales", "unlocks": 11, "intro": "Opens \"Four scales\": major, minor, Dorian, Mixolydian mixed — bright or dark first, then listen for the one altered note. The drill runs at your current scales rung." }
+```
+
+```ladder
+{ "skill": "melody", "unlocks": 23, "intro": "Opens \"Eight notes\": longer phrases, freer rhythm — hear them as two halves. The drill runs at your current melody rung." }
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 18, "intro": "Review: name each chord by its role in the key, secondary dominants included once you reach them." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 15, "intro": "Review: play the bass notes you hear." }
+```
+
+```ladder
+{ "skill": "rhythm", "unlocks": 14, "intro": "Review: rhythm and drum grooves at your level." }
+```
+
+```ladder
+{ "skill": "degrees", "unlocks": 29, "intro": "Review: where does the note sit in the key? The chromatic degrees you have opened so far (♭3, ♭7, ♭6, ♯4) join as you climb." }
+```
+
+And one for the hands — the secondary dominants of week 27, V/vi and V/V, each resolving:
+
+```exercise
+{
+  "id": "play-secondary-chain",
+  "type": "play-chord",
+  "title": "C – E7 – Am – F – D7 – G7",
+  "instructions": "E7 is V/vi (it resolves to Am); D7 is V/V (it resolves to G7). Any inversion; then play C to finish.",
+  "passScore": 0.7,
+  "spec": { "chords": ["C", "E7", "Am", "F", "D7", "G7"], "inversion": "any", "sequence": true, "bpm": 66, "key": "C" }
+}
+```
+
+## Part 3 — The mystery song (sitting 2)
+
+Your first "take a song apart" task, and a preview of Phase 5. The song is 8 bars, on loop, and its notation is
+hidden. Work in this order: **tempo and groove → form → bass → chords**. Answer each question before you look at
+anything; the facts appear after you answer.
+
+How to work each step:
+
+1. **Tempo:** tap a finger on every beat for 10 seconds and count the taps; multiply by 6.
+2. **Groove:** one pass for the snare only (the sharp crack). Count "1 2 3 4" aloud and note which numbers it lands on.
+3. **Form:** listen to the melody only. Does anything come back?
+4. **Bass:** one bar at a time. Stop after bar 1, find the deepest note on your keyboard (try keys until one
+   merges with it), write it down, then bar 2. The key is D major, so start your search from D.
+5. **Chords:** your bass notes are the roots. Turn each into a roman numeral in D (D = I, E = ii…).
+
+**If you're stuck on a bar:** play the notes you found for the bars on either side, then try the notes of the
+D major scale one by one against the stuck bar until one sounds settled under it.
+
+```exercise
+{
+  "id": "mystery-listen",
+  "type": "listen",
+  "title": "Mystery song: first listens",
+  "passScore": 0.7,
+  "spec": {
+    "example": {"title":"Mystery song","bpm":96,"timeSig":"4/4","key":"D","hidden":true,"loop":true,"tracks":[{"instrument":"lead","seq":"F#4:q A4:q D5:q. C#5:8 | C#5:q B4:8 A4:8 E4:h | D4:q F#4:q B4:q. A4:8 | G4:h. r:q | F#4:q A4:q D5:q. E5:8 | D5:h. B4:q | E5:q D5:8 B4:8 G4:q E4:q | E4:h. r:q"},{"instrument":"pad","seq":"[F#3 A3 D4]:w | [E3 A3 C#4]:w | [F#3 B3 D4]:w | [G3 B3 D4]:w | [F#3 A3 D4]:w | [G3 B3 D4]:w | [G3 B3 E4]:w | [E3 A3 C#4]:w","volume":0.7},{"instrument":"bass","seq":"D2:w | A1:w | B1:w | G1:w | D2:w | G1:w | E2:w | A1:w"},{"instrument":"drums","seq":"[kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"}]},
+    "questions": [
+      { "q": "About how fast is the beat?", "choices": ["About 70 BPM", "About 96 BPM", "About 130 BPM"], "answer": 1, "explain": "96 BPM: a relaxed mid-tempo pop groove. Tap along to check — a tap-tempo count over 10 seconds gives about 16 beats." },
+      { "q": "Where does the snare hit?", "choices": ["Beats 1 and 3", "Beats 2 and 4", "On every beat"], "answer": 1, "explain": "Beats 2 and 4 — the backbeat (week 17). The kick plays beats 1 and 3, plus the 'and' after 3." },
+      { "q": "How do bars 5–6 of the melody begin?", "choices": ["The same way as bars 1–2", "With a completely new idea"], "answer": 0, "explain": "Bar 5 starts exactly like bar 1 (F♯ A D), but its last note climbs to E instead of falling to C♯, and from there the phrase goes somewhere new — repetition with variation (week 21)." },
+      { "q": "Does the last bar sound finished (at home) or open, like a question?", "choices": ["Finished, at home", "Open, like a question"], "answer": 1, "explain": "Open: it stops on the V chord (A in D major) — a half cadence (weeks 8 and 16)." }
+    ]
+  }
+}
+```
+
+```exercise
+{
+  "id": "mystery-bass",
+  "type": "ear-bass",
+  "title": "Mystery song: the bass line",
+  "instructions": "Key of D major. The bass plays one note per bar. Play all 8, in any octave.",
+  "passScore": 0.7,
+  "spec": { "key": "D", "mode": "major", "chords": ["I", "ii", "IV", "V", "vi"], "answer": "play", "example": {"title":"Mystery song","bpm":96,"timeSig":"4/4","key":"D","hidden":true,"loop":true,"tracks":[{"instrument":"lead","seq":"F#4:q A4:q D5:q. C#5:8 | C#5:q B4:8 A4:8 E4:h | D4:q F#4:q B4:q. A4:8 | G4:h. r:q | F#4:q A4:q D5:q. E5:8 | D5:h. B4:q | E5:q D5:8 B4:8 G4:q E4:q | E4:h. r:q"},{"instrument":"pad","seq":"[F#3 A3 D4]:w | [E3 A3 C#4]:w | [F#3 B3 D4]:w | [G3 B3 D4]:w | [F#3 A3 D4]:w | [G3 B3 D4]:w | [G3 B3 E4]:w | [E3 A3 C#4]:w","volume":0.7},{"instrument":"bass","seq":"D2:w | A1:w | B1:w | G1:w | D2:w | G1:w | E2:w | A1:w"},{"instrument":"drums","seq":"[kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"}]} }
+}
+```
+
+```exercise
+{
+  "id": "mystery-chords",
+  "type": "ear-progression",
+  "title": "Mystery song: the chords",
+  "instructions": "One chord per bar, all from the key of D major. Your bass notes are the roots.",
+  "passScore": 0.7,
+  "spec": { "key": "D", "mode": "major", "length": 8, "chords": ["I", "ii", "IV", "V", "vi"], "progression": ["I", "V", "vi", "IV", "I", "IV", "ii", "V"], "example": {"title":"Mystery song","bpm":96,"timeSig":"4/4","key":"D","hidden":true,"loop":true,"tracks":[{"instrument":"lead","seq":"F#4:q A4:q D5:q. C#5:8 | C#5:q B4:8 A4:8 E4:h | D4:q F#4:q B4:q. A4:8 | G4:h. r:q | F#4:q A4:q D5:q. E5:8 | D5:h. B4:q | E5:q D5:8 B4:8 G4:q E4:q | E4:h. r:q"},{"instrument":"pad","seq":"[F#3 A3 D4]:w | [E3 A3 C#4]:w | [F#3 B3 D4]:w | [G3 B3 D4]:w | [F#3 A3 D4]:w | [G3 B3 D4]:w | [G3 B3 E4]:w | [E3 A3 C#4]:w","volume":0.7},{"instrument":"bass","seq":"D2:w | A1:w | B1:w | G1:w | D2:w | G1:w | E2:w | A1:w"},{"instrument":"drums","seq":"[kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick crash]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"}]} }
+}
+```
+
+Now rebuild it. Program what you heard (the backbeat groove, the bass, the chords): that is the week's DAW task. **Optional, if you have time and energy left:** write **your own** 8-bar melody over it instead of the original (or save it for a later session).
+
+1. Drums, bass and pad first, from your answers. Loop them and play the mystery song alongside: they should match.
+2. *(Optional)* Melody: start with a 2-bar idea on chord tones, repeat it in bars 5–6 with a change (like the original does).
+3. *(Optional)* End on a note of the A chord (A, C♯ or E) so the last bar stays open.
+
+**Judge it by ear:** does your band loop match the mystery song when you play them side by side? If you wrote a melody: does it still make sense with the pad muted, and does the last bar feel like a question?
+**If you're stuck on the melody:** use only D, E, F♯, A and B for the first four bars — it can't clash.
+
+```exercise
+{
+  "id": "daw-rebuild-mystery",
+  "type": "daw-task",
+  "title": "Rebuild the mystery song's band",
+  "spec": {
+    "template": { "bpm": 96, "key": "D", "timeSig": "4/4", "tracks": [
+      { "instrument": "drums", "seq": "" },
+      { "instrument": "bass", "seq": "" },
+      { "instrument": "pad", "seq": "" },
+      { "instrument": "lead", "seq": "" }
+    ] },
+    "task": "From your answers: drums with a backbeat (kick on 1 and 3, snare on 2 and 4, eighth-note hats), the bass line (one root per bar) and one chord per bar on the pad. Optional: write your own 8-bar melody in D major on the lead — a new tune, not the mystery one — that ends open on the last bar.",
+    "checks": [
+      { "kind": "bars", "min": 8, "max": 8 },
+      { "kind": "has-tracks", "instruments": ["drums", "bass", "pad"] },
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "snareOnBeats": [2, 4], "hatOn": "8", "track": 0 },
+      { "kind": "plays-progression", "progression": ["I", "V", "vi", "IV", "I", "IV", "ii", "V"], "barsPerChord": 1, "mode": "roots", "minRatio": 0.75, "track": 1 },
+      { "kind": "plays-progression", "progression": ["I", "V", "vi", "IV", "I", "IV", "ii", "V"], "barsPerChord": 1, "mode": "chords", "minRatio": 0.75, "track": 2 }
+    ],
+    "minBars": 8, "maxBars": 8
+  }
+}
+```
+
+## What's next
+
+Phase 4 opens the composer's studio: extended chords, jazz voicings, reharmonisation, counterpoint, film cues
+and genre writing. It all rests on what you did here — form, hooks, bass, grooves, layers. Keep both capstone
+projects; you will come back to them.
+
+```exercise
+{
+  "id": "reflect-phase3",
+  "type": "reflect",
+  "spec": { "prompt": "Which ladder surprised you today — higher or lower than you expected? In the mystery song, what did you get wrong at first, and what finally made you hear it?", "minWords": 30 }
+}
+```
+
+## Between lessons
+
+Keep your usual Practice sessions going — the rungs opened today live there. Replay the mystery song once and play its bass line from memory.
