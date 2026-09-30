@@ -19,7 +19,7 @@ This week is about writing melodies that *someone else* could sing — you never
 
 ## Stress: find it in the words
 
-Say the line (out loud or in your head) and exaggerate it. The stressed syllables, in capitals:
+How to find the stresses: say the line out loud (or in your head) and exaggerate it like an angry sports commentator, tapping the table on each syllable that wants to be loud. Check a doubtful word by saying it both ways — "WALK-ing" vs "walk-ING": only one sounds like a real word. The stressed syllables, in capitals:
 
 > **WALK**-ing **HOME** be-**NEATH** the **CI**-ty **LIGHTS**
 
@@ -104,6 +104,8 @@ Untrained singers are comfortable across roughly **an octave to a 10th**. For a 
 
 ## Ear
 
+Rhythm: foot on the beat, count out loud, chunk it bar by bar. Melody play-back: replay and say the directions first, find the first note by searching, then follow the path. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Word rhythm is rhythm — this drill runs at your current rhythm rung." }
 ```
@@ -113,6 +115,12 @@ Untrained singers are comfortable across roughly **an octave to a 10th**. For a 
 ```
 
 ## Make it
+
+1. Write the ten syllables on paper and mark the stressed ones (CAN'T, GET, SOUND, YOUR, BYE).
+2. Rhythm first: put the notes on one pitch (say E4) in the DAW. Stressed syllables on beats 1 or 3 or on longer notes; "i", "for", "the", "of", "good" short and just before a beat.
+3. Play it back while reading the syllables along. If a word sounds wrong ("for-GET" said as "FOR-get"), move that note's start to a stronger beat or lengthen it.
+4. Now pitches: start near E4, move mostly by step, put the highest note on SOUND or BYE, end on a long C, E or G.
+5. **Check by ear:** read the line along twice. Does it sound like the words spoken with music, or does one syllable stick out? Fix only that syllable. Stuck? Copy the rhythm of the "natural setting" above and just change pitches.
 
 ```exercise
 {
@@ -141,3 +149,7 @@ Untrained singers are comfortable across roughly **an octave to a 10th**. For a 
   }
 }
 ```
+
+## Between lessons
+
+Take one line from any song lyric you know, mark its stresses, and tap its rhythm on one key. Ten minutes of ladder drills on the Practice page.

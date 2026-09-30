@@ -50,11 +50,12 @@ What you'll probably hear: in bars 1–2 the melody seems to sink into the chord
 
 ## Pass 2: mix basics
 
-- **Levels:** the melody (or main hook) is the clearest thing; kick and bass solid; pads underneath.
-- **Pan:** kick, bass and lead in the centre; chords, counter-lines and percussion spread left and right.
-- **Note lengths:** shorten chord notes that ring into the next chord; lengthen pad notes that stop abruptly.
+1. **Levels, from zero:** pull every track's volume down. Bring up the lead until it's comfortable, then drums and bass until they feel solid under it, then chords and pads until you just notice them. Check: play 8 bars and look away — can you still follow the melody from start to end? If it disappears anywhere, lower whatever is louder there.
+2. **Pan:** kick, bass and lead in the centre; chords, counter-lines and percussion spread a little left and right. Check: toggle the pan off and on — the centre should feel less crowded with it on.
+3. **Note lengths:** solo the chords. Do they ring over into the next chord (a blur at each change)? Shorten them. Do pads stop with a gap? Lengthen them.
+4. Listen once on different speakers or headphones and write down three things you'd still change.
 
-Then listen once on different speakers or headphones and write down three things you'd still change.
+**Stuck or everything sounds the same after many loops?** Stop for ten minutes, then listen once from the start and write down the first thing that bothers you. That is your next fix.
 
 ## Warm-up
 
@@ -67,6 +68,8 @@ Then listen once on different speakers or headphones and write down three things
   "spec": { "chords": ["Cmaj9", "Am9", "Dm9", "G9", "Fmaj7", "Bbmaj7", "Ebmaj7", "Abmaj7"], "inversion": "any", "sequence": true, "bpm": 60 }
 }
 ```
+
+Progressions: find home first, then follow the bass and name each chord by its role and colour. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Review: progressions at your current rung — the chords of your own songs are made of these." }
@@ -117,3 +120,7 @@ Then listen once on different speakers or headphones and write down three things
   }
 }
 ```
+
+## Between lessons
+
+Play song one once a day on a different device (phone, headphones, laptop) and add to your list only what bothers you twice.

@@ -51,16 +51,26 @@ the explanation, not a test):
 }
 ```
 
-Hum the bass: it is simply a scale climbing, C–D–E–F–G–A, then F–G. Had you written roots only, bar 1 would say
-"C – G" with a G in the bass and bar 2 would start on C, and the playback would sound wrong at once. How does it feel? With the root in the bass
-a chord sounds settled; with the 3rd in the bass it sounds lighter, in motion. Don't expect to *name* that difference
-yet — follow the bass line, and let the smooth stepwise walk tell you that inversions are involved.
+Play along with the bass: it is simply a scale climbing, C–D–E–F–G–A, then F–G. Had you written roots only, bar 1
+would say "C – G" with a G in the bass, and the playback would sound wrong at once. With the root in the bass a chord
+sounds settled; with the 3rd in the bass it sounds lighter, in motion. Don't expect to *name* that difference by ear
+yet. Use the keyboard instead:
+
+1. **Bass first.** Find the lowest note with higher/lower searching and write it down, even if it doesn't look like a
+   root. *Check:* it melts into the bass when you play it along.
+2. **Then the chord above.** Try the triads of the key that *contain* that bass note (for B in G major: G, Em, B dim).
+   Play each in the right hand along with the loop. *Check:* the right one blends with everything, not just the bass.
+3. **Write chord / bass.** If the bass is the chord's root, write the chord alone; otherwise write a slash chord.
+4. **Clue:** a bass that walks by step through several chords almost always means some slash chords.
+
+Same moves in the drill: listen to the lowest line only and play what it actually plays, even when it isn't a root. The
+*How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 {
   "skill": "roots",
   "unlocks": 15,
-  "intro": "Rung 11 of this ladder — bass not on the root — is today's skill in drill form."
+  "intro": "One rung of this ladder, the bass not on the root, is today's skill in drill form; you practise at your own rung."
 }
 ```
 
@@ -69,14 +79,14 @@ yet — follow the bass line, and let the smooth stepwise walk tell you that inv
   "id": "w42l2-bass",
   "type": "ear-bass",
   "title": "A new walking bass (hidden)",
-  "instructions": "Eight bass notes, two per bar. Play the lowest note you hear, not the root of the chord.",
+  "instructions": "Eight bass notes, two per bar. Find the first by searching, then follow the line: up or down, step or jump? Play the lowest note you hear, not the root of the chord.",
   "srs": false,
   "spec": {
     "key": "G",
     "chords": ["I", "ii", "iii", "IV", "V", "vi"],
     "answer": "play",
     "example": {
-      "title": "Walking bass in G",
+      "title": "Walking bass",
       "bpm": 80,
       "timeSig": "4/4",
       "tracks": [
@@ -97,7 +107,7 @@ yet — follow the bass line, and let the smooth stepwise walk tell you that inv
   "title": "Which chord, which bass?",
   "spec": {
     "example": {
-      "title": "Walking bass in G",
+      "title": "Walking bass",
       "bpm": 80,
       "timeSig": "4/4",
       "tracks": [
@@ -110,7 +120,7 @@ yet — follow the bass line, and let the smooth stepwise walk tell you that inv
       "loop": true
     },
     "questions": [
-      {"q": "Bar 1, second half: the bass steps down one note, while the chord above sounds like a plain major triad. Which symbol fits?", "choices": ["F#dim", "D/F#", "F#m", "Bm"], "answer": 1, "explain": "D/F#: a D major chord (D–F#–A) with its 3rd, F#, in the bass. In numerals: V6."},
+      {"q": "Bar 1, second half: find the bass note, then try the triads that contain it along with the loop. Which symbol fits?", "choices": ["F#dim", "D/F#", "F#m", "Bm"], "answer": 1, "explain": "D/F#: a D major chord (D–F#–A) with its 3rd, F#, in the bass. In numerals: V6."},
       {"q": "Bar 3, second half: the chord above sounds like the home chord again, but the bass is not the home note. Which chord tone of the home chord is in the bass?", "choices": ["Root", "3rd", "5th", "Not a chord tone"], "answer": 1, "explain": "The 3rd: B under a G major triad, G/B — numeral I6."},
       {"q": "Bar 2: the chord above stays the same for the whole bar. What does the bass do in the second half?", "choices": ["Stays on the same note", "Steps down by one note", "Jumps up a fifth", "Steps up by one note"], "answer": 1, "explain": "It steps down from E to D under the same E minor triad: Em/D. D isn't in the chord at all — it's a passing bass note that keeps the scale walking."}
     ]
@@ -139,6 +149,9 @@ yet — follow the bass line, and let the smooth stepwise walk tell you that inv
 The opposite trick: the bass *stays* on one note while the chords change above it — a [[pedal point]]. Ballads, film
 music and dance builds use it for tension: the chords move but the floor stays put. When you transcribe one, write both
 layers: "F/C" tells a player exactly what to do.
+
+To check for a pedal: hold one low key for the whole loop. If it never rubs while the chords change, the floor isn't
+moving.
 
 ```exercise
 {
@@ -213,3 +226,8 @@ layers: "F/C" tells a player exactly what to do.
   }
 }
 ```
+
+## Between lessons
+
+Play the walking-bass loop (the play-chord exercise) once a day, left hand alone first. Listen to your stepwise bass
+from the DAW task and check each slash chord against its piano chord.

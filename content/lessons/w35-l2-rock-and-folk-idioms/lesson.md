@@ -40,7 +40,7 @@ Why rock loves it: with a distorted guitar, a full triad turns into mush, but ro
 }
 ```
 
-Honestly: on piano D5 may just sound like "a thinner D". On the guitar the difference is clearer — the triads sound rough, the power chord sounds solid. On the keyboard it is one hand shape: thumb and little finger (or thumb and ring finger) a 5th apart, moved as a block.
+Honestly: on piano D5 may just sound like "a thinner D". On the guitar the difference is clearer — the triads sound rough, the power chord sounds solid. Check it yourself: play D–F♯–A, then D–F–A, then just D–A. The third one should sound neither bright nor dark — just plain. On the keyboard it is one hand shape: thumb and little finger (or thumb and ring finger) a 5th apart, 7 keys, moved as a block.
 
 ## The rock bundle
 
@@ -94,6 +94,8 @@ Honestly: on piano D5 may just sound like "a thinner D". On the guitar the diffe
 }
 ```
 
+Method for the progression drill: find the bass note first (search low keys with higher/lower), then ask what the chord does — rest, lift, pull or relaxed step down (♭VII sits a whole step below home and doesn't demand to go anywhere). The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Rock's ♭VII lives on this ladder (rung 11 and up); the drill runs at your current rung." }
 ```
@@ -117,7 +119,7 @@ Honestly: on piano D5 may just sound like "a thinner D". On the guitar the diffe
 }
 ```
 
-Two chords are not from plain A natural minor: **D major** (the F♯ is Dorian's raised 6th, week 22) and **E major** (the G♯ is harmonic minor's raised 7th, week 9). Folk is simple, but not plain.
+Listen once tapping your foot only on the low bass notes: two taps per bar — that's the two big beats of 6/8. Two chords are not from plain A natural minor: **D major** (the F♯ is Dorian's raised 6th, week 22) and **E major** (the G♯ is harmonic minor's raised 7th, week 9). Folk is simple, but not plain.
 
 ```exercise
 {
@@ -134,11 +136,19 @@ Two chords are not from plain A natural minor: **D major** (the F♯ is Dorian's
 }
 ```
 
+Method for the rhythm drill: tap your foot on the beat first, find the strong ONE, and count until it comes back; then count the notes inside each beat. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Meters and grooves — 6/8 is on this ladder (rung 10); the drill runs at your current rung." }
 ```
 
 ## Make it
+
+1. Start from the riff above: keep its rhythm (hit, hit, rest, hit, then two longer chords) and change only the roots. Try D–C–G first, then swap in A or E and keep what sounds strongest.
+2. Enter each chord as two notes, root and the note 7 keys up. Copy the 2 bars to fill 8.
+3. Drums: kick on 1 and 3, snare on 2 and 4, hi-hat on every 8th.
+4. **Judge by ear:** play it loud. If the riff sounds muddy, move it up so the lowest note is around D3–G2, not lower. If it sounds aimless, end bar 2 on a chord that leads back to D (C or A).
+5. **Stuck?** Use the example riff unchanged and change only its rhythm.
 
 ```exercise
 {
@@ -167,3 +177,7 @@ Two chords are not from plain A natural minor: **D major** (the F♯ is Dorian's
   }
 }
 ```
+
+## Between lessons
+
+Play the riff and the four fingerpicked chords once a day, counting "ONE-two-three FOUR-five-six" out loud for the 6/8.

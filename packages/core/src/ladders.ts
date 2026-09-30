@@ -6,8 +6,9 @@
  * yet mastered. Pure: no DOM, no I/O.
  */
 import type { ExerciseBlock } from './exercises/types.js';
+import { methodOf } from './ladder-methods.js';
 
-export const LADDER_SKILLS = ['octave', 'degrees', 'intervals', 'chords', 'roots', 'progressions', 'melody', 'rhythm', 'scales'] as const;
+export const LADDER_SKILLS = ['pitch', 'octave', 'degrees', 'intervals', 'chords', 'roots', 'progressions', 'melody', 'rhythm', 'scales'] as const;
 export type LadderSkill = (typeof LADDER_SKILLS)[number];
 
 export interface Rung {
@@ -20,6 +21,8 @@ export interface Rung {
   title: string;
   /** What changes compared to the previous rung (one sentence) */
   step: string;
+  /** Practical method: what to do with ears and hands to answer this rung (from ladder-methods.ts) */
+  how: string;
   block: ExerciseBlock;
 }
 
@@ -51,6 +54,22 @@ const rhythm = (spec: Record<string, unknown>, instructions: string) => ({ type:
 const scale = (scales: string[], play: string, instructions: string) => ({ type: 'ear-scale', spec: { scales, play, root: 'C' }, instructions }) as RungDef['block'];
 
 const DEFS: Record<LadderSkill, { title: string; purpose: string; rungs: RungDef[] }> = {
+  pitch: {
+    title: 'Pitch',
+    purpose: 'Hear whether a note goes up or down, and find a note you heard on the keyboard — the ground everything else stands on.',
+    rungs: [
+      { title: 'Higher or lower: far apart', step: 'Two notes far apart: did the second go up or down?', block: octave({ notes: ['C', 'G'], octaves: [3, 5], mode: 'higher-or-lower' }, 'Is the second note higher or lower than the first?') },
+      { title: 'Higher or lower: closer', step: 'The notes are a 3rd to a 5th apart.', block: octave({ notes: ['C', 'E', 'G'], octaves: [4], mode: 'higher-or-lower' }, 'Is the second note higher or lower?') },
+      { title: 'Higher or lower: neighbours', step: 'Only a step or two apart.', block: octave({ notes: ['C', 'D', 'E'], octaves: [4], mode: 'higher-or-lower' }, 'Is the second note higher or lower? They are close.') },
+      { title: 'Find it: C, D or E', step: 'Hear a note, find the exact key among three.', block: octave({ notes: ['C', 'D', 'E'], octaves: [4], mode: 'seek' }, 'Find the note you heard: C4, D4 or E4.') },
+      { title: 'Find it: C to G', step: 'Five keys to search.', block: octave({ notes: ['C', 'D', 'E', 'F', 'G'], octaves: [4], mode: 'seek' }, 'Find the note you heard, between C4 and G4.') },
+      { title: 'Same note or not?', step: 'Two notes: exactly the same, or different (a 3rd or more apart)?', block: octave({ notes: WHITE, octaves: [4], mode: 'same-pitch', foils: [3, 4, 5, 7] }, 'The same note twice, or two different notes?') },
+      { title: 'Same note or not: close', step: 'The different note is only a half or whole step away.', block: octave({ notes: WHITE, octaves: [4], mode: 'same-pitch', foils: [1, 2] }, 'The same note twice, or two notes very close together?') },
+      { title: 'Find it: all white keys', step: 'Seven keys, C4 to B4.', block: octave({ notes: WHITE, octaves: [4], mode: 'seek' }, 'Find the note you heard, C4 to B4 (white keys).') },
+      { title: 'Find it: black keys too', step: 'All twelve keys of the octave.', block: octave({ notes: ALL12, octaves: [4], mode: 'seek' }, 'Find the note you heard, C4 to B4 (black keys too).') },
+      { title: 'Find it: two octaves', step: 'The note may be in octave 3 or 4.', block: octave({ notes: WHITE, octaves: [3, 4], mode: 'seek' }, 'Find the note you heard, C3 to B4.') },
+    ],
+  },
   octave: {
     title: 'Octaves',
     purpose: 'Hear the same note name through different heights — the base of hearing bass lines, chords and melodies in any register.',
@@ -269,7 +288,7 @@ function build(skill: LadderSkill): Ladder {
     skill, title: d.title, purpose: d.purpose,
     rungs: d.rungs.map((r, i) => {
       const id = `${skill}-${i + 1}`;
-      return { id, skill, n: i + 1, title: r.title, step: r.step, block: { count: 10, passScore: 0.85, ...r.block, id, title: r.title } as ExerciseBlock };
+      return { id, skill, n: i + 1, title: r.title, step: r.step, how: methodOf(skill, r.title), block: { count: 10, passScore: 0.85, ...r.block, id, title: r.title } as ExerciseBlock };
     }),
   };
 }

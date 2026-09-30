@@ -5,6 +5,7 @@ import { Keyboard } from '../components/Keyboard/Keyboard';
 import { useExerciseNoteInput } from './focus';
 import { ChoiceButtons } from './ChoiceButtons';
 import { FindNote } from './FindNote';
+import { SeekNote } from './SeekNote';
 import type { ExerciseComponentProps } from './types';
 
 type ChoiceType = 'ear-note' | 'ear-octave' | 'ear-interval' | 'ear-chord' | 'ear-scale' | 'ear-meter' | 'ear-chord-root' | 'key-signature';
@@ -38,7 +39,9 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
   };
 
   const earNote = item.type === 'ear-note' ? (item as ExerciseComponentProps<'ear-note'>['item']) : null;
-  const find = item.type === 'ear-octave' && (item as ExerciseComponentProps<'ear-octave'>['item']).mode === 'find';
+  const octaveItem = item.type === 'ear-octave' ? (item as ExerciseComponentProps<'ear-octave'>['item']) : null;
+  const find = octaveItem?.mode === 'find';
+  const seek = octaveItem?.mode === 'seek';
   useExerciseNoteInput((e) => {
     if (e.type !== 'on' || disabled || find) return;
     if (!earNote) return;
@@ -56,6 +59,19 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
     <div className="choice-exercise">
       <ChoiceButtons choices={item.choices ?? []} onChoose={choose} wrong={wrong} correct={showSolution ? answer : null} disabled={disabled} />
       {earNote && !disabled && <p className="muted small">Tip: you can also answer by playing the note on your keyboard.</p>}
+      {seek && octaveItem?.range && (
+        <SeekNote
+          onAnswer={(tries) => {
+            setLast(String(tries[tries.length - 1]));
+            (onAnswer as (a: number[]) => void)(tries);
+          }}
+          disabled={!!disabled}
+          range={octaveItem.range}
+          target={octaveItem.midis[0]!}
+          limit={octaveItem.limit ?? 3}
+          reset={item}
+        />
+      )}
       {find && (
         <FindNote
           onAnswer={(m) => {
@@ -68,7 +84,7 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
           hint="Try keys on your MIDI keyboard or here until one matches the note you heard (any octave), then press Check."
         />
       )}
-      {showSolution && midis.length > 0 && (
+      {showSolution && midis.length > 0 && !seek && (
         <div className="solution-keys">
           <Keyboard range={[lo - (lo % 12), hi + (11 - (hi % 12))]} highlight={midis} height={110} interactive={false} showHeld={false} />
         </div>

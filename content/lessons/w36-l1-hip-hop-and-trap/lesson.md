@@ -37,7 +37,7 @@ Classic 90s hip-hop (about 85–95 BPM): a punchy kick, a fat snare on 2 and 4, 
 }
 ```
 
-The kick hits beat 1 and the "and" of 3; the snare hits 2 and 4. Tap that kick–snare pattern:
+Listen twice: first only the low **boom** (kick), then only the **crack** (snare), counting "1 and 2 and 3 and 4 and". The kick hits beat 1 and the "and" of 3; the snare hits 2 and 4. Tap that kick–snare pattern:
 
 ```exercise
 {
@@ -104,6 +104,8 @@ Trap melodies are often dark and minor, a single short motif looped (think of th
 
 ## Ear: grooves and bass
 
+Rhythm method: tap your foot on the beat, find the strong ONE, then listen to one layer at a time. Bass method: listen only to the lowest sound, search low keys with higher/lower until one merges with it, then follow each move. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Beat-first music lives on rhythm — this drill runs at your current rhythm rung." }
 ```
@@ -113,6 +115,12 @@ Trap melodies are often dark and minor, a single short motif looped (think of th
 ```
 
 ## Make it
+
+1. **Drums first.** Clap on beat 3 of every bar. Hats on every 16th; in bar 4 replace the last beat of hats with a 32nd roll. Then place kicks: start with beat 1 and the "and" of 2, and move one if it feels stiff.
+2. **808.** On each kick that starts a phrase, put a long bass note: A for most of it, F or G for variety. Let each ring until the next one.
+3. **Motif.** One bar on the pluck, using A, C, E and the F–E sigh; copy it to the other bars.
+4. **Judge by ear:** does the loop feel slow and heavy even though the hats are fast? If it feels rushed, you have claps on more than beat 3. If the low end sounds messy, a bass note starts where there is no kick — line them up.
+5. **Stuck?** Copy the drums from the trap example and write only the bass and motif.
 
 ```exercise
 {
@@ -143,3 +151,7 @@ Trap melodies are often dark and minor, a single short motif looped (think of th
   }
 }
 ```
+
+## Between lessons
+
+Loop your trap beat and the boom-bap example back to back and tap the snare/clap along: notice beat 2 and 4 versus beat 3 only.

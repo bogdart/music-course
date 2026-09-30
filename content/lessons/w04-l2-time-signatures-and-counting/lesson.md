@@ -50,7 +50,13 @@ Listen to the same kick-and-hi-hat sound in both meters. The kick marks beat 1:
 }
 ```
 
-**How to hear 3 or 4:** find the heavy beat (the kick), then count the beats until the next heavy one. "1 2 3 | 1" is 3/4; "1 2 3 4 | 1" is 4/4. Counting beats is more reliable than trying to judge the feel.
+**How to hear 3 or 4 — try it on the two examples above:**
+
+1. Play the 4/4 example. Say "ONE" on each kick, then keep counting until the next kick: "ONE 2 3 4 | ONE".
+2. Play the 3/4 example the same way: "ONE 2 3 | ONE".
+3. If the kick is hard to pick out, tap your foot on every beat and nod on the loudest one; count taps between nods.
+
+Counting beats is more reliable than judging the feel.
 
 A melody in 3/4 has no room for a whole note — the longest note filling a bar is a **dotted half** (3 beats):
 
@@ -70,10 +76,35 @@ A melody in 3/4 has no room for a whole note — the longest note filling a bar 
 
 Say the beat numbers out loud, always restarting at "1" on a new bar: "1 2 3 4 | 1 2 3 4" or "1 2 3 | 1 2 3". Add "&" for eighth notes. Counting aloud feels silly for about a week — and then it's the thing that saves you every time a rhythm gets tricky.
 
-This lesson opens two rhythm rungs (the drill runs at your current one): tapping back eighths and rests, then hearing whether a groove is in **3 or 4**.
+### Check it
+
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "3 or 4?",
+  "instructions": "Count from each heavy beat to the next.",
+  "spec": {
+    "examples": [
+      { "title": "Groove 1", "bpm": 110, "timeSig": "3/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q | kick:q hh:q hh:q" } ] },
+      { "title": "Groove 2", "bpm": 110, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "kick:q hh:q hh:q hh:q | kick:q hh:q hh:q hh:q | kick:q hh:q hh:q hh:q" } ] }
+    ],
+    "questions": [
+      { "q": "Groove 1 groups beats in…", "choices": ["3", "4"], "answer": 0, "explain": "Kick every three beats: 3/4." },
+      { "q": "Groove 2 groups beats in…", "choices": ["3", "4"], "answer": 1, "explain": "Kick every four beats: 4/4." }
+    ]
+  }
+}
+```
+
+**If you can't tell yet:** count out loud for three full groups before answering; say "ONE" only when the kick
+comes. Your spoken count gives the answer even when the feel doesn't.
+
+The next rhythm rungs (the drill runs at your current one): tapping back eighths and rests, then hearing whether a
+groove is in **3 or 4**.
 
 ```ladder
-{ "skill": "rhythm", "unlocks": 5, "intro": "Opens \"Tap it back: eighths and rests\" and \"Meter: 3 or 4?\"; the drill runs at your current rung." }
+{ "skill": "rhythm", "unlocks": 5, "intro": "Rhythm at your current rung — up to tapping eighths and rests, and 3 or 4." }
 ```
 
 ## Degree 5 (sol)
@@ -89,10 +120,17 @@ Degree 5 is G in C major — your little finger. It's the top of the home run, t
 }
 ```
 
-This lesson opens the melody rung that uses it: writing four-note tunes from **1–5** as degrees (you'll meet it once the earlier melody rungs are solid). Finding the notes on the keyboard first (C D E F G = 1 2 3 4 5) is a perfectly good method. Next week opens degree 5 in the single-note degree drill.
+The next melody rung uses it: writing four-note tunes from **1–5** as degrees. Method: play the tune back on the
+keyboard first (thumb on C), then read your fingers — thumb to little finger = 1 to 5.
+
+**Try it:** play C E G E and say "1 3 5 3"; play G F E C and say "5 4 3 1". Then play the home run and stop on G:
+does it feel "up in the air" to you, or finished? Either answer is fine — just notice.
+
+**If you can't hear it:** do it one note at a time — replay, find the first note by search from C, write it down,
+then the next.
 
 ```ladder
-{ "skill": "melody", "unlocks": 6, "intro": "Opens \"Write 4 notes as degrees\" (1–5); the drill runs at your current melody rung." }
+{ "skill": "melody", "unlocks": 6, "intro": "Melody at your current rung — up to writing 4-note tunes (1–5) as degrees." }
 ```
 
 ## Drills
@@ -147,3 +185,9 @@ This lesson opens the melody rung that uses it: writing four-note tunes from **1
   "spec": { "bpm": 90, "timeSig": "3/4", "key": "C", "seq": "C4:h E4:q | G4:h E4:q | F4:h D4:q | C4:h. | E4:h G4:q | F4:h D4:q | D4:h E4:q | C4:h.", "showStaff": true, "showKeyboard": false, "countIn": 1, "backing": { "instrument": "bass", "seq": "C3:h. | C3:h. | G3:h. | C3:h. | C3:h. | G3:h. | G3:h. | C3:h." } }
 }
 ```
+
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes.
+- Once a day: play the little waltz, counting "ONE 2 3" out loud.
+- Ready for the next lesson when the dashboard doesn't say **practise first**.

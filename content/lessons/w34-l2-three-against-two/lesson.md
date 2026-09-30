@@ -38,6 +38,16 @@ Nobody counts two pulses separately. The trick is to learn the **composite rhyth
 
 **What you will probably hear.** At first, most people hear only one of the two layers as "the beat" and the other as a slightly odd rhythm on top. That is fine. Tap the composite first; the feeling of two pulses at once comes later, with repetition.
 
+### Try it
+
+1. Loop the example. Tap only the high part with your right hand on the table: three taps a bar.
+2. Now tap only the low part with your left hand: two taps a bar.
+3. Say "**nice** cup of **tea**" slowly: *nice* = both hands, *cup* = right, *of* = left, *tea* = right. Repeat four times, then try it with the loop.
+
+**Check:** your hands should never collide except on "nice", and "tea" should arrive just before the next "nice".
+
+**If you can't hear it yet:** do step 3 without the sound, very slowly, just saying the words — the pattern lives in your hands first. Then set the loop playing and tap along only on "nice" until that feels settled, and add the other syllables one at a time.
+
 ## 3:2 inside 6/8 and 3/4
 
 In week 14 you met 6/8: six 8ths felt as **two** beats of three (ONE-two-three FOUR-five-six). A bar of 3/4 has the same six 8ths grouped as **three** beats of two. Play both groupings at once and you have 3:2. Composers love to switch between them: Bernstein's "America" (by reference) alternates a bar felt in two with a bar felt in three, and that alternation is the whole character of the song.
@@ -100,6 +110,12 @@ In week 14 you met 6/8: six 8ths felt as **two** beats of three (ONE-two-three F
 
 ## Make it
 
+1. **Drums first:** a kick on the two dotted quarters of each bar, hi-hat on every 8th. Loop it: that's the "2".
+2. **Bass:** two dotted quarters per bar on the roots, A F C G — lined up with the kicks.
+3. **Pluck:** three quarter notes per bar, a chord tone of each bar's chord (the "3").
+
+**Judge it by ear:** loop and tap "nice cup of tea". If your "cup" and "of" don't match the pluck and bass, one of them is off the grid. **If you're stuck:** mute the pluck until drums + bass feel steady, then add it back.
+
 ```exercise
 {
   "id": "e4-daw-poly",
@@ -144,6 +160,12 @@ This is optional. Nothing later in the course depends on it; enjoy the trick.
 
 ## Ear review
 
+**Method** (see the *How to do it* box): whatever your rung, find beat ONE first and count to the next ONE; for drum grids, one voice per pass.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 15, "intro": "Rhythm at your current rung (the 4/4-or-5/4 rung opened last lesson is on this ladder)." }
 ```
+
+## Between lessons
+
+Tap "nice cup of tea" with both hands on your knees for a minute a day, then try keeping it going while a 3/4 or 6/8 song plays.

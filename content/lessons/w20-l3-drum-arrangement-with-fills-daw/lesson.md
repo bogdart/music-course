@@ -41,6 +41,16 @@ Here are 8 bars: a verse groove on closed hats, a one-beat fill in bar 4, a chor
 }
 ```
 
+### Try it
+
+1. Play the example and count bars out loud on every beat 1: "ONE two three four, TWO two three four…".
+2. Listen for the moment the groove *stops* being a groove — that's the fill. Say the bar number.
+3. Listen to the next beat 1: do you hear the crash splash together with the kick?
+
+**Check:** a short burst at the end of bar 4, a longer one filling bar 8's second half; a crash on beat 1 of bar 5, and the bright ride from there on.
+
+**If you can't hear it yet:** follow the piano roll while it plays — the fill is where the hat row goes empty and the snare and tom rows fill up. Then play it again with your eyes closed and point when it comes.
+
 **Keep a groove library.** Save every groove you like as a named 2-bar clip ("pop verse 100", "chorus ride", "half-time bridge"). From now on, start songs by pulling grooves from the library instead of an empty grid.
 
 ```exercise
@@ -81,7 +91,7 @@ Here are 8 bars: a verse groove on closed hats, a one-beat fill in bar 4, a chor
 }
 ```
 
-Review drills: the drum grid, then the bass under chords.
+Review drills: the drum grid, then the bass under chords. Method for both (also in each drill's *How to do it* box): one thing per pass. For drums: snare, then kick, then hats. For the bass: ignore the chords, listen to the lowest sound, find its first note on the keyboard by searching up or down, then the next one.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Review: fill in the drums you hear, at your current rung." }
@@ -90,6 +100,17 @@ Review drills: the drum grid, then the bass under chords.
 ```ladder
 { "skill": "roots", "unlocks": 13, "intro": "Review: play the bass notes of the chords — the part you are about to write." }
 ```
+
+### Making the 8 bars
+
+1. Pull a verse groove from week 14 or lesson 1 (or program one bar: kick 1 and 3, snare 2 and 4, eighth hats). Copy it to bars 1–4.
+2. Copy bar 1 to bar 5, swap hats for ride, add a crash with the kick on beat 1. Copy to bars 5–8.
+3. Only now write the fills: bar 4, beat 4 (two snares, two toms); bar 8, beats 3–4 (snares then toms).
+4. Play from bar 3 to bar 6 on a loop — that's where the arrangement lives or dies.
+
+**Judge it by ear:** close your eyes; does bar 5 feel like "a new room"? Does the fill make you expect something?
+
+**If you're stuck:** if the fill sounds like a stumble, it's probably too busy — delete every second hit. If the landing is weak, check that beat 1 of the next bar has *both* kick and crash.
 
 ```exercise
 {
@@ -136,3 +157,7 @@ Review drills: the drum grid, then the bass under chords.
   }
 }
 ```
+
+## Between lessons
+
+In one song you like, count bars and mark where the fills fall (usually just before bar 1 of a new section). Save the two grooves you made today in your groove library.

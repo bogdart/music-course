@@ -48,6 +48,18 @@ Listen: bars 1–2 are a normal beat, bars 3–4 the same beat in half-time, sam
 { "title": "Trap, 140 BPM, half-time", "bpm": 140, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "drums", "seq": "[kick hihat]:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 [clap snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16 | [kick hihat]:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 [clap snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 hihat:16 hihat:16" } ], "show": ["pianoroll"], "loop": true }
 ```
 
+### Try it: read a groove in three questions
+
+Use this on the loops below, and later on any song:
+
+1. **Count the cracks per bar.** Count "1 2 3 4" along and raise a finger on each snare/clap. Two per bar (on 2 and 4) = normal feel; one (on 3) = half-time.
+2. **Is there a thud on every beat?** Tap your foot with the kick. If your foot never stops — 1, 2, 3, 4 — it's four-on-the-floor (house).
+3. **How fast are the ticks?** Two per beat = 8ths; four per beat, a blur = 16ths.
+
+**Check:** on the trap example you should count one crack per bar, a blur of ticks, and an uneven, stop-start kick.
+
+**If you can't hear it yet:** play the "Normal, then half-time" example and tap the table on every crack. In bars 3–4 your hand waits twice as long between taps — that waiting *is* half-time, even if the loop just sounds "emptier".
+
 ```exercise
 {
   "id": "genre-listen-hidden",
@@ -92,7 +104,9 @@ Listen: bars 1–2 are a normal beat, bars 3–4 the same beat in half-time, sam
 }
 ```
 
-This lesson opens the grid rung with a third voice: the hi-hat, the high "tss" that ticks through the bar. The drill runs at your current rhythm rung.
+This lesson opens the grid rung with a third voice: the hi-hat, the high "tss" that ticks through the bar.
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): three passes, one drum each — snare (crack), then kick (thud), then hats (tick) — and replay for every pass. Hats are usually regular, so after two boxes you can often guess the rest, then check on the next replay. If the drill is still on an earlier rhythm rung, its own box has the method for that one.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Opens: the hi-hat joins the grid — kick, snare and hat. The drill runs at your current rhythm rung." }
@@ -125,7 +139,7 @@ This lesson opens the grid rung with a third voice: the hi-hat, the high "tss" t
   "title": "Program a half-time trap groove",
   "spec": {
     "template": { "bpm": 140, "key": "C", "tracks": [ { "instrument": "drums", "seq": "" } ] },
-    "task": "4 bars of trap: snare and clap on beat 3 only (nothing on 2 or 4), closed hats on every 16th, and 2-3 kicks per bar, one of them on beat 1 and at least one off the beat. Play it and nod on the snare: does it feel like about 70 BPM?",
+    "task": "4 bars of trap: snare and clap on beat 3 only (nothing on 2 or 4), closed hats on every 16th, and 2-3 kicks per bar, one of them on beat 1 and at least one off the beat. Play it and nod on the snare: does it feel like about 70 BPM? If it feels busy instead of heavy, remove kicks until each bar has only 2-3; if it feels fast, check that nothing is left on beats 2 and 4.",
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "kickOnBeats": [1], "snareOnBeats": [3], "hatOn": "16", "forbid": { "snare": [2, 4] }, "track": 0 },
@@ -135,3 +149,7 @@ This lesson opens the grid rung with a third voice: the hi-hat, the high "tss" t
   }
 }
 ```
+
+## Between lessons
+
+Run the three questions (cracks per bar, thud on every beat, how fast the ticks) on two songs from different genres. Write down each recipe in one line.

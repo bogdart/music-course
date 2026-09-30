@@ -40,7 +40,16 @@ The DAW timer covers minutes 10–40 (30 minutes).
 
 ## The seed — by ear
 
-Your seed hook arrives the way ideas arrive: as sound. Transcribe it first.
+Your seed hook arrives the way ideas arrive: as sound. Transcribe it first (timebox: 10 minutes, including learning it).
+
+1. **Home.** Loop it and listen to the last note of each bar. Search for that note on the keyboard (higher/lower from
+   the middle of the keyboard). Check: hold the key down while the loop plays — home sounds settled, not rubbing.
+2. **First note.** Search for the very first note the same way. Check: play it right after the loop starts; it should
+   merge with the recording.
+3. **The path.** Chunk it: bar 1, then bar 2. For each move ask *up or down, step or jump?* and let your fingers
+   follow. Check: play the chunk along with the loop; a wrong note sticks out — move it one key and try again.
+4. **Stuck?** Get the first and last note of each chunk right and guess the middle. A near-miss here costs nothing:
+   you reveal it next anyway.
 
 ```example
 {
@@ -94,13 +103,22 @@ Your seed hook arrives the way ideas arrive: as sound. Transcribe it first.
 
 ## Harmonise it in two minutes
 
-Use the transcriber's trick in reverse: look at the note on each bar's downbeat and list the chords of the key that
-contain it. For example, a bar starting on E in A major could take A (A C# E), C#m (C# E G#) or E (E G# B). Do the same for
-each bar of your seed — the quiz below walks you through the first two — pick one chord per bar, try the options against
-the hook and keep the one you like; any of them can make a song. Continue with two more bars (often IV and V) and repeat.
+Use the transcriber's trick in reverse: find chords that contain the note on each bar's downbeat.
 
-For the verse, keep the chords and *change the arrangement*: melody lower, fewer notes, no drums or half the drums.
-Contrast from density is faster than contrast from new material.
+1. **List candidates.** For each bar, take its first note and list the chords of the key that contain it. Example: a
+   bar starting on E in A major could take A (A C# E), C#m (C# E G#) or E (E G# B). The quiz below does the first two
+   bars with you.
+2. **Try each one.** Loop the hook, hold one candidate chord under that bar, then the next. Keep the one that makes the
+   hook sound supported; if two sound fine, take the first — any of them can make a song.
+3. **Fill 8 bars.** Repeat the 2-bar hook with its chords, then add two more bars (IV and V are the safe first try)
+   and repeat all four. Check: loop the chorus four times — if the hook still pleases you on the fourth, keep it.
+4. **Bass.** Play each chord's root, low, on the bass track. Check: solo bass and piano; a wrong root sounds like the
+   chord has lost its floor.
+5. **Verse.** Keep the chords and *change the arrangement*: melody lower, fewer notes, no drums or half the drums.
+   Check: jump from verse to chorus — the chorus should feel like it opens up. If it doesn't, thin the verse further.
+
+**Stuck on a chord?** Use I, IV, V or vi only. **Stuck on the verse melody?** Play the hook's rhythm on one or two
+low notes (home and 5). Contrast from density is faster than contrast from new material.
 
 ```exercise
 {
@@ -161,6 +179,15 @@ Contrast from density is faster than contrast from new material.
 }
 ```
 
+## Close: melody drill
+
+Same method as the seed: find the first note by searching, then follow up/down and step/jump in chunks, checking each
+chunk against the replay. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "melody", "unlocks": 19, "intro": "Two minutes of melody at your own rung before you close the session."}
 ```
+
+## Between lessons
+
+Listen once to the 16 bars without editing — ideally on another device (phone, speaker) — and add one line to your notes.

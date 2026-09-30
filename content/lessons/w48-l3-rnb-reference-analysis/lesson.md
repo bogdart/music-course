@@ -47,6 +47,13 @@ next chord. Here is one in C major, shown (this is the explanation): the E7 in b
 Where a secondary dominant sits, and which chord it points to, varies from song to song. Now a hidden loop in F major:
 listen to each chord's colour, not just its bass note.
 
+1. Find the four bass notes (low key, higher/lower until it merges). *Check:* play them in a row along with the loop.
+2. On each bass note play the minor 7 and the dominant 7 (or maj7) along with the loop; keep the one that blends.
+3. Compare with the key: a chord that comes out *major/dominant* where F major would give a minor chord is your
+   secondary-dominant candidate. *Check:* listen for one note that rises by a half step into the next chord.
+
+Stuck on a chord? Loop that bar and play the two candidates back to back, then commit.
+
 ```exercise
 {
   "id": "w48l3-loop",
@@ -73,13 +80,24 @@ listen to each chord's colour, not just its bass note.
 }
 ```
 
+Before the drill: the same routine — bass note first, then colour (a surprise major chord that pushes somewhere is a
+secondary dominant). The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "progressions", "unlocks": 20, "intro": "Secondary dominants are rungs 15–17; at your own rung."}
 ```
 
 ## Three records, verdict first
 
-Your own copies; answer, then read.
+Your own copies; answer, then read. For each record:
+
+1. **Home** — loop the intro or first verse; find the note the tune or bass keeps returning to by searching on your
+   keyboard, and hold it low under the record. *Check:* it sounds like it could ring forever.
+2. **The loop** — count chords until it repeats. Find each bass note on the keyboard.
+3. **Colour** — on each bass note play major, minor, then the seventh chords, along with the record; keep what blends.
+4. **Layers** — one pass just for percussion and bass.
+
+Stuck? Loop two bars, compare two candidates back to back, and answer anyway.
 
 ```exercise
 {
@@ -135,6 +153,15 @@ Your own copies; answer, then read.
 }
 ```
 
+## Your sketch, step by step
+
+1. Write the 4-bar chord loop first in the epiano: start from the soul loop you just played, moved to E♭ (Fm7 – B♭7 –
+   E♭maj7 – C7), or your own with one secondary dominant. *Check:* loop it — the secondary dominant should push into
+   the next chord.
+2. Move each chord change to the "and" of 4. *Check:* it should feel like leaning forward, not late.
+3. Drums: hats, snare on 2 and 4, then a pushed kick. Bass: roots, sharing some kicks.
+4. A short lead melody last; copy the 4 bars to make 8.
+
 ```exercise
 {
   "id": "w48l3-daw",
@@ -170,3 +197,8 @@ Your own copies; answer, then read.
   }
 }
 ```
+
+## Between lessons
+
+Play the soul loop with a pushed feel once a day. Listen to one soul song and find just its home and the colour of its
+first two chords.

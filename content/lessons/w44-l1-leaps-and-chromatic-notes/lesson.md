@@ -15,17 +15,26 @@ tags: [transcription, melody, intervals, chromatic, ear]
 
 # Melody Dictation — Leaps and Chromatic Notes
 
-Pass 5 is melody. This week builds it up the way real dictation works: **2 bars** today, **4 bars** next lesson,
-**8 bars** in lesson 3 — always in chunks, never the whole thing at once. Two things make real melodies harder than the
-drills: **leaps** (the tune jumps and you lose your place) and **chromatic notes** (a note outside the key breaks your
-degree map). Both have a fix.
+Pass 5 is melody, built up in chunks: **2 bars** today, **4** next lesson, **8** in lesson 3. Two things make real
+melodies harder than the drills: **leaps** (you lose your place) and **chromatic notes** (a note outside the key). Both
+have a fix.
 
 ## Leaps land on chord tones
 
 A melody rarely leaps to a random note. It leaps to the **root, 3rd or 5th of the current chord**, the stable notes. So
 when you hear a leap, don't measure the interval first. Ask: *which chord are we on (you know that from pass 4), and which
-of its three notes did the tune land on?* That's a three-way choice, not a twelve-way one. Use the interval only to
-confirm. If you get lost entirely, re-anchor: hum home, then walk up or down to the note.
+of its three notes did the tune land on?* That's a three-way choice, not a twelve-way one.
+
+What to do with the keyboard when a leap loses you:
+
+1. Loop the bar. Play the chord's three notes one at a time, **while** the leap note sounds.
+2. The one that merges into a single sound with it is your note. Check: play your note an octave up and down — one of
+   them should match the tune's height exactly.
+3. Still lost? Play home, then step up or down from it until you hit the note — slow, but it always works.
+
+For the drill: the interval ladder mixes up, down and together. Sort by size first (step, skip, leap, big leap), then
+pick within the group, and count keys to check. The *How to do it* box under the drill shows the exact method for your
+current rung.
 
 ```ladder
 {
@@ -46,10 +55,22 @@ When a note doesn't fit the major scale, pop melodies mostly use one of three (t
 
 "A half step below 5" is ♯4; "a half step above 2" is ♭3. The note it resolves to tells you which it was.
 
+On the keyboard: a chromatic note shows up as "my note sounds bent". Try the white key you guessed, then the black key on
+each side of it, back to back with the loop. Check: play the next note too — a chromatic note almost always moves to its
+neighbour by a half step. If the black key plus its half-step move sounds like the tune, you have it.
+
 ## A hidden 4-bar melody
 
-The chords are given (pass 4 done): **C – Am – F – G**, one per bar. Answer the questions first, then transcribe it in two
-chunks of two bars.
+The chords are given (pass 4 done): **C – Am – F – G**, one per bar, in C major. Answer the questions first, then
+transcribe it in two chunks of two bars, with the melody method from week 41:
+
+1. **First note.** Loop the chunk, play keys around the tune's height, go higher/lower until one merges with the first
+   note. Check: play it along with the loop's first beat.
+2. **Path.** For each next note ask two questions: up or down? step or leap? Play that move. Check: replay the loop and
+   play along — a wrong key sticks out.
+3. **Chunks of 2–4 notes.** Get the first few right, then add the rest. Stuck on one note? Loop, guess the two likeliest
+   keys, compare them back to back against the loop, keep the better one.
+4. After answering, reveal and listen while looking at the notation — especially at the notes you missed.
 
 ```exercise
 {
@@ -129,6 +150,10 @@ chunks of two bars.
 }
 ```
 
+## Your own level: melody
+
+Same method as the chunks above. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "melody",
@@ -155,3 +180,8 @@ chunks of two bars.
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. Then pick any tune you know well, loop its first two bars in your head and find them on the
+keyboard: first note by search, then the path.

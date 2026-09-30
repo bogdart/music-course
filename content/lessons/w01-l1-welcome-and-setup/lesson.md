@@ -7,39 +7,55 @@ phase: p1
 duration_min: 30
 goals:
   - Connect the MIDI keyboard (or use the on-screen / computer keyboard) and hear sound
-  - Find your way around the keyboard using the groups of two and three black keys
-  - Hear and say whether a note is high or low
+  - Find C on the keyboard using the groups of two and three black keys
+  - Tell whether a second note goes up or down, checking with your hand and the keyboard
 prerequisites: []
 tags: [setup, keyboard, pitch, ear]
 ---
 
 # Welcome
 
-This course takes you from zero to writing and decoding real songs in one year. Each week has three short lessons: one for **understanding**, one for **hands and ears**, and one for **making something**. Every session starts with a short warm-up the app picks for you, so what you learn keeps coming back until it sticks.
+This course takes you from zero to writing and decoding real songs. You never need to sing: every answer is a key on
+the keyboard or a click.
 
-You don't need talent to start. You need a keyboard, headphones or speakers, and about 30–50 minutes three times a week. You never need to sing: every answer is given on the keyboard or with a click.
+**Pace.** Week 1 has five short lessons, because the ear needs solid ground before anything else. It may well take
+you two calendar weeks — that's fine. The pace follows your ear, not the calendar.
 
 ## How ear training works here
 
-Hearing is a skill that grows at its own speed, so ear drills don't follow the calendar. Each ear skill is a **ladder** of small steps (rungs). Lessons open new rungs; you climb to the next one only when the current one is solid. So a drill in a lesson is always at *your* level, even if the lesson has moved on. You'll meet the first ladder next lesson.
+Each ear skill is a **ladder** of small steps (rungs). Lessons *open* rungs; you *climb* by practising, and move up
+only when the current rung is solid (about 85% over two sessions). So an ear drill is always at *your* level. Every
+drill has a **How to do it** box: a concrete method with your hands and ears. Read it before the first question —
+the method is the lesson.
 
 ## Step 1: make a sound
 
-Plug in your MIDI keyboard, open **Settings → MIDI** and pick your device (or leave it on "all devices"). No keyboard at hand? Click the on-screen keys, or use your computer keys: `z x c v b n m ,` play the white keys. Press any key. If you hear a note, you're ready.
+Plug in your MIDI keyboard, open **Settings → MIDI** and pick your device. No keyboard at hand? Click the on-screen
+keys below, or use your computer keys (`z x c v b n m ,` are white keys). Press any key. If you hear a note, you're
+ready.
 
-## Step 2: the map on your keyboard
+## Step 2: find C
 
-A piano keyboard looks like a long row of identical keys, but it has a pattern that repeats: **black keys come in groups of two and three**. That pattern is your map. Everything else on the keyboard is found by looking at it.
+Black keys come in **groups of two and three**. That pattern repeats along the whole keyboard and is your map. The
+white key just **left of a group of two** is **C**. The C near the middle is {{note:C4}} (*middle C*).
 
 ```keyboard
-{ "range": ["C3", "C5"], "highlight": ["C#3", "D#3", "C#4", "D#4"], "labels": "none" }
+{ "range": ["C3", "C5"], "highlight": ["C3", "C4", "C5"], "labels": "none" }
 ```
 
-The highlighted keys are groups of **two** black keys. The white key just to the left of each group of two is called **C**. The C nearest the middle of a full piano is called {{note:C4}}, also known as *middle C*. On your small keyboard, it is probably the C near the middle.
+## Step 3: up and down
 
-## Step 3: high and low
+Moving **right** on the keyboard makes the sound **higher**; moving **left** makes it **lower**. How high or low a
+note is, is its [[pitch]].
 
-Moving **right** makes the sound **higher**; moving **left** makes it **lower**. How high or low a sound is called its [[pitch]]. Listen to the same kind of note played low, then in the middle, then high:
+**Try it** (on the keyboard above or your own):
+
+1. Play the leftmost key, then the rightmost. The first is low and heavy, the second high and thin.
+2. Play C4, then C5. As the second note sounds, **lift your hand** a little. Then C4, then C3: **drop your hand**.
+3. Now play C4, then any key further right, without looking which: lift your hand. Your hand is saying "up".
+
+One honest warning: some beginners mix up *higher* with *louder* or *brighter*. Higher means only one thing here:
+further right on the keyboard.
 
 ```example
 {
@@ -50,11 +66,44 @@ Moving **right** makes the sound **higher**; moving **left** makes it **lower**.
 }
 ```
 
-Low notes feel heavy and dark, like a big drum or a deep voice. High notes feel light and bright, like birdsong. This difference is easy on purpose: we start with what everyone hears and make it subtler step by step.
+### Check it
 
-In the two listening drills below, each question first plays **middle C** as a reference, then one mystery C. Compare it with the reference: is the mystery note the low one or the high one?
+Each pair below is two notes. Play it, move your hand with the notes, then answer: did the second note go up or down?
 
-## Drills
+```exercise
+{
+  "id": "e7",
+  "type": "listen",
+  "title": "Up or down?",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C3:h C5:h" } ] },
+      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G5:h C3:h" } ] },
+      { "title": "Pair 3", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:h G5:h" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 0, "explain": "C3 then C5: two octaves up." },
+      { "q": "Pair 2: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 1, "explain": "G5 then C3: a long way down." },
+      { "q": "Pair 3: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 0, "explain": "C4 then G5: up." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** play both notes yourself. Start on middle C and try keys to the left and right until
+one sounds like the second note; if it's to the right of C, the answer is "up". That always works, and doing it a
+few times is how the ear learns.
+
+## Your first ladder: pitch
+
+The drill plays two notes far apart: higher or lower? Open **How to do it** and use it: replay, follow with your
+hand, and check on the keyboard whenever you're unsure. Checking is not cheating — it's practice.
+
+```ladder
+{ "skill": "pitch", "unlocks": 1, "intro": "Two notes far apart: did the second one go up or down?" }
+```
+
+## Hands
 
 ```exercise
 {
@@ -65,8 +114,7 @@ In the two listening drills below, each question first plays **middle C** as a r
     { "q": "Black keys are grouped in…", "choices": ["twos and threes", "fours", "random groups"], "answer": 0, "explain": "The 2-3 pattern repeats across the whole keyboard." },
     { "q": "Where is C?", "choices": ["Just left of a group of two black keys", "Just right of a group of three black keys", "Between the two black keys"], "answer": 0 },
     { "q": "Moving to the right, notes get…", "choices": ["lower", "higher", "louder"], "answer": 1 },
-    { "q": "How many black keys in each smaller group?", "choices": ["1", "2", "3"], "answer": 1 },
-    { "q": "What do we call how high or low a sound is?", "choices": ["volume", "pitch", "tempo"], "answer": 1 },
+    { "q": "You can't tell if a note went up or down. What works?", "choices": ["Guess", "Find it on the keyboard: right of the first note = higher"], "answer": 1 },
     { "q": "Middle C is also called…", "choices": ["C4", "C1", "C8"], "answer": 0 }
   ] },
   "passScore": 0.75
@@ -90,33 +138,9 @@ In the two listening drills below, each question first plays **middle C** as a r
   "id": "e3",
   "type": "play-notes",
   "title": "Every C, low to high",
-  "instructions": "Play the three Cs on your keyboard from left to right.",
+  "instructions": "Play the three Cs from left to right. Lift your hand a little with each one: up, up.",
   "count": 6,
   "spec": { "prompt": "names", "notes": ["C3", "C4", "C5"], "ordered": true, "key": "C" }
-}
-```
-
-```exercise
-{
-  "id": "e4",
-  "type": "ear-octave",
-  "title": "High or low? (big gap)",
-  "instructions": "You'll hear one C. Is it the low one (2) or the high one (5)?",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "notes": ["C"], "octaves": [2, 5], "mode": "which-octave" }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-octave",
-  "title": "High or low? (smaller gap)",
-  "instructions": "Same idea, but the notes are closer together now: low (3) or high (5)?",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "notes": ["C"], "octaves": [3, 5], "mode": "which-octave" }
 }
 ```
 
@@ -129,4 +153,9 @@ In the two listening drills below, each question first plays **middle C** as a r
 }
 ```
 
-That's lesson one. Next time: why three Cs that sound so different share one name — and what you can honestly expect to hear of that in the first weeks.
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes (the Practice page picks your current rung). Replay every pair
+  and move your hand; check on the keyboard after each wrong answer.
+- Ready for lesson 2 when most pairs feel easy. The **pitch** bar on the dashboard shows when rung 1 is mastered;
+  lesson 2 keeps practising the same skill, so you don't have to wait for that.

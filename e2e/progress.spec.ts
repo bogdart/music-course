@@ -15,7 +15,7 @@ const all = lessons();
 const first = all[0]!;
 const quizLesson = all.find((l) => l.exercises.some((e) => e.type === 'quiz'))!;
 const quizEx = quizLesson.exercises.find((e) => e.type === 'quiz')!;
-const earUse = all.flatMap((l) => l.exercises.filter((e) => e.type.startsWith('ear-') && canAnswer(e.type) && e.srs !== false).map((e) => ({ l, e })))[0]!;
+const earUse = all.flatMap((l) => l.exercises.filter((e) => e.type.startsWith('ear-') && canAnswer(e.type) && e.srs !== false && !e.spec.example).map((e) => ({ l, e })))[0]!;
 
 /** Practice page → the review-card stage (ends a ladder session first when lessons opened ladders). */
 async function toReviewCards(page: import('@playwright/test').Page) {
@@ -51,9 +51,8 @@ test('fresh profile: Dashboard offers to start the first lesson', async ({ page 
 });
 
 test('Practice: empty state when nothing is due', async ({ page }) => {
-  await goto(page, '/practice');
-  await expect(page.getByText(/No ear-training ladders are open yet/)).toBeVisible();
-  await page.getByRole('button', { name: 'Review cards' }).click();
+  // (an earlier test opened lesson 1, so its ladder may already be open: skip past the ladder session)
+  await toReviewCards(page);
   await expect(page.getByText('Nothing due right now')).toBeVisible();
   await page.getByRole('button', { name: 'Check again' }).click();
   await expect(page.getByText('Nothing due right now')).toBeVisible();

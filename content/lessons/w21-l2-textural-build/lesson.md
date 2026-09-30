@@ -43,6 +43,8 @@ Verses often use one of them, sparsely; choruses often use both (comping for dri
 }
 ```
 
+**Try it:** play the example and tap the table whenever a chord *starts*. **Check:** in bars 1–4 you tap once per bar (then just wait); in bars 5–8 your hand is busy, and mostly *between* your foot's beats. **If you can't hear it yet:** hold an A minor chord on your keyboard for four beats, then play it as short stabs on the "ands" — the first sits still, the second moves. That's the whole difference.
+
 ```exercise
 {
   "id": "play-comping",
@@ -82,6 +84,16 @@ Here are 8 bars that add one layer every two bars:
   "loop": false
 }
 ```
+
+### Try it: hearing entrances
+
+1. Play the build above and count bars out loud ("ONE two three four, TWO…").
+2. Listen for one thing per pass: first *when does something low join?* (the bass), then *when do the drums start?*, then *when does a wide, soft layer appear on top?* (the pad).
+3. Note each answer as a bar number, then check against the piano roll.
+
+**Check:** bass at bar 3, kick and hats at bar 5, full drums and pad at bar 7.
+
+**If you can't hear it yet:** keep your eyes on the piano roll the first time — each track's notes begin where it enters. Then listen again eyes closed and raise a finger at each entrance. Now do the same, without looking, on the hidden build below.
 
 ```exercise
 {
@@ -124,7 +136,9 @@ Put on each song (any streaming service), listen with the questions in mind, ans
 
 ## Ear: naming chords through a band
 
-Last lesson the bass drill moved into a small band; this lesson opens the same step for the progression drill: name the chords (I, ii, IV, V, vi) while drums, pad, bass and a melody play. Use last lesson's trick — find the bottom floor first, the bass usually gives you the root. The drill runs at your current progression rung, which may still be an earlier one.
+Last lesson the bass drill moved into a small band; this lesson opens the same step for the progression drill: name the chords (I, ii, IV, V, vi) while drums, pad, bass and a melody play. The drill runs at your current progression rung, which may still be an earlier one.
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): focus on the bass under the band. Find home first; then name each chord by its bass note (which degree?) and its colour (major or minor). ii is the minor chord with the bass on degree 2. If a chord is unclear, replay and play the bass note you think you hear on the keyboard.
 
 ```ladder
 { "skill": "progressions", "unlocks": 14, "intro": "Opens: name the chords (I, ii, IV, V, vi) with the whole band playing. The drill runs at your current progression rung." }
@@ -134,6 +148,10 @@ Last lesson the bass drill moved into a small band; this lesson opens the same s
 
 When a second line (strings, backing vocals) follows the lead, it usually sits a 3rd or a 6th away, so the two always sound together. You met harmonic intervals in week 10: a 3rd or 6th sounds sweet and blended, a 5th or octave more hollow. You'll use this for counter-melodies next lesson.
 
+**Try it:** on your keyboard play C4 + E4 together (a 3rd), then C4 + A4 (a 6th), then C4 + G4 (a 5th), each for two seconds. **Check:** the 3rd is close and warm, the 6th sweet but wider and more open, the 5th hollow. **If you can't hear it yet:** don't judge sweetness — play the pair, then play its two notes one after the other: small step apart = 3rd, clearly wide = 6th. Then play them together again and connect the sound to what you just found.
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): first ask "one note, hollow pair or sweet pair?" (octave, 5th, 3rd); when the choice is 3rd vs 6th, ask "close and warm, or wide and open?" and then "brighter or darker?" for major vs minor.
+
 ```example
 { "title": "A tune alone, then with a second line a 3rd below", "bpm": 80, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "lead", "seq": "E4:q F4:q G4:q E4:q | D4:h C4:h | E4:q F4:q G4:q E4:q | D4:h C4:h" }, { "instrument": "strings", "seq": "r:w | r:w | C4:q D4:q E4:q C4:q | B3:h A3:h" } ], "show": ["staff"], "loop": false }
 ```
@@ -141,6 +159,8 @@ When a second line (strings, backing vocals) follows the lead, it usually sits a
 ```ladder
 { "skill": "intervals", "unlocks": 18, "intro": "Opens: two notes at once — first 3rd, 5th or octave, then 3rds against 6ths. The drill runs at your current interval rung." }
 ```
+
+**Making the 16 bars.** Write the map first — five rows, four columns (bars 1–4, 5–8, 9–12, 13–16). Build each part as one 4-bar clip and copy it. **Judge it by ear:** play from bar 1 to the end without stopping; each new block should feel bigger than the last, and bar 13 the biggest. **If you're stuck:** if bar 13 doesn't lift, the drop in bar 12 is probably missing, or the pad sits too low — move it above the comping.
 
 ```exercise
 {
@@ -167,3 +187,7 @@ When a second line (strings, backing vocals) follows the lead, it usually sits a
   }
 }
 ```
+
+## Between lessons
+
+Pick one song and draw its arrangement map for the first minute: sections across, the instruments you hear down. Count bars; one instrument per pass.

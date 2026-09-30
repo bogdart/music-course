@@ -19,7 +19,7 @@ songs:
 
 # Bass Lines of Named Songs
 
-Some songs are *built* on their bass line: hum the bass and people recognise the song. Today you study three of them as
+Some songs are *built* on their bass line: play just the bass and people recognise the song. Today you study three of them as
 [[reference track]]s, [[verdict first]]. The app never plays them — open your own copy (streaming is fine), listen with one question at a
 time, and **answer the quiz before you read anything about the song**. The facts are in the explanations, revealed after
 you commit. We don't reproduce these bass lines; each archetype gets an original line so you can hear and play the idea.
@@ -84,6 +84,14 @@ transcribe it below.
 }
 ```
 
+How to take it down:
+
+1. Loop the slowed version. First just count: how many notes in bar 1, where are the gaps?
+2. Find the first note with higher/lower searching in the low keys. *Check:* it melts into the bass.
+3. Follow the rest one note at a time: up or down, step or jump? Minor-pentatonic riffs use few notes, so once you
+   have three or four of them, try those first.
+4. *Check:* play the whole riff along with the loop. If one note rubs, loop that half-bar and try its neighbours.
+
 ```exercise
 {
   "id": "w42l3-riff",
@@ -107,7 +115,15 @@ transcribe it below.
 
 ## Three records, verdict first
 
-Listen to each song at least twice before answering. First time: just enjoy it. Second time: bass only.
+The app doesn't play these, so use your own player and the keyboard:
+
+1. **First listen:** just enjoy it.
+2. **Home:** hold candidate notes under the chorus and the intro. Home sounds settled throughout; others lean.
+3. **Bass:** replay the first 10–20 seconds a few times. Find beat 1's bass note by higher/lower searching in the low
+   keys, then the next one. *Check:* play them along with the record.
+4. **Tempo:** tap your foot, then count beats for 15 seconds and multiply by four.
+
+Answer each quiz only after these passes.
 
 ```exercise
 {
@@ -117,7 +133,7 @@ Listen to each song at least twice before answering. First time: just enjoy it. 
   "spec": {
     "questions": [
       {"q": "Where is home?", "choices": ["A", "E", "F#", "D"], "answer": 0, "explain": "A: the song keeps coming to rest there."},
-      {"q": "Hum the bass note at the start of each bar through the intro. How many different notes before the pattern starts again?", "choices": ["2", "3", "4", "6"], "answer": 2, "explain": "Four: A – F# – D – E, then back to A. The song cycles I – vi – IV – V – I in A major."},
+      {"q": "Find the bass note at the start of each bar through the intro on the keyboard. How many different notes before the pattern starts again?", "choices": ["2", "3", "4", "6"], "answer": 2, "explain": "Four: A – F# – D – E, then back to A. The song cycles I – vi – IV – V – I in A major."},
       {"q": "Which archetype is it?", "choices": ["Outlining ostinato", "Running figure", "Riff as hook"], "answer": 0, "explain": "An outlining ostinato: one repeating figure spelling each chord, carrying the whole form while voices and strings are added on top."},
       {"q": "Tap along. Roughly how fast?", "choices": ["About 80", "About 118", "About 150", "About 170"], "answer": 1, "explain": "About 118 BPM."}
     ]
@@ -154,6 +170,9 @@ Listen to each song at least twice before answering. First time: just enjoy it. 
   }
 }
 ```
+
+Before the drill: lowest sound only, find home first, then search each bass note from the last one and check by
+playing along. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 {"skill": "roots", "unlocks": 15, "intro": "One more round of bass hearing at your own rung."}
@@ -218,3 +237,8 @@ Listen to each song at least twice before answering. First time: just enjoy it. 
   }
 }
 ```
+
+## Between lessons
+
+Play the running figure along with its example once a day. Pick a fourth bass-driven song you like and find its first
+four bass notes on the keyboard.

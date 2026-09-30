@@ -18,23 +18,23 @@ tags: [transcription, rnb, groove, rhythm, syncopation, daw]
 What makes *Velvet* feel like R&B rather than a jazz ballad is the groove. R&B lives on the 16th grid, with notes landing
 just before or just after the beat.
 
-## The pocket
+## The pocket, one layer per pass
 
-The [[pocket]] is how kick, bass and snare lock together. Two features define it here:
+The [[pocket]] is how kick, bass and snare lock together. In R&B some notes land a 16th or an eighth *before* the beat
+(the pushed kick from week 45), and the bass shares some kicks but not all. Transcribe it like this:
 
-- **The pushed kick** — a kick that lands a 16th or an eighth *before* a beat instead of on it, leaning the groove
-  forward (groove B, week 45). Which beat it leans into, and by how much, is what you transcribe.
-- **A bass that shares some kicks, not all.** Transcribe the kick first; then for each bass note ask: *with the kick, or
-  between?*
+1. **Grid.** Loop the slowed rhythm section and count "1 e & a 2 e & a…" out loud — four syllables per beat. Tap your
+   foot on the numbers only. *Check:* the snare should land on your "2" and "4".
+2. **Kick.** Listen only for the low thump. For each kick, say which syllable it falls on. Write it down as, e.g.,
+   "1, a(1), &3". *Check:* tap your written kicks along with the loop; if a tap comes late or early, move it one
+   syllable.
+3. **Bass.** For each bass note ask one question: *with a kick, or between kicks?* Mark it on the same list.
+4. **Keys.** Where is the chord change actually *heard* — on the "1", or a little before? Count it; write it there.
 
-## Chord anticipations
+Stuck? Slow down (the example is already slowed), loop one bar, and tap your guess against it until it lines up.
 
-The keys often arrive on the next chord *before* the bar line instead of on it — the harmonic version of the melodic
-anticipation from week 44. Count where the change is actually *heard* and write it there, or your rebuild will feel
-square.
-
-Real records add two things our track can't show well: **swing** (16ths played long–short) and **ghost notes** (very
-quiet snare taps between the backbeats). When you hear them in a reference, note them in words on your form map.
+Real records add **swing** (16ths played long–short) and **ghost notes** (very quiet snare taps between the
+backbeats). When you hear them in a reference, note them in words on your form map.
 
 ```exercise
 {
@@ -103,9 +103,21 @@ quiet snare taps between the backbeats). When you hear them in a reference, note
 }
 ```
 
+## Ear: rhythm at your level
+
+Routine: keep your foot on the beat, count the subdivisions out loud, and place each note on a syllable. The *How to do
+it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "rhythm", "unlocks": 16, "intro": "Rhythm and drum grids at your own rung."}
 ```
+
+## Rebuild the pocket
+
+1. Hats first (steady 16ths, open hat at the end of each bar), then snare on 2 and 4.
+2. Kick from your written list. *Check:* play yours against the original; if the groove leans differently, one kick is
+   on the wrong 16th — solo drums in both and compare bar 1.
+3. Bass from your notes and your with/between list. *Check:* mute the kick and listen to bass alone against the original.
 
 ```exercise
 {
@@ -163,3 +175,7 @@ quiet snare taps between the backbeats). When you hear them in a reference, note
   }
 }
 ```
+
+## Between lessons
+
+Pick an R&B song and write only its kick on the "1 e & a" grid for one bar. Tap it along with the record to check.

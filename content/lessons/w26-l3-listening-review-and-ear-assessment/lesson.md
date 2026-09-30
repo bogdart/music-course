@@ -46,10 +46,25 @@ it shows exactly where each skill is. Rungs you haven't mastered stay in your Pr
 where they get better, not by repeating them now. Two ladders open one more rung today:
 
 - **Scale colours** — four scales in one set: major, minor, Dorian and Mixolydian. In week 22 you heard them
-  only in pairs on the same root (major vs Mixolydian, minor vs Dorian). Listen for two things: is the 3rd
-  bright or dark, then is the 7th (or the 6th) the usual one or the altered one?
-- **Melodies** — eight-note phrases with freer rhythm. Longer phrases are mostly a memory task: sing or hum
-  along silently in your head, and chunk the melody into two halves of four.
+  only in pairs on the same root.
+- **Melodies** — eight-note phrases with freer rhythm. Longer phrases are mostly a memory task.
+
+### Try it (before the scales drill)
+
+1. Play C major, then C Mixolydian (B♭ instead of B), up the scale. Then C minor, then C Dorian (A instead of A♭).
+2. Now play just four notes of each: **1 – 3 – 6 – 7**, then 8. The 3rd tells bright or dark; the 6 or 7 tells
+   plain or altered.
+3. Ask yourself two questions per scale, in order: *bright or dark?* then *plain, or one odd note near the top?*
+
+**Check:** you can sort the four scales you play yourself with those two questions.
+
+**If you can't hear it yet:** on each question in the drill, after the scale ends, play C–E and C–E♭ on your
+keyboard and pick the one that matches the start of the scale. That answers the first question; guess the
+second, then compare after answering.
+
+**Methods** (also in each drill's *How to do it* box): scales — bright/dark first, then Mixolydian's bluesy 7
+or Dorian's hopeful 6. Melodies — chunk the eight notes into two phrases of four; get the first four right on
+the keyboard, then the second four.
 
 If a drill starts at a lower rung than the one opened, that is the ladder doing its job.
 
@@ -96,6 +111,18 @@ Your first "take a song apart" task, and a preview of Phase 5. The song is 8 bar
 hidden. Work in this order: **tempo and groove → form → bass → chords**. Answer each question before you look at
 anything; the facts appear after you answer.
 
+How to work each step:
+
+1. **Tempo:** tap a finger on every beat for 10 seconds and count the taps; multiply by 6.
+2. **Groove:** one pass for the snare only (the sharp crack). Count "1 2 3 4" aloud and note which numbers it lands on.
+3. **Form:** listen to the melody only. Does anything come back?
+4. **Bass:** one bar at a time. Stop after bar 1, find the deepest note on your keyboard (try keys until one
+   merges with it), write it down, then bar 2. The key is D major, so start your search from D.
+5. **Chords:** your bass notes are the roots. Turn each into a roman numeral in D (D = I, E = ii…).
+
+**If you're stuck on a bar:** play the notes you found for the bars on either side, then try the notes of the
+D major scale one by one against the stuck bar until one sounds settled under it.
+
 ```exercise
 {
   "id": "mystery-listen",
@@ -139,6 +166,13 @@ anything; the facts appear after you answer.
 Now rebuild it — and make it yours. Program what you heard (the backbeat groove, the bass, the chords), then
 write **your own** 8-bar melody over it instead of the original. This is the week's DAW task.
 
+1. Drums, bass and pad first, from your answers. Loop them and play the mystery song alongside: they should match.
+2. Melody: start with a 2-bar idea on chord tones, repeat it in bars 5–6 with a change (like the original does).
+3. End on a note of the A chord (A, C♯ or E) so the last bar stays open.
+
+**Judge it by ear:** does your melody still make sense with the pad muted? Does the last bar feel like a question?
+**If you're stuck:** use only D, E, F♯, A and B for the first four bars — it can't clash.
+
 ```exercise
 {
   "id": "daw-rebuild-mystery",
@@ -178,3 +212,7 @@ projects; you will come back to them.
   "spec": { "prompt": "Which ladder surprised you today — higher or lower than you expected? In the mystery song, what did you get wrong at first, and what finally made you hear it?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Keep your usual Practice sessions going — the rungs opened today live there. Replay the mystery song once and play its bass line from memory.

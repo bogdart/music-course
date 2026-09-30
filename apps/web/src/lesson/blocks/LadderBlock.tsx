@@ -62,6 +62,10 @@ export function LadderBlock({ data, record = true }: { data: LadderData; record?
           <span className="muted"> · last {Math.min(status.attempts, MASTERY.window)}: {Math.round(status.recent * 100)}%</span>
         )}
       </p>
+      <details className="ladder-how" open={!status || status.attempts < 20}>
+        <summary>How to do it</summary>
+        <p className="small">{rung.how}</p>
+      </details>
       <ExerciseShell key={rung.id} block={rung.block} lessonId={LADDER_LESSON_ID} record={record} onComplete={() => void load()} />
     </div>
   );

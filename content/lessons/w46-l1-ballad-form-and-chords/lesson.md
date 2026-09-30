@@ -69,9 +69,17 @@ An original in the style. Form: Verse – Verse – Chorus – Chorus, each a 4-
 
 ## Passes 1–3 on the verse
 
-Hum home first — and remember that the first chord proves nothing: listen for where the tune and the harmony come to
-rest at the end of a phrase (loop both sections above). Then follow the *lowest* note of the piano — it moves once per
-bar. For each bass note, ask afterwards: is it the root of the chord above, or another chord tone under it?
+The week 41 method, with a check after each step:
+
+1. **Home.** Loop both sections above. The first chord proves nothing: listen for where the tune comes to rest at the
+   end of a phrase, and find that note by keyboard search. Test your candidates by holding each one low under the loop
+   — home sounds settled throughout, the others sound like they're waiting. Check: the song's last chord should feel
+   finished on it.
+2. **Bass.** Follow the *lowest* note of the piano — it moves once per bar. Play a low key, go higher or lower until it
+   merges with that thump. Check: play the four notes along with the loop.
+3. **Root or not?** For each bass note, play the chord's candidates on top of it (start with the chord built on the bass
+   note itself). If it sounds settled, the bass is the root; if the chord sounds right only with a different root, the
+   bass is another chord tone — a slash chord.
 
 ```exercise
 {
@@ -155,8 +163,15 @@ bar. For each bass note, ask afterwards: is it the root of the chord above, or a
 
 ## Pass 4 on the chorus
 
-The chorus arrives with drums and strings. Find the four bass notes, predict the numerals from the key, then decide the
-colour of each chord: plain triad or seventh? The palette offers both for every chord.
+The chorus arrives with drums and strings.
+
+1. Find the four bass notes as above and predict the numerals from the key (count each bass note up from E♭).
+2. **Major or minor?** Play the major and the minor triad on that root along with the loop; keep the one that blends.
+   Check: it should match the numeral you predicted (ii, iii, vi minor; I, IV, V major).
+3. **Triad or seventh?** Play your triad with the loop, then add the 7th on top. If the chord in the song sounds softer,
+   dreamier or rounder than your triad, and the 7th blends in, it's a seventh chord. The palette offers both.
+
+Stuck: loop one bar, compare the two candidates back to back, guess, and let the answer teach you.
 
 ```exercise
 {
@@ -184,6 +199,9 @@ colour of each chord: plain triad or seventh? The palette offers both for every 
   }
 }
 ```
+
+For the drill: the same bass search — lowest thump, low key, higher or lower until it merges, then check it under the
+chord. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 {"skill": "roots", "unlocks": 15, "intro": "Bass hearing at your own rung."}
@@ -215,3 +233,7 @@ colour of each chord: plain triad or seventh? The palette offers both for every 
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. Finish the form map of Paper Lanterns so far; next lesson adds bass and melody.

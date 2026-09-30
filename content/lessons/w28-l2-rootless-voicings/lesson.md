@@ -46,7 +46,17 @@ As with shells, you **alternate** forms through a ii–V–I, so the hand stays 
 }
 ```
 
-**An honest listening note.** Play these voicings without the bass and they sound vague: F A C E on its own could be an F major 7 as easily as a Dm9. With the bass underneath they lock into place. The bass decides what the chord *is*; the piano adds the colour.
+**An honest listening note.** Without a bass these voicings sound vague: F A C E on its own could be Fmaj7 as easily as Dm9. The bass decides what the chord *is*; the piano adds the colour.
+
+### Try it
+
+1. Play F3 A3 C4 E4 alone. Then hold it and add D2 with your left hand. Then swap D2 for F2.
+2. Same four notes on top, two different chords underneath: listen to how the mood changes with the bass note.
+3. Play the example with the bass track, then play the three right-hand voicings alone.
+
+**Check:** with D below, the chord feels softer and minor-ish (Dm9); with F below, brighter and settled (Fmaj7). Same right hand.
+
+**If you can't hear it yet:** play the bass note first, let it ring, then add the voicing on top. Giving the bass a head start makes it the "floor" your ear hears the rest from.
 
 ```keyboard
 { "range": ["C3", "C5"], "highlight": ["F3", "A3", "B3", "D4"], "labels": "names", "colors": { "F3": "seventh", "A3": "other", "B3": "third", "D4": "fifth" } }
@@ -116,6 +126,8 @@ That is B-form G9: F (7th), A (9th), B (3rd), D (5th). Later you may hear pianis
 
 ## Ear review
 
+Methods (also in each drill's *How to do it* box): for chord colours, bright/dark first, then the finer choice. For the bass drill, ignore everything above the bass: listen to the deepest, thumping sound, tap your foot with it, then find its notes one at a time on the keyboard. The drills run at your current rungs, which may be earlier ones.
+
 ```ladder
 { "skill": "chords", "unlocks": 13, "intro": "Seventh colours at your level, including spread-out voicings." }
 ```
@@ -123,3 +135,7 @@ That is B-form G9: F (7th), A (9th), B (3rd), D (5th). Later you may hear pianis
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Follow the bass: it is the part that tells a rootless chord what it is; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+Play the rootless ii–V–I (A → B → A) with the bass note in your left hand, once a day. Try it starting from B-form too.

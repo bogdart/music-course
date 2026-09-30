@@ -66,12 +66,38 @@ The name "dominant" comes from where this chord lives in a key: on degree 5, the
 
 ## Your ear: two small steps
 
-This lesson opens two chord rungs, both two-way choices (the drill runs at your current chord rung, so you'll meet them once major, minor and diminished are solid):
+This lesson opens two chord rungs, both two-way choices: **triad or seventh?** (a plain major triad or the dominant 7) and **major 7 or dominant 7?** (both have a major triad underneath). Minor 7 comes at the end of this week.
 
-1. **Triad or seventh?** A plain major triad, or the dominant 7 (the same triad plus the restless tritone). Ask yourself: is there an extra, unsettled note on top?
-2. **Major 7 or dominant 7?** Both have a major triad underneath. Listen for the kind of tension: the tight, shimmering rub of the maj7, or the "question mark" of the dominant 7.
+### Try it: add the 7th yourself
 
-Minor 7 comes at the end of this week.
+1. Play C E G and hold it. Now add **B♭** on top. Take it away, add it again. Listen to what changes: with B♭ the chord stops sounding finished and seems to lean forward, a little bluesy.
+2. Hold C E G again and add **B** instead. Swap between B and B♭ several times. B makes a tight, shimmering rub right under the top C; B♭ sounds rougher and more restless.
+3. Play the three chords in a row with your eyes closed: C, C7, Cmaj7. Say "rest", "leans on", "dreamy".
+
+Check: three chords on C.
+
+```exercise
+{
+  "id": "e4", "type": "listen", "title": "Check: triad, 7 or maj7?",
+  "instructions": "Play each chord, then play your guess yourself right after it and compare.",
+  "spec": {
+    "examples": [
+      { "title": "Chord 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[C3 E3 G3 Bb3]:w" } ] },
+      { "title": "Chord 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[C3 E3 G3]:w" } ] },
+      { "title": "Chord 3", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[C3 E3 G3 B3]:w" } ] }
+    ],
+    "questions": [
+      { "q": "Chord 1 is…", "choices": ["C (triad)", "C7", "Cmaj7"], "answer": 1, "explain": "C7: C E G B♭. The restless, bluesy lean comes from E–B♭, a tritone." },
+      { "q": "Chord 2 is…", "choices": ["C (triad)", "C7", "Cmaj7"], "answer": 0, "explain": "The plain triad C E G: nothing leans, it just rests." },
+      { "q": "Chord 3 is…", "choices": ["C (triad)", "C7", "Cmaj7"], "answer": 2, "explain": "Cmaj7: C E G B. The B rubs gently against the octave above C: soft, dreamy." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** compare, don't remember. Replay the question, then play C E G yourself on the same root, then C E G B♭, then C E G B. The one that sounds like the replay wins. If the drill's chord is on another root, find its lowest note first (search low keys), build the triad on it, and add the two candidate 7ths yourself.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): for triad or seventh, ask "does it want to go somewhere?" A plain triad rests; the dominant 7 has a bluesy edge and pulls on. For maj7 or 7: dreamy and soft (maj7) or bluesy and restless (7). The drill runs at your current chord rung, so you'll meet these once major, minor and diminished are solid.
 
 ```ladder
 { "skill": "chords", "unlocks": 4, "intro": "Opens \"Triad or seventh?\" and \"Major 7 or dominant 7\"; the drill runs at your current rung." }
@@ -118,8 +144,25 @@ Only one of them is a dominant 7: the chord on degree 5, **G7**. The chords on 1
 
 ## Ear corner: the big intervals together
 
-The 7ths inside these chords are the intervals from week 10. This lesson opens one more interval rung that mixes all the big ones you've met: **tritone, minor and major 6th, minor and major 7th, and the octave**, all going up. Size first: is it a bit more than a fifth (tritone, 6ths), nearly an octave (7ths), or the octave itself? Then the details. The drill runs at your current interval rung, so you'll meet this mix once the 6ths, 7ths and tritone are solid on their own.
+The 7ths inside these chords are the intervals from week 10. This lesson opens one more interval rung that mixes the big ones: **tritone, minor and major 6th, minor and major 7th, and the octave**, all going up.
+
+### Try it: measure against the octave
+
+1. Play C4 then C5: the octave, "the same note again". Then C4 to B4 (major 7th) and C4 to B♭4 (minor 7th): both land just short and feel unfinished.
+2. C4 to A4 and C4 to A♭4: the 6ths, clearly short of the octave, sweet (A) or yearning (A♭).
+3. C4 to F♯4: the tritone, the unstable middle.
+
+**If you can't hear it yet:** after the question, play its first note and then its octave yourself. Was the question's jump the same, a little shorter, clearly shorter, or much shorter? Then play the two candidates in that size class from the same first note and pick the match.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill): start from the octave you can already hear. The jump is the octave, a bit less (7ths), clearly less (6ths) or the unstable middle (tritone); then pick between the two candidates. The drill runs at your current interval rung, so this mix comes once 6ths, 7ths and the tritone are solid on their own.
 
 ```ladder
 { "skill": "intervals", "unlocks": 12, "intro": "Opens \"Big intervals, up\" (TT, 6ths, 7ths, P8); the drill runs at your current rung." }
 ```
+
+## Between lessons
+
+- **3 minutes:** on C, F and G, play triad → 7 → maj7 → m7, saying the name of each, then eyes closed in random order.
+- **2 minutes:** the seventh chords of C (Cmaj7 to Am7), root position, right hand.
+- **2 minutes:** from any note, play its octave, then the 7ths and 6ths below that octave, in that order.
+- One chords session and one intervals session on the Practice page.

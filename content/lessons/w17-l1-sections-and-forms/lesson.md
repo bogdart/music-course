@@ -38,8 +38,20 @@ Verse and chorus differ through four levers you already know: **register** (chor
 
 ## Listen: one verse, one chorus
 
-"Paper Boats" is an original 8-bar sketch: bars 1–4 are a verse, bars 5–8 a chorus. Listen first, then watch the
-piano roll on a second play: the melody jumps up at bar 5 and the hi-hat switches from quarters to eighths.
+"Paper Boats" is an original 8-bar sketch: bars 1–4 are a verse, bars 5–8 a chorus.
+
+### Try it
+
+1. Play it once and only count bars aloud ("one-two-three-four, two-two-three-four…"). Say "now" when you feel the
+   music change gear.
+2. Play it again and listen to the **hi-hat only** (the ticking on top): does it tick slower or faster after the change?
+3. Play it a third time and watch the piano roll: where does the melody's line jump up?
+
+**Check:** the change is at bar 5 — the melody jumps up to G–C and the hi-hat doubles from quarters to eighths.
+
+**If you can't hear it yet:** put a finger on the piano roll and follow the top track; then play E4 (where the verse
+sits) and C5 (where the chorus sits) on your keyboard, one after the other. That height jump is what "the chorus
+lifts" means.
 
 ```example
 {
@@ -110,7 +122,19 @@ Because the tempo stays the same through a song, it is one of the first facts yo
 The method: tap along with the beat — the kick-and-snare pulse you'd nod your head to — on the tap pad or space bar
 for a few bars; the tap-tempo helper turns your taps into a number. The classic trap is tapping twice as fast (every
 hi-hat) or half as fast (every snare only). The drill tells you when that happens; both answers are "the same groove",
-but songs are labelled by the pulse you'd nod to. Here is one groove at 70 and then at 120:
+but songs are labelled by the pulse you'd nod to. Here is one groove at 70 and then at 120.
+
+### Try it
+
+1. Play the 70 BPM version and tap once per kick or snare hit — not per hi-hat tick. Say the count "1-2-3-4" as you tap.
+2. Now play the 120 BPM version and do the same. It should feel almost twice as quick.
+3. Compare each with a clock in your head: 70 is a little slower than one tap per second, 120 is two per second.
+
+**Check:** tapping the 70 version, your tap lands a little more slowly than one per second; if you were tapping
+about twice per second, you were following the hi-hat — halve it.
+
+**If you can't hear it yet:** turn on the DAW metronome at 60 and tap with it for ten clicks, then 120 for ten clicks.
+Keep those two feels as your rulers; every tempo you meet is "slower than 60", "between" or "faster than 120".
 
 ```example
 {
@@ -129,6 +153,10 @@ but songs are labelled by the pulse you'd nod to. Here is one groove at 70 and t
   "loop": false
 }
 ```
+
+**Before the drill** (the same method sits in the *How to do it* box next to it): tap along for a few seconds with the
+pulse you'd nod your head to, let the tapper measure, then sanity-check against 60 = one per second. If the drill
+shows an earlier rhythm rung, its own box has the method for that one.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 12, "intro": "Opens: tap along with a drum groove and estimate its BPM - within 8 either way counts. The drill runs at your current rhythm rung." }
@@ -149,11 +177,21 @@ possible.
 }
 ```
 
-Verses and choruses often reorder the same four chords, so keep your ear on progressions too:
+Verses and choruses often reorder the same four chords, so keep your ear on progressions too. Method (see the
+*How to do it* box): find home first, then follow the bass note of each chord and name its role.
 
 ```ladder
 { "skill": "progressions", "unlocks": 11, "intro": "Review: name the chords at your current rung." }
 ```
+
+**Make the chorus lift — the procedure:**
+
+1. Enter the bass first: half-note roots A, F, C, G in bars 1–4, quarter-note roots C, G, A, F in bars 5–8.
+2. Play it back before touching the drums. Already a small lift? Good — the bass rhythm alone does part of the job.
+3. Change the hi-hats in bars 5–8 to eighths, keep kick and snare as they are.
+4. **Judge it by ear:** loop bars 3–6. The moment bar 5 arrives should feel like "more", not "different song".
+5. **If you're stuck:** if nothing lifts, check the bass track really has four notes per bar in bars 5–8; if it lifts
+   too much (sounds frantic), keep the bass busier but the hi-hats on quarters.
 
 ```exercise
 {
@@ -187,3 +225,8 @@ Verses and choruses often reorder the same four chords, so keep your ear on prog
   "spec": { "prompt": "Pick a song you know well. Write its sections in order as you remember them (intro, verse, chorus...). Where does the energy jump most? What changes at that moment - the melody, the drums, the number of instruments?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Pick one song a day, tap its tempo for ten seconds, and note where the first chorus starts (in seconds). Two
+minutes each.

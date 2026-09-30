@@ -41,6 +41,16 @@ Look again: **C major pentatonic and A minor pentatonic are the same five notes*
 
 What you should hear: the pentatonic run has two small jumps where the scale "skips" a note, and it sounds a bit more open and folk-like. If it just sounds "shorter" to you, that's a perfectly good start.
 
+### Try it
+
+1. Play C D E F G A B C on your keyboard, slowly, one key per beat. Then play C D E G A C.
+2. Play them again and watch your fingers: in the pentatonic run you jump over a key twice (E→G, A→C).
+3. Now close your eyes and replay the example above. Listen for those two jumps — a little "skip" in the middle and a bigger stride at the top.
+
+**Check:** you can say *where* in the run the skips are (middle and top), not just that one run is shorter.
+
+**If you can't hear it yet:** play only the top half of each run — G A B C against G A C. The B→C half step at the top is a tiny, squeezed step; the A→C jump is a clear stride. Once that is obvious, go back to the full runs.
+
 ## Why it's hard to play wrong
 
 Degrees 4 and 7 are the notes that clash most when held over chords: 4 rubs a half step against the 3rd of the I chord, 7 a half step against its root. Pentatonic simply leaves them out. The remaining five notes sit well over I, IV and vi, so you can wander through most of a progression. One spot to watch: over V, degree 1 (C in C major) sits a half step above the chord's 3rd (B), so don't hold it there. Even so, it is the easiest scale for hooks, riffs and your first solos.
@@ -117,9 +127,21 @@ The first phrase of "Amazing Grace" uses only G major pentatonic — G A B D E:
 }
 ```
 
+## Seven notes or five? — the drill
+
+The method (also in the *How to do it* box next to the drill): don't try to judge the "mood" — count the jumps. A run with small, even steps all the way has seven notes; a run with two little skips in it is pentatonic. Replay freely. If the drill is still on an earlier scales rung, its own box explains that one.
+
 ```ladder
 { "skill": "scales", "unlocks": 9, "intro": "Opens: seven notes or five? Major against major pentatonic on the same root. The drill runs at your current scales rung." }
 ```
+
+## Make it: an 8-bar pentatonic melody
+
+1. Loop the template and play only A C D E G along with it — no plan, just two minutes of noodling. Keep anything that makes you want to repeat it.
+2. Pick one 2-bar idea you liked. Record or draw it into bars 1–2.
+3. Bars 3–4: the same rhythm, different notes (or the same notes, different ending). Bars 5–8: repeat 1–4 and change only the last bar so it lands on A.
+4. **Judge it by ear:** loop it three times. Does the last note feel finished? Does any held note rub against the chord? A rub over bars 4 and 8 is almost always a C against the G chord — move it to D or G.
+5. **If you're stuck:** take the A minor pentatonic melody above, keep its rhythm, and change two notes per bar.
 
 ```exercise
 {
@@ -144,3 +166,7 @@ The first phrase of "Amazing Grace" uses only G major pentatonic — G A B D E:
   }
 }
 ```
+
+## Between lessons
+
+Five minutes: play A minor pentatonic up and down, then noodle over any looped chord from the DAW using only those five notes. Do one Practice session.

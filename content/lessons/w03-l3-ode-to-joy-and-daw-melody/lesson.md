@@ -21,10 +21,39 @@ Beethoven's "Ode to Joy" (1824) is one of the most famous melodies ever written,
 
 ## Degrees without the drone
 
-Last lesson's degree drill held a low C underneath. This lesson opens the rung that takes it away: after the home run, the note sounds alone, and you keep home "in your ear" from the run. It's noticeably harder — expect to drop a little when you get there. The drill runs at your current rung, so if the drone rungs aren't solid yet you'll stay with them first.
+The next degree rung takes the low C away: after the home run, the note sounds alone, and you keep home "in your
+ear" from the run. It's noticeably harder — expect to drop a little when you get there.
+
+**Try it:**
+
+1. Play the home run (C D E F G F E D C) and stop on the long C.
+2. Wait two seconds, then play D4. Now walk it home yourself: D → C. One step: degree 2.
+3. Home run again, then E4, walk home: E → D → C. Two steps: degree 3.
+
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "No drone: 1, 2 or 3?",
+  "instructions": "Answer, then check on the keyboard: find the note and walk it down to C, counting steps.",
+  "spec": {
+    "examples": [
+      { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | D4:w" } ] },
+      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" } ] }
+    ],
+    "questions": [
+      { "q": "Clip 1: the last note is degree…", "choices": ["1", "2", "3"], "answer": 1, "explain": "D = 2: one step above home." },
+      { "q": "Clip 2: the last note is degree…", "choices": ["1", "2", "3"], "answer": 2, "explain": "E = 3: two steps above home." }
+    ]
+  }
+}
+```
+
+**If you lose home:** press the drill's reference replay, or play C yourself right after the question note. The
+keyboard answer (find the key: C D E = 1 2 3) is always allowed.
 
 ```ladder
-{ "skill": "degrees", "unlocks": 3, "intro": "Opens \"1, 2 or 3?\" without the drone; the drill runs at your current rung." }
+{ "skill": "degrees", "unlocks": 3, "intro": "Degrees 1–3 at your current rung — with or without the low C." }
 ```
 
 ## The tune in degrees
@@ -51,7 +80,11 @@ The long-short rhythm in bars 4 and 8 is a dotted quarter plus an eighth: hold t
 
 ## Writing degrees down
 
-This lesson also opens a melody rung where you **write** what you hear as numbers instead of playing it back: three notes from 1, 2 and 3. You'll meet it once the echo rungs before it are solid. If it helps, find the notes on the keyboard first, then translate C D E into 1 2 3.
+The next melody rung asks you to **write** what you hear as numbers instead of playing it back: three notes from
+1, 2 and 3. The practical way is two steps: play it back on the keyboard first (as in the echo drill), then
+translate what your fingers did — thumb, index, middle = 1, 2, 3.
+
+**Try it:** play E D C and say "3 2 1"; play C D C and say "1 2 1".
 
 ```ladder
 { "skill": "melody", "unlocks": 5, "intro": "Opens \"Write 3 notes as degrees\"; the drill runs at your current melody rung." }
@@ -129,3 +162,9 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
   }
 }
 ```
+
+## Between lessons (and the end of week 3)
+
+- Two **Practice** sessions of about 10 minutes.
+- Play Ode to Joy lines 1–2 once a day; say the degrees of line 1 as you play.
+- Ready for week 4 when the dashboard doesn't say **practise first**.

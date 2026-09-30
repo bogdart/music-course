@@ -109,7 +109,7 @@ test('/dev/demo renders every block type client-side and records no progress', a
   await expect(page.getByTestId('coming-soon')).toHaveCount(0);
   await expect(page.getByTestId('block-error')).toHaveCount(0);
   const quiz = page.locator('section.exercise[data-type="quiz"]');
-  await quiz.getByRole('button', { name: 'Reveal' }).click();
+  await quiz.getByRole('button', { name: 'Reveal', exact: true }).click();
   await expect(quiz.locator('.feedback')).toBeVisible();
   await page.waitForTimeout(300);
   expect(posts).toEqual([]);

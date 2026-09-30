@@ -252,6 +252,16 @@ const dawTask: Answerer = async (page, section, it, correct) => {
 export const ANSWERERS: Record<string, Answerer> = {
   'ear-note': choiceByValue,
   'ear-octave': async (page, section, it, correct) => {
+    if (it.mode === 'seek') {
+      // press the exact key (right) or its neighbour (wrong); the search keyboard shows only the range
+      // right: the exact key first time; wrong: use up the allowed tries on other keys of the range
+      const m = it.midis[0] as number;
+      const [lo, hi] = it.range as [number, number];
+      const others = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).filter((k) => k !== m);
+      await claimFocus(section);
+      await pressNotes(page, section, correct ? [m] : Array.from({ length: it.limit as number }, (_, i) => others[i % others.length]!));
+      return;
+    }
     if (it.mode !== 'find') return choiceByValue(page, section, it, correct);
     // play the heard note in another octave (right) or a half step off (wrong)
     const m = it.midis[0] as number;
@@ -478,7 +488,7 @@ export async function revealAll(page: Page, id: string): Promise<string | null> 
   const section = exerciseLocator(page, id);
   for (let i = 0; i < total; i++) {
     await waitForIndex(page, id, i);
-    await section.getByRole('button', { name: 'Reveal' }).click();
+    await section.getByRole('button', { name: 'Reveal', exact: true }).click();
     await expect(section.locator('.feedback')).toContainText('Answer:');
     await next(page, id);
   }

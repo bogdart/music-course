@@ -94,6 +94,8 @@ The verse starts every phrase on the "and" of 1 and rests at the end of each bar
 
 ## Ear
 
+Progressions: find home first, then follow the bass and name each chord by its role and colour. Melody play-back: directions first, first note by searching, then the path. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "A topliner hears the track's chords first — progressions at your current rung." }
 ```
@@ -103,6 +105,13 @@ The verse starts every phrase on the "and" of 1 and rests at the end of each bar
 ```
 
 ## Make it
+
+1. Loop the track. Tap three different verse rhythms on one key (D4) — one talky, one sparse, one starting on the "and". Keep the one that makes you want to hear the next bar.
+2. Do the same for the chorus with longer notes, and copy one bar's rhythm so it repeats.
+3. Now pitches, verse first: start on a chord tone (D, F♯ or A over D), move mostly by step, stay D4–A4.
+4. Chorus: shift everything up — start around A4, reach B4 or D5 once.
+5. **Check by ear:** play verse then chorus. Does the chorus feel like it *lifts*? If not, raise it further or lengthen its notes. Does any long note sound sour against the chord? Move it one key to a chord tone.
+6. Stuck on pitches? Keep your rhythm and use only D, F♯ and A — then change one note at a time.
 
 ```exercise
 {
@@ -133,3 +142,7 @@ The verse starts every phrase on the "and" of 1 and rests at the end of each bar
   }
 }
 ```
+
+## Between lessons
+
+Play any pop track and tap along the vocal rhythm only on one key; notice where phrases start relative to beat 1.

@@ -46,7 +46,15 @@ Look closely at the keyboard: between **E and F** and between **B and C** there 
 
 ## Hearing the difference
 
-A half step sounds **tight** — the second note seems squeezed right up against the first. A whole step sounds more **open**: a clear step, like the E → D → C steps of "Hot Cross Buns" and "Mary Had a Little Lamb" from week 1 — each of those steps is a whole step. The difference is small, so listen to them in pairs from the same note:
+A half step tends to sound **squeezed** — the two notes almost touch. A whole step has a little **air** between them.
+The difference is small, so always compare them from the same starting note.
+
+**Try it:**
+
+1. Play C4 → C♯4 (half), then C4 → D4 (whole). Twice each.
+2. Same from G4: G4 → G♯4, then G4 → A4.
+3. Now play E4 → F4. No black key between: which one does it sound like — the squeezed pair or the airy one?
+   (Half step: it's the squeezed one.)
 
 ```example
 {
@@ -57,15 +65,69 @@ A half step sounds **tight** — the second note seems squeezed right up against
 }
 ```
 
-In the app, a half step is labelled **m2** and a whole step **M2** (minor and major second — the reason comes in week 5). Your interval ladder starts here, with exactly this pair.
+### Check it
 
-```ladder
-{ "skill": "intervals", "unlocks": 1, "intro": "Two notes going up: a half step (squeezed) or a whole step (open)?" }
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "Squeezed or airy?",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "F4:h G4:h" } ] },
+      { "title": "Pair 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "B3:h C4:h" } ] },
+      { "title": "Pair 3", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h E4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 1, "explain": "F → G, a whole step (F♯ in between)." },
+      { "q": "Pair 2:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 0, "explain": "B → C, a half step (no black key between)." },
+      { "q": "Pair 3:", "choices": ["half step (squeezed)", "whole step (airy)"], "answer": 1, "explain": "D → E, a whole step." }
+    ]
+  }
+}
 ```
 
-## Find the note you hear
+**If you can't hear it yet:** you can always get the answer by hand. Find both notes with the pitch search, then
+count: a key right next door (nothing between) = half step; one key skipped = whole step. Do that after every
+unsure answer and the sound starts to attach to the picture. Hearing this pair reliably takes most beginners
+several weeks.
 
-This lesson also opens a new kind of octave rung (you'll meet it once the earlier octave rungs are solid): you hear **one** note and play it on your keyboard. Any octave counts. The simplest way in: find the key at about the same height first — the exact same note is always right. If it's too high or low for your keyboard, the same letter an octave closer counts too. If your first try is wrong, the app tells you and you can try again; only the first try counts toward the ladder.
+In the app, a half step is labelled **m2** and a whole step **M2** (minor and major second — week 5 explains the
+names). Your interval ladder starts with exactly this pair.
+
+```ladder
+{ "skill": "intervals", "unlocks": 1, "intro": "Two notes going up: a half step (squeezed) or a whole step (airy)?" }
+```
+
+## Searching with black keys
+
+The pitch search now includes the black keys: twelve keys from C4 to B4. The method barely changes: **search the
+white keys first.** If the note is higher than one white key and lower than the next, it's the black key between
+them.
+
+**Try it** — the mystery note is **F♯4** (shown on purpose): start on F4 (a bit low → right), G4 (a bit high →
+back). Too low on F, too high on G: it's the black key between, F♯4. Play it after the mystery note: same note
+twice.
+
+```example
+{
+  "title": "Guided search: the mystery note is F♯4",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "F#4:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+```ladder
+{ "skill": "pitch", "unlocks": 9, "intro": "Pitch at your current rung — up to finding the note among all twelve keys." }
+```
+
+## Find it in any octave
+
+A new kind of octave rung (you'll meet it once the earlier octave rungs are solid): you hear **one** note, possibly
+very low or high, and play the same letter **in any octave**. The practical way: search at about the same height
+first, as in the pitch drill. If the note seems to sit off the edge of your keyboard, find the key that *blends*
+with it best, then try the same letter 12 keys up or down.
 
 ```example
 {
@@ -77,7 +139,7 @@ This lesson also opens a new kind of octave rung (you'll meet it once the earlie
 ```
 
 ```ladder
-{ "skill": "octave", "unlocks": 5, "intro": "Opens \"Find it on your keyboard\"; the drill runs at your current octave rung." }
+{ "skill": "octave", "unlocks": 5, "intro": "Octaves at your current rung — up to 'find it on your keyboard, any octave'." }
 ```
 
 ## Hands
@@ -140,3 +202,10 @@ This lesson also opens a new kind of octave rung (you'll meet it once the earlie
   "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random" }
 }
 ```
+
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes. After each unsure half/whole-step answer, find both notes and
+  count the keys.
+- Once a day, one minute: play half and whole steps up from random white keys and say "squeezed" or "airy".
+- Ready for the next lesson when the dashboard doesn't say **practise first**.

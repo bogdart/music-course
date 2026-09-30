@@ -48,7 +48,15 @@ A genre's rhythmic fingerprint is mostly three choices: **tempo**, **where the k
 }
 ```
 
-Michael Jackson's *Billie Jean* (1982) opens with almost exactly this kind of beat: kick, snare on 2 and 4, steady eighth hats. Put it on and tap the snare along: proof that a simple beat played perfectly is enough.
+Michael Jackson's *Billie Jean* (1982) opens with a beat of this family: kick on 1 and 3, snare on 2 and 4, steady hats. Put it on and tap the snare along: proof that a simple beat played perfectly is enough.
+
+### Try it: be the drummer
+
+1. Left hand on your thigh = kick, right hand on the table = snare. Count "1 2 3 4" aloud: left on 1 and 3, right on 2 and 4. Loop it until it's boring.
+2. Add the rock example's extra kick: left hand also on the "&" of 2 ("1 2-&-3 4"). Say "boom, crack-boom-boom, crack".
+3. Loop the example and play along with your hands. Then on the keyboard, play a low G with every kick (left hand) instead of your thigh.
+
+**If you lose the backbeat:** stop tapping and only count aloud with the example, saying "2" and "4" louder. Then add just the right hand on the loud numbers.
 
 ```exercise
 {
@@ -86,9 +94,38 @@ Slower, heavier, and the kick moves *off* the beat: here on 1, the "&" of 2 and 
 }
 ```
 
+### Try it: move the kick
+
+1. Hands again: right hand snare on 2 and 4, left hand kick on 1 only. Count eighths aloud: "1 & 2 & 3 & 4 &".
+2. Add left-hand kicks on the "&" of 2 and the "&" of 3: "**1** & 2 **&** 3 **&** 4 &". The kick now lands *between* the snare and the count, which is what makes it feel heavy and late.
+3. Play along with the boom-bap example, then with the rock example. Notice that in rock the kick on 3 lands with your count; in boom bap it doesn't.
+
+Check: answer, then read the explanation.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: where is the kick?",
+  "instructions": "Count 1 & 2 & 3 & 4 & aloud. Listen only to the low drum.",
+  "spec": {
+    "examples": [
+      { "title": "Beat 1", "bpm": 90, "timeSig": "4/4", "loop": true, "hidden": true, "tracks": [ { "instrument": "drums", "seq": "[kick hh]:8 hh:8 [snare hh]:8 [kick hh]:8 hh:8 [kick hh]:8 [snare hh]:8 hh:8" } ] },
+      { "title": "Beat 2", "bpm": 110, "timeSig": "4/4", "loop": true, "hidden": true, "tracks": [ { "instrument": "drums", "seq": "[kick hh]:8 hh:8 [snare hh]:8 hh:8 [kick hh]:8 hh:8 [snare hh]:8 hh:8" } ] }
+    ],
+    "questions": [
+      { "q": "Beat 1: is there a kick on 3?", "choices": ["Yes, on 3", "No, just after it (on the '&')"], "answer": 1, "explain": "Kicks on 1, the '&' of 2 and the '&' of 3: boom bap. Tap it with your left hand to check." },
+      { "q": "Beat 2: the kick plays on…", "choices": ["1 and 3", "between the beats"], "answer": 0, "explain": "1 and 3, with the snare on 2 and 4: the plain rock/pop beat." }
+    ]
+  }
+}
+```
+
+**If you can't pick out the kick:** tap your left hand on 1 and 3 while the beat plays. If a kick sounds just after your tap on 3 instead of with it, that kick is on the "&".
+
 **Hearing grooves in real songs.** Put on any song and listen in three passes. 1: tap your foot and feel the tempo (fast, medium, slow). 2: follow only the lowest drum: does the kick sit on 1 and 3, on every beat, or between the beats? 3: listen high: is the hi-hat in eighths or sixteenths, straight or swung? Three answers usually name the genre, and tell you how to rebuild the beat.
 
-This lesson opens one more rhythm rung: two bars with sixteenths. The drill runs at your current rhythm rung.
+This lesson opens one more rhythm rung: two bars with sixteenths.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): chunk it. Replay and get bar 1 right first, counting "1 e & a" aloud; then bar 2; keep counting through both, even through rests. Tap *Mixing values* from lesson 1 once more as a warm-up if you like. The drill runs at your current rhythm rung.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 11, "intro": "Opens: tap back two bars with sixteenths. The drill runs at your current rhythm rung." }
@@ -136,3 +173,10 @@ Each loop is 4 bars. Start with the drums, then the bass, then the chords. If ti
   }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** hand-drumming: rock (kick 1 & 3, snare 2 & 4), then boom bap (kick 1, &2, &3), counting aloud.
+- **Listening, one song a day:** the three passes — tempo, where the kick sits, what the hi-hat does. Write the three answers down.
+- Finish whichever DAW loop didn't fit today.
+- One rhythm session on the Practice page.

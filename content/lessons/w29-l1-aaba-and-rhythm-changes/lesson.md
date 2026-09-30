@@ -28,7 +28,17 @@ Most jazz standards come from 1920s–50s songwriting, and the favourite form wa
 
 ## Find the bridge
 
-Below is a whole 32-bar chorus of rhythm-changes chords, with no melody. Don't count bars from the start; just listen for the moment the chords stop repeating their pattern and do something new, and for when the old pattern comes back.
+Below is a whole 32-bar chorus of rhythm-changes chords, with no melody. Don't count bars; listen for the moment the chords stop repeating their pattern and do something new, and for when the old pattern comes back.
+
+### Try it
+
+1. Press play and listen only to the **bass** (the lowest sound). Tap your foot on each bass note.
+2. In the A section the bass moves every two beats and keeps circling back to the same starting note — a busy little loop.
+3. Keep tapping. Note the moment your foot is suddenly tapping *less often* or the loop no longer comes back. That's the change of section. Then wait for the busy loop to return.
+
+**Check:** you can say "busy loop… busy loop… something different… busy loop again" out loud as it plays.
+
+**If you can't hear it yet:** play B♭1 G1 C2 F1 (the A-section bass, two beats each) along with the recording, over and over. While your loop fits, you're in an A; when it clashes, you're in the bridge.
 
 ```exercise
 {
@@ -129,6 +139,8 @@ In C major: V7/ii = A7 → Dm, V7/iii = B7 → Em, V7/IV = C7 → F, V7/V = D7 �
 
 ## Ear review
 
+**Before the drills** — the method (also in the *How to do it* box beside each drill): for progressions, **bass first**. Follow the lowest note and ask where it is from home — 2 → 5 → 1 is the ii–V–I path — then use colour to confirm (ii7 mellow, V7 bluesy and pulling, Imaj7 dreamy). For the bass drill, ignore drums and top notes, tap along with the thump, then find its notes one by one. If a drill shows an earlier rung, its own box has the method for that rung.
+
 ```ladder
 { "skill": "progressions", "unlocks": 18, "intro": "Progressions at your level; ii–V–I in sevenths is the top rung for now." }
 ```
@@ -136,3 +148,7 @@ In C major: V7/ii = A7 → Dm, V7/iii = B7 → Em, V7/IV = C7 → F, V7/V = D7 �
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Bass lines inside a band: in jazz the bass carries the changes; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+Play the A-section shells with the bass backing once a day, a few bpm faster each time. Put on any AABA standard you like and raise a hand when the bridge starts.

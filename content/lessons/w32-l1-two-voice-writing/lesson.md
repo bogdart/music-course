@@ -60,7 +60,17 @@ Listen to each class with both notes played together, all above C4.
 }
 ```
 
-**What you will actually hear.** The perfect intervals sound hollow and blend almost into one note. 3rds and 6ths sound sweet, and you still hear two notes. The **rough ones** are different: the 2nds and 7ths *rub* (the minor 2nd and major 7th most of all, a buzzing, beating sound), while the tritone doesn't rub much but sounds restless, as if it can't settle. The 4th on its own is the mildest of them. Don't worry if some pairs sound alike at first; the rough group is what the new ear rung below is about, so play them on your keyboard a few times.
+**What you will actually hear.** The perfect intervals sound hollow and blend almost into one note. 3rds and 6ths sound sweet, and you still hear two notes. The 2nds and 7ths *rub* (the minor 2nd and major 7th most of all: a buzzing, beating sound); the tritone rubs less but sounds restless. The 4th is the mildest. Some pairs will sound alike at first — that's normal.
+
+### Try it
+
+1. Hold C4 with your left thumb. With the right hand add, one at a time and held for two seconds each: C5, G4, E4, A4, D4, B4, F♯4.
+2. For each, say one word out loud: **one** (it melts into a single note), **hollow** (two notes, open), **sweet** (two notes, warm), or **rough** (they rub or won't settle).
+3. Now do the same with the pairs in random order, eyes closed, pressing keys you don't look at; open your eyes and name the interval.
+
+**Check:** you should get *one* for C5, *hollow* for G4, *sweet* for E4 and A4, *rough* for D4, B4 and F♯4. If most of your words match, you are sorting by sound, which is all the drill asks.
+
+**If you can't hear it yet:** compare only two extremes, C4+E4 against C4+D4, back and forth ten times. Then slide the upper note slowly from D4 to E4 and back: the moment the rub stops is what "consonant" means. Add the other intervals one at a time once that pair is obvious.
 
 ```exercise
 {
@@ -93,6 +103,15 @@ That blending is also behind the one famous prohibition. If two voices move **in
 
 **What you will probably hear:** in the first half, a single hollow, rather bare line; in the second, two voices, sweeter. If the difference is subtle for you today, that is normal: hearing parallels inside moving lines is not something the ear drills train directly. Trust the rule for now; the DAW checks next lesson catch parallels for you.
 
+### Try it
+
+1. Play C3+G3, then D3+A3, then E3+B3 with one hand shape sliding up (parallel 5ths). Then play C3+E3, D3+F3, E3+G3 (parallel 3rds).
+2. Listen for how many *lines* you hear moving: one thick line, or two?
+
+**Check:** the 5ths tend to sound like one organ-like line moving; the 3rds like two singers. If both sound like "two notes moving", that's fine for now — the rule, not your ear, protects you this week.
+
+**If you can't hear it yet:** play only the top notes of each version alone, then add the bottom back. With the 5ths, adding the bottom mostly makes the top line *thicker*; with the 3rds, it adds a second tune.
+
 ## Drills
 
 ```exercise
@@ -123,6 +142,12 @@ That blending is also behind the one famous prohibition. If two voices move **in
 
 ## Ear: both notes at once
 
+**Method** (also in the *How to do it* box next to the drill): sort by feel first — one note (octave), open (4th/5th), sweet (3rds/6ths), rough (2nds, 7ths, tritone) — then choose inside the group. Among the rough ones ask how close the notes sound: crowded (2nd), almost an octave but grating (7th), or restless like a siren (tritone). The drill runs at your current rung; if that's an earlier one, its own box has the method.
+
 ```ladder
 { "skill": "intervals", "unlocks": 19, "intro": "Opens the rough intervals played together (M2, tritone, m7, M7); the drill runs at your current intervals rung." }
 ```
+
+## Between lessons
+
+Once a day, play the seven pairs from *Try it* with your eyes closed and name each one/hollow/sweet/rough (2 minutes). Listen to one of Bach's Two-Part Inventions and follow only the left hand for a minute.

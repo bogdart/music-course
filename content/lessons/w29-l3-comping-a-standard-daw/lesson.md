@@ -46,6 +46,28 @@ Compared with the major ii–V–I, the minor one sounds darker and more dramati
 
 Follow the upper notes as you did in major: D→D→C and A→G♯→G. Half steps again.
 
+### Try it
+
+1. Play the pair below: first the major ii–V–I in C, then the minor ii–V–i in A.
+2. Listen to the **first chord** of each: Dm7 is mellow; Bm7♭5 has a sour, pinched edge (that's the ♭5, F).
+3. Listen to the **last chord**: Cmaj7 lands in daylight; Am7 lands in shadow.
+
+```example
+{
+  "title": "Major ii–V–I in C, then minor ii–V–i in A",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[D3 F3 C4]:w | [G2 F3 B3]:w | [C3 E3 B3]:w | r:w | [B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C3 G3]:w | r:w |" },
+    { "instrument": "bass", "seq": "D2:w | G1:w | C2:w | r:w | B1:w | E2:w | A1:w | r:w |" }
+  ],
+  "show": ["keyboard"]
+}
+```
+
+**Check:** on a replay with eyes closed, you can say "light" or "dark" at the start of each group, before the last chord.
+
+**If you can't hear it yet:** play Dm7 (D F A C) and Bm7♭5 (B D F A) back to back yourself, slowly. Three notes are shared; only the bottom moves. Then play just D–A (a clean fifth) and B–F (a tritone): that rub is the whole difference.
+
 ## The Charleston rhythm
 
 Long whole-note chords make a band sound like a church organ. Jazz comping is rhythmic. The most famous comping figure is the [[Charleston rhythm]]: a hit on beat 1, a second short hit on the "and" of 2, then silence for the rest of the bar, which leaves room for the melody.
@@ -118,6 +140,15 @@ Three comping habits: **stay out of the melody's way** (hits speak best where th
 
 ## Make it
 
+1. **Mute the melody first** and comp bars 1–8 against bass and ride only: C6 shell (C E A) in Charleston rhythm, G7 shell (G F B) in bar 8. Copy-paste bar 1 for bars 2–7.
+2. **Unmute the melody.** Where the tune moves (bars 1, 3, 5), keep your hits short; where it holds a long note (bars 2, 4, 8), that's your space.
+3. **Bars 9–16:** reuse the shells from the drill above (C7, Fmaj7, Fm6, Am7, Dm7 G7, C6).
+4. **Vary two bars:** try a push (hit on the "and" of 4, tied over the bar line) into bar 10 or bar 13, and one long whole-note chord where the melody is busy.
+
+**Judge it by ear:** play the whole thing and listen to the melody only. If you notice the comping more than the tune, thin it out (fewer hits, lower velocity). If bar 12 doesn't sound suddenly darker, check the A♭ in the Fm6 shell.
+
+**If you're stuck:** leave all 16 bars in plain Charleston first — that already works — and add the variations last.
+
 ```exercise
 {
   "id": "e5-daw-comp-saints",
@@ -146,6 +177,12 @@ Three comping habits: **stay out of the melody's way** (hits speak best where th
 
 ## Ear review
 
+**Before the drill** — the method (see *How to do it* beside it): bass first; 2 → 5 → 1 in the bass is the ii–V–I path, then colour confirms it. At an earlier rung, the box shows that rung's method.
+
 ```ladder
 { "skill": "progressions", "unlocks": 18, "intro": "Progressions at your level, up to the ii–V–I in sevenths." }
 ```
+
+## Between lessons
+
+Play the minor ii–V–i in A and D once a day, then in one new key of your choice. Loop your Saints comp and listen once with fresh ears: does it leave the melody room?

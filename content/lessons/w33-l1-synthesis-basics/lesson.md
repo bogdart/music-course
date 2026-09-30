@@ -49,6 +49,17 @@ Because you can't change the envelope, **note length is your envelope control**.
 }
 ```
 
+### Try it
+
+Two questions tell every synth apart: **how does it start** (a click, or a fade-in?) and **how long does it stay** (rings on, or dies away?).
+
+1. Play the example above. For each bar, clap once when you first hear the chord. With the pad your clap comes *late* — the sound swells in; with the pluck it's exactly on the beat.
+2. Play it again and count slowly "one, two, three, four" through each bar. Stop counting when the sound is gone. The pluck is gone by "two"; the pad and strings last the whole bar.
+
+**Check:** you should get *pad* = slow start, long; *pluck* = instant, short; *strings* = medium start, long.
+
+**If you can't hear it yet:** in the DAW, put the Am chord on a pad track as a whole note, then as a single 16th, and play each twice. The 16th pad barely sounds at all — that's the slow attack you couldn't hear in isolation.
+
 ## The dance loop
 
 Countless dance tracks loop **Am – F – C – G**. You know it from week 9 as the minor loop **i – VI – III – VII** in A minor (the same four chords are vi–IV–I–V in C major; which one sounds like home decides the name). Voice it with close shapes that barely move, let the pad hold, and let the pluck repeat on the off-beats.
@@ -121,6 +132,15 @@ Countless dance tracks loop **Am – F – C – G**. You know it from week 9 as
 }
 ```
 
+**Building the loop:**
+
+1. **Bass first:** one whole note per bar, A1 F1 C2 G1, twice.
+2. **Pad:** copy the whole-note voicings from the example (they barely move). Loop bass + pad: it should already sound like a finished bed.
+3. **Pluck:** one bar of off-beat chords (rest, chord, rest, chord…), then copy it and change the notes for each chord.
+4. **The swap test:** move the pad's whole notes to the pluck track and the off-beats to the pad. Listen once, then undo.
+
+**Judge it by ear:** in the right version the pad is a soft carpet and the pluck bounces on top; swapped, the pluck chords vanish and the pad off-beats smear. **If you're stuck:** get bass + pad playing for all 8 bars before touching the pluck.
+
 ```exercise
 {
   "id": "e5-daw-sound-roles",
@@ -145,6 +165,8 @@ Countless dance tracks loop **Am – F – C – G**. You know it from week 9 as
 
 ## Ear review
 
+**Method** (see each drill's *How to do it* box): for chord colour, listen to the whole sound first — bright, dark, tense, stretched or rich — and name that before any theory. For the bass in a band, tap your foot with the deepest sound and find its notes one by one. Both drills run at your current rungs.
+
 ```ladder
 { "skill": "chords", "unlocks": 14, "intro": "Chord colours at your level: a pad is the clearest way to hear them." }
 ```
@@ -152,3 +174,7 @@ Countless dance tracks loop **Am – F – C – G**. You know it from week 9 as
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Bass lines in a full mix, like the loop you just built; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+In three songs you like, pick one sound and answer the two questions: click or fade-in? rings on or dies away? That's enough to choose pad, pluck or lead when you recreate it.

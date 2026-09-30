@@ -46,6 +46,16 @@ instead: its 3rd is the raised 6th degree — the Dorian note from week 22. Hear
 The C♯ in the A7 is the Dorian note (the raised 6th of E minor); swap it for C and the groove turns darker. Now a hidden vamp in another key:
 two chords, and the second is either the minor iv7 or the Dorian IV7.
 
+How to decide on the keyboard:
+
+1. Find the bass note of the second chord (low key, higher/lower until it merges).
+2. Play the minor chord on that bass note along with the loop, then the major one (the middle key one higher). Go back
+   and forth two or three times.
+3. Keep the one that melts into the vamp; the other rubs on the middle note.
+
+*Check:* the major IV sounds brighter and a little "lifted"; the minor iv sounds heavier. If both blend, loop just that
+bar and compare again, then commit.
+
 ```exercise
 {
   "id": "w47l3-vamp",
@@ -70,6 +80,11 @@ two chords, and the second is either the minor iv7 or the Dorian IV7.
 }
 ```
 
+## Ear: scales and modes at your level
+
+Routine: find home first (where the tune rests), decide bright or dark, then listen for the one special note. The
+*How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "scales",
@@ -77,6 +92,21 @@ two chords, and the second is either the minor iv7 or the Dorian IV7.
   "intro": "Rung 6 of the scales ladder is minor vs Dorian; you practise at your own rung."
 }
 ```
+
+## Three records, verdict first
+
+For each song, with your own copy and the keyboard in front of you:
+
+1. **Tempo** — tap along to the kick or snare for 8 beats with the app's tapper (the tempo drill works too). *Check:*
+   tap again later in the song; the two numbers should agree within a few BPM.
+2. **Home** — loop a chorus. Find the note the tune rests on at phrase ends by searching on your keyboard; hold it low
+   under the song. *Check:* it sounds like it could ring forever.
+3. **Chords** — find each bass note in the loop, then play major and minor on it along with the record and keep the one
+   that blends. Count the chords until the loop starts again.
+4. **Groove and layers** — one pass for the kick (every beat or not?), one for what fills the phrase ends.
+
+Stuck? Loop four bars, compare two candidates back to back, and answer anyway — the explanation appears only after you
+commit.
 
 ```exercise
 {
@@ -132,6 +162,16 @@ two chords, and the second is either the minor iv7 or the Dorian IV7.
 }
 ```
 
+## Your build and drop
+
+1. Chords first: loop Dm7 – G7 (i7 – IV7) in the epiano for 8 bars — the Dorian vamp you just played.
+2. Drop (bars 5–8): kick on every beat, then a bass on the chord roots, offbeat or octave. *Check:* tap your foot on the
+   kick; the bass pattern should be clear against it.
+3. Hook: one bar from 3–5 notes of D Dorian, repeated with a small change in its last bar.
+4. Build (bars 1–4): no kick, a snare roll getting faster, ending on a short silence.
+
+*Check:* play the 8 bars from the start. If the drop doesn't feel like an arrival, take more out of the build.
+
 ```exercise
 {
   "id": "w47l3-daw",
@@ -162,3 +202,7 @@ two chords, and the second is either the minor iv7 or the Dorian IV7.
   }
 }
 ```
+
+## Between lessons
+
+Go through one more up-tempo song you like with the four steps above: tempo, home, the chord loop, and the kick.

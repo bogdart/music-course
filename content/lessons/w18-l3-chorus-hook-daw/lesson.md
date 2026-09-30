@@ -46,6 +46,11 @@ Here is the result of that workflow in F major (I–V–vi–IV). The motif is b
 
 Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is what makes a groove feel solid.
 
+**Try it:** while it loops, tap the lowest thud you hear with your left hand on the table (kick) for four bars; then
+switch to following the bass notes. **Check:** your tapping pattern doesn't change when you switch — boom… boom-boom,
+on 1, 3 and 3-and. **If you can't hear it yet:** compare the bass and drum rows in the piano roll: the bass blocks start
+exactly above the kick hits.
+
 ```chords
 { "key": "F", "bars": ["F", "C", "Dm", "Bb"], "roman": true, "play": true, "bpm": 98 }
 ```
@@ -63,6 +68,17 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
 ```
 
 ## Write it
+
+Judging and getting unstuck, step by step:
+
+* **Motif (steps 1–3).** *Try first:* only two or three notes, mostly F, A and C, with one rest. *Judge it by ear:*
+  close the lesson for a minute; the motif you can still tap afterwards is the keeper. *If you're stuck:* take the
+  example's rhythm (rest, short-short, long) and put your own notes in it.
+* **Chorus (steps 4–5).** *Judge it by ear:* loop all 8 bars; any note that makes you wince on beat 1 or 3 is probably
+  not a chord tone — move it one key up or down until it melts into the chord. *If you're stuck on the payoff:* copy
+  the motif and start it three or four notes higher, as the example does in bar 7.
+* **Groove (step 6).** *Judge it by ear:* the bass and kick should sound like one instrument with a pitch. *If it
+  feels messy:* delete bass notes that don't sit on a kick.
 
 ```exercise
 {
@@ -144,7 +160,10 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
 
 ## Ear
 
-Your payoff in bars 7-8 probably jumps somewhere. This lesson opens the melody rung with leaps; the drill runs at your current melody rung:
+Your payoff in bars 7-8 probably jumps somewhere. This lesson opens the melody rung with leaps; the drill runs at your current melody rung.
+
+**Before the drill** (method also in the *How to do it* box): for a leap, guess its size first with your interval
+anchors (a 4th? a 5th? an octave?), then check it on the keyboard. The box beside the drill covers whichever rung you are on.
 
 ```ladder
 { "skill": "melody", "unlocks": 16, "intro": "Opens: six-note melodies that may leap up to a 6th. The drill runs at your current melody rung." }
@@ -157,3 +176,8 @@ Your payoff in bars 7-8 probably jumps somewhere. This lesson opens the melody r
   "spec": { "prompt": "Play your chorus three times in a row. Which bar is the strongest? Which would you rewrite tomorrow? The project is saved as your \"week 18 chorus\". In week 24 you will reharmonise it, re-entering the melody in a fresh project so this one stays as it is.", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Play your chorus once a day and change at most one note — usually the one on a strong beat that rubs. If the groove
+task isn't finished, finish it first.

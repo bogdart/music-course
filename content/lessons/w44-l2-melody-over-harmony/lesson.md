@@ -30,6 +30,14 @@ On strong beats and long notes, pop melodies sit mostly on chord tones. So inste
 
 Once you know the chord *and* the job, the note is fixed: over E minor a "sweet 3rd" can only be G.
 
+How to find the job with the keyboard, not with theory:
+
+1. Loop the bar and play the chord's root, 3rd and 5th one at a time **under** the long melody note.
+2. The one that merges into one sound (in any octave) is the job. Check: jump it by 12 keys up — it should match the
+   melody's height.
+3. None merges? It's a tension note. Try the keys one step above and below the chord tones; a tension note usually moves
+   by step to a chord tone on the next beat.
+
 ```exercise
 {
   "id": "w44l2-jobs",
@@ -52,9 +60,17 @@ Pop melodies love to arrive **an eighth note early**, tied across the barline, s
 instead of on beat 1. This [[anticipation]] is why beginners' transcriptions look right but sound stiff: they move the
 note to the downbeat. Listen for the note starting *before* the chord change — the melody leads, the harmony follows.
 
+How to catch one: loop the bar line, tap your foot with the bass and count "3 and 4 **and** | 1". If the melody note is
+already sounding when you say the last "and", before the bass moves on 1, it's anticipated. Check: tap the melody's
+rhythm along with your count — an early note lands on your "and", not on "1".
+
 ## A hidden 4-bar melody
 
-The chords are G – Em – C – D, one per bar. Answer the questions, then write the whole melody as degrees of G major.
+The chords are G – Em – C – D, one per bar. Answer the questions, then write the whole melody as degrees of G major:
+
+1. Find each note on the keyboard first (first note by search, then up/down, step/leap), two or three notes at a time.
+2. Translate: count up from G (G A B C D E F♯ = 1 2 3 4 5 6 7). Check: long notes should be chord tones of their bar.
+3. Stuck on one note? Loop, compare your two best guesses against the loop back to back, keep the one that merges.
 
 ```exercise
 {
@@ -127,11 +143,14 @@ The chords are G – Em – C – D, one per bar. Answer the questions, then wri
 }
 ```
 
+For the drill: the same routine — first note by search, then the path, in small chunks; over chords, follow the highest,
+singing line. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "melody",
   "unlocks": 19,
-  "intro": "Review: melody dictation at your current rung (rung 17 of this ladder is melody over chords)."
+  "intro": "Review: melody dictation at your current rung."
 }
 ```
 
@@ -153,3 +172,7 @@ The chords are G – Em – C – D, one per bar. Answer the questions, then wri
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. When a song plays anywhere, pick one long melody note and ask: root, 3rd, 5th or tension?

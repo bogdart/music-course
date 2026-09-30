@@ -40,10 +40,34 @@ To count eighth notes, split each beat with "and": **1 & 2 & 3 & 4 &**. The numb
 }
 ```
 
-This lesson opens two rhythm rungs: eighth notes in the "which notation?" drill, then **tapping** a rhythm back yourself. The drill below runs at your current rhythm rung — you'll meet these once the quarters-and-halves version is solid.
+**Try it:** tap your foot with the clicks of the example and say "1 & 2 & 3 & 4 &". In bar 4 a note lands on every
+syllable; in bar 3 only on the numbers. Then tap on the table with your hand: quarters (numbers only), then eighths
+(every syllable), keeping the foot on the beat.
+
+The next rhythm rungs add eighths to the "which notation?" drill, then **tapping** a rhythm back yourself. For
+tapping, the **How to do it** box says: listen once while counting, then tap exactly where the notes fell.
+**If you can't catch it:** replay and write the counts where notes start ("1, 2, 2&, 3"), then tap from your note.
+
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "Numbers only, or every '&'?",
+  "spec": {
+    "examples": [
+      { "title": "Bar A", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q C4:8 C4:8 C4:q C4:q" }, { "instrument": "drums", "seq": "hh:q hh:q hh:q hh:q" } ] },
+      { "title": "Bar B", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q C4:q C4:q C4:q" }, { "instrument": "drums", "seq": "hh:q hh:q hh:q hh:q" } ] }
+    ],
+    "questions": [
+      { "q": "Bar A: notes start on…", "choices": ["1 2 3 4", "1 2 & 3 4", "1 & 2 & 3 & 4 &"], "answer": 1, "explain": "Quarter, two eighths, quarter, quarter." },
+      { "q": "Bar B: notes start on…", "choices": ["1 2 3 4", "1 2 & 3 4", "1 & 2 & 3 & 4 &"], "answer": 0, "explain": "Four quarters." }
+    ]
+  }
+}
+```
 
 ```ladder
-{ "skill": "rhythm", "unlocks": 3, "intro": "Opens \"Choose: with eighths\" and \"Tap it back: quarters\"; the drill runs at your current rung." }
+{ "skill": "rhythm", "unlocks": 3, "intro": "Rhythm at your current rung — up to eighths and tapping back quarters." }
 ```
 
 ## Ties and dots: making notes longer
@@ -90,18 +114,67 @@ Compare with 4 left hanging — no resolution:
 }
 ```
 
-If 4 doesn't feel "leaning" to you yet, that's fine — the walk home after each answer (4 → 3 → 2 → 1) shows you where it sits. The keyboard trick still works too: C D E F = 1 2 3 4.
+**Try it:** play the home run, then hold F4 for three seconds. Then play E4. Did it feel like something let go? Now
+play the home run, then F4, then G4 instead: most people find F → E more "settled" than F → G. Don't worry if you
+don't feel it yet.
+
+**If 4 doesn't feel "leaning" to you yet:** the walk home after each drill answer (4 → 3 → 2 → 1) shows where it
+sits — count the steps. The keyboard answer still works: find the key, C D E F = 1 2 3 4.
+
+```exercise
+{
+  "id": "e11",
+  "type": "listen",
+  "title": "3 or 4?",
+  "instructions": "Answer, then check on the keyboard: find the note and count from C (C D E F = 1 2 3 4).",
+  "spec": {
+    "examples": [
+      { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | F4:w" } ] },
+      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" } ] }
+    ],
+    "questions": [
+      { "q": "Clip 1: the last note is…", "choices": ["3", "4"], "answer": 1, "explain": "F = 4." },
+      { "q": "Clip 2: the last note is…", "choices": ["3", "4"], "answer": 0, "explain": "E = 3." }
+    ]
+  }
+}
+```
 
 ```ladder
-{ "skill": "degrees", "unlocks": 4, "intro": "Opens degrees 1 to 4 after the home run; the drill runs at your current rung." }
+{ "skill": "degrees", "unlocks": 4, "intro": "Degrees at your current rung — up to 1 to 4 after the home run." }
 ```
 
 ## Octaves: near-misses, one after the other
 
-This lesson also opens an octave rung that keeps the single pair (same or different?) but the different note may now sit a half step from the octave — the near-miss you already know from the *together* rungs. The ladder only brings it once plain "same or different" is solid.
+The next octave rung keeps the single pair (same or different?), but the different note may now sit a half step
+from the octave — the near-miss you know from the *together* rungs.
+
+**Try it:** play G3 → G4, then G3 → F♯4, then G3 → G♯4. Only the first is the same letter. Now make an "echo": play
+G3, then G4 on purpose, then replay each pair. Does the second note land on your echo, or next to it?
+
+**If you can't hear it yet:** use the echo test in the drill — find the first note, play it and the key 12 above,
+then replay the question. A near-miss sounds like your echo "bent" up or down.
+
+```exercise
+{
+  "id": "e12",
+  "type": "listen",
+  "title": "Echo or bent?",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:h A4:h" } ] },
+      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:h G#4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1:", "choices": ["same letter, an octave up", "a different note"], "answer": 0, "explain": "A3 → A4." },
+      { "q": "Pair 2:", "choices": ["same letter, an octave up", "a different note"], "answer": 1, "explain": "A3 → G♯4, one key below the octave." }
+    ]
+  }
+}
+```
 
 ```ladder
-{ "skill": "octave", "unlocks": 7, "intro": "Opens \"Same or different: near-misses\"; the drill runs at your current octave rung." }
+{ "skill": "octave", "unlocks": 7, "intro": "Octaves at your current rung — up to near-misses one after the other." }
 ```
 
 ## Drills
@@ -170,3 +243,9 @@ This lesson also opens an octave rung that keeps the single pair (same or differ
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:h | D4:q D4:q D4:h | E4:q G4:q G4:h | E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:q E4:q | D4:q D4:q E4:q D4:q | C4:w", "showStaff": true, "showKeyboard": false, "countIn": 1 }
 }
 ```
+
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes.
+- Once a day: tap the "Eighths and rests" rhythm while counting out loud.
+- Ready for the next lesson when the dashboard doesn't say **practise first**.

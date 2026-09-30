@@ -101,7 +101,38 @@ ii7 is a minor 7 chord, V7 a dominant 7. Earlier this week both chords you compa
 
 ## All three sevenths by ear
 
-This lesson opens two chord rungs: minor 7 against dominant 7 (a pair first, as always), then all three sevenths mixed — major 7, dominant 7, minor 7. For the mix, a useful order of questions: first, is it minor underneath? (then m7). If major: is there the restless "question" (dom 7) or the shimmering rub (maj7)? The drill runs at your current chord rung, so you'll meet these once the earlier seventh pairs are solid.
+This lesson opens two chord rungs: minor 7 against dominant 7 (a pair first, as always), then all three sevenths mixed: major 7, dominant 7, minor 7.
+
+### Try it: one note changes the family
+
+1. Hold D F A C (Dm7). Move only the F up to **F♯** (D7), then back. Repeat slowly. The F♯ version is brighter and leans forward; the F version is darker and sits still.
+2. Now on C: C E♭ G B♭ (Cm7), C E G B♭ (C7), C E G B (Cmaj7). Name each aloud: "mellow", "bluesy", "dreamy".
+3. Eyes closed: play one of the three at random on C, then name it before you look.
+
+Check: three chords on D.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: which seventh?",
+  "instructions": "Play each chord, then build your guess on D yourself and compare.",
+  "spec": {
+    "examples": [
+      { "title": "Chord 1", "bpm": 60, "timeSig": "4/4", "key": "D", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[D3 F#3 A3 C4]:w" } ] },
+      { "title": "Chord 2", "bpm": 60, "timeSig": "4/4", "key": "D", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[D3 F3 A3 C4]:w" } ] },
+      { "title": "Chord 3", "bpm": 60, "timeSig": "4/4", "key": "D", "hidden": true, "tracks": [ { "instrument": "epiano", "seq": "[D3 F#3 A3 C#4]:w" } ] }
+    ],
+    "questions": [
+      { "q": "Chord 1 is…", "choices": ["Dm7", "D7", "Dmaj7"], "answer": 1, "explain": "D7: D F♯ A C. Bright underneath, restless on top." },
+      { "q": "Chord 2 is…", "choices": ["Dm7", "D7", "Dmaj7"], "answer": 0, "explain": "Dm7: D F A C. Dark underneath, calm." },
+      { "q": "Chord 3 is…", "choices": ["Dm7", "D7", "Dmaj7"], "answer": 2, "explain": "Dmaj7: D F♯ A C♯. The C♯ rubs gently against the D above: dreamy." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** split it into two keyboard checks. First the triad: find the root (lowest note), play the major and the minor triad on it and pick the match; minor means m7. If major, add the two possible 7ths yourself, a whole step below the root's octave (dom7) or a half step below (maj7), and pick the one that sounds like the replay.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): dark and calm = minor 7; bright and pulling = dominant 7. For the three: first bright or dark? Dark = minor 7. Bright: dreamy (maj7) or bluesy and pulling (dom7)? The drill runs at your current chord rung, so you'll meet these once the earlier seventh pairs are solid.
 
 ```ladder
 { "skill": "chords", "unlocks": 6, "intro": "Opens \"Minor 7 or dominant 7\", then \"The three sevenths\"; the drill runs at your current rung." }
@@ -135,7 +166,7 @@ Swap the triads of a pop loop for sevenths and it instantly sounds like a slow s
       { "instrument": "epiano", "seq": "" },
       { "instrument": "bass", "seq": "" },
       { "instrument": "lead", "seq": "" } ] },
-    "task": "Write 8 bars on Cmaj7 – Am7 – Dm7 – G7, one bar each, twice. 1) E-piano: seventh chords, voiced smoothly between G2 and G4 (you may leave the root to the bass). 2) Bass: the root on beat 1 of each bar. 3) Lead: a slow melody, mostly half and quarter notes, with a chord tone on beat 1 of each bar. Try landing on a chord's 7th once (B over Cmaj7, or G over Am7): that's the ballad colour. End on C.",
+    "task": "Write 8 bars on Cmaj7 – Am7 – Dm7 – G7, one bar each, twice. 1) E-piano: seventh chords, voiced smoothly between G2 and G4 (you may leave the root to the bass). 2) Bass: the root on beat 1 of each bar. 3) Lead: a slow melody, mostly half and quarter notes, with a chord tone on beat 1 of each bar. Try landing on a chord's 7th once (B over Cmaj7, or G over Am7): that's the ballad colour. End on G, the root of the last chord, so the loop leans back to the start.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["epiano", "bass", "lead"] },
       { "kind": "bars", "min": 8, "max": 8 },
@@ -144,9 +175,16 @@ Swap the triads of a pop loop for sevenths and it instantly sounds like a slow s
       { "kind": "plays-progression", "progression": ["I", "vi", "ii", "V"], "barsPerChord": 1, "mode": "roots", "minRatio": 0.9, "track": 1 },
       { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false, "track": 2 },
       { "kind": "uses-rhythm", "values": ["h", "q"], "minDistinct": 2, "track": 2 },
-      { "kind": "ends-on", "degree": 1, "track": 2 }
+      { "kind": "ends-on", "degree": 5, "track": 2 }
     ],
     "minBars": 8, "maxBars": 8
   }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** ii – V – I in C with the left-hand root and right-hand chord, then in G and F.
+- **2 minutes:** on D, swap F and F♯ under your fingers (Dm7 / D7), then add C♯ (Dmaj7); name each.
+- **Finish the ballad** if it took longer than one session; play it back once with fresh ears.
+- One chords session on the Practice page.

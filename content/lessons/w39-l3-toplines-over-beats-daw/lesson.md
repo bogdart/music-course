@@ -38,7 +38,7 @@ You built 9th chords in week 27: a seventh chord plus the note a whole step abov
 }
 ```
 
-Honestly, the difference is small: the 9th doesn't change major/minor, it adds a soft extra shimmer on top — "fuller", "dreamier". Most people first hear it as the top note getting a little higher. This lesson opens a chord rung that asks exactly this two-way question: major 7 or major 9? The drill below runs at your current chord rung, so you'll only get to it after the earlier rungs are mastered. Ninths on other chords (Dm9, G9) come later.
+Honestly, the difference is small: the 9th doesn't change major/minor, it adds a soft extra shimmer on top — "fuller", "dreamier". Most people first hear it as the top note getting a little higher. This lesson opens a chord rung that asks exactly this two-way question: major 7 or major 9? Method for chord colours: bright or dark first, then the finer colour; replay and compare with the chords above. The drill runs at your current chord rung (you reach the new one after mastering the earlier ones), and the *How to do it* box under it shows the exact method for that rung. Ninths on other chords (Dm9, G9) come later.
 
 ```ladder
 { "skill": "chords", "unlocks": 15, "intro": "Opens the rung 'Major 7 or major 9'; the drill runs at your current chord rung." }
@@ -61,7 +61,9 @@ Honestly, the difference is small: the 9th doesn't change major/minor, it adds a
 3. Read an imaginary lyric along (even nonsense, but with real stresses). If the stresses fight the beat, move notes.
 4. Check the range (about a 10th) and breaths (a rest at least every two bars).
 
-If a track gives you nothing after three tapped attempts, move on and come back later — fresh ears often find the melody quickly.
+5. **Check by ear:** play the whole 8 bars with the track. Does the melody sound like it belongs to *this* groove (long and open for the ballad, chanted for the dance, lazy for lo-fi)? Does a long note sound sour? Move it to a chord tone.
+
+If a track gives you nothing after three tapped attempts, move on and come back later — fresh ears often find the melody quickly. For the lo-fi track, the colour tones are listed in the task: start by holding each for a whole bar and only then add rhythm.
 
 ## Session 1: ballad and dance
 
@@ -167,3 +169,7 @@ If a track gives you nothing after three tapped attempts, move on and come back 
   }
 }
 ```
+
+## Between lessons
+
+Replay your three toplines once each with fresh ears; pick the strongest and change just one note to make its hook clearer.

@@ -566,3 +566,6 @@ figure.card > * + * { margin-top: 10px; }
 .skill-list li .bar span.open { background: var(--muted); opacity: 0.35; }
 .skill-list li.behind > span:first-child { color: var(--warn); }
 .lag-warning { border-left: 3px solid var(--warn); padding: 6px 10px; background: var(--bg2); border-radius: 4px; }
+.ladder-how { margin: 6px 0 10px; }
+.ladder-how summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.ladder-how p { margin: 6px 0 0; }

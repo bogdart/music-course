@@ -22,6 +22,9 @@ verses, peaking in the last chorus, falling for the outro. Then arrange to the d
 height from its neighbours — if two adjacent sections are level, change one.
 
 Here is a 4-bar chorus, shown, and then a second version of it, hidden — listen, answer the questions, then reveal.
+Listen in passes, one question each: first the very top (what is above the melody?), then the middle (anything held
+long, like a carpet?), then the drums' last bar. Switch between the two versions after each pass — the difference is
+what you're listening for.
 
 ```example
 {
@@ -71,6 +74,20 @@ Here is a 4-bar chorus, shown, and then a second version of it, hidden — liste
 }
 ```
 
+## Arrange to the curve
+
+1. **Number your sections 1–5** from the drawing (intro 1, verse 2, chorus 4, last chorus 5…).
+2. **Sustain layer first.** A pad or strings holding the chords, in the sections at 3 or higher. Check: mute/unmute in
+   a chorus — it should feel wider, not louder only. If it muddies the piano, move it an octave up.
+3. **High rhythm layer.** A pluck or electric piano playing the chord notes in eighths (like the example), above the
+   melody, in the choruses only. Check: the melody must still be the clearest thing; if not, lower the layer's volume.
+4. **Last chorus = fullest.** Everything on, plus one extra (a doubled melody an octave up, or the crash on every
+   2 bars).
+5. **Check the curve.** Play from the start with your drawing in front of you. At each marker ask: up, down or level?
+   If two neighbours feel level, mute one layer in the lower one.
+
+**Stuck?** Cut instead of adding: mute each track in turn — if nothing is lost, delete that part.
+
 ```exercise
 {
   "id": "w51l3-cp5",
@@ -117,6 +134,15 @@ Here is a 4-bar chorus, shown, and then a second version of it, hidden — liste
 }
 ```
 
+## Ear: melody
+
+Find the first note by searching (higher/lower), then follow the path — up or down, step or jump — in chunks, checking
+each chunk against the replay. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "melody", "unlocks": 19, "intro": "Melody at your own rung."}
 ```
+
+## Between lessons
+
+Listen to the whole song once with your curve drawing in hand. Mark one place where it doesn't match — nothing more.

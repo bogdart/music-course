@@ -24,9 +24,22 @@ Knowing a mode's notes is not enough: the listener has to hear where home is, an
 2. **Home in the bass.** Keep bringing the bass back to the home note, at least every other bar.
 3. **Warning: no V7.** In A Dorian an E7 chord contains G♯ — the ordinary 7 of A minor. It pulls straight into A and the tune sounds like plain A minor again. Use Em, or skip V.
 
+**Try it:** play this — the Dorian vamp, ending first through Em, then through E7.
+
+```example
+{
+  "title": "Am7 - D - Em - Am7, then Am7 - D - E7 - Am7",
+  "bpm": 80, "timeSig": "4/4", "key": "Am",
+  "tracks": [ { "instrument": "epiano", "seq": "[G3 C4 E4]:h [F#3 A3 D4]:h | [G3 B3 E4]:h [G3 C4 E4]:h | r:w | [G3 C4 E4]:h [F#3 A3 D4]:h | [G#3 B3 D4 E4]:h [G3 C4 E4]:h" }, { "instrument": "bass", "seq": "A2:h D2:h | E2:h A2:h | r:w | A2:h D2:h | E2:h A2:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Check:** the Em version drifts back to A gently; the E7 version *snaps* home with a classical, "end of the story" pull — the modal floating is gone. **If you can't hear it yet:** play just G and then G♯ on your keyboard, each followed by A. G♯→A is the strong pull; that single note is what E7 adds.
+
 ## Same home, two modes
 
-A Dorian (A B C D E **F♯** G) and A Mixolydian (A B **C♯** D E F♯ G) differ in just one note: the 3rd, C or C♯. That is the difference between minor and major, the first thing your ear ever learned to tell apart — so the switch in this demo is the clearest of the modal differences — though with a moving bass and chords it may still take a few listens, and the 6th and the ♭7 are subtler still. Bars 1–4 are Dorian (Am7 – D), bars 5–8 Mixolydian (A – G).
+A Dorian (A B C D E **F♯** G) and A Mixolydian (A B **C♯** D E F♯ G) differ in just one note: the 3rd, C or C♯. That is the difference between minor and major, the first colour your ear learned — the clearest of the modal switches, though with a band playing it may take a few listens. Bars 1–4 are Dorian (Am7 – D), bars 5–8 Mixolydian (A – G).
 
 ```example
 {
@@ -44,6 +57,8 @@ A Dorian (A B C D E **F♯** G) and A Mixolydian (A B **C♯** D E F♯ G) diffe
 ```
 
 Notice the melody: F♯ lands on beat 1 of bar 2 (over D, the Dorian IV); in the second half C♯ comes on beat 3 and G on beat 1 of bar 6 (over G, the ♭VII).
+
+**Try it:** loop the demo and count bars. At bar 5 ask: did it get darker or brighter? **Check:** brighter — minor turned major. **If you can't hear it yet:** hold A in the left hand and play C, then C♯, with the right; then play the chords Am and A. That's the whole switch. Listen to the demo again and wait for it at bar 5.
 
 ```exercise
 {
@@ -71,6 +86,8 @@ Notice the melody: F♯ lands on beat 1 of bar 2 (over D, the Dorian IV); in the
 
 ## Warm the ear
 
+Methods as in the last two lessons (also in each drill's *How to do it* box): for degrees, does the note near the top pull up into home (7) or sit lower (♭7)? For scales, wait for the one note that can differ and compare it with its twin on your keyboard.
+
 ```ladder
 { "skill": "degrees", "unlocks": 19, "intro": "Review: is it the ordinary 7 or the flat 7?" }
 ```
@@ -81,7 +98,14 @@ Notice the melody: F♯ lands on beat 1 of bar 2 (over D, the Dorian IV); in the
 
 ## Your turn
 
-Workflow: loop the backing, try ideas on the keyboard, then draw the notes in the piano roll. Two 4-bar halves, one lead track each (a second sound also makes the switch obvious). About 30 minutes; if it runs over, finish next session.
+Two 4-bar halves, one lead track each (a second sound also makes the switch obvious). About 30 minutes; if it runs over, finish next session.
+
+1. Loop bars 1–4 and noodle on the keyboard with only A B C D E F♯ G. Find a short idea that lands F♯ on beat 1 of a D bar.
+2. Draw it into the lead track; repeat or vary it for four bars; end on A or E.
+3. Loop bars 5–8. Start with the *same* rhythm as your Dorian idea, but use C♯ instead of C and land G on beat 1 of a G bar. End on A.
+4. Play all 8 bars.
+
+**Judge it by ear:** does bar 5 feel like the light changed, while home (A) stayed the same? **If you're stuck:** copy the demo melody's rhythm and change only the notes, or make half 2 an exact copy of half 1 with C→C♯ — the smallest change that still shows the switch.
 
 ```exercise
 {
@@ -118,3 +142,7 @@ Workflow: loop the backing, try ideas on the keyboard, then draw the notes in th
   "spec": { "prompt": "Play your 8 bars. Which did you actually hear at bar 5 - the change of 3rd, the new chords, the new lead sound? Could you hear the F# and the G as special notes, or not yet? Be honest: this is a note for your future self.", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Try one more vamp on your own: F – G (F Lydian) or Em – F (E Phrygian), four bars, with a melody that lands on the changed note.

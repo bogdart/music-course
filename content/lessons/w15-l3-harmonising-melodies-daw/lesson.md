@@ -30,7 +30,17 @@ So far you've written melodies *over* chords. Today, the reverse: given a melody
 
 Non-chord tones on weak beats (passing and neighbour tones, lesson 1) don't need their own chord: harmonise the strong beats and let the rest pass through.
 
-Try it on a tune you know:
+### Try it: the melt test
+
+Lists on paper are slow; your ears can choose too.
+
+1. Right hand: hold **A4**. Left hand: play **C E G** under it. The A sits on top like a guest.
+2. Keep the A. Play **F A C** under it instead. The A melts in: it belongs.
+3. Now hold **D4** and try C, then G (G B D) underneath. Which one does D melt into?
+
+**If you can't hear it yet:** play each candidate chord under the note, then look: is the note one of the chord's three keys? Eyes first, ears second is fine; after a few weeks the ear starts answering before the eyes.
+
+Now use it on a tune you know:
 
 ```example
 {
@@ -107,6 +117,33 @@ With no 3rd, neither chord is major or minor. For harmonising, a sus4 → major 
 }
 ```
 
+### Try it: which note moved?
+
+1. Play **C E G** and hold it. Lift only the middle finger's E and press **F**: Csus4. Hold it a second — it hangs, waiting — then go back to E. Relief.
+2. Same again, but move E down to **D**: Csus2. It sounds hollow and airy, and it doesn't push back to E as hard.
+3. Play C, Csus4, C, Csus2, C slowly, watching your middle finger. Only one note ever moves.
+
+Check: two single chords, both on G. Settled or waiting?
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: settled or waiting?",
+  "instructions": "Play each chord and let it ring. Answer, then read the explanation.",
+  "spec": {
+    "examples": [
+      { "title": "Chord 1", "bpm": 60, "timeSig": "4/4", "key": "G", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[G3 C4 D4]:w" } ] },
+      { "title": "Chord 2", "bpm": 60, "timeSig": "4/4", "key": "G", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[G3 B3 D4]:w" } ] }
+    ],
+    "questions": [
+      { "q": "Chord 1 is…", "choices": ["G major (settled)", "Gsus4 (waiting)"], "answer": 1, "explain": "Gsus4: G C D. Play it, then move the C down to B: that's where it wanted to go." },
+      { "q": "Chord 2 is…", "choices": ["G major (settled)", "Gsus4 (waiting)"], "answer": 0, "explain": "G major: G B D. If it sounded like the other one, play both back to back on your keyboard." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** find the chord's lowest note on your keyboard (the drill voices these chords with the root at the bottom). Then play the major triad and the sus4 on that note yourself, right after the question. Which one did you hear? Then try moving the middle note of your match: if moving it *down* a half step sounds like arriving, you were on a sus4.
+
 ```exercise
 {
   "id": "e5", "type": "build-chord", "title": "Build sus chords",
@@ -118,11 +155,15 @@ With no 3rd, neither chord is major or minor. For harmonising, a sus4 → major 
 
 ## Ear: chord colours and a review
 
-This lesson opens two chord-colour rungs, one at a time: first major or sus4, then major, sus2 or sus4. The drill runs at your current chord rung, so it may still be an earlier one. Then a progression review at your level: harmonising and hearing chords are two sides of one skill.
+This lesson opens two chord-colour rungs, one at a time: first major or sus4, then major, sus2 or sus4. The drill runs at your current chord rung, so it may still be an earlier one.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box above the drill, for the rung you're on). Play C, then Csus4, and ask the one question: **does it want to move?** Wanting to resolve = sus4; settled = major. Then add Csus2: airy and open, with no strong pull. If a chord confuses you, use the fallback above: root on the keyboard, play the candidates, match.
 
 ```ladder
 { "skill": "chords", "unlocks": 9, "intro": "Opens: major or sus4; then major, sus2 or sus4." }
 ```
+
+Then a progression review at your level: harmonising and hearing chords are two sides of one skill. **Rehearse first:** play I – IV – V – I in C and say the roles aloud (rest, lift, pull, rest), then follow only the bass (C F G C). In the drill, bass first, role second; the *How to do it* box shows the method for your rung.
 
 ```ladder
 { "skill": "progressions", "unlocks": 8, "intro": "Name the chords by their role in the key." }
@@ -153,3 +194,10 @@ This fits one session if you keep the chords simple. Want more? Next session, wr
   }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** melt test. Hold one note of C major in the right hand and try C, F and G under it; say which chord it melts into.
+- **2 minutes:** C – Csus4 – C – Csus2 – C, then the same on G and F. Watch the one moving finger.
+- **5 minutes:** finish the Twinkle task if you didn't; solo melody + piano and listen for sour strong beats.
+- One chords-ladder session on the Practice page.

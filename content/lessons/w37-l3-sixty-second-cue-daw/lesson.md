@@ -63,7 +63,7 @@ The hit point at bar 17 (the hatch opens) is the key moment. Make it land: silen
 }
 ```
 
-The F against the E drone is Phrygian's ♭2 — the half step that sounds like a warning.
+The F against the E drone is Phrygian's ♭2 — the half step that sounds like a warning. Check it: hold a low E and play F, then F♯, above it. F rubs and sounds uneasy; F♯ sounds neutral.
 
 ```exercise
 {
@@ -75,11 +75,20 @@ The F against the E drone is Phrygian's ♭2 — the half step that sounds like 
 }
 ```
 
+Method: find home (where the tune rests) and play it; decide bright or dark; then find the one special note and compare it with its plain neighbour over home. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "scales", "unlocks": 13, "intro": "Review: Phrygian menace vs Lydian wonder live on this ladder — at your current rung." }
 ```
 
 ## Session 1: the film cue
+
+1. **Bar 17 first.** Write the nebula theme (Lydian, strings + lead, long notes). It's the moment the whole cue points at, so get it right while you're fresh.
+2. **Bars 1–8.** A low E pad drone and a few sparse piano notes in E Phrygian; leave lots of silence.
+3. **Bars 9–16.** Start the pluck "signal" ostinato; add strings climbing one step every two bars; make the pulse busier in bars 13–16.
+4. **The hit.** Empty beat 4 of bar 16 on every track.
+5. **Judge by ear:** play bars 13–20 with your eyes closed. Does bar 17 feel like a door opening? If not, change more at once — jump the register higher, bring in the full pad, drop the ostinato.
+6. **Stuck?** Use the signal example for bars 9–16 as is and spend your time on bars 17–24.
 
 ```exercise
 {
@@ -114,7 +123,7 @@ The F against the E drone is Phrygian's ♭2 — the half step that sounds like 
 
 ## Session 2: a game loop
 
-Game tracks often **loop** for as long as the player stays in a level. A loop must flow back to its start without a bump — usually the last bar sets up the first (a V chord, or a pickup into bar 1). Avoid a big final cadence: it sounds like "The End" every 30 seconds.
+Game tracks often **loop** for as long as the player stays in a level. A loop must flow back to its start without a bump — usually the last bar sets up the first (a V chord, or a pickup into bar 1). Avoid a big final cadence: it sounds like "The End" every 30 seconds. **Check:** set the loop to play three times and listen only to the seam between bar 16 and bar 1. If you notice a bump, end bar 16 on a chord other than home, or add a pickup note that leads into bar 1's first note.
 
 ```exercise
 {
@@ -155,3 +164,7 @@ Game tracks often **loop** for as long as the player stays in a level. A loop mu
   }
 }
 ```
+
+## Between lessons
+
+Watch a minute of any film scene with the sound on and note one hit point: what changed in the music at that moment?

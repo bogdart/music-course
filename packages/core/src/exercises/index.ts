@@ -8,3 +8,4 @@ export { randomRhythm, rhythmTargets, rhythmLength, rhythmSnippet, beatClicks, e
 export { evaluatePerformance, perfSpec } from './perf-util.js';
 export { voiceProgression, progressionSnippet, voiceUpper } from './harmony.js';
 export { setOrder } from './util.js';
+export { seekHint } from './ear-octave.js';

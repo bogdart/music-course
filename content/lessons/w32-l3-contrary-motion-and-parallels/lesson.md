@@ -68,6 +68,17 @@ Remember why parallel fifths are avoided: the two voices fuse into one. Sometime
 
 So the rule is about goals: independent lines (counterpoint, a counter-melody, string parts) avoid parallels; one fused riff sound welcomes them.
 
+### Try it
+
+1. Put both thumbs on C4 (or C3 and C4). Move both hands **up** together by step three times: parallel.
+2. Back to C. Now the right hand steps up while the left steps down: contrary.
+3. Hold the left hand still while the right hand moves: oblique.
+4. Replay each and ask: do I hear one block moving, or two separate people?
+
+**Check:** contrary motion usually sounds most like two people; parallel octaves like one; oblique sits in between (one note is a "floor", the other walks).
+
+**If you can't hear it yet:** watch the keyboard and follow only with your eyes — hands opening like scissors (contrary), sliding together (parallel), one still (oblique). For the listening question below, replay it and point with each hand in the air: one hand per voice.
+
 ## Drills
 
 ```exercise
@@ -122,6 +133,15 @@ So the rule is about goals: independent lines (counterpoint, a counter-melody, s
 }
 ```
 
+**Fixing parallels, step by step** (for the DAW task below):
+
+1. Play both tracks and mark every pair of half notes where the upper line is a 5th (or octave) above the bass *and* stays so on the next note.
+2. For each such spot, keep the bass and try the note a 3rd or 6th above it instead; choose the one that is a step from your previous upper note.
+3. Where the bass goes up, try moving your line down (contrary) — it rarely creates new parallels.
+4. End on C, arriving by step.
+
+**Judge it by ear:** play your new line with the bass and listen for two different tunes rather than one thick one. **If you're stuck:** start from the last bar and work backwards — the ending (D → C over G → C) is fixed, so every earlier note only has to lead into the next.
+
 ```exercise
 {
   "id": "e5-daw-fix-parallels",
@@ -144,6 +164,8 @@ So the rule is about goals: independent lines (counterpoint, a counter-melody, s
 
 ## Ear review
 
+**Method** (see each drill's *How to do it* box): intervals together — one, hollow, sweet or rough first, then choose inside the group. Octaves — is it one note (octave) or a hollow pair (the fifth trap)? If far apart, walk the octaves. Both drills run at your current rungs.
+
 ```ladder
 { "skill": "intervals", "unlocks": 20, "intro": "Intervals played together, at your current rung: hear two voices as one sound." }
 ```
@@ -151,3 +173,7 @@ So the rule is about goals: independent lines (counterpoint, a counter-melody, s
 ```ladder
 { "skill": "octave", "unlocks": 14, "intro": "Octaves at your level, including the fifth trap: the two most blended intervals." }
 ```
+
+## Between lessons
+
+Play the contrary-motion exercise hands together once a day. Take any riff you know and play it once with power chords, once with only the top note — notice how the fused 5ths thicken it.

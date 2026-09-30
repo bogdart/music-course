@@ -35,7 +35,17 @@ It sounds neither major nor minor: floating and unresolved, like a question or t
 }
 ```
 
-**What you will actually hear.** Diminished tends to sound pinched and tight; augmented sounds wide and blurry. At first both may simply sound "odd", and that is fine. This lesson opens a chord-colour rung that puts the two next to major and minor; the drill at the end runs at your current chord rung, so you may meet that rung later.
+**What you will actually hear.** Diminished tends to sound pinched and tight; augmented sounds wide and blurry. At first both may simply sound "odd", and that is fine.
+
+### Try it
+
+1. Hold C major (C E G) with your right hand.
+2. Move only the **top** note up one key (G → G♯): augmented. Move it back. Then move the top note **down** one key and the middle one down too (C E♭ G♭): diminished.
+3. Alternate the three slowly — C, Caug, C, Cdim — and give each a word: "settled", "stretched", "squeezed".
+
+**Check:** eyes closed, ask a replay of the example (or play blind by picking a chord at random) — can you say "stretched" or "squeezed" before looking?
+
+**If you can't hear it yet:** listen to the **top note only**. In Caug it feels like it wants to keep climbing (G♯ → A); in Cdim the chord feels like it wants to spring back open. Play the resolution after each (Caug → F, Cdim → C) and let the next chord tell you which one it was.
 
 ```exercise
 {
@@ -118,6 +128,12 @@ At first the ♭9 may simply sound "stranger" or "more tense" than the plain G7.
 
 ## Ear: chord colours
 
+**Before the drill** — the method (see *How to do it* beside it): major and minor are the stable ones; of the two tense ones, **diminished is squeezed, augmented is stretched and floating**, like a question mark. Decide "stable or tense" first, then "squeezed or stretched". The drill runs at your current chord rung, which may be earlier; its box has that rung's method.
+
 ```ladder
 { "skill": "chords", "unlocks": 14, "intro": "Opens the rung with diminished and augmented next to major and minor; the drill runs at your current chord rung." }
 ```
+
+## Between lessons
+
+Play C – Caug – F – Fm – C and G7 → G7(♭9) → Cm once a day, eyes on the one note that moves. Try the same in F.

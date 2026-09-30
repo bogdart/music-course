@@ -21,6 +21,29 @@ everything, reveal, and note which pass let you down.
 
 Budget: about 30 minutes for the passes, 15 for the rebuild.
 
+## The method from week 41, pass by pass
+
+Loop the song and ask one question per listen. Write each answer on the form map before the next pass.
+
+1. **Key.** Listen to where the melody comes to rest — the long notes at the ends of bars 2, 4 and 8. Find that note
+   on the keyboard (higher/lower from the middle). Then test candidates: hold each one low under the loop for a full
+   pass. *Check:* home sounds settled all the way through; a wrong candidate clashes somewhere.
+2. **Groove and layers.** One drum per listen: kick (low thump), then snare, then hats; tap along. Then count the
+   instruments on your fingers. *Check:* tap the kick pattern with the loop — your taps and the thumps coincide.
+3. **Bass.** Ignore everything but the lowest pitched thump. For bar 1, search low keys (octaves 1–2) with
+   higher/lower until one merges; then each next bar from the one before — step or jump, up or down? *Check:* play your
+   eight notes along with the loop; the bass line and yours become one line.
+4. **Chords.** On each bass note, play the major chord along with the loop, then the minor one; keep the one that
+   blends. If neither blends, the bass may not be the root (try chords that *contain* the bass note), or the chord may
+   change inside the bar (listen to each half). *Check:* play all eight
+   chords with the loop — a wrong one rubs.
+5. **Melody.** Chunk it: bars 5–6, then 7–8. Find the first note by search, then follow up/down, step/leap. A note
+   that sounds 'bent' is probably the black key next to your guess. *Check:* play each chunk along with the replay.
+
+**When stuck:** loop only the bar you're stuck on; isolate one layer (the slower keys-and-bass version below helps);
+compare two candidates by playing each with the loop; guess and check — a guess you test is worth more than a blank.
+Then answer, reveal, and note which pass let you down.
+
 ```example
 {
   "title": "Graduation mystery song",
@@ -221,6 +244,16 @@ Budget: about 30 minutes for the passes, 15 for the rebuild.
 }
 ```
 
+## Ear: one last bass round
+
+Same as pass 3: lowest thump only, search low keys with higher/lower, check your note under the chord. The *How to do
+it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "roots", "unlocks": 15, "intro": "One last bass round at your own rung."}
 ```
+
+## Between lessons
+
+Pick one pop song you like and do pass 1 and pass 3 on its chorus only: home note and the bass notes. Bring the notes
+to lesson 3.

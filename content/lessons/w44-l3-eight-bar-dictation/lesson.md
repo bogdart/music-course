@@ -22,12 +22,18 @@ never to try.
 
 Use the [[skeleton-first]] method:
 
-1. **Chunk.** Work on one 2- or 4-bar phrase at a time, looping it.
-2. **Downbeats.** In each bar find only the first note. Use the chord: it's usually root, 3rd or 5th. Those eight notes
-   are the skeleton.
-3. **Rhythm.** Tap the chunk's rhythm, ignoring pitch.
-4. **Fill in.** Fill the gaps between skeleton notes; most fills move by step, and a leap lands on a chord tone.
+1. **Chunk.** Work on one 2- or 4-bar phrase at a time, looping it (use the slowed version below).
+2. **Downbeats.** In each bar find only the first note: play the bar's chord tones (root, 3rd, 5th) one at a time with
+   the loop; the one that merges is it. Check: write the eight skeleton notes down and play them along with the loop —
+   each should sit on its chord.
+3. **Rhythm.** Tap the chunk's rhythm, ignoring pitch. Check: tap it along with the loop; your taps and the notes should
+   click together.
+4. **Fill in.** Fill the gaps between skeleton notes; most fills move by step, and a leap lands on a chord tone. Ask of
+   each move: up or down, step or leap?
 5. **Play it back** with the track and fix only what sounds wrong.
+
+When stuck on a bar: loop only that bar, guess the note, compare it with its neighbour key back to back, and move on
+after two tries — the next downbeat is already known, so one wrong fill note costs you nothing.
 
 The skeleton means you never lose your place: even if a fill note is wrong, the next downbeat is already known.
 
@@ -147,6 +153,15 @@ work.
 }
 ```
 
+## Into the DAW
+
+1. Enter your skeleton first: one note at the start of each bar. Play it with the piano track — every note should sit on
+   its chord.
+2. Fill in bars 1–4 from your answers above, then bars 5–8. Play each 2-bar chunk against the hidden full mix, A/B:
+   first the original, then yours.
+3. A bar sounds wrong? Solo the lead, loop that bar, and move one note at a time a key up or down until it matches.
+4. Rhythm feels stiff? Look for a note that should start an eighth early (an anticipation) and drag it left.
+
 ```exercise
 {
   "id": "w44l3-daw",
@@ -185,6 +200,11 @@ work.
 }
 ```
 
+## Your own level: melody
+
+The drill is today's routine in miniature: first note by search, then up/down and step/leap, chunk long melodies. The
+*How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "melody", "unlocks": 19, "intro": "Melody dictation at your own rung."}
 ```
@@ -207,3 +227,8 @@ work.
   }
 }
 ```
+
+## Between lessons
+
+One Practice session, then play your DAW version of Mystery Song #3 against the original once more and fix any bar that
+still sounds off.

@@ -6,7 +6,7 @@ order: 2
 phase: p5
 duration_min: 40
 goals:
-  - Find home with the hum test and the phrase-end test, then prove it by playing the scale along
+  - Find home with the phrase-end test and the hold-it-under test, then prove it by playing the scale along
   - Decide major or minor from the home chord
   - Measure tempo by tapping, and recognise a half-time feel
 prerequisites: [w41-l1-the-transcription-workflow]
@@ -20,21 +20,30 @@ multiple choice instead of an open question.
 
 ## Finding home
 
-The [[tonal centre]] is the note the music wants to rest on. Two tests, in this order:
+The [[tonal centre]] is the note the music wants to rest on. Loop the song and work through these steps:
 
-1. **Hum test.** Loop the song, stop it mid-phrase and hum the note that would feel most finished. Check your hum on the
-   keyboard. It is often, not always, degree 1 — the other tests confirm it.
-2. **Phrase-end test.** Listen to the bass on the *last* chord of a phrase or section. Songs land on home at the ends of
-   sections much more often than at the start (you saw that trap last lesson).
+1. **Phrase-end note.** Listen only to the tune. Where does a phrase stop or hold a long note? Find that note on the
+   keyboard with higher/lower searching. Do the same for the next phrase end. The note that keeps coming back is
+   your first candidate.
+2. **Bass at the end of a section.** Listen to the lowest note on the *last* chord of a phrase. Songs land on home at
+   the ends of sections much more often than at the start (last lesson's trap). Search for it in the low keys.
+3. **Hold it under.** Hold your candidate low in the left hand through the whole loop. Then hold a second candidate.
+   *Check:* home sounds settled under every chord. A wrong candidate sounds fine in some bars and rubs or leans in
+   others.
 
-Then **decide major or minor**: play the home chord both ways (C–E–G and C–E♭–G) along with the loop. The one that
-blends is right. Finally play the whole scale along; a wrong candidate clashes within a bar or two. That is your proof.
+**Major or minor?** Play the major chord on home (for C: C–E–G), then the minor one (C–E♭–G), along with the loop.
+*Check:* one blends; the other sounds sour or too bright. Then play the whole scale up and down along with the loop.
+A wrong key clashes within a bar or two. That is your proof.
+
+**Stuck between two notes?** Loop only the last two bars of a phrase and hold each candidate under them in turn. Home is
+the one that sounds like "the end".
 
 ## Finding the tempo
 
-Tap steady beats along with the kick-and-snare for eight beats and let a tap-tempo tool turn them into BPM — this is
-[[tap tempo]]. The drill below has exactly such a tool; for a record outside the app, count beats for 15 seconds and
-multiply by four.
+1. Tap your foot to the kick and snare until it feels steady.
+2. Tap eight beats on the [[tap tempo]] tool in the drill below and read the BPM. Outside the app, count beats for
+   15 seconds and multiply by four.
+3. *Check:* tap again from a different bar. The two readings should be within a few BPM.
 
 The classic trap is the [[half-time]] feel: the snare hits only on beat 3, so the groove *feels* half as fast while the
 hats and bass keep the real pace. Hear the same loop both ways:
@@ -117,8 +126,8 @@ Now use both tests on a loop you haven't seen. Answer, then reveal.
       "loop": true
     },
     "questions": [
-      {"q": "Hum test and phrase-end test: which note is home?", "choices": ["G", "E", "D", "C"], "answer": 1, "explain": "E. The phrase-end test decides it: the tune's long phrase ends on E in bar 4, over an E chord with E in the bass, and the bar before (a D chord) leans into it. That the loop also begins on E proves nothing by itself — last lesson's loop began away from home."},
-      {"q": "Play E–G–B and E–G#–B along with the loop. Which blends?", "choices": ["E–G#–B: major", "E–G–B: minor"], "answer": 1, "explain": "E–G–B: the home chord is minor, so the key is E minor (chords Em – C – D – Em: i – VI – VII – i)."},
+      {"q": "Phrase-end note, bass at the end, hold it under: which note is home?", "choices": ["G", "E", "D", "C"], "answer": 1, "explain": "E. The phrase-end test decides it: the tune's long phrase ends on E in bar 4, over an E chord with E in the bass, and the bar before (a D chord) leans into it. That the loop also begins on E proves nothing by itself — last lesson's loop began away from home."},
+      {"q": "Play the major chord and then the minor chord on your home note along with the loop. Which blends?", "choices": ["Major", "Minor"], "answer": 1, "explain": "E–G–B: the home chord is minor, so the key is E minor (chords Em – C – D – Em: i – VI – VII – i)."},
       {"q": "Does the snare hit on 2 and 4, or only on 3?", "choices": ["2 and 4 — normal feel", "Only 3 — half-time"], "answer": 0}
     ]
   }
@@ -162,14 +171,23 @@ Now use both tests on a loop you haven't seen. Answer, then reveal.
 }
 ```
 
+Before the drills: for tempo, tap your foot first and only then tap the tool. For degrees, hold home in your head
+(or on a key) and walk from the note to it. The *How to do it* box under each drill shows the exact method for your
+current rung.
+
 ```ladder
 {
   "skill": "rhythm",
   "unlocks": 16,
-  "intro": "Rung 12 of this ladder is estimating tempo; you practise at your own rung."
+  "intro": "The rhythm ladder includes a tempo rung; you practise at your own rung."
 }
 ```
 
 ```ladder
-{"skill": "degrees", "unlocks": 22, "intro": "Hearing degrees against home is the skill behind the hum test."}
+{"skill": "degrees", "unlocks": 22, "intro": "Hearing degrees against home is the skill behind finding the key."}
 ```
+
+## Between lessons
+
+Take one song you like. Find its home note (the hold-it-under test) and tap its tempo. Write both down and keep them
+for week 46.

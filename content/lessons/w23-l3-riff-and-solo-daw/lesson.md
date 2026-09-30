@@ -50,6 +50,14 @@ Here is an original riff in E — E E G E A E B♭ A. The B♭ is the blue ♭5 
 }
 ```
 
+## Make it: your riff
+
+1. Loop the empty template and hold A2 for a bar. Now tap a rhythm on A2 alone — eighths with one rest, or two repeated notes then a gap. Keep the rhythm that makes you nod.
+2. Keep that rhythm and change two or three of its notes to C, D or E (A blues scale). Add the E♭ once, as a passing "crunch" between D and E.
+3. Play the bar four times in a row. **Judge it by ear:** would you recognise it if someone hummed it back? If not, it has too many different notes — go back to fewer.
+4. Duplicate and transpose it through the form (D for IV, E for V). Listen at bars 5 and 9: the riff should feel like the same riff, "moved house".
+5. **If you're stuck:** borrow the rhythm of the E riff above and give it your own notes; or keep its notes and change the rhythm.
+
 ```exercise
 {
   "id": "daw-own-riff",
@@ -98,6 +106,15 @@ A solo is a melody made up over a chord loop. You don't have to improvise it liv
 }
 ```
 
+### Steps for the solo
+
+1. **The call (bars 1–2):** start on E, use only E, G and A. Draw 4–6 notes; leave the end of bar 2 empty.
+2. **Space (bars 3–4):** leave them empty, or one long note. Loop bars 1–4: silence after a call should feel like a breath, not a hole.
+3. **Repeat the call over IV (bars 5–6):** copy it unchanged. Listen: the same notes sound different over A7 — that shift is the point.
+4. **The answer (bars 9–11):** new notes, can go higher (B, D), must end on E. Land on B at bar 9 if you can.
+5. **Judge it by ear:** loop the 12 bars. Any note that makes you wince? Move it one scale note up or down. Any bar that feels busy? Delete notes rather than add.
+6. **If you're stuck:** copy the call from last lesson's example (it is in C — transpose it to E) and write only the answer yourself.
+
 ```exercise
 {
   "id": "daw-step-solo",
@@ -125,6 +142,8 @@ A solo is a melody made up over a chord loop. You don't have to improvise it liv
 
 ## Keep the ear going
 
+The methods are in the *How to do it* box by each drill. Scales: listen to the middle of the run — one clean step F→G, or a chromatic creep through the blue note? Melody: ignore the chords and follow the highest line; find its first note on the keyboard, then go step by step.
+
 ```ladder
 { "skill": "scales", "unlocks": 10, "intro": "Review: minor pentatonic or blues scale?" }
 ```
@@ -140,3 +159,7 @@ A solo is a melody made up over a chord loop. You don't have to improvise it liv
   "spec": { "prompt": "Play your solo against the backing. Where does it sound best - on the call, the answer, the ending? Which 2-bar lick would you steal from yourself for a future song?", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Finish the solo if it spilled over. Then loop the backing and noodle on E minor pentatonic for five minutes — steal your own best 2-bar lick.

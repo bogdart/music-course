@@ -21,12 +21,15 @@ Your song exists; now make sure a listener can *hear* it. You have exactly the r
 
 Play your song without looking at the screen and do three passes, as if it were someone else's mystery song:
 
-1. **Bass** — can you follow it all the way through?
-2. **Melody** — can you hum the chorus hook after one listen?
-3. **Layers** — can you name every instrument in the last chorus?
+1. **Bass** — follow the lowest line with a finger on the low keys. Check: can you keep up to the end? Where you lose
+   it, write the bar number.
+2. **Melody** — after two listens, find the chorus hook on the keyboard (first note by search, then the path). Check:
+   if it takes you much longer than your own hook should, something is covering it.
+3. **Layers** — in the last chorus, count instruments on your fingers, then look at the track list. Check: any track
+   you didn't count is inaudible — make it clearer or cut it.
 
-Anything you *can't* hear is an arrangement or mix problem, not a listener problem. The usual culprit: two parts in the
-same register fighting. Try it on a hidden example first.
+Anything you *can't* hear is an arrangement or mix problem, not a listener problem. First, diagnose a hidden example:
+loop it, try to follow the melody, and ask what gets in its way.
 
 ```exercise
 {
@@ -71,14 +74,17 @@ same register fighting. Try it on a hidden example first.
 }
 ```
 
-Same notes, same instruments — now the melody has its own space.
+Same notes, same instruments — now the melody has its own space. In your song: solo the lead with each other track in
+turn; if a pair makes the melody harder to follow, move the other part an octave down (or up, above the melody).
 
 ## Balance by role
 
-- **Centre, loudest**: lead melody, kick, snare, bass.
-- **A little lower**: chords and pads — they support.
-- **Panned out** left/right: pluck, strings, counter-melody, hats slightly off-centre.
-- **Check quietly.** At low volume only the important parts survive: make sure it's the melody and the groove.
+1. **Start flat**: every track at the same volume, centred.
+2. **Centre, loudest**: lead melody, kick, snare, bass.
+3. **A little lower**: chords and pads — lower them until you *just* miss them when muted, then a touch up.
+4. **Panned out** left/right: pluck, strings, counter-melody, hats slightly off-centre.
+5. **Check quietly.** Turn the speaker down until barely audible: melody and groove must survive. If the melody
+   disappears, raise it — don't lower everything else again.
 
 ## Self-critique checklist
 
@@ -154,6 +160,16 @@ different from the one before? Does the ending sound like an ending? Would you p
 }
 ```
 
+## Ear: bass
+
+Listen only to the lowest thump; search low keys with higher/lower until one merges with it, then check it under the
+chord. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "roots", "unlocks": 15, "intro": "Bass hearing at your own rung."}
 ```
+
+## Between lessons
+
+Don't touch the song for two days. Then listen once, start to finish, and write one sentence: finished, or one fix?
+Make at most that one fix.

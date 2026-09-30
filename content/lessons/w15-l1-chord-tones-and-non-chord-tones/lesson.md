@@ -56,6 +56,33 @@ The rule of thumb: strong beats (1 and 3) mostly land on chord tones, and the in
 }
 ```
 
+### Try it: blend or rub
+
+1. Left hand: hold **C and G** low (C3 G3). Right hand: play **E**, then **G**, then **C**. Each one melts into the left hand: chord tones.
+2. Keep holding. Play **F**, then **D**. Each one sticks out a little and seems to want to move one key. That slight rub is a non-chord tone.
+3. Now play E – F – G over the held C–G, then E – F – E. The F rubs for a moment and the next note settles it. That's all a passing or neighbour tone is: a rub that is settled by a step.
+
+Check: a C chord with one note on top. Blend or rub?
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: blend or rub?",
+  "instructions": "Play each pair. Does the top note melt into the chord, or stick out and want to move?",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "pad", "seq": "[C3 E3 G3]:w" }, { "instrument": "piano", "seq": "D5:w" } ] },
+      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "pad", "seq": "[C3 E3 G3]:w" }, { "instrument": "piano", "seq": "G4:w" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1: the top note…", "choices": ["blends (chord tone)", "rubs (non-chord tone)"], "answer": 1, "explain": "D over C E G: not in the chord. Play it and let it fall to C or rise to E; the rub goes away." },
+      { "q": "Pair 2: the top note…", "choices": ["blends (chord tone)", "rubs (non-chord tone)"], "answer": 0, "explain": "G over C E G: the chord's own 5th. The rub on D is subtle; compare the two pairs back to back." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** the rub on a white-key non-chord tone is mild, so don't wait for a clash. Play the chord yourself and add the note: then step it up or down one key. If a neighbour sounds *more* at rest than your note, your note was the non-chord tone. And your eyes can always check: is it one of the chord's three keys?
+
 ```exercise
 {
   "id": "e1", "type": "play-melody", "title": "Passing and neighbour tones over I – IV – V – I",
@@ -81,6 +108,12 @@ A [[suspension]] is a note *held over* from the previous chord while the harmony
 }
 ```
 
+### Try it: make a suspension
+
+1. Play **F A C** (right hand) with **F** low in the left hand. Keep the right hand's top note, change nothing else yet.
+2. Move the chord under it to C: left hand **C**, right hand **G C F**, the F still held on top. Hear the ache: F is not in C major.
+3. Drop the F one key to **E**. The ache resolves. Try it three times; the moment of release is what you're listening for.
+
 ```exercise
 {
   "id": "e2", "type": "play-melody", "title": "Suspensions under your fingers",
@@ -104,10 +137,19 @@ A [[suspension]] is a note *held over* from the previous chord while the harmony
 
 ## Ear corner: melodies in any key
 
-This lesson opens the next melody rung: short tunes (degrees 1–5) in a new key each time, the "any key" step your degree drill took in week 11. The drill below runs at your current melody rung, so it may still be an earlier one. When the any-key tunes arrive: listen to the cadence, find home on the keyboard first, then play the tune from there.
+This lesson opens the next melody rung: short tunes (degrees 1–5) in a new key each time. The drill runs at your current melody rung, so it may still be an earlier one.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box above the drill, for the rung you're on). Play a cadence in F yourself (F – B♭ – C – F), then find its last bass note, F, and rest your thumb on it: that's home, degree 1. Now play A G F (3 2 1) from there. For the any-key tunes it's the same three moves: **home from the cadence on the keyboard first**, then the first tune note relative to home (above it? how many keys?), then follow the up/down path. If you lose home, replay the cadence: that's allowed.
 
 ```ladder
 { "skill": "melody", "unlocks": 12, "intro": "Opens: four-note tunes (degrees 1–5) in a new key each time. The drill runs at your current melody rung." }
 ```
+
+## Between lessons
+
+- **3 minutes:** hold C–G in the left hand, play random white keys in the right; say "blend" or "rub" before you check whether the key is C, E or G.
+- **2 minutes:** the 4–3 suspension (F held from F major into C, falling to E), then the same in G: C held over G, falling to B.
+- **2 minutes:** pick any key you know, play its cadence, put your thumb on home, and play 3 2 1 from it.
+- One melody-ladder session on the Practice page.
 
 In lesson 3 this week, the suspension becomes a chord of its own: the sus chord.

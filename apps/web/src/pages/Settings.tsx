@@ -6,6 +6,7 @@ import { useAudioStore } from '../stores/audio';
 import { connectMidi } from '../input/setup';
 import { useInputStore } from '../stores/input';
 import { useSettingsStore } from '../stores/settings';
+import { RestartCourse } from './RestartCourse';
 
 const THEME_LABEL = { system: 'System', light: 'Light', dark: 'Dark' } as const;
 const PIANO_LABEL = { warm: 'Piano — warm synth', grand: 'Piano — grand' } as const;
@@ -145,6 +146,7 @@ export function Settings() {
         </label>
         <Keyboard keyName="C" showQwerty />
       </section>
+      <RestartCourse />
     </div>
   );
 }

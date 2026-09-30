@@ -80,6 +80,16 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
 
 **What you will probably hear at first.** An odd bar often sounds like "a normal bar that trips" or "one beat too short". That is a perfectly good first perception, and it is how you spot odd meters in songs.
 
+### Try it
+
+1. Loop the 7/8 groove and say "**ap**-ple **ap**-ple **pine**-ap-ple" along with it, tapping the table on each bold syllable.
+2. Now loop the 5/4 vamp and say "1-2-3-1-2", tapping on each "1".
+3. Switch back to 4/4 in your head — say "1-2-3-4" over the 7/8 groove — and notice where it stops fitting.
+
+**Check:** your taps on the bold syllables should land with the kicks and snares, and the loop should start again right after "pine-ap-ple" every time.
+
+**If you can't hear it yet:** turn off the sound and read the piano roll of the 7/8 groove: point at each 8th with a finger while saying the words. Then play it again at the same pace with your finger still moving. Seeing the groups first is fine; the ear follows.
+
 ## Four or five?
 
 The first odd-meter ear rung is a two-way choice: **4/4 or 5/4?** This lesson opens it; the drill below runs at your current rhythm rung, so you may meet it later. Here is how to count it, without guessing:
@@ -260,6 +270,12 @@ Listen to both, one after the other, and count along.
 
 ## Ear: four or five?
 
+Use the three counting steps from "Four or five?" above — they are the drill's method too (see its *How to do it* box, which also covers any earlier rung you may be on).
+
 ```ladder
 { "skill": "rhythm", "unlocks": 15, "intro": "Opens the meter rung 'Four or five?' (4/4 against 5/4); the drill runs at your current rhythm rung." }
 ```
+
+## Between lessons
+
+Tap "apple apple pineapple" along with any music you hear for a minute a day. Listen to "Take Five" and count "1-2-3-1-2" through the piano vamp.

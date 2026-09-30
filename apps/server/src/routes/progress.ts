@@ -54,6 +54,13 @@ export function progressRoutes(progress: ProgressService): Hono {
     return c.json({ ok: true, ...res });
   });
 
+  /** Start over from a lesson (see ProgressService.restartFrom). */
+  r.post('/restart', async (c) => {
+    const b = await jsonBody(c.req);
+    const ids = progress.restartFrom(str(b, 'fromLessonId', { max: 200 }));
+    return c.json({ ok: true, reset: ids.length, lessonIds: ids });
+  });
+
   r.post('/lessons/:id/complete', (c) => {
     progress.assertKnown(c.req.param('id'));
     const lesson = progress.completeLesson(c.req.param('id'));

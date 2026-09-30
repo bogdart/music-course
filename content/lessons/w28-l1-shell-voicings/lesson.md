@@ -37,6 +37,15 @@ The point is to **alternate** them. In a ii–V–I, the 7th of one chord slides
 
 Follow the two upper notes only: F→F→E and C→B→B. Two tiny lines moving by half steps: that is what makes jazz harmony sound connected.
 
+### Try it
+
+1. Play only the top notes of the three shells, slowly: C–B–B. Then the middle notes: F–F–E. Each is a tiny melody.
+2. Now play the full shells and try to keep hearing one of those tiny lines inside them.
+
+**Check:** you can follow at least the top line (C→B) through the chords. That half-step slide is the "connected" sound.
+
+**If you can't hear it yet:** play the shell, then its top note alone, then the next shell, then its top note alone. Hearing the line on its own first makes it stick out of the chord.
+
 ```keyboard
 { "range": ["C2", "C4"], "highlight": ["G2", "F3", "B3"], "labels": "names", "colors": { "G2": "root", "F3": "seventh", "B3": "third" } }
 ```
@@ -53,8 +62,6 @@ You met [[comping]] in Phase 3: playing chords behind a melody or a soloist. She
   "show": ["keyboard"]
 }
 ```
-
-**About the ear drill below.** Today's new rung plays the four seventh colours spread over two octaves, the way shells and open piano voicings sound. Spread chords are harder to judge than close ones at first, because the 3rd and 7th are far apart. Listen to the top of the chord: a major 7th sounds bright and bittersweet, a dominant 7th restless, a minor 7th soft, and a m7♭5 dark.
 
 ## Drills
 
@@ -102,11 +109,42 @@ You met [[comping]] in Phase 3: playing chords behind a melody or a soloist. She
 
 ## Ear: sevenths, spread out
 
+Today's new chord rung plays the four seventh colours spread over two octaves, the way shells and open voicings sound. Spread chords blur the colour at first, because the 3rd and 7th are far apart.
+
+```example
+{
+  "title": "Cmaj7 close, then spread · Cm7 close, then spread",
+  "bpm": 56, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C3 E3 G3 B3]:h [C2 G3 B3 E4]:h | [C3 Eb3 G3 Bb3]:h [C2 G3 Bb3 Eb4]:h |" } ],
+  "show": ["keyboard"]
+}
+```
+
+### Try it
+
+1. Play Cmaj7 close (C3 E3 G3 B3), then spread (C2 G3 B3 E4). Same chord: does it still feel bright and dreamy?
+2. Do the same with C7, Cm7 and Cm7♭5 — spread each one by moving the root down an octave and the 3rd up an octave.
+3. Play one of the four spread chords at random and sort it.
+
+**Check:** the spread version keeps the same mood as the close one, just wider. Sort by mood, not by picking out notes.
+
+**If you can't hear it yet:** play the spread chord, then immediately the close one on the same root. The close chord tells you the colour; then replay the spread one and hear that colour in it.
+
+**The drill's method** (also in its *How to do it* box): hear the whole sound; bright or dark first, then dreamy/bluesy (maj7/dom7) or mellow/tense (min7/m7♭5). If the drill is on an earlier chord rung, its own box has the method for that rung.
+
 ```ladder
 { "skill": "chords", "unlocks": 13, "intro": "Opens the four sevenths spread over two octaves, like shells and open piano voicings; the drill runs at your current chord rung." }
 ```
 
 ## Make it
+
+1. On the piano track, enter one shell per bar: Cm7 (1-3-7), F7 (1-7-3), B♭maj7 (1-3-7) twice — the same pattern as the F and B♭ example above, starting from C3.
+2. Loop it and listen to the top notes: they should move by a half step or stay put. If a note jumps, you've used the wrong shape.
+3. Add the bass: root on beat 1, then try a 5th or a note a step away from the next root on beat 4.
+
+**Judge it by ear:** with the bass muted the chords should still sound like a smooth chain; with the bass on, nothing should sound thick or muddy in the low end. If it does, move the shells up so the lowest shell note is above the bass.
+
+**If you're stuck:** make the bass play whole notes on the roots only. It already works.
 
 ```exercise
 {
@@ -129,3 +167,7 @@ You met [[comping]] in Phase 3: playing chords behind a melody or a soloist. She
   }
 }
 ```
+
+## Between lessons
+
+Play the shell ii–V–I in C, F and B♭ once a day, saying each key's name first. Sort four spread sevenths on a new root with eyes closed.

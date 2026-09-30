@@ -25,6 +25,8 @@ Last week's genres were song-first. These are **groove-first**: you start with d
 2. Copy it to fill the sketch length.
 3. **Delete** parts of layers to make sections: an intro with just drums and one element; a middle without the kick; an ending that strips back again.
 4. Make one **change** every 8 bars — a fill, a new counter-line, a layer moved up an octave, a dropped beat.
+5. **Judge by ear:** play the whole sketch with your eyes closed and raise a hand each time you notice something change. If 8 bars pass with no hand, add a change there; if you can't tell sections apart, make the deletions bigger (take out two layers, not one).
+6. **Stuck?** The quickest change is removal: mute the kick for 4 bars before a new section, then bring it back.
 
 ## Sketch targets
 
@@ -60,6 +62,8 @@ A reminder of how much the groove decides the mood — the same two chords (C/A 
   "spec": { "chords": ["Dm9", "Cmaj9", "Am9", "Fmaj9"], "inversion": "any", "sequence": true, "bpm": 55 }
 }
 ```
+
+Progression method: find each bass note first (search low keys with higher/lower), then name the chord by what it does — rest, lift, pull, sad — and check it by playing that chord under the loop. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Loops are progressions on repeat — this drill runs at your current progressions rung." }
@@ -167,3 +171,7 @@ A reminder of how much the groove decides the mood — the same two chords (C/A 
   }
 }
 ```
+
+## Between lessons
+
+Listen to one track in a genre from this week and raise a hand at every layer change; count how many bars pass between them.

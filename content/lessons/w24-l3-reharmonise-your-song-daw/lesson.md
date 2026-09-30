@@ -80,6 +80,8 @@ The full reharm: **C | E7 | Am7 | Dm7 G7 | Em7 | G G♯dim7 | Fmaj7/A | Fm C**.
 }
 ```
 
+The methods for both drills are in the *How to do it* boxes. Progressions: follow the bass, and when a chord sounds surprisingly major and pushy, ask where it pushes (into V or into vi). Degrees: after the cadence, ask which way the note leans — ♯4 climbs to 5, 4 sinks to 3.
+
 ```ladder
 { "skill": "progressions", "unlocks": 17, "intro": "Review: the key's chords plus V/V and V/vi, at your own rung." }
 ```
@@ -90,7 +92,14 @@ The full reharm: **C | E7 | Am7 | Dm7 G7 | Em7 | G G♯dim7 | Fmaj7/A | Fm C**.
 
 ## Your turn: reharmonise a chorus
 
-The task opens a fresh project (F major, 98 BPM: piano, lead, bass, drums) so your week-18 project stays exactly as you left it. Bars 1–8 hold a stand-in chorus on I–V–vi–IV in F. Better: replace its lead with **your own week-18 chorus melody** — open the week-18 lesson's last task in another tab, and re-enter your 8 bars here (about 5 minutes). Either way, the original stays in bars 1–8 and the reharmonised pass goes in bars 9–16: the "last chorus" version. In F, V/V is G(7) → C and V/vi is A(7) → Dm. Work bar by bar and play each new chord with the melody before moving on. Plan about 25 minutes.
+The task opens a fresh project (F major, 98 BPM: piano, lead, bass, drums) so your week-18 project stays exactly as you left it. Bars 1–8 hold a stand-in chorus on I–V–vi–IV in F; you may re-enter **your own week-18 chorus melody** over it (open the week-18 task in another tab, about 5 minutes). Plan about 25 minutes.
+
+1. Copy bars 1–8 of every track to bars 9–16. Bars 1–8 stay as they are; you only change piano and bass in 9–16.
+2. **One bar at a time.** Write the melody note on beat 1 of the bar. Pick a tool from the kit that gives a chord containing that note (or having it as its 7th).
+3. Start with the easiest win: a secondary dominant in front of a chord that already comes next — A(7) before Dm, or G(7) before C.
+4. **Judge it by ear:** play the old bar, then the new bar. Keep the change only if you *prefer* it — "different" isn't enough. If the melody note and the chord rub (a half-step clash), undo it.
+5. Aim for three tools in eight bars, not eight changes. Loop 1–16 at the end: the second pass should sound like the same song, dressed up.
+6. **If you're stuck:** copy the moves of the Glasshouse reharm: ii–V in bar 4, V/vi before vi, borrowed iv in the last bar — transposed to F that's Gm7 C7, A7 → Dm, B♭m → F.
 
 ```exercise
 {
@@ -127,3 +136,7 @@ The task opens a fresh project (F major, 98 BPM: piano, lead, bass, drums) so yo
   "spec": { "prompt": "List your chords bar by bar and name the tool behind each change. Which change surprised you most when you heard it? Would you use this version as the last chorus of a song — why?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Play your reharmonised chorus against the original once more with fresh ears and undo any change you no longer like. Do one Practice session.

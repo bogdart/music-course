@@ -25,7 +25,15 @@ A [[layer map]] is a grid: sections across, instruments down, a mark wherever an
 - **Register** — low (bass, kick), mid (chords, pads), high (lead, hats, bright arpeggios).
 - **Role** — *sustained* (pads, strings, long bass notes) or *rhythmic* (arpeggios, eighth-note bass, comping).
 
-Listen register by register: lows, then mids, then highs — one question per pass again.
+Listen register by register: lows, then mids, then highs — one question per pass again. A practical routine:
+
+1. **Lows.** Loop the section and listen only to what's under your left hand's range — kick and bass. Check: play a low
+   key along; if something thumps with it, the bass is there.
+2. **Mids.** Anything that sounds like chords? Held (pad, strings) or chopped into a rhythm (arpeggio, comping)?
+3. **Highs.** A tune you could follow and play back? Ticking hats? A bright repeating pattern?
+
+Count the layers on your fingers as you go. Unsure whether two sounds are one instrument or two? Ask whether they can
+move differently — if one holds while the other moves, they're two layers.
 
 ## How sections announce themselves
 
@@ -34,7 +42,8 @@ Listen register by register: lows, then mids, then highs — one question per pa
 - **Rhythm density.** Long bass notes become eighths; hats-only becomes a full kit.
 - **Register lift.** The chorus melody often sits higher.
 
-Here are three sections of Mystery Song #4, all hidden. Loop each one before answering.
+Here are three sections of Mystery Song #4, all hidden. Loop each one and run the lows–mids–highs routine before
+answering. Then play them one after another and ask of each change: what entered, what left?
 
 ```example
 {
@@ -137,8 +146,12 @@ Here are three sections of Mystery Song #4, all hidden. Loop each one before ans
 
 Pass 1 first: which key? Four chords that loop can often be read in two keys — the same loop could be a minor key
 starting on its home chord, or its relative major starting on vi. The chord that comes first proves nothing. The
-**melody** decides: listen for the note its phrases come to rest on, and the chord where the loop feels like arriving
-home.
+**melody** decides. The week 41 method, on the keyboard:
+
+1. Loop section 3 and notice where the tune pauses — the long notes, the end of each 2-bar phrase.
+2. Find that resting note by search: play a key, higher or lower, until it merges.
+3. Test the candidates: hold each one low, as a drone, under the whole loop. Home sounds settled all the way through;
+   the wrong one sounds like it's waiting. Check: the loop's final chord should feel like it wants to fall back onto home.
 
 ```exercise
 {
@@ -158,11 +171,15 @@ writes it **VII** without a flat, like **VI** and **III**. In a *major* key the 
 below home — is borrowed and written **♭VII** (week 16): the flat is measured from the major scale. Some chord books write
 ♭VII in minor keys too; it is the same chord, and the app accepts either.
 
+Now pass 4: find each bar's bass note (lowest thump, low key, higher or lower until it merges), count it up from home,
+and if unsure of the colour, play the major and the minor chord on that bass note along with the loop — keep the one that
+blends.
+
 ```exercise
 {
   "id": "w45l2-prog",
   "type": "ear-progression",
-  "title": "Section 3: four numerals in A minor",
+  "title": "Section 3: four numerals",
   "srs": false,
   "spec": {
     "key": "Am",
@@ -184,11 +201,14 @@ below home — is borrowed and written **♭VII** (week 16): the flat is measure
 }
 ```
 
+For the drill: find home first, then bass note, then colour. The *How to do it* box under the drill shows the exact
+method for your current rung.
+
 ```ladder
 {
   "skill": "progressions",
   "unlocks": 20,
-  "intro": "Minor-key progressions are rungs 9, 12 and 13 of this ladder; you practise at your own rung."
+  "intro": "Progressions at your own rung."
 }
 ```
 
@@ -222,3 +242,8 @@ below home — is borrowed and written **♭VII** (week 16): the flat is measure
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. Pick one song you like and write a three-line layer map of its first verse and chorus: lows,
+mids, highs.

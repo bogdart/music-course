@@ -50,7 +50,16 @@ Now the reason for sixth chords, in sound: the same melody ends on C twice, firs
 }
 ```
 
-**What you will actually hear.** Next to a plain C, Cadd9 and C6 both sound like "the same chord with something extra". Telling them apart is the hard part at first: the add9 has a small rub in the middle (D against E); the 6 sounds sweeter and a bit old-fashioned. That is today's new ear rung.
+### Try it
+
+1. Play the first example again. Honestly, next to plain C both Cadd9 and C6 will first sound like "the same chord with something extra". That's the normal starting point.
+2. On your keyboard play C3 E3 G3, then add **D4** (Cadd9). Now play C3 E3 G3 and add **A3** (C6). Alternate a few times.
+3. Now move the D *down* next to the E (C3 D3 E3 G3): the rub gets obvious. Move it back up: the rub softens into shimmer.
+4. Play the second example: the melody's final C over Cmaj7, then over C6.
+
+**Check:** add9 = a little sparkle or ring high up; 6 = sweeter, older-sounding warmth; over Cmaj7 the melody's last C has a faint edge that disappears over C6.
+
+**If you can't hear it yet:** listen to the top note only. Play the chord, then its highest note alone: a D on top (a step above C's octave-ish top) points to add9, an A points to the 6. Name the top note first; the colour name follows.
 
 ## Drills
 
@@ -102,6 +111,12 @@ Now the reason for sixth chords, in sound: the same melody ends on C twice, firs
 
 ## Ear: colour chords
 
+**The drill's method** (also in its *How to do it* box): listen to the top of the chord. Sparkle up high → add9; sweet, vintage warmth → 6; neither → plain major. Replay freely; if the drill is on an earlier chord rung, follow that rung's box.
+
 ```ladder
 { "skill": "chords", "unlocks": 12, "intro": "Opens the colour-chord rung (plain major, add9 or 6?); the drill runs at your current chord rung." }
 ```
+
+## Between lessons
+
+Play C, Cadd9, C6 in a random order with eyes closed and name each (2 minutes a day). End one practice piece of the week on a 6/9 chord.

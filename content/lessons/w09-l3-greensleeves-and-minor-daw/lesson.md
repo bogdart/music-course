@@ -78,7 +78,27 @@ So **III, VI and VII** are upper case because C, F and G are major chords. These
 
 ## Ear: short tunes in A minor
 
-This lesson opens a melody rung in minor: after the minor cadence you hear five notes from A natural minor and play them back. If one note escapes you, find home (A) first and count up or down from it. The drill runs at your current melody rung, so you'll meet minor tunes once the five-note echoes in C are solid.
+This lesson opens a melody rung in minor: after the minor cadence you hear five notes from A natural minor and play them back.
+
+### Try it: echo a minor tune
+
+1. Put your thumb on **A3**. Your five fingers now cover A B C D E.
+2. Play **A C B A**, then **E D C B A**, then **C D E D C**. Say the directions aloud as you play ("up, down, down").
+3. Play the example below, then echo it without looking at the notes: first note, then up/down, step/skip.
+
+```exercise
+{
+  "id": "e5", "type": "ear-melody", "title": "Check: echo one minor tune",
+  "instructions": "Listen, then play it back on the keyboard in any octave. Home is A.",
+  "passScore": 0.7,
+  "spec": { "key": "Am", "mode": "minor", "degrees": [1, 2, 3, 4, 5], "length": 5, "rhythm": "quarters", "answer": "play", "reference": "cadence",
+    "example": { "title": "Mystery tune in A minor", "bpm": 80, "timeSig": "4/4", "key": "Am", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A4:q C5:q B4:q D5:q | C5:q B4:q A4:h" } ] } }
+}
+```
+
+**If you can't hear it yet:** find the first note alone. Replay, stop after note one, and search from A: is it A, or higher? Once the first note is right, get notes 1–3, replay, then add the rest. A wrong key is information: too high means one key down.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box above the drill, for the rung you're on): thumb on A; minor tunes often fall back to A; find the first note, then follow the up/down path; break five notes into 3 + 2. The drill runs at your current melody rung, so you'll meet minor tunes once the five-note echoes in C are solid.
 
 ```ladder
 { "skill": "melody", "unlocks": 11, "intro": "Opens \"Minor tunes in A\"; the drill runs at your current rung." }
@@ -86,7 +106,17 @@ This lesson opens a melody rung in minor: after the minor cadence you hear five 
 
 ## Ear corner: two octaves apart, one pair
 
-This lesson also opens the next octave rung: a single pair, and the second note may be one **or two** octaves away — same note, or a different one? It's the same note name, just much further up. Play C3, C4 and C5 one after another before you start. You'll meet it once "which one?" with two octaves is solid.
+This lesson also opens the next octave rung: a single pair, and the second note may be one **or two** octaves away — same note, or a different one? It's the same note name, just much further up.
+
+### Try it: walk two octaves
+
+1. Play **C3, C4, C5** one after another, slowly. Then C3 and C5 alone: the middle step is gone, and it's much harder to hear them as "the same".
+2. Play C3, then C5, then **B4**, then **D5**. Which of the high notes feels like an echo of C3? Walk C3 – C4 – C5 again to check.
+3. Repeat from A2 (A2 – A3 – A4) and from F3 (F3 – F4 – F5).
+
+**If you can't hear it yet:** walk it on the keyboard: play the first note, jump 12 keys up, then 12 more, and compare the last key with the question's second note. Same key = same note.
+
+**Before the drill, rehearse the method** (in the *How to do it* box): first note, imagine its octave, then the octave above that; does the second note sit on that last step? After answering, use "Walk up the octaves". You'll meet this rung once "which one?" with two octaves is solid.
 
 ```ladder
 { "skill": "octave", "unlocks": 10, "intro": "Opens \"Two octaves apart: same or different\"; the drill runs at your current octave rung." }
@@ -96,7 +126,13 @@ This lesson also opens the next octave rung: a single pair, and the second note 
 
 Many modern songs in minor loop **Am – F – C – G**: **i – VI – III – VII**. There's no V with a G♯ in it, only natural-minor chords, so it sounds open and a bit "epic" rather than classical, and it never quite comes to rest.
 
-Here's a secret: these are C major's **vi – IV – I – V**, the same four chords. Relative keys share their chords as well as their notes. Which chord feels like home depends on where the loop starts and where the melody settles.
+These are C major's **vi – IV – I – V**, the same four chords. Which chord feels like home depends on where the loop starts and where the melody settles. Honestly, in a loop that never stops, home can feel vague; that's part of its sound.
+
+### Try it: move home with your hands
+
+1. Play Am – F – C – G, then end on **Am**, holding it. Then play the same four and end on **C** instead.
+2. Which ending sounded more like "the end"? Most people hear Am as the end after starting on Am. There's no wrong answer here: this is about noticing.
+3. Play the loop with the root alone in your left hand (A, F, C, G) and chords in the right.
 
 ```example
 {
@@ -146,3 +182,12 @@ Use the loop twice. The piano chords are ready. Put the root of each chord on th
   }
 }
 ```
+
+**If you're stuck on the melody:** on beat 1 of each bar, play the top note of the chord (E, F, E, D — or any note of the chord), then fill the other beats with steps to the next bar's note. Play it with the chords and change anything that sounds sour.
+
+## Between lessons
+
+- **3 minutes, daily:** thumb on A, invent 5-note tunes in A B C D E and end on A; then play one with eyes closed and echo it.
+- **2 minutes:** Greensleeves' first half, slowly, with the dotted lilt.
+- **2 minutes:** walk octaves C3 – C4 – C5 and A2 – A3 – A4, then jump straight from the bottom to the top.
+- Listen to your 8-bar piece once more and change one note you don't like.

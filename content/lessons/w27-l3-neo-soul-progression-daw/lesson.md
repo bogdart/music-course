@@ -44,7 +44,12 @@ The trick is the right hand. Instead of jumping to each root, play the **3rd, 5t
 
 ## Feel: space is the groove
 
-Notice what the bass does *not* do: it rests on beat 3 and answers on beat 4. The drums leave out the hi-hat on beat 3, a tiny gap that makes the groove breathe. Neo-soul players are famous for playing slightly late; in the DAW you suggest that relaxed feel mostly by leaving holes, not by filling every 8th.
+### Try it
+
+1. Loop the example and listen three times, one thing each pass: the bass (it rests on beat 3 and answers on beat 4), the hi-hat (a gap on beat 3), the epiano (it stops a beat early each bar).
+2. Tap the drum pattern on your desk with the loop: kick with your left hand, snare with your right.
+
+**Check:** you can point to one gap in each instrument. Neo-soul feels relaxed mostly because of those holes, not because of fancy notes.
 
 ## Warm up the hands
 
@@ -75,6 +80,17 @@ Notice what the bass does *not* do: it rests on beat 3 and answers on beat 4. Th
 ```
 
 ## Make it
+
+Step by step (about 30 minutes):
+
+1. **Chords first.** On the epiano track, enter the four voicings from the example, two bars each. Loop it: nothing should jump — each shape just slides down.
+2. **Rhythm the chords.** Try one change at a time: play one chord an 8th *before* its bar line (a "push"), or cut chords short. Keep the change only if the loop feels lazier, not busier.
+3. **Bass.** Root on beat 1, then a rest, then a 5th or a note leading to the next root on beat 4. Loop chords + bass: the bass should feel like a slow conversation with the chords.
+4. **Drums last.** Snare on 2 and 4, a sparse kick (beat 1 and one off-beat), hi-hat 8ths with at least one gap.
+
+**Judge it by ear:** mute each track in turn. If muting it changes nothing, it's either too quiet or doing too little; if the loop sounds cramped, remove notes, don't add them.
+
+**If you're stuck:** copy the example's bass and drums exactly and only change the epiano rhythm. One personal change is enough for today.
 
 ```exercise
 {
@@ -108,6 +124,8 @@ Notice what the bass does *not* do: it rests on beat 3 and answers on beat 4. Th
 
 ## Ear review
 
+Method reminder (see each drill's *How to do it* box): for chord colours, sort bright/dark first, then the finer choice; for drum dictation, one pass per drum — kick, then snare, then hi-hat.
+
 ```ladder
 { "skill": "chords", "unlocks": 12, "intro": "Chord colours at your level: the loop you just built is full of them." }
 ```
@@ -115,3 +133,7 @@ Notice what the bass does *not* do: it rests on beat 3 and answers on beat 4. Th
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Rhythm at your current rung; the top open rung is drum dictation (kick, snare and hi-hat), like the groove you just wrote." }
 ```
+
+## Between lessons
+
+Replay your loop once and change one thing only (a pushed chord, a bass rest, a hi-hat gap). Play the four right-hand shapes from memory.

@@ -44,8 +44,24 @@ explanation:
 }
 ```
 
-The top E never moves; the colour changes underneath, over a stepwise slash-chord bass (week 42). Now the records — your
-own copies, answers first.
+The top E never moves; the colour changes underneath, over a stepwise slash-chord bass (week 42). To check a chord like
+this by ear: find its bass note, then play the plain major (or minor) triad on it, then the same triad with the droning
+top note added. If the plain triad sounds too "closed" against the record, the drone is there.
+
+## Three records, verdict first
+
+Your own copies, answers first. For each record:
+
+1. **Riff or loop** — loop the intro. Find the lowest note of the riff or of each chord (low key, higher/lower until it
+   merges) and count chords until the loop repeats. *Check:* play the bass notes in a row along with the record.
+2. **Home** — find the note the vocal phrases end on. If two notes compete, hold each one low under the loop for a full
+   cycle and note which one rings through everything. Write down *both* candidates and your evidence — two of these
+   songs are genuinely debated.
+3. **Quality** — on each bass note play root + 5th, major and minor along with the record. Look for ♭VII: a major
+   chord two keys below home.
+4. **Layers** — one pass just for the bass part (is it even a bass guitar?) and how the song gets bigger.
+
+Stuck? Loop two bars, compare two candidates back to back, answer anyway.
 
 ```exercise
 {
@@ -91,6 +107,12 @@ own copies, answers first.
 }
 ```
 
+## Ear: chord colours at your level
+
+Routine: bright or dark first, then the finer difference (settled or leaning, plain or shimmering); when unsure, play
+the candidates on the keyboard right after the chord. The *How to do it* box under the drill shows the exact method for
+your current rung.
+
 ```ladder
 {"skill": "chords", "unlocks": 16, "intro": "Sus chords are rungs 8–9 of this ladder; you drill at your own current rung."}
 ```
@@ -104,6 +126,16 @@ own copies, answers first.
   "spec": {"chords": ["Asus2", "E/G#", "F#m7", "Dsus2"], "inversion": "any", "sequence": true, "bpm": 72}
 }
 ```
+
+## Your rock section
+
+1. Riff first, on the bass: one bar from E minor pentatonic (E G A B D), starting on E. Loop it until it sounds like a
+   riff you'd remember; then copy it to the pluck in unison.
+2. Repeat it 3 times, vary bar 4 (a chromatic step or a new ending), and put a drum fill at the end of bar 4.
+3. Chorus: four power chords in eighths (e.g. E5 – C5 – G5 – D5), a lead melody on top.
+
+*Check:* play bars 4–5 on repeat. If the chorus doesn't feel bigger than the riff, add longer notes to the lead or
+open the hats.
 
 ```exercise
 {
@@ -147,3 +179,8 @@ own copies, answers first.
   }
 }
 ```
+
+## Between lessons
+
+Take one indie or rock song with a debatable key and write your verdict with two pieces of evidence (phrase ends, held
+note under the loop).

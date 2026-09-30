@@ -59,11 +59,19 @@ A starting point if you're stuck — an original 6/8 tune over I–IV–I–V in
 }
 ```
 
-## Timebox each sketch
+## Steps for every sketch (about 25 minutes)
 
-About 25 minutes each: 5 minutes choosing idioms and chords, 12 minutes writing the core (hook, riff or tune plus its accompaniment), 8 minutes adding the other tracks and copying sections. When the time is up, save and stop. A strict limit helps you commit to decisions instead of auditioning options forever.
+1. **5 min — choose.** Tick three boxes from the checklist and write the chord loop in the chord track or on paper. First choice wins; don't audition.
+2. **12 min — the core.** Write the one thing the genre stands on: the pop hook, the rock riff, the folk tune. Loop it until you can play it from memory.
+3. **8 min — fill.** Add the other tracks, then copy sections to reach 24 bars; change one thing per new section (higher melody, fuller drums, a held bass).
+4. **Judge by ear:** play the 24 bars without looking at the screen. Could a stranger name the genre within the first 8 bars? If not, make the ticked idiom louder or more obvious (the drop-out, the ♭VII chord, the fingerpicking).
+5. **Stuck?** Reuse material from this week: the chorus hook (w35-l1), the riff (w35-l2) or the folk seed above, and change just one thing.
+
+When the time is up, save and stop. A strict limit helps you commit to decisions instead of auditioning options forever.
 
 ## Ear: bass lines
+
+Method: ignore everything but the lowest, thumping sound. Find the first bass note by searching low keys (is my key higher or lower?), then follow each move — step or jump, up or down. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "All three sketches stand on a bass line — this drill runs at your current roots rung." }
@@ -175,3 +183,7 @@ About 25 minutes each: 5 minutes choosing idioms and chords, 12 minutes writing 
   }
 }
 ```
+
+## Between lessons
+
+Replay each sketch once on a different day with fresh ears and write one line: what to keep, what to cut.

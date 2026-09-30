@@ -17,19 +17,54 @@ tags: [review, assessment, ear, daw, song]
 
 Eight weeks ago you knew the major scale and three kinds of triad. Since then: minor keys, every interval up to the octave, the bass clef, inversions, seventh chords, tension and resolution, the three chord families and four cadences, the pop progressions, sixteenths, triplets, swing and 6/8, chord tones and sus chords, harmonising, the whole circle of fifths and borrowed chords. And you've started hearing roots.
 
-This lesson has two halves. First, a **check** of what you've drilled; the only new thing is one progression rung, V or ♭VII, which lesson 2 explained. Treat the scores as a map of where to practise, not a verdict. Nothing is locked. Second, you'll write the most complete song of the course so far.
+This lesson has two halves. First, a **check** of what you've drilled; the only new thing is one progression rung, V or ♭VII, with a short hands-on intro below. Treat the scores as a map of where to practise, not a verdict. Nothing is locked. Second, you'll write the most complete song of the course so far.
 
 ## Part 1: ear check
 
-Each drill below runs at your current rung. The progression drill also opens the **V or ♭VII?** rung from lesson 2: V is tense and leans home; ♭VII is major too, a whole step below home, strong but relaxed. Do them in one sitting, without replaying the lesson prose. Afterwards, look at the ladder bars on your Dashboard: the skills with the most open-but-unmastered rungs are where Practice sessions should go before Phase 3 speeds up.
+Each drill below runs at your current rung. Do them in one sitting; the method for your rung is in each drill's *How to do it* box. Afterwards, look at the ladder bars on your Dashboard: the skills with the most open-but-unmastered rungs are where Practice sessions should go before Phase 3 speeds up.
+
+**Chord colours — rehearse first:** play C, then Cm, C7, Csus4 on your keyboard, and say the sorting question for each: bright or dark? at rest or wanting to move? In the drill, if you're stuck, find the lowest note and play the candidates on it yourself.
 
 ```ladder
 { "skill": "chords", "unlocks": 9, "intro": "Chord colours at your level." }
 ```
 
+The progression drill also opens the one new rung of this lesson, **V or ♭VII?**, from lesson 2.
+
+### Try it: V or ♭VII
+
+1. In C, play **C – G – C**, then **C – B♭ – C**. Both middle chords are major.
+2. Play the bass alone: C – G – C, then C – B♭ – C. G is a fifth above home (or a fourth below); B♭ is just a **whole step below** home.
+3. Stop on each middle chord and hold it. G leans hard toward C; B♭ sounds strong but relaxed, as if it could stay a while.
+
+Check: two short progressions in C.
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: V or ♭VII?",
+  "instructions": "Play each one. Then play the bass notes G and B♭ on your keyboard and match the middle bass note.",
+  "spec": {
+    "examples": [
+      { "title": "Progression 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 G3 C4]:w | [D3 F3 Bb3]:w | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:w | Bb1:w | C2:w" } ] },
+      { "title": "Progression 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 G3 C4]:w | [D3 G3 B3]:w | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:w | G1:w | C2:w" } ] }
+    ],
+    "questions": [
+      { "q": "Progression 1: the middle chord is…", "choices": ["V (G)", "♭VII (B♭)"], "answer": 1, "explain": "♭VII: the bass dropped just a whole step, C to B♭, and came back up." },
+      { "q": "Progression 2: the middle chord is…", "choices": ["V (G)", "♭VII (B♭)"], "answer": 0, "explain": "V: the bass dropped a fourth, C to G, and the chord leaned back home." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** go by the bass, not the colour (both are major). Replay, then play C and the key a whole step below it (B♭) and the G below; the one that matches the middle bass note is your answer.
+
+**Rehearse the method** (*How to do it* box): V pulls strongly home; ♭VII is a relaxed step with its bass a whole step below home. At lower rungs: bass first, role second.
+
 ```ladder
 { "skill": "progressions", "unlocks": 11, "intro": "Opens: V or ♭VII? Name the chords at your current rung." }
 ```
+
+**Bass lines — rehearse first:** play a cadence in any key, find its lowest last note (home), then play C F G C in the bass and follow each move: up or down, step or jump?
 
 ```ladder
 { "skill": "roots", "unlocks": 9, "intro": "Bass lines at your level." }
@@ -124,3 +159,9 @@ Session 1: the verse. Session 2 (next time you sit down): the chorus. Both tasks
 ```
 
 Save it: it's your most complete song so far, and worth playing to someone.
+
+## Between lessons
+
+- **Before Phase 3:** open the Dashboard and give your Practice sessions to the two skills furthest behind; ten minutes a day beats one long session.
+- **3 minutes:** C – G – C and C – B♭ – C, eyes closed at random; name the middle chord by its bass.
+- **Play your song** from the start once a day for a few days. Note one thing to fix; fix one thing per sitting.

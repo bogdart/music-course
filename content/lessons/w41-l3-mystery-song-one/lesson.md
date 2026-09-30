@@ -18,13 +18,24 @@ tags: [transcription, workflow, daw]
 Today you run the whole workflow once, start to finish, on a short song. Speed doesn't matter; the order does. Keep a
 [[form map]] open (paper, or the reflect box at the end) and write one line after each pass.
 
-## Your tools
+## The plan, pass by pass
 
-- **Loop.** Loop until the one question you're asking has an answer; don't restart the song each time.
-- **The slowed copy.** Slow listening helps with melody and rhythm; key and form are easier at full speed.
-- **Your keyboard.** Test every guess by playing along. If it clashes, it's wrong — the fastest feedback you have.
+Use the method from [the first lesson of this week](../w41-l1-the-transcription-workflow/). Loop, ask one question,
+test every guess on the keyboard.
 
-Both examples are hidden. Answer the questions *before* you press Reveal.
+1. **Key.** Find the note the tune rests on at the end of bar 4 and bar 8, and hold it under the loop.
+   *Check:* it sounds settled all the way through. Then play major and minor chords on it.
+2. **Form.** Count bars from the first downbeat (tap 1-2-3-4 per bar). Listen for a drum fill and a crash cymbal: in
+   pop they mark a new section. *Check:* your sections add up to 8 bars.
+3. **Bass.** Use the slowed copy. Find bar 1's bass note with higher/lower searching, then each next one from the last
+   (up or down? a step or a jump?). *Check:* play all eight along with the full-speed loop; none should rub.
+4. **Numerals.** Count up from home to each bass note. Unsure about major or minor? Play both on that note along with
+   the loop and keep the one that blends.
+5. **Hook.** Find its first note by searching, then follow the up/down path one note at a time.
+6. **Groove and layers.** One listen for the snare, one for which instrument plays the chords.
+
+Write one line of the [[form map]] after each pass (paper, or the reflect box at the end). The slowed copy helps with
+bass and melody; key and form are easier at full speed. Both examples are hidden: answer *before* you press Reveal.
 
 ```example
 {
@@ -58,11 +69,8 @@ Both examples are hidden. Answer the questions *before* you press Reveal.
 }
 ```
 
-In pop, section changes are often signposted by the drums: a fill at the end of one bar, a crash cymbal on the next
-downbeat. Listen for them in pass 2.
-
-When an answer comes back wrong, ask *which pass failed*. Right bass note, wrong chord? A pass-4 problem. Wrong bass note?
-Go back to pass 3 first. Diagnosing your own mistakes is what turns practice into progress.
+**When an answer is wrong, ask which pass failed.** Right bass note, wrong numeral? That's pass 4: replay that bar
+and compare major and minor again. Wrong bass note? Go back to pass 3 and search again one or two keys either side.
 
 ```exercise
 {
@@ -99,7 +107,7 @@ Go back to pass 3 first. Diagnosing your own mistakes is what turns practice int
   "id": "w41l3-bass",
   "type": "ear-bass",
   "title": "Pass 3: eight bass notes",
-  "instructions": "One bass note per bar. Hum each one, then play the eight in order.",
+  "instructions": "One bass note per bar. Find each on the keyboard with higher/lower searching (the slowed copy helps), check it along with the loop, then play the eight in order.",
   "srs": false,
   "spec": {
     "key": "G",
@@ -152,7 +160,7 @@ Go back to pass 3 first. Diagnosing your own mistakes is what turns practice int
   "id": "w41l3-hook",
   "type": "ear-melody",
   "title": "Pass 5: the hook (bars 7–8 only)",
-  "instructions": "Just the last two bars of the tune, over the chords. Play the four notes back.",
+  "instructions": "Just the last two bars of the tune, over the chords. Find the first note by searching, then follow up/down for the other three and play all four back.",
   "srs": false,
   "spec": {
     "key": "G",
@@ -232,3 +240,8 @@ Go back to pass 3 first. Diagnosing your own mistakes is what turns practice int
   }
 }
 ```
+
+## Between lessons
+
+Play your rebuild and the original back to back once a day. Fix one bar each time until you can't tell them apart
+on the bass and chords.

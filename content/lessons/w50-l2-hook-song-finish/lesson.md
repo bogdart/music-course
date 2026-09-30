@@ -28,9 +28,29 @@ Session 1 gave you 16 bars. Today they become a song. At 96 BPM, 48 bars is exac
 
 The DAW timer covers minutes 4–38 (34 minutes).
 
-Three rules of thumb for working fast — common pop habits, not laws, and not something every song you transcribed
-followed: the intro is a subset of the chorus; verse 2 differs from verse 1 by one layer; the last chorus is the fullest
-section. The bridge can simply drop the drums and hold the chords — contrast is enough.
+## The steps
+
+1. **Form first (copy, don't write).** Duplicate your verse and chorus into the 48-bar order above. The intro is 4 bars
+   of the chorus chords without the lead; the bridge is 4 bars that drop the drums and hold the chords. Check: play
+   the whole thing once with no drums — does every section follow on without a hole? Fix only gaps, not ideas.
+2. **Drums.** Program one 2-bar pattern (kick on 1 and 3, snare on 2 and 4, eighth hats) and copy it everywhere
+   except the bridge. Then one fill (four snare 16ths on beat 4) in the bar before each chorus. Check: loop the bar
+   into a chorus; the fill should make the chorus land harder. If it sounds busy, drop it to two snare hits.
+3. **One chorus layer.** Pad holding the chords, or a counter-line of long notes, choruses only. Check: mute and unmute
+   it in a chorus — if you don't miss it, change its register (an octave up or down) or cut it.
+4. **Ending.** Last bar: bass and lead both land on A and hold. Check: it should sound finished, not paused. If it
+   still hangs, put V in the bar before the last.
+5. **Listen once**, straight through, and write three fixes — then leave them.
+
+Three rules of thumb for working fast — common pop habits, not laws: the intro is a subset of the chorus; verse 2
+differs from verse 1 by one layer; the last chorus is the fullest section.
+
+**Stuck?** Behind schedule, skip step 3: a song with no extra layer is finished; a song with half a pad is not.
+
+## Warm-up: rhythm
+
+Count the beat out loud ("1 and 2 and…") and keep it going through rests; replay as often as you need. The *How to do
+it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 {"skill": "rhythm", "unlocks": 16, "intro": "A short rhythm warm-up at your own rung."}
@@ -83,3 +103,7 @@ section. The bridge can simply drop the drums and hold the chords — contrast i
   }
 }
 ```
+
+## Between lessons
+
+Bounce song A and play it once to someone else (or on a speaker in another room). Note where your attention drifts.

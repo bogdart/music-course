@@ -32,25 +32,49 @@ listens is a [[listening pass]]:
 6. **Groove** — kick, snare, hats.
 7. **Layers** — which instruments play in which section?
 
-The order is deliberate. The key is the map every later answer is written on. The form tells you how little you really
-have to transcribe (choruses repeat). The bass is the easiest harmonic fact to catch, and once you know the bass note
-and the key, the chord is usually a short guess away. Write the answers on a [[form map]]: one row per section with bars,
-chords, and notes on melody, groove and layers.
+The key is the map every later answer is written on, and the form shows how little you have to transcribe (choruses
+repeat). The bass is the easiest harmony fact to catch; once you know it and the key, the chord is a short guess away.
+Write the answers on a [[form map]]: one row per section with bars, chords, and notes on melody, groove and layers.
+
+## The method, pass by pass
+
+Keep the keyboard under your hands and the example on loop. Each step ends with a check you can do yourself.
+
+**Find home (pass 1).**
+1. Listen only to the tune (the highest line). Notice the last note of each phrase, where it holds or stops.
+2. Find that note on the keyboard: play a key, ask "higher or lower?", move, repeat until your key and the tune seem to
+   merge.
+3. Test it: hold that key down (low, left hand) while the loop plays. Then hold one or two other candidates.
+*Check:* home sounds settled under the whole loop; a wrong candidate sounds like it is leaning or rubbing somewhere.
+
+**Find a bass note (pass 3).**
+1. Listen only to the lowest sound, the thump under the chords. Ignore the tune.
+2. Play a key in the bottom two octaves. Ask: is the bass higher or lower than my key? Move that way, big jumps first,
+   then single keys, until the two merge into one sound.
+3. If low notes are blurry, jump your key up 12 keys: the same note name is easier to judge there.
+*Check:* play your note along with the loop on that chord. The right note thickens the bass; a wrong one rubs or sounds
+like a second bass line.
+
+**Name the chord (pass 4).** Count up from home to the bass note to get the numeral's number. Then decide the quality:
+play the major chord on that bass note along with the loop, then the minor one.
+*Check:* the right one blends into the loop; the wrong one sounds sour or oddly bright against it.
+
+**When you are stuck.** Loop just the bar that troubles you. Use the "alone" example if there is one. Compare two
+candidates back to back. Make a guess anyway and check it as above. Then answer, press *Reveal notation*, and listen
+again *while looking*. That is how sound and name get connected.
 
 ## How this phase works
 
-Every song you transcribe here is a [[mystery song]]: an original track the app plays with its notation **hidden**.
-You answer first; only then press *Reveal notation* and compare. If you reveal before answering you have only read the
-answer — the practice is the guessing, the checking and the being wrong.
+Every song you transcribe here is a [[mystery song]]: an original track with its notation **hidden**. Answer first;
+only then press *Reveal notation* and compare. Revealing first gives you the answer without the practice.
 
-Be realistic about your ear. The drills in the ladder blocks run at *your* current rung; the mystery songs don't — they
-are real music. Missing notes in them is normal and useful. When a fixed exercise feels impossible, loop the example
-more, answer anyway, then reveal and listen again *while looking*: that is how the ear learns to connect sound and name.
+Mystery songs are real music, not ladder drills at your rung, so missing notes is normal. The ladder drills keep
+growing your ear at your own pace. The mystery songs show you how to use it on full tracks.
 
 ## Mystery Song #0
 
-Loop it and ask only question 1: which note feels most *finished*, like the place the loop wants to stop? Hum it. Decide
-by where the tune comes to rest at the ends of its phrases, not by which chord happens to come first.
+Loop it and ask only question 1: where is home? Use the three "find home" steps above. Go by where the tune comes
+to rest at the ends of its phrases, not by which chord comes first.
 
 ```example
 {
@@ -90,7 +114,7 @@ by where the tune comes to rest at the ends of its phrases, not by which chord h
       "loop": true
     },
     "questions": [
-      {"q": "Hum the note that feels most finished, then find it on the keyboard. Which is it?", "choices": ["A", "C", "F", "G"], "answer": 1, "explain": "C. The tune's phrases come to rest on C (the ends of bars 2 and 3), and the last bar hangs on D, leaning back towards C. If you picked another note, loop it again and hum the last note of each phrase."}
+      {"q": "Find the note the tune comes to rest on, and test it under the loop. Which is home?", "choices": ["A", "C", "F", "G"], "answer": 1, "explain": "C. The tune's phrases come to rest on C (the ends of bars 2 and 3), and the last bar hangs on D, leaning back towards C. If you picked another note, hold C under the loop, then your note, and compare which one sounds settled all the way through."}
     ]
   }
 }
@@ -98,8 +122,14 @@ by where the tune comes to rest at the ends of its phrases, not by which chord h
 
 ## Passes 3 and 4
 
-Now follow only the bass. Four chords, one bass note each. Hum each one, then find it on the keyboard. If the full mix is
-too crowded, loop the bass-alone version first — it is a crutch you will learn to drop in week 42.
+Now follow only the bass. Four chords, one bass note each.
+
+1. Loop the bass-alone version below and find the **first** bass note with the higher/lower search.
+2. For each next note, ask first: did the bass go up or down from the last one? A small or a big move? Then search from
+   your previous key in that direction.
+3. Switch to the full mix and play your four notes along with it.
+*Check:* all four notes thicken the bass without rubbing. If one rubs, loop that bar and search one or two keys either
+side. The bass-alone version is a crutch you will drop in week 42.
 
 ```example
 {
@@ -145,7 +175,7 @@ too crowded, loop the bass-alone version first — it is a crutch you will learn
   "id": "w41l1-prog",
   "type": "ear-progression",
   "title": "Pass 4: the numerals",
-  "instructions": "You found the bass notes; now name the four chords in C major.",
+  "instructions": "Now name the four chords. Count up from home to each bass note for the number; play major and minor on that note along with the loop to decide between upper case (major) and lower case (minor).",
   "srs": false,
   "spec": {
     "key": "C",
@@ -183,8 +213,12 @@ too crowded, loop the bass-alone version first — it is a crutch you will learn
 ## Your own level
 
 Two ladders reach their last rungs today: *bass in a band* (roots) and *progressions in a band, borrowed chords too*.
-Opening a rung is not the same as hearing it: the drills below start at the lowest rung you haven't mastered, which may be
-several steps lower. That is the right place to practise.
+Opening a rung is not the same as hearing it. The drills start at the lowest rung you haven't mastered, and that is
+the right place to practise.
+
+Use the same moves as above. Find home first. Then follow the lowest sound with higher/lower searches on the keyboard.
+Then check each note by playing it along. The *How to do it* box under each drill shows the exact method for your
+current rung.
 
 ```ladder
 {
@@ -238,3 +272,7 @@ several steps lower. That is the right place to practise.
   }
 }
 ```
+
+## Between lessons
+
+Play Mystery Song #0 once a day and play its bass line along with it from memory. Then play one Practice session.

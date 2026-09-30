@@ -25,12 +25,18 @@ Timetable: warm-up 5 minutes · eight short ladder drills about 25 · theory 15 
 
 ## How to take it
 
-- One sitting, in order, without "searching" on the keyboard in the ear sections unless the drill asks you to play.
+- One sitting, in order. Use your methods exactly as in practice — replaying and checking on the keyboard are part of
+  the skill, not cheating.
 - A miss is information, not failure. Note which skills sit lowest.
 
 ## Warm-up: one hidden loop
 
-Name what you can, answer, then reveal.
+Loop it and work bar by bar, one question per listen:
+
+1. **Bass.** Find each bar's lowest note on the low keys (higher/lower from C). Check: play it with the loop — it merges.
+2. **Quality.** On that bass note, play the major and then the minor chord along with the loop. Check: if neither fits,
+   the bass may not be the root — try chords that *contain* the bass note, or listen for a chord that changes mid-bar.
+3. **Stuck?** Guess, play your guess with the loop, and keep what rubs least. Then answer and reveal.
 
 ```exercise
 {
@@ -63,6 +69,10 @@ Name what you can, answer, then reveal.
 ```
 
 ## Section A — Ear (at your own rung on each ladder)
+
+For each drill, use the method you practised all year: find home first, replay freely, search on the keyboard and check
+against the replay. The *How to do it* box under each drill shows the exact method for your current rung — read it
+before the first item.
 
 ```ladder
 {"skill": "degrees", "unlocks": 22, "intro": "Scale degrees."}
@@ -158,3 +168,7 @@ The Dashboard's ladder bars now show your year in one picture. The lowest bars a
   }
 }
 ```
+
+## Between lessons
+
+Pick your two lowest ladders and do one 10-minute Practice session on them before lesson 2.

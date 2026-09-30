@@ -205,7 +205,7 @@ export const specSchemas = {
   }),
   'ear-octave': obj({
     notes: z.array(noteName).min(1), octaves: z.array(z.number().int().min(0).max(8)).min(1),
-    mode: z.enum(['same-or-different', 'together', 'match', 'find', 'which-octave', 'higher-or-lower']), instrument: instrument.optional(),
+    mode: z.enum(['same-or-different', 'together', 'match', 'find', 'which-octave', 'higher-or-lower', 'same-pitch', 'seek']), instrument: instrument.optional(),
     gap: z.array(z.number().int().min(1).max(2)).min(1).optional(), foils: z.array(z.number().int().min(1).max(11)).min(1).optional(),
   }),
   'ear-interval': obj({

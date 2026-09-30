@@ -131,6 +131,28 @@ describe('ExerciseShell', () => {
     expect(screen.getByText(/Walk it to octave 4/)).toBeTruthy();
   });
 
+  it('ear-octave seek: tries get local higher/lower hints; finding it within the limit is correct, too many tries is a miss', () => {
+    const block: ExerciseBlock = { id: 's', type: 'ear-octave', seed: 1, count: 1, spec: { notes: ['C', 'D', 'E', 'F', 'G'], octaves: [4], mode: 'seek' } };
+    const { unmount } = render(<ExerciseShell block={block} lessonId="x" record={false} />);
+    const press = (m: number) => act(() => {
+      noteInputBus.noteOn(m, 0.8, 'midi');
+      noteInputBus.noteOff(m, 'midi');
+    });
+    // search upward from C4: every miss gets a hint and nothing is scored until found (limit for 5 keys: 4)
+    let found = false;
+    for (const m of [60, 62, 64, 65, 67]) {
+      press(m);
+      if (screen.queryByText(/Found it/)) {
+        found = true;
+        break;
+      }
+      if (screen.queryByText(/Not found within 4 tries/)) break;
+      expect(document.querySelector('.seek-hint')?.textContent).toMatch(/go higher|go lower/);
+    }
+    expect(found || !!screen.queryByText(/Not found within 4 tries/)).toBe(true);
+    unmount();
+  });
+
   it('ear-note offers the walk home after a correct answer', () => {
     const block: ExerciseBlock = { id: 'd', type: 'ear-note', seed: 1, count: 1, spec: { key: 'C', degrees: [6], reference: 'scale' } };
     render(<ExerciseShell block={block} lessonId="x" record={false} />);

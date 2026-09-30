@@ -39,6 +39,33 @@ Play the white keys from C to C: C major. Now play the *same* white keys from A 
 }
 ```
 
+### Try it: major or minor, from the same note
+
+1. Play **C D E F G** slowly, then **C D E♭ F G**. Only the third note differs. Play just the third note of each twice: E, then E♭. The first sounds bright and open, the second shaded, a little heavy.
+2. Play a tiny tune both ways: **C D E D C**, then **C D E♭ D C**. Say "bright" or "shaded" after each.
+3. Close your eyes, play one of the two tunes at random, and name it before you look at the keys.
+
+Check: two runs below, both starting on C. Name each, then read the explanation.
+
+```exercise
+{
+  "id": "e4", "type": "listen", "title": "Check: bright or shaded?",
+  "instructions": "Play each run, listen for the third note, then answer.",
+  "spec": {
+    "examples": [
+      { "title": "Run 1", "bpm": 90, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q Eb4:q F4:q | G4:h r:h" } ] },
+      { "title": "Run 2", "bpm": 90, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q F4:q | G4:h r:h" } ] }
+    ],
+    "questions": [
+      { "q": "Run 1 is…", "choices": ["major (bright third)", "minor (shaded third)"], "answer": 1, "explain": "Minor: C D E♭ F G. Play E and E♭ after the run: its third note was the E♭." },
+      { "q": "Run 2 is…", "choices": ["major (bright third)", "minor (shaded third)"], "answer": 0, "explain": "Major: C D E F G. If you mixed them up, replay both and stop listening after note 3." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** don't judge the whole run. Replay the question and, straight after it, play **C D E** and **C D E♭** yourself. Which one did the question sound like? Your fingers make the comparison your ear can't yet make from memory. "Darker" is a vague word at first; "matches my C D E♭" is not.
+
 ## Naming the minor degrees: ♭3, ♭6, ♭7
 
 To name the notes of a minor scale we compare it with the **major scale on the same starting note**. Listen to C major and then C minor. Three notes drop by a half step: E becomes E♭, A becomes A♭, B becomes B♭.
@@ -54,7 +81,9 @@ To name the notes of a minor scale we compare it with the **major scale on the s
 
 So every minor scale is **1 2 ♭3 4 5 ♭6 ♭7**. Here the ♭ means "a half step lower than in major", *not* "a black key". In A minor, ♭3 is C, a white key: A major would have C♯ there. The ♭3 is the note you hear most: it's the minor third from the minor triad of week 6, and it gives minor its shade.
 
-Your new *scales* ladder starts here. This lesson opens its first two rungs: major or minor as a scale, then as a short tune. In both, everything starts on C, so there's no difference in key to go by, only the pattern. Listen for the third note: bright (3) or shaded (♭3)? The drill runs at your current rung, so the tunes come once the scales are solid.
+Your new *scales* ladder starts here. This lesson opens its first two rungs: major or minor as a scale, then as a short tune. Everything starts on C, so only the pattern differs.
+
+**Before the drill, rehearse the method** (it's also in the *How to do it* box above the drill, for the rung you're on): replay, listen only up to the third note, then play C D E and C D E♭ yourself and pick the one that matches. For the tunes: where does the tune come to rest, and does that last stretch match C D E or C D E♭? The drill runs at your current rung, so the tunes come once the scales are solid.
 
 ```ladder
 { "skill": "scales", "unlocks": 2, "intro": "Opens \"Major or minor scale\", then \"Major or minor tune\"; the drill runs at your current rung." }
@@ -113,6 +142,30 @@ Your degree drills set home with a cadence (I – IV – V – I) once you reach
 }
 ```
 
-After this cadence, A is home. Degree 1 is A, ♭3 is C, 5 is E. Listen to it a few times today — next lesson it becomes the reference for degree questions in minor.
+After this cadence, A is home. Degree 1 is A, ♭3 is C, 5 is E.
+
+### Try it: the minor cadence under your hands
+
+1. Play Am (A C E), Dm (A D F), E (G♯ B E), Am (A C E), slowly, holding each chord. Your thumb barely moves; the G♯ in the third chord is the only black key.
+2. Play the E chord and stop. It sounds unfinished, as if waiting. Now play Am: the waiting ends.
+3. Play the E chord again, then **A alone**, low. That single A is "home" in this key; next lesson's degree questions start from it.
+
+```exercise
+{
+  "id": "e5", "type": "play-chord", "title": "Play the minor cadence",
+  "instructions": "Am – Dm – E – Am, any hand position. The G♯ belongs to the E chord.",
+  "passScore": 0.7,
+  "spec": { "chords": ["Am", "Dm", "E", "Am"], "sequence": true, "bpm": 60, "key": "Am" }
+}
+```
+
+**If the cadence doesn't feel like it lands:** stop on the E chord and hold it, then try playing C, then A under it. One of them ends the waiting; it will be A. That's the feeling you'll use for "home" in minor.
+
+## Between lessons
+
+- **3 minutes, daily:** play C D E F G / C D E♭ F G with your eyes closed, then random ones, naming each before you look.
+- **2 minutes:** A natural minor up and down (white keys A to A), letting the last A ring.
+- **1 minute:** the minor cadence Am – Dm – E – Am, then stop on E and feel the wait.
+- One scales-ladder session on the Practice page if you have time.
 
 Next lesson: why minor keys borrow that G♯, two more minor scales that use it, and degrees in A minor.

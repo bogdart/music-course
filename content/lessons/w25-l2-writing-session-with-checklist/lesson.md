@@ -47,6 +47,14 @@ This lesson is **two sessions** of about 50 minutes each. Session 1 maps the son
 
 Your loop usually becomes the **chorus**. Plan a verse that contrasts on at least two levers from week 17: lower register, longer or fewer notes, a different first chord, thinner texture. Write the plan as one line in your notes, e.g. `I4 V8 C8 V8 C8 O4 — verse low & sparse, chorus high, hook 3×`.
 
+1. **Chorus first** (bars 13–20): put your hook in bars 13–14, repeat it in 15–16, and write a different, higher ending for 17–20 that lands on G.
+2. **Verse second** (bars 5–12): play the chorus, then noodle *below* it — D4 to B4, fewer and longer notes. Keep a 2-bar idea and repeat it with a changed ending.
+3. Copy both to verse 2 and chorus 2, add a hook fragment in the outro.
+4. **Judge it by ear:** play bars 9–16 (end of verse into chorus). The chorus should feel like a step up — higher, busier or both. If the two sound alike, move the verse lower or thin it out.
+5. **If you're stuck** on the verse: take the hook's rhythm, play it on just two notes (say D and E), and let the chords do the work.
+
+The drill below warms up your chord ear; its method is in the *How to do it* box (follow the bass, name each chord by its bass note and colour).
+
 ```ladder
 {
   "skill": "progressions",
@@ -343,6 +351,8 @@ Fill in this [[arrangement map]] (or your own version). Each column is a section
 }
 ```
 
+Work in this order, looping each section as you go: bass first (the song's floor), then the epiano, strings last. **Judge it by ear:** after each track, play from the end of verse 1 into chorus 1 — the chorus should get bigger at every step. **If you're stuck:** copy chorus 1 to chorus 2 and add just one thing (a strings octave, or the ride cymbal) — that is enough of a lift.
+
 ### The finishing checklist
 
 - [ ] The hook appears at least 3 times, and the chorus starts with it or builds to it.
@@ -438,6 +448,8 @@ Fill in this [[arrangement map]] (or your own version). Each column is a section
 }
 ```
 
+Cool-down method (in the *How to do it* box): ignore drums and melody, tap along with the deepest sound, then find its notes one at a time.
+
 ```ladder
 {
   "skill": "roots",
@@ -456,3 +468,7 @@ Fill in this [[arrangement map]] (or your own version). Each column is a section
   }
 }
 ```
+
+## Between lessons
+
+Between the two sessions, listen to your song once away from the desk and note the one moment you'd fix first. After session 2, do one Practice session.

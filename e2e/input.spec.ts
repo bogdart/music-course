@@ -360,7 +360,7 @@ test.describe('input routing inside lessons', () => {
     await expect(B.locator('.feedback.ok')).toBeVisible();
     await expect(A.getByText(`Played: 1/${itemA.length}`)).toBeVisible();
     // tabbing into A (keyboard focus) gives it input focus back
-    await A.getByRole('button', { name: 'Reveal' }).focus();
+    await A.getByRole('button', { name: 'Reveal', exact: true }).focus();
     await expect(A).toHaveClass(/input-active/);
     await midi.noteOn(page, itemA[1]!, 90);
     await midi.noteOff(page, itemA[1]!);

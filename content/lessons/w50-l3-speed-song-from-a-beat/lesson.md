@@ -22,6 +22,13 @@ this way: a producer makes a beat and the song is built on top. Your groove ear 
 
 A two-bar groove: drums and a bass line that already implies the harmony. Transcribe the bass before looking.
 
+1. **Tune out the drums.** Loop it and listen only for the low, pitched thump under the kick.
+2. **The first note.** It repeats three times — easy to catch. Search low keys (octaves 2–3): play one, ask *higher or
+   lower?*, move. Check: play your key with the loop; the right one merges into the bass, a wrong one rubs.
+3. **The runs.** Each bar ends with three quick notes. Ask *up or down?* for each run, then search note by note from the
+   one before. Check: play the run along with the loop.
+4. **Stuck?** Get bar 1 right first, then bar 2 (it starts the same). Guess, check against the loop, move one key.
+
 ```example
 {
   "title": "Seed groove",
@@ -86,8 +93,18 @@ movement, so use the bass's own passing notes as roots and build each chord from
 B → Bm, D → D major. That gives loops like **Em – G – Am – Bm** or **Em – D – G – Am** — every root is a note the bass
 already plays. The beat stays; only the chords above it change.
 
-Then the [[topline]]: loop the chorus chords and improvise over them (play or hum), record several passes and keep the best
-2 bars as the hook.
+Pick the chorus loop by ear: play each candidate loop on the electric piano over the beat, twice through. Keep the one
+where the last chord makes you want to hear the first one again.
+
+Then the [[topline]], in steps:
+
+1. **Loop the chorus chords** and play along on the keyboard using only E, G, A, B, D (the notes the bass uses —
+   they all sit in E minor). Record three 2-minute passes without stopping.
+2. **Listen back** and mark any 2-bar moment you'd want to hear again. Rhythm counts more than notes: a repeated
+   short rhythm is what makes a hook.
+3. **Keep one**, copy it four times through the chorus. Check: on the fourth repeat it should still feel good; if it
+   gets boring, change only its last note.
+4. **Stuck?** Take the bass's own rhythm, play it on the lead two octaves up on E and G, and change one note per bar.
 
 | Minutes | Stage |
 |---|---|
@@ -131,6 +148,16 @@ The DAW timer covers minutes 10–42 (32 minutes).
 }
 ```
 
+## Close: rhythm drill
+
+Count the beat out loud and keep it going through rests; get one bar right before the next. The *How to do it* box
+under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "rhythm", "unlocks": 16, "intro": "Groove dictation at your own rung."}
 ```
+
+## Between lessons
+
+Loop the chorus once a day for a minute without editing. If the hook is stuck in your head, keep it; if not, note
+which 2 bars of your recorded passes come back to you instead.

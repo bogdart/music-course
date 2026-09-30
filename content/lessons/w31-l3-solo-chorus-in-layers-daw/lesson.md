@@ -54,6 +54,16 @@ Here is a sample chorus built with all three layers. The motif (an 8th rest, an 
 }
 ```
 
+### Try it
+
+1. Play the sample chorus and, each time the lead rests, count the silent beats on your fingers. The rests are as long as the phrases.
+2. Replay and listen to what fills the space: the piano and bass keep the chords going, so the silence doesn't sound empty — it sounds like the band answering.
+3. Replay bars 1 and 3 only: same rhythm, different landing note (A, then the blue A♭). Notice how the repeat makes bar 3 sound planned.
+
+**Check:** you can say where the motif comes back without counting bars.
+
+**If you can't hear it yet:** tap the motif rhythm (drill 2) along with the sample. Where your tapping matches, the motif is back.
+
 ## Drills
 
 ```exercise
@@ -88,6 +98,12 @@ Here is a sample chorus built with all three layers. The motif (an 8th rest, an 
 ```
 
 ## Make it
+
+The task text has the four steps. After each step:
+
+**Judge it by ear:** loop the 12 bars and listen with the piano muted. After step 1 you should still hear the chord changes; after step 2 the approaches should sound like they *arrive* (a half step onto a strong beat); after step 3 you should recognise your motif when it returns; after step 4 each phrase should feel answered by the band.
+
+**If you're stuck:** copy the motif from bar 1 of the sample, then change only its last note to the guide tone of each chord. For space, delete every other bar's notes and see which silences you like.
 
 ```exercise
 {
@@ -128,6 +144,12 @@ Here is a sample chorus built with all three layers. The motif (an 8th rest, an 
 
 ## Ear review
 
+**Before the drill** — the method (see *How to do it* beside it): chunk the phrase — two short pieces rather than one long one — find the first note on the keyboard, then follow up/down and step/leap. Earlier rungs have their own method in the box.
+
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "Melodies at your level: short phrases, played back." }
 ```
+
+## Between lessons
+
+Play your finished chorus back once a day and try playing along live for just the first four bars. Keep the motif; everything else may change.

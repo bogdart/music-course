@@ -89,6 +89,37 @@ This lesson opens the progression rung with all four: **I, IV, V and vi** in C (
 }
 ```
 
+### Try it: tell I from vi with your hands
+
+1. Right hand: play C as E G C, then Am as E A C. Two notes stay; only G moves up to A. Say "home", then "darker home".
+2. Add the left hand: C2 under C, then A1 under Am. Now play Am's chord again with **C2** under it: it sounds almost like home. With A1 under it, it turns sad. The bass decides.
+3. Play the four chords slowly in any order, naming each by its role: C "rest", F "lift", G "pull", Am "sad".
+
+Check: two chords, the first is always I (C).
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: which chord follows home?",
+  "instructions": "Each clip plays I, then one other chord. Find its bass on your keyboard, then answer.",
+  "spec": {
+    "examples": [
+      { "title": "Clip 1", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [
+        { "instrument": "piano", "seq": "[E3 G3 C4]:h [E3 A3 C4]:h" }, { "instrument": "bass", "seq": "C2:h A1:h" } ] },
+      { "title": "Clip 2", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [
+        { "instrument": "piano", "seq": "[E3 G3 C4]:h [F3 A3 C4]:h" }, { "instrument": "bass", "seq": "C2:h F1:h" } ] }
+    ],
+    "questions": [
+      { "q": "Clip 1: the second chord is…", "choices": ["IV (F)", "vi (Am)"], "answer": 1, "explain": "vi: darker, and the bass drops to A. It kept C and E from the home chord, which is why it felt like 'home, but sad'." },
+      { "q": "Clip 2: the second chord is…", "choices": ["IV (F)", "vi (Am)"], "answer": 0, "explain": "IV: brighter, lifting away; the bass drops to F. Both chords keep C, so colour and bass are the clues, not the top." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** go to the bass. Replay, search low keys with "higher or lower?" until you match the bass note: C = I, F = IV, G = V, A = vi. Then, as a colour check, play that chord yourself right after the replay and ask whether it matches. The bass answers the question even while the colours still sound alike.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): sort each chord by role, rest (I), lift (IV), pull (V), sad (vi), and use the bass to check: C, F, G, A. The drill runs at your current progressions rung.
+
 ```ladder
 { "skill": "progressions", "unlocks": 3, "intro": "Opens \"I, IV, V, vi\" in C; the drill runs at your current progressions rung." }
 ```
@@ -141,3 +172,10 @@ Then the left hand plays smooth chords, right hand a simple melody. Both hands s
   }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** C – G/B – Am – F/C with the left hand, eyes closed, until the fingers find it without looking.
+- **3 minutes:** Ode to Joy with left-hand roots, hands separately first, then together slowly.
+- **2 minutes:** play two chords from C, F, G, Am in random order, eyes closed, and name the second one by its role before you look.
+- One progressions session on the Practice page.

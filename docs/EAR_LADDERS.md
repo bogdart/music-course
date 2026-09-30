@@ -1,7 +1,7 @@
 # Ear-Training Ladders
 
 The ear is the spine of the course, and it cannot be rushed by a calendar. So ear training is not a list of fixed
-drills in lessons: it is nine **ladders** (one per skill), each an ordered list of **rungs**. Lessons *open* rungs;
+drills in lessons: it is ten **ladders** (one per skill, starting with `pitch`: up/down and finding the exact note), each an ordered list of **rungs**. Lessons *open* rungs;
 the learner *masters* them by practice; every ear drill — in a lesson, the lesson warm-up or the Practice page — runs
 at the learner's **current rung**: the lowest open rung not yet mastered. Theory, keyboard and DAW work follow the
 calendar; the ear goes exactly as fast as it actually goes.
@@ -17,6 +17,8 @@ Source of truth for the rungs: `packages/core/src/ladders.ts` (tables below are 
 * **Easiest perceptual cue first.** Notes together before one after the other; one octave before two; clashing wrong
   notes before the confusable fifth; a drone before no drone; home run (melody) before cadence (chords); one key for
   weeks before random keys; bass alone before a full mix.
+* **A method for every rung.** Each rung carries a practical "How to do it" (`packages/core/src/ladder-methods.ts`):
+  what to do with ears and keyboard, and what to try when you can't hear it yet. It is shown with every drill.
 * **Feedback that teaches.** Degree answers walk home automatically (e.g. 6 → 7 → 1); octave items offer "Listen
   again" comparisons (both together, the real octave, walking the octaves).
 
@@ -47,7 +49,7 @@ Per rung, from the learner's first answer to each item (`attempts` with lesson i
 { "skill": "degrees", "unlocks": 5, "intro": "Degree 5 (sol) joins today." }
 ```
 
-* `skill` — one of the nine skills below; `unlocks` — rungs 1…N of that skill are open once the block is reached;
+* `skill` — one of the ten skills below; `unlocks` — rungs 1…N of that skill are open once the block is reached;
   `intro` (optional) — one sentence shown above the drill.
 * Authoring: every *graded* ear drill in a lesson is a ladder block. Place it after the prose that teaches what its
   new rungs need. Fixed `ear-*` exercise blocks remain only for (a) transcribing an attached example (a mystery song,
@@ -61,62 +63,79 @@ Per rung, from the learner's first answer to each item (`attempts` with lesson i
 Per lesson: the ```ladder blocks in order; **bold** = opens new rungs (the value is the highest rung open
 afterwards), plain = review of rungs already open. Regenerate with `npm run docs:ladders`.
 
-| Week | l1 | l2 | l3 | l4 |
-|---|---|---|---|---|
-| 1 | — | **octave 2** | **melody 1**, **octave 3** |  |
-| 2 | **melody 2**, **octave 4** | **intervals 1**, **octave 5** | **rhythm 1** |  |
-| 3 | **melody 4**, **octave 6** | **degrees 2** | **degrees 3**, **melody 5** |  |
-| 4 | **rhythm 3**, **degrees 4**, **octave 7** | **rhythm 5**, **melody 6** | **rhythm 6** |  |
-| 5 | **intervals 3**, **degrees 5** | **intervals 5** | **intervals 7**, **octave 8** |  |
-| 6 | **roots 1**, **degrees 6** | **chords 2**, **roots 2** | **degrees 8** |  |
-| 7 | **degrees 10** | **melody 8** | degrees 10, chords 2 |  |
-| 8 | **progressions 1**, **degrees 12**, **melody 10** | octave 8, degrees 12, intervals 7, chords 2, melody 10, rhythm 6 | **progressions 2**, **roots 4**, **octave 9** |  |
-| 9 | **scales 2** | **scales 4**, **degrees 14** | **melody 11**, **octave 10** |  |
-| 10 | **octave 12**, **intervals 9** | **intervals 11** | **octave 13** |  |
-| 11 | **roots 5** | **roots 7**, **degrees 15** | **progressions 3** |  |
-| 12 | **chords 4**, **intervals 12** | **progressions 4**, **degrees 16** | **chords 6** |  |
-| 13 | **progressions 6**, **roots 9** | **progressions 7**, **chords 7** | **progressions 8** |  |
-| 14 | **rhythm 8** | **rhythm 10** | **rhythm 11** |  |
-| 15 | **melody 12** | **intervals 14**, **melody 13** | **chords 9**, progressions 8 |  |
-| 16 | **octave 14**, **degrees 17** | **progressions 10**, **degrees 18** | chords 9, **progressions 11**, roots 9 |  |
-| 17 | **rhythm 12**, progressions 11 | **roots 10** | rhythm 12, roots 10 |  |
-| 18 | **melody 14** | **melody 15**, **intervals 16** | **melody 16** |  |
-| 19 | **roots 11** | **roots 12**, **progressions 13** | **roots 13** |  |
-| 20 | **rhythm 13** | **rhythm 14** | rhythm 14, roots 13 |  |
-| 21 | **roots 14** | **progressions 14**, **intervals 18** | **melody 17** |  |
-| 22 | **degrees 19**, **scales 6** | **scales 8** | degrees 19, scales 8 |  |
-| 23 | **scales 9** | **degrees 20**, **scales 10** | scales 10, melody 17 |  |
-| 24 | **degrees 21**, **progressions 16** | **chords 10**, **progressions 17** | progressions 17, degrees 21 |  |
-| 25 | melody 17, roots 14 | progressions 17, roots 14 |  |  |
-| 26 | progressions 17, melody 17 | rhythm 14, roots 14 | **scales 11**, **melody 18**, progressions 17, roots 14, rhythm 14, degrees 21 |  |
-| 27 | **chords 11** | **chords 12** | chords 12, rhythm 14 |  |
-| 28 | **chords 13** | chords 13, roots 14 | **progressions 18** |  |
-| 29 | progressions 18, roots 14 | degrees 21, scales 11 | progressions 18 |  |
-| 30 | **progressions 19** | **chords 14** | **degrees 22** | progressions 19, roots 14 |
-| 31 | **scales 12** | degrees 22, melody 18 | melody 18 |  |
-| 32 | **intervals 19** | **intervals 20** | intervals 20, octave 14 | melody 18, roots 14 |
-| 33 | chords 14, roots 14 | rhythm 14, progressions 19 | rhythm 14, melody 18 |  |
-| 34 | **rhythm 15** | rhythm 15 | **rhythm 16**, roots 14 |  |
-| 35 | progressions 19 | progressions 19, rhythm 16 | roots 14 |  |
-| 36 | rhythm 16, roots 14 | chords 14 | progressions 19 |  |
-| 37 | **scales 13** | melody 18, scales 13 | scales 13 |  |
-| 38 | intervals 20, melody 18 | melody 18, progressions 19 | rhythm 16, chords 14 |  |
-| 39 | rhythm 16, melody 18 | progressions 19, melody 18 | **chords 15** |  |
-| 40 | progressions 19 | rhythm 16 | roots 14, progressions 19, chords 15, melody 18, scales 13 |  |
-| 41 | **roots 15**, **progressions 20** | rhythm 16, degrees 22 | — |  |
-| 42 | roots 15 | roots 15 | roots 15 |  |
-| 43 | progressions 20 | chords 15 | progressions 20 |  |
-| 44 | **intervals 21**, **melody 19** | melody 19 | melody 19 |  |
-| 45 | rhythm 16 | progressions 20 | — |  |
-| 46 | roots 15 | melody 19 | progressions 20 |  |
-| 47 | progressions 20 | melody 19 | scales 13 |  |
-| 48 | **chords 16** | rhythm 16 | progressions 20 |  |
-| 49 | intervals 21 | degrees 22, progressions 20 | chords 16 |  |
-| 50 | melody 19 | rhythm 16 | rhythm 16 | progressions 20 |
-| 51 | progressions 20 | rhythm 16 | melody 19 | roots 15 |
-| 52 | degrees 22, intervals 21, chords 16, roots 15, progressions 20, melody 19, rhythm 16, scales 13 | roots 15 | octave 14 |  |
+| Week | l1 | l2 | l3 | l4 | l5 |
+|---|---|---|---|---|---|
+| 1 | **pitch 1** | **pitch 3** | **pitch 5** | **pitch 6**, **octave 2** | **pitch 7**, **melody 1**, **octave 3** |
+| 2 | **pitch 8**, **melody 2**, **octave 4** | **intervals 1**, **pitch 9**, **octave 5** | **rhythm 1** |  |  |
+| 3 | **pitch 10**, **melody 4**, **octave 6** | **degrees 2** | **degrees 3**, **melody 5** |  |  |
+| 4 | **rhythm 3**, **degrees 4**, **octave 7** | **rhythm 5**, **melody 6** | **rhythm 6** |  |  |
+| 5 | **intervals 3**, **degrees 5** | **intervals 5** | **intervals 7**, **octave 8** |  |  |
+| 6 | **roots 1**, **degrees 6** | **chords 2**, **roots 2** | **degrees 8** |  |  |
+| 7 | **degrees 10** | **melody 8** | degrees 10, chords 2 |  |  |
+| 8 | **progressions 1**, **degrees 12**, **melody 10** | pitch 10, octave 8, degrees 12, intervals 7, chords 2, melody 10, rhythm 6 | **progressions 2**, **roots 4**, **octave 9** |  |  |
+| 9 | **scales 2** | **scales 4**, **degrees 14** | **melody 11**, **octave 10** |  |  |
+| 10 | **octave 12**, **intervals 9** | **intervals 11** | **octave 13** |  |  |
+| 11 | **roots 5** | **roots 7**, **degrees 15** | **progressions 3** |  |  |
+| 12 | **chords 4**, **intervals 12** | **progressions 4**, **degrees 16** | **chords 6** |  |  |
+| 13 | **progressions 6**, **roots 9** | **progressions 7**, **chords 7** | **progressions 8** |  |  |
+| 14 | **rhythm 8** | **rhythm 10** | **rhythm 11** |  |  |
+| 15 | **melody 12** | **intervals 14**, **melody 13** | **chords 9**, progressions 8 |  |  |
+| 16 | **octave 14**, **degrees 17** | **progressions 10**, **degrees 18** | chords 9, **progressions 11**, roots 9 |  |  |
+| 17 | **rhythm 12**, progressions 11 | **roots 10** | rhythm 12, roots 10 |  |  |
+| 18 | **melody 14** | **melody 15**, **intervals 16** | **melody 16** |  |  |
+| 19 | **roots 11** | **roots 12**, **progressions 13** | **roots 13** |  |  |
+| 20 | **rhythm 13** | **rhythm 14** | rhythm 14, roots 13 |  |  |
+| 21 | **roots 14** | **progressions 14**, **intervals 18** | **melody 17** |  |  |
+| 22 | **degrees 19**, **scales 6** | **scales 8** | degrees 19, scales 8 |  |  |
+| 23 | **scales 9** | **degrees 20**, **scales 10** | scales 10, melody 17 |  |  |
+| 24 | **degrees 21**, **progressions 16** | **chords 10**, **progressions 17** | progressions 17, degrees 21 |  |  |
+| 25 | melody 17, roots 14 | progressions 17, roots 14 |  |  |  |
+| 26 | progressions 17, melody 17 | rhythm 14, roots 14 | **scales 11**, **melody 18**, progressions 17, roots 14, rhythm 14, degrees 21 |  |  |
+| 27 | **chords 11** | **chords 12** | chords 12, rhythm 14 |  |  |
+| 28 | **chords 13** | chords 13, roots 14 | **progressions 18** |  |  |
+| 29 | progressions 18, roots 14 | degrees 21, scales 11 | progressions 18 |  |  |
+| 30 | **progressions 19** | **chords 14** | **degrees 22** | progressions 19, roots 14 |  |
+| 31 | **scales 12** | degrees 22, melody 18 | melody 18 |  |  |
+| 32 | **intervals 19** | **intervals 20** | intervals 20, octave 14 | melody 18, roots 14 |  |
+| 33 | chords 14, roots 14 | rhythm 14, progressions 19 | rhythm 14, melody 18 |  |  |
+| 34 | **rhythm 15** | rhythm 15 | **rhythm 16**, roots 14 |  |  |
+| 35 | progressions 19 | progressions 19, rhythm 16 | roots 14 |  |  |
+| 36 | rhythm 16, roots 14 | chords 14 | progressions 19 |  |  |
+| 37 | **scales 13** | melody 18, scales 13 | scales 13 |  |  |
+| 38 | intervals 20, melody 18 | melody 18, progressions 19 | rhythm 16, chords 14 |  |  |
+| 39 | rhythm 16, melody 18 | progressions 19, melody 18 | **chords 15** |  |  |
+| 40 | progressions 19 | rhythm 16 | roots 14, progressions 19, chords 15, melody 18, scales 13 |  |  |
+| 41 | **roots 15**, **progressions 20** | rhythm 16, degrees 22 | — |  |  |
+| 42 | roots 15 | roots 15 | roots 15 |  |  |
+| 43 | progressions 20 | chords 15 | progressions 20 |  |  |
+| 44 | **intervals 21**, **melody 19** | melody 19 | melody 19 |  |  |
+| 45 | rhythm 16 | progressions 20 | — |  |  |
+| 46 | roots 15 | melody 19 | progressions 20 |  |  |
+| 47 | progressions 20 | melody 19 | scales 13 |  |  |
+| 48 | **chords 16** | rhythm 16 | progressions 20 |  |  |
+| 49 | intervals 21 | degrees 22, progressions 20 | chords 16 |  |  |
+| 50 | melody 19 | rhythm 16 | rhythm 16 | progressions 20 |  |
+| 51 | progressions 20 | rhythm 16 | melody 19 | roots 15 |  |
+| 52 | degrees 22, intervals 21, chords 16, roots 15, progressions 20, melody 19, rhythm 16, scales 13 | roots 15 | octave 14 |  |  |
 
 ## Rungs
+
+### `pitch` — Pitch (10 rungs)
+
+Hear whether a note goes up or down, and find a note you heard on the keyboard — the ground everything else stands on.
+
+| # | Rung | What changes |
+|---|---|---|
+| 1 | Higher or lower: far apart | Two notes far apart: did the second go up or down? |
+| 2 | Higher or lower: closer | The notes are a 3rd to a 5th apart. |
+| 3 | Higher or lower: neighbours | Only a step or two apart. |
+| 4 | Find it: C, D or E | Hear a note, find the exact key among three. |
+| 5 | Find it: C to G | Five keys to search. |
+| 6 | Same note or not? | Two notes: exactly the same, or different (a 3rd or more apart)? |
+| 7 | Same note or not: close | The different note is only a half or whole step away. |
+| 8 | Find it: all white keys | Seven keys, C4 to B4. |
+| 9 | Find it: black keys too | All twelve keys of the octave. |
+| 10 | Find it: two octaves | The note may be in octave 3 or 4. |
 
 ### `octave` — Octaves (14 rungs)
 

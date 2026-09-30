@@ -35,6 +35,15 @@ Listen: the kick stays on every beat while the hi-hat goes from quarters to eigh
 }
 ```
 
+### Try it: four taps per beat
+
+1. Tap your foot on the kick in the example (one per beat) and keep it going all the time.
+2. With the foot going, say "1 & 2 & 3 & 4 &" out loud: two syllables per foot tap.
+3. Now say "1 e & a 2 e & a…": four syllables per foot tap. Tap a finger on the table on every syllable. Slow the example down in your head if needed; the foot is the boss.
+4. Keep saying all four syllables, but tap only on "1", "&" and "a". That's the "1 & a" figure below.
+
+**If you can't keep up:** halve the speed. Set the metronome in the DAW to 50 BPM and count "1 e & a" out loud to it; speed means nothing until the four syllables are even. Count first, tap second.
+
 The most common sixteenth figures mix an eighth with two sixteenths: "1 & a" (eighth, sixteenth, sixteenth) or "1 e &" (sixteenth, sixteenth, eighth). Count them aloud as you tap.
 
 ```exercise
@@ -54,7 +63,28 @@ The most common sixteenth figures mix an eighth with two sixteenths: "1 & a" (ei
 }
 ```
 
-This lesson opens two rhythm rungs with sixteenths: first choosing which rhythm you heard, then tapping it back. The drill runs at your current rhythm rung, which may still be an earlier one.
+Check: how finely is the beat divided? Answer, then read the explanation.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: two or four per beat?",
+  "instructions": "Tap your foot on the kick and count along before you answer.",
+  "spec": {
+    "examples": [
+      { "title": "Beat 1", "bpm": 72, "timeSig": "4/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "[kick hh]:16 hh:16 hh:16 hh:16 [kick hh]:16 hh:16 hh:16 hh:16 [kick hh]:16 hh:16 hh:16 hh:16 [kick hh]:16 hh:16 hh:16 hh:16" } ] },
+      { "title": "Beat 2", "bpm": 72, "timeSig": "4/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "[kick hh]:8 hh:8 [kick hh]:8 hh:8 [kick hh]:8 hh:8 [kick hh]:8 hh:8" } ] }
+    ],
+    "questions": [
+      { "q": "Beat 1: hi-hat notes per kick?", "choices": ["2 (eighths)", "4 (sixteenths)"], "answer": 1, "explain": "Four: 1 e & a on every beat." },
+      { "q": "Beat 2: hi-hat notes per kick?", "choices": ["2 (eighths)", "4 (sixteenths)"], "answer": 0, "explain": "Two: 1 & 2 &. If you heard four, count out loud with the replay: only '1 &' fits." }
+    ]
+  }
+}
+```
+
+This lesson opens two rhythm rungs with sixteenths: first choosing which rhythm you heard, then tapping it back.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): keep your foot on the beat and count "1 e & a" out loud; for choosing, count the fast notes in groups of four and match them to the options; for tapping, go slow and tap only where the notes are, keep counting through the gaps. The drill runs at your current rhythm rung, which may still be an earlier one.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 8, "intro": "Opens: sixteenths — choose the rhythm you heard, then tap it back. The drill runs at your current rhythm rung." }
@@ -80,6 +110,32 @@ The most famous syncopation in pop is **3 + 3 + 2**: eight eighths grouped as do
 }
 ```
 
+### Try it: foot on the beat, hands off it
+
+1. Foot on every beat. Clap on every beat too: foot and hands together. Straight.
+2. Keep the foot. Count eight eighths, "ONE two three ONE two three ONE two", and clap only on the capitals. Clap 2 lands *between* two foot taps: that's the push.
+3. Loop the example and clap with its second bar. If your clap keeps drifting onto the foot, count louder and slower.
+
+**If you can't feel it yet:** write the eight counts on paper, circle 1, 4 and 7, and tap your finger along the row while counting. Once the pattern is in your fingers the "push" feeling follows.
+
+Check: which one is syncopated? Answer, then read the explanation.
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: on the beat or between?",
+  "instructions": "Tap your foot on the kick. Does the clap often miss your foot?",
+  "spec": {
+    "examples": [
+      { "title": "Clap 1", "bpm": 90, "timeSig": "4/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "clap:q clap:q clap:h" }, { "instrument": "drums", "seq": "kick:q kick:q kick:q kick:q" } ] },
+      { "title": "Clap 2", "bpm": 90, "timeSig": "4/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "clap:q. clap:q. clap:q" }, { "instrument": "drums", "seq": "kick:q kick:q kick:q kick:q" } ] }
+    ],
+    "questions": [
+      { "q": "Which clap is syncopated?", "choices": ["Clap 1", "Clap 2"], "answer": 1, "explain": "Clap 2 is 3 + 3 + 2: its second clap falls on the '&' of 2, between two kicks. Clap 1 always lands with the kick." }
+    ]
+  }
+}
+```
+
 ```exercise
 {
   "id": "e3", "type": "rhythm-tap", "title": "Tap 3 + 3 + 2",
@@ -97,3 +153,10 @@ The most famous syncopation in pop is **3 + 3 + 2**: eight eighths grouped as do
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "C4:8 E4:q G4:q E4:q C4:8 | D4:8 F4:q A4:q. r:q | G4:q. E4:q. C4:q | D4:8 E4:8 r:8 C4:8 r:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[C3 E3 G3]:w | [D3 F3 A3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h" } }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** foot on the beat, say "1 e & a" out loud at a slow tempo; then tap only "1 & a", then only "1 e &".
+- **2 minutes:** clap 3 + 3 + 2 over your foot, counting the eight eighths.
+- **Listening:** in any pop or funk song, tap your foot and count how many hi-hat notes fall on each tap: two or four?
+- One rhythm session on the Practice page.

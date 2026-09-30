@@ -40,6 +40,17 @@ The [[climax]] is the single highest (or most intense) note. Place it **once**, 
 
 Bars 1–4 stay low. Bar 5 repeats bar 1, then bar 6 climbs, bar 7 peaks on E5, bar 8 settles on C5.
 
+### Try it
+
+1. Play the chorus without looking and count bars on your fingers. Raise your hand on the bar that feels like the top.
+2. Now play the whole melody on your keyboard, but put the E5 in *every* even bar instead of only bar 7
+   (bar 2: E5 instead of D4, and so on). Compare the feeling of bar 7.
+
+**Check:** the peak is bar 7. With E5 everywhere, bar 7 stops feeling special — that is why the climax comes once.
+
+**If you can't hear it yet:** watch the piano roll: the highest block is in bar 7. Then play just the last note of each
+bar (A4 – D4 – C5 – A4 – E4 – D5 – E5 – C5) and follow the line with your hand.
+
 ## The hook
 
 A [[hook]] is the part people hum after one listen. Hooks share four traits:
@@ -66,6 +77,11 @@ A proven chorus shape is **A A' A B**: hook, hook with a new ending, hook again,
 ```
 
 The payoff ends on D over G — open — so the chorus loops naturally.
+
+**Try it:** play bar 1 of the hook on your keyboard as written (a rest, then C C A C D), then again starting right on
+beat 1 with no rest. **Check:** the version with the rest feels like it jumps in; the other feels like a scale
+exercise. **If you can't hear it yet:** tap both rhythms on the table while counting "1 & 2 &" aloud — the rest puts
+your first tap on "&", which is where the snap comes from.
 
 ## Two famous hooks, verdict first
 
@@ -125,6 +141,9 @@ Listen on your own player, then answer. The facts appear after you answer.
 Hooks live on rhythm, so this lesson opens the melody rung that adds it: six notes, some long and some short. Play back the
 pitches in order; you do not need to copy the rhythm exactly. As always, the drill runs at your current rung.
 
+**Before the drill** (method also in the *How to do it* box): ignore the rhythm at first and get the pitches in order;
+chunk six notes into 3 + 3 and find the first chunk before the second. A lower rung has its own method in its box.
+
 ```ladder
 { "skill": "melody", "unlocks": 15, "intro": "Opens: six notes with a simple rhythm - play them back. The drill runs at your current melody rung." }
 ```
@@ -132,6 +151,10 @@ pitches in order; you do not need to copy the rhythm exactly. As always, the dri
 A climax usually comes *down* again, often by a leap. This lesson opens the last two falling-interval rungs:
 seconds to fifths going down, then all twelve intervals going down. They are the same distances you know going up, just
 falling — expect the bigger ones to feel unfamiliar for a while. The drill runs at your current interval rung.
+
+**Before the drill** (method also in the *How to do it* box): turn it around. Play the second note first and the first
+note after it — the same interval, now going up — and name that with the anchors you know. **If you can't hear it
+yet:** find both notes on the keyboard and count half steps.
 
 ```ladder
 { "skill": "intervals", "unlocks": 16, "intro": "Opens: falling seconds to fifths; then all twelve intervals going down. The drill runs at your current interval rung." }
@@ -144,3 +167,8 @@ falling — expect the bigger ones to feel unfamiliar for a while. The drill run
   "spec": { "prompt": "Wait five minutes, then try to recall the A A' A B hook from this lesson in your head (or hum it, if you like). What stayed - the rhythm, the notes, the rest at the start? What does that tell you about writing your own hook next lesson?", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Next lesson you write a hook. Collect material: jot down two rhythms (one starting with a rest) that stuck in your
+head this week, as taps you can repeat.

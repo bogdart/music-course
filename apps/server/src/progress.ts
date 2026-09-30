@@ -1,7 +1,7 @@
 import type { ExerciseProgress, JournalEntryDTO, LessonProgress, LessonStatus, ProgressSummaryDTO } from '@music/core';
 import { getRung, isSrsEligible, LADDER_LESSON_ID, newCardState, srsKey } from '@music/core';
 import type { ContentStore } from './content.js';
-import { nowIso, type Db } from './db.js';
+import { getMeta, nowIso, setMeta, type Db } from './db.js';
 import { notFound } from './http.js';
 import type { Sessions } from './session.js';
 
@@ -133,7 +133,9 @@ export class ProgressService {
     const order = this.content.order;
     const existing = order.filter((id) => this.content.hasLesson(id));
     const totals = this.db.prepare('SELECT COUNT(*) AS n, COALESCE(SUM(correct), 0) AS c FROM attempts').get() as { n: number; c: number };
-    const last = this.db.prepare("SELECT lesson_id FROM attempts WHERE source = 'lesson' ORDER BY id DESC LIMIT 1").get() as { lesson_id: string } | undefined;
+    // after a restart, only work done since then says where the learner is
+    const since = getMeta(this.db, 'restart_at') ?? '';
+    const last = this.db.prepare("SELECT lesson_id FROM attempts WHERE source = 'lesson' AND lesson_id != ? AND created_at > ? ORDER BY id DESC LIMIT 1").get(LADDER_LESSON_ID, since) as { lesson_id: string } | undefined;
     const nextLessonId = existing.find((id) => lessons[id]?.status !== 'completed') ?? null;
     const session = this.sessions.current();
     const srsTotal = (this.db.prepare('SELECT COUNT(*) AS n FROM srs_cards WHERE suspended = 0').get() as { n: number }).n;
@@ -153,6 +155,35 @@ export class ProgressService {
       nextLessonId,
       srs: { due: srsDue, total: srsTotal, session },
     };
+  }
+
+  /**
+   * Restart the course from a lesson: that lesson and every later one become not-started again (lesson and exercise
+   * progress, their SRS cards, remembered ladder unlocks are cleared; ladders re-open from the lessons still started).
+   * Kept: the full answer history (attempts) and ladder mastery. Returns the reset lesson ids.
+   */
+  restartFrom(lessonId: string): string[] {
+    const order = this.content.order;
+    const i = order.indexOf(lessonId);
+    if (i < 0) notFound(`Unknown lesson "${lessonId}"`);
+    const ids = order.slice(i);
+    this.db.exec('BEGIN');
+    try {
+      for (const id of ids) {
+        this.db.prepare('DELETE FROM lesson_progress WHERE lesson_id = ?').run(id);
+        this.db.prepare('DELETE FROM exercise_progress WHERE lesson_id = ?').run(id);
+        this.db.prepare('DELETE FROM srs_cards WHERE lesson_id = ?').run(id);
+      }
+      // lessons that were never started or finished may also have left progress under ids no longer in the course
+      this.db.prepare(`DELETE FROM lesson_progress WHERE lesson_id NOT IN (${order.map(() => '?').join(',')})`).run(...order);
+      this.db.exec('DELETE FROM ladder_unlocks');
+      setMeta(this.db, 'restart_at', nowIso());
+      this.db.exec('COMMIT');
+    } catch (e) {
+      this.db.exec('ROLLBACK');
+      throw e;
+    }
+    return ids;
   }
 
   /** Consecutive days (ending today or yesterday) with at least one attempt. */

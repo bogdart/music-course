@@ -20,15 +20,21 @@ pass 4 just gets one step longer. And an honest limit up front: telling a 9th fr
 course drills (the last rung of the chords ladder, *ninths next to their sevenths*, is as far as we go). The target is
 **family and root** — which is also what matters most for playing a song back.
 
-## Family first, then colour
+## Family first, then colour — on the keyboard
 
-1. **Root** — from the bass, as always (pass 3).
-2. **Family** — does it sound *major* (bright, restful), *minor* (soft, darker) or *dominant* (bright but restless,
-   wants to move)? That is the maj7 / m7 / dom7 decision from the chords ladder.
-3. **Colour** — extra shimmer on top? In this style assume a 9th unless your ear says otherwise.
+For each chord of the loop:
 
-Then use the [[chord-family default]] of the style: in neo-soul, ii and vi are usually m9, V is 9 or 13, I is maj9.
-Like the diatonic default, you confirm a prediction rather than guess.
+1. **Root** — pass 3 as always: loop one bar, play a low key, move higher/lower until it merges with the bass's first
+   note. *Check:* hold it under the whole bar; it should sit still, not rub.
+2. **Family** — on that root, play three seventh chords one after another along with the loop: maj7 (root + 4, 7, 11
+   half steps up), dominant 7 (4, 7, 10) and minor 7 (3, 7, 10). Keep the one that melts into the bar.
+   *Check:* by feel — major family is bright and restful, minor is soft and darker, dominant is bright but restless.
+3. **Colour** — does the record have extra shimmer on top of your seventh chord? In this style assume a 9th unless your
+   ear says otherwise.
+
+Stuck between two families? Loop the bar, play the two candidates back to back several times, commit to one, and
+check at the reveal. Then use the [[chord-family default]] of the style as a cross-check: in neo-soul, ii and vi are
+usually m9, V is 9 or 13, I is maj9.
 
 ## Rootless voicings
 
@@ -158,6 +164,11 @@ dominant 7th it softens the edge a little without removing the pull. Compare, on
 At first the ninth may just sound like "a fuller chord". Listen for one extra note on top, a step above the root
 note's octave; the family (major or dominant) stays the same underneath.
 
+## Ear: chord colours at your level
+
+Routine: sort bright or dark first, then the finer difference; play the candidates on the keyboard right after the
+chord if unsure. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "chords", "unlocks": 16, "intro": "New rung: seventh or ninth, with dominant 7 and dominant 9 joining maj7 and maj9. You drill at your own current rung."}
 ```
@@ -186,3 +197,8 @@ note's octave; the family (major or dominant) stays the same underneath.
   "spec": {"chords": ["Gm9", "C13", "Fmaj9", "Dm9"], "inversion": "any", "sequence": true, "bpm": 64}
 }
 ```
+
+## Between lessons
+
+Play the Velvet loop (root in the left hand, rootless voicing in the right) once a day, then put on an R&B song you
+like and try the three-seventh-chord test on its first chord.

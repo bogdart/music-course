@@ -45,6 +45,16 @@ Be honest with yourself: seven of eight notes are identical, and in a scale run 
 }
 ```
 
+### Try it
+
+1. Play the second example. After each cadence, listen only to the last notes: B→C, then B♭→A→G.
+2. On your keyboard play the cadence chords C – F – G – C, then B4 and stop. Then play them again and stop on B♭4.
+3. For each stop ask one question: *does my finger want to go up to C?*
+
+**Check:** B pulls up to C so strongly that stopping feels wrong; B♭ feels settled a little lower — bluesy, it doesn't ask for C.
+
+**If you can't hear it yet:** play B4 and C5 together, then B♭4 and C5 together. The half step rubs hard (that's the pull); the whole step is looser. Then go back to step 2.
+
 You already know the chord built on it: ♭VII, the borrowed chord from week 16 (B♭ in C). Mixolydian songs love **I – ♭VII**.
 
 ```exercise
@@ -56,6 +66,8 @@ You already know the chord built on it: ♭VII, the borrowed chord from week 16 
   "spec": { "root": "C", "scale": "mixolydian", "octaves": 1, "direction": "asc-desc", "hands": "right", "tempo": 66, "metronome": true }
 }
 ```
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): after the cadence, name the note by where it wants to go. A note near the top that pulls up into home is 7; one that neither rests nor pulls up, sitting a whole step below home, is ♭7. Unsure? Play 7 and ♭7 on your keyboard after the replay and pick the match. If the drill is still on an earlier degree rung, its own box has the method for that one.
 
 ```ladder
 { "skill": "degrees", "unlocks": 19, "intro": "Opens: the flat 7 — after the cadence, does the note pull up (7) or sit a whole step under home (b7)? The drill runs at your current degree rung." }
@@ -73,6 +85,8 @@ Take D natural minor (D E F G A B♭ C) and raise the 6th, B♭, to B. That's D 
   "show": ["staff", "keyboard"]
 }
 ```
+
+**Try it:** hold D in the left hand and play B♭ then B with the right, then the same two over a D minor chord (D–F–A). **Check:** B♭ is dark and heavy (plain minor); B natural is a surprising bright spot inside a minor sound — that's the Dorian colour. **If you can't hear it yet:** play the G chord both ways, G–B♭–D (minor) then G–B–D (major) — the chord difference is much easier to hear than the single note, and it's the same note causing it.
 
 "Drunken Sailor" is in D Dorian. Most of it could be plain D minor — until bar 6, where the tune climbs A–**B**–C–D over a G major chord.
 
@@ -123,7 +137,9 @@ Take D natural minor (D E F G A B♭ C) and raise the 6th, B♭, to B. That's D 
 
 ## Scale against scale
 
-This lesson opens two scale rungs that play two scales on the same root: the plain one and its mode. The drill runs at your current scales rung. At first expect to guess some; listen for the one note near the top.
+This lesson opens two scale rungs that play two scales on the same root: the plain one and its mode. The drill runs at your current scales rung. At first expect to guess some.
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): ignore most of the run and wait for the one note that can differ. Major vs Mixolydian: the note just before the top home — does it pull up (major) or sit lower, bluesy (Mixolydian)? Minor vs Dorian: the 6th note — dark (minor) or a hopeful bright spot (Dorian)? When unsure, play both versions of that note over the root and replay.
 
 ```ladder
 { "skill": "scales", "unlocks": 6, "intro": "Opens: same root, two scales — major or Mixolydian (the 7th), then minor or Dorian (the 6th). The drill runs at your current scales rung." }
@@ -143,3 +159,7 @@ This lesson opens two scale rungs that play two scales on the same root: the pla
   ] }
 }
 ```
+
+## Between lessons
+
+Play C Mixolydian and D Dorian once a day, pausing on the changed note. In one song you know, listen for a chord a whole step below home (♭VII).

@@ -28,14 +28,27 @@ In A minor, A5 – G5 – D5 works as i – VII – iv; in C major, C5 – F5 �
 Our app has no distortion pedal, so a plucked synth plays the guitar parts. Listen for the *shape*: two notes a 5th apart,
 the octave on top, hammered in eighths.
 
-## Riffs: rhythm, first note, scale
+**Is there a 3rd? Test it on the keyboard:**
+
+1. Find the chord's lowest note (low key, higher/lower until it merges). That's the root.
+2. Along with the loop, play three things on that root: root + 5th only, then the major triad, then the minor triad.
+3. If root + 5th blends and *both* triads add a note that seems to stick out a little, it's a power chord. If one triad
+   melts in completely, the 3rd is there. *Check:* the power chord sounds hollow and "open" on its own.
+
+## Riffs: lowest note, rhythm, then the path
 
 A riff is a short repeating figure — often the song's identity. Dictate it like a mini-melody:
 
-1. **Rhythm first** — tap it. Most riffs are one or two bars of eighths.
-2. **First note** — often home, but not always: check with the hum test.
-3. **Scale** — rock riffs come mostly from the **minor pentatonic** (in A: A C D E G), sometimes with the blue note ♭5
-   (in A: E♭) squeezed in as a chromatic passing note (week 23). Listen for any note that doesn't fit the five.
+1. **First note** — loop the slowed riff and find its first note: low key, higher/lower until it merges. Riffs sit low;
+   if it's blurry, find it an octave higher, where it's clearer. *Check:* hold that key under the whole riff — if it
+   also sounds like home, it's usually both.
+2. **Rhythm** — tap it. Most riffs are one or two bars of eighths.
+3. **The path** — for each next note: same, up or down, step or jump? Play and compare, four notes at a time.
+4. **Scale check** — rock riffs come mostly from the **minor pentatonic** (in A: A C D E G), sometimes with the blue
+   note ♭5 (in A: E♭) squeezed in as a chromatic passing note (week 23). A note that sounds "bent" is probably the black
+   key next to your guess.
+
+Stuck? Loop the one bar, play two candidates back to back, commit, then reveal and listen while looking.
 
 Mystery track *Static Summer*, riff section and chorus, hidden:
 
@@ -90,7 +103,7 @@ Mystery track *Static Summer*, riff section and chorus, hidden:
       "loop": true
     },
     "questions": [
-      {"q": "Hum test: which note is home (and the riff's first note)?", "choices": ["G", "E", "A", "D"], "answer": 1},
+      {"q": "Which note is home (and the riff's first note)?", "choices": ["G", "E", "A", "D"], "answer": 1},
       {"q": "Which scale do bars 1–3 use?", "choices": ["E minor pentatonic", "E major", "E harmonic minor", "Whole tone"], "answer": 0, "explain": "E minor pentatonic: only E, G, A and D (with B later)."},
       {"q": "What changes in bar 4?", "choices": ["A chromatic climb before the jump up", "The key", "Triplets", "It stops"], "answer": 0, "explain": "A – B♭ – B, then up to D: the blue note B♭ as a chromatic passing note."}
     ]
@@ -103,7 +116,7 @@ Mystery track *Static Summer*, riff section and chorus, hidden:
   "id": "w49l1-riff",
   "type": "ear-melody",
   "title": "Transcribe one bar of the riff",
-  "instructions": "Eight notes in a low register — hum them up an octave if that helps, then play them back.",
+  "instructions": "Eight notes in a low register. Search for them an octave higher if that is clearer, then play them back in any octave.",
   "srs": false,
   "spec": {
     "key": "Em",
@@ -145,6 +158,12 @@ Mystery track *Static Summer*, riff section and chorus, hidden:
 }
 ```
 
+## Ear: intervals at your level
+
+Routine: direction first (up, down, together), then size, then colour; for two notes together, ask "one note, hollow
+pair, sweet pair or rough pair?" — a power chord is the hollow pair. The *How to do it* box under the drill shows the
+exact method for your current rung.
+
 ```ladder
 {
   "skill": "intervals",
@@ -184,3 +203,8 @@ Mystery track *Static Summer*, riff section and chorus, hidden:
   }
 }
 ```
+
+## Between lessons
+
+Play the Static Summer riff every day until it's automatic. In one rock song you know, find the riff's first note and
+test its chords with root + 5th vs major vs minor.

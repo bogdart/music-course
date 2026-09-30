@@ -23,6 +23,19 @@ This is the first real step toward one of your big goals: taking apart a song yo
 
 For every song you'll end up with the same card: **key · tempo · form · progression · cadences · what to listen for**. That card is the backbone of every analysis you'll do this year. Each song's card appears in the explanation of its last question — after you've committed to your answers.
 
+### How to listen with the keyboard next to you
+
+Have the keyboard on and the song in another window. For each song:
+
+1. **Home first.** Pause at the end of a chorus. Press low white keys one at a time (then black keys) until one sounds like it *belongs* under the stopped music — calm, not rubbing. That's your guess for home.
+2. **Bass second.** Replay a few seconds and follow only the lowest sound: does it go up or down from home? Search for each bass note the same way, higher or lower until it blends.
+3. **Colour last.** On a bass note you found, play the major and the minor chord on it yourself right after the song's chord. Keep the one that matches.
+4. **Endings.** For a cadence question, play G → C and F → C yourself, then compare with the song's line ending.
+
+It's slow the first time. That's normal: today you're learning the procedure, not racing.
+
+**If you can't hear it yet:** answer the questions by comparison, not by memory. Every question below can be answered by playing two options on the keyboard right after the passage and picking the closer one. Guessing and then comparing with the facts is still useful.
+
 ## 1. "Let It Be", The Beatles (1970)
 
 Listen to the first verse and chorus. Focus on the moment each chorus line lands ("…let it be").
@@ -70,7 +83,7 @@ Listen to the intro and the first verse, with your attention on the bass.
 
 ## Your turn: transcribe a loop
 
-Here's a four-chord loop made by the app, in C. The notation is hidden. Name the chords, then compare.
+Here's a four-chord loop made by the app, in C. The notation is hidden. Use the same procedure: home is C, so find each bar's bass note by searching from C (C = I, F = IV, G = V, A = vi), then check its colour by playing the major or minor chord on it. Write the four bass notes down before you answer.
 
 ```exercise
 {
@@ -93,7 +106,17 @@ Here's a four-chord loop made by the app, in C. The notation is hidden. Name the
 
 ## Ear: iii joins
 
-In lesson 1 you heard **iii** (Em in C): soft, in-between, sharing notes with both I and V. This lesson opens the progressions rung that includes it, so all six major and minor chords of the key are in play. The drill runs at your current progressions rung, so you'll meet iii once the earlier rungs (including ii) are solid. Clues: iii is minor, and its bass is degree 3.
+In lesson 1 you heard **iii** (Em in C): soft, in-between, sharing notes with both I and V. This lesson opens the progressions rung that includes it, so all six major and minor chords of the key are in play.
+
+### Try it: iii next to its neighbours
+
+1. Play C – Em – Am – F with roots low (C, E, A, F). Em sounds like a soft, slightly sad step between two home-ish chords.
+2. Play C – Em, then C – G. Em shares two notes with G (G and B), so they can sound alike; the bass tells them apart: E is one step *below* F, G is one step above F.
+3. Play Em and Am one after the other. Both minor; Am feels more like a place to rest.
+
+**If you can't hear it yet:** the minor chords (ii, iii, vi) are the hard ones to tell apart. Don't judge colour; find the bass on the keyboard. D = ii, E = iii, A = vi.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): find home from the cadence, sort each chord by job and colour, and whenever a minor chord is unclear, locate its bass: degree 3 = iii. The drill runs at your current progressions rung, so you'll meet iii once the earlier rungs (including ii) are solid.
 
 ```ladder
 { "skill": "progressions", "unlocks": 8, "intro": "Opens \"Adding iii\" (I, ii, iii, IV, V, vi); the drill runs at your current rung." }
@@ -114,13 +137,19 @@ In lesson 1 you heard **iii** (Em in C): soft, in-between, sharing notes with bo
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "bass", "drums", "lead"] },
       { "kind": "bars", "min": 8, "max": 8 },
-      { "kind": "chord-tones-on-beats", "beats": [1, 3], "progression": ["I", "IV", "vi", "V"], "barsPerChord": 1, "minRatio": 0.9, "track": 1 },
+      { "kind": "chord-tones-on-beats", "beats": [1, 3], "progression": ["I", "vi", "IV", "V"], "barsPerChord": 1, "minRatio": 0.9, "track": 1 },
       { "kind": "drum-pattern", "requires": ["kick", "snare"], "kickOnBeats": [1, 3], "snareOnBeats": [2, 4], "track": 2 },
       { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 3 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "IV", "vi", "V"], "barsPerChord": 1, "minRatio": 0.75, "track": 3 },
+      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "vi", "IV", "V"], "barsPerChord": 1, "minRatio": 0.75, "track": 3 },
       { "kind": "ends-on", "degree": 1, "track": 3 }
     ],
     "minBars": 8, "maxBars": 8
   }
 }
 ```
+
+## Between lessons
+
+- **One song a day, 10 minutes:** any song you like. Only two steps: find home (pause, search low keys) and the first four bass notes. Write them down; check later if you can find the chords online.
+- **3 minutes:** C – Em – Am – F and C – G – Am – F, roots in the left hand, eyes closed for the second time through.
+- Finish the DAW sketch if it didn't fit today, and write its card.

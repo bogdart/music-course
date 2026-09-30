@@ -30,6 +30,25 @@ The DAW timer covers minutes 0–34.
 
 Mute and unmute; copy and paste. If you catch yourself writing new chords, stop: that's session-1 work.
 
+1. **Lay out 52 bars.** Copy the 2-bar groove across the whole song first, all tracks. Then *delete* per the table:
+   intro keeps only drums, verses lose the lead and pad, the breakdown loses the drums. Check: play from bar 1 —
+   each section should sound like it adds or removes something. If two neighbours sound the same, mute one more
+   track in the quieter one.
+2. **Fills.** In the last bar before each chorus, replace beat 4 with four snare 16ths; put a `crash` on the chorus
+   downbeat. Check: loop 2 bars across the change; the chorus should land like a door opening. Too much? Keep the
+   crash, drop the fill.
+3. **Breakdown.** Keep bass, keys and pad; bring the drums back with a fill in its last bar. Check: the final chorus
+   should feel bigger than the first one although nothing new was written — that is form by layers.
+4. **Ending.** Last bar: one hit of E minor on every track (bass on E) on beat 1, then silence. Check: no track keeps
+   playing after it.
+
+**Stuck?** Compare with song A: play its section changes and copy what worked there.
+
+## Ear: progressions
+
+Bass first: find each chord's lowest note on the keyboard, then decide its colour (play major and minor on that root
+and compare). The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```exercise
 {
   "id": "w50l4-song",
@@ -80,3 +99,7 @@ Mute and unmute; copy and paste. If you catch yourself writing new chords, stop:
   }
 }
 ```
+
+## Between lessons
+
+Play both songs back to back once. Decide your starting point for the final project (hook, beat or chords) and collect three candidate seeds for it.

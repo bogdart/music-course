@@ -7,7 +7,7 @@ phase: p5
 duration_min: 45
 goals:
   - "Follow the bass through a mix in three steps: alone, with drums, in the full band"
-  - Use three tricks — listen under the kick, hum it, beat 1 first
+  - Use three tricks — listen under the kick, beat 1 first, search and check on the keyboard
   - "Tell a bass line's landing notes from its passing and approach notes"
 prerequisites: [w41-l3-mystery-song-one]
 tags: [transcription, bass, ear, full-mix]
@@ -21,14 +21,17 @@ bass alone, bass with drums, full band — each on a different loop, so every an
 
 ## Three tricks
 
-1. **Listen *under* the kick.** In most pop the bass starts its notes together with the kick drum. Lock your attention on
-   the kick, then notice the pitch that sounds with it.
-2. **Hum it.** Low notes feel more like rumble than pitch. Humming turns them back into notes — you will hum higher than
-   the bass, which is fine because the note name is the same. Honestly, octaves may still feel slippery: check your hum by
-   playing it on the keyboard against the loop. If it melts into the bass, it's right; if it rubs, move a key.
-3. **Beat 1 first.** Only name the note where the chord changes, usually on beat 1. Everything else can wait.
+1. **Listen *under* the kick.** In most pop the bass starts its notes together with the kick drum. Follow the kick, and
+   notice the pitch that sounds with it.
+2. **Beat 1 first.** Only name the note where the chord changes, usually on beat 1. Everything else can wait.
+3. **Search, then check on the keyboard.** Low notes feel more like rumble than pitch, and octaves may still feel
+   slippery. Play a low key and ask: is the bass higher or lower? Move and repeat. If the bass is too blurry, try the
+   same note 12 keys higher; it is easier to judge there. *Check:* play your key along with the loop on beat 1. The
+   right note melts into the bass; a wrong one rubs, so move one key and try again.
 
-All three loops are in F major (the cadence before each question tells you home). One bass note per bar.
+All three loops are in F major (the cadence before each question tells you home), with one bass note per bar. Find
+F on your keyboard first: every search starts from home. **Stuck?** Loop one bar only, compare two candidate keys back
+to back, and pick the one that melts in.
 
 ```example
 {
@@ -92,7 +95,7 @@ All three loops are in F major (the cadence before each question tells you home)
   "id": "w42l1-c",
   "type": "ear-bass",
   "title": "Step 3: the full band",
-  "instructions": "Another new loop, now with keys and a melody on top. Ignore the tune; hum the lowest thing on beat 1.",
+  "instructions": "Another new loop, now with keys and a melody on top. Ignore the tune; search for the lowest note on beat 1 and check it along with the loop.",
   "srs": false,
   "spec": {
     "key": "F",
@@ -119,7 +122,11 @@ All three loops are in F major (the cadence before each question tells you home)
 A real bass line doesn't only sit on roots. It walks, approaches and decorates. The note it arrives on at a chord change is
 its [[landing note]]; the notes in between connect one landing to the next. For the harmony you need only the landings.
 
-Mystery Song #2 has a busier bass. Loop it and answer before revealing.
+Mystery Song #2 has a busier bass. Loop it and answer before revealing:
+
+1. Tap beat 1 of each bar and find only the note there (search, then check along with the loop).
+2. Count up from F to each landing to get the numeral; play major and minor on it if unsure of the case.
+3. Only then listen to what happens between landings: does a note step into the next landing from a half step away?
 
 ```exercise
 {
@@ -150,11 +157,14 @@ Mystery Song #2 has a busier bass. Loop it and answer before revealing.
 }
 ```
 
+Same skill in the drill: follow only the lowest sound, find home first, then search each bass note from the last one
+and check it by playing along. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "roots",
   "unlocks": 15,
-  "intro": "Rungs 14–15 are this exact skill — the bass in a band — at your own pace."
+  "intro": "The last rungs of this ladder are this exact skill, the bass in a band; you practise at your own rung."
 }
 ```
 
@@ -210,3 +220,7 @@ Mystery Song #2 has a busier bass. Loop it and answer before revealing.
   }
 }
 ```
+
+## Between lessons
+
+Pick one song you know. Loop its chorus and find only the beat-1 bass notes on the keyboard. Write them down.

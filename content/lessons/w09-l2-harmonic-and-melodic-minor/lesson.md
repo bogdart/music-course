@@ -37,7 +37,13 @@ A natural minor has no such note. Its 7th degree is G, a *whole* step below A. B
 }
 ```
 
-What most people hear: the first ending is soft and a bit vague, the second one *arrives*. The only difference is one note, G or G♯. Try it yourself below, then check whether you can hear which ending is which without looking.
+What most people hear: the first ending is soft and a bit vague, the second one *arrives*. The only difference is one note, G or G♯.
+
+### Try it: G or G♯ before home
+
+1. Play **G then A**, then **G♯ then A**. The G♯ almost touches A and slides into it; the G steps up with air in between.
+2. Play the E minor chord (E G B), then Am. Then E major (E G♯ B), then Am. Hold the second chord of each pair and ask: did it *arrive*?
+3. Play the cadence below with the G♯, then check with your ears in the listening exercise after it.
 
 ```exercise
 {
@@ -65,6 +71,8 @@ What most people hear: the first ending is soft and a bit vague, the second one 
   }
 }
 ```
+
+**If you can't hear it yet:** don't judge the whole ending. Replay it and, right after, play the last two chords yourself both ways: E G B → A C E, then E G♯ B → A C E. Which pair did it match? Or listen only to the top-ish line going into the last chord: a tiny slide (G♯ → A) or a clear step (G → A)?
 
 ## Harmonic minor: the scale with the raised 7th
 
@@ -101,7 +109,36 @@ When a melody climbs up to the tonic, that F – G♯ gap can sound awkward, so 
 }
 ```
 
-The three minors differ only in their top notes, so listen to the last steps before the top: whole step into home (natural), the wide gap then a half step (harmonic), or a smooth, almost major climb (melodic). This lesson opens two scale rungs: natural vs harmonic first, then all three. The drill runs at your current scales rung, so you'll meet these once major vs minor is solid.
+The three minors differ only in their top notes: A B C D E stays the same in all three.
+
+### Try it: three tops on the same bottom
+
+1. Play **E F G A** (natural), **E F G♯ A** (harmonic), **E F♯ G♯ A** (melodic, going up). Only these four notes matter.
+2. Play each top twice and give it a word: natural = plain steps, harmonic = a limp (the wide F – G♯ gap), melodic = smooth, almost like major.
+3. Play one at random with your eyes closed and name it before you look.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: which minor?",
+  "instructions": "Each run goes up A minor. Listen to the last four notes, then answer.",
+  "spec": {
+    "examples": [
+      { "title": "Run 1", "bpm": 90, "timeSig": "4/4", "key": "Am", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:q B3:q C4:q D4:q | E4:q F4:q G#4:q A4:q" } ] },
+      { "title": "Run 2", "bpm": 90, "timeSig": "4/4", "key": "Am", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A3:q B3:q C4:q D4:q | E4:q F4:q G4:q A4:q" } ] }
+    ],
+    "questions": [
+      { "q": "Run 1 is…", "choices": ["natural minor", "harmonic minor"], "answer": 1, "explain": "Harmonic: E F G♯ A, with the wide limp from F to G♯." },
+      { "q": "Run 2 is…", "choices": ["natural minor", "harmonic minor"], "answer": 0, "explain": "Natural: E F G A, plain steps all the way, the last one a whole step." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** after the run, play the three tops yourself (E F G A, E F G♯ A, E F♯ G♯ A) and pick the one that matches. If all three blur, compare only the last step: whole step into A (natural) or a half-step slide (harmonic and melodic)? Then, for those two: was there a limp just before it (harmonic)?
+
+This lesson opens two scale rungs: natural vs harmonic first, then all three.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box above the drill, for the rung you're on): let the run play, ignore the bottom, listen to the top four notes. Exotic jump near the top → harmonic; sounds like major at the top → melodic; plain → natural. When unsure, play the three tops on your keyboard and match. The drill runs at your current scales rung, so these come once major vs minor is solid.
 
 ```ladder
 { "skill": "scales", "unlocks": 4, "intro": "Opens \"Natural or harmonic minor\" and \"Three minors\"; the drill runs at your current rung." }
@@ -136,8 +173,24 @@ Beethoven's *Für Elise* is in A minor. It starts with a famous wobble between E
 
 This lesson opens two degree rungs in A minor, both set up by the minor cadence from last lesson (i – iv – V – i). First degrees 1 to 5: 1 is A, ♭3 is C, 5 is E. In minor, 3 is always the ♭3, so the drill's buttons just say 3. Then all seven. One thing to know for that one: the drill asks about the notes of **natural** minor, so degree 7 is **G**, a whole step below A. The cadence still uses G♯ to set home, so the question's G will sound lower and less pushy than the G♯ you heard above. Degree 6 is F, a half step above 5. After each answer, 6 and 7 walk up to the high A, the others walk down to A.
 
-The drill runs at your current degree rung: you'll meet minor once all seven degrees in C major are solid, and the change of home will feel strange at first, just as G did in week 7.
+### Try it: walking home in A minor
+
+1. Play the cadence Am – Dm – E – Am, then play **A** alone. That's 1.
+2. Play C, then walk down to A: C – B – A. Two steps = 3. Play E and walk down: E D C B A = 5.
+3. Play G, then A: 7 steps up into home. Play F, then G, then A: that's how 6 walks home in the drill. Then play F, then E: notice F also likes to sink onto 5.
+4. Play any white key between A3 and A4, and name its degree by counting white keys up from A (A = 1).
+
+**If you can't hear it yet:** find the question note on the keyboard first (search with higher/lower from A), then count keys up from A: A B C D E F G = 1 2 3 4 5 6 7. The keyboard answer is always allowed; the feeling of each degree grows from doing this many times.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box): hold the cadence's last low note (A) in your head, walk from the question note down to it and count the steps; if unsure, find the key and count from A. The drill runs at your current degree rung: you'll meet minor once all seven degrees in C major are solid, and the change of home will feel strange at first, just as G did in week 7.
 
 ```ladder
 { "skill": "degrees", "unlocks": 14, "intro": "Opens \"Minor: 1 to 5\" and \"Minor: all seven\" (A minor, natural 7th = G); the drill runs at your current rung." }
 ```
+
+## Between lessons
+
+- **3 minutes, daily:** the three minor tops (E F G A / E F G♯ A / E F♯ G♯ A), eyes closed, random order, name each.
+- **2 minutes:** Am – Dm – E – Am, then Am – Dm – Em – Am: say which one lands.
+- **3 minutes:** Für Elise, first phrase, slowly; notice the G♯ on the way back to A.
+- One Practice-page session if you have time: scales and degrees at your rung.

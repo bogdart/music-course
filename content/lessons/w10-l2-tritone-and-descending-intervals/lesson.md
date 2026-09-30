@@ -58,7 +58,36 @@ The tritone matters far beyond this drill. In C major there's exactly one: **B a
 }
 ```
 
-This lesson opens two interval rungs: sevenths against the octave, then fourth, tritone or fifth. The drill runs at your current interval rung, so you'll meet them once the fifth-vs-octave and sixth rungs are solid. (Mixing all the big intervals together comes in week 12.)
+### Try it: sevenths and the tritone under your hands
+
+1. From D4, play **D4 → D5** (octave), then **D4 → C♯5** and **D4 → C5**. After each seventh, play the one extra step up to D5: a seventh wants that step; the octave doesn't.
+2. From C4, play **C4 → F4**, **C4 → F♯4**, **C4 → G4**, slowly, three times. Give each a word: fourth = settled, tritone = hanging, fifth = open.
+3. Play **B3 + F4** together, then move both inward to **C4 + E4**. Feel the tension let go.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: fourth, tritone or fifth?",
+  "instructions": "Each leap goes up from G3.",
+  "spec": {
+    "examples": [
+      { "title": "Leap 1", "bpm": 66, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G3:h C#4:h" } ] },
+      { "title": "Leap 2", "bpm": 66, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G3:h D4:h" } ] },
+      { "title": "Leap 3", "bpm": 66, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G3:h C4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Leap 1 is…", "choices": ["a fourth", "a tritone", "a fifth"], "answer": 1, "explain": "Tritone: G → C♯ (6 keys). It hangs, unsettled." },
+      { "q": "Leap 2 is…", "choices": ["a fourth", "a tritone", "a fifth"], "answer": 2, "explain": "Fifth: G → D (7 keys), open and stable, the Twinkle leap." },
+      { "q": "Leap 3 is…", "choices": ["a fourth", "a tritone", "a fifth"], "answer": 0, "explain": "Fourth: G → C (5 keys), the \"Here Comes the Bride\" leap." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** replay, then play all three candidates from the first note yourself (5, 6 and 7 keys up) and pick the one that matches. For sevenths, do the same with 10, 11 and 12 keys up, or play the second note and ask: does it want one more step up?
+
+This lesson opens two interval rungs: sevenths against the octave, then fourth, tritone or fifth.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): a 7th is "almost an octave" and feels unfinished (major sharp and tense, minor softer), the octave rests; the tritone sits between 4th and 5th and won't settle, while 4th and 5th both sound stable. The drill runs at your current interval rung, so you'll meet these once the fifth-vs-octave and sixth rungs are solid. (Mixing all the big intervals together comes in week 12.)
 
 ```ladder
 { "skill": "intervals", "unlocks": 11, "intro": "Opens \"7ths and the octave\", then \"The tritone\" (4th, tritone or 5th); the drill runs at your current rung." }
@@ -77,7 +106,11 @@ Melodies fall as often as they rise. A falling interval covers the same distance
 }
 ```
 
-A practical trick for later: when you hear a falling interval and aren't sure, play the two notes on the keyboard the other way round, low then high, and compare with the rising intervals you know.
+### Try it: flip it to name it
+
+1. Play **G4 → C4** (falling fifth). Now play it the other way round, **C4 → G4**: the Twinkle leap you know. Same distance.
+2. Do the same with **E4 → C4** (falling major 3rd) and **C5 → C4** (falling octave).
+3. Whenever a falling interval puzzles you, play its two notes low-then-high and name the rising interval.
 
 *Joy to the World* opens with the most common falling line of all: the major scale, straight down from 8 to 1. Every step is a falling second (whole or half step).
 
@@ -129,3 +162,12 @@ Falling intervals join your ear drills in week 15. Today your hands learn to fin
   ] }
 }
 ```
+
+**If a falling interval won't come out right:** find the top note first, then count keys down (M2 = 2, M3 = 4, P4 = 5, P5 = 7, P8 = 12), or find the rising interval from the *answer* note up to the given one.
+
+## Between lessons
+
+- **3 minutes, daily:** from random notes, play 4th, tritone and 5th up, eyes closed on the second pass; say the word (settled, hanging, open).
+- **2 minutes:** sevenths from random notes, each followed by the step up to the octave.
+- **2 minutes:** Joy to the World, opening, then the same falling scale from G5 down to G4 (with F♯).
+- One Practice-page session: intervals at your rung.

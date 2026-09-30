@@ -21,15 +21,15 @@ Phase 4 is done. You started it with 9th chords and finish with three finished p
 
 Listen to each portfolio piece once, start to finish, without stopping. Then score each item 1–3 (1 = needs work, 3 = strong):
 
-| Area | Question |
+| Area | How to check it by ear |
 |------|----------|
-| Idea | Is there one clear, memorable idea (hook, motif, groove)? |
-| Harmony | Do the chords support the melody? Is there at least one colourful moment (an extension, a borrowed chord, a substitution)? |
-| Melody | Singable or playable? Good prosody and range? Does it peak somewhere? |
-| Rhythm | Does the groove feel steady and intentional? |
-| Form | Is there an arc — contrast, climax, release? Are the transitions clear? |
-| Arrangement | Does every track have a job? Any clutter or register clashes? |
-| Ending | Deliberate and satisfying? |
+| Idea | Close the DAW. An hour later, can you play the hook or motif from memory on the keyboard? |
+| Harmony | Solo the melody with the chords only: does any long melody note sound sour? Is there one moment where a chord colour surprises you? |
+| Melody | Play the melody alone. Does it have one clear highest point? Does it stay within about a 10th? |
+| Rhythm | Tap your foot through the whole piece. Does it ever stumble or feel random? |
+| Form | Raise your hand at the peak. Is there one? Did every section change feel announced? |
+| Arrangement | Solo each track for 8 bars: can you say its job in three words? Any two tracks doing the same thing in the same octave? |
+| Ending | When it stops, do you expect more? If yes, it's not deliberate yet. |
 
 Circle the lowest score for each piece: that's the one thing to fix first. Don't fix everything — finished and imperfect beats perfect and abandoned.
 
@@ -48,6 +48,8 @@ Circle the lowest score for each piece: that's the one thing to fix first. Don't
 ## Diagnostic ear check
 
 Five short ladder drills, one per skill that Phase 5 leans on. Each runs at **your current rung** of that ladder — not at a fixed "Phase 4 level" — so it tests only what you've actually been drilling. Read the result like this: around **70% or more** on your current rung means the ladder is healthy; clearly below that means this ladder is your Practice-page priority in the coming weeks. Roots and progressions matter most: Phase 5 starts by finding bass notes and chords in real songs.
+
+The methods are the ones you've practised: for bass and roots, listen only to the lowest sound and search low keys with higher/lower; for progressions, find home first, then name each chord by bass and colour; for chord colours, bright or dark first; for melodies, directions first, then the first note, then the path; for scales, bright or dark, then the one special note. The *How to do it* box under each drill shows the exact method for your current rung.
 
 Before you start, just listen — no need to name anything:
 
@@ -150,3 +152,7 @@ Before you start, just listen — no need to name anything:
   }
 }
 ```
+
+## Between lessons
+
+Practise the one or two ladders that scored lowest, ten minutes a session, on the Practice page. Phase 5 starts with finding bass notes.

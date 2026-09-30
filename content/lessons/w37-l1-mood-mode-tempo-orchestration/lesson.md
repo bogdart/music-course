@@ -42,7 +42,7 @@ There is a seventh mode below Phrygian: **Locrian** (♭2 ♭3 ♭5 ♭6 ♭7), 
 
 Lydian's raised 4th floats — the "Simpsons" theme (by reference) opens on it, and film scores use Lydian for wonder and flight. Phrygian's ♭2, a half step above home, is the sound of threat; the "Jaws" main title (by reference) is built on a two-note half-step pulse.
 
-Hear the same melodic shape in three modes. Listen for the colour note each time: F♯ in C Lydian, B (the raised 6th) in D Dorian, F (the ♭2) in E Phrygian.
+Hear the same melodic shape in three modes. Listen for the colour note each time: F♯ in C Lydian, B (the raised 6th) in D Dorian, F (the ♭2) in E Phrygian. If it slips past, play the colour note yourself and then the plain version (F♯ then F in C; B then B♭ over D; F then F♯ over E) — the difference is one key, and you can hear it best that way.
 
 ```example
 {
@@ -59,6 +59,8 @@ Hear the same melodic shape in three modes. Listen for the colour note each time
 ## Ear: modes as tunes
 
 This lesson opens the scales ladder's last rung: the six modes as **short tunes** instead of scale runs. Be honest with yourself here — in a tune the colour note may pass by in a moment, so this is clearly harder than a scale run. The drill starts wherever you are on the ladder; the new rung only arrives once the earlier ones are mastered.
+
+Method: first find where the tune rests (home) and play that note on the keyboard; then decide bright or dark; then listen for the one special note (♭7, ♯4, raised 6 or ♭2) — play it and its plain neighbour over home to compare. The *How to do it* box under the drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "scales", "unlocks": 13, "intro": "Opens the rung with the six modes as tunes; the drill runs at your current scales rung." }
@@ -133,6 +135,12 @@ Real cues pull several levers at once, and the strongest effects come from **con
 
 ## Make it
 
+1. On strings, write a 4-bar phrase in C Lydian. Put F♯ on a long note or a strong beat so it can't slip by.
+2. Copy it to bars 5–8 on the piano track, then move every note to E Phrygian (white keys from E): shift the phrase so it starts on E, an octave lower.
+3. Make the rhythm feel slower: turn pairs of short notes into one long note, and lean on F, the note just above home.
+4. **Judge by ear:** play bars 1–4, then 5–8. Is the second half clearly darker? If not, go lower, slower, or repeat the E–F half step.
+5. **Stuck?** Start from the "same shape" example: copy its Lydian bar and its Phrygian bar and extend each to four bars.
+
 ```exercise
 {
   "id": "e4-daw-mood-flip",
@@ -161,3 +169,7 @@ Real cues pull several levers at once, and the strongest effects come from **con
   }
 }
 ```
+
+## Between lessons
+
+Play C Lydian and E Phrygian once a day, stopping on the colour note (F♯, F) and holding it over home.

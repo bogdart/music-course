@@ -1,7 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { generateSet, LADDERS, LADDER_SKILLS, getRung, rungStatus, skillState, MASTERY, type RungResult } from '../src/index.js';
+import { METHOD_KEYS } from '../src/ladder-methods.js';
 
 describe('ladders', () => {
+  it('every rung has a practical method, and every method belongs to a rung', () => {
+    const titles = new Set<string>();
+    for (const s of LADDER_SKILLS) for (const r of LADDERS[s].rungs) {
+      expect(r.how.length, r.id).toBeGreaterThan(40);
+      titles.add(`${s}|${r.title}`);
+    }
+    for (const [s, t] of METHOD_KEYS) expect(titles.has(`${s}|${t}`), `${s}: ${t}`).toBe(true);
+  });
   it('every rung generates a full set', () => {
     for (const s of LADDER_SKILLS) {
       for (const r of LADDERS[s].rungs) {

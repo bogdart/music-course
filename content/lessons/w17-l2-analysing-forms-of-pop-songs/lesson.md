@@ -33,6 +33,10 @@ section by section, and replay a section as often as you need.
 "Lantern" is an original 16-bar tune with 4-bar sections. The notation is hidden: listen as often as you like, answer,
 and only then reveal it.
 
+**If you lose count:** replay and only answer one question per play — play 1: "does bar 5 sound like bar 1 again?",
+play 2: "does something new start at bar 9?", play 3: "which version ends more finished?". Counting four beats per
+bar on your fingers helps more than it sounds.
+
 ```exercise
 {
   "id": "lantern-form",
@@ -63,7 +67,19 @@ and only then reveal it.
 ## A new chord in the bass: iii
 
 One song below uses **iii**, the minor chord on degree 3 (week 13): in C it is E minor, E–G–B. Hear I–iii–vi–IV —
-the bass walks C, E, A, F:
+the bass walks C, E, A, F.
+
+### Try it
+
+1. Play the chart below once, listening only for the **lowest** note of each chord.
+2. On your keyboard, play C3 – E3 – A3 – F3 (left hand) along with the replay. Does your line match the bottom of
+   the chords?
+3. Now play C3 – G3 – A3 – F3 instead (the familiar I–V–vi–IV bass). Which one matches the chart?
+
+**Check:** C–E–A–F matches; with G in place of E, bar 2 sounds wrong under the chord — your G clashes against E minor.
+
+**If you can't hear it yet:** hold E3 down during bar 2 of the replay, then G3. The note that melts into the chord is
+the bass; the other one rubs.
 
 ```chords
 { "key": "C", "bars": ["C", "Em", "Am", "F"], "roman": true, "play": true, "bpm": 72 }
@@ -78,6 +94,10 @@ the bass walks C, E, A, F:
   "spec": { "chords": ["C", "Em", "Am", "F"], "inversion": "any", "sequence": true, "bpm": 66 }
 }
 ```
+
+**Before the drill** (method also in the *How to do it* box): find home first, then take each bass note by
+stepping from the one before — next door, or a jump? — and try it on the keyboard. If the drill shows an earlier
+roots rung, its own box covers that rung.
 
 ```ladder
 { "skill": "roots", "unlocks": 10, "intro": "Opens: bass lines that may use ii and iii too. The drill runs at your current roots rung." }
@@ -124,3 +144,8 @@ Now play the "Someone Like You" chorus progression you just read about, in A maj
   "spec": { "prompt": "Analyse one more song of your choice with the 3-step method. Write: title, tempo (tapped), the form as letters with bar counts if you managed (e.g. I4 V8 PC4 C8 ...), and one sentence on what changes at the first chorus.", "minWords": 40 }
 }
 ```
+
+## Between lessons
+
+Map one more song with the 3-step method (sections only, no bar counts needed), and play C–Em–Am–F slowly while
+listening for the bass walk.

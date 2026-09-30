@@ -80,7 +80,12 @@ Melodies in odd meters feel natural when phrases **span two bars** (14 8ths) and
 
 ## Working method
 
-Build in this order and loop constantly: **drums first** (get your body used to the grouping), then **bass** locked to the kick, then **chords**, and only then the melody. If something feels wrong, mute everything but the drums and one other layer, and check that both put their accents on the same 8ths. Keep the tempo moderate — 7/8 at 110 is plenty; odd meters get confusing fast when you rush them.
+1. **Drums first.** Write one bar, loop it and say "ap-ple ap-ple pine-ap-ple" over it until your body stops tripping. Then copy it to all 16 bars.
+2. **Bass** on every group start (8ths 1, 3 and 5), locked to the kick; walk only inside the long group.
+3. **Chords** on the group starts too.
+4. **Melody last,** in two-bar phrases, short-short-long.
+
+**Judge it by ear:** nod along. If a layer trips, mute everything but the drums and that layer, and check both put their accents on the same 8ths. **If you're stuck:** copy the example's drums and bass exactly, and make only the chords and melody your own. Keep the tempo moderate — 7/8 at 110 is plenty.
 
 ## Drills
 
@@ -224,6 +229,8 @@ Build in this order and loop constantly: **drums first** (get your body used to 
 
 This lesson opens the last meter rung: all five meters you now know (3/4, 4/4, 6/8, 5/4 and 7/8) in one drill. The drill below runs at your current rhythm rung, so you may meet this one later. When you do, the drums give you the cues. In the quarter-note meters (3/4, 4/4, 5/4) every beat has a kick or a snare, and you count drum hits from one loud kick to the next, as in the first lesson this week. In the 8th-note meters (6/8, 7/8) there is no snare: only kicks, one at the start of each group, with the hi-hat ticking the 8ths. Two even groups of three (kick, two ticks, kick, two ticks) is 6/8; three uneven groups, short-short-long like your groove (2+2+3), is 7/8.
 
+This is the method in the drill's *How to do it* box too: count from ONE to ONE; 7/8 limps (2+2+3), 5/4 has five steady beats. For the bass drill after it: ignore the drums, tap your foot with the deepest sound, then find its notes one by one.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Opens the rung with all five meters, 7/8 included; the drill runs at your current rhythm rung." }
 ```
@@ -231,3 +238,7 @@ This lesson opens the last meter rung: all five meters you now know (3/4, 4/4, 6
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Bass lines in a band: the bass is the layer that locks a groove to its grouping; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+Loop your groove once a day and play the bass riff along with it until you can do it without counting. Listen to "Solsbury Hill" and try counting a verse bar in sevens (it is 7/4: a slower pulse, same idea).

@@ -44,9 +44,25 @@ The rhythm is the strongest glue: if the rhythm repeats, the listener hears "the
 
 Bar 1 is the motif. Bar 2 repeats it with a new ending that fits F. Bar 3 is a sequence — the bar-1 shape moved up a step. Bar 4 answers with the motif's rhythm turned around and lands on C.
 
+### Try it
+
+1. Tap the rhythm of bar 1 on the table while it loops: short-short-long-long-long. Keep tapping through bars 2 and 3.
+2. On your keyboard play bar 1 (C D E G E), then start the same shape on D: D E F A F. That's bar 3 — a sequence.
+3. Now play bar 1's notes with all quarter notes (C D E G E, even). Does it still sound like "the motif"?
+
+**Check:** your tap fits bars 1–3 without changing; the even version sounds noticeably less like the motif, though the
+notes are the same — rhythm is the glue.
+
+**If you can't hear it yet:** watch the piano roll while it loops: the same *picture* (two short blocks, three long
+ones) repeats in bars 1–3, just higher or with a new tail.
+
 ## Question and answer (a reminder)
 
 You met this in week 15. Phrases come in pairs, like a conversation: [[question and answer]]. The **question** ends open — on degree 2, 5 or 7, usually over V. The **answer** starts the same way and ends closed on degree 1 over I. "Ode to Joy" is the textbook case: the question lands on D (degree 2), the answer on C.
+
+**Try it:** play the example and stop it after bar 4 — the tune feels paused mid-sentence. Then play E4 D4 C4 on your
+keyboard (the end of bar 8) and stop: done. **If you can't hear it yet:** play D4 then C4 alone, twice each; D wants
+to move on, C lets you take your hands off the keys.
 
 ```example
 {
@@ -84,6 +100,11 @@ You met this in week 15. Phrases come in pairs, like a conversation: [[question 
 }
 ```
 
+**Growing a motif — what to try first:** start with bar 1 of the example and change just one note or one rhythm;
+a borrowed motif is fine for a first try. **Judge it by ear:** loop the four bars; bars 1–3 should sound like one idea
+said three times, bar 4 like a full stop. **If you're stuck:** if bar 2's ending clashes with F, move its last note to
+F, A or C; if bar 4 doesn't feel final, end on a long C4.
+
 ```exercise
 {
   "id": "daw-grow-motif",
@@ -113,6 +134,14 @@ Writing a motif and hearing one are the same skill from two sides. This lesson o
 every question and you answer with degree numbers instead of keys: listen to the cadence, find home, then name each
 note's distance from home. The drill runs at your current melody rung, so it may still be an earlier one.
 
+**Before the drill** (method also in the *How to do it* box): play the melody back on the keyboard first, starting
+from the home the cadence gave you; then count each note's steps up from home to get its degree number.
+
 ```ladder
 { "skill": "melody", "unlocks": 14, "intro": "Opens: a new key every time - write the degrees of the notes you hear. The drill runs at your current melody rung." }
 ```
+
+## Between lessons
+
+Each day invent one 1-bar motif (on the keyboard, 30 seconds) and play it three times: repeat, change the ending,
+move it up a step.

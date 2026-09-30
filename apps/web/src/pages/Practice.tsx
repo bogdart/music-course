@@ -104,6 +104,10 @@ function LadderSession({ onDone }: { onDone: () => void }) {
         <span className={`tag ${entry.kind === 'review' ? 'level' : 'new'}`}>{entry.kind === 'review' ? 'review' : 'your level'}</span>
       </p>
       <p className="small muted">{entry.rung.step}</p>
+      <details className="ladder-how">
+        <summary>How to do it</summary>
+        <p className="small">{entry.rung.how}</p>
+      </details>
       <ExerciseShell key={`${entry.rung.id}-${pos}`} block={entry.rung.block} lessonId={LADDER_LESSON_ID} mode="practice" count={entry.count} onComplete={(s) => void onComplete(s)} />
       <div className="row">
         <button type="button" className="btn link" onClick={() => setPos(plan.length)}>

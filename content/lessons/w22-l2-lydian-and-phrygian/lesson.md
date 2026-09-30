@@ -51,6 +51,16 @@ You have not drilled ♯4 as a single degree yet (that comes in week 24), so let
 }
 ```
 
+### Try it
+
+1. Play A, then B above. In each, listen to the top note only while the chord holds.
+2. On your keyboard, hold F–A–C with the left hand. With the right, play B♭ then A: it *lands*. Now play B natural and stay there.
+3. Play both scales yourself, slowly, and stop on the 4th each time for two seconds.
+
+**Check:** B♭ wants to drop to A (tension that resolves); B natural doesn't ask to go anywhere — it floats, a bit bright and unusual.
+
+**If you can't hear it yet:** that's normal — the difference is one half step and one mood. Use contact instead: over the F chord, play B♭ and then B and notice only which one makes you want to *play A next*. That's the ordinary 4. The other is Lydian.
+
 ```exercise
 {
   "id": "play-f-lydian",
@@ -87,6 +97,8 @@ In E natural minor the 2nd is F♯. Lower it to F and you have E Phrygian. The n
   "loop": true
 }
 ```
+
+**Try it:** hold E on your keyboard (left hand, low) and play E, F, E, F in the right hand; then E, F♯, E, F♯. **Check:** the F rubs against home — close, dark, "Spanish" or ominous; F♯ is a plain, neutral step. **If you can't hear it yet:** play E and F *together*, then E and F♯ together. The half step grinds, the whole step doesn't. Phrygian keeps that grind right next to home.
 
 ```exercise
 {
@@ -137,6 +149,8 @@ Each mode's colour lives in one chord pair. Rock between them and listen to the 
 
 This lesson opens two scale-colour rungs, each a pair on one root: major or Lydian (the 4th), then minor or Phrygian (the 2nd). The drill runs at your current scales rung, which may still be an earlier one.
 
+**Before the drill** — the method (also in the *How to do it* box next to the drill): don't listen to the whole run; wait for the one note that can differ. Lydian vs major: the **4th** note — floating (Lydian) or ordinary. Phrygian vs minor: the **2nd** note, right after home — a dark rub (Phrygian) or a plain step. Unsure? Play both versions of that one note on your keyboard over the root and replay the question.
+
 ```ladder
 { "skill": "scales", "unlocks": 8, "intro": "Opens: major or Lydian (the 4th); then minor or Phrygian (the 2nd). The drill runs at your current scales rung." }
 ```
@@ -154,3 +168,7 @@ This lesson opens two scale-colour rungs, each a pair on one root: major or Lydi
   ] }
 }
 ```
+
+## Between lessons
+
+Once a day, hold a root with the left hand and play the four "changed notes" against it: ♭7 and 7, ♮6 and ♭6, ♯4 and 4, ♭2 and 2. Say the mood of each out loud.

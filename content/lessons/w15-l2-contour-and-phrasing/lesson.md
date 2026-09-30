@@ -63,6 +63,15 @@ Melodies are built from phrases (week 8): musical sentences, usually 2 or 4 bars
 }
 ```
 
+### Try it: open or closed
+
+1. Play the question phrase above (E G A G | F E D) and **stop** on the D. Keep your hand on the key. It sounds unfinished, as if someone paused mid-sentence.
+2. Now play C after it. The pause is over.
+3. Play the answer phrase (… F D C) and then add C again. Nothing changes: it was already finished.
+4. While Greensleeves plays, trace the line in the air with your hand. Where is the highest point? Stop the hand there and look at the notes: it's the F.
+
+**If you can't hear it yet:** use the test from step 2. After any phrase, play home (C) yourself. If the C sounds like a *relief*, the phrase was a question. If it sounds like a pointless extra note, the phrase was an answer.
+
 ```exercise
 {
   "id": "e2", "type": "listen", "title": "Question or answer?",
@@ -98,14 +107,36 @@ Descending contours are made of falling intervals, mostly steps with a few leaps
 }
 ```
 
-This lesson opens two interval rungs, one of them a big step:
+### Try it: falling intervals on the keys
 
-1. **All intervals, going up**: every size you know, twelve choices at once. The ladder keeps you here until it's solid.
-2. **Going down**: just four falling intervals (2nd, 3rd, 4th, 5th).
+1. Play **C4 then G4** (a rising 5th). Now play **G4 then C4**: the same two keys, falling. It feels different, heavier, landing, but the distance is the same seven half steps.
+2. Do the same with **C–F** (4th) and **C–E** (3rd): up, then down.
+3. Close your eyes, play one of the three falls, and name it. Open your eyes and count the keys.
 
-The drill below runs at your current interval rung, so it may still be an earlier one; the falling rungs wait until the rising ones are mastered. The remaining falling intervals open in week 18.
+Check: two falls. Name each before reading the explanation.
 
-Tip for falling intervals: play the two notes back on the keyboard low-then-high and compare with the rising intervals you know.
+```exercise
+{
+  "id": "e4", "type": "listen", "title": "Check: how far did it fall?",
+  "instructions": "Play each fall. If you're not sure, play the same two notes upward on your keyboard and name that.",
+  "spec": {
+    "examples": [
+      { "title": "Fall 1", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "G4:h C4:h" } ] },
+      { "title": "Fall 2", "bpm": 72, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "A4:h F4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Fall 1 is a…", "choices": ["3rd", "4th", "5th"], "answer": 2, "explain": "A falling 5th: G down to C. Played upward, C–G, it's the Twinkle opening." },
+      { "q": "Fall 2 is a…", "choices": ["3rd", "4th", "5th"], "answer": 0, "explain": "A falling major 3rd: A down to F, four half steps. A small skip." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** turn a fall into a rise. Find the two notes on the keyboard (search for them as you do in the melody drill), then play them **low note first**. Now it's a rising interval you already know — name that. Your ear gets the fall; your hands get the size.
+
+This lesson opens two interval rungs, one of them a big step: **all intervals going up** (twelve choices at once), then **going down** (2nd, 3rd, 4th, 5th falling). The drill runs at your current interval rung, so it may still be an earlier one; the falling rungs wait until the rising ones are mastered.
+
+**Before the drill, rehearse the method** (also in the *How to do it* box above the drill, for the rung you're on). For all rising intervals, two steps: first the **size class** (step, skip, leap, big leap), then the anchor or colour inside that class (Bride = 4th, Twinkle = 5th, dark or bright 3rd); then count keys to check. For falling ones: size first, then play the two notes back downward on the keyboard, and if still unsure, low note first as above.
 
 ```ladder
 { "skill": "intervals", "unlocks": 14, "intro": "Opens: all intervals going up, then four falling intervals (2nd to 5th)." }
@@ -113,7 +144,9 @@ Tip for falling intervals: play the two notes back on the keyboard low-then-high
 
 ## Ear: longer tunes in any key
 
-This lesson opens the next melody rung: five notes from the whole scale, in a new key each time (the drill runs at your current rung). With any tune: trace the contour with your hand first (up, down, where's the top?), then find it on the keyboard.
+This lesson opens the next melody rung: five notes from the whole scale, in a new key each time (the drill runs at your current rung).
+
+**Before the drill, rehearse the method** (the *How to do it* box above the drill has it too): **home first** (find the cadence's last bass note on the keyboard), **then the first note** (search from home), **then the path**, traced with your hand as you did with Greensleeves: up, down, where's the top? Five notes is a lot to hold, so chunk it: play the first three, replay, then add the last two.
 
 ```ladder
 { "skill": "melody", "unlocks": 13, "intro": "A new key each time: play back five notes from the whole scale." }
@@ -130,3 +163,10 @@ This lesson opens the next melody rung: five notes from the whole scale, in a ne
   ] }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** play the question phrase and stop; then add C. Make up two 2-bar phrases of your own, one ending on D or G (open), one on C (closed).
+- **3 minutes:** random falls from C5 down (to G4, F4, E4, D4…). Name each, then check by playing it upward.
+- **1 minute:** hum along in your head with any tune you know and trace its contour with your hand. No keyboard needed.
+- One intervals-ladder and one melody-ladder session on the Practice page.

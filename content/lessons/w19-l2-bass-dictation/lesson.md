@@ -28,6 +28,31 @@ In almost every groove the bass notes start where the kick drum hits. When they 
 low-end sound; when they don't, the groove feels loose. This [[kick lock]] also helps dictation: *follow the kick,
 and you know where the bass notes start.*
 
+### Try it
+
+Bars 1–2 below are locked: every bass note starts on a kick. Bars 3–4 play the same notes, but pushed half a beat late.
+
+```example
+{
+  "title": "Locked (bars 1-2), then loose (bars 3-4)",
+  "bpm": 92, "timeSig": "4/4", "key": "Am",
+  "tracks": [
+    { "instrument": "bass", "seq": "A1:q. A1:8 r:h | A1:q. A1:8 r:h | r:8 A1:q. A1:8 r:q. | r:8 A1:q. A1:8 r:q." },
+    { "instrument": "drums", "seq": "kick:q. kick:8 snare:q r:q | kick:q. kick:8 snare:q r:q | kick:q. kick:8 snare:q r:q | kick:q. kick:8 snare:q r:q" }
+  ],
+  "show": ["pianoroll"],
+  "loop": false
+}
+```
+
+1. Play it and tap the low thuds on the table.
+2. In which half do you tap *once* per thud, and in which half do you hear a thud-then-hum you can't tap as one?
+
+**Check:** bars 1–2 feel like one fat hit each time; bars 3–4 sound like the bass is stumbling after the drum.
+
+**If you can't hear it yet:** watch the piano roll — in bars 3–4 the bass blocks start between the kick hits. Then
+replay and listen for the gap.
+
 ## How to take down a bass line (keyboard only)
 
 1. **Rhythm first.** Tap along with the kick. Those taps are (nearly always) the bass rhythm.
@@ -96,6 +121,10 @@ Answer the rhythm questions first, then write the bass line in the DAW task belo
 }
 ```
 
+**If you're stuck:** take one bar per play-through and hold just one key through the whole loop — first A1, then F1,
+G1, E1. The bar where a key stops rubbing is that key's bar. If two keys both seem fine, it's usually root and fifth:
+pick the lower-sounding one that matches the pad's chord root.
+
 Now play what you wrote (the answer is A – F – G – A: i – VI – VII – i), an octave higher so it fits your keyboard:
 
 ```exercise
@@ -111,6 +140,11 @@ Now play what you wrote (the answer is A – F – G – A: i – VI – VII –
 ## Ear: minor-key bass lines and progressions
 
 This lesson opens minor-key bass lines like today's groove, and two progression rungs: the pop minor chords i, iv, VI and VII in A minor (the i – iv – VI – VII loop from week 16, plus today's i – VI – VII), then minor progressions in a new key each question. Both drills run at your current rungs, which may still be earlier ones.
+
+**Before the drills** (methods also in the *How to do it* boxes): for bass lines, find home first — the minor
+cadence's lowest note — then follow the bass; minor lines often step down i, VII, VI. For progressions in A minor,
+follow the bass A, D, F, G and pair it with the colour: dark home (i), warm bright VI, VII a step below home. In a new
+key, find the minor home from the cadence first, then name roles the same way. Lower rungs have their own methods.
 
 ```ladder
 { "skill": "roots", "unlocks": 12, "intro": "Opens: bass lines in minor keys. The drill runs at your current roots rung." }
@@ -144,3 +178,8 @@ Listen on your own player, then answer. The facts appear after you answer.
   "spec": { "prompt": "How did the matching method work for you? Which was harder: the rhythm or finding the notes? Did the right note really 'blend' when you held it along? Did a wrong one (the fifth, another chord note) fool you first?", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Once a day, tap the kick of any song for 8 bars, then try to find the bass note of bar 1 on your keyboard with the
+octave test. One note is enough.

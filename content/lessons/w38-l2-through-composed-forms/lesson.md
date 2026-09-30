@@ -31,7 +31,13 @@ Without choruses to lean on, you need a **tension arc** — where the piece star
 3. **Climax** — the highest, loudest, busiest point, about two-thirds of the way through.
 4. **Resolution** — the motif returns *transformed* (augmented, reharmonised), not repeated literally.
 
-Here is a 16-bar through-composed miniature in A minor (original), built on one four-note motif. Listen to it whole, a few times, and answer. The explanations then show how it is built, bar by bar; after answering you can also reveal the notation and follow along.
+Here is a 16-bar through-composed miniature in A minor (original), built on one four-note motif. Listen in three passes, one question each:
+
+1. **Where is the peak?** Listen once without counting. Raise your hand at the moment it feels highest and most intense; note whether that was early, a bit past the middle, or at the very end.
+2. **Where does the opening come back?** Play the first four notes (A–B–C–E) on the keyboard before the pass so they are in your ear, then listen for that shape near the end. Is it faster, slower or the same?
+3. **Does anything repeat exactly?** Count bars in fours (tap 4 beats per bar) and ask at each new block: have I heard exactly this before?
+
+Answer, then read the explanations and reveal the notation to follow along.
 
 ```exercise
 {
@@ -88,6 +94,8 @@ Here is a 16-bar through-composed miniature in A minor (original), built on one 
 
 ## Ear
 
+Melody play-back: replay, say the directions to yourself, find the first note by searching, then follow the path; chunk long ones. Progressions: find home first, then follow the bass and name each chord by its role and colour. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "Following a motif through a piece starts with remembering it — play-back at your current rung." }
 ```
@@ -97,6 +105,12 @@ Here is a 16-bar through-composed miniature in A minor (original), built on one 
 ```
 
 ## Make it
+
+1. Write a new 2-bar motif first and nothing else. Play it five times: if you can't remember it after that, simplify it.
+2. Before writing further, jot the highest note you plan for each 2-bar block — rising to bar 8, falling after.
+3. Bars 3–7: sequence it up, then fragment it (its first 2–3 notes, climbing). Bar 8: the highest, longest note.
+4. Bars 9–12: the motif again, but changed in one way only — slower (augmentation) is the easiest to hear.
+5. **Check by ear:** play the whole thing. Raise your hand at the peak — is it around bar 8? Then play bars 1–2 and 9–10 back to back: can you hear they're related? If not, keep the original pitches and change only the rhythm.
 
 ```exercise
 {
@@ -121,3 +135,7 @@ Here is a 16-bar through-composed miniature in A minor (original), built on one 
   }
 }
 ```
+
+## Between lessons
+
+Listen to any film trailer or long instrumental track and raise your hand at its peak — roughly where is it? Ten minutes of ladder drills on the Practice page.

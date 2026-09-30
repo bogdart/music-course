@@ -43,6 +43,8 @@ Listen to the chorus of "Night Bus", an original song. The strings hold under th
 }
 ```
 
+**Try it:** play the loop twice. First pass, follow only the lead (the highest line) and tap when it holds a long note. Second pass, follow only the strings and tap when they move. **Check:** your taps land in the same bars (2, 4, 8) — the two lines take turns. **If you can't hear it yet:** play the counter-melody exercise below — its backing is the lead alone. With two lines only, the turn-taking is much easier to follow.
+
 ```exercise
 {
   "id": "counter-quiz-v2",
@@ -67,6 +69,8 @@ Listen to the chorus of "Night Bus", an original song. The strings hold under th
 
 Hearing a melody while chords play underneath is the listening side of the same skill. This lesson opens that melody rung; the drill runs at your current melody rung, which may still be an earlier one.
 
+**Before the drill** — the method (also in the *How to do it* box next to the drill): the chords will distract you, so lock onto the highest, singing line and ignore the rest. Find its first note on the keyboard, then the next one, replaying as often as you need. Melody notes on strong beats are often notes of the chord underneath — a useful check when you're between two keys.
+
 ```ladder
 { "skill": "melody", "unlocks": 17, "intro": "Opens: play back a melody while chords play underneath — follow the top line. The drill runs at your current melody rung." }
 ```
@@ -82,7 +86,7 @@ Hearing a melody while chords play underneath is the listening side of the same 
       { "instrument": "epiano", "seq": "[C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w" },
       { "instrument": "strings", "seq": "" }
     ] },
-    "task": "Write your own string counter-melody for the Night Bus chorus (not the one above). Stay between G3 and G4, below the lead. Hold long notes in bars where the lead is busy (1, 3, 5, 7) and move in bars 2, 4, 6 and 8. Start each bar on a note of its chord (C, G, Am, F). This task saves to its own project; in session 2 you'll re-enter it on the strings of the full song (its chorus has the same melody and chords), so keep it short enough to remember or note it down.",
+    "task": "Write your own string counter-melody for the Night Bus chorus (not the one above). Steps: 1) put one whole note per bar, a chord note between G3 and G4 (C bar: C/E/G; G bar: G/B/D; Am: A/C/E; F: A/C/F), choosing each so it's close to the previous one; 2) play it with the lead — it should already sound calm; 3) in bars 2, 4, 6 and 8 (where the lead holds) split the whole note into two to four moving notes that step toward the next bar's note. Judge by ear: if the two lines trip over each other, you're moving where the lead is busy. Stuck? Keep the whole notes and move only in bars 4 and 8. This task saves to its own project; in session 2 you'll re-enter it on the strings of the full song (its chorus has the same melody and chords), so keep it short enough to remember or note it down.",
     "checks": [
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "in-key", "key": "C", "scale": "major", "track": 2 },
@@ -106,6 +110,8 @@ A 32-bar song (verse 8, chorus 8, verse 8, chorus 8) needs an energy **curve**, 
 - **Chorus 2** (25–32) — everything: full drums with crash, pad, bass in eighths, your counter-melody on strings. Around 100%.
 
 A fill in bar 8 and bar 24 leads into each chorus.
+
+**Judge it by ear** after each session: play from the start with your eyes closed and raise your hand higher as the energy rises. If your hand drops at verse 2 as low as verse 1, verse 2 needs one more layer (keep the hats). **If you're stuck** on something, copy: take the drum grooves from your week-20 groove library and the bass patterns from week 19.
 
 ```exercise
 {
@@ -176,3 +182,7 @@ A fill in bar 8 and bar 24 leads into each chorus.
   "spec": { "prompt": "Listen to your 32 bars with eyes closed. Draw the energy curve you actually hear (e.g. low - mid - mid - high). Does it match your plan? Which single change made the biggest difference?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Do session 2 on a separate day, before week 22. In a song you like, listen once only for a second line under the melody (strings, backing vocals, a guitar) and note where it moves.

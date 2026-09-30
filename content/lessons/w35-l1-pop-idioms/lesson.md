@@ -46,7 +46,13 @@ Minor-key pop loves **i–iv–VI–VII**: "Shape of You" loops C♯m–F♯m–
 }
 ```
 
-The first four bars are a pre-chorus, the last four the start of the chorus. Listen for the lift into the chorus, one layer at a time: play it once following only the melody, once following only the drums, and once listening to the very end of bar 4. The questions below ask what you heard; the answers come after you choose. The drums are usually the easiest layer to hear; the chords under the pre-chorus may not feel "tense" to you yet, and that's fine.
+The first four bars are a pre-chorus, the last four the start of the chorus. Listen three times, one question per play:
+
+1. **Drums only.** Tap your foot and notice where the drumming gets busier and where it stops. Drums are usually the easiest layer to hear.
+2. **Melody only.** Move your hand up or down with the tune: where does it climb, where is its highest note?
+3. **The end of bar 4.** Count "1 2 3 4" through bar 4: what do you hear on beat 4?
+
+The chords under the pre-chorus may not feel "tense" to you yet — that's fine. The questions below ask what you heard; the answers come after you choose.
 
 ```exercise
 {
@@ -99,6 +105,8 @@ The first four bars are a pre-chorus, the last four the start of the chorus. Lis
 
 ## Ear: pop loops at your level
 
+Method, whatever your rung: follow the lowest sound first and find each bass note on the keyboard (search low keys: higher or lower?), then name the chord by its job — rest (I), lift (IV), pull (V), sad (vi). The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Pop is built on loops of I, IV, V and vi — this drill runs at whatever progression rung you are on now." }
 ```
@@ -120,6 +128,12 @@ The first four bars are a pre-chorus, the last four the start of the chorus. Lis
 ```
 
 ## Make it
+
+1. Play the loop in the template a few times and improvise on G, A, B, D and E (the notes of the chords) until one 1-bar rhythm sticks. Try the first one that feels catchy — don't audition twenty.
+2. Enter it in bar 1. Copy it to bars 2 and 3; change one note in bar 3 if it sounds stiff.
+3. Write bar 4 to land on a long G.
+4. **Judge by ear:** loop it four times. If you can play the hook from memory after the fourth, it repeats enough. If bar 4 doesn't sound finished, end on G on beat 1 and hold it.
+5. **Stuck?** Borrow the rhythm of the chorus hook above (long–short–short–short) and put new notes on it.
 
 ```exercise
 {
@@ -147,3 +161,7 @@ The first four bars are a pre-chorus, the last four the start of the chorus. Lis
   }
 }
 ```
+
+## Between lessons
+
+Play I–V–vi–IV in G with your hook on top twice a day. Listen to one pop song you like and mark where the pre-chorus starts and whether there is a drop-out before the chorus.

@@ -72,6 +72,19 @@ example — yours will differ):
 
 The verse sits low and uses vi – IV – I – V; the chorus lifts the melody and reorders the chords (IV – V – vi – I).
 
+Work in this order, with your week-50 starting point first:
+
+1. **Chords (5 min).** Four chords per section from I, IV, V, vi (add one borrowed or seventh chord only if you already
+   hear it in your head). Check: loop each 4-chord line twice — the last chord should lead back into the first.
+2. **Bass (3 min).** Roots, low, one or two notes per bar. Check: solo bass + piano; any bar that sounds floorless has a
+   wrong root.
+3. **Chorus hook (10 min).** Improvise over the chorus loop on the keyboard, record, keep the best 2 bars, repeat them.
+   Check: loop the chorus four times — still good on the fourth?
+4. **Verse melody (7 min).** Lower than the hook, more notes on fewer pitches. Check: play verse into chorus; the
+   chorus should lift. If not, move the verse melody down a few steps.
+
+**Stuck?** Borrow the example core's chords in your key and write only the melody.
+
 ```exercise
 {
   "id": "w51l1-brief",
@@ -138,6 +151,11 @@ The verse sits low and uses vi – IV – I – V; the chorus lifts the melody a
 }
 ```
 
+## Close: progressions
+
+Bass first — find each chord's lowest note on the keyboard — then colour: play major and minor on that root and pick
+the one that matches. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "progressions",
@@ -145,3 +163,8 @@ The verse sits low and uses vi – IV – I – V; the chorus lifts the melody a
   "intro": "A few minutes of ear practice at your own rung before you close the session."
 }
 ```
+
+## Between lessons
+
+Listen to your 16-bar core once a day without editing. Note any bar you skip past in your head — that's where session 2
+looks first.

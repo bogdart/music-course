@@ -7,8 +7,7 @@ phase: p1
 duration_min: 45
 goals:
   - Build a minor triad (m3 + M3) and turn any major triad into minor by lowering its 3rd
-  - Play major/minor pairs with the right hand
-  - Tell major and minor triads apart by ear, and find the root of both
+  - Tell major and minor triads apart by ear — or by comparing on the keyboard — and find the root of both
   - Build the diminished triad (two minor 3rds) and hear how it differs
 prerequisites: [w06-l1-major-triads]
 tags: [chords, triads, minor, ear, keyboard]
@@ -18,100 +17,15 @@ songs:
 
 # Minor triads
 
-Swap the order of the two 3rds and you get the other great colour of music. A [[minor triad]] is:
+Swap the order of the two 3rds and you get the other great colour of music. A [[minor triad]] is a **minor 3rd** (3 half steps) from root to 3rd, then a **major 3rd** (4) — still a **perfect 5th** from root to 5th.
 
-- a **minor 3rd** (3 half steps) from root to 3rd, then
-- a **major 3rd** (4 half steps) from 3rd to 5th,
-- still a **perfect 5th** from root to 5th.
-
-The quickest way to build one: take the major triad and **lower the 3rd by one half step**. C–E–G becomes C–**E♭**–G. Only one note moves, by the smallest possible distance — and the mood changes.
+The quickest way to build one: take the major triad and **lower the 3rd by one half step**. C–E–G becomes C–**E♭**–G. One note moves, by the smallest possible distance.
 
 ```keyboard
 { "range": ["C3", "C5"], "highlight": ["C4", "D#4", "G4"], "labels": "names", "colors": { "C4": "root", "D#4": "third", "G4": "fifth" } }
 ```
 
-The chord symbol adds a small **m**: C minor = **Cm**, A minor = **Am**. Among C major's white keys, three triads are naturally minor: **Dm** (D–F–A), **Em** (E–G–B) and **Am** (A–C–E).
-
-## Hearing it
-
-Major is often described as "bright", minor as "dark" or "sad". That's a useful starting point, not a law — plenty of dance hits are in minor. What actually differs is one note, the 3rd: a half step lower in minor. Listen to the pair from the same root:
-
-```example
-{
-  "title": "C major vs C minor: note by note, then together (twice)",
-  "bpm": 72, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:q E4:q G4:h | [C4 E4 G4]:w | C4:q Eb4:q G4:q r:q | [C4 Eb4 G4]:w | [C4 E4 G4]:w | [C4 Eb4 G4]:w" } ],
-  "show": ["keyboard"]
-}
-```
-
-The same trick works on a whole melody. Mahler used it in his First Symphony (1888): "Frère Jacques" with its 3rd lowered becomes a slow, gloomy march.
-
-```example
-{
-  "title": "Frère Jacques, major then minor",
-  "bpm": 90, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q C4:q | C4:q D4:q E4:q C4:q | E4:q F4:q G4:h | r:w | C4:q D4:q Eb4:q C4:q | C4:q D4:q Eb4:q C4:q | Eb4:q F4:q G4:h" } ],
-  "show": ["staff"]
-}
-```
-
-**How to practise the ear drill:** if a chord leaves you unsure, play C major and C minor on your keyboard right after it and ask which one it resembled. Comparing two is far easier than judging one alone — and that's exactly how the chord ladder starts: only these two choices.
-
-## One more colour: the diminished triad
-
-Lower the 5th of a minor triad by a half step too and you get a third colour. Next lesson you'll find it on degree 7 of C major, B–D–F — neither major nor minor. Count it: B→D is 3 half steps (a minor 3rd), D→F is 3 again. **Two minor 3rds.** So its outer notes, B→F, are only **6** half steps apart — not the perfect 5th that every major and minor triad has. That squeezed outer interval is what makes a [[diminished]] triad (symbol °) sound tense and unstable. Compare three chords on the same root, changing one note at a time:
-
-```example
-{
-  "title": "C major (C E G), C minor (C E♭ G), C diminished (C E♭ G♭)",
-  "bpm": 66, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:w | [C4 Eb4 G4]:w | [C4 Eb4 Gb4]:w | r:w | [B3 D4 F4]:w" } ],
-  "show": ["keyboard"]
-}
-```
-
-The last chord is B° (B diminished), the one you'll meet on degree 7 next lesson. You'll rarely use it for now. This lesson opens it as a third choice in the chord ladder, after major vs minor — you'll meet it once major vs minor is solid.
-
-```ladder
-{ "skill": "chords", "unlocks": 2, "intro": "Opens \"Major, minor or diminished\" (after major vs minor); the drill runs at your current rung." }
-```
-
-## Roots of minor chords
-
-Minor chords have a root too, and in these drills it's still the lowest note. This lesson opens the roots rung that mixes major and minor chords (you'll meet it once major-chord roots are solid) — the colour changes, the job doesn't: find the bottom note.
-
-```example
-{
-  "title": "Am, then its root A; Dm, then D",
-  "bpm": 70, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[A3 C4 E4]:h A3:h | [D3 F3 A3]:h D3:h" } ],
-  "show": ["keyboard"]
-}
-```
-
-```ladder
-{ "skill": "roots", "unlocks": 2, "intro": "Opens roots of major or minor chords; the drill runs at your current roots rung." }
-```
-
-## Drills
-
-```exercise
-{
-  "id": "e1",
-  "type": "quiz",
-  "title": "Major or minor on paper",
-  "spec": { "questions": [
-    { "q": "A minor triad is…", "choices": ["M3 then m3", "m3 then M3", "m3 then m3"], "answer": 1 },
-    { "q": "To turn C major into C minor you change…", "choices": ["the root", "the 3rd", "the 5th"], "answer": 1 },
-    { "q": "Notes of A minor?", "choices": ["A C E", "A C♯ E", "A B E"], "answer": 0 },
-    { "q": "Which of these is minor using only white keys?", "choices": ["F", "G", "D"], "answer": 2, "explain": "D–F is a minor 3rd (3 half steps)." },
-    { "q": "The symbol 'Em' means…", "choices": ["E major", "E minor", "E melody"], "answer": 1 },
-    { "q": "Root to 5th in a minor triad is…", "choices": ["a perfect 5th", "a minor 5th", "a major 3rd"], "answer": 0 }
-  ] },
-  "passScore": 0.75
-}
-```
+The chord symbol adds a small **m**: C minor = **Cm**. Among C major's white keys, three triads are naturally minor: **Dm** (D–F–A), **Em** (E–G–B) and **Am** (A–C–E).
 
 ```exercise
 {
@@ -135,12 +49,43 @@ Minor chords have a root too, and in these drills it's still the lowest note. Th
 }
 ```
 
+## Hearing major and minor
+
+Major is often described as "bright", minor as "dark" or "sad". That's a starting point, not a law — plenty of dance hits are in minor. What actually differs is one note, the 3rd.
+
+```example
+{
+  "title": "C major vs C minor: note by note, then together (twice)",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:q E4:q G4:h | [C4 E4 G4]:w | C4:q Eb4:q G4:q r:q | [C4 Eb4 G4]:w | [C4 E4 G4]:w | [C4 Eb4 G4]:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Try it:**
+
+1. Hold C E G. Move only the middle finger down to E♭, then back up. Four times, slowly, listening to the whole chord change, not just the moving note.
+2. Now play them **separately**: C major, lift, pause, C minor. Label each with whatever word fits for you (bright/dark, open/closed, happy/serious) — and keep that word.
+3. Same on F (F A C → F A♭ C) and G (G B D → G B♭ D).
+4. Listen to the melody version: Mahler (Symphony No. 1, 1888) turned "Frère Jacques" into a gloomy march by lowering its 3rd.
+
+```example
+{
+  "title": "Frère Jacques, major then minor",
+  "bpm": 90, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q C4:q | C4:q D4:q E4:q C4:q | E4:q F4:q G4:h | r:w | C4:q D4:q Eb4:q C4:q | C4:q D4:q Eb4:q C4:q | Eb4:q F4:q G4:h" } ],
+  "show": ["staff"]
+}
+```
+
+**If you can't hear it yet:** compare instead of judging. After the chord, **find its root** (the lowest note, as last lesson), play the major chord and the minor chord on that root, then replay the question: which of your two was it? Comparing two sounds is far easier than naming one alone. Still stuck? Find the middle note and count from the root: **4 half steps = major, 3 = minor**.
+
 ```exercise
 {
   "id": "e8",
   "type": "listen",
-  "title": "Three mystery chords",
-  "instructions": "Listen first and decide; the notes are shown only after you answer.",
+  "title": "Check: three mystery chords",
+  "instructions": "Listen first and decide; compare on your keyboard if unsure. The notes appear after you answer.",
   "spec": {
     "example": { "title": "Mystery chords", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[A3 C4 E4]:w | [F3 A3 C4]:w | [D4 F4 A4]:w" } ], "show": ["keyboard"] },
     "questions": [
@@ -162,6 +107,23 @@ Minor chords have a root too, and in these drills it's still the lowest note. Th
 }
 ```
 
+## One more colour: the diminished triad
+
+Lower the 5th of a minor triad by a half step too, and you get a third colour: the [[diminished]] triad (symbol °). Next lesson you'll find it on degree 7 of C major: B–D–F. It is **two minor 3rds** (3 + 3 half steps), so its outer notes are only **6** half steps apart instead of the usual perfect 5th (7).
+
+```example
+{
+  "title": "C major (C E G), C minor (C E♭ G), C diminished (C E♭ G♭); then B° (B D F)",
+  "bpm": 66, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:w | [C4 Eb4 G4]:w | [C4 Eb4 Gb4]:w | r:w | [B3 D4 F4]:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Try it:** hold C E G, lower the middle finger (C E♭ G), then lower the little finger too (C E♭ G♭). Then play B D F. Many people hear diminished as tense or squeezed, as if it has to go somewhere. After B D F, play C E G — does the tension let go?
+
+**If you can't hear it yet:** find the outer notes and count: **6 half steps = diminished**, 7 = major or minor.
+
 ```exercise
 {
   "id": "e9",
@@ -175,3 +137,79 @@ Minor chords have a root too, and in these drills it's still the lowest note. Th
   ] }
 }
 ```
+
+### Before the chord drill
+
+Your chord ladder starts with major vs minor; diminished joins as a third choice only once that's solid. The **How to do it** box has the rung's method. Rehearse it:
+
+1. Play, replay once. Bright or dark (in your own words)?
+2. Unsure: find the root, play major and minor on it yourself, replay, pick the match.
+3. After answering, replay once knowing the answer.
+
+```ladder
+{ "skill": "chords", "unlocks": 2, "intro": "Opens \"Major, minor or diminished\" (after major vs minor); the drill runs at your current rung." }
+```
+
+## Roots of minor chords
+
+Minor chords have a root too, and in these drills it's still the lowest note. The colour changes; the job doesn't.
+
+```example
+{
+  "title": "Am, then its root A; Dm, then D",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[A3 C4 E4]:h A3:h | [D3 F3 A3]:h D3:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Try it:** play Am (A C E), then A alone; Em (E G B), then E. Then Em followed by G alone and by B alone — do they sound like the floor, or like something sitting higher up?
+
+```exercise
+{
+  "id": "c1",
+  "type": "listen",
+  "title": "Check: the root of a minor chord",
+  "instructions": "Search for the lowest note on your keyboard before answering.",
+  "spec": {
+    "example": { "title": "Mystery chord", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 G3 B3]:w" } ] },
+    "questions": [
+      { "q": "Its root is…", "choices": ["E", "G", "B"], "answer": 0, "explain": "E–G–B, E minor: E is the lowest note." }
+    ]
+  }
+}
+```
+
+### Before the roots drill
+
+The roots drill runs at your current rung. Same routine as last lesson (and in the **How to do it** box): listen to the bottom, search low keys — higher or lower? — and press Check when a key sits under the chord like its floor.
+
+```ladder
+{ "skill": "roots", "unlocks": 2, "intro": "Opens roots of major or minor chords; the drill runs at your current roots rung." }
+```
+
+## Theory check
+
+```exercise
+{
+  "id": "e1",
+  "type": "quiz",
+  "title": "Major or minor on paper",
+  "spec": { "questions": [
+    { "q": "A minor triad is…", "choices": ["M3 then m3", "m3 then M3", "m3 then m3"], "answer": 1 },
+    { "q": "To turn C major into C minor you change…", "choices": ["the root", "the 3rd", "the 5th"], "answer": 1 },
+    { "q": "Notes of A minor?", "choices": ["A C E", "A C♯ E", "A B E"], "answer": 0 },
+    { "q": "Which of these is minor using only white keys?", "choices": ["F", "G", "D"], "answer": 2, "explain": "D–F is a minor 3rd (3 half steps)." },
+    { "q": "The symbol 'Em' means…", "choices": ["E major", "E minor", "E melody"], "answer": 1 },
+    { "q": "Root to 5th in a minor triad is…", "choices": ["a perfect 5th", "a minor 5th", "a major 3rd"], "answer": 0 }
+  ] },
+  "passScore": 0.75
+}
+```
+
+## Between lessons
+
+- **Two Practice sessions of about 10 minutes.** Chords and roots are your newest ladders, so they'll often come first.
+- **Warm up 2 minutes at the keyboard:** C–Cm, F–Fm, G–Gm, moving only the middle finger, naming each with your word.
+- **On a wrong chord answer:** find the root, play both versions on it, replay. On a wrong root: search from the answer the app showed you and listen to it under the chord.
+- **Ready?** The chords bar shows "Major or minor" mastered when you're at ≈85% over two sessions. It's normal for this to take a week or more.

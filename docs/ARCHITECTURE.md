@@ -222,7 +222,10 @@ degrees slots with palette, answer by button or by playing), `PlayBack` (octave-
 Ear-training and recall items (`srs: true` in an exercise spec, or any
 `ear-*` type) create SRS cards keyed by `(type, spec-hash)`. The card always plays the *current* content version of
 its exercise (same lesson, id and type — an edited spec updates the card's key and stored block when the exercise is
-next completed); cards whose exercise was removed are left out of `/api/srs/due`. Algorithm:
+next completed); cards whose exercise was removed are left out of `/api/srs/due`. `POST /api/progress/restart
+{fromLessonId}` (Settings → "Start again from a lesson") resets that lesson and all later ones to not-started
+(lesson/exercise progress, their SRS cards, remembered ladder unlocks), keeps the answer history and ladder mastery,
+and makes "Continue" ignore activity from before the restart. Algorithm:
 SM-2 variant with intervals in *sessions* rather than days (1, 2, 4, 8…
 sessions), because the learner practises several times per week. Practice
 page pulls due cards, mixes in new ones, and adapts difficulty (e.g. widen

@@ -26,12 +26,14 @@ This is the longest single-idea piece you've written: **everything grows from on
 | 17–24 | Development 2 → climax | diminution, climbing sequence; climax around bar 22 | full: melody, counter-line, bass, pad, maybe drums |
 | 25–32 | Return + coda | the motif transformed (augmented, reharmonised or in a new register) | thin back out, end on the tonic |
 
-## Tips
+## How to work
 
-- **Pick a motif with character:** a distinctive interval (a leap of a 4th or 6th) and a distinctive rhythm (a dotted figure or a syncopation). Bland motifs develop blandly.
-- **Put the motif in more than one layer.** The bass can play it in augmentation while the melody plays it normally — hear it below.
-- **Change key once.** C major → A minor → back to C is enough to freshen the middle.
-- **Sketch the arc first:** write down the highest note you plan for each 4-bar block. They should rise to bar 22 and fall after.
+1. **Pick a motif with character:** one leap (a 4th or 6th) and one distinctive rhythm (a dotted figure or a syncopation). Test: play it three times, walk away for a minute, then play it from memory. If you can't, simplify.
+2. **Sketch the arc first:** write down the highest note you plan for each 4-bar block. They should rise to bar 22 and fall after.
+3. **Put the motif in more than one layer.** The bass can play it in augmentation while the melody plays it normally — hear it below.
+4. **Change key once.** C major → A minor → back to C is enough to freshen the middle: in A minor, end phrases on A instead of C.
+5. **Judge by ear after every 8 bars:** play from bar 1. Does each new block feel like it grows *out of* the motif (play the motif, then the block)? Does the energy rise toward bar 22? If a block feels like a new tune, keep its rhythm and put the motif's pitches back.
+6. **Stuck?** Take the last bar you wrote and apply one technique from the table to it — sequence it up a step is the safest first move.
 
 ```example
 {
@@ -72,6 +74,8 @@ The bass starts on C instead of G but keeps the motif's steps and leap (up, up, 
   "spec": { "bpm": 84, "timeSig": "4/4", "seq": "x:8. x:16 x:q x:h |", "showNotation": true, "countIn": 1, "loops": 4 }
 }
 ```
+
+Rhythm drills: keep your foot on the beat and count out loud; chunk longer patterns bar by bar. Chord colours: bright or dark first, then the finer colour; play candidates on the keyboard to compare. The *How to do it* box under each drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Rhythm is half of a motif's character — this drill runs at your current rhythm rung." }
@@ -159,3 +163,7 @@ The bass starts on C instead of G but keeps the motif's steps and leap (up, up, 
   }
 }
 ```
+
+## Between lessons
+
+Listen to your 32 bars once from start to finish with fresh ears; note one bar where the motif gets lost and fix only that one.

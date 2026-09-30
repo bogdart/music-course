@@ -42,6 +42,16 @@ Listen to a beat assembled piece by piece, two bars per layer: kick alone; + sna
 }
 ```
 
+### Try it
+
+1. Play the example and tap the table with the example: only on the low **thud** (kick) in bars 1–2.
+2. Replay. In bars 3–4 tap only on the **crack** (snare). Say "2" and "4" out loud as it hits.
+3. Replay once more and listen to bars 5–6 only for the fast, quiet **tick** above everything (closed hats).
+
+**Check:** the crack lands on "2" and "4" — never together with the thud. The ticks come twice per beat.
+
+**If you can't hear it yet:** open the DAW, put only a kick on beat 1 and a snare on beat 2, and loop it. Play one, then the other, until "boom" and "crack" feel like two different words. The crack is higher and sharper; the thud you feel more than hear.
+
 ```exercise
 {
   "id": "drum-roles-quiz-v2",
@@ -57,7 +67,32 @@ Listen to a beat assembled piece by piece, two bars per layer: kick alone; + sna
 
 ## Hearing drums on a grid
 
-This lesson opens a rhythm rung that looks like the DAW (the drill runs at your current rhythm rung, so you may meet it later): one row per drum, eight boxes per bar (one per eighth note, counted "1 & 2 & 3 & 4 &"). You hear a one-bar beat twice and tick the boxes where each drum hits. Tell them apart by sound: the **kick** is a low thud, the **snare** a sharp crack. Start with the snare — its crack is the easiest to place — then fill in the kicks. In the example above, bars 3–4 are exactly this: kick on 1 and 3, snare on 2 and 4.
+This lesson opens a rhythm rung that looks like the DAW: one row per drum, eight boxes per bar (one per eighth note, counted "1 & 2 & 3 & 4 &"). You hear a one-bar beat and tick the boxes where each drum hits.
+
+### Try it: one drum per pass
+
+Here is a practice bar — notation hidden. Draw eight boxes on paper and count "1 & 2 & 3 & 4 &" along.
+
+```example
+{
+  "title": "Practice bar: kick and snare",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "drums", "seq": "kick:8 r:8 snare:8 kick:8 kick:8 r:8 snare:8 r:8" } ],
+  "show": ["pianoroll"],
+  "loop": true,
+  "hidden": true
+}
+```
+
+1. First pass: listen **only for the crack**. Mark the snare boxes (they are almost always 2 and 4).
+2. Second pass: listen **only for the thud**. Beat 1 first, then ask of every "&": is there a thud here?
+3. Reveal and compare.
+
+**Check:** snare on 2 and 4; kicks on 1, the "&" of 2 and 3. The "&" kick is the one people miss — it sits right after the snare.
+
+**If you can't hear it yet:** rebuild your guess in the DAW (one drum track, same boxes) and play it right after the example. Where they differ you'll hear a gap or an extra hit; fix one box at a time.
+
+**Before the drill** — the method (also in the *How to do it* box next to the drill): one drum per pass, replay for each; snare first because its crack is easiest to place, then the kick, and (on later rungs) the hats last. If the drill is still on an earlier rhythm rung, its own box has the method for that one.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 13, "intro": "Opens: two drum voices on a grid — fill in the kick and the snare you hear. The drill runs at your current rhythm rung." }
@@ -85,6 +120,15 @@ Honest expectation: these are small differences. Below, the same bar plays flat 
 ```
 
 Rule of thumb: backbeat 100%, kick 90%, on-beat hats 70%, off-beat hats 50%, ghost notes 20%.
+
+### Try it
+
+1. Play the example and ignore kick and snare: follow only the hats.
+2. In bars 1–2 every tick is the same; in bars 3–4 ask: does "1, 2, 3, 4" now tick louder than the "&"s?
+
+**Check:** bars 3–4 sound like "TICK tick TICK tick" — a faint lean forward, not a big change.
+
+**If you can't hear it yet:** exaggerate. In the DAW, set the off-beat hats to 20% and play: now the difference is obvious. Raise them step by step to 50% and stop when you still just hear the lean. That is the point where an accent works without sounding fake.
 
 ```exercise
 {
@@ -131,3 +175,7 @@ Rule of thumb: backbeat 100%, kick 90%, on-beat hats 70%, off-beat hats 50%, gho
   }
 }
 ```
+
+## Between lessons
+
+Pick any song you like and, for 30 seconds, tap only its snare; then play it again and tap only its kick. One drum per pass, as in the drill.

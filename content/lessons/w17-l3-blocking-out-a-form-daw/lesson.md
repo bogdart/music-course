@@ -45,6 +45,17 @@ Here is a 12-bar block-out of the first half of that plan. Listen to how much "s
 
 Three details make the sections audible: the bass gets busier (whole → half → quarter → eighth notes), the pre-chorus ends on V with a short drum build (a [[fill]] — week 20 covers them), and a crash (a splashy cymbal) marks bar 1 of the chorus.
 
+### Try it
+
+1. Play the block-out with your eyes closed and raise a finger at every moment the energy steps up.
+2. Play it again watching the piano roll: did your fingers go up at bars 3, 7 and 9?
+
+**Check:** most people catch bar 3 (drums enter) and bar 9 (crash, eighth-note bass) easily; bar 7 (pre-chorus) is
+subtler. Missing it is normal — it's exactly the kind of weak change the reflection below asks about.
+
+**If you can't hear it yet:** mute the pad and drums and listen to the bass alone — the busier-each-section idea is
+easiest to hear there.
+
 ## Plan before you play
 
 ```exercise
@@ -60,6 +71,21 @@ Three details make the sections audible: the bass gets busier (whole → half �
   ] }
 }
 ```
+
+**The procedure** (write each section once, then copy):
+
+1. Write the plan `I2 V4 PC2 C4 V4 PC2 C4 O2` on paper and pick the chords per section first (the defaults below are
+   fine — this lesson is about shape, not chords).
+2. Pads: one whole-note chord per bar for all 14 unique bars. Play it back: can you already hear where the chorus is?
+   Usually not yet — that's the job of the next two steps.
+3. Bass: roots only, one rhythm per section — whole notes in the intro, halves in the verse, quarters in the
+   pre-chorus, eighths in the chorus.
+4. Drums: silent intro, quarter hats in the verse, eighth hats in the chorus, a crash on chorus bar 1.
+5. Copy verse–pre-chorus–chorus to bars 15–22, add the outro, then the markers.
+6. **Judge it by ear:** play from the start without looking. Each section change should make you *feel* a step, even
+   with no melody.
+7. **If you're stuck:** if two sections blur together, change only one thing in the later one — the bass rhythm is
+   the quickest lever.
 
 ```exercise
 {
@@ -103,6 +129,9 @@ steps down to F to end the song (you mapped it in the last lesson).
 
 ## Ear
 
+Both drills are reviews; their *How to do it* boxes have the method. Tempo: tap the pulse you'd nod to, not the
+hi-hat. Bass: find home, then follow the lowest line step by step on your keyboard.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 12, "intro": "Review: tap along and estimate the tempo." }
 ```
@@ -118,3 +147,7 @@ steps down to F to end the song (you mapped it in the last lesson).
   "spec": { "prompt": "Play your 24-bar skeleton top to bottom. Which section change felt strongest, and which felt weak? Name one thing you could change (bass rhythm, drums, chord order, register) to make the weak change clearer.", "minWords": 25 }
 }
 ```
+
+## Between lessons
+
+Replay your skeleton once a day and fix the weakest section change you named in the reflection — one change per day.

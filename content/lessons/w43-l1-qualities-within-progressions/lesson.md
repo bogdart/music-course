@@ -23,8 +23,11 @@ nothing — you check a prediction. That's a much easier task.
 ## Predict, then check
 
 1. Write the bass note's numeral with its default case (E in D major → ii).
-2. Loop that bar and play the predicted chord along with it.
-3. If it blends, move on. If the middle note of your chord rubs, flip the quality.
+2. Loop that bar and play the predicted chord along with it, right hand, a little above the bass.
+3. *Check:* if it blends, move on. If something rubs, move only the middle note (the 3rd) a half step and play again.
+   If that blends, the chord has flipped quality.
+4. **Stuck?** Play the two versions back to back, each along with the same bar: default first, flipped second. Pick
+   the one where the loop sounds like one band, not a band plus you.
 
 The flips give songs their colour. Three you have already met:
 
@@ -85,8 +88,12 @@ B♭: same bass note, different quality. That is exactly where a bass-only trans
 
 ## Two hidden loops
 
-Both loops are in G major. Each has at most **one** chord that breaks the default. Find the bass notes first (pass 3),
-predict, then listen for the chord that doesn't match your prediction.
+Both loops are in G major. Each has at most **one** chord that breaks the default.
+
+1. Find G on the keyboard. Then find each bar's bass note by higher/lower searching from there (pass 3).
+2. Write the predicted numeral for each bar.
+3. Play each predicted chord along with its bar. The bar where your prediction rubs is the surprise: flip its 3rd and
+   check again.
 
 ```exercise
 {
@@ -140,11 +147,14 @@ predict, then listen for the chord that doesn't match your prediction.
 }
 ```
 
+The drill works the same way: bass first to get the number, then the colour for the case. The *How to do it* box under
+the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "progressions",
   "unlocks": 20,
-  "intro": "Rungs 10 (IV or iv) and 15 (ii or V/V) drill today's surprises at your own level."
+  "intro": "This ladder includes today's surprises (IV or iv, ii or V/V) as two-way rungs; you practise at your own rung."
 }
 ```
 
@@ -175,3 +185,7 @@ predict, then listen for the chord that doesn't match your prediction.
   "spec": {"chords": ["D", "E", "G", "Gm"], "inversion": "any", "sequence": true, "bpm": 70}
 }
 ```
+
+## Between lessons
+
+Play the surprise loop (D – E – G – Gm) once a day, then the default loop, and listen to what the two flips change.

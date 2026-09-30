@@ -25,12 +25,22 @@ and gets every numeral wrong. Your pass-1 tests prevent this: where do phrases *
 answer is E, the chords are **I – ♭VII – IV** in E: the D chord is built on the ♭7 of E — E Mixolydian, the major scale
 with a lowered 7th (week 22).
 
+**Avoiding the trap, step by step:**
+
+1. Find the bass notes of the loop (low key, higher/lower until it merges).
+2. Take the two strongest candidates for home — here, the note the loop starts and ends on, and the key its chord names
+   suggest. Hold each one low under the loop for a full cycle. The home note can ring through everything; the other one
+   starts to feel like it wants to move. *Check:* the melody's last note at phrase ends should be the same note.
+3. Look for **♭VII**: a bass note a whole step (two keys) *below* home, under a major chord. *Check:* play the major
+   chord on it along with the loop — it should blend; it sounds relaxed, not pulling back home the way V does.
+
 Rule of thumb: if it sounds like V – IV – I of some key but keeps coming home to the V, you're in Mixolydian on that V.
 
 ## The ♭7 in the melody
 
-Mixolydian melodies use ♭7 freely, even over the home chord. When a note sounds like "7, but low", write ♭7 and look for a
-♭VII chord nearby.
+Mixolydian melodies use ♭7 freely, even over the home chord. When a note sits just below home but doesn't pull up into
+it, test it on the keyboard: play 7 (one key below home) and ♭7 (two keys below) against the replay and keep the one
+that matches. If it's ♭7, look for a ♭VII chord nearby.
 
 Mystery track *Highway Hum*, hidden:
 
@@ -83,7 +93,7 @@ Mystery track *Highway Hum*, hidden:
 {
   "id": "w49l2-prog",
   "type": "ear-progression",
-  "title": "Pass 4: numerals in D",
+  "title": "Pass 4: the numerals",
   "srs": false,
   "spec": {
     "key": "D",
@@ -130,6 +140,11 @@ Mystery track *Highway Hum*, hidden:
 }
 ```
 
+## Ear: degrees and progressions at your level
+
+Two drills, one routine: hold home in your head (or on a key), then place each note or chord against it — for chords,
+bass note first, then colour. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "degrees", "unlocks": 22, "intro": "Rung 19 of this ladder is the ♭7; at your own rung."}
 ```
@@ -146,6 +161,15 @@ Mystery track *Highway Hum*, hidden:
   "spec": {"key": "A", "chords": ["A", "G", "D", "A", "A", "G", "D", "E"], "prompt": "symbols", "palette": "chromatic"}
 }
 ```
+
+## Your Mixolydian section
+
+1. Chords first on the pluck: A – G – D – A (I – ♭VII – IV – I), two bars each or one bar each, repeated to 8 bars.
+2. Bass: eighth-note roots. Drums: kick on 1 and 3, snare on 2 and 4, eighth hats.
+3. Melody: start from A, use G natural at least twice (try it over the G chord first, then over A), end on A.
+
+*Check:* play it and hold A on your keyboard throughout — it should feel like home all the way. If G major starts to
+sound like home, end the section more clearly on A.
 
 ```exercise
 {
@@ -177,3 +201,7 @@ Mystery track *Highway Hum*, hidden:
   }
 }
 ```
+
+## Between lessons
+
+Find one rock song with a ♭VII (bass two keys below home under a major chord) and test home with the held-note test.

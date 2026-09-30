@@ -54,17 +54,56 @@ Beats are grouped in fours, with a slight lean on the first: **ONE** two three f
 }
 ```
 
-Your rhythm ladder starts with exactly this: you hear one bar and pick which of two notations it was. Count the clicks while you listen — a half note lasts through two of them.
+**Try it** with the example above:
+
+1. Play it and tap your foot with the drum clicks. Count out loud: "1 2 3 4".
+2. Replay and watch the piano notes: in bar 1 a note starts on every count; in bar 2 only on "1" and "3" — each
+   half note lasts through two counts.
+3. Replay once more and clap only when a piano note *starts*. Bar 3: clap, clap, clap — hold.
+
+### Check it
+
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "Which bar?",
+  "instructions": "Count 1 2 3 4 with the clicks and notice on which counts a note starts.",
+  "spec": {
+    "examples": [
+      { "title": "Bar A", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:h C4:q C4:q" }, { "instrument": "drums", "seq": "kick:q hh:q hh:q hh:q" } ] },
+      { "title": "Bar B", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:q C4:q C4:q C4:q" }, { "instrument": "drums", "seq": "kick:q hh:q hh:q hh:q" } ] }
+    ],
+    "questions": [
+      { "q": "Bar A is…", "choices": ["four quarters", "half, quarter, quarter", "quarter, quarter, half"], "answer": 1, "explain": "Notes start on 1, 3 and 4: a half note, then two quarters." },
+      { "q": "Bar B is…", "choices": ["four quarters", "two halves", "quarter, quarter, half"], "answer": 0, "explain": "A note on every count." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** count out loud and tap on the table with every note start; then write down on which
+counts you tapped (e.g. "1, 3, 4"). A note that lets a count pass without a new tap is a half note. Counting is not
+a crutch — musicians do it all the time.
+
+Your rhythm ladder starts with exactly this: one bar, pick which of two notations it was. The **How to do it** box
+has the same method: tap the beat, count, match.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 1, "intro": "One bar of quarters and halves: which notation did you hear?" }
 ```
 
-**How to stay on the beat:** count out loud ("one, two, three, four"), and press the key *exactly* with the click — not after it. If you drift, stop, listen for one bar, and rejoin on "one". Being steady matters far more than being fast.
+**How to stay on the beat when you play:** count out loud and press the key *exactly* with the click — not after it.
+If you drift, stop, listen for one bar, and rejoin on "one". Steady matters far more than fast.
 
 ## The DAW
 
-A [[DAW]] (digital audio workstation) is where you'll build every song this year. Today you just record. Press the metronome button, set the tempo, press record, wait for the count-in, and play. The piano roll then shows your notes as bars on a grid: left-to-right is time, bottom-to-top is pitch. If your notes land slightly off the grid lines, use **Quantize → 1/4** to snap them into place.
+A [[DAW]] (digital audio workstation) is where you'll build every song this year. Today you just record:
+
+1. Press the **metronome** button and set the tempo to 80.
+2. Press **record**, let the count-in clicks pass, and start playing on the next "1".
+3. Stop, then look at the piano roll: left-to-right is time, bottom-to-top is pitch. Each note is a bar on the grid.
+4. Notes slightly off the grid lines? **Quantize → 1/4** snaps them into place. Press play and listen.
 
 ## Drills
 
@@ -149,3 +188,11 @@ A [[DAW]] (digital audio workstation) is where you'll build every song this year
   }
 }
 ```
+
+## Between lessons (and the end of week 2)
+
+- Two **Practice** sessions of about 10 minutes (pitch, octave, melody, intervals and rhythm take turns at your
+  level).
+- Replay your DAW recording once a day and tap along; if you like, record a second take.
+- Ready for week 3 when the dashboard doesn't say **practise first**. If it does, spend a lesson slot on Practice
+  instead — theory can wait a few days; the ear can't be rushed.

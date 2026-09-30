@@ -27,17 +27,23 @@ Three borrowed chords do most of the work in pop, all from the parallel minor. I
 | ♭VI (A♭) | A♭ | **no** | wide, cinematic |
 | ♭VII (B♭) | B♭ | **no** | open, anthemic |
 
-So in pass 3, the moment a bass note you hum doesn't fit the major scale — your play-along test clashes on every white
-key nearby — write a flat in front of the numeral. Pass 4 only has to confirm that the chord is major (for ♭VI and ♭VII it
-nearly always is). The iv is the sneaky one: its bass is in the scale, so you only catch it by the darker chord colour,
-exactly the surprise from lesson 1.
+How to catch them, step by step:
+
+1. **Bass search on white keys first** (in C). Search for the bass note with higher/lower as usual.
+   *Check:* play it along. If every white key near it rubs, one too low and one too high, the bass is the black key in
+   between. That is a note outside the scale: write a flat in front of its numeral (A♭ = ♭6, chord ♭VI).
+2. **Confirm major.** Play the major chord on that bass note along with the loop. For ♭VI and ♭VII it nearly always
+   blends.
+3. **Catch the sneaky iv.** Its bass (F in C) is in the scale, so step 1 won't flag it. Play the default IV (F–A–C)
+   along. If the A rubs, try A♭ (F–A♭–C). If that blends, it's iv, the bittersweet surprise from lesson 1.
 
 The flat is measured from the *major* scale of home: in C, A♭ is a half step below A (degree 6), so it is ♭6 and its
 chord ♭VI.
 
 ## One hidden song
 
-Eight bars in C major. First the bass as degrees, then the numerals.
+Eight bars in C major. First the bass as degrees (step 1), then the numerals (steps 2–3). Stuck on a bar? Loop it and
+compare two candidate keys back to back.
 
 ```example
 {
@@ -106,11 +112,14 @@ Eight bars in C major. First the bass as degrees, then the numerals.
 }
 ```
 
+In the drill: bass first (in the scale or not?), colour second (major or minor?). The *How to do it* box under the
+drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "progressions",
   "unlocks": 20,
-  "intro": "Borrowed chords are rungs 10, 11 and 19–20; you practise at your own rung."
+  "intro": "Several rungs of this ladder use borrowed chords; you practise at your own rung."
 }
 ```
 
@@ -161,3 +170,8 @@ Eight bars in C major. First the bass as degrees, then the numerals.
   }
 }
 ```
+
+## Between lessons
+
+Play your 8-bar DAW progression once a day. In one song you know, listen for a bass note that won't fit on white keys
+around home; that's your borrowed-chord suspect.

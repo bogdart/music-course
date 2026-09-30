@@ -2,6 +2,10 @@
 
 Core terms from Phase 1 (Foundations). Other phases add their terms in `content/glossary/`.
 
+## Anchor tune
+Aliases: anchor
+A well-known tune that starts with a given interval, used to recognise that interval by ear: run the tune in your head from the first note and check whether it fits. "Twinkle, Twinkle" opens with a perfect 5th, "Here Comes the Bride" with a perfect 4th.
+
 ## Arpeggio
 The notes of a chord played one after another instead of together — a "broken chord". C–E–G–E–C is an arpeggio of C major.
 

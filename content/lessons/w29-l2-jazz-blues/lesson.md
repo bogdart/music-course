@@ -53,6 +53,16 @@ Reference listening: "Billie's Bounce" and "Straight, No Chaser" are blues heads
 }
 ```
 
+### Try it
+
+1. Play the example once and just count bars on your fingers: 1 to 12, then it starts over.
+2. Play it again and watch **bar 2**: the bass drops from F to B♭ and comes straight back — the quick IV. Does the music feel like it stepped out and back in?
+3. Play it a third time and listen at **bar 6**: the bass creeps up one key (B♭ → B) and the chord turns sour and tense, then relaxes into F7.
+
+**Check:** without looking, you can raise a hand at bar 6 when the tension appears.
+
+**If you can't hear it yet:** play the bass yourself with your left hand along with the example: F · B♭ · F · C F · B♭ · **B** · F · D · G · C · F D · G C. Feeling the B under your finger tells your ear where to listen; after a few rounds, try it with your hand still.
+
 ## An original riff head
 
 Blues heads are often riffs: a short idea, repeated, then answered. This one uses the F blues scale; notice the blue slide A♭→A in bar 1 (week 23).
@@ -119,6 +129,8 @@ Blues heads are often riffs: a short idea, repeated, then answered. This one use
 
 ## Ear review
 
+**Before the drills** — the method (see the *How to do it* box beside each drill): for degrees, first decide *in the key or outside it*; an outside note leans toward an in-key neighbour — ♭7 sinks toward 6, ♭3 slides to 3 or down to 2, ♯4 pushes up into 5. For scales, sort **bright or dark** first, then hunt for the one special note (bluesy ♭7 = Mixolydian, hopeful raised 6 = Dorian). Earlier rungs have their own method in the box.
+
 ```ladder
 { "skill": "degrees", "unlocks": 21, "intro": "Scale degrees at your level; the blue notes ♭3 and ♭7 of this head live on these rungs." }
 ```
@@ -126,3 +138,7 @@ Blues heads are often riffs: a short idea, repeated, then answered. This one use
 ```ladder
 { "skill": "scales", "unlocks": 11, "intro": "Scale colours at your level: blues players move between exactly these sounds." }
 ```
+
+## Between lessons
+
+Comp the 12 bars once a day with the bass backing; when bar 6 feels automatic, play the riff head with your right hand over the left-hand shells.

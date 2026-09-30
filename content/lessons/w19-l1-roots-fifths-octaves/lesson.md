@@ -50,6 +50,19 @@ Listen to one progression (C–Am–F–G) with four bass lines, four bars each:
 
 In the last four bars: B1 approaches A from above, G1 approaches F from above, F#1 approaches G chromatically from below, and B1 leads back up to C.
 
+### Try it
+
+1. Play the example and name the style of each 4-bar block aloud as it starts: "pulse", "root-fifth", "octaves",
+   "approach". Low bass is blurry, so listen to the *rhythm* of the bottom line more than its pitches.
+2. Replay the last block. On beat 4 of each bar, notice the bass moves just before the chord does.
+3. On your keyboard (one octave up), play F3 F3 F3 F#3 then G3; then F3 F3 F3 F3 then G3. Which arrival on G feels
+   more "pulled in"?
+
+**Check:** the F#3 version leans into G — that lean is the approach note's job.
+
+**If you can't hear it yet:** the octave block is the one where the line bounces up and down every eighth; if the
+octaves sound like two different notes to you, that's the honest stage described above — use the bounce as the cue.
+
 ```exercise
 {
   "id": "bass-note-quiz",
@@ -83,6 +96,14 @@ inversions and slash chords of week 11 (C/E = C major with E in the bass). The e
 foundation, so C/E sounds lighter and less settled than C. This lesson opens the roots rung with inverted chords: there, play the note that is actually lowest, even when it is
 not the root. The drill runs at your current roots rung, which may still be an earlier one.
 
+**Try it:** play C3–E3–G3 together, then E3–G3–C4 (C/E). Same three note names; the second has E at the bottom.
+**Check:** the second one feels lighter, less planted. **If you can't hear it yet:** play just the lowest note of
+each (C3, then E3) right after the chord: that is what the drill wants you to find.
+
+**Before the drill** (method also in the *How to do it* box): play what the bass actually plays, even if it isn't the
+chord's root — listen to the very lowest line and follow it step by step on the keyboard. A lower rung has its own
+method in its box.
+
 ```ladder
 { "skill": "roots", "unlocks": 11, "intro": "Opens: some chords are inverted - play the real lowest note, which may be the 3rd or 5th. The drill runs at your current roots rung." }
 ```
@@ -111,6 +132,11 @@ not the root. The drill runs at your current roots rung, which may still be an e
 }
 ```
 
+**Judge it by ear** after each bass task: loop it with the chords. A wrong note on beats 1–3 makes the chord sound
+muddy or sour — find it and move it to root or fifth. The approach notes on beat 4 *may* rub briefly; that's fine if
+the next beat 1 feels like arriving. **If you're stuck** picking approach notes: write the next root, then try the key
+a half step below it; if that sounds too sour for your taste, try the note a whole step above.
+
 ```exercise
 {
   "id": "daw-approach-notes",
@@ -132,3 +158,8 @@ not the root. The drill runs at your current roots rung, which may still be an e
   }
 }
 ```
+
+## Between lessons
+
+Pick any four-chord loop you know and play root-fifth under it with your left hand for two minutes a day; on the last
+beat of each bar, try a half-step approach to the next root.

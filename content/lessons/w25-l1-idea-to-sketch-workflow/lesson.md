@@ -60,6 +60,13 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 3. **Don't mix or tweak sounds.** Default instruments are fine.
 4. **Save every sketch**, even the bad ones, with a name like "sketch hook-first 1".
 
+**Judge each sketch by ear:** when the timer rings, loop it five times without touching anything. Ask one question: *do I still want to hear it?* Note one thing you like and one that bothers you — and stop there; fixing is for next lesson.
+
+**If you're stuck** (nothing after 5 minutes):
+- *Hook-first:* play just two notes (say G and B) in a rhythm you like, then add one more note only at the end.
+- *Chord-first:* play one chord tone per bar on beat 1 (the top note of each chord), then fill the gaps with steps.
+- *Beat-first:* play the root on every kick drum hit and nothing else; that *is* a bass riff. Change one note in bar 3.
+
 ```exercise
 {
   "id": "workflow-quiz-v2",
@@ -160,7 +167,7 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 
 ## Ear break
 
-Hook-first writing is playing back what you hear in your head; beat-first writing starts from the bass under a groove. Two review drills, each at your own rung:
+Hook-first writing is playing back what you hear in your head; beat-first writing starts from the bass under a groove. Two review drills, each at your own rung — the methods are in the *How to do it* boxes. In short: for melody, find the first note on the keyboard, then decide up or down and how far for each next note; for roots, ignore everything but the deepest sound, find the first bass note, then move step by step.
 
 ```ladder
 { "skill": "melody", "unlocks": 17, "intro": "Review: hear a short melody, play it back." }
@@ -177,3 +184,7 @@ Hook-first writing is playing back what you hear in your head; beat-first writin
   "spec": { "prompt": "Listen to your three sketches. Which starting point felt most natural for you? Which sketch will you finish next lesson, and what is its strongest element (hook, chords, groove)?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Replay your three sketches once, cold. Keep the one you still want to hear; that's the song for next lesson.

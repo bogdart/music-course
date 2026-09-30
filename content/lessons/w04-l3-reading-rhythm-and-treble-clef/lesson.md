@@ -33,6 +33,10 @@ The curly sign at the start is the [[treble clef]]. It curls around the second l
 
 Don't recite the whole rhyme every time. Use **landmarks**, like on the keyboard: middle C (ledger line), G4 (the clef's line) and C5 (third space). Find the nearest landmark and count steps.
 
+**Try it** with the staff above: first note (bottom line) — one step below G's line is a space, below that the
+bottom line: G → F → E. So it's E4; play it. Next note, G4: the clef's line. Say the landmark and the count out loud
+each time ("G, down two: E"). Slow and sure beats fast guessing.
+
 ```example
 {
   "title": "The three landmarks: C4, G4, C5",
@@ -59,10 +63,25 @@ For A4 your hand moves: shift so your little finger can reach A, or put your thu
 
 ## Tapping in 3
 
-This lesson opens the next rhythm rung: tapping back a bar in **3/4** (you'll meet it once the earlier rhythm rungs are solid). Count "1 2 3" in your head from the very first note, and let the heavy beat 1 guide you.
+The next rhythm rung taps back a bar in **3/4**. **Try it** below: count "ONE 2 3" out loud during the count-in and
+keep counting through the whole bar; tap only where a note starts.
+
+```exercise
+{
+  "id": "e10",
+  "type": "rhythm-tap",
+  "title": "Tap in 3, with the count",
+  "instructions": "Count 'ONE 2 3' out loud. The half note lasts through '2'.",
+  "passScore": 0.7,
+  "spec": { "bpm": 80, "timeSig": "3/4", "seq": "x:q x:q x:q | x:h x:q | x:q x:q x:q | x:h.", "showNotation": true, "countIn": 1, "loops": 1 }
+}
+```
+
+**If a tap-back goes wrong:** replay and write the counts where notes start ("1, 3 | 1 2 3"), then tap from what
+you wrote.
 
 ```ladder
-{ "skill": "rhythm", "unlocks": 6, "intro": "Opens \"Tap in 3/4\"; the drill runs at your current rhythm rung." }
+{ "skill": "rhythm", "unlocks": 6, "intro": "Rhythm at your current rung — up to tapping back a bar in 3/4." }
 ```
 
 ## Your first beat
@@ -84,6 +103,10 @@ In today's DAW task you'll write a basic rock/pop beat — the foundation of tho
   "show": ["pianoroll"]
 }
 ```
+
+**Before the DAW task, try it with your hands:** play the example and say "kick, snare, kick, snare" with the beats
+(1 2 3 4). Then tap it on the table: left hand = kick on 1 and 3, right hand = snare on 2 and 4. In the DAW, build
+it one sound at a time — kick first, loop it, add the snare, loop it, then the hi-hat — and listen after each layer.
 
 ## Drills
 
@@ -153,3 +176,10 @@ In today's DAW task you'll write a basic rock/pop beat — the foundation of tho
   }
 }
 ```
+
+## Between lessons (and the end of week 4)
+
+- Two **Practice** sessions of about 10 minutes.
+- Five minutes of note reading a day: the *See it, play it* exercise, saying the landmark and the count.
+- Ready for week 5 when the dashboard doesn't say **practise first**. Week 5 starts intervals, which build on the
+  half/whole-step and pitch-search skills — if those bars are behind, give them a few extra Practice sessions first.

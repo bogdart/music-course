@@ -49,6 +49,8 @@ A [[transition]] tells the listener "something new is coming". Five tools, from 
 }
 ```
 
+Rhythm: foot on the beat, count out loud, chunk it bar by bar. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 16, "intro": "Review: rhythm at your current rung — fills and grooves are built from these." }
 ```
@@ -62,6 +64,14 @@ Three reliable endings:
 3. **Strip-down:** remove layers bar by bar until one element is left — dance, lo-fi, film.
 
 Whatever you choose, **decide it**. A song that just stops when the loop runs out sounds unfinished.
+
+## How to add transitions to your song
+
+1. Play the song and mark every section change on paper (bar numbers).
+2. At each one, listen to the 2 bars before and 2 bars after. Ask: did I feel it coming? If the new section just "appears", it needs a tool.
+3. Try the cheapest first: a drop-out (delete the last beat of every track except one before the change). Listen again. Still flat? Add a drum fill in the last half-bar.
+4. Use at least two different tools across the song — the same fill every time gets predictable.
+5. For the ending, try all three types on a copy of the last 4 bars and keep the one that makes you stop expecting more.
 
 ```example
 {
@@ -160,3 +170,7 @@ Whatever you choose, **decide it**. A song that just stops when the loop runs ou
   }
 }
 ```
+
+## Between lessons
+
+Listen to two songs you like and note only how each section change is announced (fill, drop-out, pickup, riser?).

@@ -43,6 +43,16 @@ A major key has seven chords. That sounds like a lot to track, but harmony has o
 
 Most phrases tell the story **T → S → D → T**. I – IV – V – I is that story in four chords; I – ii – V7 – I is the jazzier version. iii is the least clear-cut: it's usually counted as tonic family, but it's a weak home. Don't worry if it sounds vague to you: it *is* vague.
 
+### Try it: rest, lift or pull
+
+1. Play C (C E G) and hold it: that's **rest**.
+2. Play C, then F (C F A): the sound opens up and moves away. That's **lift** (subdominant).
+3. Play C, then G7 (B D F G): it leans, it wants something. Stop there and wait. That's **pull** (dominant). Now play C: the pull is answered.
+4. Play C, then Am (C E A): still fairly settled, only darker. Tonic family, a sad home.
+5. Mix them: play C, then one of F, G7 or Am with your eyes half closed, and say "rest", "lift" or "pull" before you look.
+
+**If you can't hear it yet:** judge by the bass instead of the whole chord. Play the chord, then its root alone, low (C, F, G or A), then C low. From F the bass feels like a step aside; from G it wants to drop straight onto C; from A it's already nearly home. The bass carries most of the job.
+
 ```exercise
 {
   "id": "e1", "type": "quiz", "title": "Which family?",
@@ -63,7 +73,7 @@ In week 8 you met phrase endings: the **authentic** cadence (V → I, a full sto
 - [[Plagal cadence]] (IV → I): a soft "amen", like the end of a hymn. It arrives home without any tension first.
 - [[Deceptive cadence]] (V → vi): V promises home, and you get vi instead. Because vi is a tonic-family chord (it shares two notes with I), it *almost* satisfies the pull, close enough to make sense, different enough to keep the music going. Songwriters use it to stretch a phrase.
 
-Each ending below comes after the same two chords of setup, C – F:
+Each ending below comes after the same two chords of setup, C – F. Only the **last two chords** matter:
 
 ```example
 {
@@ -85,6 +95,16 @@ Each ending below comes after the same two chords of setup, C – F:
   "spec": { "chords": ["G7", "C", "F", "C", "C", "G", "G", "Am"], "inversion": "any", "sequence": true, "bpm": 60, "key": "C" }
 }
 ```
+
+### Try it: four endings under your hands
+
+1. Play the authentic cadence G7 → C, then the plagal F → C. Both end home; the first arrives with a push, the second glides in.
+2. Play C → G and **stop**. It hangs in the air like a comma: that's a half cadence.
+3. Play G7 and then Am instead of C. You get something *almost* like home, but darker. That surprise is the deceptive cadence.
+
+Check: four endings, hidden. Listen to the last two chords of each, answer, then read the explanation.
+
+**If you can't hear it yet:** ask two questions in order. 1) Does it end at rest, or hang? Hanging = half. 2) If at rest: bright home or darker home? Darker = deceptive. Bright: was the chord before it pushing (authentic) or soft (plagal)? Play the last bass notes low on your keyboard to check: G → C, F → C, ending on G, G → A.
 
 ```exercise
 {
@@ -121,13 +141,23 @@ So far the chord-naming drill has stayed in C. This lesson opens two progression
 }
 ```
 
-When the key changes every question, the cadence at the start sets home; then think in jobs, not letters. Is it home (I), a darker home (vi), away (IV) or tension (V)? If you've reached the degree rungs where the key changes every question, you already know this way of listening; if not, expect the new keys to feel strange at first. The drill runs at your current progressions rung, so you'll meet G, and then any key, once the four chords in C are solid.
+### Try it: the four chords in G
+
+1. Play G – C – D – Em (the example above), each chord with its root low in the left hand: G, C, D, E.
+2. Play just the left-hand roots: G C D E. Notice D is one step above C, and E one step above D.
+3. Now play G, then a random one of the other three, and name it by its job: lift (C), pull (D), darker home (Em).
+
+**If you can't hear it yet:** after each chord, search for its bass note: start on G and go up or down key by key until your note blends with the chord's lowest sound. G = I, C = IV, D = V, E = vi. Slow is fine; it's the same method in every key.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): let the cadence finish and hold its last bass note as home. For each chord, first its job (rest, lift, pull, sad), then check with the bass from home: in G that's G (I), C (IV), D (V), E (vi). In any key, find home on the keyboard first, then count from it. Expect new keys to feel strange at first. The drill runs at your current progressions rung, so you'll meet G, and then any key, once the four chords in C are solid.
 
 ```ladder
 { "skill": "progressions", "unlocks": 6, "intro": "Opens \"Four chords in G\", then \"Four chords, any key\"; the drill runs at your current rung." }
 ```
 
-The bass-line drill takes the same two steps: this lesson opens bass lines of I, IV, V and vi in **G** (bass notes G, C, D and E), then in any key. Tip for any key: find the first bass note (usually home) on the keyboard, and hear the rest as degrees from there. You'll meet these once inverted-chord roots are solid.
+The bass-line drill takes the same two steps: this lesson opens bass lines of I, IV, V and vi in **G** (bass notes G, C, D and E), then in any key.
+
+**Before the drill, rehearse the method:** replay the cadence and find its lowest note on your keyboard first; that's home. Then play the first bass note of the line, and for each next note ask "up or down, step or jump?" and search from the previous one. Try it now on the G example above: play G, then find C, D and E by following the bass. You'll meet these rungs once inverted-chord roots are solid.
 
 ```ladder
 { "skill": "roots", "unlocks": 9, "intro": "Opens \"Bass line in G\", then \"Bass line, any key\"; the drill runs at your current roots rung." }
@@ -141,3 +171,10 @@ The bass-line drill takes the same two steps: this lesson opens bass lines of I,
   "spec": { "key": "C", "chords": ["C", "Am", "Dm", "G7", "C", "F", "G", "Am"], "prompt": "symbols" }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** C, then F, G7 or Am at random; say rest, lift, pull or darker home before you look.
+- **3 minutes:** play the four cadences (G7 → C, F → C, C → G, G7 → Am) and name each out loud as it ends.
+- **2 minutes:** G – C – D – Em with roots in the left hand; then only the roots, eyes closed.
+- One progressions or roots session on the Practice page.

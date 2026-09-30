@@ -37,6 +37,14 @@ A [[triplet]] squeezes three equal notes into the time normally taken by two. Th
 
 Triplets sound rolling, round, like "strawberry, strawberry" instead of the even "apple, apple" of straight eighths.
 
+### Try it: two, three, four per beat
+
+1. Foot on every beat. Say "ap-ple, ap-ple" (two per tap), then "straw-ber-ry, straw-ber-ry" (three per tap), then "wa-ter-mel-on" (four per tap). Keep the foot steady; only the words change.
+2. Play the example again and say the matching word with each bar.
+3. Tap a finger on every syllable of "straw-ber-ry" for four beats.
+
+**If the three blurs into two or four:** slow down until you can say "straw-ber-ry" evenly, with no syllable longer than the others. Then tap *only* on "straw" (the beat) while still saying all three: the other two must fit exactly before the next foot tap.
+
 ```exercise
 {
   "id": "e1", "type": "rhythm-tap", "title": "Tap triplets",
@@ -65,6 +73,14 @@ Where does the long–short come from? From triplets. Take the three triplet not
 ```
 
 Swing isn't just for the drums: once the hi-hat swings, bass, chords and melody should swing too, or the parts will fight.
+
+### Try it
+
+1. Say "straw-ber-ry" on each beat, then drop the middle syllable: "straw — ry, straw — ry". That's swing: long–short.
+2. Say "doo-ba doo-ba" in the same long–short, then tap it with a finger.
+3. Play C D E F G F E D on the keyboard as straight eighths, then again long–short. Same notes, different walk.
+
+**If you can't hear the difference:** in the example, listen only to the note *after* each kick or snare. In the straight bars it comes exactly halfway; in the swung bars it comes late, just before the next beat.
 
 ```exercise
 {
@@ -112,7 +128,38 @@ A tune you know in 6/8: *Row, Row, Row Your Boat*. The "long–short" of "row, r
 }
 ```
 
-This lesson opens two rhythm rungs: choosing rhythms with triplets, then naming the meter, with 6/8 joining 3/4 and 4/4. The drill runs at your current rhythm rung. When the meter rung arrives, don't count single notes: sway with the music and ask how many big steps there are per bar, and whether each one splits in two or in three.
+### Try it: sway, don't count
+
+1. Play the 3/4-then-6/8 example. During the 3/4 bars, nod on the accents: 1, 3, 5 — three nods per bar, like a waltz.
+2. During the 6/8 bars, sway your body left, right: two sways per bar, each covering three eighths.
+3. Play *Row, Row* again and sway: two sways per bar, "ROW, ROW" on the sways.
+
+**If 3/4 and 6/8 sound the same:** find the kick (the loud ONE) and count eighths until the next accent. Accent after 2 eighths = 3/4; after 3 = 6/8. Clap along, counting aloud "1 2 3 4 5 6", and clap loudly only on the accents.
+
+Check: answer, then read the explanation.
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: twos or threes?",
+  "instructions": "Foot on the kick. Count what happens between two kicks.",
+  "spec": {
+    "examples": [
+      { "title": "Groove 1", "bpm": 72, "timeSig": "4/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": "[kick hh]:8t hh:8t hh:8t [kick hh]:8t hh:8t hh:8t [kick hh]:8t hh:8t hh:8t [kick hh]:8t hh:8t hh:8t" } ] },
+      { "title": "Groove 2", "bpm": 80, "timeSig": "6/8", "hidden": true, "tracks": [ { "instrument": "drums", "seq": ">kick:8 hihat:8 hihat:8 >snare:8 hihat:8 hihat:8 | >kick:8 hihat:8 hihat:8 >snare:8 hihat:8 hihat:8" } ] },
+      { "title": "Groove 3", "bpm": 80, "timeSig": "3/4", "hidden": true, "tracks": [ { "instrument": "drums", "seq": ">kick:8 hihat:8 >snare:8 hihat:8 >snare:8 hihat:8 | >kick:8 hihat:8 >snare:8 hihat:8 >snare:8 hihat:8" } ] }
+    ],
+    "questions": [
+      { "q": "Groove 1: hi-hat notes per kick?", "choices": ["2", "3", "4"], "answer": 1, "explain": "Three: triplets, 'straw-ber-ry' on every beat." },
+      { "q": "Groove 2 is…", "choices": ["3/4", "6/8"], "answer": 1, "explain": "6/8: accents on eighths 1 and 4, two big beats each split in three." },
+      { "q": "Groove 3 is…", "choices": ["3/4", "6/8"], "answer": 0, "explain": "3/4: accents on eighths 1, 3 and 5, three beats each split in two." }
+    ]
+  }
+}
+```
+
+This lesson opens two rhythm rungs: choosing rhythms with triplets, then naming the meter, with 6/8 joining 3/4 and 4/4.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): for triplets, keep your foot on the beat and ask whether each beat splits in two ("ap-ple"), three ("straw-ber-ry") or four; for the meter, don't count single notes — sway, and ask how many big steps per bar and whether each splits in two or three. The drill runs at your current rhythm rung.
 
 ```ladder
 { "skill": "rhythm", "unlocks": 10, "intro": "Opens: triplets; then which meter — 3/4, 4/4 or 6/8? The drill runs at your current rhythm rung." }
@@ -129,3 +176,10 @@ This lesson opens two rhythm rungs: choosing rhythms with triplets, then naming 
   ] }
 }
 ```
+
+## Between lessons
+
+- **2 minutes:** foot on the beat, "ap-ple / straw-ber-ry / wa-ter-mel-on", switching every four beats.
+- **2 minutes:** C D E F G F E D straight, then swung, on the keyboard.
+- **2 minutes:** play *Row, Row, Row Your Boat* and sway two per bar.
+- **Listening:** pick any song and ask: does the beat split in two or three? Swing and shuffle songs split in three.

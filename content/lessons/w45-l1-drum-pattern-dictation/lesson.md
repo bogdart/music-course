@@ -20,13 +20,19 @@ patterns are short and repetitive — one or two bars — so one good loop gives
 
 ## One layer per loop
 
-A kit is at least three instruments at once. Don't try to hear all three. Loop one bar and listen three times:
+A kit is at least three instruments at once. Don't try to hear all three. Loop one bar and listen three times, tapping
+your foot on the beat the whole time:
 
-1. **Kick** — the low thump. Tap it with your hand.
-2. **Snare / clap** — the crack. In pop it's usually on 2 and 4 (only on 3 in half-time). Confirm, don't assume.
-3. **Hats** — the ticking top. Just decide the grid: eighths or sixteenths? An open hat anywhere?
+1. **Kick** — the low thump. Tap it with your hand on the table while your foot keeps the beat. Check: say the count and
+   write the syllable of every thump ("1 … & of 3").
+2. **Snare / clap** — the crack. In pop it's usually on 2 and 4 (only on 3 in half-time). Confirm, don't assume. Check:
+   count "1 2 3 4" aloud — does the crack land on your "2" and "4"?
+3. **Hats** — the ticking top. Just decide the grid: count the ticks in one beat — two (eighths) or four (sixteenths)?
+   Any longer, hissing hit? That's an open hat; note which count it's on.
 
-The kick is the layer that really varies from song to song, so spend most of your time there.
+The kick is the layer that really varies from song to song, so spend most of your time there. Stuck on a kick? Loop the
+slowed kick-only version, count the 16ths slowly, and guess one syllable; then play the loop again and tap your guess
+along with it — a wrong guess flams (two hits instead of one).
 
 ## The 16th grid
 
@@ -106,11 +112,14 @@ Now a hidden groove. Loop the kick-only version first, then the whole kit.
 }
 ```
 
+For the drill: one drum per listen, foot on the beat, count the grid out loud and mark only what you're sure of first.
+The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {
   "skill": "rhythm",
   "unlocks": 16,
-  "intro": "Rungs 13–14 are drum-grid dictation (kick and snare, then hats) — at your own rung."
+  "intro": "Rhythm at your own rung; the drum-grid rungs of this ladder are exactly today's routine."
 }
 ```
 
@@ -123,6 +132,13 @@ Now a hidden groove. Loop the kick-only version first, then the whole kit.
   "spec": {"timeSig": "4/4", "bars": 1, "subdivision": "16"}
 }
 ```
+
+## Rebuild it
+
+1. Program the snare first (2 and 4) — it's the grid you hang everything on.
+2. Add the kick from your dictation, then the hats, then the open hat.
+3. A/B: loop groove B, then your track, back to back. Judge one drum at a time — mute the others in your track if that
+   helps. A kick that sounds "late" or "early" is one 16th off: move it one slot.
 
 ```exercise
 {
@@ -153,3 +169,8 @@ Now a hidden groove. Loop the kick-only version first, then the whole kit.
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. With any song you hear this week, find just the kick for one bar: count "1 e & a" and name its
+syllables.

@@ -54,12 +54,22 @@ An original 4-bar melody over the most common pop loop, I–V–vi–IV:
 }
 ```
 
+### Try it
+
+1. Play "Three versions back to back" and, for each 4-bar pass, pick one word: *wistful*, *dramatic*, *smoky*… anything that is yours.
+2. Replay and watch **bar 2** only: the melody holds D each time. Listen to how the same D feels resting on B♭ (warm), on Bm7♭5–E7 (restless) and on Dm7 (calm).
+3. Play the melody's D4 with your right hand and hold it while your left hand plays B♭, then Bm7♭5, then Dm7 underneath.
+
+**Check:** you can name which pass sounds the most tense and point to the chord that causes it.
+
+**If you can't hear it yet:** compare only the bass notes of bar 2 (B♭1 · B1–E2 · D2) against the melody's D. Mood changes follow the bass more than you'd expect.
+
 ## A method you can reuse
 
 1. **Write down the melody's strong-beat notes** in each bar (here: E, D, C/A, F).
 2. **List chords that contain that note**: in the key, borrowed, or dominant. The note D, for example, lives in B♭, Bm7♭5, Dm7, G7, E7 (as its 7th) and D7.
 3. **Choose for the bass line.** Prefer candidates that make the bass move by step or by fourth; half-step motion (C–C♯–D, D–D♭–C) sounds the most sophisticated.
-4. **Play it and trust your ear.** Theory tells you what *can* work; only listening tells you what *does*.
+4. **Play it and judge by ear.** Loop the bar with the melody. A chord that fits sounds like it *holds up* the melody note; one that doesn't makes the note sound wrong or out of tune. Theory tells you what *can* work; only listening tells you what *does*.
 
 Don't reharmonise everything at once. One surprising chord per phrase usually beats four.
 
@@ -98,6 +108,14 @@ Don't reharmonise everything at once. One surprising chord per phrase usually be
 
 ## Make it
 
+1. **Pass 1:** copy version 1 into bars 1–4, then swap exactly one chord for your own idea (try A♭ for Am, or Fm for F).
+2. **Pass 2 and 3:** the same with versions 2 and 3 — start from what works, change one thing.
+3. **Bass:** one note per chord, the root, low (C1–C3). Loop each pass and check the line moves by step, fourth or half step.
+
+**Judge it by ear:** loop each pass with the melody. Stop on every beat-1 melody note: does the chord hold it up, or does the note suddenly sound wrong? Then listen to the whole 12 bars: are the three passes clearly three different moods?
+
+**If you're stuck:** list the chords that contain the beat-1 melody note (method step 2) and try each in turn — it usually takes three or four tries to find the one you like.
+
 ```exercise
 {
   "id": "e4-daw-reharm",
@@ -133,6 +151,8 @@ Don't reharmonise everything at once. One surprising chord per phrase usually be
 
 ## Ear review
 
+**Before the drills** — the method (see the *How to do it* box beside each drill): **bass first, colour second**. Tap along with the lowest note, find it on the keyboard, then decide major or minor and whether the chord feels in-key or borrowed. Earlier rungs have their own method in the box.
+
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Progressions at your level, borrowed chords included." }
 ```
@@ -140,3 +160,7 @@ Don't reharmonise everything at once. One surprising chord per phrase usually be
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Bass lines in a band: reharmonising is mostly choosing a new bass line; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+Finish any pass you didn't complete. Then take the chorus of a song you wrote earlier and change one chord under its melody using the four-step method.

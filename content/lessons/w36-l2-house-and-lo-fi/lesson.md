@@ -57,7 +57,7 @@ Hear it built up: the C triad alone, the bass A alone, then both together — an
 }
 ```
 
-Honestly: you may not hear "Am7" as a name — that's fine. What matters is that you can hear the colour change when the bass arrives, and that you know the trick: **a triad a 3rd above the bass note makes a seventh chord.** Producers use it because three-note stabs stay punchy.
+Honestly: you may not hear "Am7" as a name — that's fine. Check it with your hands: hold C–E–G with the right hand and let it ring, then add a low A with the left, then lift the A and add a low C instead. The same three keys sound bright over C and softer, darker over A. What matters is that you can hear that colour change when the bass arrives, and that you know the trick: **a triad a 3rd above the bass note makes a seventh chord.** Producers use it because three-note stabs stay punchy.
 
 ```exercise
 {
@@ -125,11 +125,19 @@ J Dilla's album *Donuts* (by reference) is the touchstone for loose, behind-the-
 }
 ```
 
+Chord method: first sort bright or dark, then tense or at rest. If unsure, play the candidate chords on the same root yourself right after the question and pick the closer match. The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "chords", "unlocks": 14, "intro": "Chord colours at your current rung (the top open rung is diminished vs augmented, next to major and minor): lo-fi and house colour every chord." }
 ```
 
 ## Make it
+
+1. **Drums:** kick on 1 2 3 4, clap on 2 and 4, open hat on every "and". Loop one bar — it should already make you nod.
+2. **Bass:** A on every "and" for bars 1–2, F for bars 3–4 (or your own two roots), then copy.
+3. **Stabs:** a short C triad over the A bars, a short A minor triad over the F bars, on off-beats (try the "and" of 1 and the "and" of 3 first).
+4. **Judge by ear:** mute the piano, then unmute it. The stabs should add bounce, not blur the kick; if it sounds cluttered, shorten the stabs or remove every second one.
+5. **Stuck?** Copy the house example's drums and change only the chords.
 
 ```exercise
 {
@@ -159,3 +167,7 @@ J Dilla's album *Donuts* (by reference) is the touchstone for loose, behind-the-
   }
 }
 ```
+
+## Between lessons
+
+Play the four triad-over-bass chords once a day and listen for the colour change when the left hand comes in.

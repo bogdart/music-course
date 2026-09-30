@@ -92,6 +92,18 @@ In week 24 you slid from C to Dm through **C♯dim7** (C♯ E G B♭). With last
 }
 ```
 
+### Try it
+
+At first the substitute chord itself sounds much like G7 — that's the point, they share the tension. What you *can* hear is the bass.
+
+1. Play the first example above (ii–V–I, then ii–♭II7–I) and follow only the **bass**: in the first phrase it jumps (D down to G, up to C); in the second it slides down one key at a time (D, D♭, C).
+2. Play the two bass lines yourself with your left hand: D2 G1 C2, then D2 D♭2 C2. Jump vs slide.
+3. Replay the example and move your hand in the air with the bass: a big dip, or three small steps down.
+
+**Check:** you can say "jump" or "slide" for each phrase before the last chord.
+
+**If you can't hear it yet:** play along with the bass on your keyboard and see which of your two lines fits. Your fingers find it first; the ear follows.
+
 ```exercise
 {
   "id": "e4-listen-which",
@@ -126,6 +138,12 @@ In week 24 you slid from C to Dm through **C♯dim7** (C♯ E G B♭). With last
 
 ## Ear: every chromatic degree
 
+**Before the drill** — the method (see *How to do it* beside it): first decide **in the key or outside it** (an outside note has a sour, "wrong colour" sound). For an outside note, find the in-key neighbour it leans toward and name it as that degree raised or lowered — ♭2 sinks onto 1, ♯4 pushes up to 5. When unsure, play the neighbours on the keyboard and see which one it wants to move to. The drill runs at your current degrees rung; its box has that rung's method.
+
 ```ladder
 { "skill": "degrees", "unlocks": 22, "intro": "Opens the last degrees rung, all twelve chromatic degrees (♭2 is the bass note of today's tritone sub); the drill runs at your current degrees rung." }
 ```
+
+## Between lessons
+
+Play ii–V–I and ii–♭II7–I in C and F, left-hand shells, listening to the bass slide. Once, play Cmaj7 – C♯dim7 – Dm7 – G7 – C and name the chord that's "a V7(♭9) without its root".

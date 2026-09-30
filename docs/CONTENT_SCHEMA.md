@@ -112,7 +112,7 @@ Instruments: `piano epiano bass pad lead pluck strings guitar drums` (`guitar` =
 { "skill": "degrees", "unlocks": 5, "intro": "Degree 5 (sol) joins today." }
 ```
 
-Opens rungs 1…`unlocks` of one of the nine ear-training ladders (`octave`, `degrees`, `intervals`, `chords`, `roots`,
+Opens rungs 1…`unlocks` of one of the ten ear-training ladders (`pitch`, `octave`, `degrees`, `intervals`, `chords`, `roots`,
 `progressions`, `melody`, `rhythm`, `scales`) when the learner reaches it, then drills the learner's **current rung**
 of that skill (lowest open rung not yet mastered) — see `docs/EAR_LADDERS.md` for the rungs, mastery rules and the
 unlock schedule. Every graded ear drill in a lesson is a ladder block; `intro` is an optional sentence shown above it.
@@ -338,6 +338,10 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   the key's mode.
 * **`ear-note`**: `mode` defaults to `major` (a key like `"Am"` also sets minor); `answer`: `"degree"`
   (default) | `"name"`; `chromatic: true` shows all 12 degree buttons.
+* **`ear-octave`** `seek`: hear one note (from `notes` × `octaves`) and find the exact key; only the keys of that
+  range are shown, every key pressed is a try and answers "go higher / go lower" (or "right name, wrong octave").
+  `same-pitch`: two notes in one register — exactly the same note twice, or different by one of `foils` semitones.
+  `higher-or-lower`: is the second note higher or lower? (Used by the `pitch` ladder.)
 * **`ear-octave`** `which-octave` plays middle C (C4) as a reference first. `find`: one note (from `notes` ×
   `octaves`, may be far outside the keyboard), the learner plays the same note name in any octave (answer by keyboard). Like `ear-chord-root` "play", keys can be tried freely — each sounds, nothing is scored — and **Check** answers with the last key played.
   Comparison modes: `together` (both

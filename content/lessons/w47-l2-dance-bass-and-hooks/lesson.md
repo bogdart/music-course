@@ -28,7 +28,14 @@ Once you know the notes, dance bass is mostly a question of rhythm against the k
    like two different notes — it is one note name in two registers.)
 3. **Sustained** — long notes under a verse or build, leaving space.
 
-Ask one question: *on* the kick, *between* the kicks, or *both*?
+How to tell them apart, per clip:
+
+1. Tap your foot on the kick (it hits every beat here).
+2. Now listen only to the bass: does it land *with* your foot, *between* your taps, or *both*?
+3. If it lands on both, play the bass note on your keyboard and the same note 12 keys up, alternating — if that matches
+   the clip, it's the octave pattern. If it holds one note for the whole bar, it's sustained.
+
+*Check:* tap on the "and"s yourself along with a clip; if your taps and the bass coincide, it's offbeat.
 
 ```exercise
 {
@@ -107,6 +114,17 @@ A dance hook is short (one or two bars), built from a handful of notes (often a 
 small change at the end. That makes it easy to dictate *if* you use the repetition: transcribe the first bars, then
 listen only for what's different.
 
+**Dictating the hook, step by step:**
+
+1. Find the first note: play a key, ask "higher or lower?", move until it merges. *Check:* play it along with the loop's
+   first note.
+2. For each next note ask: same, up or down? Step or jump? Play it and compare. Chunk it: the first five notes, replay,
+   then the next five.
+3. Rhythm last: tap along and notice where the gaps fall.
+
+Stuck on one note? Loop, play your two best guesses back to back against it, pick one and move on — a wrong note is
+fixed faster at the reveal than by staring at it.
+
 ```exercise
 {
   "id": "w47l2-hook",
@@ -159,9 +177,25 @@ listen only for what's different.
 }
 ```
 
+## Ear: melody at your level
+
+The same routine as the hook: first note by searching, then up/down and step/jump for each next note, in short chunks.
+The *How to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "melody", "unlocks": 19, "intro": "Melody at your own rung."}
 ```
+
+## Rebuild the drop
+
+1. Drums first: kick on every beat, claps on 2 and 4, open hats on the "and"s. Loop it and compare with section C of
+   last lesson — the pulse should feel the same.
+2. Bass: the offbeat pattern on the four notes you found. Play the original, then yours; if a bar sounds wrong, solo that
+   bar in both and compare.
+3. Pad on the offbeats, then the hook you dictated.
+
+*Check:* play your version and the original back to back. If the groove matches but something feels thin, count the
+layers — one is probably missing.
 
 ```exercise
 {
@@ -216,3 +250,8 @@ listen only for what's different.
   }
 }
 ```
+
+## Between lessons
+
+In one dance track you know, tap the kick with your foot and decide which bass pattern it uses. Then find the first note
+of its hook on your keyboard.

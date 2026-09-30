@@ -80,6 +80,12 @@ Play the chorus and bridge chords, keeping your hand around middle C (move each 
 3. **Copy** verse → bars 21–28, chorus → bars 29–36 and 45–52. Leave the bridge empty for now.
 4. **Outro:** a short piece of the hook, landing on F.
 
+**Judge it by ear:** loop the chorus alone five times. If you can play the hook back on the keyboard without
+looking, it's a hook. Then play verse → chorus: the chorus should feel like a step up, even with the drums muted.
+
+**If you're stuck:** make the hook three notes from the chord on beat 1 (F A C over F) in a rhythm you like, and
+repeat it. For the verse, play the same rhythm idea lower and with half the notes.
+
 ```exercise
 {
   "id": "daw-song1-lead-v2",
@@ -109,6 +115,10 @@ The bass plays the **root** of each chord on beat 1 (week 19). Make it change wi
 verse 1, a steadier eighth-note or root–fifth pattern in the choruses, and let it lock with the kick. No bass in
 the intro. Write one bar per pattern and copy.
 
+**Judge it by ear:** play drums + bass only. If the kick and a bass note start together, they should sound like
+one fat thump; if they flam (two quick hits), move the bass note onto the kick.
+**If you're stuck:** whole-note roots everywhere, then change only the choruses to root–root–fifth–root in quarters.
+
 ```exercise
 {
   "id": "daw-song1-bass-v2",
@@ -131,6 +141,10 @@ the intro. Write one bar per pattern and copy.
 
 End of session 1: one short drill with the chord moves you've just been writing over.
 
+Method (also in the drill's *How to do it* box): find home, then name each chord by its bass note and colour;
+a chord that is unexpectedly major and pushing is a secondary dominant — ask where it pushes. Earlier rungs have
+their own box.
+
 ```ladder
 { "skill": "progressions", "unlocks": 17, "intro": "Review: name the chords by their role in the key — at whatever rung you're on." }
 ```
@@ -138,7 +152,9 @@ End of session 1: one short drill with the chord moves you've just been writing 
 ## Session 2 — bridge, extra layer, and a first mix (40 min)
 
 **Bridge melody.** It must sound *new*: a different rhythm (long notes after a busy chorus, or the reverse), a
-different register, or starting on a different degree. Let its last bars climb towards the last chorus.
+different register, or starting on a different degree. Let its last bars climb towards the last chorus. Try the easiest lever first: if the chorus is busy, write
+the bridge in half and whole notes. Judge it by playing chorus 2 → bridge: the bridge should make you notice a
+change within the first bar.
 
 **Extra layer and colour.** Add the strings where they help most — a counter-melody or an octave double of the
 hook in the last chorus is the classic choice. As in week 21: at first an octave double may sound like a *new*
@@ -166,6 +182,10 @@ Work in this order:
 4. Add the pad *under* the lead: pull it down until the lead is comfortable, then a little more.
 5. Strings last and lowest: you should miss them when muted, not notice them when playing.
 6. Pan: kick, snare, bass and lead in the centre; pad a little left, strings a little right.
+
+**Try it — the mute test.** Loop chorus 3 and mute one track at a time. For each: do you miss it? If not, it is
+too quiet or unnecessary. Then solo the lead and un-mute the others one by one: if a new track makes a lead note
+harder to follow, turn that track down.
 
 Listen at low volume: if the lead disappears, it is too quiet. Expect the balance to take a few passes; there is no single right answer, only "can I hear every part, and the lead first?"
 
@@ -201,6 +221,9 @@ Listen at low volume: if the lead disappears, it is too quiet. Expect the balanc
 }
 ```
 
+Method (also in the drill's *How to do it* box): let the chords go by and follow the highest, singing line;
+find its first note on the keyboard, then go note by note.
+
 ```ladder
 { "skill": "melody", "unlocks": 17, "intro": "Review: play back melodies — with chords underneath once you reach that rung." }
 ```
@@ -212,3 +235,7 @@ Listen at low volume: if the lead disappears, it is too quiet. Expect the balanc
   "spec": { "prompt": "Give your song a title. In three sentences: what is the hook, where is the energy highest, and which Phase 3 colour did you use? Which checklist item was hardest, and how did you solve it?", "minWords": 40 }
 }
 ```
+
+## Between lessons
+
+Listen to Song One once, start to finish, without touching anything; note one thing to fix and fix only that.

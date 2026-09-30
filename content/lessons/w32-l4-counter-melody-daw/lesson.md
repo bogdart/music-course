@@ -45,6 +45,15 @@ Look at bars 1–2 in the piano roll: the hook climbs and then *sits* on E5 and 
 
 Notice also the pad: only two notes, low. With a lead and a counter-line, you don't need thick chords — the lines *are* the harmony.
 
+### Try it
+
+1. Loop the example. First pass: follow only the hook. Second pass: follow only the strings — tap the table each time the strings play a new note.
+2. Third pass: tap only when the *hook* plays a new note, with the other hand.
+
+**Check:** your two hands should mostly take turns — lots of taps from one while the other rests. That turn-taking is what makes the counter-line audible.
+
+**If you can't hear it yet:** play the two drills below first — playing a line against the other is the fastest way to hear it. Then come back and loop the example again.
+
 ## Drills
 
 ```exercise
@@ -66,6 +75,17 @@ Notice also the pad: only two notes, low. With a lead and a counter-line, you do
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "G4:q C5:q E5:h | D5:q. C5:8 B4:h | C5:q E5:q A5:h | G5:q. F5:8 F5:h | E5:q G5:q E5:q C5:q | D5:h B4:h | A4:q C5:q F5:q E5:q | C5:w |", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "strings", "seq": "C4:h G4:q F4:q | G4:h F4:q D4:q | E4:h C4:q B3:q | C4:h A3:h | C4:w | B3:h D4:q F4:q | F4:h A4:h | E4:w |" } }
 }
 ```
+
+**Writing your counter-melody:**
+
+1. Loop the hook and write down (or mark) the bars where it holds a long note: the second half of bars 1–4, and all of bars 6 and 8.
+2. **Long notes first:** where the hook moves in quarters (bars 5 and 7, the first half of bars 1–4), give the strings one whole or half note — a chord tone of that bar's chord, a 3rd or 6th below the hook.
+3. **Then the moves:** where the hook holds, add two or three stepwise notes that lead to the next bar's long note.
+4. At the start of each bar, check the interval to the hook: prefer 3rds and 6ths (an octave or 10th lower is the same thing).
+
+**Judge it by ear:** loop the chorus with the pad muted. You should hear two tunes that take turns, not a second melody fighting for attention. Then unmute the pad: the harmony should sound complete.
+
+**If you're stuck:** start from the chord's 3rd in every bar (E, B, C, A, E, B, A, E) as whole notes, then add one passing note wherever the hook holds.
 
 ```exercise
 {
@@ -104,6 +124,8 @@ Notice also the pad: only two notes, low. With a lead and a counter-line, you do
 
 ## Ear review
 
+**Method** (see each drill's *How to do it* box): for melodies, chunk the phrase into small groups and get the first group right before the next. For the bass in a band, ignore drums and melody, tap your foot with the deepest sound, then find its notes one by one. Both drills run at your current rungs.
+
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "Melodies at your level: follow one line and play it back." }
 ```
@@ -111,3 +133,7 @@ Notice also the pad: only two notes, low. With a lead and a counter-line, you do
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "The bass in a band: hearing one line under others is today's skill in reverse; the drill runs at your current roots rung." }
 ```
+
+## Between lessons
+
+Pick one chorus from an earlier song of yours and sketch a four-bar counter-line with the same move-when-it-holds rule. In any song you hear this week, try to spot one line behind the vocal.

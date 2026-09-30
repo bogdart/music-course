@@ -51,6 +51,14 @@ Going down a fifth from C gives F major, which needs B♭: the 4th of a major sc
 
 Round the circle: C → G → D → A → E → B → F♯ going up in fifths, C → F → B♭ → E♭ → A♭ → D♭ → G♭ going down. F♯ and G♭ are the same keys spelled two ways, so the circle closes. Neighbours on the circle differ by just one note and share most chords: they're [[closely related keys]].
 
+### Try it: walk the circle with your hands
+
+1. Play C major up. Start the same notes on G and change one key: F → **F♯**. That's G major.
+2. Start G major's notes on D and change one more: C → **C♯**. D major. Then from A, raise G → **G♯**.
+3. Going the other way: C major from F, lower B → **B♭**; from B♭, lower E → **E♭**.
+
+Each time only one finger moves to a new key, and your ear hears it: without the change, the top of the scale (or the 4th) sounds wrong. **If you're unsure a scale is right**, play it slowly and listen for the last step into the top note: it must be a tiny half step that pulls in. If it's a wide whole step, the 7th needs raising.
+
 ```exercise
 {
   "id": "e1", "type": "build-scale", "title": "Build new major scales",
@@ -113,7 +121,7 @@ The circle also shows up inside progressions. ii – V – I is two falls of a f
 }
 ```
 
-Same chords, same voicings, same first and last chord: only the order in the middle differs.
+Same chords, same voicings, same first and last chord: only the order in the middle differs. Before you judge, **play just the bass lines yourself**, low and slowly: A D G C, then A G D C. In the first each note falls into the next like a step down a staircase of fifths; in the second the bass wanders. Then listen to A and B again, listening only to the bass.
 
 ```exercise
 {
@@ -124,12 +132,59 @@ Same chords, same voicings, same first and last chord: only the order in the mid
 
 ## Ear corner: the last octave rung, and degrees in any octave
 
-This lesson opens the octave ladder's final rung, which mixes everything: any register, one or two octaves apart, and every kind of wrong note, from a half step off to the fifth trap. It also opens the next degree rung, where the note may sound an octave below the cadence: same degree, lower register, so it leans on your octave work. Both drills run at your current rung, which may still be an earlier one; take them slowly and use the "Listen again" aids.
+This lesson opens the octave ladder's final rung, which mixes everything: any register, one or two octaves apart, and every kind of wrong note, from a half step off to the fifth trap. Both drills run at your current rung, which may still be an earlier one.
+
+### Try it: octave, two octaves, or a fifth in disguise
+
+1. Play **C3 and C4** together: one fuller note. Then **C3 and G3** together: an open, hollow *pair*. That's the difference to listen for.
+2. Play **C3, then C5**: hard to judge in one jump. Now walk it: C3 → C4 → C5. The walk makes the match audible.
+3. Play **C3, then G4**: wide, and smooth, and *not* the same note. This is the trap: a fifth plus an octave. Walk it: C3 → C4 → C5 — G4 isn't on the path.
+
+Check: two pairs, one note after the other.
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: same note name?",
+  "instructions": "Play each pair. Walk the octaves on your keyboard before you answer.",
+  "spec": {
+    "examples": [
+      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D3:h A4:h" } ] },
+      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "E3:h E5:h" } ] }
+    ],
+    "questions": [
+      { "q": "Pair 1: the same note name?", "choices": ["same", "different"], "answer": 1, "explain": "Different: D3 then A4, a fifth plus an octave. Smooth, but D3 → D4 → D5 never passes A." },
+      { "q": "Pair 2: the same note name?", "choices": ["same", "different"], "answer": 0, "explain": "Same: E3 then E5, two octaves apart. Walk E3 → E4 → E5 to hear the match." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** go to the keyboard. Find the first note (search low keys with higher/lower), then play it and every key 12 above it, one after the other, up to the height of the second note. Replay the question: does the second note land on your walk? Slow is fine; this is how the ear learns the path.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for your rung): 1) smooth like an echo? 2) far apart — walk the octaves; 3) smooth but hollow — suspect a fifth. Replay as often as you like.
 
 ```ladder
 { "skill": "octave", "unlocks": 14, "intro": "Opens the last rung: any register, any gap, any kind of wrong note. The drill runs at your current octave rung." }
 ```
 
+The next degree rung plays the question note sometimes an octave *below* the cadence: same degree, lower register. Honestly, a low note at first sounds like a different note, not "3 again".
+
+### Try it: a degree in the basement
+
+1. Play the C cadence (C – F – G – C, around middle C), then **E4**: degree 3. Then play **E3**, an octave lower. It sounds duller, and less like it belongs.
+2. Play E3, then E4, then walk down E4 – D4 – C4. The walk home works from E4 — so lift a low note into the cadence's octave first.
+
+**If you can't hear it yet:** find the low note on your keyboard, play it again 12 keys higher (in the cadence's range), and walk home from there, counting steps.
+
+**Before the drill, rehearse the method** (*How to do it* box): imagine the note an octave higher — or find it and play it in the cadence's octave — then walk home as usual.
+
 ```ladder
 { "skill": "degrees", "unlocks": 17, "intro": "Opens: any key, and the note may sound an octave below the cadence. The drill runs at your current degree rung." }
 ```
+
+## Between lessons
+
+- **3 minutes:** walk the circle on the keyboard: C, G, D, A major scales up, then F, B♭, E♭ — one changed key each time.
+- **3 minutes:** octave walks. Pick a low note, play it and every octave above; then test a fifth (C3–G4) against the walk.
+- **2 minutes:** in C, play the cadence, then any note low (octave 3); lift it an octave and walk home.
+- One octave-ladder and one degrees-ladder session on the Practice page.

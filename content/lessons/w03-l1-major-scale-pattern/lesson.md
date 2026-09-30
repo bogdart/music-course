@@ -44,24 +44,57 @@ Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W�
 
 Right hand, thumb = 1, little finger = 5. For C major going up: **1 2 3** (C D E), then tuck the **thumb under** onto F, and continue **1 2 3 4 5** (F G A B C). Going down, reverse it: 5 4 3 2 1, then cross finger **3 over** the thumb onto E. Slow and even beats fast and bumpy.
 
-## A wrong note in the ladder
+## A wrong note in the scale
 
-Because the half steps sit in fixed places (between the 3rd–4th and 7th–8th notes), every major scale has the same *shape* of sound, only higher or lower. Change one note and the ladder breaks. Listen — one note below is wrong:
+Change one note and the scale sounds different. **Try it:** play C D E F G A B C slowly. Then play it again with
+F♯ instead of F. Then once more with the real F. Listen at the 4th note each time.
 
 ```example
 {
-  "title": "C major with one wrong note",
+  "title": "C major with one wrong note (F♯ instead of F)",
   "bpm": 80, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:q F#4:q | G4:q A4:q B4:q C5:q" } ],
   "show": ["keyboard"]
 }
 ```
 
-The fourth note, F♯, may sound slightly "off", as if it belongs to a different tune. If you can't hear it yet, play both versions (F and F♯) yourself a few times. Noticing a wrong note is your ear starting to know the major scale.
+F♯ may sound slightly "off", as if it belongs to a different tune — or you may not notice anything yet. Both are
+normal in week 3. **If you can't hear it:** play the scale with the wrong note and with the right one, back to
+back, three times; then play the pattern W-W-H by eye and check where the step sizes break. The *Spot the wrong
+note* exercise below practises it.
+
+## Search across two octaves
+
+The last pitch rung adds a new first question: **which register?** The mystery note is now anywhere from C3 to B4.
+
+**Try it:** play C3, then C4. C3 is low and dark, C4 middle. Then play the guided example below and decide: closer to
+C3 or to C4? (It's **A3** — shown on purpose: lowish, but not as dark as C3.) Start the search in that octave:
+F3, then jump, then step.
+
+```example
+{
+  "title": "Guided search: the mystery note is A3",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "A3:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+**If you pick the wrong octave:** the search still works — the app says *higher* or *lower*; a note with the right
+letter in the wrong octave gets its own message ("go up by a whole octave").
+
+```ladder
+{ "skill": "pitch", "unlocks": 10, "intro": "Pitch at your current rung — up to finding the note across two octaves." }
+```
 
 ## Echo: from C to G
 
-This lesson opens the next two melody rungs: echoes that may use all five fingers, **C D E F G** (thumb on C) — first three notes long, then four. For the four-note version the app plays a short run **up the scale from C to G and back down to C** before each tune. It reminds your ear where C is, so the tune has something to hang on to. Next lesson explains why that run is so useful. The drill below runs at your current melody rung, so you'll meet these once the C-D-E echoes are solid.
+The next two melody rungs use all five fingers, **C D E F G** (thumb on C): three notes, then four. Now some moves
+**skip** a key. For the four-note version the app plays a run **C D E F G F E D C** first, to remind your ear where
+C is (next lesson explains why that run is so useful).
+
+**Try it:** play C → E (a skip up), then C → D (a step up). Then E → C and D → C. Say "step" or "skip" each time. In
+the echo, decide for each move: up or down, then step or skip.
 
 ```example
 {
@@ -72,16 +105,27 @@ This lesson opens the next two melody rungs: echoes that may use all five finger
 }
 ```
 
+**If a skip confuses you:** play the note you think it is, then the one next to it. Same method as the search:
+compare, move, merge.
+
 ```ladder
-{ "skill": "melody", "unlocks": 4, "intro": "Opens echoes from C D E F G (three notes, then four after a scale run); the drill runs at your current rung." }
+{ "skill": "melody", "unlocks": 4, "intro": "Echoes at your current melody rung — up to four notes from C D E F G." }
 ```
 
 ## Octaves: a single pair
 
-This lesson also opens an octave rung that takes away the comparison: two notes one after the other, about an octave apart — **the same note again, or a different one?** This is the hardest kind so far, and the ladder gives it to you only after the rungs before it are solid. When you get there, use *Both together* after each answer: the together-sound is the clue you already trust.
+The next octave rung takes the comparison away: two notes one after the other, about an octave apart — **the same
+note again, or a different one?** This is the hardest kind so far.
+
+**Try it:** play D3 → D4 (same letter), then D3 → G♯3 and D3 → G♯4 (different letters). Then hold D3 and add
+each: the octave is still, the other rubs. In the drill, before answering, imagine the first note played again, higher: does the second note
+match that echo?
+
+**If you can't hear it yet:** find the first note by search, count 12 keys up and play it, then replay the question:
+is the second note that key? Use *Both together* after each answer — the together-sound is the clue you trust.
 
 ```ladder
-{ "skill": "octave", "unlocks": 6, "intro": "Opens \"Same or different, one after the other\"; the drill runs at your current octave rung." }
+{ "skill": "octave", "unlocks": 6, "intro": "Octaves at your current rung — up to 'same or different, one after the other'." }
 ```
 
 ## Drills
@@ -140,3 +184,9 @@ This lesson also opens an octave rung that takes away the comparison: two notes 
   }
 }
 ```
+
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes.
+- Play C major up and down once a day, slowly, with the thumb tuck; say the step pattern (W W H W W W H) as you go.
+- Ready for the next lesson when the dashboard doesn't say **practise first**.

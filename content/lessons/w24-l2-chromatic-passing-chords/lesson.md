@@ -33,6 +33,18 @@ Put a **minor 7th** on top of the diminished triad: B D F + A = **Bm7♭5** (als
 
 Honestly: one note apart, they can sound almost the same at first. Listen for the half-diminished being darker and more restless, as if it needs to move. That is its job: in a minor-flavoured move like **Bm7♭5 – E7 – Am** it leads into last lesson's V/vi.
 
+### Try it
+
+1. Play Bm7 (B D F♯ A) and hold it for four beats. Then move only one finger: F♯ down to F. Hold again.
+2. Go back and forth, F♯ ↔ F, keeping the other three notes pressed. Listen to the whole chord, not the moving note.
+3. After each chord, ask: could a song *end* here? Bm7 can just about rest; Bm7♭5 wants to go somewhere.
+
+**Check:** replay the example with your eyes closed and say "rests" or "restless" for each of the four bars.
+
+**If you can't hear it yet:** play only the bottom and the moving note: B + F♯ (a perfect fifth — open, stable) vs B + F (a tritone — sour, tense). That tritone is the whole difference. Then add D and A back.
+
+**Before the drill** — the method (also in the *How to do it* box): both chords are dark, so ignore bright/dark. Ask *stable or unstable?* Mellow and settled → minor 7; a tense, unresolved top → half-diminished. If the drill is on an earlier chord rung, that rung's box has its method.
+
 ```ladder
 { "skill": "chords", "unlocks": 10, "intro": "Opens: minor 7th or half-diminished — two choices, one note apart. The drill runs at your current chord rung." }
 ```
@@ -100,9 +112,19 @@ In bars 5–8 the bass walks C C♯ D D♯ E — a chromatic staircase.
 }
 ```
 
+**Before the drill** — the method (also in the *How to do it* box): when a chord sounds unexpectedly major and pushing, ask *where* it pushes — into V (it was V/V) or into vi (V/vi). Replay and follow the bass one chord further. If the drill is on an earlier progression rung, follow that rung's box.
+
 ```ladder
 { "skill": "progressions", "unlocks": 17, "intro": "Opens: V/V and V/vi mixed in with the whole key. The drill runs at your current progression rung." }
 ```
+
+## Make it: the staircase in F
+
+1. Loop the template as it is and play the bass line F G A B♭ on your keyboard with it — it moves in big, plain steps.
+2. Do the bass first: shorten F and G to half notes and add F♯ and G♯ after them. Loop: the bass should now *creep* up.
+3. Add the two dim7 chords on top of those bass notes.
+4. **Judge it by ear:** each dim7 should sound tense for two beats and then *fall into* the next chord. If it sounds like a random wrong chord, check that its lowest note is the half step below the next root.
+5. **If you're stuck:** play bars 5–6 of the C example above, then slide your hands up a fourth (C→F) — it's the same shape.
 
 ```exercise
 {
@@ -126,3 +148,7 @@ In bars 5–8 the bass walks C C♯ D D♯ E — a chromatic staircase.
   }
 }
 ```
+
+## Between lessons
+
+Play the C staircase (C – C♯dim7 – Dm – D♯dim7 – Em) once a day, and toggle Bm7 ↔ Bm7♭5 a few times listening for "rests / restless". Do one Practice session.

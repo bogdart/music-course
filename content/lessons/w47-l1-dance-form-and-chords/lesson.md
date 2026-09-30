@@ -20,20 +20,37 @@ Dance pop flips the ballad's priorities. The harmony is often a short loop, so p
 
 ## Blocks and energy
 
-Dance tracks are built in blocks of 4, 8 or 16 bars — count them; they almost never break the pattern.
+Dance tracks are built in blocks of 4, 8 or 16 bars, and they almost never break the pattern. The sections you will meet:
 
-- **Verse** — the groove is established; the arrangement leaves room.
-- **Build** — a section whose only job is to raise tension towards what comes next. *How* a producer does that
-  varies; that is what you listen for.
-- **[[drop]]** — the arrival the build promised: the section the whole track is aiming at.
+- **Verse** — the groove is set up and the arrangement leaves space.
+- **Build** — a section whose only job is to raise tension towards what comes next. You listen for *how* it does that.
+- **[[drop]]** — the arrival the build promised, the section the whole track aims at.
 
-Sketch an [[energy curve]] while you listen: a line that rises and falls with the density of the arrangement. Mark where
-it peaks and where it dips lowest — the dips matter as much as the peaks.
+**Pass 2, step by step (form and energy):**
+
+1. Play each section once and just count: "1 2 3 4" with the beat (tap your foot), folding a finger at every "1" —
+   each "1" starts a new bar.
+   *Check:* each section should come out as a multiple of 4 bars.
+2. Play them again and list what you hear in each: kick? hats? bass? chords? a tune on top? Write one line per section.
+   *Check:* the section with the most items is your peak candidate.
+3. Draw an [[energy curve]] on paper: one point per section, higher for more layers and more motion. Mark the lowest
+   dip as well as the peak — the dip right before the peak is what makes the peak land.
 
 ## Minor or its relative major?
 
-A minor loop and its relative major use the same notes, so collecting chord names can't tell them apart. Use the pass-1
-tests: where does the hook come to rest, and which bass note starts each 4-bar block? Whichever note wins is home.
+A minor key and its relative major use the same notes, so a list of chord names can't tell them apart. Decide it with
+the week-41 key test, on the keyboard:
+
+1. Loop section C and listen only to the tune. Stop at the end of its first phrase and find its last note by searching
+   with your keyboard (higher/lower until your key merges with it).
+2. Find the first bass note of the loop the same way — play a low key, move up or down until it merges with the thump.
+3. Test the candidates: hold one candidate low under the loop for a full cycle, then the other. The home note sounds
+   like it could be held forever; the other one starts to rub.
+   *Check:* the tune's resting note, the loop's first bass note and your held-note test should all agree.
+4. Once you know the home note, play the major and the minor chord on it along with the loop. The one that blends is the
+   chord's quality — and tells you whether the key is major or minor.
+
+Stuck? Loop just the last two bars of the phrase, and compare your two candidates back to back, a few times each.
 
 Mystery track *Neon Hours*, three sections, all hidden:
 
@@ -142,6 +159,18 @@ Mystery track *Neon Hours*, three sections, all hidden:
 }
 ```
 
+## Passes 3 and 4: bass, then numerals
+
+1. Loop section A. Ignore everything but the lowest thump. Play a low key (around G1–G2), ask "higher or lower?", move,
+   and repeat until your key merges with the bass. Do this for one bar at a time.
+   *Check:* play your four notes in a row along with the loop — each should sit under its bar without rubbing.
+2. For each bass note, play the major and the minor chord on it with the loop; keep the one that blends.
+   *Check:* the loop's notes should all fit the key you found in pass 1.
+3. Turn root + quality into a numeral by counting up from home.
+
+Stuck on a bar? Loop it alone, try your two best guesses back to back, commit to one, and only then reveal and listen
+again while looking.
+
 ```exercise
 {
   "id": "w47l1-bass",
@@ -172,7 +201,7 @@ Mystery track *Neon Hours*, three sections, all hidden:
 {
   "id": "w47l1-prog",
   "type": "ear-progression",
-  "title": "Pass 4: the loop in G minor",
+  "title": "Pass 4: the numerals",
   "srs": false,
   "spec": {
     "key": "Gm",
@@ -193,6 +222,12 @@ Mystery track *Neon Hours*, three sections, all hidden:
 }
 ```
 
+## Ear: progressions at your level
+
+Same routine as the passes above: find the bass note of each chord first, then decide whether the chord is major or minor
+by its colour, and use those two facts to name it. The *How to do it* box under the drill shows the exact method for
+your current rung.
+
 ```ladder
 {"skill": "progressions", "unlocks": 20, "intro": "Minor progressions and full mixes at your own rung."}
 ```
@@ -206,3 +241,8 @@ Mystery track *Neon Hours*, three sections, all hidden:
   "spec": {"chords": ["Gm", "Eb", "Bb", "F"], "inversion": "any", "sequence": true, "bpm": 100}
 }
 ```
+
+## Between lessons
+
+Pick any dance track you like, and on a first listen only count its sections in bars and sketch the energy curve. Then
+find its home note with the held-note test on your keyboard.

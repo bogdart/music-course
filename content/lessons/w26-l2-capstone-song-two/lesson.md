@@ -30,7 +30,10 @@ In Song One a drum fill announced each chorus. Dance music does it with the whol
 - **[[Breakdown]]** (the bridge): kick and bass disappear; only chords, claps and hats. The last drop then feels
   the biggest, simply because the low end comes back.
 
-Listen to the template once, just for the energy: where does it rise, where does it empty out?
+**Try it.** Play the template once, just for the energy, with one hand in the air: raise it when the music gets
+bigger, lower it when it empties out. **Check:** your hand should rise through bars 13–16 and 33–36 (the builds),
+jump at the drops, and sink at bar 45. **If you can't hear it yet:** watch the piano roll's drum lane while it
+plays — where the kick disappears, the energy drops; where the snare notes get denser, it builds.
 
 ```example
 {
@@ -74,6 +77,10 @@ In house-style music the bass often plays **between** the kicks, on the "and"s �
 never hit at the same moment. Loop this starter, then write your own one- or two-bar riff on the chord roots
 and copy it through verses and drops (follow the chords: A, F, C, G). No bass in the builds or the breakdown.
 
+**Judge it by ear:** loop one bar of kick + bass. You should hear a steady "boom–dum–boom–dum" seesaw, never two
+low sounds landing together. **If you're stuck:** copy the starter and change only the rhythm of the second half
+of each bar (e.g. two 16ths instead of one 8th).
+
 ```example
 {
   "title": "Off-beat bass starter over the kick",
@@ -115,6 +122,10 @@ and copy it through verses and drops (follow the chords: A, F, C, G). No bass in
 3. Optional: double the hook an octave up on the **pluck** in the last two drops.
 4. Breakdown: the lead rests, or plays a few long notes. Over the E chord, keep to E or B (a quick G♯ stepping into A is fine). The outro lands on A.
 
+**Judge it by ear:** after three loops of the drop, can you play the hook from memory? If not, simplify it until
+you can. **If you're stuck:** take the first two notes of each pad chord's top line and give them a punchy rhythm
+(short–short–long).
+
 The melody uses **A natural minor**: the drop chords include G major (VII), and a G♯ there would clash.
 
 ```exercise
@@ -139,6 +150,9 @@ The melody uses **A natural minor**: the drop chords include G major (VII), and 
 }
 ```
 
+Method (also in the drill's *How to do it* box): one pass per drum — kick first, then snare, then the ticking
+hi-hat; replay for each. Earlier rungs have their own box.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Review: hear drum grooves — kick and snare first, hi-hat once you reach it." }
 ```
@@ -154,6 +168,10 @@ last drop.
 **Mix a dance track.** Same level order as Song One, plus one rule: **kick and bass must not fight.** If the bass
 sits on the off-beats they already take turns; if it plays with the kick, lower the bass until the kick punches
 through. Kick, bass, clap and lead in the centre; pluck and pad panned a little to opposite sides.
+
+**Try it — the low-end check.** Solo kick and bass in a drop and turn the bass down until the kick's thump is
+clearly on top, then up until the bass notes are easy to follow; settle between the two. Un-mute everything and
+repeat the mute test from Song One.
 
 Checklist: hook in every drop · verse lower than the drop · every build rises · breakdown has no kick or bass ·
 last drop is the biggest · clear ending on Am · lead always audible, kick and bass clean, pluck and pad panned.
@@ -179,6 +197,9 @@ last drop is the biggest · clear ending on Am · lead always audible, kick and 
 }
 ```
 
+Method (also in the drill's *How to do it* box): ignore drums and melody, focus on the deepest sound, tap your
+foot with it, then find its notes one by one on the keyboard.
+
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Review: find the bass notes — in a full band once you reach that rung." }
 ```
@@ -190,3 +211,7 @@ last drop is the biggest · clear ending on Am · lead always audible, kick and 
   "spec": { "prompt": "Title your second song. How did starting from the beat change your writing compared with Song One? Which result do you like more? Name one thing from each song you want to reuse.", "minWords": 40 }
 }
 ```
+
+## Between lessons
+
+Play both capstone songs back to back once. Write down the one moment in each you would still change — that's next lesson's review material.

@@ -67,6 +67,16 @@ Now both tools in an 8th-note line. Bar 1 outlines Dm7 and ends with an enclosur
 
 Notice where the chromatic notes fall: on the last 8th of the bar, resolving by half step onto beat 1. That placement is the whole secret.
 
+### Try it
+
+1. Play **D♯4 → E4** slowly on your keyboard, then **D4 → E4**. Both land on E; which one feels more like it *had* to land there? The half step pulls harder.
+2. Now play **D♯4 alone** and stop. Out of the key, it sounds wrong on its own — "wrong on the way, right on arrival" is the whole trick.
+3. Play **D♯4 on beat 1, E4 on beat 2**, then swap: **E4 on beat 1, D♯4 on beat 2** and stop. The second version ends on the sour note.
+
+**Check:** you can say, for any approach you play, whether it resolved or was left hanging.
+
+**If you can't hear it yet:** hold a C major chord (C E G) with the left hand and play the approaches with the right. Against the chord, the unresolved D♯ rubs obviously; the E melts in.
+
 **Practise before you improvise.** Don't try to make up lines with these yet. Drill them as fixed patterns on the three targets E, B and F, as below. Next lesson you will use them to build a solo step by step.
 
 ## Drills
@@ -119,6 +129,8 @@ Notice where the chromatic notes fall: on the last 8th of the bar, resolving by 
 
 ## Ear review
 
+**Before the drills** — the method (see *How to do it* beside each drill): for degrees, decide *in the key or outside it*; an outside note leans to a neighbour — exactly like today's approach notes — so name it as that neighbour raised or lowered. For melodies, chunk the tune (two short phrases rather than one long one), find the first note, then follow up/down and step/leap, checking on the keyboard. Earlier rungs have their own method in the box.
+
 ```ladder
 { "skill": "degrees", "unlocks": 22, "intro": "Scale degrees at your level; the chromatic ones are the notes approach tones are made of." }
 ```
@@ -126,3 +138,7 @@ Notice where the chromatic notes fall: on the last 8th of the bar, resolving by 
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "Melodies at your level: play back what you hear." }
 ```
+
+## Between lessons
+
+Play the three enclosures and the bebop line once a day, slowly first. Then try an enclosure onto the 3rd of F (A): B♭, G♯, A.

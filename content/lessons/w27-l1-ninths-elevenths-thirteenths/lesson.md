@@ -34,6 +34,16 @@ Start on C and keep going in thirds inside C major: C–E–G–B–D–F–A. T
 }
 ```
 
+### Try it
+
+1. Play the example again. On the last bar, listen only to the *top* of the two chords.
+2. On your keyboard, hold C3 E3 G3 B3 with both hands, then add D4 with a free finger while the chord rings. Lift D4, add it again.
+3. Now play Cmaj7 and Cmaj9 one after the other, each held for two slow counts.
+
+**Check:** the added D should feel like the chord getting a little wider or airier, not like a new chord. If that's all you hear, you're hearing it right.
+
+**If you can't hear it yet:** play D4 *alone* right after Cmaj7, then the full Cmaj9. Hearing the lone D first shows your ear where to look; then the difference in the full chord gets easier to catch. It's fine if it stays faint for weeks — no drill today asks you to name the 9th.
+
 On paper a chord symbol names its highest extension and includes the ones below: {{chord:Dm11}} is D F A C E G. In practice nobody plays all of them.
 
 ## What to leave out
@@ -110,6 +120,33 @@ Here is a ii–V–I in C using the rules. The G chord is a {{chord:G13}} played
 
 ## Ear: the colour underneath
 
+Every extended chord sits on one of four seventh chords. Hear them on one root, slowly, bright pair first, then dark pair:
+
+```example
+{
+  "title": "On C: maj7, dom7 (bright) · min7, m7♭5 (dark)",
+  "bpm": 56, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C3 E3 G3 B3]:h [C3 E3 G3 Bb3]:h | r:w | [C3 Eb3 G3 Bb3]:h [C3 Eb3 Gb3 Bb3]:h |" } ],
+  "show": ["keyboard"]
+}
+```
+
+### Try it
+
+1. Play Cmaj7 and C7 yourself. Bright both; maj7 floats (dreamy), C7 leans and wants to move (bluesy).
+2. Play Cm7 and Cm7♭5. Dark both; min7 rests (mellow), m7♭5 feels unstable because its 5th (G♭) is lowered.
+3. Close your eyes, play one of the four at random, and sort it in two questions: *bright or dark?* then *which of the pair?*
+
+**Check:** you can sort your own random chord into the right pair most of the time.
+
+**If you can't hear it yet:** strip the chord down. Play the 3rd alone against the root (E vs E♭ answers bright/dark), then the top two notes alone (B vs B♭ answers dreamy/bluesy; G vs G♭ answers mellow/tense).
+
+**The drill's method** (also in its *How to do it* box): two questions, never four at once — first bright or dark, then within the pair. If the drill is on an earlier chord rung, its own box has the method for that rung.
+
 ```ladder
 { "skill": "chords", "unlocks": 11, "intro": "Opens the four-way seventh choice (maj7, dom7, min7, m7♭5), the colours under every extended chord; the drill runs at your current chord rung." }
 ```
+
+## Between lessons
+
+Once a day, play the four sevenths on a new root and sort them with your eyes closed (2 minutes). Voice Dm9–G13–Cmaj9 from memory once.

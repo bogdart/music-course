@@ -82,7 +82,39 @@ Chord charts show inversions with a slash. **C/E** means "C major with E in the 
 
 ## Your ear: bass lines with vi
 
-This lesson opens one new roots rung: the bass-line drill adds **vi** (Am in C) — four chords, C, F, G and Am, whose bass notes are C, F, G and A. All chords here are in root position, so the bass *is* the root. The drill runs at your current roots rung, so you'll meet vi once I, IV and V bass lines are solid. (Finding the root of an *inverted* chord by ear waits until next lesson has taught a method for it.)
+This lesson opens one new roots rung: the bass-line drill adds **vi** (Am in C). Four chords now, C, F, G and Am, with bass notes C, F, G and A. All chords in the drill are in root position, so the bass *is* the root; finding the root of an *inverted* chord waits for next lesson's method.
+
+### Try it: follow the bass with your left hand
+
+1. Left hand, low: play **C2 F2 G2 A2** one at a time and hold each. C feels like the floor; A, three keys above G, feels like a second, sadder floor.
+2. Play the bass line **C – A – F – G** slowly, and after each move say "up" or "down" before playing the next note.
+3. Now play the chords with the right hand over it: C, Am, F, G. Listen to the bottom only; the chords above are just colour.
+
+Check: a four-chord phrase in C, all root position. Answer about the bass only.
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: follow the bass",
+  "instructions": "Loop it and find each bass note on your keyboard before answering.",
+  "spec": {
+    "example": {
+      "title": "Four chords in C", "bpm": 60, "timeSig": "4/4", "key": "C", "loop": true, "hidden": true,
+      "tracks": [
+        { "instrument": "piano", "seq": "[E4 G4 C5]:w | [E4 A4 C5]:w | [F4 A4 C5]:w | [D4 G4 B4]:w" },
+        { "instrument": "bass", "seq": "C2:w | A1:w | F1:w | G1:w" }
+      ]
+    },
+    "questions": [
+      { "q": "From chord 1 to chord 2, the bass goes…", "choices": ["up", "down"], "answer": 1, "explain": "Down: C to A, a small drop (A is below C here). That's I to vi." },
+      { "q": "Which bass note is chord 2?", "choices": ["F", "G", "A"], "answer": 2, "explain": "A: the bass line is C – A – F – G, so the chords are I – vi – IV – V." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** don't name anything. Replay, press a low key (say C2) and ask "is the bass higher or lower than my key?" Move one key that way and ask again until your key and the bass merge into one thump. Only C, F, G and A are possible, so at most four tries per chord. Low notes are blurry: if you're unsure, play your key an octave higher too, where the colour is clearer.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): listen only to the lowest sound; play the first bass note; for each next chord decide up or down, then search. Home C feels rested, A like a sadder home. The drill runs at your current roots rung, so vi comes once the I, IV, V bass lines are solid.
 
 ```ladder
 { "skill": "roots", "unlocks": 5, "intro": "Opens \"Bass line: I, IV, V, vi\"; the drill runs at your current roots rung." }
@@ -123,3 +155,9 @@ C (C E G) and F (F A C) share C. Hold C, move E up to F and G up to A: that's F/
   "spec": { "chords": ["C", "F", "G", "Am"], "inversion": "any", "sequence": true, "bpm": 60, "key": "C" }
 }
 ```
+
+## Between lessons
+
+- **3 minutes:** walk C and Am through their inversions (root, 1st, 2nd), saying the name of the lowest note each time.
+- **2 minutes:** the smooth path C – F/C – G/B – C with eyes closed; fingers barely move.
+- **3 minutes:** left hand plays a bass line from C, F, G, A while the right plays the chords; then one roots-ladder session on the Practice page.

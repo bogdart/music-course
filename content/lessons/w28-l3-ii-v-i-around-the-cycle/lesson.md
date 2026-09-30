@@ -52,7 +52,17 @@ The ear rung this lesson opens uses four seventh chords of a major key: Imaj7, i
 { "key": "C", "bars": ["Dm7", "Cmaj7", "Am7", "Cmaj7"], "roman": true, "play": true, "bpm": 72 }
 ```
 
-The drill also changes key every question. Each one begins with a short cadence and names the key, so find home first, then judge each chord against it. The drill below runs at your current progressions rung, so you may meet this four-chord choice only later.
+### Try it
+
+1. Play the chart above. Then play just the bass notes yourself: D – C – A – C. Step down to home, versus a jump to home.
+2. Play Dm7 and hold it: does it feel like it wants to move on? Play Am7 and hold it: does it feel almost like home already?
+3. Play the turnaround chart and name each chord aloud as it sounds: "one, six, two, five".
+
+**Check:** the four chords feel different in job: I = arrived, V7 = pulling home, ii7 = leaning forward, vi7 = home's softer cousin.
+
+**If you can't hear it yet:** find the bass note on your keyboard (the key is shown). A bass one step above home = ii; a bass a third below home = vi. Let your hand answer what the colour can't.
+
+**The drill's method** (also in its *How to do it* box): each question starts with a cadence in a new key — find home first. Then follow the bass: 2 → 5 → 1 is the classic path; the colours help (Imaj7 dreamy, ii7 mellow, V7 bluesy and pulling, vi7 mellow and sad). The drill runs at your current progressions rung, so you may meet this four-chord choice only later.
 
 ## Drills
 
@@ -111,6 +121,14 @@ The drill also changes key every question. Each one begins with a short cadence 
 
 ## Make it
 
+1. Copy the first 12 bars of the shell example (C, F, B♭, E♭) into the piano track, or use rootless voicings if you prefer them.
+2. Add the bass: root on beat 1 of every bar. Loop it.
+3. Play along with your left hand on the keyboard, saying the key name before each ii chord. When it feels steady, raise the tempo by 10.
+
+**Judge it by ear:** every third bar should sound like an arrival, and the next bar like setting off again. If a bar sounds like a wrong chord, check its 3rd first — that's where spelling mistakes hide.
+
+**If you're stuck:** do just C and F (6 bars) today, save, and add B♭ and E♭ next session — the check needs all 12 bars, so submit then.
+
 ```exercise
 {
   "id": "e5-daw-cycle",
@@ -132,3 +150,7 @@ The drill also changes key every question. Each one begins with a short cadence 
   }
 }
 ```
+
+## Between lessons
+
+Play shell ii–V–Is in two keys of the cycle a day, key name out loud first; add one new key each day until all six are easy.

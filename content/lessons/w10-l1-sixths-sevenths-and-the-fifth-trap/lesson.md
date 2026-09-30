@@ -35,7 +35,34 @@ Play C4 and G4 together, then C4 and C5 together. Both sound clean and open, wit
 }
 ```
 
-This lesson opens two octave rungs with the fifth as the wrong note: first with both notes together, then one after the other. The drill runs at your current octave rung, so you'll meet the fifth trap once the earlier rungs are solid. When you do and you're unsure, use the "Listen again" buttons and compare with the real octave. Expect it to take a while: it's a genuinely hard pair.
+### Try it: one note or two?
+
+1. Hold **C4 + C5** together for three seconds, then **C4 + G4**. Ask only: *one* sound, or a *pair*? The octave is one fuller C; the fifth is two notes getting along.
+2. Now one after the other: **C4 → C5**, then **C4 → G4**. After each, play C4 again: the octave "comes back" to it; the G stays somewhere new.
+3. Repeat from F3 (F3 + F4, F3 + C4) and from A3 (A3 + A4, A3 + E4).
+
+```exercise
+{
+  "id": "e4", "type": "listen", "title": "Check: octave or fifth?",
+  "instructions": "Both notes together in each. One sound, or an open pair?",
+  "spec": {
+    "examples": [
+      { "title": "Sound 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[D3 A3]:w" } ] },
+      { "title": "Sound 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 E4]:w" } ] }
+    ],
+    "questions": [
+      { "q": "Sound 1 is…", "choices": ["an octave", "a fifth"], "answer": 1, "explain": "A fifth: D3 + A3. Play D3 + D4 right after it to hear the difference." },
+      { "q": "Sound 2 is…", "choices": ["an octave", "a fifth"], "answer": 0, "explain": "An octave: E3 + E4. Play E3 + B3 after it: that's the open pair." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** replay the question, then play both candidates yourself from its low note: that note plus 12 keys up (octave), and plus 7 keys up (fifth). Which of your two matched? Finding the low note first is the slow part; search with higher/lower until your key blends with it.
+
+This lesson opens two octave rungs with the fifth as the wrong note: first with both notes together, then one after the other.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): together, ask "one note or two?"; one after the other, play both candidates yourself (first note to its octave, first note to its fifth), replay, pick the closer match. The drill runs at your current octave rung, so you'll meet the fifth trap once the earlier rungs are solid. Expect it to take a while: it's a genuinely hard pair.
 
 ```ladder
 { "skill": "octave", "unlocks": 12, "intro": "Opens \"Octave or fifth?\" together, then one after the other; the drill runs at your current rung." }
@@ -83,7 +110,34 @@ The major sixth is bright and open: it's the first leap of *My Bonnie Lies Over 
 }
 ```
 
-This lesson opens two interval rungs: fifth vs octave (the trap again, this time as intervals), then minor vs major sixth. The drill runs at your current interval rung.
+### Try it: the two sixths
+
+1. Play **G4 → E5** and hum "My Bon-" in your head: that's a major sixth. Now **G4 → E♭5**: one key narrower, darker.
+2. From C4: count 8 keys up (A♭4) and 9 keys up (A4). Play C4 → A♭4, C4 → A4, three times each.
+3. Play C4 → G4 → A♭4: the minor sixth is "just past the fifth". Then C4 → A4 → C5: the major sixth is "a bit below the octave".
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: which sixth?",
+  "instructions": "Both leaps go up from the same note.",
+  "spec": {
+    "examples": [
+      { "title": "Leap 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h B4:h" } ] },
+      { "title": "Leap 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h Bb4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Leap 1 is…", "choices": ["a minor 6th", "a major 6th"], "answer": 1, "explain": "Major 6th: D → B (9 keys). It fits \"My Bon-\"." },
+      { "q": "Leap 2 is…", "choices": ["a minor 6th", "a major 6th"], "answer": 0, "explain": "Minor 6th: D → B♭ (8 keys), darker, just past the fifth A." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** replay, then play the first note and both candidates (8 and 9 keys up) yourself; pick the one that matches. Or start the "My Bon-" tune in your head from the first note: if the second note fits, it's major.
+
+This lesson opens two interval rungs: fifth vs octave (the trap again, this time as intervals), then minor vs major sixth.
+
+**Before the drill, rehearse the method** (in the *How to do it* box): for 5th vs octave, imagine the first note an octave up and ask whether the second note matches it; for the sixths, "My Bonnie" = major, darker = minor, and check by playing 8 vs 9 keys up. The drill runs at your current interval rung.
 
 ```ladder
 { "skill": "intervals", "unlocks": 9, "intro": "Opens \"5th or octave\" and \"Minor or major 6th\"; the drill runs at your current rung." }
@@ -107,6 +161,11 @@ A seventh is easiest to find from the top: go to the octave, then step back down
 
 Next lesson opens sevenths in the ear drill. Today your hands learn them.
 
+### Try it: sevenths from the top
+
+1. Play C4 → C5, then step back one key: C4 → B4 (major 7th). Step back two: C4 → B♭4 (minor 7th).
+2. Play C4 + B4 together, then C4 + B♭4. The major 7th grates; the minor 7th is wide and softer. Then resolve each: B4 → C5, B♭4 → A4.
+
 ```exercise
 {
   "id": "e2", "type": "build-interval", "title": "Build the wide intervals",
@@ -127,3 +186,10 @@ Next lesson opens sevenths in the ear drill. Today your hands learn them.
   ] }
 }
 ```
+
+## Between lessons
+
+- **3 minutes, daily:** octave vs fifth from random low notes, together then one after the other; ask "one note or two?"
+- **2 minutes:** My Bonnie's first phrase; then G → E (M6) and G → E♭ (m6), eyes closed, name each.
+- **2 minutes:** from any key, find its 6ths and 7ths: M6 = a minor 3rd down, then up an octave; M7 = one key below the octave.
+- One Practice-page session: octave and intervals at your rung.

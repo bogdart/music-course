@@ -53,10 +53,18 @@ Honestly, it probably sounds as if the chord *changes*, because your ear follows
 ## Step 3: a keyboard method for the root
 
 1. **Play the lowest note** you hear. (You already can.)
-2. **Find the other notes**: try keys above it until the chord you play matches what you heard.
-3. **Stack them in thirds**, or use the 4th rule from last lesson: the upper note of the 4th is the root.
+2. **Find the other two notes**: try keys above it until what you play matches the chord.
+3. **The settled test:** hold the three notes with your right hand and play each of them in turn, *low*, with your left hand. One of them makes the chord sound solid and finished, like a floor; the other two make it sound lighter or floating. The solid one is the root. (On paper, the 4th rule from last lesson gives the same answer: the upper note of the 4th.)
 
-Slow at first, faster with practice, and after a few weeks you'll start to recognise the *shapes* by sound. Try it on this phrase: four chords, some of them inverted. Work out each chord on your keyboard before you answer.
+### Try it: the settled test on C/E
+
+1. Right hand: E G C (C major, 1st inversion). Left hand: play **E2** under it. Then **G2**. Then **C2**.
+2. Which bass made the chord feel "done"? For most people it's C2; G2 often feels floating, E2 light.
+3. Repeat with A C E (A minor): try A2, C2, E2 under it. The settled one should be A2.
+
+If two of them sound equally settled, pick the one that makes the chord sound most like a plain, final chord, and check with the 4th rule. It's slow at first; with practice you'll start to recognise the shapes by sound.
+
+Try it on this phrase: four chords, some inverted. Work out each chord on your keyboard before you answer.
 
 ```exercise
 {
@@ -86,7 +94,9 @@ Slow at first, faster with practice, and after a few weeks you'll start to recog
 }
 ```
 
-Now the drill. This lesson opens two roots rungs that use the method: first major chords that may be inverted, then major and minor. Play the **root**, not simply the lowest note. You'll probably play the lowest note at first — that's the natural first answer. If you get it wrong, play the chord yourself with your answer at the bottom and compare. The drill runs at your current roots rung, so you'll meet inverted chords once the bass-line rungs are solid.
+**If you can't hear it yet:** you don't need to hear the root directly. Find the three notes (lowest first, then the others), then run the settled test: each note low under the chord, keep the one that sounds like a floor. If your drill answer is marked wrong, play the chord yourself with your answer at the bottom, then with the right root at the bottom, and compare.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): the lowest note may not be the root now. Try the lowest note and the others low under the chord; the one on which the chord "sits" best is the root. Play the **root**, not simply the lowest note. Expect to play the lowest note at first; that's the natural first answer. This lesson opens inverted major chords, then major and minor; the drill runs at your current roots rung, so you'll meet them once the bass-line rungs are solid.
 
 ```ladder
 { "skill": "roots", "unlocks": 7, "intro": "Opens \"Root when the chord is inverted\" (major), then major and minor; the drill runs at your current rung." }
@@ -108,8 +118,24 @@ Until now every degree drill stayed in one key (C, then G, F and A minor) for we
 }
 ```
 
-Different notes, meant to give the same *feeling* — though right after the jump from C to F, the A may not feel like 3 at once. After each answer the note walks home in its own key, which also helps you hear the new home. This rung uses degrees 1–5 only, and the drill runs at your current degree rung: you'll meet it once the minor rungs are solid.
+Different notes, meant to give the same *feeling*, though right after the jump from C to F the A may not feel like 3 at once. After each answer the note walks home in its own key, which also helps you hear the new home.
+
+### Try it: find home first, then count
+
+1. Play the F cadence yourself: F, B♭ (B♭ D F), C (C E G), F. Stop and play **F alone**: that's home now.
+2. Play A. Walk down to F on the keyboard: A, G, F. Two steps down = degree 3.
+3. Now do it with C: cadence C – F – G – C, play E, walk down E, D, C. Also 3. Same walk, different keys.
+
+**If you lose home:** press Reference and listen to the cadence again (that's allowed), then find its last bass note on your keyboard before the question note plays. Once your finger is on home, find the question note by searching and count the keys of the scale between them.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill): let the cadence finish and hold its last note as home, then walk from the question note down to it and count. This rung uses degrees 1–5 only, and the drill runs at your current degree rung: you'll meet it once the minor rungs are solid.
 
 ```ladder
 { "skill": "degrees", "unlocks": 15, "intro": "Opens \"Any key: 1 to 5\" (the cadence tells you home); the drill runs at your current rung." }
 ```
+
+## Between lessons
+
+- **3 minutes:** pick any chord from C, F, G, Am, Dm, Em; play it in an inversion and run the settled test with your left hand.
+- **2 minutes:** play a cadence in C, G or F, then find home alone on the keyboard before playing anything else.
+- One roots session and one degrees session on the Practice page. If a rung feels at chance, go back to this lesson's Try it steps before drilling more.

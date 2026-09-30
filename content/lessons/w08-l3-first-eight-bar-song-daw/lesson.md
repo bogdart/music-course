@@ -37,7 +37,7 @@ The melody of A' starts like A, then changes its last bars to land on degree 1.
 { "key": "C", "bars": ["C", "F", "C", "G", "C", "F", "G", "C"], "roman": true, "play": true, "bpm": 90 }
 ```
 
-Here's a complete model. Listen once for the whole, then listen again following just one layer: drums, then bass, then chords, then melody. Following one layer in a mix is hard at first — the bass is the trickiest; try the kick-and-bass at the very start of each bar.
+Here's a complete model. Following one layer in a mix is hard at first — the bass is the trickiest.
 
 ```example
 {
@@ -53,15 +53,53 @@ Here's a complete model. Listen once for the whole, then listen again following 
 }
 ```
 
+**Try it — one layer at a time, with your hands:**
+
+1. **Drums:** play it and tap your foot on every kick (beats 1 and 3), your hand on every snare (2 and 4).
+2. **Bass:** play it again and, with your left hand, play along with the bass: C, F, C, G, C, F, G, C — one note per bar, at the start of the bar. When your note matches, the low part gets louder and cleaner; when it doesn't, it rubs. That's a keyboard way to *hear* a bass line.
+3. **Chords:** right hand, play the chord of each bar along with the recording (any arrangement).
+4. **Melody:** listen once more for the ends of the two phrases: bar 4 (the melody stops on D over G — a question) and bar 8 (C over C — the answer).
+
 ## I, IV and V by ear
 
-Your song uses three chords, and this lesson opens ear rungs that use them too. The progressions ladder adds **IV** to I and V. IV is the "away" chord of the cadence — it sounds like leaving home, without the strong pull back that V has. The drill runs at your current progressions rung, so you'll meet IV once I vs V is solid.
+Your song uses three chords, and this lesson opens ear rungs that use them too. The progressions ladder adds **IV** to I and V. IV is the "away" chord of the cadence.
+
+**Try it:**
+
+1. Play I – IV – I – V – I with the right hand (C E G → C F A → C E G → B D G → C E G) and the bass under it (C3, F2, C3, G2, C3).
+2. Stop on IV and hold it; then stop on V and hold it. Many people hear IV as "stepped away, but calm" and V as "wants to go home now". If both just sound "not home", that's fine — use the bass.
+3. Listen to the bass alone: C → F goes **up** a 4th (or down a 5th); C → G goes up a 5th. You don't need to name the jump — just find where it lands.
+
+**If you can't hear it yet:** after each chord, search its bass note: **C = I, F = IV, G = V**. Three possible keys — at most a few tries each.
+
+```exercise
+{
+  "id": "c1",
+  "type": "listen",
+  "title": "Check: which bass note?",
+  "instructions": "Four bars of chords with a bass. Find the bass note of bar 4 on your keyboard.",
+  "spec": {
+    "example": { "title": "Four bars", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:w | [C4 E4 G4]:w | [B3 D4 G4]:w | [C4 F4 A4]:w" }, { "instrument": "bass", "seq": "C3:w | C3:w | G2:w | F2:w" } ] },
+    "questions": [
+      { "q": "Bar 3: the bass note (and chord) is…", "choices": ["C (I)", "F (IV)", "G (V)"], "answer": 2, "explain": "G in the bass: V." },
+      { "q": "Bar 4: the bass note (and chord) is…", "choices": ["C (I)", "F (IV)", "G (V)"], "answer": 1, "explain": "F in the bass: IV." }
+    ]
+  }
+}
+```
+
+### Before the progressions and roots drills
+
+Both drills run at your current rung. Their **How to do it** boxes:
+
+- **Progressions:** rest (I), lift away (IV) or pull home (V)? Follow the bass to check.
+- **Roots (bass lines):** listen only to the lowest sound. Play the first bass note, then for each next chord decide *up or down* and search in that direction.
 
 ```ladder
 { "skill": "progressions", "unlocks": 2, "intro": "Opens \"I, IV, V\" (after I or V); the drill runs at your current rung." }
 ```
 
-The roots ladder moves from single chords to **bass lines**: you hear two chords, I and V, and play their two bass notes (C and G) in order; then three chords, I, IV and V (C, F, G). Listen to the model song's bass for exactly this: one low note per chord.
+The roots ladder moves from single chords to **bass lines**: two chords, I and V, and you play their two bass notes in order; then three chords, I, IV and V. It's exactly what you did with your left hand along the model song.
 
 ```example
 {
@@ -81,7 +119,7 @@ The roots ladder moves from single chords to **bass lines**: you hear two chords
 
 ## Octaves: two apart
 
-One more octave rung opens today, for later: the candidates may be *two* octaves above the first note (C3 and C5). The height gap is huge and, played together, two octaves melt less obviously than one. The bridge is the **Walk up the octaves** button after each answer: it plays C3 → C4 → C5, one octave at a time — the step you already know, twice. You'll meet this rung only once the earlier octave rungs are solid.
+One more octave rung opens today, for later: the candidates may be *two* octaves above the first note (C3 and C5). The height gap is huge, and it's hard to hear directly. The bridge is to **walk** it, one octave at a time — the step you already know, twice.
 
 ```example
 {
@@ -91,6 +129,14 @@ One more octave rung opens today, for later: the candidates may be *two* octaves
   "show": ["keyboard"]
 }
 ```
+
+**Try it:** play C3, C4, C5 slowly, then C3 straight to C5. Then E3, E4, E5 and E3 → E5. Then a trap: C3 → C4 → B4 — does the last step feel like "the same note again", or like a new note?
+
+**If you can't hear it yet:** after the drill's answer, press **Walk up the octaves** and follow along on your own keys (count 12 keys per step). Before answering, play the first note and the note 24 keys above it, then replay the question.
+
+### Before the octave drill
+
+The drill runs at your current octave rung. Its **How to do it** box has the method; for this rung it's *walk it*: imagine the first note, its octave, then the octave above that — does the candidate sit on the last step?
 
 ```ladder
 { "skill": "octave", "unlocks": 9, "intro": "Opens \"Two octaves apart: which one?\"; the drill runs at your current octave rung." }
@@ -103,6 +149,8 @@ One more octave rung opens today, for later: the candidates may be *two* octaves
 3. **Drums**: the basic beat, all 8 bars.
 4. **Melody last**, over the loop. Write a 2-bar idea, repeat it, then shape the endings: bar 4 on 2 or 5 (question), bar 8 on 1 (answer). Chord tones on beats 1 and 3.
 5. **Listen top to bottom**, fix anything that clashes, and save.
+
+**Stuck on the melody?** Loop bars 1–2 and noodle on your keyboard over them using only the chord's own notes (C E G over C, F A C over F) — no wrong answers. When two bars feel right, enter them. Then make bar 4 stop on D or G, and bar 8 on C.
 
 It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill, and you're starting to train it today. If it doesn't fit in one session, save and finish it next time.
 
@@ -179,3 +227,9 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
   "spec": { "prompt": "Listen to your finished song twice. What do you like about it? What would you change if you had another hour? Then compare: how do octaves, degrees and major vs minor sound to you now compared with week 1?", "minWords": 40 }
 }
 ```
+
+## Between lessons
+
+- **Finish the song** if it didn't fit today, then listen to it the next day with fresh ears and change one thing.
+- **Two Practice sessions of about 10 minutes.** For bass-line items: play along with the replay using your left hand, as you did with the model song.
+- **Ready for Phase 2?** Look at the Dashboard's ladder bars. None has to be full. If it says *practise first*, give that skill one or two extra sessions before week 9; otherwise start minor keys — the ladders will keep each skill at your pace.

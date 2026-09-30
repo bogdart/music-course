@@ -100,9 +100,16 @@ Here is an original hero motif, first triumphant in C major, then defeated: the 
 
 ## Making a motif that survives
 
-A good leitmotif is **short** (2–4 bars), has a **memorable rhythm** and a **distinctive interval** — like the rising 4th that opens our hero motif. Listeners recognise rhythm and contour (the up-and-down shape) first; the exact notes can change. Test yours: play it in minor, slowly, then fast on another instrument. If you still recognise it each time, it works.
+A good leitmotif is **short** (2–4 bars), has a **memorable rhythm** and a **distinctive interval** — like the rising 4th that opens our hero motif. Listeners recognise rhythm and contour (the up-and-down shape) first; the exact notes can change. The test, in steps:
+
+1. Tap only its rhythm on one key. Could you tell it from another tune? If not, make one note much longer or add a short-short pair.
+2. Play it in minor (lower the 3rd and 6th), slowly.
+3. Play it fast, an octave up, on another instrument.
+4. If you still recognise it each time, it works. If it vanished, the rhythm is too plain — fix that before the notes.
 
 ## Ear
+
+Melody method: before touching keys, replay and ask of each move: up, down or same — step or jump? Find the first note by searching (higher or lower?), then let your fingers follow the path; a wrong note tells you which way to move. The *How to do it* box under each drill shows the exact method for your current rung.
 
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "A leitmotif only works if you can remember a tune — melody play-back at your current rung." }
@@ -129,6 +136,12 @@ A good leitmotif is **short** (2–4 bars), has a **memorable rhythm** and a **d
 ```
 
 ## Make it
+
+1. Write the motif on lead first: start with a rhythm you can tap, then give it one distinctive leap (a 4th or 5th up is a good first try).
+2. Copy it to the strings track in bars 5–8, an octave lower. Change the mode: lower its 3rd (and 6th, if used) for minor, or make its second note a half step above home for Phrygian. Keep the rhythm untouched.
+3. Bass: a 1-bar ostinato — one low note pulsing in 8ths with a neighbour note on the last beat is enough. Copy it under bars 5–8.
+4. **Judge by ear:** play bars 1–4 and then 5–8. Is it the same character, in a darker moment? If it sounds like a new tune, you changed the rhythm — restore it.
+5. **Stuck?** Transform the hero motif from this lesson for your own character instead of inventing a new one.
 
 ```exercise
 {
@@ -157,3 +170,7 @@ A good leitmotif is **short** (2–4 bars), has a **memorable rhythm** and a **d
   }
 }
 ```
+
+## Between lessons
+
+Play the Grieg ostinato and the hero motif (major, then minor) once a day; try the hero motif in E Phrygian once.

@@ -60,6 +60,18 @@ Now raise the 5th degree, G, to **G♯ — the ♯5**. It leans up into A (degre
 }
 ```
 
+### Try it
+
+1. Hold a C chord in the left hand. With the right hand play F, stop, then F♯, stop. Don't resolve either.
+2. Notice where each note *wants* to go: F wants to sink to E; F♯ wants to climb to G. Play the note it wants — that's the relief.
+3. Replay the first example and listen only for the middle note of each group.
+
+**Check:** hold F♯ over C and don't resolve it. If it feels like an unfinished sentence that wants to go *up*, you've heard the ♯4.
+
+**If you can't hear it yet:** play F♯ and G together, then F and E together — both are half-step rubs. Then just alternate F♯→G and F→E a few times: the direction of the pull, not the note itself, is what you're learning.
+
+**Before the drill** — the method (also in the *How to do it* box): after the cadence, ask which way the note leans. Leaning down toward 3 → 4. Leaning hard up toward 5 → ♯4. If the drill is on an earlier degree rung, that rung's box has its own method.
+
 ```ladder
 { "skill": "degrees", "unlocks": 21, "intro": "Opens: the ♯4 joins the degrees. The drill runs at your current degree rung, so an earlier rung may come first." }
 ```
@@ -127,6 +139,18 @@ Same trick on degree 3: E G♯ B instead of E G B. The G♯ (♯5) leans into A,
 }
 ```
 
+### Try it: minor or major on the same bass
+
+1. Play Dm (D F A) then D (D F♯ A), two beats each. Only the middle note moves.
+2. Now play each one followed by G. Which one makes G feel like an arrival?
+3. Do the same with Em (E G B) → Am and E (E G♯ B) → Am.
+
+**Check:** replay the two progression examples above. In each, the second half has a pushier chord than the first half — you can point to which bar it is.
+
+**If you can't hear it yet:** play just the middle notes, F then F♯, over a held D in the bass. F sounds soft and settled; F♯ sounds bright and restless. Then add the A back on top.
+
+**Before the drill** — the method (also in the *How to do it* box): the bass note is the same, so listen to the chord's *colour* and *push*. Soft and minor → ii (or iii). Bright, major and shoving toward the next chord → V/V (or V/vi). Replay and ask "where does it push?" If the drill is on an earlier progression rung, follow that rung's box.
+
 ```ladder
 { "skill": "progressions", "unlocks": 16, "intro": "Opens: ii or V/V (minor or major on degree 2), then iii or V/vi — one contrast at a time. The drill runs at your current progression rung." }
 ```
@@ -146,6 +170,13 @@ Listen to the opening of each song on your own before answering; the facts appea
   ] }
 }
 ```
+
+## Make it: two pulls in a loop
+
+1. Loop the template first as it is. Then change only bar 2 (Em → E) and loop again. **Judge it by ear:** bar 3 (Am) should now feel like you've *arrived*, not just moved.
+2. Change bar 6 (Dm → D) and listen for the same arrival at bar 7.
+3. Write the lead last: the raised note at the end of bars 2 and 6, stepping up a half step into the next bar.
+4. **If you're stuck:** if bar 3 doesn't feel like an arrival, check the chord really has G♯ (not G) — a single wrong note turns E back into Em.
 
 ```exercise
 {
@@ -170,3 +201,7 @@ Listen to the opening of each song on your own before answering; the facts appea
   }
 }
 ```
+
+## Between lessons
+
+Play C – D7 – G – C and C – E7 – Am on your keyboard a few times a day, listening for the raised note climbing. Do one Practice session.

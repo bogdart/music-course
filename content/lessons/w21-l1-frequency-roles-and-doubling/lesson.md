@@ -61,6 +61,16 @@ Now each layer has its own floor. Look at the piano roll: four separate bands of
 }
 ```
 
+### Try it: crowded vs arranged
+
+1. Play the crowded example. Try to follow the melody from start to end. Then try to follow the bass.
+2. Play the arranged one and do the same.
+3. Ask one question per version: could I hum or point along to the melody without losing it?
+
+**Check:** in the crowded version the melody keeps slipping into the chords (it dips to G3 and A3, inside the pad); in the arranged one it stays on top and the bass is a clear low floor under everything.
+
+**If you can't hear it yet:** play the chord C3 E3 G3 on your keyboard and add the melody's first notes E4 D4 C4 G3 in the same range — your fingers literally bump into each other. Then play C3 G3 E4 with E5 D5 C5 G4 above: the hands have room, and so do the sounds.
+
 ```exercise
 {
   "id": "play-spread-voicings-v2",
@@ -75,6 +85,8 @@ Now each layer has its own floor. Look at the piano roll: four separate bands of
 
 Frequency roles are also how you *listen*. In a full band the bass lives on the bottom floor: to find it, ignore the melody on top and follow the lowest, darkest line. This lesson opens the roots rung that plays a small band — drums, a pad, a bass and a melody — arranged exactly like the second example. The drill runs at your current roots rung, which may still be an earlier one. (The same band arrives in the progression drill next lesson — one hard band rung at a time.)
 
+**Before the drill** — the method (also in the *How to do it* box next to the drill): ignore drums and melody and listen to the deepest, thumping sound. Replay, tap your foot with it, then find its first note on the keyboard by searching up or down; the rest one by one. Rehearse it now on the arranged example: can you tap along with only the bass (C – G – A – F)?
+
 ```ladder
 { "skill": "roots", "unlocks": 14, "intro": "Opens: find the bass notes inside a full band — listen to the bottom floor. The drill runs at your current roots rung." }
 ```
@@ -84,6 +96,8 @@ Frequency roles are also how you *listen*. In a full band the bass lives on the 
 [[Doubling]] means a second instrument plays the same line. Chorus melodies are often doubled **an octave lower** by strings or a synth: the line gets bigger and more present, and the verse (without the double) sounds smaller by comparison — exactly the contrast you want.
 
 Honest expectation: to you the octave double may not sound like "one fatter melody" yet. It may sound like a second, lower tune that happens to move in step with the first — a new layer. That is normal while octave hearing is still developing (the octave ladder works on exactly this). Listen for the effect anyway: with the double, the chorus feels heavier and fuller.
+
+**Try it:** play the example, then play the lead's first bar (E5 D5 C5 G4) on your keyboard with one hand and the same notes an octave lower with the other. **Check:** bars 5–8 sound louder and thicker, even if you hear two lines. **If you can't hear it yet:** compare only bar 1 with bar 5 — replay each twice. Heavier is enough; "one melody" comes later with the octave ladder.
 
 ```example
 {
@@ -123,7 +137,7 @@ Honest expectation: to you the octave double may not sound like "one fatter melo
       { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w" },
       { "instrument": "bass", "seq": "C3:h C3:h | G2:h G2:h | A2:h A2:h | F2:h F2:h" }
     ] },
-    "task": "This is the crowded version. Give each part its own floor: move the lead up an octave, turn the pad into spread voicings with the top note below the melody, move the bass down an octave. Change only octaves and voicings, never the note names.",
+    "task": "This is the crowded version. Give each part its own floor, one step at a time, playing after each: 1) move the bass down an octave (the low end gets firmer); 2) move the lead up an octave (the melody pops out); 3) spread the pad (C3 G3 E4 style, top note below the melody). Change only octaves and voicings, never the note names. Stuck? Copy the voicings from the arranged example above.",
     "checks": [
       { "kind": "range", "low": "E4", "high": "C6", "track": 0 },
       { "kind": "range", "low": "B2", "high": "G4", "track": 1 },
@@ -159,3 +173,7 @@ Honest expectation: to you the octave double may not sound like "one fatter melo
   }
 }
 ```
+
+## Between lessons
+
+Open an earlier song of yours, look at the piano roll and move any track that sits on another's floor. Play before and after.

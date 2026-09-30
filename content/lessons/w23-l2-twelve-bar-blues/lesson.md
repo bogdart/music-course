@@ -69,13 +69,36 @@ Over C7 a blues melody often uses E♭ — although the chord itself has E. That
 }
 ```
 
-Be honest about what you hear: at first E♭ over C7 will probably just sound "wrong" or "minor". That is accurate — it *is* a minor 3rd against a major chord, used on purpose. This lesson opens the degree rung that trains you to name it as ♭3 after a major cadence; the drill runs at your current degree rung. The other blue notes are the ♭7 (you know it from Mixolydian) and the ♭5.
+Be honest about what you hear: at first E♭ over C7 will probably just sound "wrong" or "minor". That is accurate — it *is* a minor 3rd against a major chord, used on purpose. The other blue notes are the ♭7 (you know it from Mixolydian) and the ♭5.
 
-The [[blues scale]] is minor pentatonic plus that ♭5: in C, **C E♭ F G♭ G B♭**.
+### Try it
+
+1. Hold C7 in your left hand (C E G B♭). With the right hand play E, then E♭, one after the other, two beats each.
+2. Now play E♭ and slide up into E (press E♭, then E while E♭ is still sounding, then let E♭ go). That little "bend upward" is the blues gesture.
+3. Replay the example above and listen only for the moment the melody rises from E♭ to E.
+
+**Check:** in bar 2 of the example you can point to the exact moment the dark note turns bright.
+
+**If you can't hear it yet:** play them *together* with the C7: E sits inside the chord and blends; E♭ against the E of the chord makes a gritty rub. The rub is the blue note. Then go back to one after the other.
+
+**Before the degree drill** — the method (also in the *How to do it* box): after the cadence, hear the major home chord in your head; its 3 is bright. If the note is the same height but darker, it's ♭3. If it's darker and higher, a whole step under home, it's ♭7. If the drill is on an earlier degree rung, follow that rung's own box.
 
 ```ladder
 { "skill": "degrees", "unlocks": 20, "intro": "Opens: major key, but the blue b3 may appear next to b7. The drill runs at your current degree rung." }
 ```
+
+The [[blues scale]] is minor pentatonic plus that ♭5: in C, **C E♭ F G♭ G B♭**. Listen to the two runs — the only difference is the extra note squeezed between F and G:
+
+```example
+{
+  "title": "C minor pentatonic, then the C blues scale",
+  "bpm": 76, "timeSig": "4/4", "key": "Cm",
+  "tracks": [ { "instrument": "piano", "seq": "C4:q Eb4:q F4:q G4:q | Bb4:q C5:h. | r:w | C4:q Eb4:q F4:q Gb4:q | G4:q Bb4:q C5:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Before the scales drill** — the method (in the *How to do it* box): listen to the middle of the run. Minor pentatonic walks F → G in one clean step; the blues scale goes F → G♭ → G, a crunchy chromatic creep of three notes in a row. Try playing both on your keyboard first. If you can't hear it, play just F G♭ G against F G — the creep is obvious in isolation.
 
 ```ladder
 { "skill": "scales", "unlocks": 10, "intro": "Opens: minor pentatonic, or the blues scale with its extra b5? The drill runs at your current scales rung." }
@@ -126,6 +149,14 @@ Chords, shuffle and blue notes in one chorus. (The example uses the app's swing 
 }
 ```
 
+## Make it: a 12-bar backing in G
+
+1. Epiano first: stamp G7 in bar 1, duplicate it to bars 2–4, 7–8 and 11. Then C7 (bars 5, 6, 10) and D7 (bars 9, 12).
+2. Bass: one root per bar on beat 1 (G, C or D, in octave 2). Play it back — it should already sound like a blues.
+3. Only then, if you like, add the fifth on the triplet "and" for a shuffle.
+4. **Judge it by ear:** loop the whole 12 bars. At bar 5 you should feel a lift (IV), at bar 9 the strongest push (V), and bar 12 should throw you back to bar 1. If a bar feels "off", check its root against the chart.
+5. **If you're stuck:** play the chord chart at the top of the lesson in C, then transpose each chord up a fifth (C→G, F→C, G→D).
+
 ```exercise
 {
   "id": "daw-blues-backing-v2",
@@ -149,3 +180,7 @@ Chords, shuffle and blue notes in one chorus. (The example uses the app's swing 
   }
 }
 ```
+
+## Between lessons
+
+Loop your backing and play E♭→E-style slides in G (B♭ sliding to B) over it for a few minutes. Do one Practice session.

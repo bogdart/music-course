@@ -21,9 +21,18 @@ little different.
 
 ## Checkpoint 4 — full structure, drums and bass
 
-1. Add a **section marker** at every section of your form map (the "+ marker" button).
-2. Copy the core into every section.
-3. Program **drums and bass for the whole song**, section by section, before any new layer.
+1. **Markers (5 min).** Add a **section marker** at every section of your form map (the "+ marker" button).
+2. **Copy (5 min).** Copy the core into every section. Check: the timeline shows at least three minutes.
+3. **Drums (15 min).** Start with the plainest groove — kick on 1 and 3, snare on 2 and 4, eighth hats — and copy it
+   through the song. Only then vary: verse 1 hats only or half the kicks, chorus full, bridge none or half-time.
+   Check: close your eyes, press play from a random point — can you tell which section you are in from the drums alone?
+4. **Bass (10 min).** Roots on the downbeat everywhere first; then in the choruses add eighth notes or an octave jump.
+   Check: solo bass + drums; the kick and the bass notes should land together on beat 1.
+5. **Fills (5 min).** One fill in the last bar before each new section (the rhythm below is a good default).
+6. **Listen through once (5 min).** Where your attention drifts, the repeat is too exact: add or remove one layer there.
+
+**Stuck on the bridge?** Take the chorus chords in a new order starting on IV or vi, drop the drums, and keep the bass
+on long notes.
 
 Rules of thumb (common pop habits, not laws — some of the songs you transcribed break them, so treat them as a
 default you can override on purpose):
@@ -84,6 +93,15 @@ default you can override on purpose):
 }
 ```
 
+## Ear: rhythm
+
+Count out loud ("1 and 2 and…") through the whole item, rests included; nail one bar before adding the next. The *How
+to do it* box under the drill shows the exact method for your current rung.
+
 ```ladder
 {"skill": "rhythm", "unlocks": 16, "intro": "Rhythm at your own rung."}
 ```
+
+## Between lessons
+
+Play the song once through with only drums and bass unmuted. Mark the one spot where it drags — session 3 starts there.

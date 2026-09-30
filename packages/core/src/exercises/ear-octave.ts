@@ -44,6 +44,40 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
         ],
       };
     }
+    if (s.mode === 'seek') {
+      // hear a note, find the exact key: every wrong key says "higher" or "lower" (same register, no octave jumps)
+      const pool = [...new Set(notes.flatMap((n) => octaves.map((o) => noteToMidi(`${n}${o}`))))].sort((a, b) => a - b);
+      const midi = rng.pick(pool);
+      const lo = pool[0]!;
+      const hi = pool[pool.length - 1]!;
+      return {
+        // a middle-first search needs about log2(n) + 1 keys: finding it within that counts as correct
+        type: 'ear-octave', mode: 'seek', midis: [midi], answer: String(midi), range: [lo, hi], limit: Math.ceil(Math.log2(pool.length)) + 1,
+        prompt: `Find this exact note between ${midiToNote(lo)} and ${midiToNote(hi)} — within ${Math.ceil(Math.log2(pool.length)) + 1} tries. Each key you try tells you to go higher or lower.`,
+        audio: melodic([midi], { instrument, beats: 2 }),
+        solution: midiToNote(midi),
+        compare: [{ label: 'The note again', audio: melodic([midi], { instrument, beats: 2 }) }],
+      };
+    }
+    if (s.mode === 'same-pitch') {
+      // two notes in the same register: exactly the same note twice, or a different one (foils in semitones, up or down)
+      const pool = notes.flatMap((n) => octaves.map((o) => noteToMidi(`${n}${o}`)));
+      const a = rng.pick(pool);
+      const same = rng.chance(0.5);
+      const dist = rng.pick(s.foils?.length ? s.foils : [2, 4, 7]);
+      const b = same ? a : a + (rng.chance(0.5) ? dist : -dist);
+      return {
+        type: 'ear-octave', mode: 'same-pitch', midis: [a, b], answer: same ? 'same' : 'different',
+        prompt: 'Two notes: exactly the same note twice, or two different notes?',
+        audio: melodic([a, b], { instrument, beats: 1.5 }),
+        choices: [{ value: 'same', label: 'The same note' }, { value: 'different', label: 'Different notes' }],
+        solution: `${same ? 'The same note' : 'Different'} — ${midiToNote(a)} then ${midiToNote(b)}`,
+        compare: [
+          { label: `Only the first note, twice: ${midiToNote(a)} ${midiToNote(a)}`, audio: melodic([a, a], { instrument, beats: 1.5 }) },
+          ...(same ? [] : [{ label: 'Both together (two different notes rub)', audio: harmonic([Math.min(a, b), Math.max(a, b)], { instrument, beats: 2.5 }) }]),
+        ],
+      };
+    }
     if (s.mode === 'higher-or-lower') {
       const pool = [...new Set(notes.flatMap((n) => octaves.map((o) => noteToMidi(`${n}${o}`))))];
       if (pool.length < 2) throw new Error('ear-octave higher-or-lower needs at least two distinct pitches');
@@ -56,11 +90,25 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
         audio: melodic([a, b], { instrument, beats: 1.5 }),
         choices: [{ value: 'lower', label: 'Lower' }, { value: 'higher', label: 'Higher' }],
         solution: `${answer === 'higher' ? 'Higher' : 'Lower'} — ${midiToNote(a)} then ${midiToNote(b)}`,
+        compare: [{ label: 'Slowly, with a pause', audio: melodic([a, a, b], { instrument, beats: 2 }) }],
       };
     }
     return comparePair(s, notes, octaves, instrument, rng);
   },
   evaluate(item, answer) {
+    if (item.mode === 'seek') {
+      // the answer is the search: the keys tried, in order (a single number = one key)
+      const tries = (Array.isArray(answer) ? answer : [answer]).map(Number).filter(Number.isFinite);
+      const target = item.midis[0]!;
+      const last = tries[tries.length - 1];
+      const found = last === target;
+      const feedback = found
+        ? `Found it — ${midiToNote(target)}${tries.length > 1 ? ` in ${tries.length} tries` : ' first time'}!`
+        : last === undefined
+          ? 'Play a key.'
+          : `Not found within ${item.limit ?? tries.length} tries — ${seekHint(last, target)} Keep searching.`;
+      return { correct: found, score: found ? 1 : 0, feedback, expected: item.solution };
+    }
     if (item.mode === 'find') {
       const pc = typeof answer === 'number' ? answer % 12 : isNoteName(String(answer ?? '')) ? pitchClass(String(answer)) : -1;
       const correct = pc === item.midis[0]! % 12;
@@ -156,4 +204,13 @@ function comparePair(s: SpecMap['ear-octave'], notes: string[], octaves: number[
       ]),
     ],
   };
+}
+
+/** Direction hint for a seek try. */
+export function seekHint(tried: number, target: number): string {
+  if (tried === target) return 'That is it!';
+  const dir = tried < target ? 'higher ↑' : 'lower ↓';
+  return tried % 12 === target % 12
+    ? `${midiToNote(tried)} is the right note name in the wrong octave — go ${dir} by a whole octave.`
+    : `Not ${midiToNote(tried)} — go ${dir}.`;
 }

@@ -254,3 +254,29 @@ describe('ear ladders', () => {
     expect(s.lastLessonId).toBeNull();
   });
 });
+
+describe('restart the course from a lesson', () => {
+  it('resets that lesson and later ones, keeps history and ladder mastery, ignores older activity for "continue"', async () => {
+    await post('/api/progress/attempts', { lessonId: 'w01-l2-octaves', exerciseId: 'e2', type: 'ear-note', correct: true, score: 1 });
+    await post('/api/progress/exercises/complete', { lessonId: 'w01-l1-welcome', exerciseId: 'e1', type: 'ear-octave', score: 1, passed: true, correct: 1, total: 1 });
+    await post('/api/progress/exercises/complete', { lessonId: 'w01-l2-octaves', exerciseId: 'e1', type: 'play-notes', score: 1, passed: true, correct: 1, total: 1 });
+    await post('/api/progress/lessons/w01-l2-octaves/complete', {});
+    await post('/api/progress/attempts', { lessonId: 'ladder', exerciseId: 'degrees-1', type: 'ear-note', correct: true, score: 1 });
+    let p = await json<ProgressSummaryDTO>(app.request('/api/progress'));
+    expect(p.lastLessonId).toBe('w01-l2-octaves');
+    const r = await json<{ reset: number; lessonIds: string[] }>(post('/api/progress/restart', { fromLessonId: 'w01-l2-octaves' }));
+    expect(r.lessonIds[0]).toBe('w01-l2-octaves');
+    p = await json<ProgressSummaryDTO>(app.request('/api/progress'));
+    expect(p.lessons['w01-l2-octaves']).toBeUndefined();
+    expect(p.exercises['w01-l2-octaves']).toBeUndefined();
+    expect(p.lessons['w01-l1-welcome']).toBeDefined(); // earlier lesson untouched
+    expect(p.lastLessonId).toBeNull();
+    expect(p.nextLessonId).toBe('w01-l1-welcome');
+    expect(p.totals.attempts).toBe(2); // history kept
+    const l = await json<{ skills: { skill: string; unlocked: number; rungs: { attempts: number }[] }[] }>(app.request('/api/ladder'));
+    const deg = l.skills.find((s) => s.skill === 'degrees')!;
+    expect(deg.unlocked).toBe(0); // the reset lesson no longer opens its ladder
+    expect(deg.rungs[0]!.attempts).toBe(1); // mastery history kept
+    expect((await post('/api/progress/restart', { fromLessonId: 'nope' })).status).toBe(404);
+  });
+});

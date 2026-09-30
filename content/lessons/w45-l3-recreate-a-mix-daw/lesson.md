@@ -62,6 +62,18 @@ hidden loops below contain everything. (Confirm that in pass 2 — never trust a
 
 ## Session 1 — passes 1–4, then the rhythm section
 
+Use the week 41 method, with a check after each pass:
+
+1. **Key.** Loop the chorus; find the note the melody rests on at its phrase ends by keyboard search. Hold each candidate
+   low under the loop — home sounds settled throughout. Check: the loop should feel finished on the chord built on it.
+2. **Form & layers.** Play verse, then chorus; list what entered or left. Check: count the chorus layers on your fingers.
+3. **Bass.** Loop the verse, listen to the lowest thump, play a low key, go higher or lower until it merges; one note per
+   bar. Check: play all four along with the loop — each should sit under its chord.
+4. **Chords.** Turn each bass note into a numeral (count up from home). Unsure of the colour? Play the major and the
+   minor chord on that bass note with the loop; keep the one that blends.
+
+Stuck anywhere: loop that one bar, compare your two best candidates back to back, guess, and let the reveal teach you.
+
 ```exercise
 {
   "id": "w45l3-listen",
@@ -204,7 +216,17 @@ hidden loops below contain everything. (Confirm that in pass 2 — never trust a
 
 ## Session 2 — melody, strings, the whole song
 
-Start with the melody: chorus hook first (it's the part everyone remembers), then the verse tune.
+Start with the melody: chorus hook first (it's the part everyone remembers), then the verse tune. First note by
+keyboard search, then up/down and step/leap for each next note, two or three notes at a time. Check: play along with the
+loop — a wrong key sticks out.
+
+For the rebuild:
+
+1. Duplicate your 16 bars into 17–32 before adding anything, so both verses and choruses match.
+2. Strings in the choruses only: hold the chorus chords (you already know them) as long notes.
+3. Enter the lead from your answers above.
+4. A/B four bars at a time: original, then yours. Judge one layer at a time — solo it in your project and listen for it
+   in the original. The bass and the lead matter most; a slightly different drum fill does not.
 
 ```exercise
 {
@@ -333,3 +355,7 @@ Start with the melody: chorus hook first (it's the part everyone remembers), the
   }
 }
 ```
+
+## Between lessons
+
+Play your rebuild and the original chorus back to back once more; fix the one difference that bothers you most.

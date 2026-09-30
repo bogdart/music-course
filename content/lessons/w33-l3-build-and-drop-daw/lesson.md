@@ -91,6 +91,16 @@ Here is the first 4 bars of a drop: a punchy, repeated hook (original) on lead, 
 
 That off-beat bass (rest on the beat, note on the "and") is a dance-music classic: it never collides with the kick.
 
+### Try it
+
+1. Play the build example, and the moment it ends, start the drop example. Notice where you *expect* the drop to start.
+2. Now imagine the build without its half bar of silence (in the DAW: fill it with more 32nds). Play build → drop again.
+3. Count "1 2 3 4" through the last bar of the build out loud.
+
+**Check:** with the gap, the drop's first kick should feel like it lands *on* your expectation — a small jolt. Without it, the drop feels like it arrives mid-sentence.
+
+**If you can't hear it yet:** watch the piano roll while it plays and nod when the snare notes get denser. Your nods speed up with the roll; when the gap comes, your head stops — and the drop "restarts" it. The body usually gets this before the ear does.
+
 ## Drills
 
 ```exercise
@@ -176,6 +186,18 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
   }
 }
 ```
+
+**Building it (two sessions):**
+
+*Session 1 — bars 1–16*
+1. Write the 8-bar intro loop first: kick on every beat, hats, off-beat bass, gated pad. Get it grooving before anything else.
+2. Copy it to bars 9–16, then **delete** the kick and bass there and add the arp (from last lesson). Softly tease the first bar of your hook if you like.
+
+*Session 2 — bars 17–32*
+3. Write the drop (bars 25–32) *before* the build: the hook (short, repeated, with rests), full beat, bass, arp, pad.
+4. Now the build: a snare roll doubling speed every two bars, a rising lead or pad note each bar, and delete everything in the last beat or two of bar 24.
+
+**Judge it by ear:** play bars 13–28 without stopping. The drop should feel like a release; if it feels flat, cut more from the build (fewer tracks by bar 23) rather than adding more to the drop. **If you're stuck** on the hook: take the example hook and change only its last bar.
 
 ```exercise
 {
@@ -265,6 +287,8 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
 
 ## Ear review
 
+**Method** (see each drill's *How to do it* box): drums — one voice per pass, kick, then snare, then hi-hat. Melodies — chunk the phrase into small groups and get the first group right before the next. Both drills run at your current rungs.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Drum dictation at your level: the building blocks of a build-up." }
 ```
@@ -272,3 +296,7 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
 ```ladder
 { "skill": "melody", "unlocks": 18, "intro": "Melodies at your level: a drop hook is a short melody you can play back." }
 ```
+
+## Between lessons
+
+Listen to the first two minutes of any dance track and mark, with the clock, where the kick drops out and where it returns. Compare with your 8-bar blocks.

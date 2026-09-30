@@ -44,6 +44,17 @@ Listen to all three in D major (D–Bm–Em–A), four bars each:
 
 Notice in the walking section: every bar starts on the root, and every beat 4 is a half step or step away from the next root (A#→B, D#→E, G#→A, C#→D).
 
+### Try it
+
+1. Play the example and ignore the notes: just say "pulse", "funk", "walk" when the bass changes character (bars 5 and 9).
+2. Replay bars 5–8 and tap only the bass. Notice where you *don't* tap — the silences are part of the line.
+3. Replay bars 9–12 and count bass notes per bar aloud: one-two-three-four, every bar.
+
+**Check:** pulse = an unbroken stream, funk = short pops with holes, walk = four even steps that go somewhere.
+
+**If you can't hear it yet:** follow the bass row in the piano roll while listening — each style draws a different
+picture: a flat dashed line, scattered dots, a staircase.
+
 ## Choosing a style
 
 Each style carries a different amount of energy and takes up a different amount of space:
@@ -57,6 +68,14 @@ A practical rule: the busier the melody, the simpler the bass. In a verse with l
 ## Your turn — progression in A major
 
 All three tasks use **A – F#m – Bm – E** (I–vi–ii–V), 4 bars. Keep the bass between E1 and E3.
+
+For each style: **write the bass first, then the drums**, and loop after every bar you enter.
+
+* **Judge it by ear.** Pop: does it push forward without you noticing individual notes? Funk: can you hear gaps, and
+  does each bass note hit together with a kick? Walking: does each beat 4 make the next bar feel like arriving?
+* **If you're stuck.** Pop: roots only, no octave jumps — done. Funk: copy the rhythm of bars 5–8 of the example and
+  swap in A, F#, B, E roots. Walking: write beats 1 and 4 first (root, then a half step below the next root), then fill
+  2 and 3 with chord tones.
 
 ```exercise
 {
@@ -149,12 +168,19 @@ The borrowed ♭VII of week 16 (B♭ in C) is loved by bass players because its 
 line steps down a whole step from home instead of a half step. Hear it in C: C – B♭ – F – C (I – ♭VII – IV – I).
 (Its darker cousin ♭VI, A♭ in C, comes in week 30.)
 
+**Try it:** play C3 then B♭2 with your left hand, then C3 then B2. **Check:** B2 pulls back up to C like a spring;
+B♭2 just sits lower, relaxed, happy to go on to F. **If you can't hear it yet:** play the chart below and hold B♭2
+under bar 2, then B2 — B2 clashes against the B♭ chord, B♭2 melts.
+
 ```chords
 { "key": "C", "bars": ["C", "Bb", "F", "C"], "roman": true, "play": true, "bpm": 80 }
 ```
 
 This lesson opens the roots rung where ♭VII may appear in a major-key bass line. The drill runs at your current
 roots rung, which may still be an earlier one.
+
+**Before the drill** (method also in the *How to do it* box): ♭VII is a whole step below home. If the bass drops just
+below home but doesn't pull back up the way the leading tone does, it's ♭VII. Lower rungs have their own methods.
 
 ```ladder
 { "skill": "roots", "unlocks": 13, "intro": "Opens: in a major key the bass may visit ♭VII. The drill runs at your current roots rung." }
@@ -167,3 +193,8 @@ roots rung, which may still be an earlier one.
   "spec": { "prompt": "Play your three versions back to back. Describe the mood of each in one sentence. Which one would you choose for a verse, and which for a chorus? Why?", "minWords": 30 }
 }
 ```
+
+## Between lessons
+
+Finish any style you didn't get to. Then, on one song you like, decide which of the three styles its bass is closest
+to — one sentence.

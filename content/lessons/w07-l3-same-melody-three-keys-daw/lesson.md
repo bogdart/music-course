@@ -7,7 +7,7 @@ phase: p1
 duration_min: 50
 goals:
   - Transpose chords as well as melodies (I, IV, V in C, G and F)
-  - Listen to what a key change does, honestly
+  - Listen to what a key change does, honestly, and spot one by keyboard when the ear is unsure
   - Write a melody in C and transpose it to G and F in the DAW
 prerequisites: [w07-l2-transposing-melodies]
 tags: [transposition, keys, chords, daw, ear]
@@ -15,7 +15,7 @@ tags: [transposition, keys, chords, daw, ear]
 
 # One melody, three keys
 
-Chords transpose exactly like melodies: the **numerals stay**, the letters change. The three major chords of a key — I, IV and V, the chords of the cadence — are the backbone of countless folk, blues, rock and country songs. Here they are in the three keys you know:
+Chords transpose exactly like melodies: the **numerals stay**, the letters change. The three major chords of a key — I, IV and V, the chords of the cadence — are the backbone of countless folk, blues, rock and country songs:
 
 | Key | I | IV | V |
 |---|---|---|---|
@@ -23,7 +23,7 @@ Chords transpose exactly like melodies: the **numerals stay**, the letters chang
 | G major | G | C | D |
 | F major | F | B♭ | C |
 
-Neighbouring keys on the circle of fifths share chords: C major and G major both contain C and G; C major and F major both contain F and C.
+Neighbouring keys share chords: C and G both contain C and G; C and F both contain F and C.
 
 ```chords
 { "key": "G", "bars": ["G", "C", "D", "G"], "roman": true, "play": true, "bpm": 80 }
@@ -33,44 +33,7 @@ Neighbouring keys on the circle of fifths share chords: C major and G major both
 { "key": "F", "bars": ["F", "Bb", "C", "F"], "roman": true, "play": true, "bpm": 80 }
 ```
 
-## Hearing a key change
-
-Listen to one short phrase in C, then G, then F. The *tune* is identical; the height changes.
-
-```example
-{
-  "title": "Same phrase in C, G and F",
-  "bpm": 96, "timeSig": "4/4", "key": "C",
-  "tracks": [
-    { "instrument": "piano", "seq": "E4:q G4:q F4:q D4:q | E4:q C4:q D4:h | C4:q E4:q D4:q B3:q | C4:w | B3:q D4:q C4:q A3:q | B3:q G3:q A3:h | G3:q B3:q A3:q F#3:q | G3:w | A3:q C4:q Bb3:q G3:q | A3:q F3:q G3:h | F3:q A3:q G3:q E3:q | F3:w" },
-    { "instrument": "pad", "seq": "[C3 E3 G3]:h [F3 A3 C4]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:w | [G2 B2 D3]:h [C3 E3 G3]:h | [G2 B2 D3]:h [A2 D3 F#3]:h | [G2 B2 D3]:h [A2 D3 F#3]:h | [G2 B2 D3]:w | [F2 A2 C3]:h [Bb2 D3 F3]:h | [F2 A2 C3]:h [G2 C3 E3]:h | [F2 A2 C3]:h [G2 C3 E3]:h | [F2 A2 C3]:w" }
-  ],
-  "show": ["pianoroll"]
-}
-```
-
-What you'll probably notice: the second phrase starts in a surprising place, and for a moment it may sound "wrong" before it settles. How fast your ear accepts the new home varies — at this stage it can take the whole phrase, or not happen at all. That's why every degree drill in a new key starts with a cadence. In the piano roll you can *see* what's going on: the three phrases have exactly the same shape, shifted up or down.
-
-## Your workflow in the DAW
-
-1. Write a 4-bar melody in **C major** (degrees 1–6, mostly steps, ending on C).
-2. **Write down its degrees** — e.g. 3 5 4 2 | 3 1 2 ….
-3. Build the G and F versions from those degrees. (The DAW's transpose tool exists too: +7 half steps to G, +5 to F — use it only to check yourself.)
-4. Play all three one after another and listen for a note that sounds odd — usually a missing F♯ or B♭.
-
-## Ear review
-
-No new rungs today. Two review drills at your current level — degrees in the new keys, and chord colours.
-
-```ladder
-{ "skill": "degrees", "unlocks": 10, "intro": "Review: degrees at your current rung." }
-```
-
-```ladder
-{ "skill": "chords", "unlocks": 2, "intro": "Review: chord colours at your current rung." }
-```
-
-## Drills
+**Try it:** play I–IV–V–I in C with plain triads (C E G, F A C, G B D, C E G). Then put your thumb on G and play the same *shapes* from G, C, D — check the D chord: it needs F♯ (D F♯ A). Then from F, B♭, C — the B♭ chord is B♭ D F. The hand shapes never change; only the black keys tell you which key you're in.
 
 ```exercise
 {
@@ -109,6 +72,55 @@ No new rungs today. Two review drills at your current level — degrees in the n
 }
 ```
 
+## Hearing a key change
+
+One short phrase in C, then G, then F. The *tune* is identical; the height changes.
+
+```example
+{
+  "title": "Same phrase in C, G and F",
+  "bpm": 96, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "E4:q G4:q F4:q D4:q | E4:q C4:q D4:h | C4:q E4:q D4:q B3:q | C4:w | B3:q D4:q C4:q A3:q | B3:q G3:q A3:h | G3:q B3:q A3:q F#3:q | G3:w | A3:q C4:q Bb3:q G3:q | A3:q F3:q G3:h | F3:q A3:q G3:q E3:q | F3:w" },
+    { "instrument": "pad", "seq": "[C3 E3 G3]:h [F3 A3 C4]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:w | [G2 B2 D3]:h [C3 E3 G3]:h | [G2 B2 D3]:h [A2 D3 F#3]:h | [G2 B2 D3]:h [A2 D3 F#3]:h | [G2 B2 D3]:w | [F2 A2 C3]:h [Bb2 D3 F3]:h | [F2 A2 C3]:h [G2 C3 E3]:h | [F2 A2 C3]:h [G2 C3 E3]:h | [F2 A2 C3]:w" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+What you'll probably notice: the second phrase starts in a surprising place, and for a moment may sound "wrong" before it settles. How fast your ear accepts the new home varies — it can take the whole phrase, or not happen at all yet. In the piano roll you can *see* it: three identical shapes, shifted.
+
+**Try it:**
+
+1. Play the example. At the end of each phrase, pause it and play that phrase's **last note** on your keyboard — C, then G, then F. That's each phrase's home.
+2. Play the first two notes of each phrase yourself (E G, B D, A C). Same distance each time — a minor or major 3rd? (Count: E–G is 3 half steps, B–D 3, A–C 3.)
+3. Replay the whole thing and follow the pad chords under each phrase: the last chord of each phrase is its home chord.
+
+**If you can't hear it yet:** you can always detect a key change by keyboard: find the last note of each phrase (search), and if the phrases end on different notes but have the same shape, the key changed.
+
+```exercise
+{
+  "id": "c1",
+  "type": "listen",
+  "title": "Check: the same tune, moved?",
+  "instructions": "Two phrases. Replay; find each phrase's last note on your keyboard if unsure.",
+  "spec": {
+    "example": { "title": "Two phrases", "bpm": 96, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "E4:q G4:q F4:q D4:q | E4:q C4:q D4:h | C4:q E4:q D4:q B3:q | C4:w | A4:q C5:q Bb4:q G4:q | A4:q F4:q G4:h | F4:q A4:q G4:q E4:q | F4:w" } ] },
+    "questions": [
+      { "q": "Phrase 2 is…", "choices": ["the same tune in another key", "a different tune"], "answer": 0, "explain": "Same shape and rhythm, moved up a 4th: C major → F major." },
+      { "q": "Compared with phrase 1, phrase 2 sits…", "choices": ["higher", "lower"], "answer": 0, "explain": "It ends on F4, a 4th above C4." }
+    ]
+  }
+}
+```
+
+## Your workflow in the DAW
+
+1. Write a 4-bar melody in **C major** (degrees 1–6, mostly steps, ending on C).
+2. **Write down its degrees** — e.g. 3 5 4 2 | 3 1 2 ….
+3. Build the G and F versions from those degrees. (The DAW's transpose tool exists too: +7 half steps to G, +5 to F — use it only to check yourself.)
+4. Play all three one after another. A note that sounds odd is usually a missing F♯ or B♭; if nothing sounds odd but a check fails, compare each note with your written degrees.
+
 ```exercise
 {
   "id": "e7",
@@ -134,3 +146,25 @@ No new rungs today. Two review drills at your current level — degrees in the n
   }
 }
 ```
+
+## Ear review
+
+No new rungs today: two review drills at your current level. Before each, glance at its **How to do it** box and do the routine deliberately:
+
+- **Degrees:** let the cadence finish, hold its lowest last note as home; at rest or leaning?; walk home or find the key and count up from home.
+- **Chord colours:** bright or dark? Unsure → find the root, play major and minor on it, replay, pick the match.
+
+```ladder
+{ "skill": "degrees", "unlocks": 10, "intro": "Review: degrees at your current rung." }
+```
+
+```ladder
+{ "skill": "chords", "unlocks": 2, "intro": "Review: chord colours at your current rung." }
+```
+
+## Between lessons
+
+- **Finish the DAW task** if needed (it's a two-part job: write, then transpose).
+- **Two Practice sessions of about 10 minutes**, whatever the Practice page serves first.
+- **Keyboard, 2 minutes:** I–IV–V–I in C, G and F.
+- **Ready?** Next week closes Phase 1 with a review. Before it, look at the Dashboard: note which bar has the most open, unmastered rungs — that's your focus for the review week.

@@ -33,6 +33,17 @@ Two habits to listen for:
 - **Long final notes on chord tones.** Each 2-bar phrase ends on a held note, almost always the root or 3rd of its chord.
   Use those long notes as your skeleton.
 
+The routine for each 2-bar phrase:
+
+1. **Skeleton.** Loop the phrase; find its long final note by playing the chord's root and 3rd with it — the one that
+   merges is it. Check: it should sit comfortably over the bass note of that bar.
+2. **Start.** Tap the beat and ask: does the tune begin on "1" or just after it? Check: tap the first few notes along
+   with the loop; if your tap is early, there's a rest.
+3. **Fill.** First note by search, then up/down and step/leap for each move, 2–3 notes at a time.
+4. **Degrees.** Count each key up from E♭ (E♭ F G A♭ B♭ C D = 1–7).
+
+Stuck on a note: loop, compare two candidates back to back, keep the one that merges, move on.
+
 ```exercise
 {
   "id": "w46l2-listen",
@@ -111,6 +122,14 @@ Two habits to listen for:
 }
 ```
 
+## Into the DAW
+
+1. Bass first: one note per bar from your pass 3 answers (verse long notes; the chorus re-strikes). Play with the piano —
+   every bass note should sit under its chord.
+2. Then the long phrase-ending notes of the melody, then the fills.
+3. A/B each section with the original: listen for early or late starts first (breaths), then wrong notes. Move a wrong
+   note one key at a time until it merges.
+
 ```exercise
 {
   "id": "w46l2-daw",
@@ -162,6 +181,9 @@ Two habits to listen for:
 }
 ```
 
+For the drill: first note by search, then the path, in small chunks. The *How to do it* box under the drill shows the
+exact method for your current rung.
+
 ```ladder
 {"skill": "melody", "unlocks": 19, "intro": "Melody at your own rung."}
 ```
@@ -184,3 +206,7 @@ Two habits to listen for:
   }
 }
 ```
+
+## Between lessons
+
+One Practice session. Before the next lesson, get your own copies of the three songs in it ready to play.

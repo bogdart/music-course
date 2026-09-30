@@ -212,9 +212,13 @@ export interface ItemBase<T extends ExerciseType> {
 export interface EarNoteItem extends ItemBase<'ear-note'> {
   key: string; mode: 'major' | 'minor'; midi: number; answerKind: 'degree' | 'name'; answer: string;
 }
-export type EarOctaveMode = 'same-or-different' | 'together' | 'match' | 'find' | 'which-octave' | 'higher-or-lower';
+export type EarOctaveMode = 'same-or-different' | 'together' | 'match' | 'find' | 'which-octave' | 'higher-or-lower' | 'same-pitch' | 'seek';
 export interface EarOctaveItem extends ItemBase<'ear-octave'> {
   mode: EarOctaveMode; midis: number[]; answer: string;
+  /** seek: the keys offered for searching (lowest, highest MIDI) */
+  range?: [number, number];
+  /** seek: a search that finds the note within this many keys counts as correct */
+  limit?: number;
 }
 export interface EarIntervalItem extends ItemBase<'ear-interval'> {
   interval: string; direction: 'asc' | 'desc' | 'harmonic'; midis: [number, number]; answer: string;

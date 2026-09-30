@@ -44,6 +44,16 @@ Here is a correct example. Read the intervals: 8 – 6 – 3 – 6 – 3 – 6 �
 
 Notice what the rules produce: the upper line is a small melody of its own (mostly steps, one clear high point on D), and against the cantus it is almost all 6ths and 3rds, so you hear two voices the whole way through.
 
+### Try it
+
+1. Play the example once. Then play only the upper line yourself (C4 B3 A3 C4 B3 D4 C4 B3 C4): does it sound like a tune on its own?
+2. Play the pairs as chords, slowly, one per breath. Notice the first and last pair sound *hollow* (octave) and all the middle ones *sweet*.
+3. Now change bar 5 to G3+D4 (a 5th) and bar 6 to F3+C4 (another 5th). Play bars 4–7 again.
+
+**Check:** the changed version should sound barer and more "one line" in the middle — that is the parallel 5th you just wrote.
+
+**If you can't hear it yet:** play the middle pairs as sweet/hollow twins — B3 over G3, then D4 over G3 — back and forth. Rule 1 in practice is just "keep it sweet".
+
 ## Drills
 
 ```exercise
@@ -74,11 +84,22 @@ Notice what the rules produce: the upper line is a small melody of its own (most
 
 ## Ear: every interval together
 
+**Method** (see the *How to do it* box): the same sorting as last lesson — one, hollow, sweet or rough — then pick inside the group: 3rds are close and warm, 6ths wider; major brighter, minor darker. The drill runs at your current intervals rung, which may be an earlier one; its box covers it.
+
 ```ladder
 { "skill": "intervals", "unlocks": 20, "intro": "Opens all twelve intervals played together, the sounds between two voices; the drill runs at your current intervals rung." }
 ```
 
 ## Make it
+
+1. Play the cantus firmus once and circle its lowest and highest notes in your head; your line will sit above it, between C4 and C5 or so.
+2. **Fix the ends first.** Bar 1: C4 (octave). Last two bars: B3 over D3, then C4 over C3.
+3. **Fill the middle one bar at a time.** For each cantus note, try the note a 6th above it and the note a 3rd above it (moved up an octave if it would fall below B3). Pick whichever is a step away from your previous note.
+4. After each bar, play the last two bars as pairs. If both are 5ths or both are octaves, change the new note.
+
+**Judge it by ear:** play your line alone — it should sound like a simple, calm tune with one high point. Then with the cantus: sweet all the way, with hollow sounds only at the ends.
+
+**If you're stuck:** a line that moves the *opposite* way to the cantus almost always works — when the cantus goes up, step down, and vice versa.
 
 ```exercise
 {
@@ -102,3 +123,7 @@ Notice what the rules produce: the upper line is a small melody of its own (most
   }
 }
 ```
+
+## Between lessons
+
+Play your finished counterpoint with both hands once a day. Then hide the upper line and try to find it again by ear against the cantus, one bar at a time.

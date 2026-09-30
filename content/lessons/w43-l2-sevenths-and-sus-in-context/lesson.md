@@ -26,12 +26,16 @@ Sevenths follow the diatonic default too:
 - **m7** on ii, iii and vi — mellow, warm.
 - **dom7** on V (or on any chord acting as a V) — it *pulls*.
 
-So once you know the numeral, you only answer one yes/no question: *is there a 7th at all?* A test that may help: loop
-the bar and play the predicted 7th on your keyboard (a whole step below the root's octave for m7 and dom7, a half step
-below for maj7) along with it. If it blends into the chord, the 7th is probably there; if it adds a new rub, it probably
-isn't. Be honest with yourself: picking one inner note out of a chord is hard, and this test may not work for you yet.
-If it doesn't, judge the overall colour instead — a seventh chord sounds fuller and softer-edged than the bare triad —
-answer anyway and compare after revealing. That is how the difference becomes clear.
+So once you know the numeral, you only answer one yes/no question: *is there a 7th at all?* Two tests:
+
+1. **Add the 7th yourself.** Loop the bar. Play the triad along with it, then the triad plus its predicted 7th (a whole
+   step below the root's octave for m7 and dom7, a half step below for maj7).
+   *Check:* if the version with the 7th sounds like the record, the 7th is there. If it adds a new rub, it isn't.
+2. **Overall colour.** Picking one inner note out of a chord is hard, and test 1 may not work for you yet. Then judge
+   the whole sound: a seventh chord sounds fuller and softer-edged than the bare triad.
+
+**Stuck?** Answer anyway, reveal, then play both versions along with the loop while looking. That is how the
+difference becomes clear.
 
 ## Sus chords
 
@@ -63,8 +67,10 @@ the chord settles. A sus2 is often left unresolved, just a colour.
 
 ## A hidden loop: triad or seventh?
 
-The loop below is in D major; you know the numerals of its bass notes from the default. For each chord the palette offers
-two answers — the triad or the seventh chord. Only the colour is being tested.
+The loop below is in D major. For each chord the palette offers two answers: the triad or the seventh chord.
+
+1. Find each bar's bass note (search from D) and write its numeral.
+2. For each bar, run test 1: triad along, then triad plus 7th along. Keep whichever sounds like the loop.
 
 ```exercise
 {
@@ -77,7 +83,7 @@ two answers — the triad or the seventh chord. Only the colour is being tested.
     "mode": "major",
     "chords": ["I", "Imaj7", "vi", "vi7", "IV", "IVmaj7", "V", "V7"],
     "example": {
-      "title": "Hidden loop in D",
+      "title": "Hidden loop",
       "bpm": 84,
       "timeSig": "4/4",
       "tracks": [
@@ -118,11 +124,15 @@ two answers — the triad or the seventh chord. Only the colour is being tested.
 }
 ```
 
+In the drill, sort first (bright or dark? at rest or pulling?) and only then pick a name. If unsure, play the
+candidate chords on the keyboard right after the drill's chord. The *How to do it* box under the drill shows the exact
+method for your current rung.
+
 ```ladder
 {
   "skill": "chords",
   "unlocks": 15,
-  "intro": "Chord colours at your own rung — sevenths are rungs 3–7, sus chords 8–9."
+  "intro": "Chord colours (sevenths, sus chords and more) at your own rung."
 }
 ```
 
@@ -158,3 +168,7 @@ two answers — the triad or the seventh chord. Only the colour is being tested.
   "spec": {"chords": ["Amaj7", "F#m7", "Dmaj7", "E7sus4", "E7"], "inversion": "any", "sequence": true, "bpm": 60}
 }
 ```
+
+## Between lessons
+
+Play the Amaj7 – F#m7 – Dmaj7 – E7sus4 – E7 loop once a day, then the same loop as plain triads, and compare.

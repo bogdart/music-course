@@ -16,7 +16,7 @@ key: C
 
 This fixture is **not course content**. It exercises every block type for the renderer
 and tests. Inline helpers: an [[octave]], a playable note {{note:C#4}} and a chord {{chord:Cmaj7}}.
-A lesson link: [next lesson](../w01-l2-pitch-and-octaves/).
+A lesson link: [next lesson](../w01-l2-higher-lower-same/).
 
 | Block | Purpose |
 |-------|---------|
@@ -77,6 +77,16 @@ A lesson link: [next lesson](../w01-l2-pitch-and-octaves/).
 ```exercise
 { "id": "ear-octave-match", "type": "ear-octave", "count": 3, "seed": 2,
   "spec": { "notes": ["C", "E"], "octaves": [3, 4], "mode": "match", "gap": [1], "foils": [6] } }
+```
+
+```exercise
+{ "id": "ear-octave-seek", "type": "ear-octave", "count": 3, "seed": 2,
+  "spec": { "notes": ["C", "D", "E", "F", "G"], "octaves": [4], "mode": "seek" } }
+```
+
+```exercise
+{ "id": "ear-octave-same-pitch", "type": "ear-octave", "count": 3, "seed": 2,
+  "spec": { "notes": ["C", "E", "G"], "octaves": [4], "mode": "same-pitch", "foils": [1, 2] } }
 ```
 
 ```exercise

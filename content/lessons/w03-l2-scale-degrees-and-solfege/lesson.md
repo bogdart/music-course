@@ -86,10 +86,44 @@ To make the start easier, the first rungs hold a low C underneath the question �
 }
 ```
 
-**Two tools that work without singing:**
+**Try it:**
 
-- **Play it.** Find the note on the keyboard (C, D or E) — the key tells you the degree.
-- **Listen to the walk home.** After each answer, the app walks the note back to 1 (3 → 2 → 1). Press *Question, then walk home* and count the steps.
+1. Hold C3 with your left hand (or play it and let it ring) and play C4 with your right: it blends into the low C.
+2. Keep the low C and play E4: brighter, sitting *on top* of it.
+3. Now D4 over the low C: many people hear it rub a little and want to move — down to C.
+4. Play the home run (C D E F G F E D C), then one of C4, D4, E4 without looking which. Say what you think it
+   was, then look.
+
+### Check it
+
+```exercise
+{
+  "id": "e10",
+  "type": "listen",
+  "title": "Home or not?",
+  "instructions": "Each clip: the home run, then one note over a low C.",
+  "spec": {
+    "examples": [
+      { "title": "Clip 1", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | E4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] },
+      { "title": "Clip 2", "bpm": 100, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w" }, { "instrument": "pad", "seq": "r:w | r:w | C3:w", "volume": 0.6 } ] }
+    ],
+    "questions": [
+      { "q": "Clip 1: the last note is…", "choices": ["1 (home, blends in)", "3 (brighter, on top)"], "answer": 1, "explain": "E = 3." },
+      { "q": "Clip 2: the last note is…", "choices": ["1 (home, blends in)", "3 (brighter, on top)"], "answer": 0, "explain": "C = 1." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet — two tools that work without singing:**
+
+- **Play it.** Find the note on the keyboard with the pitch search (it's C, D or E) — the key tells you the degree:
+  C = 1, D = 2, E = 3.
+- **Listen to the walk home.** After each drill answer, the app walks the note back to 1 (3 → 2 → 1). Count the
+  steps: none = 1, one = 2, two = 3.
+
+The drill's **How to do it** box uses the same two tools. The "home" feeling grows slowly for most people; the
+keyboard answer is always available meanwhile.
 
 ```ladder
 { "skill": "degrees", "unlocks": 2, "intro": "After the home run, one note over a low C: which degree is it?" }
@@ -149,3 +183,9 @@ To make the start easier, the first rungs hold a low C underneath the question �
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "C4:q D4:q E4:q C4:q | C4:q D4:q E4:q C4:q | E4:q F4:q G4:h | E4:q F4:q G4:h", "showStaff": true, "showKeyboard": true, "countIn": 1 }
 }
 ```
+
+## Between lessons
+
+- Two **Practice** sessions of about 10 minutes. On degree questions, answer, then always listen to the walk home.
+- Once a day: play Hot Cross Buns and the start of Frère Jacques, saying the degrees (3 2 1; 1 2 3 1).
+- Ready for the next lesson when the dashboard doesn't say **practise first**.

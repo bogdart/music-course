@@ -18,7 +18,11 @@ tags: [graduation, retrospective, practice-plan]
 ## Where it started
 
 In week 1 you played three-note tunes by ear, and two C's an octave apart sounded like two different notes. Here is one of
-those first tunes again — in B♭, a key you never used for it — hidden. Play it back.
+those first tunes again — in B♭, a key you never used for it — hidden. Play it back the way you learned to:
+
+1. **First note.** Search for it from the middle of the keyboard: higher or lower? Move, compare, until it merges.
+2. **The path.** For each move ask *up, down or same? step or jump?* and let your fingers follow, one bar at a time.
+3. **Check.** Play each bar along with the replay; a wrong note sticks out — move it one key (a black key counts).
 
 ```exercise
 {
@@ -40,6 +44,10 @@ those first tunes again — in B♭, a key you never used for it — hidden. Pla
 }
 ```
 
+The skill you started with: is the second note the first one again, just higher or lower? Compare by playing the first
+note and the key 12 above or below it. The *How to do it* box under the drill shows the exact method for your current
+rung.
+
 ```ladder
 {"skill": "octave", "unlocks": 14, "intro": "And the very first skill of the course, at your own rung."}
 ```
@@ -55,12 +63,17 @@ bars show both.
 
 Skills fade without use and grow with it. A weekly plan that fits three sessions:
 
-- **Session 1 — Transcribe.** One real song per week, seven passes, a form map. Alternate the four styles, then branch out.
-- **Session 2 — Write.** One timeboxed speed song. Rotate the starting points.
-- **Session 3 — Deepen.** One thread: jazz standards, lyric writing, mixing, a new instrument, or singing your own
-  toplines.
-- **Every session — the Practice page.** Ten minutes of ladder drills at your current rungs protects a year of work, and
-  keeps climbing the skills that are still behind.
+- **Every session, first 10 minutes — the Practice page.** Ladder drills at your current rungs protect a year of work
+  and keep climbing the skills that are still behind. Read the *How to do it* box whenever a rung feels stuck.
+- **Session 1 — Transcribe (45 min).** One real song per week, chorus first: home note (hold candidates under it),
+  bass notes (low keys, higher/lower), then major or minor on each bass note, then the hook in chunks. Write a form
+  map. Rebuild the chorus in the DAW and A/B it with the song — the rebuild is your check.
+- **Session 2 — Write (50 min).** One timeboxed speed song: core in the style you just transcribed, 2 minutes, bounced. Rotate the
+  starting points (hook, beat, chords, and next: a chord progression you just transcribed).
+- **Session 3 — Deepen (45 min).** One thread for a month: jazz standards, lyric writing, mixing, a new instrument, or
+  singing your own toplines.
+
+If a week gets crowded, keep the 10 minutes of Practice and drop session 3 first.
 
 ```exercise
 {
@@ -85,3 +98,8 @@ Skills fade without use and grow with it. A weekly plan that fits three sessions
   }
 }
 ```
+
+## After the course
+
+This week: choose the song for your first Session 1 and put the three sessions in your calendar. In a month, redo
+Mystery Song #0 from week 41 without looking at your old answers and compare.

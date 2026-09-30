@@ -124,6 +124,8 @@ Tip: change **one dimension at a time** — pitch *or* rhythm — so the link to
 
 ## Ear
 
+Intervals: sort by size first (step, skip, leap), then colour or anchor tune, then count keys on the keyboard to check. Melody play-back: before touching keys, replay and say the directions ("up, up, down"), find the first note by searching, then follow the path. The *How to do it* box under each drill shows the exact method for your current rung.
+
 ```ladder
 { "skill": "intervals", "unlocks": 20, "intro": "An inversion keeps each interval's size but flips its direction — interval practice at your current rung." }
 ```
@@ -133,6 +135,11 @@ Tip: change **one dimension at a time** — pitch *or* rhythm — so the link to
 ```
 
 ## Make it
+
+1. Play bar 1 of the exercise above (C–D–E–G) until it is in your fingers; or write your own 1-bar motif with one leap in it — leaps survive transformation more audibly than steps.
+2. Bar 2: the sequence (same shape, start one note higher). Bar 3: the inversion (flip each direction). Bars 4–5: augmentation (copy bar 1, double every length). Bars 6–8: fragmentation (the first 2–3 notes, repeated climbing, then a long last note).
+3. **Check by ear:** play bar 1, then each other bar. Can you still hear bar 1 in it? If a bar sounds like a new tune, you changed two things at once — undo one (keep the rhythm *or* the shape).
+4. Stuck on the inversion? Play the motif on the keyboard, then play the same number of keys going the other way.
 
 ```exercise
 {
@@ -154,3 +161,7 @@ Tip: change **one dimension at a time** — pitch *or* rhythm — so the link to
   }
 }
 ```
+
+## Between lessons
+
+Pick any tune you know (a jingle, a folk song) and play its first four notes inverted and augmented on the keyboard. Two minutes of the ladder drills on the Practice page.

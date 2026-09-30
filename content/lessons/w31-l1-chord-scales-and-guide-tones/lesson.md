@@ -57,6 +57,16 @@ Last week you named the 3rd and 7th of a chord its [[guide tones]]. Through a ii
 }
 ```
 
+### Try it
+
+1. Play the example above and listen to the lead only. When the bass moves from G to C, the lead's F slips down to E. Does that half step make the arrival feel like a "click" into place?
+2. Now hold **D4** with your right hand through all four bass notes of the example (press it again on each bar). D fits every chord, but nothing clicks — the changes blur.
+3. Play the guide-tone line F F E E yourself over the example's bass and compare with your flat D line.
+
+**Check:** you can point to the bar where the guide-tone line makes the music "arrive", and say why the plain D line doesn't.
+
+**If you can't hear it yet:** play the full chords with your left hand (the shells from week 28) while your right plays F F E E. Then remove the left hand and play the line alone: listen for the ghost of the chords that stays behind.
+
 ## Drills
 
 ```exercise
@@ -107,13 +117,24 @@ Last week you named the 3rd and 7th of a chord its [[guide tones]]. Through a ii
 
 ## Ear: six scale colours
 
-Chord-scales are modes, so today's ear rung is about mode colours. **Honest note:** Lydian vs major is usually the hardest pair at first, because they differ by a single note (the ♯4). Listen for the moment the scale passes the 4th: Lydian's is bright and a little "floating".
+Chord-scales are modes, so today's ear rung is about mode colours. **Honest note:** Lydian vs major is usually the hardest pair at first, because they differ by a single note (the ♯4).
+
+**Before the drill** — the method (see *How to do it* beside it): **sort first, then hunt one note.** Bright group: major, Mixolydian (♭7, bluesy near the top), Lydian (♯4, floating as the scale passes the 4th). Dark group: minor, Dorian (hopeful raised 6), Phrygian (♭2, a dark half step right above home). If unsure, play the candidate scales on the same root and compare. The drill runs at your current scales rung; its box has that rung's method.
 
 ```ladder
 { "skill": "scales", "unlocks": 12, "intro": "Opens the six-scale rung (Lydian and Phrygian join major, minor, Dorian and Mixolydian); the drill runs at your current scales rung." }
 ```
 
 ## Make it
+
+1. **Bar by bar, pick the two guide tones** of the chord (Dm7: F, C · G7: B, F · Cmaj7: E, B) and write them on paper.
+2. **Beat 1 of each bar:** choose the guide tone nearest to your previous note. Start on F4 or C5.
+3. **Beat 3:** repeat it, or step to the other guide tone / a neighbour — a whole step at most.
+4. Play the loop; change one note at a time.
+
+**Judge it by ear:** mute the piano and play your line with nothing else. If you can still "feel" where the chords change, it works.
+
+**If you're stuck:** start with the two lines from the lesson (F F E E, then C B B B) and change only beat 3 of each bar.
 
 ```exercise
 {
@@ -135,3 +156,7 @@ Chord-scales are modes, so today's ear rung is about mode colours. **Honest note
   }
 }
 ```
+
+## Between lessons
+
+Play the guide-tone lines through ii–V–I in C and then in F (Gm7 C7 Fmaj7: B♭ B♭ A, F E E), once a day.

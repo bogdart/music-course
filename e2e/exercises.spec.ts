@@ -127,7 +127,7 @@ async function correctAnswerTest(page: Page, api: APIRequestContext, lesson: Sou
   await answer(page, ex.id, true);
   const section = exerciseLocator(page, ex.id);
   await expect(section.locator('.feedback.ok')).not.toBeEmpty();
-  await expect(section.getByRole('button', { name: 'Reveal' })).toHaveCount(0);
+  await expect(section.getByRole('button', { name: 'Reveal', exact: true })).toHaveCount(0);
   await expect(section.locator('.progress-dots .dot').first()).toHaveClass(/ok/);
   await expect(section.getByText('Attempts: 1')).toBeVisible();
   await expect
@@ -154,7 +154,7 @@ async function wrongAnswerTest(page: Page, api: APIRequestContext, lesson: Sourc
   await answer(page, ex.id, false);
   const section = exerciseLocator(page, ex.id);
   await expect(section.locator('.feedback.bad')).toBeVisible();
-  await expect(section.getByRole('button', { name: 'Reveal' })).toBeVisible();
+  await expect(section.getByRole('button', { name: 'Reveal', exact: true })).toBeVisible();
   await expect(section.locator('.exercise-foot button.primary')).toBeEnabled();
   await expect.poll(async () => (await exProgress(api, lesson.id, ex.id))?.attempts ?? 0).toBe((before?.attempts ?? 0) + 1);
   expect((await attemptScores(api, lesson.id, ex.id))[0], 'wrong first attempt scores below 100%').toBeLessThan(1);
@@ -222,9 +222,9 @@ for (const type of CATALOGUE_TYPES) {
         await expect(nextBtn).toBeDisabled();
       }
       const before = await exProgress(api, lesson.id, ex.id);
-      await section.getByRole('button', { name: 'Reveal' }).click();
+      await section.getByRole('button', { name: 'Reveal', exact: true }).click();
       await expect(section.locator('.feedback.bad')).toHaveText(`Answer: ${item.solution}`);
-      await expect(section.getByRole('button', { name: 'Reveal' })).toHaveCount(0);
+      await expect(section.getByRole('button', { name: 'Reveal', exact: true })).toHaveCount(0);
       if (item.choices?.length) await expect(section.locator('.choice-correct').first()).toBeVisible();
       await expect(nextBtn).toBeEnabled();
       // a reveal counts as a wrong first attempt
@@ -297,7 +297,7 @@ for (const type of CATALOGUE_TYPES) {
       // autoplay: moving to the next item plays it without pressing Replay (the learner has engaged with it)
       const { total } = await currentItem(page, ex.id);
       if (total > 1) {
-        await section.getByRole('button', { name: 'Reveal' }).click();
+        await section.getByRole('button', { name: 'Reveal', exact: true }).click();
         await next(page, ex.id);
         const n = await waitForIndex(page, ex.id, 1);
         await clearAudio(page);
@@ -439,7 +439,7 @@ test.describe('exercise shell details', () => {
     const qs = ex.spec.questions as { kind?: string }[];
     const noteIdx = qs.findIndex((q) => q.kind === 'note');
     for (let i = 0; i < noteIdx; i++) {
-      await section.getByRole('button', { name: 'Reveal' }).click();
+      await section.getByRole('button', { name: 'Reveal', exact: true }).click();
       await next(page, ex.id);
       await waitForIndex(page, ex.id, i + 1);
     }
@@ -469,7 +469,7 @@ test.describe('exercise shell details', () => {
     const target = { id: (await drills.nth(1).getAttribute('data-testid'))!.replace('exercise-', '') };
     const section = exerciseLocator(page, target.id);
     await section.scrollIntoViewIfNeeded();
-    await section.getByRole('button', { name: 'Reveal' }).click();
+    await section.getByRole('button', { name: 'Reveal', exact: true }).click();
     await next(page, target.id);
     const n = await waitForIndex(page, target.id, 1);
     await clearAudio(page);
@@ -479,7 +479,8 @@ test.describe('exercise shell details', () => {
     const heard = log.filter((e) => e.kind === 'scheduled').map((e) => e.midi);
     const exp: number[] = Array.isArray(n.item.midis) ? n.item.midis : [n.item.midi];
     expect(heard.length).toBeGreaterThan(0);
-    for (const m of exp) expect(heard, `autoplayed notes belong to ${target.id}`).toContain(m);
+    // the first note is enough to tell whose audio started (melodies continue after the wait)
+    expect(heard, `autoplayed notes belong to ${target.id}`).toContain(exp[0]);
   });
 
   test('quiz-input (note answers) can be filled by playing a key', async ({ page }) => {

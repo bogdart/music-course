@@ -75,7 +75,31 @@ Pattern per beat: a 16th rest (the kick's spot), then a dotted-8th chord. Four t
 }
 ```
 
-Hear how the pad and kick interlock instead of fighting? That rhythmic space is also why the mix sounds louder and clearer. (Note: our note format has no velocity marks, so "ducking" is all-or-nothing here — a rest, not a dip.)
+(Our note format has no velocity marks, so "ducking" is all-or-nothing here — a rest, not a dip.)
+
+### Try it
+
+Here is the same bar twice: first the pad simply held, then gated. The kick is identical.
+
+```example
+{
+  "title": "Held pad (bar 1), then gated pad (bar 2), same kick",
+  "bpm": 124, "timeSig": "4/4", "key": "Am",
+  "tracks": [
+    { "instrument": "pad", "seq": "[A3 C4 E4]:w | r:16 [A3 C4 E4]:8. r:16 [A3 C4 E4]:8. r:16 [A3 C4 E4]:8. r:16 [A3 C4 E4]:8. |" },
+    { "instrument": "drums", "seq": "kick:q kick:q kick:q kick:q | kick:q kick:q kick:q kick:q |" }
+  ],
+  "show": ["pianoroll"],
+  "loop": true
+}
+```
+
+1. Loop it and nod on every kick. In bar 1, does the kick sit *on top of* the pad or *in a hole*?
+2. Listen only to the pad in bar 2: does it breathe in and out?
+
+**Check:** in bar 2 the pad pulses four times a bar and each kick lands in a small hole — the kick sounds a little punchier there.
+
+**If you can't hear it yet:** tap the table on each pad re-entry in bar 2 (just after each kick). If your taps fall slightly *after* your nods, you are feeling the pump — the ear notices the rhythm before it notices the "clarity".
 
 ## Drills
 
@@ -144,6 +168,14 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
   }
 }
 ```
+
+**Building the loop:**
+
+1. **Drums first:** one bar of kick on every beat, clap on 2 and 4, open hat on the "ands"; copy to all 8 bars. Loop it with the bass.
+2. **Pad:** one bar of the gated pattern (16th rest, dotted 8th chord, ×4) on Am; copy it, then change the notes bar by bar.
+3. **Pluck:** pick one pattern (up-down or broken) and write it for Am only. Copy it to the other chords by moving each note to the matching chord tone (root, 3rd, 5th, octave).
+
+**Judge it by ear:** mute the pad for a pass, then unmute — the loop should feel like it gained a pulse, not just more notes. If the arp and pad sound blurred together, move the arp up an octave. **If you're stuck:** use the up pattern from the example and change only one thing (the order of the four notes).
 
 ```exercise
 {
@@ -239,6 +271,8 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
 
 ## Ear review
 
+**Method** (see each drill's *How to do it* box): for drums, one voice per pass — first only the low kick, then the snare or clap, then the ticking hi-hat — replaying as often as you need. For progressions, bass first, colour second; borrowed chords sound like a sudden darker or brighter turn. Both drills run at your current rungs.
+
 ```ladder
 { "skill": "rhythm", "unlocks": 14, "intro": "Drum dictation at your level: kick, snare (or clap) and hi-hat on a grid." }
 ```
@@ -246,3 +280,7 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Progressions at your level: dance loops are built from these same chords." }
 ```
+
+## Between lessons
+
+Play the up-arp and the broken arp on Am and F for two minutes a day. In one dance track, listen for the pad or bass dipping on each kick.

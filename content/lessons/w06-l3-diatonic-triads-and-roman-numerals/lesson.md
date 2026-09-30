@@ -7,8 +7,8 @@ phase: p1
 duration_min: 50
 goals:
   - Build a triad on every degree of C major and label it I ii iii IV V vi vii°
-  - Know where the diminished triad (vii°) sits in the key
-  - Hear degree 6 (la); write chords + melody over I–V–vi–IV in the DAW
+  - Play I–V–vi–IV with smooth hand positions
+  - Hear degree 6 (la) — or find it on the keyboard; write chords + melody over I–V–vi–IV in the DAW
 prerequisites: [w06-l2-minor-triads]
 tags: [chords, harmony, roman-numerals, progressions, daw]
 songs:
@@ -18,7 +18,7 @@ songs:
 
 # The chords of C major
 
-Build a triad on each note of the C major scale, using only notes of the scale (white keys), and you get the seven [[diatonic]] chords of C major — the family of chords that belong to the key:
+Build a triad on each note of the C major scale, using only white keys, and you get the seven [[diatonic]] chords of C major — the family of chords that belong to the key:
 
 | Degree | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Build a triad on each note of the C major scale, using only notes of the scale (
 | Quality | major | minor | minor | major | major | minor | diminished |
 | [[Roman numeral]] | **I** | ii | iii | **IV** | **V** | vi | vii° |
 
-Upper-case numerals = major, lower-case = minor. The pattern **major, minor, minor, major, major, minor, diminished** is the same in *every* major key, which is why musicians talk in numerals: "I–V–vi–IV" means C–G–Am–F in C, and the same *relationships* in any other key.
+Upper-case = major, lower-case = minor, ° = diminished (last lesson's B–D–F). The pattern **major, minor, minor, major, major, minor, diminished** is the same in *every* major key — which is why musicians talk in numerals: "I–V–vi–IV" means C–G–Am–F in C, and the same relationships in any key.
 
 ```example
 {
@@ -37,42 +37,7 @@ Upper-case numerals = major, lower-case = minor. The pattern **major, minor, min
 }
 ```
 
-## vii°: the diminished triad
-
-The chord on degree 7, B–D–F, is the **diminished** triad from last lesson: two minor 3rds, outer notes only 6 half steps apart. It sounds tense and unstable, and you'll rarely use it for now — but it belongs to the family, so it gets its numeral: **vii°**.
-
-## I–V–vi–IV
-
-Four chords — I, V, vi, IV — power a huge number of pop songs. For example (reference only): "Let It Be" by The Beatles uses **C – G – Am – F** in C major; "With or Without You" by U2 loops **D – A – Bm – G** in D major.
-
-```chords
-{ "key": "C", "bars": ["C", "G", "Am", "F"], "roman": true, "play": true, "bpm": 80 }
-```
-
-Informally: I is home; V is the tension chord from the cadence; vi is a softer, darker neighbour of home (it shares two notes with I); IV leads away and back. Week 13 gives these roles proper names.
-
-**Fingering tip:** you don't have to jump your hand. Play C as C–E–G, then G as **B–D–G**, Am as **C–E–A**, F as **C–F–A** — shared notes stay where they are. The app accepts any arrangement of the right notes.
-
-## Degree 6 (la)
-
-vi's root is degree **6** — A in C major, just above sol. After the cadence, 6 is not a home-chord note, so it doesn't settle. Many people describe it as soft or wistful. After each answer the app walks it **up** to home, 6 → 7 → 1:
-
-```example
-{
-  "title": "Cadence, then 6 (A), then 6 walking up: A B C",
-  "bpm": 80, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | r:w | A4:w | A4:q B4:q C5:h" } ],
-  "show": ["keyboard"]
-}
-```
-
-This lesson opens two degree rungs with 6 in them: first 6 against the home-chord notes (1, 3, 5 or 6?), then all of 1–6. The drill below runs at your current degree rung, so you'll meet 6 once 1–5 after the cadence is solid. (Echoing melodies that use 6 comes in week 7.)
-
-```ladder
-{ "skill": "degrees", "unlocks": 8, "intro": "Opens \"1, 3, 5 or 6\" and \"1 to 6\" (after the cadence); the drill runs at your current rung." }
-```
-
-## Drills
+**Try it:** put fingers 1–3–5 on C E G and walk the same hand shape up the white keys: C, Dm, Em, F, G, Am, B°, C — saying the numeral aloud for each. Your hand shape never changes; the key decides which chords come out major or minor. Listen as you go: can you tell which ones sound darker? If not yet, no problem — the chord ladder trains that. Here you only need the pattern.
 
 ```exercise
 {
@@ -90,7 +55,6 @@ This lesson opens two degree rungs with 6 in them: first 6 against the home-chor
   "passScore": 0.75
 }
 ```
-
 
 ```exercise
 {
@@ -114,16 +78,80 @@ This lesson opens two degree rungs with 6 in them: first 6 against the home-chor
 }
 ```
 
+## I–V–vi–IV
+
+Four chords — I, V, vi, IV — power a huge number of pop songs. For example (reference only): "Let It Be" by The Beatles uses **C – G – Am – F**; "With or Without You" by U2 loops **D – A – Bm – G** in D major.
+
+```chords
+{ "key": "C", "bars": ["C", "G", "Am", "F"], "roman": true, "play": true, "bpm": 80 }
+```
+
+**Fingering:** you don't have to jump your hand. Play C as C–E–G, G as **B–D–G**, Am as **C–E–A**, F as **C–F–A** — shared notes stay put. The app accepts any arrangement of the right notes.
+
 ```exercise
 {
   "id": "e4",
   "type": "play-chord",
   "title": "Play I–V–vi–IV",
-  "instructions": "Use the close positions from the tip: C–E–G, B–D–G, C–E–A, C–F–A.",
+  "instructions": "Use the close positions: C–E–G, B–D–G, C–E–A, C–F–A.",
   "passScore": 0.75,
   "spec": { "chords": ["C", "G", "Am", "F"], "inversion": "any", "sequence": true, "bpm": 60 }
 }
 ```
+
+## Degree 6 (la)
+
+vi's root is degree **6** — A in C major, just above sol. After the cadence, 6 is not a home-chord note, so it doesn't settle. Some people hear it as soft or wistful. After each answer the app walks it **up** to home, 6 → 7 → 1 (the shortest way).
+
+```example
+{
+  "title": "Cadence, then 6 (A), then 6 walking up: A B C",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | r:w | A4:w | A4:q B4:q C5:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+**Try it:**
+
+1. Play the cadence (C E G → C F A → B D G → C E G), then A4. Hold it, then walk up: A B C.
+2. Play the cadence, then G4, and walk down G F E D C. Compare: does G sit still while A leans somewhere?
+3. Sort by feel: after the cadence play C, E, G (the home chord's notes) — then D, F, A. Many people hear the first group **at rest** and the second **leaning**. That sorting is the first half of the drill's method for 6.
+
+**If you can't hear it yet:** **find the key** — search between C and A; C D E F G A = 1 2 3 4 5 6. Or **walk**: from the note, walk up to the next C (A B C = two steps up → 6) or down to C, whichever is shorter.
+
+```exercise
+{
+  "id": "c1",
+  "type": "listen",
+  "title": "Check: 3, 5 or 6?",
+  "instructions": "Each example plays the cadence, then one note. Sort (at rest or leaning?), then walk or find the key.",
+  "spec": {
+    "examples": [
+      { "title": "Question 1", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | r:h A4:h" } ] },
+      { "title": "Question 2", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | r:h G4:h" } ] },
+      { "title": "Question 3", "bpm": 80, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:q [C4 F4 A4]:q [B3 D4 G4]:q [C4 E4 G4]:q | r:h E4:h" } ] }
+    ],
+    "questions": [
+      { "q": "Question 1: the note is degree…", "choices": ["3", "5", "6"], "answer": 2, "explain": "A: la, two steps below the upper C." },
+      { "q": "Question 2: the note is degree…", "choices": ["3", "5", "6"], "answer": 1, "explain": "G: sol, at rest, four steps above home." },
+      { "q": "Question 3: the note is degree…", "choices": ["3", "5", "6"], "answer": 0, "explain": "E: mi, at rest, two steps above home." }
+    ]
+  }
+}
+```
+
+### Before the degree drill
+
+This lesson opens "1, 3, 5 or 6" and "1 to 6"; the drill runs at your current degree rung, so you may meet 6 only later. Whatever the rung, its **How to do it** box has the method; for 6 it's what you just did: **at rest or leaning?** — then walk to home or find the key. Watch the automatic walk home after each answer and follow it with a finger on the keys.
+
+```ladder
+{ "skill": "degrees", "unlocks": 8, "intro": "Opens \"1, 3, 5 or 6\" and \"1 to 6\" (after the cadence); the drill runs at your current rung." }
+```
+
+## DAW: I–V–vi–IV with a melody
+
+**Work order:** chords first, loop them; then the melody, two bars at a time. Over each chord, start by trying its own notes on beats 1 and 3 (C E G over C, B D G over G, A C E over Am, F A C over F). Loop and listen: if a note sounds like it's fighting the chord, move it one key up or down until it settles.
 
 ```exercise
 {
@@ -146,3 +174,9 @@ This lesson opens two degree rungs with 6 in them: first 6 against the home-chor
   }
 }
 ```
+
+## Between lessons
+
+- **Finish the DAW piece** if needed, then play I–V–vi–IV on the keyboard once a day with the close positions — two minutes.
+- **Two Practice sessions of about 10 minutes.** Degrees: sort first (rest or leaning), then walk or find the key.
+- **Ready?** Look at the Dashboard: degrees, roots and chords now all have open rungs. If it says *practise first*, spend the next session on Practice before starting week 7 — new keys are easier on a solid C.

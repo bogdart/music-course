@@ -100,7 +100,36 @@ Here's something honest about the low register: very low notes are hard to name,
 }
 ```
 
-The strategy that works: don't try to name the low note directly. **Search for it on your keyboard in a comfortable octave** (3 or 4), where your ear is sharper, and compare. Your octave training is exactly for this: the drill accepts the same note name in any octave. This lesson opens that rung — low bass notes, octaves 1 and 2 — and you'll meet it once the fifth-trap rungs are solid. Expect lots of misses at first. It gets easier with every session, and this is the skill that will one day let you hear bass lines in songs.
+The strategy that works: don't try to name the low note directly. **Search for it on your keyboard in a comfortable octave** (3 or 4), where your ear is sharper, and compare. The drill accepts the same note name in any octave.
+
+### Try it: search for a low note
+
+1. Play the example's C1, then C3 on your keyboard (any sound). Then C1 again: listen for the hum *inside* the thump. Does C3 feel like the same colour, higher?
+2. Play a low key you can reach (C2 or lower if your keyboard has it), then the same letter 12 and 24 keys higher. Do it for G and A too.
+3. Now the check below: play the low note, search on your keyboard from C3 with higher/lower, and pick the letter when a key blends with it.
+
+```exercise
+{
+  "id": "e6", "type": "listen", "title": "Check: find two low notes",
+  "instructions": "Search for each note on your keyboard in octave 3 before you answer.",
+  "spec": {
+    "examples": [
+      { "title": "Low note 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "bass", "seq": "G1:w" } ] },
+      { "title": "Low note 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "bass", "seq": "E2:w" } ] }
+    ],
+    "questions": [
+      { "q": "Low note 1 is…", "choices": ["C", "E", "G", "A"], "answer": 2, "explain": "G (G1). Play G3 after it: the same colour, two octaves up." },
+      { "q": "Low note 2 is…", "choices": ["C", "E", "G", "A"], "answer": 1, "explain": "E (E2). Play E3 after it and then F3: E blends, F rubs." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** narrow it down in two steps. First pick the rough region in octave 3 (low C, middle F, high B?) by higher/lower. Then try neighbouring keys one at a time: the right one blends with the low note, a wrong one rubs or feels like a different "colour". Play your guess 12 keys lower if you can, right after the question note: the right key melts into it.
+
+This lesson opens that rung — low bass notes, octaves 1 and 2.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for the rung you're on): listen to the thump and the hum under it; find the region by trying keys (or any key, then jump down by 12); match the colour an octave or two higher, where it's clearer. You'll meet this rung once the fifth-trap rungs are solid. Expect lots of misses at first; this is the skill that will one day let you hear bass lines in songs.
 
 ```ladder
 { "skill": "octave", "unlocks": 13, "intro": "Opens \"Find the bass note\" (octaves 1–2, bass sound); the drill runs at your current octave rung." }
@@ -131,3 +160,12 @@ The strategy that works: don't try to name the low note directly. **Search for i
   }
 }
 ```
+
+**If the bass part is hard to record:** play the roots as half notes first (C C | A A | F F | G G), one bar at a time, and record in several takes. Quarter notes can come later.
+
+## Between lessons
+
+- **3 minutes, daily:** the Canon bass with your left hand, reading the bass clef; then say each note name aloud as you play it.
+- **2 minutes:** one bass-clef landmark per day (C2, G2, C3, F3, C4): find it on the staff and on the keys.
+- **2 minutes:** play a random very low key with eyes closed, then find it in octave 3 by searching.
+- One Practice-page session: octave at your rung.

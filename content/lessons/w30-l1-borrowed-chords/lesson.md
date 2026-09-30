@@ -44,7 +44,17 @@ In week 16 you met two [[borrowed chord]]s: in C major, **iv** (Fm) and **♭VII
 }
 ```
 
-**What you will hear.** This lesson opens a progressions rung where ♭VI joins iv and ♭VII (the drill below runs at your current rung, which may be earlier). Most people don't notice "a flattened sixth degree" at first. What they notice is a sudden darker, wider light, usually with the bass dropping to a note outside the key (A♭, a major 3rd below C).
+**What you will hear.** Most people don't notice "a flattened sixth degree" at first. What they notice is a sudden darker, wider light, usually with the bass dropping to a note outside the key (A♭, a major 3rd below C).
+
+### Try it
+
+1. Play C major (C E G) and hold it for a moment: that's home.
+2. Now play **A minor** (A C E) — the ordinary vi. Then **A♭ major** (A♭ C E♭) — the borrowed ♭VI. Both share the C; listen to how A♭ sounds bigger and darker, like a cloud crossing the sun, while Am is just sad.
+3. Play A♭ → B♭ → C with the bass (A♭1, B♭1, C2) under it. Feel the bass climbing two whole steps to home.
+
+**Check:** after C, you can tell by ear whether someone (or a replay of the example) played Am or A♭ — "sad" vs "cinematic".
+
+**If you can't hear it yet:** judge by the bass. Play C2, then A1 (vi), then A♭1 (♭VI): the ♭VI bass sits one key lower and sounds outside the key's white-key world. Bass first, colour second.
 
 ## Drills
 
@@ -97,6 +107,12 @@ In week 16 you met two [[borrowed chord]]s: in C major, **iv** (Fm) and **♭VII
 
 ## Ear: borrowed chords
 
+**Before the drill** — the method (see *How to do it* beside it): expect surprises and go **bass first, colour second**. A darker iv keeps the IV bass; ♭VII's bass is a whole step below home and feels relaxed; ♭VI's bass is a major 3rd below home and the chord sounds bright but "foreign". The drill runs at your current progressions rung, which may be earlier; its box has that rung's method.
+
 ```ladder
 { "skill": "progressions", "unlocks": 19, "intro": "Opens the borrowed-chords rung (bVI joins iv and bVII in random keys); the drill runs at your current progressions rung." }
 ```
+
+## Between lessons
+
+Play ♭VI–♭VII–I in C and G once a day. In one song you like, listen for a chord that suddenly darkens the light — then check the bass on your keyboard.

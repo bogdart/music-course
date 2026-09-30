@@ -40,6 +40,7 @@ export const api = {
   progress: () => req<ProgressSummaryDTO>('GET', '/progress'),
   attempt: (a: AttemptInput) => req<{ ok: true; id: number }>('POST', '/progress/attempts', a),
   exerciseComplete: (c: ExerciseCompleteInput) => req<{ ok: true }>('POST', '/progress/exercises/complete', c),
+  restart: (fromLessonId: string) => req<{ ok: true; reset: number; lessonIds: string[] }>('POST', '/progress/restart', { fromLessonId }),
   lessonComplete: (id: string) => req<{ ok: true }>('POST', `/progress/lessons/${encodeURIComponent(id)}/complete`),
   srsDue: (limit = 20, newLimit?: number) => req<SrsDueDTO>('GET', `/srs/due?limit=${limit}${newLimit !== undefined ? `&newLimit=${newLimit}` : ''}`),
   journal: (lessonId: string, exerciseId: string, limit = 5) =>

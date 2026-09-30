@@ -86,7 +86,36 @@ Two famous uses. The long coda of the Beatles' *Hey Jude* (1968, F major) repeat
 }
 ```
 
-This lesson opens two progression rungs, each a two-way question at heart: minor-key chords (i, iv, V in A minor); then **IV or iv?** (listen for the one note that drops). The drill runs at your current progression rung, so it may still be an earlier one. The third borrowed question, **V or ♭VII?**, opens next lesson.
+### Try it: IV or iv
+
+1. Play C – F – C, slowly. Then C – **Fm** – C. Only one key differs: A in F, A♭ in Fm. Play A, then A♭ alone: that's the whole difference.
+2. Play F, then Fm, and say a word for each. Most people land on something like "open" and "sinking" — use your own words.
+3. Look away from your hands, play one of the two versions, and name it before you look.
+
+Check: two short progressions in C. Which middle chord did you hear?
+
+```exercise
+{
+  "id": "e5", "type": "listen", "title": "Check: IV or iv?",
+  "instructions": "Play each one. Then play F and Fm on your keyboard and match the middle chord.",
+  "spec": {
+    "examples": [
+      { "title": "Progression 1", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 G3 C4]:w | [F3 Ab3 C4]:w | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:w | F1:w | C2:w" } ] },
+      { "title": "Progression 2", "bpm": 70, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "[E3 G3 C4]:w | [F3 A3 C4]:w | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:w | F1:w | C2:w" } ] }
+    ],
+    "questions": [
+      { "q": "Progression 1: the middle chord is…", "choices": ["IV (F major)", "iv (F minor)"], "answer": 1, "explain": "iv: F A♭ C. The A♭ is the note that sinks." },
+      { "q": "Progression 2: the middle chord is…", "choices": ["IV (F major)", "iv (F minor)"], "answer": 0, "explain": "IV: F A C. The bass is the same F in both, so only the colour tells them apart." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** the bass won't help (it's F both times), so use your hands. Right after the question, play F major and then F minor yourself and ask which one it matched. Still unsure? Play just A and A♭ over the question's replay: one of them fits the chord you heard.
+
+This lesson opens two progression rungs: minor-key chords (i, iv, V in A minor); then **IV or iv?**. The drill runs at your current progression rung, so it may still be an earlier one. The third borrowed question, **V or ♭VII?**, opens next lesson.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill, for your rung). For minor: play Am – Dm – E – Am and follow the bass A D E A. i is the dark home, iv a darker step away, V is major and pulls hard back to i. For IV or iv: same bass, so listen to the colour change — open or sinking — and check with your hands as above.
 
 ```ladder
 { "skill": "progressions", "unlocks": 10, "intro": "Opens: minor-key chords (i, iv, V); then IV or iv." }
@@ -116,8 +145,25 @@ This lesson opens two progression rungs, each a two-way question at heart: minor
 
 ## Ear corner: minor, any key
 
-This lesson opens the degree rung where the *minor* key changes every question, as the major rungs did from week 11 (so far the minor degree rungs stayed in A minor). The drill runs at your current degree rung. When the rung arrives, the minor cadence (i – iv – V – i) tells you where home is.
+This lesson opens the degree rung where the *minor* key changes every question (so far the minor degree rungs stayed in A minor). The drill runs at your current degree rung.
+
+### Try it: find a minor home
+
+1. Play the D minor cadence: **Dm (D F A) – Gm (D G B♭) – A (C♯ E A) – Dm**. The C♯ is the pull, like G♯ in A minor.
+2. Find the lowest note of the last chord: D. That's home, 1.
+3. Play **F**, then walk down F – E – D: two steps, so F is ♭3. Try A: A – G – F – E – D, four steps: 5.
+
+**If you can't hear it yet:** find home on the keyboard first (the last chord's lowest note), then find the question note by searching up or down from home and count the keys of the minor scale between them.
+
+**Before the drill, rehearse the method** (*How to do it* box): minor cadence first; home is the lowest note of the last chord; walk from the question note to it, counting minor-scale steps.
 
 ```ladder
 { "skill": "degrees", "unlocks": 18, "intro": "Opens: a new minor key every question. The drill runs at your current degree rung." }
 ```
+
+## Between lessons
+
+- **3 minutes:** C – F – Fm – C and C – B♭ – F – C, then the same in G (G – C – Cm – G, G – F – C – G).
+- **2 minutes:** eyes closed, play C – F – C or C – Fm – C at random and name it before you look.
+- **2 minutes:** minor cadences in A, D and E minor; put your thumb on home after each.
+- One progressions-ladder and one degrees-ladder session on the Practice page.

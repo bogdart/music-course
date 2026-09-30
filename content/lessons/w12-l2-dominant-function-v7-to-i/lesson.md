@@ -66,7 +66,38 @@ B and F form the tritone you heard squeeze inward in week 10. When G7 moves to C
 }
 ```
 
-This lesson opens a progressions rung that asks: is the dominant plain **V**, or **V7**? The seventh adds a sharper lean toward home. The drill runs at your current progressions rung, so you'll meet it once I, IV, V and vi are solid.
+This lesson opens a progressions rung that asks: is the dominant plain **V**, or **V7**?
+
+### Try it: V or V7 under your hands
+
+1. Play C (C E G), then G (G B D), then C. Then C, **G7** (G B D F), C. The only difference is the F.
+2. Stop on each dominant and hold it for four slow counts. With the F, most people feel a sharper, more impatient lean; without it the G can almost rest by itself.
+3. Eyes closed: play C, then G or G7 at random, and say which before you look.
+
+Check: two short phrases in C, each I – dominant – I.
+
+```exercise
+{
+  "id": "e4", "type": "listen", "title": "Check: V or V7?",
+  "instructions": "Listen to the middle chord. Play G and G7 yourself after each phrase and compare.",
+  "spec": {
+    "examples": [
+      { "title": "Phrase 1", "bpm": 66, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [
+        { "instrument": "piano", "seq": "[E3 G3 C4]:h [D3 G3 B3]:h | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:h G1:h | C2:w" } ] },
+      { "title": "Phrase 2", "bpm": 66, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [
+        { "instrument": "piano", "seq": "[E3 G3 C4]:h [D3 F3 B3]:h | [E3 G3 C4]:w" }, { "instrument": "bass", "seq": "C2:h G1:h | C2:w" } ] }
+    ],
+    "questions": [
+      { "q": "Phrase 1: the middle chord is…", "choices": ["V (G)", "V7 (G7)"], "answer": 0, "explain": "Plain V: G B D, no F." },
+      { "q": "Phrase 2: the middle chord is…", "choices": ["V (G)", "V7 (G7)"], "answer": 1, "explain": "V7: the F (with B) makes the tritone, the extra-hungry pull home." }
+    ]
+  }
+}
+```
+
+**If you can't hear it yet:** replay, and while the dominant sounds, play **F** (above middle C) on top of it yourself. If F just blends in, the chord already had it: V7. If your F adds a new, sharper edge, the chord was plain V.
+
+**Before the drill, rehearse the method** (it's in the *How to do it* box above the drill, for the rung you're on): V7 adds a sharper, bluesy pull on top of V; if the dominant sounds extra hungry to go home, it's V7. The drill runs at your current progressions rung, so you'll meet this once I, IV, V and vi are solid.
 
 ```ladder
 { "skill": "progressions", "unlocks": 4, "intro": "Opens \"V or V7 (in C)\"; the drill runs at your current rung." }
@@ -110,8 +141,25 @@ The recipe works in every key: find V (a fifth above the tonic), make it a domin
 
 ## Tendency tones, in any key
 
-The two notes that make V7 pull are also the "leaning" degrees of the scale: **7 leans up to 1**, **4 leans down to 3**. This lesson opens the degree rung that uses all seven degrees with the key changing every question; you'll meet it once degrees 1–5 in any key are solid, and until then the drill stays at your current rung. Whatever rung you're on, listen for that lean: after each answer, notice how 7 walks up and 4 walks down to home.
+The two notes that make V7 pull are also the "leaning" degrees of the scale: **7 leans up to 1**, **4 leans down to 3**. This lesson opens the degree rung that uses all seven degrees with the key changing every question.
+
+### Try it: rest or lean
+
+1. Play the C cadence (C – F – G – C), then B and hold it: it strains upward. Let it go up to C.
+2. Cadence again, then F: it sags down toward E. Let it fall.
+3. Cadence again, then E, then G: nothing pulls; they rest inside the home chord.
+
+**If you can't hear it yet:** find the note on the keyboard, then find home (the cadence's last bass note) and count the scale steps between them. If a lean is unclear, play the note and then both its neighbours: the one that sounds like "arriving" shows where it wanted to go.
+
+**Before the drill, rehearse the method** (in the *How to do it* box above the drill): the cadence gives home; first sort the note, at rest (1 3 5) or leaning (2 4 6 7), then walk home to confirm. If you lose home, press Reference again. You'll meet this rung once degrees 1–5 in any key are solid; until then the drill stays at your current rung.
 
 ```ladder
 { "skill": "degrees", "unlocks": 16, "intro": "Opens \"Any key: all seven\"; the drill runs at your current rung. Listen for the leaning notes, 7 and 4." }
 ```
+
+## Between lessons
+
+- **2 minutes:** G7 → C with B→C and F→E, in the three hand positions of the "Resolve the tritone" exercise.
+- **2 minutes:** D7 → G, C7 → F and E7 → Am, any inversions, nearest notes.
+- **2 minutes:** in C, play the cadence, then 7 and 4, and let each resolve.
+- One progressions session and one degrees session on the Practice page.
