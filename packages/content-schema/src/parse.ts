@@ -131,7 +131,7 @@ export function parseLesson(markdown: string, opts: ParseLessonOptions = {}): Pa
     const code = node as Code;
     const line = (code.position?.start.line ?? 0) + bodyLineOffset;
     if (!isBlockLang(code.lang)) {
-      if (code.lang && /^(exercise|example|keyboard|staff|chords)\b/i.test(code.lang)) {
+      if (code.lang && /^(exercise|example|keyboard|staff|chords|ladder)\b/i.test(code.lang)) {
         problems.push(`line ${line}: fenced block language "${code.lang}" — use exactly one of ${BLOCK_LANGS.join(', ')}`);
       }
       return;

@@ -6,9 +6,9 @@ order: 2
 phase: p4
 duration_min: 45
 goals:
-  - Write a power-chord riff using mixolydian bVII
-  - Play a fingerpicked folk accompaniment in 6/8
-  - Hear bVII and major-vs-mixolydian colour
+  - Recall the power chord from week 32, hear it next to major and minor, and play a power-chord riff
+  - Use the rock loop I–♭VII–IV
+  - Fingerpick a folk accompaniment in 6/8
 prerequisites: [w35-l1-pop-idioms, w23-l3-riff-and-solo-daw]
 tags: [songwriting, rock, folk, genre]
 songs:
@@ -20,239 +20,150 @@ songs:
 
 # Rock and Folk Idioms
 
+Two more bundles today, and a closer look at a chord shape you met in week 32.
+
+## Reminder: the power chord
+
+In week 32 you met the [[power chord]] as the place where parallel fifths are the point. A reminder: it is just two notes, a **root and the 5th above it** (often with the root doubled an octave up). It has **no 3rd** — and the 3rd is the note that makes a chord major or minor (week 6). So a power chord is neither: it is "open", plain and strong. Written **D5** (the "5" means root + 5th only, not a 5th chord degree).
+
+Why rock loves it: with a distorted guitar, a full triad turns into mush, but root + 5th stays clear and huge. Hear D major, D minor, then D5 — on piano, then on the overdriven guitar:
+
+```example
+{
+  "title": "D major – D minor – D5 (piano), then the same three on guitar",
+  "bpm": 70, "timeSig": "4/4", "key": "D",
+  "tracks": [
+    { "instrument": "piano", "seq": "[D3 F#3 A3]:w | [D3 F3 A3]:w | [D3 A3 D4]:w | r:w | r:w | r:w |" },
+    { "instrument": "guitar", "seq": "r:w | r:w | r:w | [D3 F#3 A3]:w | [D3 F3 A3]:w | [D3 A3 D4]:w |" }
+  ],
+  "show": ["keyboard"]
+}
+```
+
+Honestly: on piano D5 may just sound like "a thinner D". On the guitar the difference is clearer — the triads sound rough, the power chord sounds solid. On the keyboard it is one hand shape: thumb and little finger (or thumb and ring finger) a 5th apart, moved as a block.
+
 ## The rock bundle
 
-**Harmony:** [[power chord]]s (root + 5th, no 3rd) that sound huge with distortion and can be major or minor. Mixolydian and blues flavours everywhere: the **bVII** chord is rock's signature. I–bVII–IV is a classic loop — the verse of "Sweet Child o' Mine" circles D–C–G; "Gloria" pounds E–D–A. (By reference.)
+**Harmony:** power chords, and the **♭VII** — the major chord a whole step below home, borrowed from minor (week 16) and the note that gives Mixolydian its colour (week 22). **I–♭VII–IV** is a classic rock loop: the verse of "Sweet Child o' Mine" circles D–C–G; "Gloria" pounds E–D–A (both by reference).
 
-**Melody:** the **riff** is often the real hook — a repeated 1–2 bar figure in the bass register.
+**Melody:** the **riff** — a repeated 1–2 bar figure, often low — is frequently the real hook.
 
-**Rhythm:** straight 8th hi-hats, a hard backbeat on 2 and 4, and a kick that locks with the riff.
-
-```example
-{
-  "title": "Power-chord riff: D5 – C5 – G5 (I–bVII–IV, original)",
-  "bpm": 120,
-  "timeSig": "4/4",
-  "key": "D",
-  "tracks": [
-    {
-      "instrument": "bass",
-      "seq": "[D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q |"
-    },
-    {
-      "instrument": "drums",
-      "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 |"
-    }
-  ],
-  "show": [
-    "pianoroll"
-  ],
-  "loop": true
-}
-```
-
-## The folk bundle
-
-**Harmony:** simple and diatonic — I, IV, V, vi — often with a drone or open strings ringing. "Blowin' in the Wind" lives on I–IV–V (by reference).
-
-**Texture:** acoustic, **fingerpicked** arpeggios instead of block chords: bass note on the beat, upper notes in between.
-
-**Meter:** 3/4 and 6/8 are common. "The House of the Rising Sun" is traditional (public domain): in A minor its chords run Am–C–D–F–Am–C–E–E, one per bar in 6/8. Here it is with an original fingerpicking pattern.
+**Rhythm:** straight 8th hi-hats, a hard backbeat on 2 and 4, a kick that locks with the riff.
 
 ```example
 {
-  "title": "'House of the Rising Sun' chords, fingerpicked in 6/8",
-  "bpm": 70,
-  "timeSig": "6/8",
-  "key": "C",
+  "title": "Power-chord riff D5 – C5 – G5 (I–♭VII–IV, original)",
+  "bpm": 120, "timeSig": "4/4", "key": "D",
   "tracks": [
-    {
-      "instrument": "piano",
-      "seq": "A2:8 E4:8 C4:8 E4:8 A2:8 E4:8 | C3:8 E4:8 C4:8 E4:8 C3:8 E4:8 | D3:8 F#4:8 D4:8 F#4:8 D3:8 F#4:8 | F2:8 F4:8 C4:8 F4:8 F2:8 F4:8 | A2:8 E4:8 C4:8 E4:8 A2:8 E4:8 | C3:8 E4:8 C4:8 E4:8 C3:8 E4:8 | E2:8 E4:8 B3:8 E4:8 E2:8 E4:8 | E2:8 G#4:8 B3:8 G#4:8 E2:8 G#4:8 |"
-    }
+    { "instrument": "guitar", "seq": "[D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q |" },
+    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 |" }
   ],
-  "show": [
-    "pianoroll"
-  ]
+  "show": ["pianoroll"], "loop": true
 }
 ```
-
-The D major chord in a minor key (IV instead of iv) is a dorian touch; the E major at the end is harmonic-minor V. Folk is simple — but not plain.
-
-## Drills
 
 ```exercise
 {
   "id": "e1-play-riff",
   "type": "play-melody",
   "title": "Play the riff",
-  "instructions": "Left hand, two fingers (1 and 5) locked in a power-chord shape.",
-  "count": 6,
-  "passScore": 0.75,
+  "instructions": "Left hand, one locked power-chord shape (fingers 5 and 1) moved as a block.",
+  "passScore": 0.7,
   "spec": {
-    "bpm": 100,
-    "timeSig": "4/4",
-    "key": "D",
+    "bpm": 100, "timeSig": "4/4", "key": "D",
     "seq": "[D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q | [D3 A3]:8 [D3 A3]:8 r:8 [D3 A3]:8 [C3 G3]:q [G2 D3]:q |",
-    "showStaff": false,
-    "showKeyboard": true,
-    "countIn": 1,
-    "backing": {
-      "instrument": "drums",
-      "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 |"
-    }
+    "showStaff": false, "showKeyboard": true, "countIn": 1,
+    "backing": { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 |" }
   }
 }
 ```
 
 ```exercise
 {
-  "id": "e2-play-folk",
+  "id": "e2-power-quiz",
+  "type": "quiz",
+  "title": "Power chords and ♭VII",
+  "passScore": 0.7,
+  "spec": {
+    "questions": [
+      { "q": "Which notes make E5?", "choices": ["E G B", "E G♯ B", "E B", "E A"], "answer": 2, "explain": "Root + 5th only: E and B." },
+      { "q": "Why is a power chord neither major nor minor?", "choices": ["It has no root", "It has no 3rd", "It has a 7th", "It is played low"], "answer": 1 },
+      { "q": "In D major, ♭VII is…", "choices": ["C♯ diminished", "C major", "C minor", "B♭ major"], "answer": 1 }
+    ]
+  }
+}
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 19, "intro": "Rock's ♭VII lives on this ladder (rung 11 and up); the drill runs at your current rung." }
+```
+
+## The folk bundle
+
+**Harmony:** simple and diatonic — I, IV, V, vi — often with a ringing drone. "Blowin' in the Wind" lives on I–IV–V (by reference).
+
+**Texture:** **fingerpicked** arpeggios instead of block chords: a bass note on the beat, upper notes in between.
+
+**Meter:** 3/4 and **6/8** are common. 6/8 is the compound meter from week 14: six 8ths felt as two big beats of three (ONE-two-three FOUR-five-six). "The House of the Rising Sun" (traditional, public domain) runs, in A minor, Am–C–D–F–Am–C–E–E, one chord per bar in 6/8:
+
+```example
+{
+  "title": "'House of the Rising Sun' chords, fingerpicked in 6/8",
+  "bpm": 70, "timeSig": "6/8", "key": "Am",
+  "tracks": [
+    { "instrument": "piano", "seq": "A2:8 E4:8 C4:8 E4:8 A2:8 E4:8 | C3:8 E4:8 C4:8 E4:8 C3:8 E4:8 | D3:8 F#4:8 D4:8 F#4:8 D3:8 F#4:8 | F2:8 F4:8 C4:8 F4:8 F2:8 F4:8 | A2:8 E4:8 C4:8 E4:8 A2:8 E4:8 | C3:8 E4:8 C4:8 E4:8 C3:8 E4:8 | E2:8 E4:8 B3:8 E4:8 E2:8 E4:8 | E2:8 G#4:8 B3:8 G#4:8 E2:8 G#4:8 |" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+Two chords are not from plain A natural minor: **D major** (the F♯ is Dorian's raised 6th, week 22) and **E major** (the G♯ is harmonic minor's raised 7th, week 9). Folk is simple, but not plain.
+
+```exercise
+{
+  "id": "e3-play-folk",
   "type": "play-melody",
   "title": "Fingerpick the first four chords",
-  "count": 6,
+  "instructions": "Left hand plays the low bass on each big beat; right hand the upper notes in between.",
   "passScore": 0.7,
   "spec": {
-    "bpm": 60,
-    "timeSig": "6/8",
-    "key": "C",
+    "bpm": 60, "timeSig": "6/8", "key": "Am",
     "seq": "A2:8 E4:8 C4:8 E4:8 A2:8 E4:8 | C3:8 E4:8 C4:8 E4:8 C3:8 E4:8 | D3:8 F#4:8 D4:8 F#4:8 D3:8 F#4:8 | F2:8 F4:8 C4:8 F4:8 F2:8 F4:8 |",
-    "showStaff": false,
-    "showKeyboard": true,
-    "countIn": 1
+    "showStaff": false, "showKeyboard": true, "countIn": 1
   }
 }
 ```
 
-```exercise
-{
-  "id": "e3-ear-mix",
-  "type": "ear-scale",
-  "title": "Major, mixolydian or minor pentatonic?",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "scales": [
-      "major",
-      "mixolydian",
-      "minor-pentatonic",
-      "dorian"
-    ],
-    "play": "melody"
-  }
-}
+```ladder
+{ "skill": "rhythm", "unlocks": 16, "intro": "Meters and grooves — 6/8 is on this ladder (rung 10); the drill runs at your current rung." }
 ```
+
+## Make it
 
 ```exercise
 {
-  "id": "e4-ear-bvii",
-  "type": "ear-progression",
-  "title": "Find the bVII",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": {
-    "key": "random",
-    "mode": "major",
-    "length": 4,
-    "chords": [
-      "I",
-      "IV",
-      "V",
-      "bVII",
-      "vi"
-    ],
-    "style": "block"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-ear-rhythm-68",
-  "type": "ear-rhythm",
-  "title": "6/8 patterns",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "timeSig": "6/8",
-    "bars": 1,
-    "subdivision": "8",
-    "rests": true,
-    "answer": "choose"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e6-daw-riff",
+  "id": "e4-daw-riff",
   "type": "daw-task",
   "title": "Your own rock riff",
-  "instructions": "Write a 2-bar power-chord riff in D (roots from D mixolydian: D, C, G, A, E…), repeat it to fill 8 bars, and add a rock beat: kick on 1 and 3, snare on 2 and 4, 8th hi-hats.",
+  "instructions": "On the guitar track, write a 2-bar power-chord riff in D using roots from D Mixolydian (D, C, G, A, E…) — each chord is root + 5th. Repeat it to fill 8 bars. Add a rock beat: kick on 1 and 3, snare on 2 and 4, 8th hi-hats.",
   "spec": {
     "template": {
-      "bpm": 120,
-      "key": "D",
-      "timeSig": "4/4",
+      "bpm": 120, "key": "D", "timeSig": "4/4",
       "tracks": [
-        {
-          "instrument": "bass",
-          "seq": ""
-        },
-        {
-          "instrument": "drums",
-          "seq": ""
-        }
+        { "instrument": "guitar", "seq": "" },
+        { "instrument": "drums", "seq": "" }
       ]
     },
-    "task": "8 bars: repeated power-chord riff + rock beat.",
+    "task": "8 bars: a repeated power-chord riff + rock beat.",
     "checks": [
-      {
-        "kind": "has-tracks",
-        "instruments": [
-          "bass",
-          "drums"
-        ]
-      },
-      {
-        "kind": "bars",
-        "min": 8,
-        "max": 8
-      },
-      {
-        "kind": "in-key",
-        "key": "D",
-        "scale": "mixolydian",
-        "allowPassing": true,
-        "track": 0
-      },
-      {
-        "kind": "repetition",
-        "motifBars": 2,
-        "minRepeats": 3,
-        "allowTransposed": false,
-        "track": 0
-      },
-      {
-        "kind": "drum-pattern",
-        "requires": [
-          "kick",
-          "snare",
-          "hihat"
-        ],
-        "kickOnBeats": [
-          1,
-          3
-        ],
-        "snareOnBeats": [
-          2,
-          4
-        ],
-        "track": 1
-      }
+      { "kind": "has-tracks", "instruments": ["guitar", "drums"] },
+      { "kind": "bars", "min": 8, "max": 8 },
+      { "kind": "in-key", "key": "D", "scale": "mixolydian", "allowPassing": true, "track": 0 },
+      { "kind": "repetition", "motifBars": 2, "minRepeats": 3, "allowTransposed": false, "track": 0 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "kickOnBeats": [1, 3], "snareOnBeats": [2, 4], "hatOn": "8", "track": 1 },
+      { "kind": "custom", "id": "power-shapes", "note": "Self-check: every chord in the riff is root + 5th (no 3rd)." }
     ],
-    "minBars": 8,
-    "maxBars": 8
+    "minBars": 8, "maxBars": 8
   }
 }
 ```

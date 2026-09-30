@@ -4,6 +4,7 @@ import { pcToDegree } from '@music/core';
 import { Keyboard } from '../components/Keyboard/Keyboard';
 import { useExerciseNoteInput } from './focus';
 import { ChoiceButtons } from './ChoiceButtons';
+import { FindNote } from './FindNote';
 import type { ExerciseComponentProps } from './types';
 
 type ChoiceType = 'ear-note' | 'ear-octave' | 'ear-interval' | 'ear-chord' | 'ear-scale' | 'ear-meter' | 'ear-chord-root' | 'key-signature';
@@ -37,8 +38,10 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
   };
 
   const earNote = item.type === 'ear-note' ? (item as ExerciseComponentProps<'ear-note'>['item']) : null;
+  const find = item.type === 'ear-octave' && (item as ExerciseComponentProps<'ear-octave'>['item']).mode === 'find';
   useExerciseNoteInput((e) => {
-    if (!earNote || e.type !== 'on' || disabled) return;
+    if (e.type !== 'on' || disabled || find) return;
+    if (!earNote) return;
     const value = earNote.answerKind === 'degree' ? pcToDegree(e.midi, earNote.key, earNote.mode) : null;
     if (value && item.choices?.some((c) => c.value === value)) choose(value);
   }, !!earNote && !disabled);
@@ -53,6 +56,18 @@ export function ChoiceExercise<T extends ChoiceType>(props: ExerciseComponentPro
     <div className="choice-exercise">
       <ChoiceButtons choices={item.choices ?? []} onChoose={choose} wrong={wrong} correct={showSolution ? answer : null} disabled={disabled} />
       {earNote && !disabled && <p className="muted small">Tip: you can also answer by playing the note on your keyboard.</p>}
+      {find && (
+        <FindNote
+          onAnswer={(m) => {
+            setLast(String(m));
+            (onAnswer as (a: number) => void)(m);
+          }}
+          disabled={!!disabled}
+          range={[48, 83]}
+          reset={item}
+          hint="Try keys on your MIDI keyboard or here until one matches the note you heard (any octave), then press Check."
+        />
+      )}
       {showSolution && midis.length > 0 && (
         <div className="solution-keys">
           <Keyboard range={[lo - (lo % 12), hi + (11 - (hi % 12))]} highlight={midis} height={110} interactive={false} showHeld={false} />

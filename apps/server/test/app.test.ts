@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import type { CurriculumDTO, ParsedLessonDTO, ProgressSummaryDTO, Settings, SrsDueDTO } from '@music/core';
 import { createApp } from '../src/app.js';
 import { ContentStore } from '../src/content.js';
-import { openDb, type Db } from '../src/db.js';
+import { MIGRATIONS, migrate, openDb, type Db } from '../src/db.js';
 import { Sessions } from '../src/session.js';
 
 function contentFixture(): string {
@@ -21,7 +21,7 @@ function contentFixture(): string {
   };
   const ex = (o: object) => '```exercise\n' + JSON.stringify(o) + '\n```\n';
   lesson('w01-l1-welcome', 1, `# Hi\n\n${ex({ id: 'e1', type: 'ear-octave', spec: { notes: ['C'], octaves: [3, 4], mode: 'same-or-different' } })}${ex({ id: 'e2', type: 'quiz', spec: { questions: [{ q: 'a', choices: ['x', 'y'], answer: 0 }] } })}`);
-  lesson('w01-l2-octaves', 2, `# Two\n\n${ex({ id: 'e1', type: 'play-notes', spec: { notes: ['C4'] } })}${ex({ id: 'e2', type: 'ear-note', spec: { key: 'C', degrees: [1, 3] } })}${ex({ id: 'r1', type: 'reflect', spec: { prompt: 'p' } })}`);
+  lesson('w01-l2-octaves', 2, `# Two\n\n${ex({ id: 'e1', type: 'play-notes', spec: { notes: ['C4'] } })}${ex({ id: 'e2', type: 'ear-note', spec: { key: 'C', degrees: [1, 3] } })}${ex({ id: 'r1', type: 'reflect', spec: { prompt: 'p' } })}\n\`\`\`ladder\n{ "skill": "degrees", "unlocks": 2 }\n\`\`\`\n`);
   writeFileSync(join(dir, 'lessons', 'w01-l1-welcome', 'assets', 'pic.svg'), '<svg/>');
   return dir;
 }
@@ -222,6 +222,35 @@ describe('settings', () => {
 describe('db', () => {
   it('migrations are idempotent', () => {
     const v = (db.prepare('SELECT MAX(version) AS v FROM schema_migrations').get() as { v: number }).v;
-    expect(v).toBe(1);
+    expect(v).toBe(MIGRATIONS[MIGRATIONS.length - 1]!.version);
+    expect(migrate(db)).toBe(v);
+  });
+});
+
+describe('ear ladders', () => {
+  it('unlocks rungs, records ladder answers and computes mastery / the current rung', async () => {
+    type L = { skills: { skill: string; unlocked: number; current: number | null; rungs: { mastered: boolean }[] }[] };
+    let st = await json<L>(app.request('/api/ladder'));
+    expect(st.skills.find((s) => s.skill === 'octave')).toMatchObject({ unlocked: 0, current: null });
+    st = await json<L>(post('/api/ladder/unlock', { skill: 'octave', unlocks: 3 }));
+    expect(st.skills.find((s) => s.skill === 'octave')).toMatchObject({ unlocked: 3, current: 1 });
+    await post('/api/ladder/unlock', { skill: 'octave', unlocks: 2 }); // never lowered
+    for (let i = 0; i < 20; i++) {
+      const r = await post('/api/progress/attempts', { lessonId: 'ladder', exerciseId: 'octave-1', type: 'ear-octave', correct: true, score: 1, source: 'practice' });
+      expect(r.status).toBe(201);
+    }
+    st = await json<L>(app.request('/api/ladder'));
+    const oct = st.skills.find((s) => s.skill === 'octave')!;
+    expect(oct).toMatchObject({ unlocked: 3, current: 2 });
+    expect(oct.rungs[0]!.mastered).toBe(true);
+    expect((await post('/api/progress/attempts', { lessonId: 'ladder', exerciseId: 'octave-99', type: 'ear-octave', correct: true, score: 1 })).status).toBe(404);
+    expect((await post('/api/ladder/unlock', { skill: 'nope', unlocks: 1 })).status).toBe(400);
+    // a lesson that was started counts as reached: its ladder blocks are open without rendering them
+    await post('/api/progress/exercises/complete', { lessonId: 'w01-l2-octaves', exerciseId: 'e1', type: 'play-notes', score: 1, passed: true, correct: 1, total: 1 });
+    st = await json<L>(app.request('/api/ladder'));
+    expect(st.skills.find((s) => s.skill === 'degrees')).toMatchObject({ unlocked: 2, current: 1 });
+    // ladder answers don't show up as a lesson
+    const s = await json<ProgressSummaryDTO>(app.request('/api/progress'));
+    expect(s.lastLessonId).toBeNull();
   });
 });

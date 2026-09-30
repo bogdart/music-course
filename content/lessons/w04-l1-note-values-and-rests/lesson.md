@@ -8,14 +8,14 @@ duration_min: 45
 goals:
   - Know how long whole, half, quarter and eighth notes (and their rests) last
   - Lengthen notes with ties and dots
-  - Tap and recognise simple one-bar rhythms; hear degree 4
+  - Hear degree 4 and what it means for a note to resolve
 prerequisites: [w03-l3-ode-to-joy-and-daw-melody]
 tags: [rhythm, notation, note-values, ear]
 ---
 
 # Note values and rests
 
-So far you've copied rhythms by ear. This week you learn to *write* and *read* them, which lets you store any rhythm on paper or in the DAW grid. The whole system is based on one idea: **each note value is half the one before**.
+So far you've copied rhythms by ear. This week you learn to *write* and *read* them, which lets you store any rhythm on paper or in the DAW grid. The whole system rests on one idea: **each note value is half the one before**.
 
 | Value | Symbol in the app | Beats in 4/4 | Rest |
 |---|---|---|---|
@@ -40,6 +40,12 @@ To count eighth notes, split each beat with "and": **1 & 2 & 3 & 4 &**. The numb
 }
 ```
 
+This lesson opens two rhythm rungs: eighth notes in the "which notation?" drill, then **tapping** a rhythm back yourself. The drill below runs at your current rhythm rung — you'll meet these once the quarters-and-halves version is solid.
+
+```ladder
+{ "skill": "rhythm", "unlocks": 3, "intro": "Opens \"Choose: with eighths\" and \"Tap it back: quarters\"; the drill runs at your current rung." }
+```
+
 ## Ties and dots: making notes longer
 
 Sometimes a note needs a length that isn't on the menu — say, three beats. Two tools:
@@ -47,7 +53,7 @@ Sometimes a note needs a length that isn't on the menu — say, three beats. Two
 - A [[tie]] joins two notes of the same pitch into one long note: a half tied to a quarter = 3 beats. Written `C4:h~ C4:q`. You play once and hold.
 - A [[dotted note]] is the note plus **half of itself**: a dotted half = 2 + 1 = 3 beats (`h.`); a dotted quarter = 1 + ½ = 1½ beats (`q.`).
 
-The dotted quarter + eighth pair is everywhere: it's the "long–short" you played at the end of Ode to Joy's lines. Count it "**1 — — &** 2": hold through beat 2's start, play on its "&".
+The dotted quarter + eighth pair is the "long–short" you played at the end of Ode to Joy's lines. Count it "**1 & 2 &** 3": the long note starts on 1 and holds through "& 2"; the short note lands on the "&" after 2; the next note falls on 3.
 
 ```example
 {
@@ -60,29 +66,42 @@ The dotted quarter + eighth pair is everywhere: it's the "long–short" you play
 
 The last two bars are how "Mary Had a Little Lamb" is really written — with a lilt on the first note.
 
-## A new degree: 4 (fa)
+## A new degree: 4 (fa), and what "resolve" means
 
-Degree 4 sits right above 3, only a half step away, and it leans heavily **down** onto 3. After the home run it sounds tense, as if it's waiting to resolve. Sing it and let it fall: fa → mi.
+Degree 4 sits right above 3, only a **half step** away. After the home run, 4 tends to sound restless, as if it leans down onto 3. When a restless note moves to a more restful neighbour, musicians say it [[resolves]] — the tension is let go. Listen: the home run, then 4 held… and resolving to 3, then all the way home:
 
 ```example
 {
-  "title": "Cadence, then 4 resolving to 3",
+  "title": "Home run, then fa → mi (4 resolves to 3), then mi re do",
   "bpm": 80, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "[C4 E4 G4]:h [C4 F4 A4]:h | [B3 D4 G4]:h [C4 E4 G4]:h | r:w | F4:h E4:h" } ]
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | F4:w | E4:h r:h | E4:q D4:q C4:h" } ],
+  "show": ["keyboard"]
 }
 ```
 
-## Octaves, two apart
-
-Your octave drills so far kept the two notes one octave apart. Two octaves (C3 and C5) is much harder — the height difference is huge and the melting effect is weaker. The bridge is to walk it: C3 → C4 → C5. Each step is an octave you can already hear, so the colour carries through. After each answer below, press **Walk up the octaves** and follow the colour step by step.
+Compare with 4 left hanging — no resolution:
 
 ```example
 {
-  "title": "C3 → C5 directly, then walked: C3 → C4 → C5",
-  "bpm": 70, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C3:h C5:h | C3:q C4:q C5:h" } ],
+  "title": "Home run, then 4 alone",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | F4:w" } ],
   "show": ["keyboard"]
 }
+```
+
+If 4 doesn't feel "leaning" to you yet, that's fine — the walk home after each answer (4 → 3 → 2 → 1) shows you where it sits. The keyboard trick still works too: C D E F = 1 2 3 4.
+
+```ladder
+{ "skill": "degrees", "unlocks": 4, "intro": "Opens degrees 1 to 4 after the home run; the drill runs at your current rung." }
+```
+
+## Octaves: near-misses, one after the other
+
+This lesson also opens an octave rung that keeps the single pair (same or different?) but the different note may now sit a half step from the octave — the near-miss you already know from the *together* rungs. The ladder only brings it once plain "same or different" is solid.
+
+```ladder
+{ "skill": "octave", "unlocks": 7, "intro": "Opens \"Same or different: near-misses\"; the drill runs at your current octave rung." }
 ```
 
 ## Drills
@@ -101,7 +120,21 @@ Your octave drills so far kept the two notes one octave apart. Two octaves (C3 a
     { "q": "A quarter rest lasts…", "choices": ["no time at all", "1 beat of silence", "until the next bar"], "answer": 1 },
     { "q": "How many half notes fill a 4/4 bar?", "choices": ["1", "2", "4"], "answer": 1 }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
+}
+```
+
+```exercise
+{
+  "id": "e8",
+  "type": "quiz",
+  "title": "Resolving",
+  "spec": { "questions": [
+    { "q": "A note 'resolves' when it…", "choices": ["gets louder", "moves from a restless note to a more restful one", "jumps an octave"], "answer": 1 },
+    { "q": "Degree 4 in C major is…", "choices": ["E", "F", "G"], "answer": 1 },
+    { "q": "4 usually resolves to…", "choices": ["3, a half step down", "7", "6"], "answer": 0 },
+    { "q": "The most restful note of the key is…", "choices": ["degree 1", "degree 4", "degree 2"], "answer": 0 }
+  ] }
 }
 ```
 
@@ -129,48 +162,11 @@ Your octave drills so far kept the two notes one octave apart. Two octaves (C3 a
 
 ```exercise
 {
-  "id": "e4",
-  "type": "ear-rhythm",
-  "title": "Which rhythm did you hear?",
-  "instructions": "One bar in 4/4. Pick the matching notation.",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "8", "rests": false, "answer": "choose" }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-note",
-  "title": "1, 2, 3 or 4?",
-  "instructions": "4 is tense and wants to fall to 3.",
-  "count": 12,
-  "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4], "reference": "scale", "octaves": [4], "instrument": "piano" }
-}
-```
-
-```exercise
-{
   "id": "e6",
   "type": "play-melody",
   "title": "Mary, with the real rhythm",
   "instructions": "Dotted quarter + eighth at the start of lines 1 and 3.",
   "passScore": 0.75,
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:h | D4:q D4:q D4:h | E4:q G4:q G4:h | E4:q. D4:8 C4:q D4:q | E4:q E4:q E4:q E4:q | D4:q D4:q E4:q D4:q | C4:w", "showStaff": true, "showKeyboard": false, "countIn": 1 }
-}
-```
-
-```exercise
-{
-  "id": "e7",
-  "type": "ear-octave",
-  "title": "Which one is the octave? (one or two apart)",
-  "instructions": "A note, then A and B — one or two octaves higher. Which one is the same note?",
-  "count": 10,
-  "passScore": 0.7,
-  "spec": { "notes": ["C", "D", "E", "F", "G", "A", "B"], "octaves": [3, 4, 5], "mode": "match", "gap": [1, 2], "foils": [1, 6, 11] },
-  "hints": ["Two octaves apart: after answering, press 'Walk up the octaves'."]
 }
 ```

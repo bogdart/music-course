@@ -8,7 +8,7 @@ duration_min: 50
 goals:
   - "Plan a 32-bar dance form: intro, breakdown, build, drop"
   - Create tension with a snare roll, a rising line and a moment of silence
-  - Finish a full EDM arrangement with 5 tracks
+  - Finish a full 5-track EDM arrangement over two sessions
 prerequisites: [w33-l2-arps-and-gating, w21-l2-textural-build]
 tags: [production, electronic, form, daw]
 ---
@@ -37,7 +37,7 @@ The drop only hits hard because of what comes before: the breakdown removes the 
   "title": "Last 4 bars of the build (roll + rising lead + gap)",
   "bpm": 124,
   "timeSig": "4/4",
-  "key": "C",
+  "key": "Am",
   "tracks": [
     {
       "instrument": "drums",
@@ -67,7 +67,7 @@ Here is the first 4 bars of a drop: a punchy, repeated hook (original) on lead, 
   "title": "Drop: hook, beat, bass",
   "bpm": 124,
   "timeSig": "4/4",
-  "key": "C",
+  "key": "Am",
   "tracks": [
     {
       "instrument": "lead",
@@ -117,11 +117,11 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
   "type": "play-melody",
   "title": "Play the drop hook",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 100,
     "timeSig": "4/4",
-    "key": "C",
+    "key": "Am",
     "seq": "E5:8 E5:8 r:8 D5:8 C5:8 r:8 A4:q | C5:8 C5:8 r:8 A4:8 G4:q. r:8 | E5:8 E5:8 r:8 D5:8 C5:8 r:8 G5:q | E5:h. r:q |",
     "showStaff": true,
     "showKeyboard": true,
@@ -139,7 +139,7 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
   "id": "e3-form-quiz",
   "type": "quiz",
   "title": "Energy map",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "questions": [
       {
@@ -179,65 +179,14 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
 
 ```exercise
 {
-  "id": "e4-ear-melody",
-  "type": "ear-melody",
-  "title": "Hook dictation",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "key": "random",
-    "degrees": [
-      1,
-      2,
-      3,
-      5,
-      6
-    ],
-    "length": 5,
-    "rhythm": "simple",
-    "answer": "play"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-ear-chords",
-  "type": "ear-chord",
-  "title": "Pad colours",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "qualities": [
-      "min",
-      "maj",
-      "sus2",
-      "sus4",
-      "min7"
-    ],
-    "inversions": [
-      0,
-      1
-    ],
-    "voicing": "mixed",
-    "range": [
-      "C3",
-      "C5"
-    ]
-  }
-}
-```
-
-```exercise
-{
-  "id": "e6-daw-edm",
+  "id": "e4-daw-edm",
   "type": "daw-task",
   "title": "Your 32-bar build and drop",
-  "instructions": "Use Am\u2013F\u2013C\u2013G (or your own minor loop) throughout. Follow the energy map: intro 8, breakdown 8 (no kick), build 8 (roll + rising line + a gap before bar 25), drop 8 (everything, with a short repeated hook). Reuse your loop from last lesson for the intro if you like.",
+  "instructions": "Use Am\u2013F\u2013C\u2013G (or your own minor loop) throughout. Follow the energy map: intro 8, breakdown 8 (no kick), build 8 (roll + rising line + a gap before bar 25), drop 8 (everything, with a short repeated hook). This is a two-session task: session 1 builds the intro and breakdown (bars 1–16), session 2 the build and drop (bars 17–32). The project saves in between.",
   "spec": {
     "template": {
       "bpm": 124,
-      "key": "C",
+      "key": "Am",
       "timeSig": "4/4",
       "tracks": [
         {
@@ -312,4 +261,14 @@ That off-beat bass (rest on the beat, note on the "and") is a dance-music classi
     "maxBars": 32
   }
 }
+```
+
+## Ear review
+
+```ladder
+{ "skill": "rhythm", "unlocks": 14, "intro": "Drum dictation at your level: the building blocks of a build-up." }
+```
+
+```ladder
+{ "skill": "melody", "unlocks": 18, "intro": "Melodies at your level: a drop hook is a short melody you can play back." }
 ```

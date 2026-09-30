@@ -1,21 +1,21 @@
 ---
 id: w40-l3-self-critique-and-ear-assessment
-title: Self-Critique and Phase 4 Ear Assessment
+title: Self-Critique and Phase 4 Ear Check
 week: 40
 order: 3
 phase: p4
 duration_min: 50
 goals:
   - Critique your three portfolio pieces with a structured checklist
-  - Complete the Phase 4 ear and keyboard assessment
+  - Take a diagnostic ear check at your own ladder level, plus a short keyboard check
   - Set goals for Phase 5 (transcription and mastery)
 prerequisites: [w40-l2-polish-songs-two-and-three]
 tags: [portfolio, assessment, ear, review]
 ---
 
-# Self-Critique and Phase 4 Ear Assessment
+# Self-Critique and Phase 4 Ear Check
 
-Congratulations — Phase 4 is done. You started it with 9th chords and finish with a portfolio of three finished pieces in different styles. Today: an honest review, then a check-up of your ears and hands.
+Phase 4 is done. You started it with 9th chords and finish with three finished pieces in different styles. Today: an honest review of the music, then a check-up of your ears and hands. Nothing today is new material, and nothing here is a gate — it's a picture of where you are before Phase 5.
 
 ## The self-critique checklist
 
@@ -24,223 +24,128 @@ Listen to each portfolio piece once, start to finish, without stopping. Then sco
 | Area | Question |
 |------|----------|
 | Idea | Is there one clear, memorable idea (hook, motif, groove)? |
-| Harmony | Do the chords support the melody? Is there at least one colourful moment (extension, borrowed chord, sub)? |
+| Harmony | Do the chords support the melody? Is there at least one colourful moment (an extension, a borrowed chord, a substitution)? |
 | Melody | Singable or playable? Good prosody and range? Does it peak somewhere? |
 | Rhythm | Does the groove feel steady and intentional? |
-| Form | Is there an arc — contrast, climax, release? Are transitions clear? |
+| Form | Is there an arc — contrast, climax, release? Are the transitions clear? |
 | Arrangement | Does every track have a job? Any clutter or register clashes? |
 | Ending | Deliberate and satisfying? |
 
-Circle the lowest score for each piece: that's the one thing to fix first if you return to it. Don't fix everything — finished and imperfect beats perfect and abandoned.
+Circle the lowest score for each piece: that's the one thing to fix first. Don't fix everything — finished and imperfect beats perfect and abandoned.
 
-## Ear and keyboard assessment
+```exercise
+{
+  "id": "e1-critique",
+  "type": "reflect",
+  "title": "Checklist scores",
+  "spec": {
+    "prompt": "For each of your three pieces, write its seven scores (Idea, Harmony, Melody, Rhythm, Form, Arrangement, Ending) and name its lowest item. Which piece is strongest overall, and why?",
+    "minWords": 40
+  }
+}
+```
 
-The drills below mix everything from weeks 27–39: 7th-chord qualities, borrowed chords and dominants in progressions, modes, odd meters, melodic dictation and jazz voicings. Aim for 80%. Anything below that becomes a focus in your spaced-repetition reviews during Phase 5, where your ears will be doing the heavy lifting: taking real songs apart.
+## Diagnostic ear check
 
-Before you start, listen to this recap and name each chord colour as it goes by:
+Five short ladder drills, one per skill that Phase 5 leans on. Each runs at **your current rung** of that ladder — not at a fixed "Phase 4 level" — so it tests only what you've actually been drilling. Read the result like this: around **70% or more** on your current rung means the ladder is healthy; clearly below that means this ladder is your Practice-page priority in the coming weeks. Roots and progressions matter most: Phase 5 starts by finding bass notes and chords in real songs.
+
+Before you start, just listen — no need to name anything:
 
 ```example
 {
-  "title": "Phase 4 in eight bars: rootless ii–V–I, tritone sub, borrowed iv, 6/9 ending",
-  "bpm": 76,
-  "timeSig": "4/4",
-  "key": "C",
+  "title": "Phase 4 in eight bars: rootless ii–V–I, a turnaround, tritone sub, borrowed iv, 6/9 ending",
+  "bpm": 76, "timeSig": "4/4", "key": "C",
   "tracks": [
-    {
-      "instrument": "epiano",
-      "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 E4]:w | [E3 G3 B3 D4]:w | [C3 E3 G3 A3]:w | [F3 A3 C4 E4]:w | [F3 Ab3 B3 Eb4]:w | [F3 Ab3 C4 D4]:w | [C3 E3 A3 D4 G4]:w |"
-    },
-    {
-      "instrument": "bass",
-      "seq": "D2:w | G1:w | C2:w | A1:w | D2:w | Db2:w | F2:w | C2:w |"
-    }
+    { "instrument": "epiano", "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 E4]:w | [E3 G3 B3 D4]:w | [C3 E3 G3 A3]:w | [F3 A3 C4 E4]:w | [F3 Ab3 B3 Eb4]:w | [F3 Ab3 C4 D4]:w | [C3 E3 A3 D4 G4]:w |" },
+    { "instrument": "bass", "seq": "D2:w | G1:w | C2:w | A1:w | D2:w | Db2:w | F2:w | C2:w |" }
   ],
-  "show": [
-    "keyboard"
-  ]
+  "show": ["keyboard"]
 }
 ```
 
-## Assessment
-
-```exercise
-{
-  "id": "a1-chords",
-  "type": "ear-chord",
-  "title": "Chord qualities",
-  "count": 12,
-  "passScore": 0.8,
-  "spec": {
-    "qualities": [
-      "maj7",
-      "min7",
-      "dom7",
-      "m7b5",
-      "sus2",
-      "sus4",
-      "dim",
-      "aug"
-    ],
-    "inversions": [
-      0
-    ],
-    "voicing": "mixed",
-    "range": [
-      "C2",
-      "C5"
-    ]
-  }
-}
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Check 1 of 5 — roots and bass lines, at your current rung." }
 ```
 
-```exercise
-{
-  "id": "a2-progressions",
-  "type": "ear-progression",
-  "title": "Progressions: diatonic, V7 and borrowed",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": {
-    "key": "random",
-    "mode": "major",
-    "length": 4,
-    "chords": [
-      "I",
-      "ii",
-      "iii",
-      "IV",
-      "iv",
-      "V7",
-      "vi",
-      "bVI",
-      "bVII"
-    ],
-    "style": "pad-bass"
-  }
-}
+```ladder
+{ "skill": "progressions", "unlocks": 19, "intro": "Check 2 of 5 — progressions, at your current rung." }
 ```
+
+```ladder
+{ "skill": "chords", "unlocks": 15, "intro": "Check 3 of 5 — chord colours, at your current rung." }
+```
+
+```ladder
+{ "skill": "melody", "unlocks": 18, "intro": "Check 4 of 5 — melody play-back, at your current rung." }
+```
+
+```ladder
+{ "skill": "scales", "unlocks": 13, "intro": "Check 5 of 5 — scale and mode colours, at your current rung." }
+```
+
+## Keyboard check
 
 ```exercise
 {
-  "id": "a3-modes",
-  "type": "ear-scale",
-  "title": "Modes and colours",
-  "count": 12,
-  "passScore": 0.75,
-  "spec": {
-    "scales": [
-      "major",
-      "dorian",
-      "phrygian",
-      "lydian",
-      "mixolydian",
-      "natural-minor",
-      "locrian",
-      "blues"
-    ],
-    "play": "asc"
-  }
-}
-```
-
-```exercise
-{
-  "id": "a4-odd-meter",
-  "type": "ear-rhythm",
-  "title": "Odd-meter rhythms",
-  "count": 6,
-  "passScore": 0.75,
-  "spec": {
-    "timeSig": "7/8",
-    "bars": 1,
-    "subdivision": "8",
-    "rests": true,
-    "answer": "choose"
-  }
-}
-```
-
-```exercise
-{
-  "id": "a5-melody",
-  "type": "ear-melody",
-  "title": "Melodic dictation",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "key": "random",
-    "degrees": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ],
-    "length": 6,
-    "rhythm": "simple",
-    "answer": "play"
-  }
-}
-```
-
-```exercise
-{
-  "id": "a6-build",
+  "id": "e2-build",
   "type": "build-chord",
   "title": "Build extended and altered chords",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": {
-    "chords": [
-      "Dm9",
-      "G13",
-      "Cmaj9",
-      "Bm7b5",
-      "E7",
-      "Am6",
-      "Db7",
-      "C#dim7",
-      "Fadd9",
-      "Abmaj7"
-    ],
-    "root": "given",
-    "prompt": "symbol"
-  }
+  "passScore": 0.7,
+  "spec": { "chords": ["Dm9", "G13", "Cmaj9", "Bm7b5", "E7", "Am6", "Db7", "C#dim7", "Fadd9", "Abmaj7"], "root": "given", "prompt": "symbol" }
 }
 ```
 
 ```exercise
 {
-  "id": "a7-play-rootless",
+  "id": "e3-play-rootless",
   "type": "play-melody",
   "title": "Rootless ii–V–I in C and F",
-  "count": 6,
-  "passScore": 0.8,
+  "passScore": 0.7,
   "spec": {
-    "bpm": 70,
-    "timeSig": "4/4",
-    "key": "C",
+    "bpm": 70, "timeSig": "4/4", "key": "C",
     "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 E4]:w | [E3 G3 B3 D4]:w | r:w | [F3 A3 Bb3 D4]:w | [E3 A3 Bb3 D4]:w | [E3 G3 A3 C4]:w | r:w |",
-    "showStaff": false,
-    "showKeyboard": true,
-    "countIn": 1,
-    "backing": {
-      "instrument": "bass",
-      "seq": "D2:w | G1:w | C2:w | r:w | G1:w | C2:w | F2:w | r:w |"
-    }
+    "showStaff": false, "showKeyboard": true, "countIn": 1,
+    "backing": { "instrument": "bass", "seq": "D2:w | G1:w | C2:w | r:w | G1:w | C2:w | F2:w | r:w |" }
+  }
+}
+```
+
+## Make it: the one fix
+
+```exercise
+{
+  "id": "e4-daw-one-fix",
+  "type": "daw-task",
+  "title": "Fix the lowest score",
+  "instructions": "Pick the piece with the lowest checklist item. Open it in the DAW and fix that one thing only (for example: a clearer transition, a lower chord voicing, a real ending). Then rebuild or paste the changed section (at least 8 bars) here so you can compare it with the old version.",
+  "spec": {
+    "template": {
+      "bpm": 100, "key": "C", "timeSig": "4/4",
+      "tracks": [
+        { "instrument": "lead", "seq": "" },
+        { "instrument": "piano", "seq": "" },
+        { "instrument": "bass", "seq": "" },
+        { "instrument": "drums", "seq": "" }
+      ]
+    },
+    "task": "One targeted fix to a portfolio piece.",
+    "checks": [
+      { "kind": "bars", "min": 8, "max": 64 },
+      { "kind": "note-count", "min": 16 },
+      { "kind": "custom", "id": "one-fix", "note": "Self-check: the lowest-scoring item now scores at least one point higher." }
+    ],
+    "minBars": 8, "maxBars": 64
   }
 }
 ```
 
 ```exercise
 {
-  "id": "a8-reflect",
+  "id": "e5-reflect",
   "type": "reflect",
   "title": "Phase 4 retrospective",
   "spec": {
-    "prompt": "Paste your checklist scores for the three pieces. What was your biggest musical breakthrough in Phase 4? Which skill (jazz voicings, reharmonisation, improvisation, production, form, topline) do you most want to keep developing, and what's one goal for Phase 5?",
+    "prompt": "Which ladders came out healthy in the ear check, and which is your Practice priority? What was your biggest musical breakthrough in Phase 4? Which skill (voicings, reharmonisation, improvisation, production, form, topline) do you most want to keep developing, and what's one goal for Phase 5?",
     "minWords": 50
   }
 }

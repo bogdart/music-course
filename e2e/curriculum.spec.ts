@@ -1,4 +1,4 @@
-/** 2. Curriculum page: 5 phases, 52 weeks, 154 lessons; every lesson reachable from it and via Next/Previous. */
+/** 2. Curriculum page: 5 phases, 52 weeks, every lesson of curriculum.json; every lesson reachable from it and via Next/Previous. */
 import { test, expect } from './fixtures';
 import { goto } from './helpers/app';
 import { curriculum, lessons } from './helpers/content';
@@ -8,7 +8,7 @@ test.describe.configure({ mode: 'parallel' });
 const cur = curriculum();
 const byId = new Map(lessons().map((l) => [l.id, l]));
 
-test('lists 5 phases, 52 weeks and 154 lessons in curriculum order', async ({ page }) => {
+test('lists 5 phases, 52 weeks and every lesson in curriculum order', async ({ page }) => {
   await goto(page, '/curriculum');
   await expect(page.locator('section.phase')).toHaveCount(5);
   await expect(page.locator('section.phase h2')).toHaveText(cur.phases.map((p) => p.title));
@@ -16,7 +16,7 @@ test('lists 5 phases, 52 weeks and 154 lessons in curriculum order', async ({ pa
   await expect(page.locator('.card.week .week-head .muted')).toHaveText(cur.weeks.map((w) => `Week ${w.week}`));
   await expect(page.locator('.card.week .week-head strong')).toHaveText(cur.weeks.map((w) => w.title));
   const links = page.locator('li.lesson-row a');
-  await expect(links).toHaveCount(154);
+  await expect(links).toHaveCount(lessons().length);
   await expect(page.locator('li.lesson-row.missing')).toHaveCount(0);
   const hrefs = await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs).toEqual(cur.weeks.flatMap((w) => w.lessons).map((id) => `/lesson/${id}`));

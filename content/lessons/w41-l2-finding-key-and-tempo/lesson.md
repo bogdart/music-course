@@ -6,63 +6,95 @@ order: 2
 phase: p5
 duration_min: 40
 goals:
-  - Find the tonal centre of a loop by humming home and checking the bass at cadences
-  - Decide major or minor (or a mode) from the third and the chord colours
-  - Measure tempo by tapping and tell a half-time feel from the real pulse
+  - Find home with the hum test and the phrase-end test, then prove it by playing the scale along
+  - Decide major or minor from the home chord
+  - Measure tempo by tapping, and recognise a half-time feel
 prerequisites: [w41-l1-the-transcription-workflow]
-tags: [transcription, key, tempo, ear, minor]
+tags: [transcription, key, tempo, meter, ear]
 ---
 
 # Pass 1 — Finding Key and Tempo
 
-Pass 1 has two questions: *where is home?* and *how fast is the beat?* Get these right and every later pass becomes a multiple-choice question instead of an open one.
+Pass 1 asks two questions: *where is home?* and *how fast is the beat?* Get them right and every later pass becomes a
+multiple choice instead of an open question.
 
 ## Finding home
 
-The [[tonal centre]] is the note the music wants to rest on. Three quick tests, in this order:
+The [[tonal centre]] is the note the music wants to rest on. Two tests, in this order:
 
-1. **Hum test.** Loop the song, then stop it mid-phrase and hum the note that feels most finished. Nine times out of ten that's degree 1.
-2. **Cadence test.** Listen to the bass on the last chord of a chorus or a phrase. Songs land on home at the ends of sections far more often than at the start.
-3. **Colour test.** Hum degree 1, then degree 3 above it. If the song's third sounds like your low version (a minor 3rd), it's minor. Then listen for the flavour notes you learned in Phase 3: a raised 6th means dorian, a lowered 7th over a major tonic means mixolydian.
+1. **Hum test.** Loop the song, stop it mid-phrase and hum the note that would feel most finished. Check your hum on the
+   keyboard. It is often, not always, degree 1 — the other tests confirm it.
+2. **Phrase-end test.** Listen to the bass on the *last* chord of a phrase or section. Songs land on home at the ends of
+   sections much more often than at the start (you saw that trap last lesson).
 
-Once you have a candidate, play the scale along with the loop. Wrong notes will jump out immediately — that's your proof.
+Then **decide major or minor**: play the home chord both ways (C–E–G and C–E♭–G) along with the loop. The one that
+blends is right. Finally play the whole scale along; a wrong candidate clashes within a bar or two. That is your proof.
 
 ## Finding the tempo
 
-Tap along on the kick-and-snare pulse for eight beats and let the app measure it — or count beats for fifteen seconds and multiply by four. This is [[tap tempo]].
+Tap steady beats along with the kick-and-snare for eight beats and let a tap-tempo tool turn them into BPM — this is
+[[tap tempo]]. The drill below has exactly such a tool; for a record outside the app, count beats for 15 seconds and
+multiply by four.
 
-The classic trap is [[half-time]] feel: the snare lands only on beat 3, so the song *feels* half as fast as the hats and bass say. Producers usually label the tempo by the faster count. Listen to the same loop both ways:
+The classic trap is the [[half-time]] feel: the snare hits only on beat 3, so the groove *feels* half as fast while the
+hats and bass keep the real pace. Hear the same loop both ways:
 
 ```example
 {
-  "title": "Mystery groove — normal feel, 84 BPM",
-  "bpm": 84, "timeSig": "4/4", "key": "Em",
+  "title": "Normal feel — snare on 2 and 4, 88 BPM",
+  "bpm": 88,
+  "timeSig": "4/4",
   "tracks": [
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8" },
-    { "instrument": "bass", "seq": "E2:q. E2:8 r:8 E2:8 E2:q | C2:q. C2:8 r:8 C2:8 C2:q | G2:q. G2:8 r:8 G2:8 G2:q | D2:q. D2:8 r:8 D2:8 D2:q" },
-    { "instrument": "pad", "seq": "[E3 G3 B3]:w | [E3 G3 C4]:w | [D3 G3 B3]:w | [D3 F#3 A3]:w" },
-    { "instrument": "pluck", "seq": "B4:8 G4:8 E4:8 G4:8 B4:q A4:q | G4:8 E4:8 C4:8 E4:8 G4:h | D5:8 B4:8 G4:8 B4:8 D5:q B4:q | A4:q F#4:q A4:q r:q" }
+    {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"},
+    {"instrument": "bass", "seq": "C2:q. C2:8 r:8 C2:8 C2:q | A1:q. A1:8 r:8 A1:8 A1:q | F1:q. F1:8 r:8 F1:8 F1:q | G1:q. G1:8 r:8 G1:8 G1:q"}
   ],
-  "show": ["pianoroll"],
+  "show": [],
   "loop": true
 }
 ```
 
 ```example
 {
-  "title": "Same loop — half-time drums",
-  "bpm": 84, "timeSig": "4/4", "key": "Em",
+  "title": "Same tempo — half-time drums, snare on 3",
+  "bpm": 88,
+  "timeSig": "4/4",
   "tracks": [
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8" },
-    { "instrument": "bass", "seq": "E2:q. E2:8 r:8 E2:8 E2:q | C2:q. C2:8 r:8 C2:8 C2:q | G2:q. G2:8 r:8 G2:8 G2:q | D2:q. D2:8 r:8 D2:8 D2:q" },
-    { "instrument": "pad", "seq": "[E3 G3 B3]:w | [E3 G3 C4]:w | [D3 G3 B3]:w | [D3 F#3 A3]:w" }
+    {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8 | [kick hihat]:8 hihat:8 hihat:8 hihat:8 [snare hihat]:8 hihat:8 hihat:8 [kick hihat]:8"},
+    {"instrument": "bass", "seq": "C2:q. C2:8 r:8 C2:8 C2:q | A1:q. A1:8 r:8 A1:8 A1:q | F1:q. F1:8 r:8 F1:8 F1:q | G1:q. G1:8 r:8 G1:8 G1:q"}
   ],
-  "show": ["pianoroll"],
+  "show": [],
   "loop": true
 }
 ```
 
-The tempo is identical — only the snare moved. If you tapped 42, double it.
+The tempo is identical; only the snare moved. If you tap 44 on the second one, you are tapping the half-time feel —
+producers usually write the faster count (88).
+
+```exercise
+{
+  "id": "w41l2-tempo",
+  "type": "ear-tempo",
+  "title": "Tap the tempo",
+  "instructions": "Tap along on the pulse (kick and snare), read the BPM from the tap tool, and answer. Within 4 BPM counts as right.",
+  "count": 8,
+  "spec": {"range": [70, 150], "tolerance": 4, "style": "groove", "bars": 2}
+}
+```
+
+```exercise
+{
+  "id": "w41l2-meter",
+  "type": "ear-meter",
+  "title": "Count in 3 or 4?",
+  "instructions": "The other half of 'how fast is the beat': how many beats in a bar? Count along from each loud downbeat.",
+  "count": 8,
+  "spec": {"meters": ["3/4", "4/4", "6/8"], "bpm": 96, "bars": 4, "style": "mixed"}
+}
+```
+
+## Pass 1 on a hidden loop
+
+Now use both tests on a loop you haven't seen. Answer, then reveal.
 
 ```exercise
 {
@@ -72,65 +104,24 @@ The tempo is identical — only the snare moved. If you tapped 42, double it.
   "spec": {
     "example": {
       "title": "Mystery groove",
-      "bpm": 84, "timeSig": "4/4", "key": "Em",
+      "bpm": 84,
+      "timeSig": "4/4",
       "tracks": [
-        { "instrument": "bass", "seq": "E2:q. E2:8 r:8 E2:8 E2:q | C2:q. C2:8 r:8 C2:8 C2:q | G2:q. G2:8 r:8 G2:8 G2:q | D2:q. D2:8 r:8 D2:8 D2:q" },
-        { "instrument": "pad", "seq": "[E3 G3 B3]:w | [E3 G3 C4]:w | [D3 G3 B3]:w | [D3 F#3 A3]:w" },
-        { "instrument": "pluck", "seq": "B4:8 G4:8 E4:8 G4:8 B4:q A4:q | G4:8 E4:8 C4:8 E4:8 G4:h | D5:8 B4:8 G4:8 B4:8 D5:q B4:q | A4:q F#4:q A4:q r:q" }
+        {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"},
+        {"instrument": "bass", "seq": "E2:q. E2:8 r:8 E2:8 E2:q | C2:q. C2:8 r:8 C2:8 C2:q | D2:q. D2:8 r:8 D2:8 D2:q | E2:q. E2:8 r:8 E2:8 E2:q"},
+        {"instrument": "pad", "seq": "[E3 G3 B3]:w | [E3 G3 C4]:w | [D3 F#3 A3]:w | [E3 G3 B3]:w"},
+        {"instrument": "pluck", "seq": "B4:8 G4:8 E4:8 G4:8 B4:q A4:q | G4:8 E4:8 C4:8 E4:8 G4:h | A4:8 F#4:8 D4:8 F#4:8 A4:q G4:8 F#4:8 | E4:h. r:q"}
       ],
+      "show": ["staff", "pianoroll"],
+      "hidden": true,
       "loop": true
     },
     "questions": [
-      { "q": "Which note feels like home?", "choices": ["G", "E", "D", "C"], "answer": 1 },
-      { "q": "Major or minor?", "choices": ["Major", "Minor"], "answer": 1, "explain": "The home chord has a minor 3rd (E–G)." },
-      { "q": "Roughly how fast is the beat?", "choices": ["About 60", "About 84", "About 120", "About 168"], "answer": 1 }
+      {"q": "Hum test and phrase-end test: which note is home?", "choices": ["G", "E", "D", "C"], "answer": 1, "explain": "E. The phrase-end test decides it: the tune's long phrase ends on E in bar 4, over an E chord with E in the bass, and the bar before (a D chord) leans into it. That the loop also begins on E proves nothing by itself — last lesson's loop began away from home."},
+      {"q": "Play E–G–B and E–G#–B along with the loop. Which blends?", "choices": ["E–G#–B: major", "E–G–B: minor"], "answer": 1, "explain": "E–G–B: the home chord is minor, so the key is E minor (chords Em – C – D – Em: i – VI – VII – i)."},
+      {"q": "Does the snare hit on 2 and 4, or only on 3?", "choices": ["2 and 4 — normal feel", "Only 3 — half-time"], "answer": 0}
     ]
   }
-}
-```
-
-```exercise
-{
-  "id": "w41l2-tap",
-  "type": "rhythm-tap",
-  "title": "Tap the pulse",
-  "instructions": "Tap steady quarter notes. Feel the snare on 2 and 4, not the hats.",
-  "spec": { "bpm": 84, "timeSig": "4/4", "seq": "x:q x:q x:q x:q | x:q x:q x:q x:q", "showNotation": false, "countIn": 1, "loops": 2 }
-}
-```
-
-```exercise
-{
-  "id": "w41l2-mode",
-  "type": "ear-scale",
-  "title": "Colour test: which scale?",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "scales": ["major", "natural-minor", "dorian", "mixolydian"], "play": "melody" }
-}
-```
-
-```exercise
-{
-  "id": "w41l2-degrees",
-  "type": "ear-note",
-  "title": "Degrees in E minor",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": { "key": "E", "mode": "minor", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
-}
-```
-
-```exercise
-{
-  "id": "w41l2-bpm",
-  "type": "quiz-input",
-  "title": "Tempo arithmetic",
-  "spec": { "questions": [
-    { "q": "You count 24 beats in 15 seconds. What is the BPM?", "answer": ["96"], "kind": "number" },
-    { "q": "You tapped 58 BPM, but the hi-hats and bass move twice as fast as your taps and the snare hits only once per bar. What tempo would a producer write down?", "answer": ["116"], "kind": "number" },
-    { "q": "You count 30 beats in 15 seconds. What is the BPM?", "answer": ["120"], "kind": "number" }
-  ] }
 }
 ```
 
@@ -139,7 +130,46 @@ The tempo is identical — only the snare moved. If you tapped 42, double it.
   "id": "w41l2-scale",
   "type": "play-scale",
   "title": "Prove the key",
-  "instructions": "Play E natural minor up and down. Then loop the example and play along to check no note clashes.",
-  "spec": { "root": "E", "scale": "natural-minor", "octaves": 1, "direction": "asc-desc", "hands": "right", "tempo": 84, "metronome": true }
+  "instructions": "Play E natural minor up and down with the metronome. Then loop the mystery groove and play the scale along: nothing should clash.",
+  "spec": {
+    "root": "E",
+    "scale": "natural-minor",
+    "octaves": 1,
+    "direction": "asc-desc",
+    "hands": "right",
+    "tempo": 84,
+    "metronome": true
+  }
 }
+```
+
+```exercise
+{
+  "id": "w41l2-bpm",
+  "type": "quiz-input",
+  "title": "Tempo arithmetic",
+  "spec": {
+    "questions": [
+      {"q": "You count 24 beats in 15 seconds. What is the BPM?", "answer": ["96"], "kind": "number"},
+      {
+        "q": "You tapped 58 BPM, but the hats and bass move twice as fast as your taps and the snare hits once per bar. What tempo would a producer write?",
+        "answer": ["116"],
+        "kind": "number"
+      },
+      {"q": "You count 30 beats in 15 seconds. What is the BPM?", "answer": ["120"], "kind": "number"}
+    ]
+  }
+}
+```
+
+```ladder
+{
+  "skill": "rhythm",
+  "unlocks": 16,
+  "intro": "Rung 12 of this ladder is estimating tempo; you practise at your own rung."
+}
+```
+
+```ladder
+{"skill": "degrees", "unlocks": 22, "intro": "Hearing degrees against home is the skill behind the hum test."}
 ```

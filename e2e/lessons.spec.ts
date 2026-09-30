@@ -38,11 +38,11 @@ async function check(page: import('@playwright/test').Page, l: SourceLesson) {
   await expect(body.getByTestId('keyboard-block')).toHaveCount(l.blocks.keyboard);
   await expect(body.getByTestId('staff-block')).toHaveCount(l.blocks.staff);
   await expect(body.getByTestId('chords-block')).toHaveCount(l.blocks.chords);
-  await expect(body.locator('.exercise-anchor')).toHaveCount(l.blocks.exercise);
+  await expect(body.locator(".exercise-anchor")).toHaveCount(l.blocks.exercise + l.blocks.ladder);
   await expect(body.getByTestId('block-error'), 'broken block cards').toHaveCount(0);
   await expect(page.locator('.error-card'), '"could not be generated" cards').toHaveCount(0);
   // rail lists every exercise
-  await expect(page.locator('aside.rail li.rail-item')).toHaveCount(l.blocks.exercise);
+  await expect(page.locator("aside.rail li.rail-item")).toHaveCount(l.blocks.exercise + l.blocks.ladder);
 
   // ---- no raw markdown/JSON leaking ----
   const text = await body.innerText();

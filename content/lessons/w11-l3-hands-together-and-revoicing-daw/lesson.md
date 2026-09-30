@@ -8,45 +8,38 @@ duration_min: 50
 goals:
   - Voice I – V – vi – IV smoothly using common tones and small steps
   - Play left-hand chords under a right-hand melody
+  - Name I, IV, V and vi by ear in C
   - Re-voice a jumpy chord part in the DAW and add a root bass line
 prerequisites: [w11-l2-hearing-the-root]
 tags: [voice-leading, inversions, keyboard, daw, ear]
 songs:
   - { title: "Someone Like You", composer: "Adele (2011)", public_domain: false }
-  - { title: "Canon in D", composer: "Johann Pachelbel", public_domain: true }
 ---
 
 # Smooth Voice Leading and Hands Together
 
-Why do inversions exist at all? Because they let chords **connect**. Playing every chord in root position makes your hand jump around, and the music sounds blocky. Good pianists, arrangers and choirs move from chord to chord with as little motion as possible. That craft is called [[voice leading]].
+Today you put inversions to work on the most famous four chords in pop, **I – V – vi – IV** (in C: C, G, Am, F), and play them under a melody.
 
-## Two rules of thumb
+## Re-voicing I – V – vi – IV
 
-1. **Keep common tones.** If the next chord shares a note with this one, hold it.
-2. **Move the others by step.** Go to the nearest note of the next chord.
-
-Take I – V – vi – IV in C (C, G, Am, F). C major (C E G) and G major (G B D) share G. So keep G, move C down to B and E down to D. That gives G/B. Keep going and you get the voicings below — your hand barely moves.
+Same two rules as in lesson 1: keep common tones, move the other notes by step. C major (C E G) and G major (G B D) share G. Keep G, move C down to B and E down to D: that gives G/B. From G/B to Am (A C E): B→C, D→E, G→A, all small steps. From Am to F: keep A and C, move E up to F. Your hand barely moves:
 
 ```example
 {
-  "title": "Blocky (root position) versus smooth (common tones held)",
+  "title": "Blocky (root position), then smooth (C, G/B, Am, F/C)",
   "bpm": 72, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "[C3 E3 G3]:w | [G3 B3 D4]:w | [A3 C4 E4]:w | [F3 A3 C4]:w | r:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 A3]:w | [C3 F3 A3]:w" } ],
   "show": ["keyboard", "pianoroll"]
 }
 ```
 
-```keyboard
-{ "range": ["C3", "C5"], "highlight": ["B2", "D3", "G3"], "labels": "names", "colors": { "G3": "root", "B2": "third", "D3": "fifth" } }
-```
-
-Notice that the smooth version puts some chords in inversion — and yet you still hear C, G, Am, F. Yesterday's skill in action: the root is not always at the bottom.
+The smooth version puts some chords in inversion, and yet the chords are still C, G, Am and F. Last lesson's idea in action: the root isn't always at the bottom.
 
 ```exercise
 {
   "id": "e1", "type": "play-melody", "title": "Smooth I – V – vi – IV, left hand",
   "instructions": "Left hand, around C3. Thumb and pinky barely move. Say the chord names aloud.",
-  "count": 6, "passScore": 0.75,
+  "count": 1, "passScore": 0.7,
   "spec": { "bpm": 66, "timeSig": "4/4", "key": "C", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 A3]:w | [C3 F3 A3]:w", "showStaff": true, "showKeyboard": true, "countIn": 1 }
 }
 ```
@@ -54,51 +47,73 @@ Notice that the smooth version puts some chords in inversion — and yet you sti
 ```exercise
 {
   "id": "e2", "type": "play-chord", "title": "Find your own smooth path",
-  "instructions": "Same four chords, any inversions — but move each finger as little as possible.",
-  "count": 8, "passScore": 0.8,
-  "spec": { "chords": ["C", "G", "Am", "F"], "inversion": "any", "sequence": true, "bpm": 66 }
+  "instructions": "Same four chords, any inversions, but move each finger as little as possible.",
+  "count": 4, "passScore": 0.7,
+  "spec": { "chords": ["C", "G", "Am", "F"], "inversion": "any", "sequence": true, "bpm": 66, "key": "C" }
 }
 ```
 
-## Inversions in pop
+## Inversions make bass lines
 
-Adele's *Someone Like You* (2011, A major, about 67 BPM) loops **A – E/G# – F#m – D** (I – V – vi – IV). Putting E major in 1st inversion makes the bass step down A → G# → F#: one smooth line instead of a jump. Listen for that falling bass under the piano; the roots are still A, E, F#, D.
+Inversions also let the *bass* move smoothly. Play C – G/B – Am – F with the lowest notes as your bass: C, B, A, then F. Instead of jumping C → G, the bass steps down. Adele's *Someone Like You* (2011) uses exactly this trick in its piano part (in A major), which is a big part of why the song feels like one long falling line.
 
-```exercise
+```example
 {
-  "id": "e3", "type": "ear-bass", "title": "Bass of I – V – vi – IV",
-  "instructions": "Play each bass note as you hear it.",
-  "count": 8, "passScore": 0.75,
-  "spec": { "key": "random", "chords": ["I", "V", "vi", "IV"], "answer": "play" }
+  "title": "C – G/B – Am – F: the bass steps down C, B, A, then F",
+  "bpm": 66, "timeSig": "4/4", "key": "C", "loop": true,
+  "tracks": [
+    { "instrument": "piano", "seq": "[E4 G4 C5]:w | [D4 G4 B4]:w | [C4 E4 A4]:w | [C4 F4 A4]:w" },
+    { "instrument": "bass", "seq": "C2:w | B1:w | A1:w | F1:w" }
+  ],
+  "show": ["pianoroll"]
 }
 ```
 
-```exercise
+## Ear: the four chords by name
+
+This lesson opens the progression rung with all four: **I, IV, V and vi** in C (you'll meet it once I, IV and V are solid). You know I (home), IV (lifting away) and V (tension, leaning home) from week 8. The newcomer is **vi**, Am. Clues:
+
+- It's the only **minor** chord of the four, so it sounds darker.
+- It shares two notes (C and E) with I, so it can feel like a sad or soft version of home.
+- Its bass is **A**, not C: if the chord sounds "like home but darker", check the bass.
+
+```example
 {
-  "id": "e4", "type": "ear-progression", "title": "Four-chord order",
-  "count": 8, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi"], "style": "block" }
+  "title": "I then vi (C, Am), twice; then V then vi (G, Am)",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[E3 G3 C4]:h [E3 A3 C4]:h | [E3 G3 C4]:h [E3 A3 C4]:h | [D3 G3 B3]:h [E3 A3 C4]:h" },
+    { "instrument": "bass", "seq": "C2:h A1:h | C2:h A1:h | G1:h A1:h" }
+  ],
+  "show": ["keyboard"]
 }
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 3, "intro": "Opens \"I, IV, V, vi\" in C; the drill runs at your current progressions rung." }
 ```
 
 ## Hands together
 
-Left hand plays smooth chords, right hand plays a simple melody. Both hands strike together on every half note, which keeps coordination simple.
+Start with the simplest version: the left hand plays only the chord root on beat 1 while the right hand plays a melody you know. The hands only have to meet on beat 1.
 
 ```exercise
 {
-  "id": "e5", "type": "play-melody", "title": "Chords + melody",
-  "instructions": "Practise each hand alone first, then together at a slow tempo.",
-  "count": 6, "passScore": 0.7,
-  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[C3 E3 G3 G4]:h [C3 E3 G3 E4]:h | [B2 D3 G3 D4]:h [B2 D3 G3 G4]:h | [C3 E3 A3 E4]:h [C3 E3 A3 A4]:h | [C3 F3 A3 A4]:h [C3 F3 A3 F4]:h | [C3 E3 G3 E4]:w", "showStaff": true, "showKeyboard": true, "countIn": 1 }
+  "id": "e5", "type": "play-melody", "title": "Ode to Joy with left-hand roots",
+  "instructions": "Left hand: C3 or G2 on the first beat of each bar. Right hand: the melody you know from Phase 1. Practise each hand alone first.",
+  "count": 1, "passScore": 0.7,
+  "spec": { "bpm": 66, "timeSig": "4/4", "key": "C", "seq": "[C3 E4]:q E4:q F4:q G4:q | [G2 G4]:q F4:q E4:q D4:q | [C3 C4]:q C4:q D4:q E4:q | [C3 E4]:q. D4:8 [G2 D4]:h |", "showStaff": true, "showKeyboard": true, "countIn": 1 }
 }
 ```
 
+Then the left hand plays smooth chords, right hand a simple melody. Both hands strike together on every half note, which keeps coordination simple.
+
 ```exercise
 {
-  "id": "e6", "type": "ear-chord-root", "title": "Root review",
-  "count": 8, "passScore": 0.7,
-  "spec": { "qualities": ["maj", "min"], "answer": "play", "range": ["C3", "C5"] }
+  "id": "e3", "type": "play-melody", "title": "Chords + melody",
+  "instructions": "Practise each hand alone first, then together at a slow tempo.",
+  "count": 1, "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[C3 E3 G3 G4]:h [C3 E3 G3 E4]:h | [B2 D3 G3 D4]:h [B2 D3 G3 G4]:h | [C3 E3 A3 E4]:h [C3 E3 A3 A4]:h | [C3 F3 A3 A4]:h [C3 F3 A3 F4]:h | [C3 E3 G3 E4]:w", "showStaff": true, "showKeyboard": true, "countIn": 1 }
 }
 ```
 
@@ -106,21 +121,21 @@ Left hand plays smooth chords, right hand plays a simple melody. Both hands stri
 
 ```exercise
 {
-  "id": "e7", "type": "daw-task", "title": "Re-voice I – V – vi – IV smoothly",
+  "id": "e4", "type": "daw-task", "title": "Re-voice I – V – vi – IV smoothly",
   "spec": {
     "template": { "bpm": 72, "key": "C", "timeSig": "4/4", "tracks": [
       { "instrument": "epiano", "seq": "[C3 E3 G3]:w | [G3 B3 D4]:w | [A3 C4 E4]:w | [F3 A3 C4]:w | [C3 E3 G3]:w | [G3 B3 D4]:w | [A3 C4 E4]:w | [F3 A3 C4]:w" },
       { "instrument": "bass", "seq": "" },
       { "instrument": "lead", "seq": "" } ] },
-    "task": "The e-piano plays the progression the blocky way. 1) Rewrite it with smooth voicings: keep common tones, move other notes by step, stay between G2 and E4. 2) Record roots on the bass track (C, G, A, F) — even when your piano chord is inverted, the bass plays the root. 3) Optional: a simple melody on the lead track. Self-check: between any two chords, does at least one note stay put?",
+    "task": "The e-piano plays the progression the blocky way. 1) Rewrite it with smooth voicings: keep common tones, move other notes by step, stay between G2 and E4. 2) Record roots on the bass track (C, G, A, F) between C2 and C3. Even when your piano chord is inverted, the bass plays the root. 3) Optional: a simple melody on the lead track.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["epiano", "bass"] },
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "range", "low": "G2", "high": "E4", "track": 0 },
-      { "kind": "chord-tones-on-beats", "beats": [1, 3], "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "minRatio": 1.0, "track": 0 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "minRatio": 0.9, "track": 1 },
-      { "kind": "range", "low": "C2", "high": "C3", "track": 1 },
-      { "kind": "custom", "id": "common-tones-held", "note": "Self-check: each chord change keeps at least one common tone and moves the other notes by step." }
+      { "kind": "plays-progression", "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "mode": "chords", "minRatio": 0.9, "track": 0 },
+      { "kind": "voice-leading", "maxMove": 2, "minRatio": 0.8, "track": 0 },
+      { "kind": "plays-progression", "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "mode": "roots", "minRatio": 0.9, "track": 1 },
+      { "kind": "range", "low": "C2", "high": "C3", "track": 1 }
     ],
     "minBars": 8, "maxBars": 8
   }

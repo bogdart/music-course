@@ -69,6 +69,28 @@ export function scaleReference(key: string, mode?: Mode, instrument: InstrumentI
   return snippet(steps.map((st, i) => ev(t + st, i * d, i === steps.length - 1 ? PPQ * 2 : d, 0.7)), instrument, 100);
 }
 
+/**
+ * How a note "walks home" in its key: step by step along the scale to the tonic — degrees up to 5 fall to 1, 6 and 7
+ * rise to the upper 1. A chromatic note first steps to its nearest scale neighbour in that direction.
+ */
+export function resolutionPath(midi: number, tonicMidi: number, mode: Mode = 'major'): number[] {
+  const steps = mode === 'minor' ? [0, 2, 3, 5, 7, 8, 10] : [0, 2, 4, 5, 7, 9, 11];
+  const rel = (((midi - tonicMidi) % 12) + 12) % 12;
+  const base = midi - rel; // the tonic at or below the note
+  const up = rel >= 8; // 6 and 7 (and chromatic notes near them) rise
+  const target = up ? base + 12 : base;
+  const scale = [...steps.map((s) => base + s), base + 12];
+  const path = [midi];
+  let cur = midi;
+  while (cur !== target) {
+    const next = up ? scale.find((m) => m > cur) : [...scale].reverse().find((m) => m < cur);
+    if (next === undefined) break;
+    path.push(next);
+    cur = next;
+  }
+  return path;
+}
+
 /** The key's tonic alone (same register as `cadence` and `scaleReference`). */
 export function tonicReference(key: string, mode?: Mode, instrument: InstrumentId = 'piano', octave = 4): Snippet {
   const k = parseKey(key, mode);

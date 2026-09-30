@@ -6,9 +6,9 @@ order: 1
 phase: p4
 duration_min: 45
 goals:
-  - Transform a motif by sequence, inversion and retrograde
-  - Transform its rhythm by augmentation, diminution and fragmentation
-  - Recognise which technique was used by ear
+  - Turn a motif upside down (inversion)
+  - Stretch or squeeze its rhythm (augmentation, diminution) and cut it into fragments
+  - Recognise the technique by its sound — the shape and the speed
 prerequisites: [w37-l3-sixty-second-cue-daw, w18-l1-motif-repetition-variation]
 tags: [composition, motif, development, form]
 songs:
@@ -17,99 +17,68 @@ songs:
 
 # Motif Development Techniques
 
-In Phase 3 you learned repetition and variation. Composers like Beethoven went much further: they built entire movements from a few notes by **developing** them. The opening of his Fifth Symphony (1808, public domain) is four notes — short-short-short-long — and the whole first movement grows from that cell.
+In week 18 you grew phrases from a [[motif]] with repetition, changed endings and [[melodic sequence]] (the same shape from another note). Composers like Beethoven went much further: they built whole movements from a few notes by **developing** them. The opening of his Fifth Symphony (1808, public domain) is four notes — short-short-short-long — and the whole first movement grows from that cell. He sequences it straight away: G G G E♭, then F F F D.
 
 ```example
 {
   "title": "Beethoven — Symphony No. 5, opening motif (public domain)",
-  "bpm": 108,
-  "timeSig": "2/4",
-  "key": "Eb",
-  "tracks": [
-    {
-      "instrument": "strings",
-      "seq": "r:8 G4:8 G4:8 G4:8 | Eb4:h | r:8 F4:8 F4:8 F4:8 | D4:h~ | D4:h |"
-    }
-  ],
-  "show": [
-    "staff"
-  ]
+  "bpm": 108, "timeSig": "2/4", "key": "Cm",
+  "tracks": [ { "instrument": "strings", "seq": "r:8 G4:8 G4:8 G4:8 | Eb4:h | r:8 F4:8 F4:8 F4:8 | D4:h~ | D4:h |" } ],
+  "show": ["staff"]
 }
 ```
 
-Notice he immediately *sequences* it: the same shape a step lower (F F F D). That's development already.
+Today: three new ways to change a motif while keeping it recognisable.
 
-## Pitch techniques
+## 1. Inversion — turn it upside down
 
-Our original motif: C–D–E–G, rhythm 8-8-q-h.
+Our motif: C–D–E–G (up a step, up a step, up a 3rd), rhythm 8-8-q-h. [[Melodic inversion]] flips every direction: up a step becomes down a step. Starting on C5: C–B–A–F. In a key we keep to the scale's notes, so the steps may be half or whole — the *shape* is what matters. What you will hear: the same rhythm, the line going the other way.
 
-- **Sequence** — the same shape moved to another pitch level (up a step: D–E–F–A).
-- **Inversion** — flip the direction of every interval: up a step becomes down a step (C–B–A–F).
-- **Retrograde** — play it backwards (G–E–D–C).
+(Related word: [[retrograde]] = the motif played backwards, G–E–D–C. Composers use it, but honestly, listeners almost never recognise a motif backwards — treat it as a hidden trick, not a signal.)
 
 ```example
 {
-  "title": "Motif → sequence → inversion → retrograde",
-  "bpm": 90,
-  "timeSig": "4/4",
-  "key": "C",
-  "tracks": [
-    {
-      "instrument": "piano",
-      "seq": "C4:8 D4:8 E4:q G4:h | D4:8 E4:8 F4:q A4:h | C5:8 B4:8 A4:q F4:h | G4:h E4:q D4:8 C4:8 |"
-    }
-  ],
-  "show": [
-    "staff"
-  ]
+  "title": "Motif → sequence (up a step) → inversion → retrograde",
+  "bpm": 90, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:q G4:h | D4:8 E4:8 F4:q A4:h | C5:8 B4:8 A4:q F4:h | G4:h E4:q D4:8 C4:8 |" } ],
+  "show": ["staff"]
 }
 ```
 
-## Rhythm techniques
+## 2. Augmentation and diminution — stretch or squeeze
 
-- **Augmentation** — every value doubled: grand, slow, often in the bass.
-- **Diminution** — every value halved: urgent, busy.
-- **Fragmentation** — keep only part of the motif (say, the first three notes) and work that fragment hard, often in sequence. Great for building tension toward a climax.
+- [[Augmentation]] — every note value doubled: grand and slow, often in the bass.
+- [[Diminution]] — every value halved: urgent and busy.
+
+Same notes, same shape — only the speed changes, which is the easiest of all changes to hear.
+
+## 3. Fragmentation — keep a piece
+
+[[Fragmentation]] keeps only part of the motif (say, its first three notes) and works that fragment hard, often in sequence. It is the classic way to build tension toward a climax: the phrases get shorter and come faster.
 
 ```example
 {
-  "title": "Augmentation → diminution → fragmentation in sequence",
-  "bpm": 90,
-  "timeSig": "4/4",
-  "key": "C",
-  "tracks": [
-    {
-      "instrument": "piano",
-      "seq": "C4:q D4:q E4:h | G4:w | C4:16 D4:16 E4:8 G4:q C4:16 D4:16 E4:8 G4:q | C4:8 D4:8 E4:q D4:8 E4:8 F4:q | E4:8 F4:8 G4:q G4:h |"
-    }
-  ],
-  "show": [
-    "staff"
-  ]
+  "title": "Augmentation (bars 1–2) → diminution (bar 3) → fragment C–D–E in rising sequence (bars 4–5)",
+  "bpm": 90, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:q D4:q E4:h | G4:w | C4:16 D4:16 E4:8 G4:q C4:16 D4:16 E4:8 G4:q | C4:8 D4:8 E4:q D4:8 E4:8 F4:q | E4:8 F4:8 G4:q G4:h |" } ],
+  "show": ["staff"]
 }
 ```
 
-The listener hears the family resemblance each time. That is how a piece can feel both *new* and *unified* for minutes on end.
+Tip: change **one dimension at a time** — pitch *or* rhythm — so the link to the original stays audible.
 
-Practical tip: when you develop, change **one dimension at a time** at first — pitch *or* rhythm — so the link to the original stays audible. Later you can combine them (an inverted fragment in diminution), but only once the listener knows the motif well.
-
-## Drills
+## Play and work it out
 
 ```exercise
 {
   "id": "e1-play-transforms",
   "type": "play-melody",
-  "title": "Play all four pitch versions",
-  "count": 6,
-  "passScore": 0.8,
+  "title": "Play the motif, its sequence, inversion and retrograde",
+  "passScore": 0.7,
   "spec": {
-    "bpm": 80,
-    "timeSig": "4/4",
-    "key": "C",
+    "bpm": 80, "timeSig": "4/4", "key": "C",
     "seq": "C4:8 D4:8 E4:q G4:h | D4:8 E4:8 F4:q A4:h | C5:8 B4:8 A4:q F4:h | G4:h E4:q D4:8 C4:8 |",
-    "showStaff": true,
-    "showKeyboard": true,
-    "countIn": 1
+    "showStaff": true, "showKeyboard": true, "countIn": 1
   }
 }
 ```
@@ -118,38 +87,14 @@ Practical tip: when you develop, change **one dimension at a time** at first —
 {
   "id": "e2-invert",
   "type": "quiz-input",
-  "title": "Invert it yourself (diatonic, C major)",
-  "passScore": 0.75,
+  "title": "Invert it yourself (C major notes only)",
+  "passScore": 0.7,
   "spec": {
     "questions": [
-      {
-        "q": "Motif E–F–G (step up, step up). Inversion starting on E: second note?",
-        "answer": [
-          "D"
-        ],
-        "kind": "note"
-      },
-      {
-        "q": "…third note?",
-        "answer": [
-          "C"
-        ],
-        "kind": "note"
-      },
-      {
-        "q": "Motif G–C (up a 4th). Inversion starting on G: second note?",
-        "answer": [
-          "D"
-        ],
-        "kind": "note"
-      },
-      {
-        "q": "Retrograde of C–E–G–A: first note?",
-        "answer": [
-          "A"
-        ],
-        "kind": "note"
-      }
+      { "q": "Motif E–F–G (step up, step up). Inversion starting on E: second note?", "answer": ["D"], "kind": "note" },
+      { "q": "…and the third note?", "answer": ["C"], "kind": "note" },
+      { "q": "Motif G–C (up a 4th). Inversion starting on G: second note?", "answer": ["D"], "kind": "note" },
+      { "q": "Retrograde of C–E–G–A: first note?", "answer": ["A"], "kind": "note" }
     ]
   }
 }
@@ -160,140 +105,52 @@ Practical tip: when you develop, change **one dimension at a time** at first —
   "id": "e3-listen-technique",
   "type": "listen",
   "title": "Which technique?",
-  "passScore": 0.75,
-  "spec": {
-    "example": {
-      "bpm": 90,
-      "timeSig": "4/4",
-      "key": "C",
-      "tracks": [
-        {
-          "instrument": "piano",
-          "seq": "C4:8 D4:8 E4:q G4:h | C4:q D4:q E4:h | G4:w |"
-        }
-      ]
-    },
-    "questions": [
-      {
-        "q": "Bars 2–3 are the motif in…",
-        "choices": [
-          "inversion",
-          "retrograde",
-          "augmentation",
-          "diminution"
-        ],
-        "answer": 2
-      }
-    ]
-  }
-}
-```
-
-```exercise
-{
-  "id": "e4-ear-interval",
-  "type": "ear-interval",
-  "title": "Intervals keep their size when inverted",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": {
-    "intervals": [
-      "M2",
-      "m3",
-      "M3",
-      "P4",
-      "P5"
-    ],
-    "direction": "mixed",
-    "root": "random",
-    "range": [
-      "C3",
-      "C5"
-    ]
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-ear-melody",
-  "type": "ear-melody",
-  "title": "Motif dictation",
-  "count": 6,
+  "instructions": "Each example plays the motif C–D–E–G first, then one transformation. Listen for two things only: does the line go the other way, and is it slower, faster or shorter?",
   "passScore": 0.7,
   "spec": {
-    "key": "random",
-    "degrees": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
+    "examples": [
+      { "title": "Example A", "bpm": 90, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:q G4:h | C4:q D4:q E4:h | G4:w |" } ] },
+      { "title": "Example B", "bpm": 90, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:q G4:h | C5:8 B4:8 A4:q F4:h |" } ] },
+      { "title": "Example C", "bpm": 90, "timeSig": "4/4", "key": "C", "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:q G4:h | C4:8 D4:8 E4:q D4:8 E4:8 F4:q | E4:8 F4:8 G4:q r:h |" } ] }
     ],
-    "length": 4,
-    "rhythm": "simple",
-    "answer": "play"
+    "questions": [
+      { "q": "Example A: after the motif, it is…", "choices": ["inverted", "augmented (slower)", "diminished (faster)", "fragmented"], "answer": 1 },
+      { "q": "Example B: after the motif, it is…", "choices": ["inverted", "augmented (slower)", "diminished (faster)", "fragmented"], "answer": 0 },
+      { "q": "Example C: after the motif, it is…", "choices": ["inverted", "augmented (slower)", "diminished (faster)", "fragmented"], "answer": 3 }
+    ]
   }
 }
 ```
 
+## Ear
+
+```ladder
+{ "skill": "intervals", "unlocks": 20, "intro": "An inversion keeps each interval's size but flips its direction — interval practice at your current rung." }
+```
+
+```ladder
+{ "skill": "melody", "unlocks": 18, "intro": "Remembering a motif is melody memory — play-back at your current rung." }
+```
+
+## Make it
+
 ```exercise
 {
-  "id": "e6-daw-develop",
+  "id": "e4-daw-develop",
   "type": "daw-task",
   "title": "Four transformations",
-  "instructions": "Write your own 1-bar motif in bar 1. Then bars 2–8: at least one sequence, one inversion, one augmentation and one fragmentation. Label them in your head as you go.",
+  "instructions": "Write your own 1-bar motif in bar 1. Then in bars 2–8 use at least: one sequence, one inversion, one augmentation and one fragmentation. Say to yourself which one each bar is.",
   "spec": {
-    "template": {
-      "bpm": 90,
-      "key": "C",
-      "timeSig": "4/4",
-      "tracks": [
-        {
-          "instrument": "piano",
-          "seq": ""
-        }
-      ]
-    },
+    "template": { "bpm": 90, "key": "C", "timeSig": "4/4", "tracks": [ { "instrument": "piano", "seq": "" } ] },
     "task": "8 bars developing a 1-bar motif with four techniques.",
     "checks": [
-      {
-        "kind": "bars",
-        "min": 8,
-        "max": 8
-      },
-      {
-        "kind": "in-key",
-        "key": "C",
-        "scale": "major",
-        "allowPassing": true
-      },
-      {
-        "kind": "repetition",
-        "motifBars": 1,
-        "minRepeats": 2,
-        "allowTransposed": true
-      },
-      {
-        "kind": "uses-rhythm",
-        "values": [
-          "8",
-          "q",
-          "h",
-          "w",
-          "16"
-        ],
-        "minDistinct": 3
-      },
-      {
-        "kind": "custom",
-        "id": "four-techniques",
-        "note": "Self-check: sequence, inversion, augmentation and fragmentation each appear."
-      }
+      { "kind": "bars", "min": 8, "max": 8 },
+      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true },
+      { "kind": "repetition", "motifBars": 1, "minRepeats": 2, "allowTransposed": true },
+      { "kind": "uses-rhythm", "values": ["16", "8", "q", "h", "w"], "minDistinct": 3 },
+      { "kind": "custom", "id": "four-techniques", "note": "Self-check: sequence, inversion, augmentation and fragmentation each appear." }
     ],
-    "minBars": 8,
-    "maxBars": 8
+    "minBars": 8, "maxBars": 8
   }
 }
 ```

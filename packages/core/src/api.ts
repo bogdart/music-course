@@ -21,7 +21,7 @@ export interface LessonFrontmatter {
   [k: string]: unknown;
 }
 
-export type BlockLang = 'example' | 'exercise' | 'keyboard' | 'staff' | 'chords';
+export type BlockLang = 'example' | 'exercise' | 'keyboard' | 'staff' | 'chords' | 'ladder';
 
 export interface LessonBlock {
   /** 0-based index among interactive fenced blocks in document order */

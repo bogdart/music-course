@@ -32,6 +32,23 @@
 * Copyright: public-domain pieces are transcribed in full; contemporary songs
   are analysed by reference (form/key/progression) only, never transcribed.
 
+## Who this is for (owner's words, September 2026)
+
+> The target is to learn me music, there are no other customers. We can even introduce new kinds of tasks,
+> change more.
+
+The app has exactly one learner, the owner, so nothing is sacred: restructure the curriculum, change the pace,
+add exercise types or app mechanics whenever that teaches better. Prefer a whole-curriculum fix over local
+patches. Where the learner actually is: theory known on paper, but the ear started near zero (octave
+same/different was at chance after week 1), and chords were completely new. Rules that follow from it:
+
+* Never use a concept in a drill (chords, cadence, "home", key changes, inversions…) before a lesson has
+  explained it and let the learner hear it; an unexplained reference sound is noise.
+* Be honest about perception: describe what the learner will actually hear, not an idealised claim.
+* Ramp one dimension at a time, from the easiest perceptual cue; keep one key for weeks before varying it.
+* A drill near chance level is a design failure to fix, not a reason to push on. Judge by the live learner
+  data on the home server (see `DEPLOYMENT.md`), not by assumption.
+
 ## Docs (read these before working)
 
 * `docs/PLAN.md` — milestones, principles, risks.

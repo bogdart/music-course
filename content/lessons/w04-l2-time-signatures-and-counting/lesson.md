@@ -8,7 +8,7 @@ duration_min: 45
 goals:
   - Read a time signature and feel the difference between 4/4 and 3/4
   - Count and tap rhythms in both meters
-  - Hear degrees 1–5 after the home run (1 2 3 4 5 4 3 2 1)
+  - Meet degree 5 (sol) and write short tunes from 1–5 as degrees
 prerequisites: [w04-l1-note-values-and-rests]
 tags: [rhythm, meter, time-signature, ear]
 songs:
@@ -26,13 +26,11 @@ A time signature has two numbers:
 
 So **4/4** = four quarter-note beats per bar, **3/4** = three.
 
-## 4/4: the pop default
+## 4/4 and 3/4
 
-**ONE** two **three** four. Beat 1 is strongest, beat 3 medium, 2 and 4 weak (though in pop the drummer hits the snare on 2 and 4 to push against that). Almost every pop, rock, hip-hop and dance track is in 4/4.
+**4/4:** **ONE** two **three** four. Beat 1 is strongest, beat 3 medium, 2 and 4 weak. Almost every pop, rock, hip-hop and dance track is in 4/4.
 
-## 3/4: the waltz
-
-**ONE** two three, **ONE** two three. A lilting, swaying, circling feel. Hymns, waltzes and many folk songs use it — "Amazing Grace" is in 3/4.
+**3/4:** **ONE** two three, **ONE** two three. A lilting, swaying, circling feel. Waltzes, hymns and many folk songs use it — "Amazing Grace" is in 3/4.
 
 Listen to the same kick-and-hi-hat sound in both meters. The kick marks beat 1:
 
@@ -52,7 +50,9 @@ Listen to the same kick-and-hi-hat sound in both meters. The kick marks beat 1:
 }
 ```
 
-Now a melody in 3/4. Notice there's no room for a whole note — the longest note filling a 3/4 bar is a **dotted half** (3 beats):
+**How to hear 3 or 4:** find the heavy beat (the kick), then count the beats until the next heavy one. "1 2 3 | 1" is 3/4; "1 2 3 4 | 1" is 4/4. Counting beats is more reliable than trying to judge the feel.
+
+A melody in 3/4 has no room for a whole note — the longest note filling a bar is a **dotted half** (3 beats):
 
 ```example
 {
@@ -68,11 +68,32 @@ Now a melody in 3/4. Notice there's no room for a whole note — the longest not
 
 ## How to count
 
-Say the beat numbers out loud, always restarting at "1" on the new bar: "1 2 3 4 | 1 2 3 4" or "1 2 3 | 1 2 3". Add "&" for eighth notes. Counting aloud feels silly for about a week — and then it's the thing that saves you every time a rhythm gets tricky. Tap your foot on the numbers only.
+Say the beat numbers out loud, always restarting at "1" on a new bar: "1 2 3 4 | 1 2 3 4" or "1 2 3 | 1 2 3". Add "&" for eighth notes. Counting aloud feels silly for about a week — and then it's the thing that saves you every time a rhythm gets tricky.
+
+This lesson opens two rhythm rungs (the drill runs at your current one): tapping back eighths and rests, then hearing whether a groove is in **3 or 4**.
+
+```ladder
+{ "skill": "rhythm", "unlocks": 5, "intro": "Opens \"Tap it back: eighths and rests\" and \"Meter: 3 or 4?\"; the drill runs at your current rung." }
+```
 
 ## Degree 5 (sol)
 
-Degree 5 is the second most stable note after 1. It sounds strong and open, but "up in the air" — like standing on a balcony looking down at home. Your five fingers now cover degrees 1 to 5.
+Degree 5 is G in C major — your little finger. It's the top of the home run, the point where the run turns round. Many people hear it as fairly stable, but "up in the air" compared with 1: it doesn't pull as hard as 2 or 4, yet it isn't the end either. Listen: the home run, then 5, then 5 walking home:
+
+```example
+{
+  "title": "Home run, then sol (5), then 5 4 3 2 1",
+  "bpm": 90, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | G4:w | G4:q F4:q E4:q D4:q | C4:w" } ],
+  "show": ["keyboard"]
+}
+```
+
+This lesson opens the melody rung that uses it: writing four-note tunes from **1–5** as degrees (you'll meet it once the earlier melody rungs are solid). Finding the notes on the keyboard first (C D E F G = 1 2 3 4 5) is a perfectly good method. Next week opens degree 5 in the single-note degree drill.
+
+```ladder
+{ "skill": "melody", "unlocks": 6, "intro": "Opens \"Write 4 notes as degrees\" (1–5); the drill runs at your current melody rung." }
+```
 
 ## Drills
 
@@ -89,7 +110,7 @@ Degree 5 is the second most stable note after 1. It sounds strong and open, but 
     { "q": "Most pop and dance music is in…", "choices": ["3/4", "4/4"], "answer": 1 },
     { "q": "How many eighth notes fill a bar of 3/4?", "choices": ["4", "6", "8"], "answer": 1 }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -113,29 +134,6 @@ Degree 5 is the second most stable note after 1. It sounds strong and open, but 
   "count": 8,
   "passScore": 0.7,
   "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "8" }
-}
-```
-
-```exercise
-{
-  "id": "e4",
-  "type": "ear-rhythm",
-  "title": "Which 3/4 rhythm?",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "timeSig": "3/4", "bars": 1, "subdivision": "8", "rests": false, "answer": "choose" }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-note",
-  "title": "Degrees 1–5",
-  "instructions": "5 is strong and open, 'up on the balcony'. Sing down to 1 if unsure.",
-  "count": 12,
-  "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 

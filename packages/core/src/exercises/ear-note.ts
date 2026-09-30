@@ -1,7 +1,7 @@
 import { noteToMidi, pcToName, samePitchClass, isNoteName } from '../theory/notes.js';
 import { degreeEquals, degreeToNoteName, degreeToSemitones, parseKey, SOLFEGE } from '../theory/keys.js';
 import type { ExerciseDefinition, Choice } from './types.js';
-import { keyReference, melodic, tonicMidiOf } from './util.js';
+import { keyReference, melodic, resolutionPath, snippet, tonicMidiOf } from './util.js';
 import { resolveKey } from './harmony.js';
 
 const ALL_DEGREES = { major: ['1', 'b2', '2', 'b3', '3', '4', '#4', '5', 'b6', '6', 'b7', '7'], minor: ['1', 'b2', '2', '3', '#3', '4', '#4', '5', '6', '#6', '7', '#7'] };
@@ -39,7 +39,10 @@ export const earNote: ExerciseDefinition<'ear-note'> = {
       type: 'ear-note',
       prompt: answerKind === 'name' ? `Which note is this in ${k.name}?` : `Which scale degree is this in ${k.name}?`,
       key: k.tonic, mode, midi, answerKind, answer,
-      audio: melodic([midi], { instrument, beats: 2 }),
+      audio: s.drone
+        ? snippet([{ midi: tonicMidi - 12, startTick: 0, durationTicks: 960, velocity: 0.45 }, { midi, startTick: 0, durationTicks: 960, velocity: 0.8 }], instrument, 80)
+        : melodic([midi], { instrument, beats: 2 }),
+      afterAnswer: melodic(resolutionPath(midi, tonicMidi, mode), { instrument, beats: 0.5, bpm: 100 }),
       ...(reference !== 'none' ? { reference: keyReference(reference, k.tonic, mode, instrument, octave) } : {}),
       choices,
       solution: answerKind === 'name' ? answer : `${degree} (${degreeToNoteName(k.tonic, degree, mode)})`,

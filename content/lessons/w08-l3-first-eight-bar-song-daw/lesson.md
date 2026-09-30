@@ -26,7 +26,7 @@ Everything from Phase 1 comes together today. You'll make a complete 8-bar piece
 
 ## The plan: A A'
 
-Use the structure from lesson 1 of this week:
+Two 4-bar phrases that start the same way and end differently — a question, then its answer. Musicians call this **A A'** ("A prime": A with a changed ending):
 
 - **A** (bars 1–4): **C – F – C – G** → ends on V, a half cadence (question).
 - **A'** (bars 5–8): **C – F – G – C** → ends V → I, an authentic cadence (answer).
@@ -37,7 +37,7 @@ The melody of A' starts like A, then changes its last bars to land on degree 1.
 { "key": "C", "bars": ["C", "F", "C", "G", "C", "F", "G", "C"], "roman": true, "play": true, "bpm": 90 }
 ```
 
-Here's a complete model. Listen once for the whole, then solo each layer in your head: drums, then bass, then chords, then melody.
+Here's a complete model. Listen once for the whole, then listen again following just one layer: drums, then bass, then chords, then melody. Following one layer in a mix is hard at first — the bass is the trickiest; try the kick-and-bass at the very start of each bar.
 
 ```example
 {
@@ -53,6 +53,49 @@ Here's a complete model. Listen once for the whole, then solo each layer in your
 }
 ```
 
+## I, IV and V by ear
+
+Your song uses three chords, and this lesson opens ear rungs that use them too. The progressions ladder adds **IV** to I and V. IV is the "away" chord of the cadence — it sounds like leaving home, without the strong pull back that V has. The drill runs at your current progressions rung, so you'll meet IV once I vs V is solid.
+
+```ladder
+{ "skill": "progressions", "unlocks": 2, "intro": "Opens \"I, IV, V\" (after I or V); the drill runs at your current rung." }
+```
+
+The roots ladder moves from single chords to **bass lines**: you hear two chords, I and V, and play their two bass notes (C and G) in order; then three chords, I, IV and V (C, F, G). Listen to the model song's bass for exactly this: one low note per chord.
+
+```example
+{
+  "title": "I and V with their bass notes: I – V – V – I",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[C4 E4 G4]:w | [B3 D4 G4]:w | [B3 D4 G4]:w | [C4 E4 G4]:w" },
+    { "instrument": "bass", "seq": "C3:w | G2:w | G2:w | C3:w" }
+  ],
+  "show": ["keyboard"]
+}
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 4, "intro": "Opens bass lines: I and V, then I, IV and V; the drill runs at your current roots rung." }
+```
+
+## Octaves: two apart
+
+One more octave rung opens today, for later: the candidates may be *two* octaves above the first note (C3 and C5). The height gap is huge and, played together, two octaves melt less obviously than one. The bridge is the **Walk up the octaves** button after each answer: it plays C3 → C4 → C5, one octave at a time — the step you already know, twice. You'll meet this rung only once the earlier octave rungs are solid.
+
+```example
+{
+  "title": "Two octaves apart: C3 → C5 directly, then walked C3 → C4 → C5",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C3:h C5:h | C3:q C4:q C5:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+```ladder
+{ "skill": "octave", "unlocks": 9, "intro": "Opens \"Two octaves apart: which one?\"; the drill runs at your current octave rung." }
+```
+
 ## Work order that avoids getting stuck
 
 1. **Chords first** (piano, whole notes). Loop them until the progression feels familiar.
@@ -61,7 +104,7 @@ Here's a complete model. Listen once for the whole, then solo each layer in your
 4. **Melody last**, over the loop. Write a 2-bar idea, repeat it, then shape the endings: bar 4 on 2 or 5 (question), bar 8 on 1 (answer). Chord tones on beats 1 and 3.
 5. **Listen top to bottom**, fix anything that clashes, and save.
 
-It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill, and you're starting to train it today.
+It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill, and you're starting to train it today. If it doesn't fit in one session, save and finish it next time.
 
 ## Drills
 
@@ -78,7 +121,7 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
     { "q": "A' means…", "choices": ["a new, unrelated phrase", "A again with a changed ending"], "answer": 1 },
     { "q": "Recommended order to build:", "choices": ["melody, drums, bass, chords", "chords, bass, drums, melody"], "answer": 1 }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -94,18 +137,6 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
 
 ```exercise
 {
-  "id": "e3",
-  "type": "ear-progression",
-  "title": "I, IV or V?",
-  "instructions": "Three chords. Name each: I (home), IV (opening up) or V (tension).",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "length": 3, "chords": ["I", "IV", "V"], "style": "block" }
-}
-```
-
-```exercise
-{
   "id": "e4",
   "type": "play-melody",
   "title": "Play the model melody over the band",
@@ -116,28 +147,17 @@ It doesn't need to be brilliant. It needs to be *finished*. Finishing is a skill
 
 ```exercise
 {
-  "id": "e5",
-  "type": "ear-melody",
-  "title": "Echo a 4-note idea",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5, 6], "length": 4, "rhythm": "quarters", "answer": "play" }
-}
-```
-
-```exercise
-{
-  "id": "e6",
+  "id": "e8",
   "type": "daw-task",
   "title": "Finish your first 8-bar song",
   "spec": {
     "template": { "bpm": 90, "key": "C", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "drums", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
-    "task": "Build an 8-bar song in C major, A A' form, over C–F–C–G | C–F–G–C (one chord per bar). Track 1 piano: block triads. Track 2 bass: chord roots. Track 3 drums: kick on 1 and 3, snare on 2 and 4, hi-hat eighths. Track 4 lead: your melody — bars 5–6 repeat bars 1–2, bar 4 ends on a question (degree 2 or 5), bar 8 ends on degree 1. Chord tones on beats 1 and 3. Save the project with a title — it's your first song.",
+    "task": "Build an 8-bar song in C major, A A' form, over C–F–C–G | C–F–G–C (one chord per bar). Track 1 piano: block triads. Track 2 bass: the root of each bar's chord. Track 3 drums: kick on 1 and 3, snare on 2 and 4, hi-hat eighths. Track 4 lead: your melody — bars 5–6 repeat bars 1–2, bar 4 ends on a question (degree 2 or 5), bar 8 ends on degree 1. Chord tones on beats 1 and 3. Save the project with a title — it's your first song.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "bass", "drums", "lead"] },
       { "kind": "bars", "min": 8, "max": 8 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false, "track": 0 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false, "track": 1 },
+      { "kind": "plays-progression", "progression": ["I", "IV", "I", "V", "I", "IV", "V", "I"], "barsPerChord": 1, "mode": "chords", "track": 0 },
+      { "kind": "plays-progression", "progression": ["I", "IV", "I", "V", "I", "IV", "V", "I"], "barsPerChord": 1, "mode": "roots", "track": 1 },
       { "kind": "range", "low": "C2", "high": "C4", "track": 1 },
       { "kind": "drum-pattern", "requires": ["kick", "snare"], "kickOnBeats": [1, 3], "snareOnBeats": [2, 4], "track": 2 },
       { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 3 },

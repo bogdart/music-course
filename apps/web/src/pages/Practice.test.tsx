@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { ExerciseBlock, SrsCardDTO } from '@music/core';
+import { LADDER_SKILLS, skillState, type ExerciseBlock, type LadderStateDTO, type SrsCardDTO } from '@music/core';
 import { Practice } from './Practice';
 import { Warmup } from '../lesson/Warmup';
 
@@ -11,12 +11,16 @@ const card = (id: number, block: ExerciseBlock, extra: Partial<SrsCardDTO> = {})
 });
 
 let cards: SrsCardDTO[] = [];
+let unlocked: Record<string, number> = {};
+const ladderState = (): LadderStateDTO => ({ session: 3, skills: LADDER_SKILLS.map((k) => skillState(k, unlocked[k] ?? 0, {})) });
 let fetchMock: ReturnType<typeof vi.fn>;
 beforeEach(() => {
+  unlocked = {};
   localStorage.clear();
   sessionStorage.clear();
   fetchMock = vi.fn(async (url: string) => {
     const u = String(url);
+    if (u.includes('/api/ladder')) return new Response(JSON.stringify(ladderState()), { status: 200 });
     if (u.includes('/api/srs/due')) return new Response(JSON.stringify({ session: 3, cards }), { status: 200 });
     if (u.includes('/api/progress') && !u.includes('attempts') && !u.includes('complete')) return new Response(JSON.stringify(null), { status: 200 });
     return new Response(JSON.stringify({ ok: true, card: {} }), { status: 200 });
@@ -34,10 +38,30 @@ async function answerQuizItems(n: number) {
   }
 }
 
+async function toCards() {
+  fireEvent.click(await screen.findByText('Review cards'));
+}
+
 describe('Practice page', () => {
+  it('starts with an ear-ladder session at the learner\'s current rungs', async () => {
+    unlocked = { octave: 3, degrees: 1 };
+    render(<MemoryRouter><Practice /></MemoryRouter>);
+    await screen.findByText(/Set 1 of 2/);
+    // octave is furthest behind (3 open rungs) → first
+    expect(screen.getByText(/Octaves · rung 1/)).toBeTruthy();
+    fireEvent.click(screen.getByText('end session'));
+    expect(await screen.findByTestId('ladder-summary')).toBeTruthy();
+  });
+
+  it('says so when no ladder is open yet', async () => {
+    render(<MemoryRouter><Practice /></MemoryRouter>);
+    await screen.findByText(/No ear-training ladders are open yet/);
+  });
+
   it('runs due + new cards, adapts the level and shows a session summary', { timeout: 30_000 }, async () => {
     cards = [card(1, quizBlock), card(2, { ...quizBlock, id: 'q2' }, { reps: 0, lastSession: undefined } as Partial<SrsCardDTO>)];
     render(<MemoryRouter><Practice /></MemoryRouter>);
+    await toCards();
     await screen.findByText(/Card 1 of 2/);
     expect(fetchMock.mock.calls.some((c) => String(c[0]).includes('newLimit=5'))).toBe(true);
     expect(screen.getByText('standard')).toBeTruthy();
@@ -58,6 +82,7 @@ describe('Practice page', () => {
     localStorage.setItem('mc.practice.adaptive.v1', JSON.stringify({ k5: { level: 1, recent: [] } }));
     cards = [card(5, { id: 'i', type: 'ear-interval', spec: { intervals: ['M2', 'M3'] } })];
     render(<MemoryRouter><Practice /></MemoryRouter>);
+    await toCards();
     const tag = await screen.findByText('harder +1');
     expect(tag.getAttribute('title')).toMatch(/intervals/);
     // the widened set (3 intervals) is offered
@@ -67,23 +92,23 @@ describe('Practice page', () => {
   it('empty deck message', async () => {
     cards = [];
     render(<MemoryRouter><Practice /></MemoryRouter>);
+    await toCards();
     await screen.findByText(/Nothing due right now/);
   });
 });
 
 describe('lesson warm-up', () => {
-  it('is hidden when there are no cards', async () => {
-    cards = [];
+  it('is hidden when no ladder is open', async () => {
     const { container } = render(<Warmup lessonId="w02-l1-x" />);
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     expect(container.textContent).toBe('');
   });
-  it('offers, runs and can be ended; remembers completion for the visit', async () => {
-    cards = [card(1, quizBlock)];
+  it('offers the most-behind skill at its current rung, runs and can be ended; remembers completion for the visit', async () => {
+    unlocked = { octave: 2 };
     const { unmount } = render(<Warmup lessonId="w02-l1-x" />);
-    fireEvent.click(await screen.findByText('Start warm-up'));
-    expect(screen.getByText(/2:00 left|1:59 left/)).toBeTruthy();
-    expect(screen.getAllByText(/Pick A/).length).toBeGreaterThan(0);
+    expect((await screen.findByTestId('warmup')).textContent).toMatch(/Octaves, rung 1/);
+    fireEvent.click(screen.getByText('Start warm-up'));
+    expect(screen.getByRole('button', { name: 'One note (octave)' })).toBeTruthy();
     fireEvent.click(screen.getByText('end warm-up'));
     unmount();
     render(<Warmup lessonId="w02-l1-x" />);
@@ -91,7 +116,7 @@ describe('lesson warm-up', () => {
     expect(screen.queryByText('Start warm-up')).toBeNull();
   });
   it('can be skipped', async () => {
-    cards = [card(1, quizBlock)];
+    unlocked = { octave: 2 };
     render(<Warmup lessonId="w02-l2-x" />);
     fireEvent.click(await screen.findByText('Skip'));
     expect(screen.queryByTestId('warmup')).toBeNull();

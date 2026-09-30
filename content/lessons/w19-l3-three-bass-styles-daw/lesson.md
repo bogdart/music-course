@@ -8,7 +8,7 @@ duration_min: 50
 goals:
   - Write a driving eighth-note pop bass, a syncopated funk bass and a walking bass on the same chords
   - Match each bass style with a drum pattern that locks to it
-  - Hear bass roots in a new key and play a walking line
+  - Play a walking line, and hear the borrowed ♭VII in a bass line
 prerequisites: [w19-l2-bass-dictation]
 tags: [bass, groove, daw, arrangement, ear]
 songs: []
@@ -16,7 +16,7 @@ songs: []
 
 # Three Bass Styles on One Progression
 
-The same four chords can sound like a rock anthem, a funk jam or a jazz club — mostly because of the bass and drums. Today you write all three over **I–vi–ii–V**.
+The same four chords can sound like a rock anthem, a funk jam or a jazz club — mostly because of the bass and drums. Today you write all three over **I–vi–ii–V**, four bars each — three short tasks of about 12 minutes. If the walking one doesn't fit today, finish it at the start of your next session.
 
 ## The three styles
 
@@ -119,14 +119,14 @@ All three tasks use **A – F#m – Bm – E** (I–vi–ii–V), 4 bars. Keep t
       { "instrument": "bass", "seq": "" },
       { "instrument": "drums", "seq": "[kick ride]:q [ride hihat]:q [kick ride]:q [ride hihat]:q | [kick ride]:q [ride hihat]:q [kick ride]:q [ride hihat]:q | [kick ride]:q [ride hihat]:q [kick ride]:q [ride hihat]:q | [kick ride]:q [ride hihat]:q [kick ride]:q [ride hihat]:q" }
     ] },
-    "task": "Four quarter notes per bar. Beat 1 = root. Beats 2-3 = chord tones or scale steps. Beat 4 = approach note (step or half step) to the next root; bar 4 leads back to A.",
+    "task": "Four quarter notes per bar. Beat 1 = root. Beats 2-3 = chord tones or scale steps. Beat 4 = approach note (step or half step) to the next root; bar 4 leads back to A. A chromatic approach may sit outside the key and may be reached by a leap from beat 3 - that is fine.",
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "note-count", "min": 16, "max": 16, "track": 1 },
       { "kind": "uses-rhythm", "values": ["q"], "minDistinct": 1, "track": 1 },
       { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "vi", "ii", "V"], "barsPerChord": 1, "minRatio": 1.0, "track": 1 },
-      { "kind": "in-key", "key": "A", "scale": "major", "allowPassing": true, "track": 1 },
-      { "kind": "max-leap", "semitones": 7, "track": 1 }
+      { "kind": "max-leap", "semitones": 8, "track": 1 },
+      { "kind": "custom", "id": "walking-approach-beat-4", "note": "Self-check: every beat 4 is a step or half step from the next bar's root (a chromatic note outside the key is fine there)." }
     ],
     "minBars": 4, "maxBars": 4
   }
@@ -138,20 +138,26 @@ All three tasks use **A – F#m – Bm – E** (I–vi–ii–V), 4 bars. Keep t
   "id": "play-walking-line",
   "type": "play-melody",
   "title": "Play the walking line (an octave up)",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "D", "seq": "D3:q E3:q F#3:q A#2:q | B2:q C#3:q D3:q D#3:q | E3:q G3:q B3:q G#3:q | A3:q G3:q E3:q C#3:q", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "epiano", "seq": "[D4 F#4 A4]:w | [D4 F#4 B4]:w | [E4 G4 B4]:w | [C#4 E4 A4]:w" } }
 }
 ```
 
-```exercise
-{
-  "id": "ear-bass-a",
-  "type": "ear-bass",
-  "title": "Bass roots in A major",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "key": "A", "chords": ["I", "ii", "IV", "V", "vi"], "answer": "play" }
-}
+## Ear: the borrowed ♭VII in the bass
+
+The borrowed ♭VII of week 16 (B♭ in C) is loved by bass players because its root lies *outside* the major scale: the
+line steps down a whole step from home instead of a half step. Hear it in C: C – B♭ – F – C (I – ♭VII – IV – I).
+(Its darker cousin ♭VI, A♭ in C, comes in week 30.)
+
+```chords
+{ "key": "C", "bars": ["C", "Bb", "F", "C"], "roman": true, "play": true, "bpm": 80 }
+```
+
+This lesson opens the roots rung where ♭VII may appear in a major-key bass line. The drill runs at your current
+roots rung, which may still be an earlier one.
+
+```ladder
+{ "skill": "roots", "unlocks": 13, "intro": "Opens: in a major key the bass may visit ♭VII. The drill runs at your current roots rung." }
 ```
 
 ```exercise

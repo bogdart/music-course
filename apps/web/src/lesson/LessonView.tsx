@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import type { ParsedLessonDTO, SetSummary } from '@music/core';
 import { api } from '../api/client';
 import { useProgressStore } from '../stores/progress';
+import { useLadderStore } from '../stores/ladder';
+import { isLadderSkill, LADDERS } from '@music/core';
 import { LessonContext, type LessonContextValue } from './LessonContext';
 import { LessonRenderer } from './LessonRenderer';
 import { Warmup } from './Warmup';
@@ -32,10 +34,15 @@ export function LessonView({ lesson, record = true }: LessonViewProps) {
   const rail = useMemo(
     () =>
       lesson.blocks
-        .filter((b) => b.lang === 'exercise')
+        .filter((b) => b.lang === 'exercise' || b.lang === 'ladder')
         .map((b) => {
+          if (b.lang === 'ladder') {
+            const d = (b.data ?? {}) as { skill?: string; unlocks?: number };
+            const skill = isLadderSkill(d.skill) ? d.skill : null;
+            return { id: `ladder-${b.index}`, type: 'ladder', title: `🎧 ${skill ? LADDERS[skill].title : 'Ear ladder'}`, skill, unlocks: d.unlocks ?? 1 };
+          }
           const d = (b.data ?? {}) as { id?: string; type?: string; title?: string };
-          return { id: d.id ?? `#${b.index}`, type: d.type ?? '?', title: d.title ?? d.type ?? 'exercise' };
+          return { id: d.id ?? `#${b.index}`, type: d.type ?? '?', title: d.title ?? d.type ?? 'exercise', skill: null, unlocks: 0 };
         }),
     [lesson.blocks],
   );
@@ -52,7 +59,15 @@ export function LessonView({ lesson, record = true }: LessonViewProps) {
     [lesson.id, lesson.blocks, record, fm.key],
   );
 
+  const ladder = useLadderStore((s) => s.state);
   const status = (id: string) => {
+    const r = rail.find((x) => x.id === id);
+    if (r?.skill) {
+      const st = ladder?.skills.find((k) => k.skill === r.skill);
+      const upto = st ? st.rungs.slice(0, Math.min(r.unlocks, st.unlocked)) : [];
+      if (upto.length && upto.every((x) => x.mastered)) return 'passed';
+      return st?.rungs.some((x) => x.attempts > 0) ? 'tried' : 'todo';
+    }
     const l = local[id];
     if (l) return l.passed ? 'passed' : 'tried';
     const s = server[id];

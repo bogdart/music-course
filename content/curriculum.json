@@ -94,7 +94,7 @@
     },
     {
       "week": 6,
-      "title": "Triads",
+      "title": "Triads and the cadence",
       "lessons": [
         "w06-l1-major-triads",
         "w06-l2-minor-triads",
@@ -103,7 +103,7 @@
     },
     {
       "week": 7,
-      "title": "Keys and key signatures I",
+      "title": "Keys G and F",
       "lessons": [
         "w07-l1-g-and-f-major",
         "w07-l2-transposing-melodies",
@@ -112,7 +112,7 @@
     },
     {
       "week": 8,
-      "title": "Consolidation and first song",
+      "title": "Phrases and first song",
       "lessons": [
         "w08-l1-phrases-and-cadences",
         "w08-l2-phase-1-review-and-ear-assessment",
@@ -132,8 +132,8 @@
       "week": 10,
       "title": "Intervals II and bass clef",
       "lessons": [
-        "w10-l1-sixths-sevenths-tritone",
-        "w10-l2-harmonic-intervals",
+        "w10-l1-sixths-sevenths-and-the-fifth-trap",
+        "w10-l2-tritone-and-descending-intervals",
         "w10-l3-bass-clef-and-left-hand"
       ]
     },
@@ -169,8 +169,8 @@
       "title": "Rhythm II and groove",
       "lessons": [
         "w14-l1-eighths-sixteenths-syncopation",
-        "w14-l2-drum-kit-and-basic-beats",
-        "w14-l3-three-genre-grooves-daw"
+        "w14-l2-triplets-swing-and-six-eight",
+        "w14-l3-two-genre-grooves-daw"
       ]
     },
     {
@@ -238,7 +238,7 @@
     },
     {
       "week": 22,
-      "title": "Modes",
+      "title": "Modes I",
       "lessons": [
         "w22-l1-dorian-and-mixolydian",
         "w22-l2-lydian-and-phrygian",
@@ -312,8 +312,9 @@
       "title": "Modal interchange and reharmonisation",
       "lessons": [
         "w30-l1-borrowed-chords",
-        "w30-l2-tritone-substitution-and-passing-diminished",
-        "w30-l3-reharmonise-three-ways-daw"
+        "w30-l2-augmented-and-flat-nine",
+        "w30-l3-tritone-substitution-and-passing-diminished",
+        "w30-l4-reharmonise-three-ways-daw"
       ]
     },
     {
@@ -322,7 +323,7 @@
       "lessons": [
         "w31-l1-chord-scales-and-guide-tones",
         "w31-l2-approach-notes-and-enclosures",
-        "w31-l3-improvised-chorus-daw"
+        "w31-l3-solo-chorus-in-layers-daw"
       ]
     },
     {
@@ -330,8 +331,9 @@
       "title": "Counterpoint basics",
       "lessons": [
         "w32-l1-two-voice-writing",
-        "w32-l2-contrary-motion-and-parallels",
-        "w32-l3-counter-melody-daw"
+        "w32-l2-first-species",
+        "w32-l3-contrary-motion-and-parallels",
+        "w32-l4-counter-melody-daw"
       ]
     },
     {
@@ -348,7 +350,7 @@
       "title": "Rhythm III",
       "lessons": [
         "w34-l1-odd-meters",
-        "w34-l2-polyrhythm-and-metric-modulation",
+        "w34-l2-three-against-two",
         "w34-l3-seven-eight-groove-daw"
       ]
     },
@@ -390,7 +392,7 @@
     },
     {
       "week": 39,
-      "title": "Voice and lyric awareness",
+      "title": "Melody for lyrics (no singing required)",
       "lessons": [
         "w39-l1-stress-range-prosody",
         "w39-l2-topline-writing",
@@ -430,7 +432,7 @@
       "lessons": [
         "w43-l1-qualities-within-progressions",
         "w43-l2-sevenths-and-sus-in-context",
-        "w43-l3-borrowed-chords-in-four-keys"
+        "w43-l3-catching-borrowed-chords"
       ]
     },
     {
@@ -492,8 +494,9 @@
       "title": "Speed songwriting",
       "lessons": [
         "w50-l1-speed-song-from-a-hook",
-        "w50-l2-speed-song-from-a-beat",
-        "w50-l3-speed-song-from-chords"
+        "w50-l2-hook-song-finish",
+        "w50-l3-speed-song-from-a-beat",
+        "w50-l4-beat-song-finish"
       ]
     },
     {
@@ -501,8 +504,9 @@
       "title": "Final project",
       "lessons": [
         "w51-l1-final-song-writing",
-        "w51-l2-final-song-arranging",
-        "w51-l3-final-song-review"
+        "w51-l2-final-song-structure",
+        "w51-l3-final-song-layers",
+        "w51-l4-final-song-review"
       ]
     },
     {
@@ -510,7 +514,8 @@
       "title": "Graduation",
       "lessons": [
         "w52-l1-final-assessments",
-        "w52-l2-retrospective-and-next-steps"
+        "w52-l2-graduation-transcription",
+        "w52-l3-retrospective-and-next-steps"
       ]
     }
   ]

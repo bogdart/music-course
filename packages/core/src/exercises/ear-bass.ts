@@ -36,7 +36,7 @@ export const earBass: ExerciseDefinition<'ear-bass'> = {
       numerals = pickProgression(rng, [...new Set(s.chords)], s.length ?? 4, tonic, mode);
       const voiced = voiceProgression(numerals, tonic, mode, s.inversions?.length ? s.inversions : [0], rng);
       midis = voiced.map((v) => v.bass);
-      audio = progressionSnippet(voiced, { style: 'bass-focus', bpm: s.bpm ?? 72 });
+      audio = progressionSnippet(voiced, s.style === 'band' ? { style: 'band', bpm: s.bpm ?? 96 } : { style: 'bass-focus', bpm: s.bpm ?? 72 });
     }
     const answerKind = s.answer ?? 'play';
     const degrees = midis.map((m) => pcToDegree(m, tonic, mode));

@@ -1,6 +1,6 @@
 import type {
   AttemptInput, CurriculumDTO, ExerciseCompleteInput, GlossaryTerm, ParsedLessonDTO, ProgressSummaryDTO,
-  JournalEntryDTO, ProjectDTO, ProjectSummaryDTO, Settings, SrsDueDTO,
+  JournalEntryDTO, LadderStateDTO, ProjectDTO, ProjectSummaryDTO, Settings, SrsDueDTO,
 } from '@music/core';
 
 export class ApiError extends Error {
@@ -44,6 +44,8 @@ export const api = {
   srsDue: (limit = 20, newLimit?: number) => req<SrsDueDTO>('GET', `/srs/due?limit=${limit}${newLimit !== undefined ? `&newLimit=${newLimit}` : ''}`),
   journal: (lessonId: string, exerciseId: string, limit = 5) =>
     req<JournalEntryDTO[]>('GET', `/progress/attempts?lessonId=${encodeURIComponent(lessonId)}&exerciseId=${encodeURIComponent(exerciseId)}&limit=${limit}`),
+  ladder: () => req<LadderStateDTO>('GET', '/ladder'),
+  ladderUnlock: (skill: string, unlocks: number) => req<LadderStateDTO>('POST', '/ladder/unlock', { skill, unlocks }),
   srsReview: (cardId: number, grade: number) => req<{ card: unknown }>('POST', '/srs/review', { cardId, grade }),
   projects: () => req<ProjectSummaryDTO[]>('GET', '/projects'),
   project: (id: string) => req<ProjectDTO>('GET', `/projects/${encodeURIComponent(id)}`),

@@ -8,216 +8,107 @@ duration_min: 50
 goals:
   - Choose three pieces from Phase 4 to finish as a portfolio
   - Run an arrangement pass (energy map, clutter, register clashes) on song one
-  - Run a basic mix pass (levels, pan, note lengths) and bounce a final version
+  - Run a basic mix pass (levels, pan, note lengths) and save a final version
 prerequisites: [w39-l3-toplines-over-beats-daw, w26-l1-capstone-song-one]
 tags: [portfolio, arrangement, mixing, daw]
 ---
 
 # Portfolio — Polish Song One
 
-Fourteen weeks of Phase 4 have given you a drawer full of sketches: a neo-soul loop, a jazz trio arrangement, reharmonisations, a counter-melody chorus, an EDM build and drop, a 7/8 groove, six genre sketches, a film cue, a developed motif and three toplines. This week you pick **three** and make them finished, [[portfolio]]-ready pieces.
+Phase 4 has left you a drawer full of sketches: a neo-soul loop, jazz comping, reharmonisations, a counter-melody, an EDM build and drop, a 7/8 groove, six genre sketches, a film cue, a developed motif and three toplines. This week you pick **three** and make them finished, [[portfolio]]-ready pieces.
+
+Polishing takes time, so week 40 is spread out: **this lesson is one to two sessions (song one), the next is two sessions (songs two and three, one each), and the last is the review.** Take the sessions you need; finished beats fast.
 
 ## Choosing
 
-Pick pieces that are **different** from each other — say one song-form piece (pop/rock/folk/topline), one groove-based piece (EDM/house/lo-fi/hip-hop), and one "composed" piece (film cue, developed motif or jazz). A varied portfolio shows range. Among candidates, pick the ones you still enjoy hearing: you're about to listen to them many times.
+Pick pieces that are **different**: one song-form piece (pop/rock/folk/topline), one groove piece (EDM/house/lo-fi/hip-hop), one "composed" piece (film cue, developed motif or jazz). Among candidates, pick the ones you still enjoy — you're about to hear them many times.
 
 ## Pass 1: arrangement
 
 Loop the whole piece and answer honestly:
 
-1. **Energy map.** Sketch the energy of each 8-bar block from 1 to 5. Is there a clear rise to a peak and a release? If two neighbouring sections have the same energy, change one (add/remove a layer, change register, change drum pattern).
-2. **Clutter.** Solo each track. Does every one have a job? If two tracks play the same register and rhythm, mute one or move it an octave.
-3. **Register clashes.** Melody and chords fighting in the same octave? Drop the chords, or voice them lower.
-4. **Transitions.** Does every section change have something that announces it — a fill, a pickup, a gap?
+1. **Energy map.** Rate the energy of each 8-bar block from 1 to 5 on paper. Is there a rise to a peak and a release? If two neighbouring sections have the same energy, change one (add or remove a layer, change register, change the drum pattern).
+2. **Clutter.** Solo each track. Does each have a job? If two tracks play in the same register with the same rhythm, mute one or move it an octave.
+3. **Register clashes.** Melody and chords in the same octave? Move the chords lower.
+4. **Transitions.** Does every section change have something that announces it — a fill, a pickup, a gap? (More on this next lesson.)
 
-Hear point 3 in action — the same melody and chords, first fighting, then separated:
+Hear point 3 — the same melody and chords, first fighting, then separated:
 
 ```example
 {
   "title": "Register clash (bars 1–2) fixed by dropping the chords an octave (bars 3–4)",
-  "bpm": 90,
-  "timeSig": "4/4",
-  "key": "C",
+  "bpm": 90, "timeSig": "4/4", "key": "C",
   "tracks": [
-    {
-      "instrument": "lead",
-      "seq": "E4:q G4:q A4:q G4:q | F4:h E4:h | E4:q G4:q A4:q G4:q | F4:h E4:h |"
-    },
-    {
-      "instrument": "piano",
-      "seq": "[C4 E4 G4]:w | [F4 A4 C5]:w | [C3 E3 G3]:w | [F3 A3 C4]:w |"
-    }
+    { "instrument": "lead", "seq": "E4:q G4:q A4:q G4:q | F4:h E4:h | E4:q G4:q A4:q G4:q | F4:h E4:h |" },
+    { "instrument": "piano", "seq": "[C4 E4 G4]:w | [F4 A4 C5]:w | [C3 E3 G3]:w | [F3 A3 C4]:w |" }
   ],
-  "show": [
-    "pianoroll"
-  ]
+  "show": ["pianoroll"]
 }
 ```
+
+What you'll probably hear: in bars 1–2 the melody seems to sink into the chords; in bars 3–4 it sits clearly on top. If the difference seems small, listen once more and follow only the melody.
 
 ## Pass 2: mix basics
 
-- **Levels:** the melody (or the main hook) should be clearly the loudest idea; kick and bass solid; pads underneath.
-- **Pan:** keep kick, bass and lead centred; spread chords, counter-lines and percussion left and right.
+- **Levels:** the melody (or main hook) is the clearest thing; kick and bass solid; pads underneath.
+- **Pan:** kick, bass and lead in the centre; chords, counter-lines and percussion spread left and right.
 - **Note lengths:** shorten chord notes that ring into the next chord; lengthen pad notes that stop abruptly.
 
-Then listen once on different speakers or headphones, and write down three things you'd still change.
+Then listen once on different speakers or headphones and write down three things you'd still change.
 
-## Drills
-
-```exercise
-{
-  "id": "e1-ear-chords",
-  "type": "ear-chord",
-  "title": "Warm-up: the colours in your songs",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": {
-    "qualities": [
-      "maj7",
-      "min7",
-      "dom7",
-      "m7b5",
-      "sus4"
-    ],
-    "inversions": [
-      0
-    ],
-    "voicing": "mixed",
-    "range": [
-      "C3",
-      "C5"
-    ]
-  }
-}
-```
+## Warm-up
 
 ```exercise
 {
-  "id": "e2-ear-prog",
-  "type": "ear-progression",
-  "title": "Warm-up: progressions with borrowed chords and V7",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "key": "random",
-    "mode": "major",
-    "length": 4,
-    "chords": [
-      "I",
-      "ii",
-      "IV",
-      "iv",
-      "V7",
-      "vi",
-      "bVI",
-      "bVII"
-    ],
-    "style": "pad-bass"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e3-play-voicings",
+  "id": "e1-play-voicings",
   "type": "play-chord",
-  "title": "Warm-up: voicing drill",
-  "count": 8,
-  "passScore": 0.8,
-  "spec": {
-    "chords": [
-      "Cmaj9",
-      "Am9",
-      "Dm9",
-      "G9",
-      "Fmaj7",
-      "Bbmaj7",
-      "Ebmaj7",
-      "Abmaj7"
-    ],
-    "inversion": "any",
-    "sequence": true,
-    "bpm": 60
-  }
+  "title": "Voicing warm-up",
+  "passScore": 0.7,
+  "spec": { "chords": ["Cmaj9", "Am9", "Dm9", "G9", "Fmaj7", "Bbmaj7", "Ebmaj7", "Abmaj7"], "inversion": "any", "sequence": true, "bpm": 60 }
 }
 ```
 
+```ladder
+{ "skill": "progressions", "unlocks": 19, "intro": "Review: progressions at your current rung — the chords of your own songs are made of these." }
+```
+
+## Make it
+
 ```exercise
 {
-  "id": "e4-daw-polish-one",
+  "id": "e2-daw-polish-one",
   "type": "daw-task",
   "title": "Song one: final version",
-  "instructions": "Open your chosen piece in the DAW, apply both passes, then rebuild or paste the finished version here so the checks can run (at least 32 bars, 4+ tracks). Name the project '<title> – final'.",
+  "instructions": "Open your chosen piece in the DAW, apply both passes, then rebuild or paste the finished version here so the checks can run (at least 32 bars, 4+ tracks). This project is kept, so you can come back to it in a second session.",
   "spec": {
     "template": {
-      "bpm": 100,
-      "key": "C",
-      "timeSig": "4/4",
+      "bpm": 100, "key": "C", "timeSig": "4/4",
       "tracks": [
-        {
-          "instrument": "lead",
-          "seq": ""
-        },
-        {
-          "instrument": "piano",
-          "seq": ""
-        },
-        {
-          "instrument": "bass",
-          "seq": ""
-        },
-        {
-          "instrument": "drums",
-          "seq": ""
-        },
-        {
-          "instrument": "pad",
-          "seq": ""
-        }
+        { "instrument": "lead", "seq": "" },
+        { "instrument": "piano", "seq": "" },
+        { "instrument": "bass", "seq": "" },
+        { "instrument": "drums", "seq": "" },
+        { "instrument": "pad", "seq": "" }
       ]
     },
+    "projectRef": "w40-portfolio-1",
     "task": "Finished, polished version of portfolio piece one.",
     "checks": [
-      {
-        "kind": "bars",
-        "min": 32,
-        "max": 128
-      },
-      {
-        "kind": "note-count",
-        "min": 24,
-        "track": 0
-      },
-      {
-        "kind": "custom",
-        "id": "four-tracks",
-        "note": "Self-check: at least four tracks, each with a distinct job."
-      },
-      {
-        "kind": "custom",
-        "id": "energy-map",
-        "note": "Self-check: energy map rises to a clear peak and releases."
-      },
-      {
-        "kind": "custom",
-        "id": "transitions",
-        "note": "Self-check: every section change has a fill, pickup or gap."
-      },
-      {
-        "kind": "custom",
-        "id": "mix",
-        "note": "Self-check: hook is loudest; kick/bass/lead centred; chords and extras panned."
-      }
+      { "kind": "bars", "min": 32, "max": 128 },
+      { "kind": "note-count", "min": 24, "track": 0 },
+      { "kind": "custom", "id": "four-tracks", "note": "Self-check: at least four tracks, each with a distinct job." },
+      { "kind": "custom", "id": "energy-map", "note": "Self-check: the energy map rises to a clear peak and releases." },
+      { "kind": "custom", "id": "no-clashes", "note": "Self-check: no two tracks fight in the same register with the same rhythm." },
+      { "kind": "custom", "id": "mix", "note": "Self-check: the hook is clearest; kick/bass/lead centred; chords and extras panned." }
     ],
-    "minBars": 32,
-    "maxBars": 128
+    "minBars": 32, "maxBars": 128
   }
 }
 ```
 
 ```exercise
 {
-  "id": "e5-reflect",
+  "id": "e3-reflect",
   "type": "reflect",
   "title": "Before and after",
   "spec": {

@@ -1,5 +1,5 @@
 import type { ExerciseProgress, JournalEntryDTO, LessonProgress, LessonStatus, ProgressSummaryDTO } from '@music/core';
-import { isSrsEligible, newCardState, srsKey } from '@music/core';
+import { getRung, isSrsEligible, LADDER_LESSON_ID, newCardState, srsKey } from '@music/core';
 import type { ContentStore } from './content.js';
 import { nowIso, type Db } from './db.js';
 import { notFound } from './http.js';
@@ -11,6 +11,10 @@ export class ProgressService {
 
   /** Throws 404 unless the lesson (and exercise, when given) exists in the loaded content. */
   assertKnown(lessonId: string, exerciseId?: string): void {
+    if (lessonId === LADDER_LESSON_ID) {
+      if (exerciseId !== undefined && !getRung(exerciseId)) notFound(`Unknown ladder rung "${exerciseId}"`);
+      return;
+    }
     if (!this.content.hasLesson(lessonId)) notFound(`Unknown lesson "${lessonId}"`);
     if (exerciseId !== undefined && !this.content.exercise(lessonId, exerciseId)) notFound(`Unknown exercise "${exerciseId}" in lesson "${lessonId}"`);
   }
@@ -31,6 +35,7 @@ export class ProgressService {
   }
 
   private markInProgress(lessonId: string): void {
+    if (lessonId === LADDER_LESSON_ID) return;
     this.db.prepare(`INSERT INTO lesson_progress (lesson_id, status, updated_at) VALUES (?, 'in-progress', ?)
       ON CONFLICT(lesson_id) DO UPDATE SET updated_at = excluded.updated_at`).run(lessonId, nowIso());
   }

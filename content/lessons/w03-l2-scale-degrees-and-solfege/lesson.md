@@ -8,25 +8,26 @@ duration_min: 45
 goals:
   - Name the notes of a key by number (1–7) and by solfège (do re mi fa sol la ti)
   - Feel which note is "home" and use the home run (1 2 3 4 5 4 3 2 1) to set it before a question
-  - Hear degrees 1, 2 and 3 in C major
+  - Hear degrees 1, 2 and 3 in C major, first over a held low C
 prerequisites: [w03-l1-major-scale-pattern]
 tags: [scale-degrees, solfege, ear, tonic]
 songs:
   - { title: "Frère Jacques", composer: "Traditional", public_domain: true }
+  - { title: "Twinkle, Twinkle, Little Star", composer: "Traditional", public_domain: true }
 ---
 
 # Scale degrees and solfège
 
-Letter names tell you *which key* to press. But your ear doesn't hear letters. It hears **roles**: "this note is home", "this note wants to go home", "this note is bright and settled". Those roles are the same in every major key, which is why we name notes by position in the scale — their [[scale degree]].
+Letter names tell you *which key* to press. But in a tune your ear doesn't hear letters. It hears **roles**: "this note is home", "this note wants to go home". Those roles are the same in every major key, which is why we name notes by their position in the scale — their [[scale degree]].
 
 | Degree | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|---|---|---|---|---|---|---|
 | Solfège | do | re | mi | fa | sol | la | ti |
 | In C major | C | D | E | F | G | A | B |
 
-[[Solfège]] syllables are just singable names for the numbers. Use whichever sticks; the app answers in numbers.
+[[Solfège]] syllables are just speakable names for the numbers. Use whichever sticks; the app answers in numbers.
 
-Degree 1 is the [[tonic]] — **home**. In C major, C is 1. In G major, G is 1. Same role, different key. For now, and for the next few weeks, we stay in **C major only**: one key, one home, until the roles feel familiar.
+Degree 1 is the [[tonic]] — **home**. In C major, C is 1. For the next few weeks we stay in **C major only**: one key, one home, until the roles feel familiar.
 
 ## What "home" means — hear it first
 
@@ -50,11 +51,11 @@ Degree 1 is the [[tonic]] — **home**. In C major, C is 1. In G major, G is 1. 
 }
 ```
 
-The second version feels unfinished — you almost want to press C yourself. That pull towards C is what "C is home" means. Every note in the key has its own amount of pull; that's why we name them by number.
+Most people hear the second version as unfinished — you almost want to press C yourself. That pull towards C is what "C is home" means.
 
-## Setting home before each question
+## The home run
 
-A single note on its own has no role — it's just a pitch. So before each question the app plays a short **home run**: up the scale from home to 5 and back down to home, **do re mi fa sol fa mi re do**, ending on a long C:
+A single note on its own has no role — it's just a pitch. So before each degree question the app plays the [[home run]] you met last lesson: up from home to 5 and back down, **do re mi fa sol fa mi re do**, ending on a long C. It always ends in the **same octave** as the question note.
 
 ```example
 {
@@ -65,28 +66,38 @@ A single note on its own has no role — it's just a pitch. So before each quest
 }
 ```
 
-It always ends on home, in the **same octave** as the note you'll be asked about — no octave jumps. (Later, in week 6, once you know what chords are, this home run is replaced by a short chord pattern called a *cadence*. Not before.)
+## 1, 2 and 3
 
-## The characters of 1, 2 and 3
+- **1 (do)** — finished, resting. It's the note the home run just ended on.
+- **2 (re)** — unfinished. It sounds like it wants to step down to 1.
+- **3 (mi)** — fairly settled, but not quite "the end".
 
-Listen to each degree right after the home run, and notice how it *feels*:
-
-- **1 (do)** — finished, stable, resting. It's the note the home run just ended on.
-- **2 (re)** — unfinished, restless. It wants to step down to 1.
-- **3 (mi)** — bright and fairly stable, but not quite "the end".
+To make the start easier, the first rungs hold a low C underneath the question — a [[drone]]. With home sounding the whole time, 1 blends into it, while 2 and 3 sit against it.
 
 ```example
 {
-  "title": "Home run, then 1… 2… 3…",
+  "title": "Home run, then 1, 2 and 3 — each over a held low C (drone)",
   "bpm": 100, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w | r:w | D4:w | r:w | E4:w" } ],
+  "tracks": [
+    { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h r:h | C4:w | r:w | D4:w | r:w | E4:w" },
+    { "instrument": "pad", "seq": "r:w | r:w | C3:w | r:w | C3:w | r:w | C3:w", "volume": 0.6 }
+  ],
   "show": ["keyboard"]
 }
 ```
 
-**The trick that works:** when you hear the note, hum it, then hum *down the scale* to home — "mi re do". Count how many steps you took. If you don't need to move, it's 1. One step down: 2. Two steps down: 3. Or play it: find the note on the keyboard (C, D or E), and the key tells you the degree.
+**Two tools that work without singing:**
 
-Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" starts **1 2 3 1**:
+- **Play it.** Find the note on the keyboard (C, D or E) — the key tells you the degree.
+- **Listen to the walk home.** After each answer, the app walks the note back to 1 (3 → 2 → 1). Press *Question, then walk home* and count the steps.
+
+```ladder
+{ "skill": "degrees", "unlocks": 2, "intro": "After the home run, one note over a low C: which degree is it?" }
+```
+
+## Old tunes, new names
+
+"Hot Cross Buns" is **3 2 1**. "Frère Jacques" starts **1 2 3 1**:
 
 ```example
 {
@@ -112,7 +123,7 @@ Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" s
     { "q": "In C major, B is degree…", "answer": ["7"], "kind": "number" },
     { "q": "Solfège for degree 2?", "answer": ["re"], "kind": "text" }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -123,46 +134,8 @@ Now you can re-read old tunes: "Hot Cross Buns" is **3 2 1**. "Frère Jacques" s
   "title": "Play by degree",
   "instructions": "Degrees in C major. Play the matching note around middle C.",
   "count": 10,
-  "passScore": 0.8,
-  "spec": { "prompt": "degrees", "notes": ["C4", "E4", "D4", "G4", "F4", "A4", "B4", "C5"], "ordered": true, "key": "C" }
-}
-```
-
-```exercise
-{
-  "id": "e7",
-  "type": "ear-note",
-  "title": "1 or 3?",
-  "instructions": "After the home run, one note. Home (1 — the note the run ended on) or bright-but-not-home (3)?",
-  "count": 10,
   "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 3], "reference": "scale", "octaves": [4], "instrument": "piano" },
-  "hints": ["Is it the same note the home run ended on? Then it's 1.", "Hum down to home: two steps means 3."]
-}
-```
-
-```exercise
-{
-  "id": "e8",
-  "type": "ear-note",
-  "title": "1, 2 or 3?",
-  "instructions": "Now 2 (restless, wants to fall to 1) joins in. Still C major, same octave as the home run.",
-  "count": 12,
-  "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3], "reference": "scale", "octaves": [4], "instrument": "piano" },
-  "hints": ["You can also answer by playing the note on the keyboard: C = 1, D = 2, E = 3."]
-}
-```
-
-```exercise
-{
-  "id": "e9",
-  "type": "ear-melody",
-  "title": "Name the tune in degrees",
-  "instructions": "Three notes using 1, 2 and 3 in C major. Enter the degrees you hear.",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 3, "rhythm": "quarters", "answer": "degrees", "reference": "scale" }
+  "spec": { "prompt": "degrees", "notes": ["C4", "E4", "D4", "G4", "F4", "A4", "B4", "C5"], "ordered": true, "key": "C" }
 }
 ```
 

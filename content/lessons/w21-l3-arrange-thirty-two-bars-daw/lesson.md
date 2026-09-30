@@ -6,9 +6,9 @@ order: 3
 phase: p3
 duration_min: 50
 goals:
-  - Write a counter-melody that moves when the main melody rests or holds
-  - Arrange a 32-bar song (verse, chorus, verse, chorus) with a clear dynamic curve
-  - Use layers, register and velocity to make the second chorus the peak
+  - Write a counter-melody that moves when the main melody holds or rests
+  - Arrange a 32-bar song (verse, chorus, verse, chorus) with a rising energy curve, over two sessions
+  - Use layers, fills and velocity to make the second chorus the peak
 prerequisites: [w21-l2-textural-build]
 tags: [arrangement, counter-melody, dynamics, daw, ear]
 songs: []
@@ -16,15 +16,17 @@ songs: []
 
 # Counter-Melody and a 32-Bar Arrangement
 
+This lesson has two sittings. **Session 1** (today): the counter-melody, and the first half of the arrangement. **Session 2** (next time you sit down, before week 22): the second half and the energy curve. Both arrangement tasks open the same project, so nothing is lost in between; the counter-melody task has its own project, and you'll re-enter your counter-melody in session 2.
+
 ## Counter-melody
 
-A [[counter-melody]] is a second tune that talks *with* the main melody instead of over it. Three rules keep it from getting in the way:
+A [[counter-melody]] is a second tune that talks *with* the main melody instead of over it. Three rules keep it out of the way:
 
-1. **Move when the melody holds.** When the lead sits on a long note or rests, the counter-melody moves; when the lead is busy, it holds.
-2. **Different register.** Usually below the lead (strings, a soft synth) — sometimes a high answer above.
-3. **Mostly contrary or oblique motion.** If the lead goes up, go down or stay. Avoid parallel fifths and octaves with the lead: they make the two lines melt into one.
+1. **Move when the melody holds.** When the lead sits on a long note or rests, the counter-melody moves; when the lead is busy, it holds a long note.
+2. **Different register.** Usually below the lead (strings, a soft synth).
+3. **Go your own way.** When the lead goes up, the counter-melody goes down or stays where it is. If both lines move in the same direction by the same distance all the time, they stop sounding like two voices. (Week 32 turns this into proper rules.)
 
-Listen to the chorus of "Night Bus", an original song. The strings hold under the busy bars and move in bars 2, 4 and 8, where the lead holds.
+Listen to the chorus of "Night Bus", an original song. The strings hold under the busy bars and move in bars 2, 4 and 8, where the lead holds. Watch both lines in the piano roll.
 
 ```example
 {
@@ -41,27 +43,15 @@ Listen to the chorus of "Night Bus", an original song. The strings hold under th
 }
 ```
 
-## Dynamics across the form
-
-A 32-bar song (V8 C8 V8 C8) needs an energy **curve**, not a flat line. A reliable plan:
-
-- **Verse 1** — thin: epiano + bass, drums light or absent. Velocity ~70%.
-- **Chorus 1** — add drums, pad and the counter-melody. Velocity ~85%.
-- **Verse 2** — *don't drop all the way back*: keep drums (hats + kick) so the song feels like it's moving forward.
-- **Chorus 2** — everything: full drums with crash, pad, counter-melody, lead doubled an octave lower. Velocity ~100%.
-
-Use the tools from this week: layers (texture), register (doubling), rhythm (pad vs comp) and velocity. In the DAW you can also lower a whole track's volume in the mixer for verse sections by splitting clips.
-
 ```exercise
 {
-  "id": "counter-quiz",
+  "id": "counter-quiz-v2",
   "type": "quiz",
-  "passScore": 0.8,
   "spec": { "questions": [
-    { "q": "When should a counter-melody move?", "choices": ["Exactly with the lead", "When the lead holds or rests", "Only in the intro", "Never - it only holds"], "answer": 1 },
-    { "q": "Which motion keeps two lines independent?", "choices": ["Parallel octaves", "Parallel fifths", "Contrary motion", "Unison"], "answer": 2 },
-    { "q": "Which section should usually be the peak of a V-C-V-C song?", "choices": ["Verse 1", "Chorus 1", "Verse 2", "Chorus 2"], "answer": 3 },
-    { "q": "Why keep some drums in verse 2?", "choices": ["So the song feels like it moves forward", "Because verses must be loud", "To change key", "To avoid a counter-melody"], "answer": 0 }
+    { "q": "When should a counter-melody move?", "choices": ["Exactly with the lead", "When the lead holds or rests"], "answer": 1 },
+    { "q": "The lead jumps up. A good counter-melody...", "choices": ["Jumps up by the same distance", "Goes down or stays put"], "answer": 1 },
+    { "q": "Where does the counter-melody usually sit?", "choices": ["Below the lead, in its own register", "Exactly on the lead's notes"], "answer": 0 },
+    { "q": "Which section should be the peak of a verse-chorus-verse-chorus song?", "choices": ["Chorus 1", "Chorus 2"], "answer": 1 }
   ] }
 }
 ```
@@ -70,15 +60,20 @@ Use the tools from this week: layers (texture), register (doubling), rhythm (pad
 {
   "id": "play-counter-melody",
   "type": "play-melody",
-  "title": "Play the counter-melody",
-  "passScore": 0.75,
+  "title": "Play the counter-melody under the lead",
   "spec": { "bpm": 84, "timeSig": "4/4", "key": "C", "seq": "E4:w | D4:h B3:8 C4:8 D4:q | C4:w | A3:q C4:q D4:q E4:q | E4:w | D4:h B3:h | C4:h E4:h | F4:q E4:q C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "lead", "seq": "r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. A4:8 G4:h | r:8 A4:8 C5:8 C5:8 E5:q D5:q | C5:w | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. C5:8 D5:h | E5:q. D5:8 C5:q A4:q | C5:h. r:q" } }
 }
 ```
 
+Hearing a melody while chords play underneath is the listening side of the same skill. This lesson opens that melody rung; the drill runs at your current melody rung, which may still be an earlier one.
+
+```ladder
+{ "skill": "melody", "unlocks": 17, "intro": "Opens: play back a melody while chords play underneath — follow the top line. The drill runs at your current melody rung." }
+```
+
 ```exercise
 {
-  "id": "daw-counter-melody",
+  "id": "daw-counter-melody-v2",
   "type": "daw-task",
   "title": "Write a counter-melody",
   "spec": {
@@ -87,26 +82,39 @@ Use the tools from this week: layers (texture), register (doubling), rhythm (pad
       { "instrument": "epiano", "seq": "[C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w" },
       { "instrument": "strings", "seq": "" }
     ] },
-    "task": "Write your own string counter-melody for the Night Bus chorus (not the one above). Stay between G3 and G4 (below the lead), hold during busy lead bars, move in bars 2, 4, 6 and 8. Chord tones on beat 1.",
+    "task": "Write your own string counter-melody for the Night Bus chorus (not the one above). Stay between G3 and G4, below the lead. Hold long notes in bars where the lead is busy (1, 3, 5, 7) and move in bars 2, 4, 6 and 8. Start each bar on a note of its chord (C, G, Am, F). This task saves to its own project; in session 2 you'll re-enter it on the strings of the full song (its chorus has the same melody and chords), so keep it short enough to remember or note it down.",
     "checks": [
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "in-key", "key": "C", "scale": "major", "track": 2 },
       { "kind": "range", "low": "G3", "high": "G4", "track": 2 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "V", "vi", "IV", "I", "V", "vi", "IV"], "barsPerChord": 1, "minRatio": 0.85, "track": 2 },
-      { "kind": "no-parallel-fifths", "tracks": [0, 2] },
-      { "kind": "note-count", "min": 10, "max": 32, "track": 2 }
+      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "minRatio": 0.85, "track": 2 },
+      { "kind": "note-count", "min": 10, "max": 32, "track": 2 },
+      { "kind": "custom", "id": "moves-when-lead-holds", "note": "Self-check: the strings hold in the busy lead bars and move where the lead holds." }
     ],
     "minBars": 8, "maxBars": 8
   }
 }
 ```
 
+## The energy curve
+
+A 32-bar song (verse 8, chorus 8, verse 8, chorus 8) needs an energy **curve**, not a flat line. A reliable plan:
+
+- **Verse 1** (bars 1–8) — thin: lead, epiano, bass in half notes, no drums. Velocities around 70%.
+- **Chorus 1** (9–16) — full drums, pad joins. Around 85%.
+- **Verse 2** (17–24) — *don't drop all the way back*: keep kick and hats so the song keeps moving. Around 75–80%: above verse 1, still below chorus 1.
+- **Chorus 2** (25–32) — everything: full drums with crash, pad, bass in eighths, your counter-melody on strings. Around 100%.
+
+A fill in bar 8 and bar 24 leads into each chorus.
+
 ```exercise
 {
-  "id": "daw-arrange-32",
+  "id": "daw-arrange-32-part1",
   "type": "daw-task",
-  "title": "Arrange Night Bus: 32 bars with a dynamic curve",
+  "title": "Session 1: arrange bars 1-16 (verse 1, chorus 1)",
   "spec": {
+    "projectRef": "w21-night-bus",
+    "timerMin": 20,
     "template": { "bpm": 100, "key": "C", "tracks": [
       { "instrument": "lead", "seq": "E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | E4:q. E4:8 G4:q E4:q | D4:w | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | G4:q. G4:8 E4:q C4:q | D4:h. r:q | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. A4:8 G4:h | r:8 A4:8 C5:8 C5:8 E5:q D5:q | C5:w | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. C5:8 D5:h | E5:q. D5:8 C5:q A4:q | C5:h. r:q | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | E4:q. E4:8 G4:q E4:q | D4:w | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | G4:q. G4:8 E4:q C4:q | D4:h. r:q | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. A4:8 G4:h | r:8 A4:8 C5:8 C5:8 E5:q D5:q | C5:w | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. C5:8 D5:h | E5:q. D5:8 C5:q A4:q | C5:h. r:q" },
       { "instrument": "epiano", "seq": "[A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w" },
@@ -115,15 +123,46 @@ Use the tools from this week: layers (texture), register (doubling), rhythm (pad
       { "instrument": "pad", "seq": "" },
       { "instrument": "strings", "seq": "" }
     ] },
-    "task": "Melody and chords are given: Verse (vi-IV-I-V) 8 bars, Chorus (I-V-vi-IV) 8 bars, twice. Arrange it: bass and drums following the dynamics plan, pad in the choruses, your counter-melody in chorus 1 and 2, lead doubling (strings an octave lower) in chorus 2 only, a fill before each chorus. Set velocities so the curve rises: verse 1 < chorus 1 < verse 2 < chorus 2.",
+    "task": "Melody and chords are given for all 32 bars: verse (Am F C G) twice, chorus (C G Am F) twice, then again. Today arrange bars 1-16 only. Bass: half-note roots in the verse, quarter notes in the chorus. Drums: none in bars 1-7, a fill in bar 8, a full groove with a crash from bar 9. Pad: spread chords in bars 9-16. Leave bars 17-32 for session 2.",
+    "checks": [
+      { "kind": "has-tracks", "instruments": ["lead", "epiano", "bass", "drums", "pad"] },
+      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 2 },
+      { "kind": "range", "low": "E1", "high": "C3", "track": 2 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat", "crash"], "snareOnBeats": [2, 4], "bars": [9, 16], "track": 3 },
+      { "kind": "in-key", "key": "C", "scale": "major", "track": 4 },
+      { "kind": "custom", "id": "first-half-curve", "note": "Self-check: chorus 1 is clearly bigger than verse 1." }
+    ],
+    "minBars": 32, "maxBars": 32
+  }
+}
+```
+
+## Session 2
+
+```exercise
+{
+  "id": "daw-arrange-32-part2",
+  "type": "daw-task",
+  "title": "Session 2: finish bars 17-32 and shape the curve",
+  "spec": {
+    "projectRef": "w21-night-bus",
+    "timerMin": 30,
+    "template": { "bpm": 100, "key": "C", "tracks": [
+      { "instrument": "lead", "seq": "E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | E4:q. E4:8 G4:q E4:q | D4:w | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | G4:q. G4:8 E4:q C4:q | D4:h. r:q | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. A4:8 G4:h | r:8 A4:8 C5:8 C5:8 E5:q D5:q | C5:w | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. C5:8 D5:h | E5:q. D5:8 C5:q A4:q | C5:h. r:q | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | E4:q. E4:8 G4:q E4:q | D4:w | E4:q. E4:8 D4:q C4:q | C4:q D4:8 C4:8 A3:h | G4:q. G4:8 E4:q C4:q | D4:h. r:q | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. A4:8 G4:h | r:8 A4:8 C5:8 C5:8 E5:q D5:q | C5:w | r:8 G4:8 C5:8 C5:8 C5:q B4:q | B4:q. C5:8 D5:h | E5:q. D5:8 C5:q A4:q | C5:h. r:q" },
+      { "instrument": "epiano", "seq": "[A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [A2 E3 C4]:w | [F2 C3 A3]:w | [C3 G3 E4]:w | [G2 D3 B3]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w | [C3 G3 E4]:w | [B2 G3 D4]:w | [C3 A3 E4]:w | [C3 A3 F4]:w" },
+      { "instrument": "bass", "seq": "" },
+      { "instrument": "drums", "seq": "" },
+      { "instrument": "pad", "seq": "" },
+      { "instrument": "strings", "seq": "" }
+    ] },
+    "task": "Your session-1 project opens here. Verse 2 (bars 17-24): bass as in verse 1, drums with kick and hats only, a fill in bar 24. Chorus 2 (bars 25-32): crash on bar 25, full drums, pad, bass in eighths, and a counter-melody on the strings: re-enter the one you wrote in session 1's counter-melody task (open that task in the lesson to see it; the chorus here has the same melody and chords), or write a fresh one by the same rules. Finally set velocities for the curve: verse 1 (about 70%) < verse 2 (75-80%) < chorus 1 (85%) < chorus 2 (100%).",
     "checks": [
       { "kind": "bars", "min": 32, "max": 32 },
       { "kind": "has-tracks", "instruments": ["lead", "epiano", "bass", "drums", "pad", "strings"] },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 2 },
       { "kind": "range", "low": "E1", "high": "C3", "track": 2 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat", "crash", "tom"], "snareOnBeats": [2, 4], "track": 3 },
-      { "kind": "in-key", "key": "C", "scale": "major", "track": 4 },
-      { "kind": "custom", "id": "dynamic-curve", "note": "Self-check: listen through - each section is a step bigger than the one before; chorus 2 is the peak." }
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat", "crash", "tom"], "snareOnBeats": [2, 4], "bars": [25, 32], "track": 3 },
+      { "kind": "range", "low": "G3", "high": "G4", "track": 5 },
+      { "kind": "custom", "id": "dynamic-curve", "note": "Self-check: listen through - verse 2 sits between verse 1 and chorus 1 in energy, and chorus 2 is the clear peak." }
     ],
     "minBars": 32, "maxBars": 32
   }
@@ -132,19 +171,8 @@ Use the tools from this week: layers (texture), register (doubling), rhythm (pad
 
 ```exercise
 {
-  "id": "ear-dictation-bb",
-  "type": "ear-melody",
-  "title": "Dictation in Bb (degrees)",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "Bb", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 6, "rhythm": "simple", "answer": "degrees" }
-}
-```
-
-```exercise
-{
   "id": "reflect-32",
   "type": "reflect",
-  "spec": { "prompt": "Listen to your 32-bar arrangement with eyes closed. Draw the energy curve you actually hear (e.g. low-mid-mid-high). Does it match your plan? Which single change made the biggest difference?", "minWords": 30 }
+  "spec": { "prompt": "Listen to your 32 bars with eyes closed. Draw the energy curve you actually hear (e.g. low - mid - mid - high). Does it match your plan? Which single change made the biggest difference?", "minWords": 30 }
 }
 ```

@@ -6,6 +6,7 @@ import { networkInterfaces } from 'node:os';
 import { request } from '@playwright/test';
 import { test, expect } from './fixtures';
 import { startServer, type ServerHandle } from './helpers/server';
+import { lessons } from './helpers/content';
 
 const lanIps = Object.values(networkInterfaces())
   .flat()
@@ -42,7 +43,7 @@ test('API and SPA answer on every non-loopback IPv4 interface', async ({ page })
   }
   await page.goto(`http://${lanIps[0]}:${srv.port}/curriculum`);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Curriculum');
-  await expect(page.locator('li.lesson-row a')).toHaveCount(154);
+  await expect(page.locator('li.lesson-row a')).toHaveCount(lessons().length);
 });
 
 test('Web MIDI is unavailable over plain http on a LAN IP (insecure context) and the app says so', async ({ browser }) => {

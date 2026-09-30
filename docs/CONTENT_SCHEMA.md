@@ -81,7 +81,7 @@ Optional envelope fields (also valid wherever an envelope/example is embedded, e
 * `"swing": 0..1` — delays off-beat 8ths (1 = triplet feel); applied to playback and to `play-melody` targets.
 * `"tempoChanges": [{ "bar": 9, "bpm": 120 }]` — tempo change at the start of a 1-based bar.
 * per track `"volume": 0..1` and `"pan": -1..1`.
-* `"hidden": true` — dictation: the example is play-only; notation/keyboard/piano roll appear after "Reveal notation".
+* `"hidden": true` — dictation: the example is play-only; notation/keyboard/piano roll (and the BPM, key and instrument list in the header) appear after "Reveal notation". Keep the title of a hidden example neutral ("Mystery song — verse"): it stays visible.
 * `"lyrics": "Twin- kle twin- kle lit- tle star"` — one syllable per sounding note of the first track (rests and
   tied continuations are skipped), shown under the staff.
 
@@ -105,6 +105,17 @@ Instruments: `piano epiano bass pad lead pluck strings guitar drums` (`guitar` =
 ```chords
 { "key": "C", "bars": ["C", "Am", "F", "G"], "roman": true, "play": true, "bpm": 80 }
 ```
+
+### `ladder` — ear training at the learner's own level
+
+```ladder
+{ "skill": "degrees", "unlocks": 5, "intro": "Degree 5 (sol) joins today." }
+```
+
+Opens rungs 1…`unlocks` of one of the nine ear-training ladders (`octave`, `degrees`, `intervals`, `chords`, `roots`,
+`progressions`, `melody`, `rhythm`, `scales`) when the learner reaches it, then drills the learner's **current rung**
+of that skill (lowest open rung not yet mastered) — see `docs/EAR_LADDERS.md` for the rungs, mastery rules and the
+unlock schedule. Every graded ear drill in a lesson is a ladder block; `intro` is an optional sentence shown above it.
 
 ## `exercise` blocks
 
@@ -134,16 +145,16 @@ may only use these types and fields.
 
 | type | spec | answer |
 |------|------|--------|
-| `ear-note` | `{ "key": "C", "mode": "major", "degrees": [1,2,3,4,5], "reference": "cadence"\|"scale"\|"tonic"\|"none", "octaves": [3,4], "instrument": "piano" }` | scale degree (1–7, with `b`/`#` when chromatic allowed via `"chromatic": true`) or note name if `"answer": "name"` |
-| `ear-octave` | `{ "notes": ["C","D","E"], "octaves": [3,4,5], "mode": "together"\|"match"\|"same-or-different"\|"which-octave"\|"higher-or-lower", "gap": [1], "foils": [1,6,11] }` | `same`/`different`, `A`/`B` (match), octave number or `higher`/`lower` |
+| `ear-note` | `{ "key": "C", "mode": "major", "degrees": [1,2,3,4,5], "reference": "cadence"\|"scale"\|"tonic"\|"none", "octaves": [3,4], "drone": false, "instrument": "piano" }` | scale degree (1–7, with `b`/`#` when chromatic allowed via `"chromatic": true`) or note name if `"answer": "name"` |
+| `ear-octave` | `{ "notes": ["C","D","E"], "octaves": [3,4,5], "mode": "together"\|"match"\|"find"\|"same-or-different"\|"which-octave"\|"higher-or-lower", "gap": [1], "foils": [1,6,11] }` | `same`/`different`, `A`/`B` (match), octave number or `higher`/`lower` |
 | `ear-interval` | `{ "intervals": ["m2","M2","m3","M3","P4","TT","P5","m6","M6","m7","M7","P8"], "direction": "asc"\|"desc"\|"harmonic"\|"mixed", "root": "random"\|"C4", "range": ["C3","C5"] }` | interval id |
 | `ear-chord` | `{ "qualities": ["maj","min","dim","aug","maj7","min7","dom7","m7b5","sus2","sus4"], "inversions": [0], "voicing": "close"\|"open"\|"mixed", "range": ["C3","C5"] }` | quality id (and inversion index if `inversions` has >1) |
 | `ear-chord-root` | `{ "qualities": ["maj","min"], "answer": "play"\|"name", "range": ["C3","C5"], "inversions": [0,1,2] }` | learner plays/names the root note (pitch class, any octave) |
 | `ear-scale` | `{ "scales": ["major","natural-minor","harmonic-minor","melodic-minor","dorian","mixolydian","lydian","phrygian","locrian","major-pentatonic","minor-pentatonic","blues","whole-tone","diminished"], "play": "asc"\|"asc-desc"\|"melody" }` | scale id |
-| `ear-progression` | `{ "key": "random"\|"C", "mode": "major"\|"minor", "length": 4, "chords": ["I","ii","iii","IV","V","vi","V7","bVII","iv"], "style": "block"\|"arpeggio"\|"pad-bass", "inversions": [0,1], "example": {…}, "progression": [...] }` | array of roman numerals |
+| `ear-progression` | `{ "key": "random"\|"C", "mode": "major"\|"minor", "length": 4, "chords": ["I","ii","iii","IV","V","vi","V7","bVII","iv"], "style": "block"\|"arpeggio"\|"pad-bass"\|"band", "inversions": [0,1], "example": {…}, "progression": [...] }` | array of roman numerals |
 | `ear-melody` | `{ "key": "C"\|"random", "mode": "major", "degrees": [1,2,3,5], "length": 4, "rhythm": "quarters"\|"simple"\|"free", "answer": "play"\|"degrees", "reference": "cadence"\|"scale"\|"tonic"\|"none", "chromatic": false, "backing": ["I","V"], "maxLeap": 7, "example": {…}, "track": 0 }` | learner plays melody back on keyboard, or enters degrees |
 | `ear-rhythm` | `{ "timeSig": "4/4", "bars": 1, "subdivision": "q"\|"8"\|"16"\|"8t", "rests": true, "answer": "tap"\|"choose", "choices": 4, "voices": ["kick","snare","hihat"] }` | tap it back (timing scored ±25% of a beat) or choose among 2–4 notations; with `voices`: fill a drum step grid |
-| `ear-bass` | `{ "key":"C", "mode": "major", "chords":["I","IV","V","vi"], "answer":"play"\|"name", "length": 4, "inversions": [0,1], "example": {…}, "track": 1 }` | play (or name as degrees) the bass note of each chord heard |
+| `ear-bass` | `{ "key":"C", "mode": "major", "chords":["I","IV","V","vi"], "answer":"play"\|"name", "length": 4, "inversions": [0,1], "style": "bass-focus"\|"band", "example": {…}, "track": 1 }` | play (or name as degrees) the bass note of each chord heard |
 | `ear-tempo` | `{ "range": [60,160], "tolerance": 4, "style": "click"\|"drums"\|"groove", "timeSig": "4/4", "bars": 2 }` | BPM (± tolerance); tap-tempo helper in the UI |
 | `ear-meter` | `{ "meters": ["3/4","4/4","6/8","7/8"], "bpm": 96, "bars": 4, "style": "drums"\|"piano"\|"mixed" }` | the time signature |
 
@@ -169,7 +180,7 @@ may only use these types and fields.
 | `quiz` | `{ "questions": [ { "q": "How many half steps in a perfect fifth?", "choices": ["5","6","7","8"], "answer": 2, "explain": "..." } ] }` | choice index (multiple correct via `"answers":[..]`) |
 | `quiz-input` | `{ "questions": [ { "q": "Name the 5th degree of D major", "answer": ["A"], "kind": "note"\|"text"\|"number" } ] }` | free text, normalised (enharmonic-aware for notes) |
 | `key-signature` | `{ "keys": ["G","D","F","Bb"], "prompt": "staff"\|"name", "answer": "name"\|"count" }` | key name or #/b count |
-| `roman-analysis` | `{ "key": "G", "chords": ["G","Em","C","D7"], "prompt": "symbols"\|"play" }` | roman numerals per chord |
+| `roman-analysis` | `{ "key": "G", "chords": ["G","Em","C","D7"], "prompt": "symbols"\|"play", "palette": "diatonic"\|"chromatic" }` | roman numerals per chord (`palette`: answer buttons; default adds common chromatic numerals as decoys when any answer is chromatic — set `"chromatic"` from week 24 so their presence never hints) |
 
 #### DAW / composition
 
@@ -258,14 +269,19 @@ note. Chord-based predicates take roman numerals in the key (or chord symbols).
 ## Authoring rules
 
 1. A lesson is 30–50 minutes: 5–8 exercises, 200–600 words of prose total.
-2. Every lesson has ≥1 ear-training exercise and ≥1 keyboard exercise.
+2. Every lesson has ≥1 ear-training block (normally a ```ladder block) and ≥1 keyboard exercise.
 3. Start with a 2-minute warm-up (`srs` review is added automatically by the runner; do not author it).
-4. Introduce ≤2 new concepts per lesson. Prose explains *why*, then an `example` shows it, then an `exercise` drills it.
-5. Exercise `count` 6–12; `passScore` 0.7–0.85; ear exercises in early weeks use small option sets (2–3) and grow.
+4. Introduce ≤2–3 new concepts per lesson. Prose explains *why*, then an `example` shows it, then an `exercise` drills
+   it. Never use a term, chord, reference sound or skill before a lesson has explained it with sound (see
+   `docs/CURRICULUM.md` rules). Describe what the learner will actually hear, not an idealised claim.
+5. Exercise `count` 6–12; `passScore` 0.7 (0.75 at most; reviews are diagnostic at 0.7). Graded ear drills are ladder
+   blocks, which grow by one dimension per rung; fixed `ear-*` exercises are only for transcribing an attached example
+   or listening tied to one specific piece, and hide the answer (`"hidden": true`, no hints in question text).
 6. Songs: public-domain pieces may include full `seq`. Contemporary songs: only title/artist, key, tempo, structure, chord progression (roman + symbols), and verbal analysis. Never transcribe copyrighted melodies. Original "in the style of" material is encouraged.
 7. Cross-reference: `See [[interval]]` (glossary) and `[Lesson](../w02-l01-slug/)` links.
 8. Each week ends with a `daw-task` (from week 2 onward) so the learner makes something.
-9. Use degree-based ear training (`reference: "cadence"`) as the default solfège approach; add absolute naming only for note-name reading.
+9. Degree-based ear training (the `degrees` ladder) is the solfège approach; add absolute naming only for note-name
+   reading. Real songs are analysed *verdict first*: the learner answers (quiz) before the facts appear (`explain`).
 10. Always specify `key` where a spec supports it, except when `"random"` is intentional.
 
 ## Implementation notes (validator & engine behaviour)
@@ -308,9 +324,8 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   by chance.
 * **Keys** everywhere accept `"C"`, `"Bb"`, `"F#"`, `"Am"`, `"C# minor"`, `"E minor"`; a separate `mode` applies
   only when the key string has no suffix. `ear-progression.key`, `ear-melody.key`, `ear-note.key` and `ear-bass.key` may be `"random"` (a fresh key per
-  item; keep `mode` for minor). Convention: weeks 1–8 use fixed keys (C; G/F in week 7) so a beginner has one home
-  to learn; from week 9 degree / roman-numeral ear exercises and play-back dictation use `"random"` (the answer
-  doesn't depend on the key). Keep a fixed key only when the exercise text is about that key.
+  item; keep `mode` for minor). Which keys the learner hears in graded drills is decided by the ladders (one key
+  for weeks, then G/F, random keys only from the rungs opened in week 11); fixed exercises use the key of their piece.
   **Scale ids** everywhere (`ear-scale`, `build-scale`, `play-scale`, `in-key`) accept every `ear-scale` id plus the
   aliases `minor`, `ionian`, `aeolian`.
 * **Roman numerals**: case = quality (`ii` minor), `°`/`ø`/`+`, suffixes `7 maj7 maj9 9 11 13 7sus4 add9 sus2 sus4`
@@ -323,7 +338,9 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   the key's mode.
 * **`ear-note`**: `mode` defaults to `major` (a key like `"Am"` also sets minor); `answer`: `"degree"`
   (default) | `"name"`; `chromatic: true` shows all 12 degree buttons.
-* **`ear-octave`** `which-octave` plays middle C (C4) as a reference first. Comparison modes: `together` (both
+* **`ear-octave`** `which-octave` plays middle C (C4) as a reference first. `find`: one note (from `notes` ×
+  `octaves`, may be far outside the keyboard), the learner plays the same note name in any octave (answer by keyboard). Like `ear-chord-root` "play", keys can be tried freely — each sounds, nothing is scored — and **Check** answers with the last key played.
+  Comparison modes: `together` (both
   notes at once — an octave melts into one sound; the easiest), `match` (a note, then candidates A and B: which is its
   octave), `same-or-different` (one after the other). `gap`: octave distances (1–2) between the compared notes
   (default any the `octaves` allow). `foils`: semitone distances (1–11) of the "different" note from the first
@@ -331,6 +348,10 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   jump never gives the answer away. Pedagogy: start with `together`/`match`, `gap: [1]` and clashing foils `[1, 6, 11]`;
   add `gap: [1, 2]` and the confusable fifth/fourth foils `[5, 7]` only later. Every comparison item offers
   "Listen again" aids (both together, the real octave, walking the octaves) after the first answer.
+* **`ear-note`** `drone: true` holds the tonic an octave below under the question note. After every answer the note
+  walks home automatically (degrees up to 5 fall to 1, 6 and 7 rise to the upper 1).
+* **`ear-bass.style`**: `bass-focus` (default) | `band`; **`ear-progression.style`** also accepts `band`: a full mix
+  (soft pad chords, rhythmic bass, rock beat, a lead line on chord tones) to hear bass and harmony through.
 * **Key references** (`ear-note.reference`, `ear-melody.reference`): `scale` = melodic home run 1 2 3 4 5 4 3 2 1
   (no chords — use it before chords are taught, weeks 3–5), `cadence` = I–IV–V–I, smoothly voiced (from week 6),
   `tonic` = the tonic alone (weeks 1–2 echo drills), `none`. All references and the question share the same

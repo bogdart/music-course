@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { SetSummary, SrsCardDTO, SrsDueDTO } from '@music/core';
+import { LADDER_LESSON_ID, type SetSummary, type SrsCardDTO, type SrsDueDTO } from '@music/core';
 import { api } from '../api/client';
 import { ExerciseShell } from '../exercises/ExerciseShell';
 import { adaptedBlock, levelLabel, recordScores, reviewCard } from '../practice/srsSession';
 import { useProgressStore } from '../stores/progress';
+import { useLadderStore } from '../stores/ladder';
+import { planSession, skillTitle, type PlanEntry } from '../practice/ladderPlan';
 
 const ITEMS_PER_CARD = 5;
 const SESSION_LIMIT = 20;
@@ -19,10 +21,104 @@ interface Reviewed {
 }
 
 /**
+ * Practice = (1) an ear-ladder session: the current rung of the skills furthest behind the lessons, then short reviews
+ * of mastered rungs; (2) any remaining review cards of lesson exercises that are not on a ladder.
+ */
+export function Practice() {
+  const [stage, setStage] = useState<'ladder' | 'cards'>('ladder');
+  return stage === 'ladder' ? <LadderSession onDone={() => setStage('cards')} /> : <SrsPractice />;
+}
+
+interface LadderDone {
+  entry: PlanEntry;
+  score: number;
+  masteredNow: boolean;
+}
+
+function LadderSession({ onDone }: { onDone: () => void }) {
+  const load = useLadderStore((s) => s.load);
+  const [plan, setPlan] = useState<PlanEntry[] | null>(null);
+  const [pos, setPos] = useState(0);
+  const [done, setDone] = useState<LadderDone[]>([]);
+  const start = () => {
+    setPlan(null);
+    setPos(0);
+    setDone([]);
+    void load().then(() => {
+      const st = useLadderStore.getState().state;
+      setPlan(st ? planSession(st) : []);
+    });
+  };
+  useEffect(start, []);
+
+  if (!plan) return <div className="page">Loading…</div>;
+  const entry = plan[pos];
+  if (!entry) {
+    return (
+      <div className="page practice">
+        <h1>Practice</h1>
+        {plan.length === 0 ? (
+          <p>No ear-training ladders are open yet — they open as you work through the lessons. 🎧</p>
+        ) : (
+          <div className="card session-summary" data-testid="ladder-summary">
+            <p>Ear session done — {done.length} set{done.length === 1 ? '' : 's'}.</p>
+            <ul>
+              {done.map((d, i) => (
+                <li key={i}>
+                  {skillTitle(d.entry.rung.skill)} · rung {d.entry.rung.n} “{d.entry.rung.title}”: {Math.round(d.score * 100)}%
+                  {d.masteredNow ? ' — mastered! ✓' : ''}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="row">
+          <button type="button" className="btn primary" onClick={start}>
+            Another ear session
+          </button>
+          <button type="button" className="btn" onClick={onDone}>
+            Review cards
+          </button>
+          <Link to="/" className="btn ghost">
+            Dashboard
+          </Link>
+        </div>
+      </div>
+    );
+  }
+  const onComplete = async (s: SetSummary) => {
+    const before = useLadderStore.getState().skill(entry.rung.skill)?.rungs[entry.rung.n - 1]?.mastered ?? false;
+    await load();
+    const after = useLadderStore.getState().skill(entry.rung.skill)?.rungs[entry.rung.n - 1]?.mastered ?? false;
+    setDone((d) => [...d, { entry, score: s.score, masteredNow: !before && after }]);
+    setTimeout(() => setPos((p) => p + 1), 1000);
+  };
+  return (
+    <div className="page practice">
+      <h1>Practice</h1>
+      <div className="bar" aria-hidden>
+        <span style={{ width: `${(pos / plan.length) * 100}%` }} />
+      </div>
+      <p className="muted small">
+        Set {pos + 1} of {plan.length} · 🎧 {skillTitle(entry.rung.skill)} · rung {entry.rung.n}
+        <span className={`tag ${entry.kind === 'review' ? 'level' : 'new'}`}>{entry.kind === 'review' ? 'review' : 'your level'}</span>
+      </p>
+      <p className="small muted">{entry.rung.step}</p>
+      <ExerciseShell key={`${entry.rung.id}-${pos}`} block={entry.rung.block} lessonId={LADDER_LESSON_ID} mode="practice" count={entry.count} onComplete={(s) => void onComplete(s)} />
+      <div className="row">
+        <button type="button" className="btn link" onClick={() => setPos(plan.length)}>
+          end session
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/**
  * SRS practice session: due review cards interleaved with a few new cards (`/api/srs/due?newLimit=`), each card
  * regenerated fresh at its adaptive difficulty level, then a session summary.
  */
-export function Practice() {
+function SrsPractice() {
   const [due, setDue] = useState<SrsDueDTO | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pos, setPos] = useState(0);

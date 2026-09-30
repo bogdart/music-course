@@ -6,29 +6,48 @@ order: 2
 phase: p2
 duration_min: 45
 goals:
-  - Explain why V7 pulls to I (the tritone between its 3rd and 7th)
+  - Explain tension and resolution, and why V7 pulls to I (the tritone between its 3rd and 7th)
   - Resolve V7 → I smoothly in C, G and F major and in A minor
-  - Hear the difference between V → I and V7 → I, and between V7 and other chords
+  - Hear V against V7, and the leaning degrees 7 and 4 in any key
 prerequisites: [w12-l1-maj7-dom7-min7]
 tags: [harmony, dominant, sevenths, ear]
 ---
 
 # V7 to I — Tension and Resolution
 
-Music breathes in and out: tension, then release. The strongest single "breath in" in Western music is the V7 chord. Its job — its [[dominant function]] — is to make you *need* the tonic.
+Music breathes in and out. Two words for that ([[tension and resolution]]):
 
-## Why G7 wants C
+- **Tension** is a sound that feels unfinished: it makes you expect something to come next.
+- **Resolution** is the move that answers it, the "ahh" of arriving.
 
-G7 is G B D F. Look at two notes inside it:
-
-- **B** is degree 7 of C major: the leading tone, a half step below C.
-- **F** is degree 4: a half step above E.
-
-B and F are a tritone apart — the restless interval from week 10. When G7 moves to C, the tritone collapses: **B goes up to C, F goes down to E**. Both notes move by a half step to the nearest note of the C chord. That little squeeze is the "click" you hear when music comes home. Plain G (no F) only has the B; G7 has both pulls, so it's stronger.
+Listen: the first chord below is held for two bars. Most people feel it leaning forward, waiting. Then it resolves.
 
 ```example
 {
-  "title": "G → C, then G7 → C. Watch B→C and F→E.",
+  "title": "G7 held (tension), then C (resolution)",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[G3 B3 D4 F4]:w | [G3 B3 D4 F4]:w | [G3 C4 E4]:w" },
+    { "instrument": "bass", "seq": "G2:w | G2:w | C2:w" }
+  ],
+  "show": ["keyboard"]
+}
+```
+
+The strongest tension chord in a key is the dominant 7 on degree 5, **V7**. Its job, making you *need* the tonic, is called [[dominant function]].
+
+## Why G7 wants C
+
+G7 is G B D F. Two notes inside it do the work:
+
+- **B** is degree 7 of C major, the leading tone: a half step below C.
+- **F** is degree 4: a half step above E.
+
+B and F form the tritone you heard squeeze inward in week 10. When G7 moves to C, **B rises to C and F falls to E**, each by a half step, to the nearest notes of the C chord. That squeeze is the "click" of coming home. A plain G chord (no F) has only the B, so it pulls, but less.
+
+```example
+{
+  "title": "G → C, then G7 → C. Watch B→C and F→E",
   "bpm": 66, "timeSig": "4/4", "key": "C",
   "tracks": [
     { "instrument": "piano", "seq": "[G3 B3 D4]:h [G3 C4 E4]:h | r:w | [G3 B3 F4]:h [G3 C4 E4]:h | r:w" },
@@ -41,24 +60,21 @@ B and F are a tritone apart — the restless interval from week 10. When G7 move
 ```exercise
 {
   "id": "e1", "type": "play-melody", "title": "Resolve the tritone",
-  "instructions": "Right hand, three notes: G3–B3–F4 → G3–C4–E4. Feel the B and F squeeze inward to C and E.",
-  "count": 6, "passScore": 0.8,
-  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[G3 B3 F4]:h [G3 C4 E4]:h | [G3 B3 F4]:h [G3 C4 E4]:h | [D4 G4 B4]:h [E4 G4 C5]:h | [F4 G4 B4]:h [E4 G4 C5]:h", "showStaff": true, "showKeyboard": true, "countIn": 1 }
+  "instructions": "Right hand: G3–B3–F4, then G3–C4–E4. Feel B and F squeeze inward to C and E. Then the same in two other positions.",
+  "count": 1, "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[G3 B3 F4]:h [G3 C4 E4]:h | [G3 B3 F4]:h [G3 C4 E4]:h | [B3 F4 G4]:h [C4 E4 G4]:h | [F4 G4 B4]:h [E4 G4 C5]:h", "showStaff": true, "showKeyboard": true, "countIn": 1 }
 }
 ```
 
-```exercise
-{
-  "id": "e2", "type": "ear-note", "title": "The tendency tones",
-  "instructions": "Degree 7 leans up to 1; degree 4 leans down to 3. After naming, sing where each note wants to go.",
-  "count": 10, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "degrees": [1, 3, 4, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
-}
+This lesson opens a progressions rung that asks: is the dominant plain **V**, or **V7**? The seventh adds a sharper lean toward home. The drill runs at your current progressions rung, so you'll meet it once I, IV, V and vi are solid.
+
+```ladder
+{ "skill": "progressions", "unlocks": 4, "intro": "Opens \"V or V7 (in C)\"; the drill runs at your current rung." }
 ```
 
-## V7 → I in other keys — and in minor
+## V7 → I in other keys, and in minor
 
-The same shape works in every key: find the V (a fifth above the tonic), add its m7, resolve. In G major that's **D7 → G**; in F major, **C7 → F**. In A minor, use the major V from harmonic minor: **E7 → Am** (G# up to A, D down to C).
+The recipe works in every key: find V (a fifth above the tonic), make it a dominant 7, resolve. In G major that's **D7 → G**; in F major, **C7 → F**. In A minor, use the major V from harmonic minor: **E7 → Am** (G♯ rises to A, D falls to C).
 
 ```example
 {
@@ -71,45 +87,16 @@ The same shape works in every key: find the V (a fifth above the tonic), add its
 
 ```exercise
 {
-  "id": "e3", "type": "play-chord", "title": "V7 → I pairs",
+  "id": "e2", "type": "play-chord", "title": "V7 → I pairs",
   "instructions": "Play each pair. Move to the nearest notes of the resolution chord; any inversion is fine.",
-  "count": 8, "passScore": 0.8,
+  "count": 8, "passScore": 0.7,
   "spec": { "chords": ["G7", "C", "D7", "G", "C7", "F", "E7", "Am"], "inversion": "any", "sequence": true, "bpm": 60 }
 }
 ```
 
-## Hearing dominant chords
-
-Tension has a sound. Listen for the chord that makes you lean forward. In the next drills, the dom7 is the chord that sounds like a question, and V7 is the chord just before "home".
-
 ```exercise
 {
-  "id": "e4", "type": "ear-chord", "title": "Tense or at rest?",
-  "count": 10, "passScore": 0.75,
-  "spec": { "qualities": ["maj", "dom7", "min"], "inversions": [0], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e5", "type": "ear-progression", "title": "Where's the V7?",
-  "instructions": "Three chords starting on I. Is the middle chord IV (gentle lift), V (lean) or V7 (strong lean)?",
-  "count": 9, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 3, "chords": ["I", "IV", "V", "V7"], "style": "block" }
-}
-```
-
-```exercise
-{
-  "id": "e6", "type": "ear-progression", "title": "V7 in minor",
-  "count": 8, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "minor", "length": 3, "chords": ["i", "iv", "V7"], "style": "pad-bass" }
-}
-```
-
-```exercise
-{
-  "id": "e7", "type": "quiz-input", "title": "Find the V7",
+  "id": "e3", "type": "quiz-input", "title": "Find the V7",
   "spec": { "questions": [
     { "q": "V7 in C major (chord symbol)?", "answer": ["G7"], "kind": "text" },
     { "q": "V7 in G major?", "answer": ["D7"], "kind": "text" },
@@ -119,4 +106,12 @@ Tension has a sound. Listen for the chord that makes you lean forward. In the ne
     { "q": "In D7 → G, which note of D7 falls by a half step to B?", "answer": ["C"], "kind": "note" }
   ] }
 }
+```
+
+## Tendency tones, in any key
+
+The two notes that make V7 pull are also the "leaning" degrees of the scale: **7 leans up to 1**, **4 leans down to 3**. This lesson opens the degree rung that uses all seven degrees with the key changing every question; you'll meet it once degrees 1–5 in any key are solid, and until then the drill stays at your current rung. Whatever rung you're on, listen for that lean: after each answer, notice how 7 walks up and 4 walks down to home.
+
+```ladder
+{ "skill": "degrees", "unlocks": 16, "intro": "Opens \"Any key: all seven\"; the drill runs at your current rung. Listen for the leaning notes, 7 and 4." }
 ```

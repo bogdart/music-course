@@ -28,7 +28,7 @@ const PAGES: { name: string; path: string; knownSerious?: string }[] = [
   { name: 'practice', path: '/practice' },
   { name: 'settings', path: '/settings' },
   { name: 'daw', path: '/daw' },
-  { name: 'dev-demo', path: '/dev/demo', knownSerious: 'A11Y-01' },
+  { name: 'dev-demo', path: '/dev/demo' },
 ];
 
 async function scan(page: import('@playwright/test').Page, name: string, path: string) {
@@ -73,11 +73,9 @@ for (const theme of ['dark', 'light'] as const) {
     });
 
     test(`axe (${theme}): /practice during a session (card on screen) and its summary`, async ({ page, api }) => {
-      const l = lessons().find((x) => x.exercises.some((e) => e.type === 'ear-interval'))!;
-      const e = l.exercises.find((x) => x.type === 'ear-interval')!;
-      await api.post('/api/progress/exercises/complete', { data: { lessonId: l.id, exerciseId: e.id, type: e.type, score: 1, passed: true, correct: 10, total: 10 } });
+      await api.post('/api/ladder/unlock', { data: { skill: 'intervals', unlocks: 2 } });
       await goto(page, '/practice');
-      await expect(page.getByText(/Card 1 of \d+/)).toBeVisible();
+      await expect(page.getByText(/Set 1 of \d+/)).toBeVisible();
       await scan(page, 'practice-session', '/practice');
     });
 

@@ -28,7 +28,7 @@ Common patterns over a 3-note chord plus its octave: **up** (1-3-5-8), **down** 
   "title": "Up-pattern arp in 16ths on pluck: Am \u2013 F \u2013 C \u2013 G",
   "bpm": 124,
   "timeSig": "4/4",
-  "key": "C",
+  "key": "Am",
   "tracks": [
     {
       "instrument": "pluck",
@@ -57,7 +57,7 @@ Pattern per beat: a 16th rest (the kick's spot), then a dotted-8th chord. Four t
   "title": "Gated pad pumping against a four-on-the-floor kick",
   "bpm": 124,
   "timeSig": "4/4",
-  "key": "C",
+  "key": "Am",
   "tracks": [
     {
       "instrument": "pad",
@@ -86,11 +86,11 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
   "title": "Play the up-arp (Am and F)",
   "instructions": "Right hand. Keep your hand in one position per chord; the pinky takes the octave.",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 80,
     "timeSig": "4/4",
-    "key": "C",
+    "key": "Am",
     "seq": "A3:16 C4:16 E4:16 A4:16 A3:16 C4:16 E4:16 A4:16 A3:16 C4:16 E4:16 A4:16 A3:16 C4:16 E4:16 A4:16 | F3:16 A3:16 C4:16 F4:16 F3:16 A3:16 C4:16 F4:16 F3:16 A3:16 C4:16 F4:16 F3:16 A3:16 C4:16 F4:16 |",
     "showStaff": false,
     "showKeyboard": true,
@@ -109,7 +109,7 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
   "type": "build-chord",
   "title": "Chords you will arpeggiate",
   "count": 6,
-  "passScore": 0.8,
+  "passScore": 0.7,
   "spec": {
     "chords": [
       "Am",
@@ -121,7 +121,7 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
     ],
     "root": "given",
     "prompt": "symbol",
-    "key": "C"
+    "key": "Am"
   }
 }
 ```
@@ -133,7 +133,7 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
   "title": "Tap the gate pattern",
   "instructions": "Tap only the chord hits \u2014 the off-16ths after each beat.",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 100,
     "timeSig": "4/4",
@@ -147,55 +147,14 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
 
 ```exercise
 {
-  "id": "e4-ear-rhythm-16",
-  "type": "ear-rhythm",
-  "title": "16th-note patterns",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": {
-    "timeSig": "4/4",
-    "bars": 1,
-    "subdivision": "16",
-    "rests": true,
-    "answer": "choose"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-ear-prog-minor",
-  "type": "ear-progression",
-  "title": "Dance-loop progressions",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "key": "random",
-    "mode": "minor",
-    "length": 4,
-    "chords": [
-      "i",
-      "iv",
-      "v",
-      "bVI",
-      "bIII",
-      "bVII"
-    ],
-    "style": "arpeggio"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e6-daw-arp-gate",
+  "id": "e4-daw-arp-gate",
   "type": "daw-task",
   "title": "Arp + gated pad + kick",
-  "instructions": "8 bars on Am\u2013F\u2013C\u2013G (each chord one bar, twice). Pluck: your own 16th-note arp pattern (try up-down or broken). Pad: gated chords with a 16th rest on every beat. Drums: kick on every beat, clap on 2 and 4, open hat on the off-beats.",
+  "instructions": "8 bars on Am\u2013F\u2013C\u2013G (each chord one bar, twice). Pluck: your own 16th-note arp pattern (try up-down or broken). Pad: gated chords with a 16th rest on every beat. Drums: kick on every beat, clap on 2 and 4, open hat on the off-beats. The bass is ready. About 25 minutes; copy and paste repeated bars.",
   "spec": {
     "template": {
       "bpm": 124,
-      "key": "C",
+      "key": "Am",
       "timeSig": "4/4",
       "tracks": [
         {
@@ -276,4 +235,14 @@ Hear how the pad and kick interlock instead of fighting? That rhythmic space is 
     "maxBars": 8
   }
 }
+```
+
+## Ear review
+
+```ladder
+{ "skill": "rhythm", "unlocks": 14, "intro": "Drum dictation at your level: kick, snare (or clap) and hi-hat on a grid." }
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 19, "intro": "Progressions at your level: dance loops are built from these same chords." }
 ```

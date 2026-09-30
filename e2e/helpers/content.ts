@@ -6,7 +6,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT } from './server';
 
-export const BLOCK_LANGS = ['example', 'exercise', 'keyboard', 'staff', 'chords'] as const;
+export const BLOCK_LANGS = ['example', 'exercise', 'keyboard', 'staff', 'chords', 'ladder'] as const;
 export type BlockLang = (typeof BLOCK_LANGS)[number];
 
 export interface SourceExercise {
@@ -27,6 +27,8 @@ export interface SourceLesson {
   goals: string[];
   blocks: Record<BlockLang, number>;
   exercises: SourceExercise[];
+  /** ```ladder blocks: skill and the rung they open up to */
+  ladders: { skill: string; unlocks: number }[];
   /** [[term]] / [[term|label]] occurrences in prose (outside code) */
   terms: string[];
   notes: string[];
@@ -74,6 +76,7 @@ export function parse(id: string, week: number, src: string): SourceLesson {
   const goals = goalsBlock.split('\n').map((l) => l.replace(/^\s*-\s*/, '').trim()).filter(Boolean);
   const blocks = Object.fromEntries(BLOCK_LANGS.map((l) => [l, 0])) as Record<BlockLang, number>;
   const exercises: SourceExercise[] = [];
+  const ladders: { skill: string; unlocks: number }[] = [];
   // strip fenced code (any lang) for inline-ref scanning, counting our block langs on the way
   let prose = '';
   const lines = body.split('\n');
@@ -87,6 +90,13 @@ export function parse(id: string, week: number, src: string): SourceLesson {
     if (inFence && new RegExp(`^\\s*${inFence.marker[0]}{${inFence.marker.length},}\\s*$`).test(line)) {
       if ((BLOCK_LANGS as readonly string[]).includes(inFence.lang)) {
         blocks[inFence.lang as BlockLang]++;
+        if (inFence.lang === 'ladder') {
+          try {
+            ladders.push(JSON.parse(inFence.buf.join('\n')) as { skill: string; unlocks: number });
+          } catch {
+            /* the validator reports it */
+          }
+        }
         if (inFence.lang === 'exercise') {
           try {
             exercises.push(JSON.parse(inFence.buf.join('\n')) as SourceExercise);
@@ -105,7 +115,7 @@ export function parse(id: string, week: number, src: string): SourceLesson {
   const terms = [...prose.matchAll(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g)].map((m) => m[1]!.trim());
   const notes = [...prose.matchAll(/\{\{\s*note\s*:\s*([^}]+?)\s*\}\}/g)].map((m) => m[1]!);
   const chords = [...prose.matchAll(/\{\{\s*chord\s*:\s*([^}]+?)\s*\}\}/g)].map((m) => m[1]!);
-  return { id, week, title, goals, blocks, exercises, terms, notes, chords };
+  return { id, week, title, goals, blocks, exercises, ladders, terms, notes, chords };
 }
 
 /** All exercise types used in content, with the first lesson/exercise using each. */

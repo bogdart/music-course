@@ -6,120 +6,121 @@ order: 3
 phase: p2
 duration_min: 50
 goals:
-  - Check your Phase 2 ear skills (scales, intervals, chord qualities, roots, progressions, rhythm)
-  - Read bass clef at the keyboard
-  - Write a 16-bar song with a verse and a chorus, using a borrowed chord or a second key
+  - Check where your Phase 2 ear skills stand (a map, not an exam)
+  - Review the theory of Phase 2 and read the bass clef at the keyboard
+  - Write a 16-bar song with a verse and a chorus, over two sessions
 prerequisites: [w16-l2-relative-parallel-and-borrowed]
 tags: [review, assessment, ear, daw, song]
 ---
 
 # Phase 2 Review and a 16-Bar Song
 
-Eight weeks ago you knew major scales and triads. Since then you've added minor keys, every interval, inversions, seventh chords, functions and cadences, the four-chord family, three grooves, harmonisation and the whole circle of fifths. And — the big one — you've started hearing roots.
+Eight weeks ago you knew the major scale and three kinds of triad. Since then: minor keys, every interval up to the octave, the bass clef, inversions, seventh chords, tension and resolution, the three chord families and four cadences, the pop progressions, sixteenths, triplets, swing and 6/8, chord tones and sus chords, harmonising, the whole circle of fifths and borrowed chords. And you've started hearing roots.
 
-This lesson has two halves. First, an **ear check**: one drill for each Phase 2 skill. Treat it as a map, not an exam. A weak score just tells you which cards the review deck should show you more often; nothing is locked. Second, you'll write the most complete song of the course so far.
+This lesson has two halves. First, a **check** of what you've drilled; the only new thing is one progression rung, V or ♭VII, which lesson 2 explained. Treat the scores as a map of where to practise, not a verdict. Nothing is locked. Second, you'll write the most complete song of the course so far.
 
-## Part 1 — Ear check
+## Part 1: ear check
 
-Do these in one sitting, without hints, and note your scores.
+Each drill below runs at your current rung. The progression drill also opens the **V or ♭VII?** rung from lesson 2: V is tense and leans home; ♭VII is major too, a whole step below home, strong but relaxed. Do them in one sitting, without replaying the lesson prose. Afterwards, look at the ladder bars on your Dashboard: the skills with the most open-but-unmastered rungs are where Practice sessions should go before Phase 3 speeds up.
 
-```example
+```ladder
+{ "skill": "chords", "unlocks": 9, "intro": "Chord colours at your level." }
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 11, "intro": "Opens: V or ♭VII? Name the chords at your current rung." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 9, "intro": "Bass lines at your level." }
+```
+
+## Part 2: theory and keyboard check
+
+```exercise
 {
-  "title": "Warm-up: everything at once — Am – F – C/E – G7 – C (roots A, F, C, G, C)",
-  "bpm": 76, "timeSig": "4/4", "key": "C",
-  "tracks": [
-    { "instrument": "epiano", "seq": "[C4 E4 A4]:w | [C4 F4 A4]:w | [C4 E4 G4]:w | [B3 D4 F4 G4]:w | [C4 E4 G4]:w" },
-    { "instrument": "bass", "seq": "A1:w | F1:w | E2:w | G1:w | C2:w" }
-  ],
-  "show": ["pianoroll"]
+  "id": "e1", "type": "quiz", "title": "Phase 2 theory check",
+  "passScore": 0.7,
+  "spec": { "questions": [
+    { "q": "The relative minor of F major is…", "choices": ["F minor", "D minor", "A minor", "C minor"], "answer": 1 },
+    { "q": "In A harmonic minor, degree 7 is…", "choices": ["G", "G♯", "F♯", "A♭"], "answer": 1, "explain": "The raised 7th, the leading tone that makes the major V." },
+    { "q": "The notes E G C, from the bottom, are…", "choices": ["C major, root position", "C major, 1st inversion", "C major, 2nd inversion", "E minor"], "answer": 1, "explain": "The 3rd (E) is in the bass: C/E." },
+    { "q": "C E G B♭ is…", "choices": ["Cmaj7", "C7", "Cm7", "Csus4"], "answer": 1 },
+    { "q": "Which two notes of G7 squeeze inward when it resolves to C?", "choices": ["G and D", "B and F", "D and F", "G and B"], "answer": 1 },
+    { "q": "V → vi is a…", "choices": ["authentic cadence", "plagal cadence", "half cadence", "deceptive cadence"], "answer": 3 },
+    { "q": "In a bar of 6/8 there are…", "choices": ["six big beats", "two big beats of three eighths", "three beats of two eighths"], "answer": 1 },
+    { "q": "The key with three sharps is…", "choices": ["D major", "A major", "E major", "E♭ major"], "answer": 1 },
+    { "q": "In C major, the borrowed ♭VII chord is…", "choices": ["B°", "B♭ major", "B minor", "A♭ major"], "answer": 1 }
+  ] }
 }
 ```
 
 ```exercise
 {
-  "id": "e1", "type": "ear-scale", "title": "Check 1 — major and minor scales",
-  "count": 9, "passScore": 0.75,
-  "spec": { "scales": ["major", "natural-minor", "harmonic-minor", "melodic-minor"], "play": "asc" }
-}
-```
-
-```exercise
-{
-  "id": "e2", "type": "ear-interval", "title": "Check 2 — intervals, up, down and together",
-  "count": 12, "passScore": 0.7,
-  "spec": { "intervals": ["m3", "M3", "P4", "TT", "P5", "m6", "M6", "m7", "M7", "P8"], "direction": "mixed", "root": "random", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e3", "type": "ear-chord", "title": "Check 3 — chord qualities, some inverted",
-  "count": 12, "passScore": 0.7,
-  "spec": { "qualities": ["maj", "min", "maj7", "dom7", "min7"], "inversions": [0, 1], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e4", "type": "ear-chord-root", "title": "Check 4 — play the root",
+  "id": "e2", "type": "read-note", "title": "Bass clef at the keyboard",
   "count": 10, "passScore": 0.7,
-  "spec": { "qualities": ["maj", "min", "dom7"], "answer": "play", "range": ["C3", "C5"] }
+  "spec": { "clef": "bass", "range": ["C2", "C4"], "accidentals": false, "answer": "play", "timed": 0 }
 }
 ```
 
 ```exercise
 {
-  "id": "e5", "type": "ear-progression", "title": "Check 5 — four-chord progressions, incl. borrowed chords",
-  "count": 10, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi", "iv", "bVII"], "style": "pad-bass" }
-}
-```
-
-```exercise
-{
-  "id": "e6", "type": "ear-rhythm", "title": "Check 6 — rhythm dictation",
+  "id": "e3", "type": "play-chord", "title": "Chord check: inversions, sevenths, sus, borrowed",
+  "instructions": "Slash chords need their bass note at the bottom; the others any inversion.",
   "count": 8, "passScore": 0.7,
-  "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "16", "rests": true, "answer": "tap" }
+  "spec": { "chords": ["C/E", "G/B", "Dm7", "G7", "Cmaj7", "Csus4", "Fm", "Bb"], "sequence": false, "bpm": 60, "key": "C" }
 }
 ```
 
-```exercise
-{
-  "id": "e7", "type": "read-note", "title": "Check 7 — bass clef at the keyboard",
-  "count": 12, "passScore": 0.8,
-  "spec": { "clef": "bass", "range": ["C2", "C4"], "accidentals": true, "answer": "play", "timed": 0 }
-}
-```
+## Part 3: a 16-bar song (two sessions)
 
-## Part 2 — A 16-bar song
+Eight bars of **verse**, then eight bars of **chorus**. The chorus must feel like a lift. Choose **one** way to make it different:
 
-Now put it all together: 8 bars of **verse** and 8 bars of **chorus**. The chorus must feel like a lift. Choose **one** of these ways to make it different:
+- **Borrowed chord:** verse on I – vi – IV – V; chorus on IV – iv – I – V or I – ♭VII – IV – I.
+- **Relative key:** verse in A minor on i – VI – III – VII; chorus in C major on I – V – vi – IV. Same notes, brighter home.
 
-- **Borrowed chord:** verse in C major on I – vi – IV – V; chorus on IV – iv – I – V or I – bVII – IV – I.
-- **Relative key:** verse in A minor (i – VI – III – VII), chorus in C major (I – V – vi – IV) — same notes, brighter home.
-
-Everything else you know goes in: bass on roots (or smooth inversions), a groove from week 14, a melody with chord tones on strong beats, a clear climax in the chorus and a proper cadence at the end. Save it — in Phase 3 you'll arrange it.
+Session 1: the verse. Session 2 (next time you sit down): the chorus. Both tasks open the same project, so your verse is waiting for you.
 
 ```exercise
 {
-  "id": "e8", "type": "daw-task", "title": "16-bar verse + chorus",
+  "id": "e4", "type": "daw-task", "title": "Session 1: the verse (bars 1–8)",
   "spec": {
+    "projectRef": "w16-song",
     "template": { "bpm": 100, "key": "C", "timeSig": "4/4", "tracks": [
-      { "instrument": "drums", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "piano", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
-    "task": "Bars 1–8: verse. Bars 9–16: chorus with a borrowed chord (iv or bVII) or in the relative key. Drums: a backbeat groove, busier in the chorus. Bass: roots, locked with the kick. Piano: chords, voiced smoothly. Lead: verse melody lower and calmer; chorus melody higher, with a 2-bar hook that repeats, and the song's highest note. End the chorus with V → I in C. Self-check: sing the chorus hook after one listen — does it stick?",
+      { "instrument": "drums", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "piano", "seq": "" }, { "instrument": "lead", "seq": "" } ],
+      "markers": [ { "bar": 1, "name": "Verse" }, { "bar": 9, "name": "Chorus" } ] },
+    "task": "Write bars 1–8, the verse. Drums: a backbeat groove (snare on 2 and 4), kept simple. Bass: roots, locked with the kick. Piano: chords, voiced smoothly. Lead: a calm melody in the lower part of your range, with chord tones on strong beats and a question phrase (bars 1–4) and an answer phrase (bars 5–8).",
     "checks": [
       { "kind": "has-tracks", "instruments": ["drums", "bass", "piano", "lead"] },
-      { "kind": "bars", "min": 16, "max": 16 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "snareOnBeats": [2, 4], "track": 0 },
+      { "kind": "bars", "min": 8, "max": 16 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare"], "snareOnBeats": [2, 4], "bars": [1, 8], "track": 0 },
       { "kind": "range", "low": "C1", "high": "C3", "track": 1 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 3 },
+      { "kind": "uses-rhythm", "values": ["h", "q", "8"], "minDistinct": 2, "track": 3 }
+    ],
+    "minBars": 8
+  }
+}
+```
+
+```exercise
+{
+  "id": "e5", "type": "daw-task", "title": "Session 2: the chorus (bars 9–16)",
+  "spec": {
+    "projectRef": "w16-song",
+    "template": { "bpm": 100, "key": "C", "timeSig": "4/4", "tracks": [
+      { "instrument": "drums", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "piano", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
+    "task": "Add bars 9–16, the chorus, with your borrowed chord (iv or ♭VII) or in the relative key. Drums: busier than the verse (add eighth hi-hats or an extra kick). Lead: higher than the verse, with a 2-bar hook that repeats and the song's highest note. End with V → I in C, the melody on C. Then play the whole song: does the chorus lift?",
+    "checks": [
+      { "kind": "bars", "min": 16, "max": 16 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "snareOnBeats": [2, 4], "bars": [9, 16], "track": 0 },
       { "kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": true, "track": 3 },
-      { "kind": "uses-rhythm", "values": ["h", "q", "8"], "minDistinct": 2, "track": 3 },
       { "kind": "max-leap", "semitones": 9, "track": 3 },
       { "kind": "ends-on", "degree": 1, "track": 3 },
-      { "kind": "custom", "id": "verse-chorus-contrast", "note": "Self-check: the chorus uses a borrowed chord (iv or bVII) or the relative key, and its melody sits higher than the verse." }
+      { "kind": "custom", "id": "verse-chorus-contrast", "note": "Self-check: the chorus uses a borrowed chord (iv or ♭VII) or the relative key, and its melody sits higher than the verse." }
     ],
     "minBars": 16, "maxBars": 16
   }
 }
 ```
+
+Save it: it's your most complete song so far, and worth playing to someone.

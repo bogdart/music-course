@@ -6,57 +6,89 @@ order: 2
 phase: p5
 duration_min: 45
 goals:
-  - Recognise when the bass plays a chord tone other than the root and write it as a slash chord
-  - Hear a stepwise descending bass line and a pedal point in a mix
-  - Play slash-chord voicings with the bass note in the left hand
+  - Write a chord whose bass is not its root as a slash chord (G/B) or an inversion numeral (V6)
+  - Follow a stepwise bass line under ordinary chords and write what you hear
+  - Recognise a pedal point by ear
 prerequisites: [w42-l1-bass-in-full-mixes]
 tags: [transcription, bass, inversions, slash-chords, ear]
 ---
 
 # Root or Inversion? Bass in Context
 
-Yesterday's rule — "the landing note is the root" — works most of the time. Today is about the exceptions, because they're everywhere in pop and they fool beginners constantly.
+"The landing note is the root" is true most of the time. Today is about the exceptions — common in pop, and a classic
+way to write a wrong chord that *looks* right.
 
-## Slash chords
+## Slash chords and inversion numerals
 
-When the bass plays the 3rd or 5th of a chord, we write a [[slash chord]]: chord / bass note. **G/B** means a G major chord with B in the bass. Songwriters use them to make the bass line move by step instead of jumping. The giveaway is a bass line that walks smoothly downward (or upward) while the chords above sound like ordinary triads.
+When the bass plays the 3rd or 5th of a chord (an inversion, week 11), chord charts write a [[slash chord]]:
+**chord / bass note**. G/B means "a G major chord with B in the bass".
 
-How to tell the difference by ear: when the bass plays the root, the chord sounds solid and settled. When it plays the 3rd, the chord sounds lighter and "in motion", as if leaning towards the next chord. Over the 5th, it sounds suspended, unstable — that's why the 5th in the bass mostly appears on the way to a cadence.
+Roman numerals mark the same thing with small numbers borrowed from old figured bass — an [[inversion numeral]]:
+
+| Bass note | Symbol in C | Numeral |
+|---|---|---|
+| root | G | V |
+| 3rd | G/B | V6 ("first inversion") |
+| 5th | G/D | V64 ("second inversion") |
+
+We don't write "V/3": a slash in a *numeral* already means something else — V/V is the dominant of V (week 24).
+
+Songwriters use slash chords to make the bass move by step instead of jumping. Listen to this one (notation shown — it is
+the explanation, not a test):
 
 ```example
 {
-  "title": "Descending bass: C – G/B – Am – Am/G – F – C/E – Dm – G",
-  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "title": "C – G/D – C/E – F – G – Am – F – G",
+  "bpm": 80,
+  "timeSig": "4/4",
+  "key": "C",
   "tracks": [
-    { "instrument": "drums", "seq": "kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:8 kick:8 snare:q" },
-    { "instrument": "bass", "seq": "C3:h B2:h | A2:h G2:h | F2:h E2:h | D2:h G2:h" },
-    { "instrument": "piano", "seq": "[G3 C4 E4]:h [G3 B3 D4]:h | [A3 C4 E4]:h [A3 C4 E4]:h | [A3 C4 F4]:h [G3 C4 E4]:h | [A3 D4 F4]:h [G3 B3 D4]:h" }
+    {"instrument": "bass", "seq": "C2:h D2:h | E2:h F2:h | G2:h A2:h | F2:h G2:h"},
+    {"instrument": "piano", "seq": "[G3 C4 E4]:h [G3 B3 D4]:h | [G3 C4 E4]:h [A3 C4 F4]:h | [G3 B3 D4]:h [A3 C4 E4]:h | [A3 C4 F4]:h [G3 B3 D4]:h"}
   ],
   "show": ["staff", "pianoroll"],
   "loop": true
 }
 ```
 
-Hum the bass: it's just a scale walking down, C–B–A–G–F–E–D, then a jump to G. If you had written "roots" you'd have G on beat 3 of bar 1 — and it would sound wrong when you played it back.
+Hum the bass: it is simply a scale climbing, C–D–E–F–G–A, then F–G. Had you written roots only, bar 1 would say
+"C – G" with a G in the bass and bar 2 would start on C, and the playback would sound wrong at once. How does it feel? With the root in the bass
+a chord sounds settled; with the 3rd in the bass it sounds lighter, in motion. Don't expect to *name* that difference
+yet — follow the bass line, and let the smooth stepwise walk tell you that inversions are involved.
 
-## Pedal points
-
-The opposite trick: the bass *stays* on one note while the chords change above it. That's a [[pedal point]]. Ballads and EDM builds use it to create tension; your ear hears the chords move but the floor stays put.
-
-```example
+```ladder
 {
-  "title": "Tonic pedal: C – F/C – G/C – C",
-  "bpm": 80, "timeSig": "4/4", "key": "C",
-  "tracks": [
-    { "instrument": "bass", "seq": "C2:w | C2:w | C2:w | C2:w" },
-    { "instrument": "pad", "seq": "[E3 G3 C4]:w | [F3 A3 C4]:w | [D3 G3 B3]:w | [E3 G3 C4]:w" }
-  ],
-  "show": ["pianoroll"],
-  "loop": true
+  "skill": "roots",
+  "unlocks": 15,
+  "intro": "Rung 11 of this ladder — bass not on the root — is today's skill in drill form."
 }
 ```
 
-When transcribing, write both layers: the chord *and* the bass note. "F/C" tells a player exactly what to do.
+```exercise
+{
+  "id": "w42l2-bass",
+  "type": "ear-bass",
+  "title": "A new walking bass (hidden)",
+  "instructions": "Eight bass notes, two per bar. Play the lowest note you hear, not the root of the chord.",
+  "srs": false,
+  "spec": {
+    "key": "G",
+    "chords": ["I", "ii", "iii", "IV", "V", "vi"],
+    "answer": "play",
+    "example": {
+      "title": "Walking bass in G",
+      "bpm": 80,
+      "timeSig": "4/4",
+      "tracks": [
+        {"instrument": "drums", "seq": "kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:8 kick:8 snare:q"},
+        {"instrument": "bass", "seq": "G2:h F#2:h | E2:h D2:h | C2:h B1:h | A1:h D2:h"},
+        {"instrument": "piano", "seq": "[G3 B3 D4]:h [A3 D4 F#4]:h | [G3 B3 E4]:h [G3 B3 E4]:h | [G3 C4 E4]:h [G3 B3 D4]:h | [A3 C4 E4]:h [F#3 A3 D4]:h"}
+      ]
+    },
+    "track": 1
+  }
+}
+```
 
 ```exercise
 {
@@ -65,44 +97,24 @@ When transcribing, write both layers: the chord *and* the bass note. "F/C" tells
   "title": "Which chord, which bass?",
   "spec": {
     "example": {
-      "title": "Descending bass",
-      "bpm": 80, "timeSig": "4/4", "key": "C",
+      "title": "Walking bass in G",
+      "bpm": 80,
+      "timeSig": "4/4",
       "tracks": [
-        { "instrument": "bass", "seq": "C3:h B2:h | A2:h G2:h | F2:h E2:h | D2:h G2:h" },
-        { "instrument": "piano", "seq": "[G3 C4 E4]:h [G3 B3 D4]:h | [A3 C4 E4]:h [A3 C4 E4]:h | [A3 C4 F4]:h [G3 C4 E4]:h | [A3 D4 F4]:h [G3 B3 D4]:h" }
+        {"instrument": "drums", "seq": "kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:8 kick:8 snare:q"},
+        {"instrument": "bass", "seq": "G2:h F#2:h | E2:h D2:h | C2:h B1:h | A1:h D2:h"},
+        {"instrument": "piano", "seq": "[G3 B3 D4]:h [A3 D4 F#4]:h | [G3 B3 E4]:h [G3 B3 E4]:h | [G3 C4 E4]:h [G3 B3 D4]:h | [A3 C4 E4]:h [F#3 A3 D4]:h"}
       ],
+      "show": ["staff", "pianoroll"],
+      "hidden": true,
       "loop": true
     },
     "questions": [
-      { "q": "Bar 1, beat 3: the bass plays B. The chord above is G major. Write it as…", "choices": ["Bdim", "G/B", "Bm", "G"], "answer": 1 },
-      { "q": "Bar 3, beat 3: the bass plays E under a C major triad. Which chord tone is in the bass?", "choices": ["Root", "3rd", "5th", "7th"], "answer": 1 },
-      { "q": "Why do songwriters use slash chords like these?", "choices": ["To change key", "To make the bass move by step", "To speed up the tempo", "To avoid the tonic"], "answer": 1 }
+      {"q": "Bar 1, second half: the bass steps down one note, while the chord above sounds like a plain major triad. Which symbol fits?", "choices": ["F#dim", "D/F#", "F#m", "Bm"], "answer": 1, "explain": "D/F#: a D major chord (D–F#–A) with its 3rd, F#, in the bass. In numerals: V6."},
+      {"q": "Bar 3, second half: the chord above sounds like the home chord again, but the bass is not the home note. Which chord tone of the home chord is in the bass?", "choices": ["Root", "3rd", "5th", "Not a chord tone"], "answer": 1, "explain": "The 3rd: B under a G major triad, G/B — numeral I6."},
+      {"q": "Bar 2: the chord above stays the same for the whole bar. What does the bass do in the second half?", "choices": ["Stays on the same note", "Steps down by one note", "Jumps up a fifth", "Steps up by one note"], "answer": 1, "explain": "It steps down from E to D under the same E minor triad: Em/D. D isn't in the chord at all — it's a passing bass note that keeps the scale walking."}
     ]
   }
-}
-```
-
-```exercise
-{
-  "id": "w42l2-inv",
-  "type": "ear-chord",
-  "title": "Root, first or second inversion?",
-  "instructions": "Name quality and inversion: 0 = root in bass, 1 = 3rd in bass, 2 = 5th in bass.",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": { "qualities": ["maj", "min"], "inversions": [0, 1, 2], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "w42l2-root",
-  "type": "ear-chord-root",
-  "title": "Find the root anyway",
-  "instructions": "Some of these chords are inverted. Play the root, not the bass note.",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": { "qualities": ["maj", "min"], "answer": "play", "range": ["C3", "C5"] }
 }
 ```
 
@@ -111,32 +123,70 @@ When transcribing, write both layers: the chord *and* the bass note. "F/C" tells
   "id": "w42l2-name",
   "type": "quiz-input",
   "title": "Write the slash chord",
-  "spec": { "questions": [
-    { "q": "A C major triad with E in the bass is written…", "answer": ["C/E"], "kind": "text" },
-    { "q": "An F major triad over a C bass is written…", "answer": ["F/C"], "kind": "text" },
-    { "q": "An A minor triad with G in the bass is written…", "answer": ["Am/G"], "kind": "text" },
-    { "q": "D major with F# in the bass is written…", "answer": ["D/F#"], "kind": "text" }
-  ] }
+  "spec": {
+    "questions": [
+      {"q": "A C major triad with E in the bass is written…", "answer": ["C/E"], "kind": "text"},
+      {"q": "An F major triad over a C bass is written…", "answer": ["F/C"], "kind": "text"},
+      {"q": "An A minor triad with G in the bass is written…", "answer": ["Am/G"], "kind": "text"},
+      {"q": "In F major, C/E as a roman numeral (first inversion) is…", "answer": ["V6"], "kind": "text"}
+    ]
+  }
+}
+```
+
+## Pedal points
+
+The opposite trick: the bass *stays* on one note while the chords change above it — a [[pedal point]]. Ballads, film
+music and dance builds use it for tension: the chords move but the floor stays put. When you transcribe one, write both
+layers: "F/C" tells a player exactly what to do.
+
+```exercise
+{
+  "id": "w42l2-pedal",
+  "type": "listen",
+  "title": "Does the floor move?",
+  "spec": {
+    "examples": [
+      {
+        "title": "Mystery loop 1",
+        "bpm": 80,
+        "timeSig": "4/4",
+        "tracks": [
+          {"instrument": "bass", "seq": "C2:w | C2:w | C2:w | C2:w"},
+          {"instrument": "pad", "seq": "[E3 G3 C4]:w | [F3 A3 C4]:w | [D3 G3 B3]:w | [E3 G3 C4]:w"}
+        ],
+        "show": ["staff", "pianoroll"],
+        "hidden": true,
+        "loop": true
+      },
+      {
+        "title": "Mystery loop 2",
+        "bpm": 80,
+        "timeSig": "4/4",
+        "tracks": [
+          {"instrument": "bass", "seq": "C2:w | F2:w | G2:w | C2:w"},
+          {"instrument": "pad", "seq": "[E3 G3 C4]:w | [F3 A3 C4]:w | [D3 G3 B3]:w | [E3 G3 C4]:w"}
+        ],
+        "show": ["staff", "pianoroll"],
+        "hidden": true,
+        "loop": true
+      }
+    ],
+    "questions": [
+      {"q": "Follow only the bass in each loop. Which loop has a pedal point?", "choices": ["Loop 1", "Loop 2", "Both", "Neither"], "answer": 0, "explain": "Loop 1: C for all four bars, a tonic pedal. In loop 2 the bass follows the roots, C – F – G – C, under the same chords."},
+      {"q": "Loop 1, bar 2: the chord above sounds like F major. With the bass as it is, the symbol is…", "choices": ["F", "F/C", "Fm", "C"], "answer": 1, "explain": "F/C — F major over its 5th. Loop 1 is C – F/C – G/C – C."}
+    ]
+  }
 }
 ```
 
 ```exercise
 {
-  "id": "w42l2-gb",
-  "type": "play-notes",
-  "title": "Play G/B",
-  "instructions": "Left hand B, right hand G major triad above it.",
-  "spec": { "prompt": "names", "notes": ["B2", "G3", "B3", "D4"], "ordered": false, "key": "C" }
-}
-```
-
-```exercise
-{
-  "id": "w42l2-line",
-  "type": "play-melody",
-  "title": "Walk the bass down",
-  "instructions": "Play the descending bass line against the piano chords.",
-  "spec": { "bpm": 70, "timeSig": "4/4", "key": "C", "seq": "C3:h B2:h | A2:h G2:h | F2:h E2:h | D2:h G2:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "piano", "seq": "[G3 C4 E4]:h [G3 B3 D4]:h | [A3 C4 E4]:h [A3 C4 E4]:h | [A3 C4 F4]:h [G3 C4 E4]:h | [A3 D4 F4]:h [G3 B3 D4]:h" } }
+  "id": "w42l2-play",
+  "type": "play-chord",
+  "title": "Play the walking-bass loop",
+  "instructions": "Left hand plays the bass note after the slash, right hand the chord.",
+  "spec": {"chords": ["G", "D/F#", "Em", "Em/D", "C", "G/B", "Am", "D"], "inversion": "any", "sequence": true, "bpm": 60}
 }
 ```
 
@@ -146,16 +196,20 @@ When transcribing, write both layers: the chord *and* the bass note. "F/C" tells
   "type": "daw-task",
   "title": "Your own stepwise bass",
   "spec": {
-    "template": { "bpm": 80, "key": "G", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" } ] },
-    "task": "In G major, write 4 bars of chords (two per bar) whose bass line walks steadily down by step from G, using at least two slash chords (for example G – D/F# – Em – Em/D …).",
+    "template": {"bpm": 80, "key": "G", "tracks": [{"instrument": "piano", "seq": ""}, {"instrument": "bass", "seq": ""}]},
+    "task": "In G major, write 4 bars of chords (two per bar, piano on track 1) whose bass line (track 2) walks steadily down by step from G, using at least two slash chords (for example G – D/F# – Em – Em/D …). Every piano chord is a full triad of the key; the self-check asks you to name your slash chords.",
     "checks": [
-      { "kind": "contour", "shape": "descending", "track": 1 },
-      { "kind": "in-key", "key": "G", "scale": "major", "allowPassing": false, "track": 1 },
-      { "kind": "max-leap", "semitones": 5, "track": 1 },
-      { "kind": "starts-on", "degrees": [1], "track": 1 },
-      { "kind": "bars", "min": 4, "max": 4 }
+      {"kind": "uses-chord", "roman": ["I", "ii", "iii", "IV", "V", "vi"], "min": 8, "track": 0},
+      {"kind": "in-key", "key": "G", "scale": "major", "allowPassing": false, "track": 0},
+      {"kind": "custom", "id": "w42l2-slash", "note": "Self-check: at least two of my chords have a bass note that is not their root, and I wrote them as slash chords (e.g. D/F#)."},
+      {"kind": "contour", "shape": "descending", "track": 1},
+      {"kind": "in-key", "key": "G", "scale": "major", "allowPassing": false, "track": 1},
+      {"kind": "max-leap", "semitones": 5, "track": 1},
+      {"kind": "starts-on", "degrees": [1], "track": 1},
+      {"kind": "bars", "min": 4, "max": 4}
     ],
-    "minBars": 4, "maxBars": 4
+    "minBars": 4,
+    "maxBars": 4
   }
 }
 ```

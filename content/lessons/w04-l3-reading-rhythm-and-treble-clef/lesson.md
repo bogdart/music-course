@@ -25,17 +25,26 @@ The curly sign at the start is the [[treble clef]]. It curls around the second l
 { "clef": "treble", "key": "C", "timeSig": "4/4", "seq": "E4:q G4:q B4:q D5:q | F5:w | F4:q A4:q C5:q E5:q | C4:w" }
 ```
 
-## Two memory hooks
+## Memory hooks and landmarks
 
 - **Lines**, bottom to top: **E G B D F** — "Every Good Boy Does Fine".
 - **Spaces**, bottom to top: **F A C E** — spells "face".
 - **Middle C (C4)** sits on its own short extra line *below* the staff, called a [[ledger line]]. D4 hangs just under the bottom line.
 
-Don't read by reciting the whole rhyme every time. Use **landmarks**, like on the keyboard: middle C (ledger line), G4 (clef line), and C5 (third space). Find the nearest landmark and count steps.
+Don't recite the whole rhyme every time. Use **landmarks**, like on the keyboard: middle C (ledger line), G4 (the clef's line) and C5 (third space). Find the nearest landmark and count steps.
+
+```example
+{
+  "title": "The three landmarks: C4, G4, C5",
+  "bpm": 70, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:h G4:h | C5:w" } ],
+  "show": ["staff", "keyboard"]
+}
+```
 
 ## Reading a whole tune
 
-Here is "Twinkle, Twinkle, Little Star" — read it before you press play. Notice it opens with a leap from C up to G (degrees 1 to 5), then walks down by step.
+Here is "Twinkle, Twinkle, Little Star" — read it before you press play. It opens with a leap from C up to G (degrees 1 to 5), then walks down by step.
 
 ```example
 {
@@ -47,6 +56,14 @@ Here is "Twinkle, Twinkle, Little Star" — read it before you press play. Notic
 ```
 
 For A4 your hand moves: shift so your little finger can reach A, or put your thumb on C and stretch. Moving the hand is normal.
+
+## Tapping in 3
+
+This lesson opens the next rhythm rung: tapping back a bar in **3/4** (you'll meet it once the earlier rhythm rungs are solid). Count "1 2 3" in your head from the very first note, and let the heavy beat 1 guide you.
+
+```ladder
+{ "skill": "rhythm", "unlocks": 6, "intro": "Opens \"Tap in 3/4\"; the drill runs at your current rhythm rung." }
+```
 
 ## Your first beat
 
@@ -76,7 +93,7 @@ In today's DAW task you'll write a basic rock/pop beat — the foundation of tho
   "type": "read-note",
   "title": "Name it: middle C to C5",
   "count": 10,
-  "passScore": 0.8,
+  "passScore": 0.75,
   "spec": { "clef": "treble", "range": ["C4", "C5"], "accidentals": false, "answer": "name", "timed": 0 },
   "hints": ["Landmarks: C4 on the ledger line, G4 on the clef's line, C5 in the third space."]
 }
@@ -112,30 +129,6 @@ In today's DAW task you'll write a basic rock/pop beat — the foundation of tho
   "instructions": "No keyboard help this time — read the notes.",
   "passScore": 0.75,
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "C4:q C4:q G4:q G4:q | A4:q A4:q G4:h | F4:q F4:q E4:q E4:q | D4:q D4:q C4:h | G4:q G4:q F4:q F4:q | E4:q E4:q D4:h | G4:q G4:q F4:q F4:q | E4:q E4:q D4:h | C4:q C4:q G4:q G4:q | A4:q A4:q G4:h | F4:q F4:q E4:q E4:q | D4:q D4:q C4:h", "showStaff": true, "showKeyboard": false, "countIn": 1 }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-rhythm",
-  "title": "Hear it, tap it",
-  "instructions": "Listen to one bar, then tap it back.",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "8", "rests": true, "answer": "tap" }
-}
-```
-
-```exercise
-{
-  "id": "e6",
-  "type": "ear-note",
-  "title": "Degrees 1–5, two octaves",
-  "instructions": "The note may now be in octave 3 or 4. Its degree doesn't change with the octave — listen for the colour.",
-  "count": 12,
-  "passScore": 0.7,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3, 4, 5], "reference": "scale", "octaves": [4], "instrument": "piano" }
 }
 ```
 

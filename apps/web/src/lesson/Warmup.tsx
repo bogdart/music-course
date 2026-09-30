@@ -1,22 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
-import type { SetSummary, SrsCardDTO } from '@music/core';
-import { api } from '../api/client';
+import { useEffect, useState } from 'react';
+import { LADDER_LESSON_ID } from '@music/core';
 import { ExerciseShell } from '../exercises/ExerciseShell';
-import { adaptedBlock, recordScores, reviewCard } from '../practice/srsSession';
-
-const WARMUP_SEC = 120;
-const ITEMS = 3;
+import { skillTitle, warmupEntry, type PlanEntry } from '../practice/ladderPlan';
+import { useLadderStore } from '../stores/ladder';
 
 function doneKey(lessonId: string) {
   return `mc.warmup.${lessonId}`;
 }
 
 /**
- * Automatic 2-minute SRS warm-up at the top of every lesson (inserted by the runner, never authored). Uses due cards
- * (plus at most one new card); hidden when the deck has nothing to offer. Skipping is always possible.
+ * Warm-up at the top of every lesson (inserted by the runner, never authored): one short set at the learner's current
+ * rung of the ear skill furthest behind the lessons. Hidden when no ladder is open yet; skipping is always possible.
  */
 export function Warmup({ lessonId }: { lessonId: string }) {
-  const [cards, setCards] = useState<SrsCardDTO[] | null>(null);
+  const load = useLadderStore((s) => s.load);
+  const [entry, setEntry] = useState<PlanEntry | null | undefined>(undefined);
   const [phase, setPhase] = useState<'offer' | 'running' | 'done' | 'skipped'>(() => {
     try {
       return sessionStorage.getItem(doneKey(lessonId)) ? 'done' : 'offer';
@@ -24,28 +22,17 @@ export function Warmup({ lessonId }: { lessonId: string }) {
       return 'offer';
     }
   });
-  const [pos, setPos] = useState(0);
-  const [left, setLeft] = useState(WARMUP_SEC);
-  const [reviewed, setReviewed] = useState(0);
-  const scores = useRef<number[]>([]);
 
   useEffect(() => {
     let cancel = false;
-    api
-      .srsDue(6, 1)
-      .then((d) => !cancel && setCards(d.cards))
-      .catch(() => !cancel && setCards([]));
+    void load().then(() => {
+      const st = useLadderStore.getState().state;
+      if (!cancel) setEntry(st ? warmupEntry(st) : null);
+    });
     return () => {
       cancel = true;
     };
-  }, [lessonId]);
-
-  useEffect(() => {
-    if (phase !== 'running') return;
-    if (left <= 0) return;
-    const t = setTimeout(() => setLeft((l) => l - 1), 1000);
-    return () => clearTimeout(t);
-  }, [phase, left]);
+  }, [lessonId, load]);
 
   const finish = () => {
     setPhase('done');
@@ -56,16 +43,15 @@ export function Warmup({ lessonId }: { lessonId: string }) {
     }
   };
 
-  if (!cards || cards.length === 0 || phase === 'skipped') return null;
-  if (phase === 'done') {
-    return reviewed > 0 ? <div className="card warmup done small" data-testid="warmup">✓ Warm-up done — {reviewed} card{reviewed > 1 ? 's' : ''} reviewed.</div> : null;
-  }
+  if (!entry || phase === 'skipped' || phase === 'done') return null;
   if (phase === 'offer') {
     return (
       <div className="card warmup" data-testid="warmup">
         <div>
-          <strong>🔥 2-minute warm-up</strong>
-          <p className="muted small">{cards.length === 1 ? 'One review card is' : `${cards.length} review cards are`} waiting. A quick review before new material helps them stick.</p>
+          <strong>🔥 Warm-up</strong>
+          <p className="muted small">
+            {entry.count} quick questions at your level: {skillTitle(entry.rung.skill)}, rung {entry.rung.n} — {entry.rung.title}.
+          </p>
         </div>
         <div className="row">
           <button type="button" className="btn primary" onClick={() => setPhase('running')}>
@@ -78,38 +64,24 @@ export function Warmup({ lessonId }: { lessonId: string }) {
       </div>
     );
   }
-  const card = cards[pos];
-  if (!card) return null;
-  const { block } = adaptedBlock(card);
-  const onComplete = async (s: SetSummary) => {
-    recordScores(card, scores.current);
-    scores.current = [];
-    await reviewCard(card, s);
-    setReviewed((r) => r + 1);
-    setTimeout(() => {
-      if (left <= 0 || pos + 1 >= cards.length) finish();
-      else setPos((p) => p + 1);
-    }, 900);
-  };
   return (
     <div className="card warmup running" data-testid="warmup">
       <div className="row wrap">
-        <strong>🔥 Warm-up</strong>
-        <span className={`muted small ${left <= 0 ? 'bad-text' : ''}`}>
-          {left > 0 ? `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')} left` : 'time — finish this card'} · card {pos + 1}/{cards.length}
-        </span>
+        <strong>🔥 Warm-up · {skillTitle(entry.rung.skill)}</strong>
         <button type="button" className="btn link" onClick={finish}>
           end warm-up
         </button>
       </div>
       <ExerciseShell
-        key={card.id}
-        block={block}
-        lessonId={card.lessonId}
+        key={entry.rung.id}
+        block={entry.rung.block}
+        lessonId={LADDER_LESSON_ID}
         mode="practice"
-        count={ITEMS}
-        onItemResult={(r) => scores.current.push(r.score)}
-        onComplete={(s) => void onComplete(s)}
+        count={entry.count}
+        onComplete={() => {
+          void load();
+          setTimeout(finish, 900);
+        }}
       />
     </div>
   );

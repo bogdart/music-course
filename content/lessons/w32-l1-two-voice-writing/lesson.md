@@ -1,131 +1,128 @@
 ---
 id: w32-l1-two-voice-writing
-title: Two-Voice Writing
+title: "Two Voices: Consonance, Dissonance and Parallels"
 week: 32
 order: 1
 phase: p4
 duration_min: 40
 goals:
-  - Sort intervals into perfect consonances, imperfect consonances and dissonances
-  - Write a note-against-note counterpoint above a cantus firmus
-  - Hear two independent lines instead of "a melody plus chords"
-prerequisites: [w31-l3-improvised-chorus-daw, w10-l2-harmonic-intervals]
-tags: [counterpoint, intervals, composition]
+  - Hear every interval with both notes together, and sort them into perfect consonances, imperfect consonances and dissonances
+  - Know why parallel fifths and octaves are avoided when two lines should stay independent
+  - "Open the intervals rung with the rough intervals (M2, tritone, m7, M7) played together"
+prerequisites: [w31-l3-solo-chorus-in-layers-daw, w10-l1-sixths-sevenths-and-the-fifth-trap]
+tags: [counterpoint, intervals, ear]
 songs:
   - { title: "Two-Part Inventions", composer: "J. S. Bach", public_domain: true }
 ---
 
-# Two-Voice Writing
+# Two Voices: Consonance, Dissonance and Parallels
 
-So far you've thought vertically: chords, voicings, a melody on top. [[counterpoint]] thinks horizontally — two or more melodies that are each good on their own *and* sound good together. Bach's Two-Part Inventions (public domain; well worth hearing) are the gold standard: two hands, two melodies, no chords, yet you hear full harmony.
+So far you have mostly thought *vertically*: chords, voicings, a melody on top. [[counterpoint]] thinks *horizontally*: two or more melodies, each good on its own, that also sound good together. Bach's Two-Part Inventions (public domain, well worth a listen) are the model: two hands, two melodies, no chords, yet you hear full harmony.
 
-The classic way to learn is **species counterpoint**: strict exercises over a slow given melody called the [[cantus firmus]]. We'll use the first species today — one note against one note.
+Two melodies at once means that at every moment you hear two notes **together**: a harmonic interval. This week is about those vertical sounds. Today: what they sound like and how counterpoint sorts them. Next lesson: the rules for writing a first line against a melody.
 
 ## Three kinds of interval
 
-| Class | Intervals | Use |
-|-------|-----------|-----|
-| Perfect consonance | unison, P5, P8 | start and end; sparingly in between |
-| Imperfect consonance | 3rds, 6ths | the backbone — use most |
-| Dissonance | 2nds, 4ths, 7ths, tritone | not allowed in first species |
+| Class | Intervals | In classical two-voice writing |
+|-------|-----------|------------------|
+| Perfect consonance | unison, 5th, octave | at the start and end; only now and then in between |
+| Imperfect consonance | 3rds, 6ths | the backbone: used most |
+| Dissonance | 2nds, 4ths, 7ths, tritone | avoided, or only in passing |
 
-Why prefer 3rds and 6ths? Perfect intervals are so blended that two voices on them fuse into one. Imperfect intervals keep the voices sweet *and* distinct.
+(The 4th is the odd one: between two voices, with nothing below, it counts as dissonant in this style.)
 
-## An example
-
-Cantus firmus below (whole notes), counterpoint above. Read the intervals: 8 – 6 – 3 – 6 – 3 – 6 – 6 – 6 – 8. Open with a perfect interval, fill the middle with imperfect ones, close with the leading tone rising to the octave.
+Listen to each class with both notes played together, all above C4.
 
 ```example
 {
-  "title": "First species: counterpoint above a cantus firmus",
-  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "title": "Perfect consonances together: unison, 5th, octave",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C4 C4]:h r:h | [C4 G4]:h r:h | [C4 C5]:h r:h |" } ],
+  "show": ["staff", "keyboard"]
+}
+```
+
+```example
+{
+  "title": "Imperfect consonances together: minor 3rd, major 3rd, minor 6th, major 6th",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C4 Eb4]:h r:h | [C4 E4]:h r:h | [C4 Ab4]:h r:h | [C4 A4]:h r:h |" } ],
+  "show": ["staff", "keyboard"]
+}
+```
+
+```example
+{
+  "title": "Dissonances together: minor 2nd, major 2nd, 4th, tritone, minor 7th, major 7th",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "[C4 Db4]:h r:h | [C4 D4]:h r:h | [C4 F4]:h r:h | [C4 F#4]:h r:h | [C4 Bb4]:h r:h | [C4 B4]:h r:h |" } ],
+  "show": ["staff", "keyboard"]
+}
+```
+
+**What you will actually hear.** The perfect intervals sound hollow and blend almost into one note. 3rds and 6ths sound sweet, and you still hear two notes. The **rough ones** are different: the 2nds and 7ths *rub* (the minor 2nd and major 7th most of all, a buzzing, beating sound), while the tritone doesn't rub much but sounds restless, as if it can't settle. The 4th on its own is the mildest of them. Don't worry if some pairs sound alike at first; the rough group is what the new ear rung below is about, so play them on your keyboard a few times.
+
+```exercise
+{
+  "id": "e1-play-rough",
+  "type": "play-melody",
+  "title": "Play the rough intervals together",
+  "instructions": "Both notes at once, right hand: major 2nd, tritone, minor 7th, major 7th, each above C4. Let each ring and listen before moving on.",
+  "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[C4 D4]:w | [C4 F#4]:w | [C4 Bb4]:w | [C4 B4]:w |", "showStaff": true, "showKeyboard": true, "countIn": 1 }
+}
+```
+
+Why does counterpoint prefer 3rds and 6ths? Perfect intervals blend so completely that two voices on them start to sound like one. Imperfect intervals are sweet *and* keep the two voices distinct. Dissonances pull the ear towards a resolution, so they are saved for moments where a line is passing through.
+
+## Parallel fifths and octaves
+
+That blending is also behind the one famous prohibition. If two voices move **in the same direction from one 5th to another 5th** (or from octave to octave), they are moving in [[parallel fifths]] (or octaves). For those moments the two lines fuse into one thick line, like an organ stop, and the texture stops sounding like two voices. Listen: the top line is the same in both halves; only the lower voice changes.
+
+```example
+{
+  "title": "Parallel fifths (bars 1–4), then the same top line against 3rds and 6ths (bars 5–8)",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "strings", "seq": "C4:w | B3:w | A3:w | C4:w | B3:w | D4:w | C4:w | B3:w | C4:w |" },
-    { "instrument": "piano", "seq": "C3:w | D3:w | F3:w | E3:w | G3:w | F3:w | E3:w | D3:w | C3:w |" }
+    { "instrument": "strings", "seq": "G4:w | A4:w | B4:w | C5:w | G4:w | A4:w | B4:w | C5:w |" },
+    { "instrument": "piano", "seq": "C4:w | D4:w | E4:w | F4:w | E4:w | F4:w | G4:w | E4:w |" }
   ],
   "show": ["staff"]
 }
 ```
 
-Notice the upper line mostly moves opposite to the lower — that's contrary motion, next lesson's topic. And it moves mainly by step: a good counterpoint is a good melody first.
+**What you will probably hear:** in the first half, a single hollow, rather bare line; in the second, two voices, sweeter. If the difference is subtle for you today, that is normal: hearing parallels inside moving lines is not something the ear drills train directly. Trust the rule for now; the DAW checks next lesson catch parallels for you.
 
 ## Drills
 
 ```exercise
 {
-  "id": "e1-ear-consonance",
-  "type": "ear-interval",
-  "title": "Harmonic intervals: perfect or imperfect?",
-  "count": 12, "passScore": 0.75,
-  "spec": { "intervals": ["m3", "M3", "P5", "m6", "M6", "P8"], "direction": "harmonic", "root": "random", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e2-build-consonances",
-  "type": "build-interval",
-  "title": "Build consonances above a note",
-  "count": 8, "passScore": 0.8,
-  "spec": { "intervals": ["m3", "M3", "P5", "m6", "M6", "P8"], "direction": "asc", "root": "random" }
-}
-```
-
-```exercise
-{
-  "id": "e3-play-both",
-  "type": "play-melody",
-  "title": "Play both voices",
-  "instructions": "Left hand the cantus firmus, right hand the counterpoint. Listen to each line separately, then together.",
-  "count": 6, "passScore": 0.8,
-  "spec": { "bpm": 72, "timeSig": "4/4", "key": "C", "seq": "[C3 C4]:w | [D3 B3]:w | [F3 A3]:w | [E3 C4]:w | [G3 B3]:w | [F3 D4]:w | [E3 C4]:w | [D3 B3]:w | [C3 C4]:w |", "showStaff": true, "showKeyboard": true, "countIn": 1 }
-}
-```
-
-```exercise
-{
-  "id": "e4-interval-quiz",
+  "id": "e2-interval-quiz",
   "type": "quiz",
   "title": "Classify",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "questions": [
-    { "q": "C3 below A3 forms a…", "choices": ["perfect consonance", "imperfect consonance", "dissonance"], "answer": 1 },
-    { "q": "D3 below G3 forms a…", "choices": ["perfect consonance", "imperfect consonance", "dissonance"], "answer": 2, "explain": "A perfect 4th above the lower voice counts as dissonant in two-voice counterpoint." },
-    { "q": "The most-used intervals in first species are…", "choices": ["unisons and octaves", "3rds and 6ths", "2nds and 7ths", "4ths and 5ths"], "answer": 1 },
-    { "q": "A first-species counterpoint should begin and end on…", "choices": ["a 3rd", "a perfect consonance", "any interval", "a 6th"], "answer": 1 }
+    { "q": "C3 below A3 forms a…", "choices": ["perfect consonance", "imperfect consonance", "dissonance"], "answer": 1, "explain": "C to A is a major 6th." },
+    { "q": "D3 below G3 forms a…", "choices": ["perfect consonance", "imperfect consonance", "dissonance"], "answer": 2, "explain": "A perfect 4th counts as dissonant between two voices in this style." },
+    { "q": "C4 below B4 forms a…", "choices": ["perfect consonance", "imperfect consonance", "dissonance"], "answer": 2, "explain": "C to B is a major 7th, one of the roughest sounds." },
+    { "q": "Lower voice C→D, upper voice G→A. Problem?", "choices": ["none", "parallel 5ths", "parallel octaves", "dissonance"], "answer": 1, "explain": "C–G and D–A are both 5ths, moving in the same direction." },
+    { "q": "Lower voice C→D, upper voice E→F. Problem?", "choices": ["none: parallel 3rds are fine", "parallel 5ths", "parallel octaves", "dissonance"], "answer": 0, "explain": "C–E is a major 3rd and D–F a minor 3rd: parallel 3rds, the sweetest kind of parallel motion." }
   ] }
 }
 ```
 
 ```exercise
 {
-  "id": "e5-ear-melody-lines",
-  "type": "ear-melody",
-  "title": "Stepwise lines by ear",
-  "count": 6, "passScore": 0.75,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 5, "rhythm": "quarters", "answer": "degrees" }
+  "id": "e3-build-consonances",
+  "type": "build-interval",
+  "title": "Build consonances above a note",
+  "count": 8, "passScore": 0.7,
+  "spec": { "intervals": ["m3", "M3", "P5", "m6", "M6", "P8"], "direction": "asc", "root": "random" }
 }
 ```
 
-```exercise
-{
-  "id": "e6-daw-first-species",
-  "type": "daw-task",
-  "title": "Your first species",
-  "instructions": "A new cantus firmus is on the piano track. Write one whole note per bar on the strings track above it: start on a unison, 5th or octave, use only 3rds and 6ths in the middle (a 5th or octave at most once), move mostly by step, and end on the octave approached by step from below.",
-  "spec": {
-    "template": { "bpm": 80, "key": "C", "timeSig": "4/4", "tracks": [ { "instrument": "strings", "seq": "" }, { "instrument": "piano", "seq": "C3:w | E3:w | F3:w | G3:w | E3:w | A3:w | G3:w | E3:w | D3:w | C3:w |" } ] },
-    "task": "10-bar first-species counterpoint above the given cantus firmus.",
-    "checks": [
-      { "kind": "note-count", "min": 10, "max": 10, "track": 0 },
-      { "kind": "uses-rhythm", "values": ["w"], "minDistinct": 1, "track": 0 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false, "track": 0 },
-      { "kind": "no-parallel-fifths", "tracks": [0, 1] },
-      { "kind": "ends-on", "degree": 1, "track": 0 },
-      { "kind": "max-leap", "semitones": 5, "track": 0 },
-      { "kind": "custom", "id": "consonances-only", "note": "Self-check: every vertical interval is a unison, 3rd, 5th, 6th or octave (plus compounds)." }
-    ],
-    "minBars": 10, "maxBars": 10
-  }
-}
+## Ear: both notes at once
+
+```ladder
+{ "skill": "intervals", "unlocks": 19, "intro": "Opens the rough intervals played together (M2, tritone, m7, M7); the drill runs at your current intervals rung." }
 ```

@@ -165,6 +165,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
       }
       const first = st.attempts === 0;
       setSt((s) => ({ ...s, result, attempts: s.attempts + 1, firstResult: s.firstResult ?? result }));
+      if (result.correct && item.afterAnswer) void playParts([item.afterAnswer]);
       setBests((b) => {
         const n = [...b];
         if (!n[index] || result.score > n[index]!.score) n[index] = result;
@@ -209,6 +210,7 @@ export function ExerciseShell(props: ExerciseShellProps) {
     });
     setSt((s) => ({ ...s, revealed: true, result: s.result?.correct ? s.result : r }));
     if (item.solutionAudio) void playParts([item.solutionAudio]);
+    else if (item.afterAnswer) void playParts([item.afterAnswer]);
   };
 
   const next = () => {
@@ -326,10 +328,15 @@ export function ExerciseShell(props: ExerciseShellProps) {
           {st.result.feedback}
         </div>
       )}
-      {st.result && item.compare && item.compare.length > 0 && (
+      {st.result && ((item.compare?.length ?? 0) > 0 || (item.afterAnswer && done)) && (
         <div className="row audio-row compare-row">
           <span className="muted small">Listen again:</span>
-          {item.compare.map((c) => (
+          {item.afterAnswer && done && (
+            <button type="button" className="btn ghost" onClick={() => void playParts([item.reference, item.audio, item.afterAnswer])}>
+              ▶ Question, then walk home
+            </button>
+          )}
+          {(item.compare ?? []).map((c) => (
             <button key={c.label} type="button" className="btn ghost" onClick={() => void playParts([c.audio])}>
               ▶ {c.label}
             </button>

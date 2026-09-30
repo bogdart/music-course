@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LADDERS, LADDER_SKILLS } from '@music/core';
 import {
   bpm, chordQuality, chordSymbol, degree, durationToken, instrument, intervalId, key, keyOrRandom, lessonId, mode,
   noteName, noteWithOctave, range, romanNumeral, scaleId, seq, timeSig,
@@ -200,10 +201,11 @@ export const specSchemas = {
     key: keyOrRandom, mode: mode.optional(), degrees: z.array(degree).min(1),
     reference: z.enum(['cadence', 'scale', 'tonic', 'none']).optional(), octaves: z.array(z.number().int().min(0).max(8)).min(1).optional(),
     instrument: instrument.optional(), chromatic: z.boolean().optional(), answer: z.enum(['degree', 'name']).optional(),
+    drone: z.boolean().optional(),
   }),
   'ear-octave': obj({
     notes: z.array(noteName).min(1), octaves: z.array(z.number().int().min(0).max(8)).min(1),
-    mode: z.enum(['same-or-different', 'together', 'match', 'which-octave', 'higher-or-lower']), instrument: instrument.optional(),
+    mode: z.enum(['same-or-different', 'together', 'match', 'find', 'which-octave', 'higher-or-lower']), instrument: instrument.optional(),
     gap: z.array(z.number().int().min(1).max(2)).min(1).optional(), foils: z.array(z.number().int().min(1).max(11)).min(1).optional(),
   }),
   'ear-interval': obj({
@@ -224,7 +226,7 @@ export const specSchemas = {
   }),
   'ear-progression': obj({
     key: keyOrRandom.optional(), mode: mode.optional(), length: z.number().int().min(1).max(16).optional(),
-    chords: z.array(romanNumeral).min(1), style: z.enum(['block', 'arpeggio', 'pad-bass']).optional(), bpm: bpm.optional(),
+    chords: z.array(romanNumeral).min(1), style: z.enum(['block', 'arpeggio', 'pad-bass', 'band']).optional(), bpm: bpm.optional(),
     inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
     example: exampleBlockSchema.optional(), progression: z.array(romanNumeral).min(1).optional(), instrument: instrument.optional(),
   }).superRefine((s, ctx) => {
@@ -246,7 +248,7 @@ export const specSchemas = {
   'ear-bass': obj({
     key: keyOrRandom, mode: mode.optional(), chords: z.array(romanNumeral).min(1), answer: z.enum(['play', 'name']).optional(),
     length: z.number().int().min(1).max(16).optional(), bpm: bpm.optional(),
-    inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(),
+    inversions: z.array(z.number().int().min(0).max(3)).min(1).optional(), style: z.enum(['bass-focus', 'band']).optional(),
     example: exampleBlockSchema.optional(), track: z.number().int().min(0).optional(),
   }),
   'ear-tempo': obj({
@@ -322,6 +324,7 @@ export const specSchemas = {
   }),
   'roman-analysis': obj({
     key, mode: mode.optional(), chords: z.array(chordSymbol).min(1), prompt: z.enum(['symbols', 'play']).optional(),
+    palette: z.enum(['diatonic', 'chromatic']).optional(),
   }),
   'daw-task': obj({
     template: z.record(z.string(), z.unknown()).optional(), task: z.string().min(1), checks: z.array(dawCheckSchema).optional(),
@@ -370,12 +373,26 @@ export const exerciseBlockSchema = exerciseCommonSchema.superRefine((b, ctx) => 
   }
 });
 
+/**
+ * ```ladder: an ear-training drill at the learner's own level. The lesson unlocks rungs 1…`unlocks` of `skill`; the app
+ * drills the learner's current rung (the lowest unlocked rung not yet mastered). `intro` is a sentence shown above it.
+ */
+export const ladderBlockSchema = obj({
+  skill: z.enum(LADDER_SKILLS),
+  unlocks: z.number().int().min(1),
+  intro: z.string().optional(),
+}).superRefine((b, ctx) => {
+  const n = LADDERS[b.skill].rungs.length;
+  if (b.unlocks > n) ctx.addIssue({ code: 'custom', message: `ladder "${b.skill}" has ${n} rungs (unlocks ${b.unlocks})`, path: ['unlocks'] });
+});
+
 export const blockSchemas = {
   example: exampleBlockSchema,
   exercise: exerciseBlockSchema,
   keyboard: keyboardBlockSchema,
   staff: staffBlockSchema,
   chords: chordsBlockSchema,
+  ladder: ladderBlockSchema,
 } as const;
 
 export const BLOCK_LANGS = Object.keys(blockSchemas) as (keyof typeof blockSchemas)[];
@@ -386,6 +403,7 @@ export type ExampleBlock = z.infer<typeof exampleBlockSchema>;
 export type KeyboardBlock = z.infer<typeof keyboardBlockSchema>;
 export type StaffBlock = z.infer<typeof staffBlockSchema>;
 export type ChordsBlock = z.infer<typeof chordsBlockSchema>;
+export type LadderBlock = z.infer<typeof ladderBlockSchema>;
 
 /** Known keys of each schema, for unknown-field warnings. */
 export function knownKeys(schema: unknown): string[] | null {

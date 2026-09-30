@@ -10,3 +10,4 @@ export * from './srs/index.js';
 export * from './api.js';
 export * from './daw/index.js';
 export * from './exercises/daw-task.js';
+export * from './ladders.js';

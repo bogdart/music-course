@@ -550,3 +550,19 @@ figure.card > * + * { margin-top: 10px; }
 
 /* visually hidden, still announced by screen readers (e.g. the DAW page heading) */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---- ear ladders ---- */
+.ladder { border-left: 3px solid var(--accent); }
+.ladder-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.ladder-track { display: flex; gap: 3px; margin: 8px 0; flex-wrap: wrap; }
+.ladder-track .rung { width: 14px; height: 8px; border-radius: 2px; background: var(--bg2); border: 1px solid transparent; }
+.ladder-track .rung.open { border-color: var(--muted); }
+.ladder-track .rung.ok { background: var(--ok); }
+.ladder-track .rung.current { background: var(--accent); }
+.ladder .card.exercise { margin-top: 8px; }
+.skill-list { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.skill-list li { display: grid; grid-template-columns: 1fr auto; column-gap: 8px; }
+.skill-list li .bar { grid-column: 1 / -1; margin: 2px 0 0; display: flex; }
+.skill-list li .bar span.open { background: var(--muted); opacity: 0.35; }
+.skill-list li.behind > span:first-child { color: var(--warn); }
+.lag-warning { border-left: 3px solid var(--warn); padding: 6px 10px; background: var(--bg2); border-radius: 4px; }

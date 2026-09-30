@@ -2,7 +2,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import type { GlossaryTerm } from '@music/core';
-import { generateSet, isExerciseType, isImplemented } from '@music/core';
+import { generateSet, isExerciseType, isImplemented, LADDERS, LADDER_SKILLS, type LadderSkill } from '@music/core';
 import { glossaryIndex, lookupTerm, mergeGlossaries, parseGlossary } from './glossary.js';
 import { parseLesson, type ParsedLesson } from './parse.js';
 import { LESSON_ID_RE } from './primitives.js';
@@ -142,9 +142,10 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
     // authoring rules
     const types = lesson.blocks.filter((b) => b.lang === 'exercise').map((b) => String((b.data as { type?: unknown } | null)?.type ?? ''));
     for (const t of types) if (t && !isExerciseType(t)) err(file, `unknown exercise type "${t}"`);
-    if (types.length === 0) warn(file, 'no exercises');
+    const hasLadder = lesson.blocks.some((b) => b.lang === 'ladder');
+    if (types.length === 0 && !hasLadder) warn(file, 'no exercises');
     else {
-      if (!types.some(EAR)) warn(file, 'no ear-* exercise (authoring rule 2)');
+      if (!types.some(EAR) && !hasLadder) warn(file, 'no ear-training (ladder block or ear-* exercise) (authoring rule 2)');
       if (!types.some((t) => KEYBOARD_TYPES.has(t))) warn(file, 'no keyboard exercise (authoring rule 2)');
     }
     // implemented exercise types must generate items without errors
@@ -161,6 +162,24 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
       if (!existsSync(join(ldir, m[1]!))) err(file, `missing asset ${m[1]}`);
     }
     lessons.set(folder, Object.assign(lesson, { dir: ldir, file }));
+  }
+  // ear ladders: every rung of every skill should be opened by some lesson in the course
+  if (!opts.only && lessons.size > 0) {
+    const top = new Map<string, number>();
+    for (const id of order) {
+      for (const b of lessons.get(id)?.blocks ?? []) {
+        if (b.lang !== 'ladder' || !b.valid) continue;
+        const d = b.data as { skill: LadderSkill; unlocks: number };
+        top.set(d.skill, Math.max(top.get(d.skill) ?? 0, d.unlocks));
+      }
+    }
+    if (top.size > 0) {
+      for (const s of LADDER_SKILLS) {
+        const n = LADDERS[s].rungs.length;
+        const t = top.get(s) ?? 0;
+        if (t < n) warn(join(dir, 'lessons'), `ladder "${s}": rungs ${t + 1}–${n} are never unlocked by any lesson`);
+      }
+    }
   }
   return { dir, curriculum, lessons, glossary, problems, order };
 }

@@ -48,7 +48,7 @@ test.describe('content', () => {
     expect(c.weeks.map((w: { week: number }) => w.week)).toEqual(Array.from({ length: 52 }, (_, i) => i + 1));
     const all = c.weeks.flatMap((w: { lessons: unknown[] }) => w.lessons);
     expect(all).toHaveLength(src.weeks.reduce((a, w) => a + w.lessons.length, 0));
-    expect(all).toHaveLength(154);
+    expect(all).toHaveLength(lessons().length);
     for (const l of all) {
       expect(l).toMatchObject({ id: expect.stringMatching(/^w\d{2}-l\d+-/), exists: true, title: expect.any(String), status: 'not-started' });
     }
@@ -113,7 +113,7 @@ test.describe('progress', () => {
     const p = await (await api.get('/api/progress')).json();
     expect(p).toMatchObject({
       lessons: {}, exercises: {}, lastLessonId: null, nextLessonId: lessons()[0]!.id,
-      totals: { lessonsCompleted: 0, lessonsTotal: 154, attempts: 0, accuracy: 0, streakDays: 0 },
+      totals: { lessonsCompleted: 0, lessonsTotal: lessons().length, attempts: 0, accuracy: 0, streakDays: 0 },
       srs: { due: 0, total: 0, session: expect.any(Number) },
     });
   });

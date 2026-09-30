@@ -6,9 +6,9 @@ order: 3
 phase: p5
 duration_min: 50
 goals:
-  - Decompose three up-tempo hits by reference — tempo, key centre, loop, groove, energy curve
-  - Hear the Dorian colour of a major IV chord inside a minor loop
-  - Write a 16-bar dance-pop section in the style, with a build and a drop
+  - Listen to three up-tempo hits and commit to tempo, home, loop and groove before reading the facts
+  - "Tell a minor iv from a major IV inside a minor loop"
+  - Write an 8-bar build and drop in D Dorian
 prerequisites: [w47-l2-dance-bass-and-hooks]
 tags: [transcription, dance-pop, reference-songs, dorian, daw]
 songs:
@@ -19,93 +19,107 @@ songs:
 
 # Transcribe 2: Dance Pop — Reference Analysis
 
-Three up-tempo records, three different grooves, one surprising common thread. Use your own copies; cover the answers and try each pass before reading the guide.
+Three up-tempo records, three grooves. As always: your own copies, listen first, **answer before
+reading the explanations**.
 
-## A shared sound: the major IV in a minor key
+## A colour to listen for: iv or IV in a minor key
 
-All three songs loop over a minor tonic but include a **major chord on degree 4** — which natural minor doesn't have. That raised 6th degree is the Dorian mode you met in week 22, and it's the secret of a lot of danceable "minor but not sad" music. Hear it in isolation:
+In natural minor the chord on degree 4 is minor (iv). Many danceable "minor but not sad" songs use a **major IV**
+instead: its 3rd is the raised 6th degree — the Dorian note from week 22. Hear it (shown — this is the explanation):
 
 ```example
 {
-  "title": "Original: Dorian vamp — Dm7 to G7",
-  "bpm": 115, "timeSig": "4/4", "key": "Dm",
+  "title": "Original: Dorian vamp — Em7 to A7",
+  "bpm": 100,
+  "timeSig": "4/4",
+  "key": "Em",
   "tracks": [
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8" },
-    { "instrument": "bass", "seq": "D2:8 r:8 D3:8 r:8 r:8 C3:8 D3:8 r:8 | G1:8 r:8 G2:8 r:8 r:8 F2:8 G2:8 r:8 | D2:8 r:8 D3:8 r:8 r:8 C3:8 D3:8 r:8 | G1:8 r:8 G2:8 r:8 r:8 F2:8 G2:8 r:8" },
-    { "instrument": "epiano", "seq": "r:8 [F3 A3 C4]:8 r:q r:8 [F3 A3 C4]:8 r:q | r:8 [F3 B3 D4]:8 r:q r:8 [F3 B3 D4]:8 r:q | r:8 [F3 A3 C4]:8 r:q r:8 [F3 A3 C4]:8 r:q | r:8 [F3 B3 D4]:8 r:q r:8 [F3 B3 D4]:8 r:q" }
+    {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8 | [kick hihat]:8 hihat:8 [kick clap hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [kick clap hihat]:8 ohat:8"},
+    {"instrument": "bass", "seq": "E2:q. E2:8 r:h | A1:q. A1:8 r:h | E2:q. E2:8 r:h | A1:q. A1:8 r:h"},
+    {"instrument": "epiano", "seq": "[G3 B3 D4]:h [G3 B3 D4]:h | [G3 C#4 E4]:h [G3 C#4 E4]:h | [G3 B3 D4]:h [G3 B3 D4]:h | [G3 C#4 E4]:h [G3 C#4 E4]:h"}
   ],
   "show": ["keyboard"],
   "loop": true
 }
 ```
 
-The B natural in the G7 is the Dorian note. Swap it for Bb and the groove instantly sounds darker.
-
-## "Blinding Lights" — The Weeknd (2019)
-
-**Home F minor, about 171 BPM.** Pass 1: tap it — if you get ~86, you're tapping half-time; the drums and synth bass run at the fast count. Pass 4: a four-chord loop commonly charted as **Fm – Cm – Eb – Bb** (i – v – VII – IV); listen for that final major chord — the Dorian IV. Pass 6: a driving 80s-style beat with snare on 2 and 4. Pass 7: sketch the energy curve; the famous synth hook marks the sections.
-
-## "Uptown Funk" — Mark Ronson feat. Bruno Mars (2014)
-
-**Home D minor, about 115 BPM.** Pass 4: the verse is a two-chord vamp, **Dm7 – G7** (i7 – IV7) — exactly the Dorian vamp above. Pass 6: this is funk, not four-on-the-floor; listen to the kick and snare separately and notice the syncopated, choppy guitar and bass. Pass 7: horn stabs punctuate the ends of phrases; mark where they enter.
-
-## "Get Lucky" — Daft Punk feat. Pharrell Williams & Nile Rodgers (2013)
-
-**About 116 BPM; a four-chord loop Bm7 – D – F#m7 – E** that repeats for the entire song. Pass 1 is genuinely debatable here: some hear B Dorian (i – III – v – IV), others F# minor. Do the hum test yourself and defend your answer — that's real transcription. Pass 7: with the harmony fixed, the whole form is built by adding and removing layers; the disco guitar and bass stay almost constant.
+The C♯ in the A7 is the Dorian note (the raised 6th of E minor); swap it for C and the groove turns darker. Now a hidden vamp in another key:
+two chords, and the second is either the minor iv7 or the Dorian IV7.
 
 ```exercise
 {
-  "id": "w47l3-refs",
-  "type": "quiz",
-  "title": "Reference check",
-  "spec": { "questions": [
-    { "q": "\"Blinding Lights\": you tapped 86 BPM. The listed tempo is ~171. Why?", "choices": ["You tapped half-time", "The song speeds up", "The tool is wrong", "It's in 6/8"], "answer": 0 },
-    { "q": "\"Uptown Funk\" verse vamp in roman numerals?", "choices": ["i7 – IV7", "i – v", "I – V7", "ii7 – V7"], "answer": 0 },
-    { "q": "What colour do all three songs share?", "choices": ["A major IV chord in a minor key (Dorian)", "A key change in every chorus", "12-bar blues form", "Half-time snare"], "answer": 0 },
-    { "q": "\"Get Lucky\": how is the form built if the chords never change?", "choices": ["By tempo changes", "By adding and removing layers", "By modulating", "It has no form"], "answer": 1 }
-  ] }
-}
-```
-
-```exercise
-{
-  "id": "w47l3-mode",
-  "type": "ear-scale",
-  "title": "Dorian or natural minor?",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": { "scales": ["dorian", "natural-minor"], "play": "melody" }
-}
-```
-
-```exercise
-{
-  "id": "w47l3-loop",
+  "id": "w47l3-vamp",
   "type": "ear-progression",
-  "title": "Dorian loops in B minor",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "key": "B", "mode": "minor", "length": 4, "chords": ["i", "III", "IV", "v", "VI", "VII"], "style": "pad-bass" }
+  "title": "Hidden vamp: iv7 or IV7?",
+  "srs": false,
+  "spec": {
+    "key": "Am",
+    "chords": ["i7", "iv7", "IV7"],
+    "example": {
+      "title": "Hidden vamp",
+      "bpm": 112,
+      "timeSig": "4/4",
+      "tracks": [
+        {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8"},
+        {"instrument": "bass", "seq": "A1:h. r:q | D2:h. r:q | A1:h. r:q | D2:h. r:q"},
+        {"instrument": "epiano", "seq": "[G3 A3 C4 E4]:q. [G3 A3 C4 E4]:8 r:h | [F#3 A3 C4 D4]:q. [F#3 A3 C4 D4]:8 r:h | [G3 A3 C4 E4]:q. [G3 A3 C4 E4]:8 r:h | [F#3 A3 C4 D4]:q. [F#3 A3 C4 D4]:8 r:h"}
+      ]
+    },
+    "progression": ["i7", "IV7", "i7", "IV7"]
+  }
+}
+```
+
+```ladder
+{
+  "skill": "scales",
+  "unlocks": 13,
+  "intro": "Rung 6 of the scales ladder is minor vs Dorian; you practise at your own rung."
 }
 ```
 
 ```exercise
 {
-  "id": "w47l3-qual",
-  "type": "ear-chord",
-  "title": "m7 or dom7?",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": { "qualities": ["min7", "dom7", "maj7"], "inversions": [0], "voicing": "mixed", "range": ["C3", "C5"] }
+  "id": "w47l3-blinding",
+  "type": "quiz",
+  "title": "\"Blinding Lights\" — The Weeknd (2019)",
+  "spec": {
+    "questions": [
+      {"q": "Tap along to the drums, then read your BPM. Which is closest?", "choices": ["About 86", "About 120", "About 171"], "answer": 2, "explain": "About 171. If you got ~86 you tapped the half-time feel; the drums and synth bass run at the fast count."},
+      {"q": "Pass 1: home note and quality?", "choices": ["F minor", "A♭ major", "C minor", "E♭ major"], "answer": 0},
+      {"q": "The four-chord loop ends on a chord that sounds…", "choices": ["Minor", "Major"], "answer": 1, "explain": "Major: the loop is commonly charted Fm – Cm – E♭ – B♭ (i – v – VII – IV). The major IV (B♭, with the raised 6th D natural) is the Dorian colour from the vamp above."}
+    ]
+  }
 }
 ```
 
 ```exercise
 {
-  "id": "w47l3-analysis",
-  "type": "roman-analysis",
-  "title": "Analyse the loops",
-  "spec": { "key": "Fm", "chords": ["Fm", "Cm", "Eb", "Bb"], "prompt": "symbols" }
+  "id": "w47l3-uptown",
+  "type": "quiz",
+  "title": "\"Uptown Funk\" — Mark Ronson feat. Bruno Mars (2014)",
+  "spec": {
+    "questions": [
+      {"q": "How many chords does the verse vamp use?", "choices": ["One", "Two", "Four"], "answer": 1, "explain": "Two: Dm7 – G7 (i7 – IV7) in D minor, about 115 BPM: the same i7 – IV7 Dorian move as the vamp above, a step lower."},
+      {"q": "Is the kick four-on-the-floor?", "choices": ["Yes, every beat", "No — a syncopated funk pattern"], "answer": 1, "explain": "No: it's funk. Listen to kick and snare separately; the guitar and bass are choppy and syncopated."},
+      {"q": "Pass 7: what punctuates the ends of phrases?", "choices": ["Horn stabs", "A string pad", "A choir"], "answer": 0}
+    ]
+  }
+}
+```
+
+```exercise
+{
+  "id": "w47l3-lucky",
+  "type": "quiz",
+  "title": "\"Get Lucky\" — Daft Punk feat. Pharrell Williams & Nile Rodgers (2013)",
+  "spec": {
+    "questions": [
+      {"q": "How many chords before the loop repeats?", "choices": ["Two", "Four", "Eight"], "answer": 1, "explain": "Four: Bm7 – D – F#m7 – E, about 116 BPM."},
+      {"q": "Does the loop change anywhere in the song?", "choices": ["Yes, the chorus has new chords", "No — it repeats the whole way through"], "answer": 1, "explain": "It never changes. The form is built entirely by adding and removing layers."},
+      {"q": "The loop contains E major. If you hear B as home, E major is…", "choices": ["IV", "V", "♭VII"], "answer": 0, "explain": "IV in B Dorian (i – III – v – IV). Others hear F# minor as home; both views are defended by musicians — what matters is the evidence you give."}
+    ]
+  }
 }
 ```
 
@@ -114,7 +128,7 @@ The B natural in the G7 is the Dorian note. Swap it for Bb and the groove instan
   "id": "w47l3-play",
   "type": "play-chord",
   "title": "Dorian vamps under your fingers",
-  "spec": { "chords": ["Dm7", "G7", "Bm7", "D", "F#m7", "E"], "inversion": "any", "sequence": true, "bpm": 80 }
+  "spec": {"chords": ["Dm7", "G7", "Am7", "D7", "Bm7", "D", "F#m7", "E"], "inversion": "any", "sequence": true, "bpm": 80}
 }
 ```
 
@@ -122,21 +136,29 @@ The B natural in the G7 is the Dorian note. Swap it for Bb and the groove instan
 {
   "id": "w47l3-daw",
   "type": "daw-task",
-  "title": "Your dance-pop section",
+  "title": "Build and drop in D Dorian",
   "spec": {
-    "template": { "bpm": 118, "key": "Dm", "tracks": [
-      { "instrument": "drums", "seq": "" }, { "instrument": "bass", "seq": "" },
-      { "instrument": "epiano", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
-    "task": "Write 16 bars in D Dorian: 4-bar verse (kick + hats, sparse bass), 4-bar build (no kick, accelerating snare), 8-bar drop (four-on-the-floor, offbeat or octave bass, a 1-bar hook repeated with a variation). Use a major IV chord (G) at least once per 4-bar loop.",
+    "template": {
+      "bpm": 118,
+      "key": "Dm",
+      "tracks": [
+        {"instrument": "drums", "seq": ""},
+        {"instrument": "bass", "seq": ""},
+        {"instrument": "epiano", "seq": ""},
+        {"instrument": "lead", "seq": ""}
+      ]
+    },
+    "task": "Write 8 bars in D Dorian: a 4-bar build (no kick, a snare roll that speeds up) and a 4-bar drop (kick on every beat, offbeat or octave bass, a 1-bar hook repeated with a small change). Use the major IV chord (G) at least once.",
     "checks": [
-      { "kind": "has-tracks", "instruments": ["drums", "bass", "epiano", "lead"] },
-      { "kind": "bars", "min": 16, "max": 16 },
-      { "kind": "in-key", "key": "D", "scale": "dorian", "allowPassing": false, "track": 2 },
-      { "kind": "in-key", "key": "D", "scale": "dorian", "allowPassing": true, "track": 3 },
-      { "kind": "repetition", "motifBars": 1, "minRepeats": 2, "allowTransposed": true, "track": 3 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare"], "track": 0 }
+      {"kind": "has-tracks", "instruments": ["drums", "bass", "epiano", "lead"]},
+      {"kind": "bars", "min": 8, "max": 8},
+      {"kind": "in-key", "key": "D", "scale": "dorian", "allowPassing": false, "track": 2},
+      {"kind": "in-key", "key": "D", "scale": "dorian", "allowPassing": true, "track": 3},
+      {"kind": "uses-chord", "chord": "G", "roman": "IV", "min": 1},
+      {"kind": "drum-pattern", "requires": ["kick", "snare"], "kickOnBeats": [1, 2, 3, 4], "bars": [5, 8], "track": 0}
     ],
-    "minBars": 16, "maxBars": 16
+    "minBars": 8,
+    "maxBars": 8
   }
 }
 ```

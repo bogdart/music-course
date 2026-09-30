@@ -17,6 +17,16 @@ const quizLesson = all.find((l) => l.exercises.some((e) => e.type === 'quiz'))!;
 const quizEx = quizLesson.exercises.find((e) => e.type === 'quiz')!;
 const earUse = all.flatMap((l) => l.exercises.filter((e) => e.type.startsWith('ear-') && canAnswer(e.type) && e.srs !== false).map((e) => ({ l, e })))[0]!;
 
+/** Practice page → the review-card stage (ends a ladder session first when lessons opened ladders). */
+async function toReviewCards(page: import('@playwright/test').Page) {
+  await goto(page, '/practice');
+  const end = page.getByRole('button', { name: 'end session' });
+  const review = page.getByRole('button', { name: 'Review cards' });
+  await expect(end.or(review)).toBeVisible();
+  if (await end.isVisible()) await end.click();
+  await review.click();
+}
+
 /** Pretend the learner was away for 3 h: the next API activity starts a new SRS session. */
 function advanceSession(dbFile: string) {
   const db = new DatabaseSync(dbFile);
@@ -34,14 +44,16 @@ test('fresh profile: Dashboard offers to start the first lesson', async ({ page 
   const hero = page.locator('.card.hero');
   await expect(hero.getByRole('heading', { level: 2 })).toHaveText(first.title);
   await expect(hero.getByRole('link', { name: /Start lesson/ })).toHaveAttribute('href', `/lesson/${first.id}`);
-  await expect(page.getByText('0 / 154')).toBeVisible();
-  await expect(page.getByRole('heading', { name: '0 due' })).toBeVisible();
+  await expect(page.getByText(`0 / ${lessons().length}`)).toBeVisible();
+  await expect(page.getByTestId('ear-skills')).toContainText('Ear ladders open as you go');
   await hero.getByRole('link', { name: /Start lesson/ }).click();
   await expect(page.locator('header.lesson-header h1')).toHaveText(first.title);
 });
 
 test('Practice: empty state when nothing is due', async ({ page }) => {
   await goto(page, '/practice');
+  await expect(page.getByText(/No ear-training ladders are open yet/)).toBeVisible();
+  await page.getByRole('button', { name: 'Review cards' }).click();
   await expect(page.getByText('Nothing due right now')).toBeVisible();
   await page.getByRole('button', { name: 'Check again' }).click();
   await expect(page.getByText('Nothing due right now')).toBeVisible();
@@ -62,14 +74,14 @@ test('exercise + lesson completion survive reload and a server restart', async (
     await goto(page, `/lesson/${quizLesson.id}`);
     await expect(page.getByText('✓ Lesson complete')).toBeVisible();
     await expect(page.locator(`aside.rail li.rail-item:has(a[href="#ex-${quizEx.id}"])`)).toHaveClass(/\bpassed\b/);
-    await expect(page.locator('aside.rail .rail-title')).toContainText(`1/${quizLesson.exercises.length}`);
+    await expect(page.locator('aside.rail .rail-title')).toContainText(`1/${quizLesson.exercises.length + quizLesson.ladders.length}`);
     await goto(page, '/curriculum');
-    const row = page.locator('li.lesson-row').filter({ has: page.getByRole('link', { name: quizLesson.title, exact: true }) });
+    const row = page.locator(`li.lesson-row:has(a[href="/lesson/${quizLesson.id}"])`);
     await expect(row).toHaveClass(/completed/);
     await expect(row.locator('.status')).toHaveText('●');
     await expect(row).toContainText('100%');
     await goto(page, '/');
-    await expect(page.getByText('1 / 154')).toBeVisible();
+    await expect(page.getByText(`1 / ${lessons().length}`)).toBeVisible();
   };
   await page.reload();
   await checkPersisted();
@@ -116,7 +128,7 @@ test('SRS: passing an ear exercise creates a card that is due next session; Prac
   expect(card.dueSession).toBe(session0 + 1);
   // same session → not due yet as a review; the Practice page may still offer it as one of its (≤5) *new* cards
   expect((await (await api.get('/api/srs/due')).json()).cards).toEqual([]);
-  await goto(page, '/practice');
+  await toReviewCards(page);
   await expect(page.getByText(/Card 1 of \d+/)).toBeVisible();
   await expect(page.locator('.tag.new')).toBeVisible();
 
@@ -125,10 +137,10 @@ test('SRS: passing an ear exercise creates a card that is due next session; Prac
   expect(due.session).toBe(session0 + 1);
   expect(due.cards.map((c: { id: number }) => c.id)).toContain(card.id);
   await goto(page, '/');
-  await expect(page.getByRole('heading', { name: `${due.cards.length} due` })).toBeVisible();
+  await expect(page.getByTestId('ear-skills')).toContainText(`+ ${due.cards.length} review card(s) due`);
 
   const attemptsBefore = (await progress(api)).exercises[l.id][e.id].attempts;
-  await goto(page, '/practice');
+  await toReviewCards(page);
   await expect(page.getByText(`Card 1 of ${due.cards.length}`)).toBeVisible();
   await expect(page.getByRole('link', { name: l.title })).toHaveAttribute('href', `/lesson/${l.id}`);
   const { total } = await currentItem(page, e.id);
@@ -159,7 +171,7 @@ test('Practice: a failed review is due again next session', async ({ page, api, 
   const due = await (await api.get('/api/srs/due')).json();
   expect(due.cards.length).toBeGreaterThan(0);
   const card = due.cards[0];
-  await goto(page, '/practice');
+  await toReviewCards(page);
   await expect(page.getByText(`Card 1 of ${due.cards.length}`)).toBeVisible();
   await completeSet(page, card.exerciseId, () => false);
   await expect.poll(async () => ((await (await api.get('/api/srs/cards')).json()).cards as typeof cards).find((c) => c.id === card.id)?.lapses).toBe(card.lapses + 1);

@@ -119,11 +119,12 @@ export function voiceProgression(numerals: string[], tonic: string, mode: Mode, 
   return out;
 }
 
-export type ProgressionStyle = 'block' | 'arpeggio' | 'pad-bass' | 'bass-focus';
+export type ProgressionStyle = 'block' | 'arpeggio' | 'pad-bass' | 'bass-focus' | 'band';
 
 /** Render voiced chords to a snippet. Each chord lasts `beats` quarter notes. */
 export function progressionSnippet(chords: VoicedChord[], opts: { style?: ProgressionStyle; bpm?: number; beats?: number; instrument?: InstrumentId } = {}): Snippet {
   const style = opts.style ?? 'block';
+  if (style === 'band') return bandSnippet(chords, opts.bpm ?? 96, opts.beats ?? 4);
   const len = Math.round((opts.beats ?? 2) * PPQ);
   const upperEv: NoteEvent[] = [];
   const bassEv: NoteEvent[] = [];
@@ -146,6 +147,50 @@ export function progressionSnippet(chords: VoicedChord[], opts: { style?: Progre
     tracks: [
       { instrument: upperInst, events: upperEv },
       ...(bassEv.length ? [{ instrument: bassInst, events: bassEv }] : []),
+    ],
+  };
+}
+
+/**
+ * A small band: soft pad chords, a bass playing the chord's bass note on beats 1, 2 and the "and" of 3, a basic
+ * rock beat (kick 1 & 3, snare 2 & 4, eighth hi-hats) and a lead line that moves between chord tones on the beat —
+ * the "full mix" the learner must hear the bass and the harmony through.
+ */
+function bandSnippet(chords: VoicedChord[], bpm: number, beats: number): Snippet {
+  const len = Math.round(beats * PPQ);
+  const pad: NoteEvent[] = [];
+  const bass: NoteEvent[] = [];
+  const drums: NoteEvent[] = [];
+  const lead: NoteEvent[] = [];
+  const e8 = PPQ / 2;
+  chords.forEach((c, i) => {
+    const t = i * len;
+    for (const m of c.upper) pad.push({ midi: m, startTick: t, durationTicks: len, velocity: 0.35 });
+    const b = c.bass >= 48 ? c.bass - 12 : c.bass;
+    for (const [at, dur] of [[0, PPQ], [PPQ, PPQ * 1.5], [PPQ * 2.5, PPQ * 1.5]] as const) {
+      if (at < len) bass.push({ midi: b, startTick: t + at, durationTicks: Math.min(dur, len - at), velocity: 0.85 });
+    }
+    for (let k = 0; k < beats * 2; k++) {
+      const at = t + k * e8;
+      drums.push({ midi: 42, startTick: at, durationTicks: e8, velocity: k % 2 ? 0.35 : 0.5 });
+      if (k % 4 === 0) drums.push({ midi: 36, startTick: at, durationTicks: e8, velocity: 0.9 });
+      if (k % 4 === 2) drums.push({ midi: 38, startTick: at, durationTicks: e8, velocity: 0.8 });
+    }
+    // lead: chord tones an octave above the pad, stepping through them beat by beat
+    const tones = [...c.upper].sort((x, y) => x - y).map((m) => m + 12);
+    for (let k = 0; k < beats; k++) {
+      const m = tones[(i + k) % tones.length]!;
+      lead.push({ midi: m, startTick: t + k * PPQ, durationTicks: PPQ, velocity: 0.55 });
+    }
+  });
+  return {
+    bpm,
+    timeSig: { num: 4, den: 4 },
+    tracks: [
+      { instrument: 'pad', events: pad },
+      { instrument: 'bass', events: bass },
+      { instrument: 'drums', events: drums },
+      { instrument: 'lead', events: lead },
     ],
   };
 }

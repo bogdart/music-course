@@ -9,7 +9,7 @@ goals:
   - Build drums, bass and chords that all agree on a 2+2+3 grouping
   - Write a melody that phrases across the odd bar
   - Produce a 16-bar 7/8 groove
-prerequisites: [w34-l2-polyrhythm-and-metric-modulation]
+prerequisites: [w34-l2-three-against-two]
 tags: [rhythm, odd-meters, daw, groove]
 songs:
   - { title: "Solsbury Hill", artist: "Peter Gabriel", public_domain: false }
@@ -17,7 +17,7 @@ songs:
 
 # A 7/8 Groove in the DAW
 
-The golden rule for odd-meter grooves: **every layer agrees on the grouping.** If drums say 2+2+3 but the bass says 3+2+2, the groove falls apart. (Sometimes composers do that on purpose, but only once they've mastered the basics.) By reference, Peter Gabriel's "Solsbury Hill" slips a 7/4 bar into a folk-pop song so smoothly most listeners never notice — because everything lines up.
+The golden rule for odd-meter grooves: **every layer agrees on the grouping.** If drums say 2+2+3 but the bass says 3+2+2, the groove falls apart. (Sometimes composers do that on purpose, but only once they've mastered the basics.) By reference, Peter Gabriel's "Solsbury Hill" is a folk-pop song whose verses run mostly in 7/4 (with the odd bar of 4/4), and most listeners never notice, because everything lines up.
 
 ## The groove, layer by layer
 
@@ -30,7 +30,7 @@ The golden rule for odd-meter grooves: **every layer agrees on the grouping.** I
   "title": "7/8 groove in E minor (Em7 – Am | Cmaj7 – D)",
   "bpm": 110,
   "timeSig": "7/8",
-  "key": "G",
+  "key": "Em",
   "tracks": [
     {
       "instrument": "drums",
@@ -61,7 +61,7 @@ Melodies in odd meters feel natural when phrases **span two bars** (14 8ths) and
   "title": "Melody phrased short-short-long (original)",
   "bpm": 110,
   "timeSig": "7/8",
-  "key": "G",
+  "key": "Em",
   "tracks": [
     {
       "instrument": "lead",
@@ -90,11 +90,11 @@ Build in this order and loop constantly: **drums first** (get your body used to 
   "type": "play-melody",
   "title": "Play the bass riff",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 90,
     "timeSig": "7/8",
-    "key": "G",
+    "key": "Em",
     "seq": "E2:8 r:8 E2:8 G2:8 A2:8 r:8 B2:8 | E2:8 r:8 E2:8 G2:8 A2:8 r:8 B2:8 |",
     "showStaff": true,
     "showKeyboard": true,
@@ -113,11 +113,11 @@ Build in this order and loop constantly: **drums first** (get your body used to 
   "type": "play-melody",
   "title": "Play the melody",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 90,
     "timeSig": "7/8",
-    "key": "G",
+    "key": "Em",
     "seq": "B4:q D5:q E5:q. | D5:q B4:q A4:q. | G4:q A4:q B4:q. | A4:q F#4:q E4:q. |",
     "showStaff": true,
     "showKeyboard": true,
@@ -132,57 +132,14 @@ Build in this order and loop constantly: **drums first** (get your body used to 
 
 ```exercise
 {
-  "id": "e3-ear-rhythm-seven",
-  "type": "ear-rhythm",
-  "title": "7/8 rhythm dictation",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "timeSig": "7/8",
-    "bars": 1,
-    "subdivision": "8",
-    "rests": true,
-    "answer": "tap"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e4-ear-chords",
-  "type": "ear-chord",
-  "title": "Chord colours from the groove",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "qualities": [
-      "min7",
-      "maj7",
-      "min",
-      "maj"
-    ],
-    "inversions": [
-      0
-    ],
-    "voicing": "open",
-    "range": [
-      "C3",
-      "C5"
-    ]
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-daw-seven-eight",
+  "id": "e3-daw-seven-eight",
   "type": "daw-task",
   "title": "Your 16-bar 7/8 groove",
-  "instructions": "Choose a grouping (2+2+3 or 3+2+2) and stick to it in every layer. Drums: kick on each group start, snare on at least one. Bass: hit every group start. Chords: rhythm follows the groups. Lead: an 8-bar melody phrased in 2-bar units, entering at bar 9.",
+  "instructions": "Choose a grouping (2+2+3 or 3+2+2) and stick to it in every layer. Drums: kick on each group start, snare on at least one. Bass: hit every group start. Chords: rhythm follows the groups. Lead: an 8-bar melody phrased in 2-bar units, entering at bar 9. Build in the order of the working method above; about 35 minutes (finish the melody next session if you run out of time).",
   "spec": {
     "template": {
       "bpm": 110,
-      "key": "G",
+      "key": "Em",
       "timeSig": "7/8",
       "tracks": [
         {
@@ -253,7 +210,7 @@ Build in this order and loop constantly: **drums first** (get your body used to 
 
 ```exercise
 {
-  "id": "e6-reflect",
+  "id": "e4-reflect",
   "type": "reflect",
   "title": "Did it groove?",
   "spec": {
@@ -261,4 +218,16 @@ Build in this order and loop constantly: **drums first** (get your body used to 
     "minWords": 25
   }
 }
+```
+
+## Ear: odd meters
+
+This lesson opens the last meter rung: all five meters you now know (3/4, 4/4, 6/8, 5/4 and 7/8) in one drill. The drill below runs at your current rhythm rung, so you may meet this one later. When you do, the drums give you the cues. In the quarter-note meters (3/4, 4/4, 5/4) every beat has a kick or a snare, and you count drum hits from one loud kick to the next, as in the first lesson this week. In the 8th-note meters (6/8, 7/8) there is no snare: only kicks, one at the start of each group, with the hi-hat ticking the 8ths. Two even groups of three (kick, two ticks, kick, two ticks) is 6/8; three uneven groups, short-short-long like your groove (2+2+3), is 7/8.
+
+```ladder
+{ "skill": "rhythm", "unlocks": 16, "intro": "Opens the rung with all five meters, 7/8 included; the drill runs at your current rhythm rung." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Bass lines in a band: the bass is the layer that locks a groove to its grouping; the drill runs at your current roots rung." }
 ```

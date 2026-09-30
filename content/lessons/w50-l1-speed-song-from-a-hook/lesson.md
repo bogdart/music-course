@@ -1,65 +1,77 @@
 ---
 id: w50-l1-speed-song-from-a-hook
-title: "Speed Song 1: From a Hook"
+title: "Speed Song A, Session 1: From a Hook"
 week: 50
 order: 1
 phase: p5
 duration_min: 50
 goals:
-  - Take a 2-bar hook to a finished 2-minute song inside one timeboxed session
-  - Harmonise a hook fast by putting chord tones under its downbeats
-  - Build contrast between verse and chorus with register and density, not new ideas
+  - Transcribe a 2-bar seed hook by ear, then harmonise it fast with chord tones under its downbeats
+  - Write an 8-bar chorus and an 8-bar verse inside a timebox
+  - Make the verse contrast with the chorus by register and density, not new material
 prerequisites: [w49-l3-rock-reference-analysis]
 tags: [songwriting, speed, hook, workflow, daw]
 ---
 
-# Speed Song 1: From a Hook
+# Speed Song A, Session 1: From a Hook
 
-You've spent nine weeks taking songs apart. Now reverse the arrow. Transcription taught you that finished songs are made from a small number of decisions: a key, a form, four chords, a hook, a groove, a few layers. Speed songwriting is making those decisions *quickly* and not revisiting them.
+Nine weeks of taking songs apart showed you that a finished song is a small number of decisions: a key, a form, four
+chords, a hook, a groove, a few layers. Speed songwriting is making those decisions *quickly* and not reopening them.
 
-This week: three sessions, three different starting points, one finished 2-minute song each. The finished song matters more than the perfect song.
+This week you write **two** 2-minute songs from two different starting points, **each over two sessions**: song A starts
+from a hook (sessions 1–2), song B from a beat (sessions 3–4). That makes **four 50-minute sessions this week** instead
+of the usual two or three: comparing two starting points only works when both songs get finished. If the week is too
+full, spread the four sessions over ten days rather than cutting a song. The finished song matters more than the perfect
+song.
 
-## The timebox
+## The timebox for session 1
 
-Work to a [[timebox]] — a fixed time per stage. Set a timer on your phone. When it rings, you move on, finished or not.
+Work to a [[timebox]]: a fixed time per stage. Set a timer; when it rings, move on, finished or not.
 
 | Minutes | Stage | Decision |
-|--------|-------|---------|
-| 0–5 | Hook | Play the seed until you know it; set tempo and key |
-| 5–15 | Chorus | Chords under the hook, 8 bars, bass roots |
-| 15–25 | Verse | Same key, lower and sparser; 8 bars |
-| 25–35 | Form + groove | Intro 4, V 8, C 8, V 8, C 8, bridge 4, C 8 = 48 bars; drums throughout |
-| 35–45 | Layers + ending | Add a pad or counter-line to choruses; write a final cadence |
-| 45–50 | Listen once | Note three fixes — and *don't make them today* |
+|---|---|---|
+| 0–10 | Hook | Transcribe the seed, learn it, keep its key and tempo |
+| 10–20 | Chorus | Chords under the hook, 8 bars, bass notes |
+| 20–33 | Verse | Same key, lower and sparser; 8 bars |
+| 33–40 | Listen | Play the 16 bars twice; note what session 2 needs — don't fix it now |
+| 40–50 | Close | Notes for session 2, a short ladder drill |
 
-At 96 BPM, 48 bars is exactly two minutes.
+The DAW timer covers minutes 10–40 (30 minutes).
 
-## The seed
+## The seed — by ear
+
+Your seed hook arrives the way ideas arrive: as sound. Transcribe it first.
 
 ```example
 {
-  "title": "Seed hook (A major, 96 BPM)",
-  "bpm": 96, "timeSig": "4/4", "key": "A",
-  "tracks": [ { "instrument": "lead", "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q" } ],
-  "show": ["staff", "keyboard"],
+  "title": "Seed hook",
+  "bpm": 96,
+  "timeSig": "4/4",
+  "tracks": [{"instrument": "lead", "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q"}],
+  "show": ["staff", "pianoroll"],
+  "hidden": true,
   "loop": true
 }
 ```
 
-## Harmonise it in two minutes
-
-Look at the downbeat notes of the hook: bar 1 starts on C#, bar 2 on B. Now use the transcriber's trick in reverse: which chords in A major contain C#? A, F#m (and C#m). Which contain B? E, Bm (and G#°). Pick one per bar and you have a chorus: **A – E**, or **F#m – E**, or **A – Bm**. Try all three against the hook and keep the one that makes you smile. Don't look for a "best" option — any of them can make a song. Continue with two more bars (often IV and V) and repeat.
-
-For the verse, keep the chords but *change the arrangement*: melody lower, fewer notes, no drums or half the drums. Contrast from density is faster than contrast from new material.
-
 ```exercise
 {
-  "id": "w50l1-warm",
+  "id": "w50l1-seed",
   "type": "ear-melody",
-  "title": "Warm-up: hook-shaped phrases in A (5 min)",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": { "key": "A", "degrees": [1, 2, 3, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "title": "Transcribe the seed",
+  "instructions": "Ten notes. Play them back; then reveal the seed above.",
+  "srs": false,
+  "spec": {
+    "key": "A",
+    "degrees": [1, 2, 3, 4, 5, 6, 7],
+    "answer": "play",
+    "example": {
+      "title": "Seed hook",
+      "bpm": 96,
+      "timeSig": "4/4",
+      "tracks": [{"instrument": "lead", "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q"}]
+    }
+  }
 }
 ```
 
@@ -68,31 +80,40 @@ For the verse, keep the chords but *change the arrangement*: melody lower, fewer
   "id": "w50l1-hook",
   "type": "play-melody",
   "title": "Learn the seed",
-  "spec": { "bpm": 96, "timeSig": "4/4", "key": "A", "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q", "showStaff": true, "showKeyboard": true, "countIn": 1 }
+  "spec": {
+    "bpm": 96,
+    "timeSig": "4/4",
+    "key": "A",
+    "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q",
+    "showStaff": true,
+    "showKeyboard": true,
+    "countIn": 1
+  }
 }
 ```
+
+## Harmonise it in two minutes
+
+Use the transcriber's trick in reverse: look at the note on each bar's downbeat and list the chords of the key that
+contain it. For example, a bar starting on E in A major could take A (A C# E), C#m (C# E G#) or E (E G# B). Do the same for
+each bar of your seed — the quiz below walks you through the first two — pick one chord per bar, try the options against
+the hook and keep the one you like; any of them can make a song. Continue with two more bars (often IV and V) and repeat.
+
+For the verse, keep the chords and *change the arrangement*: melody lower, fewer notes, no drums or half the drums.
+Contrast from density is faster than contrast from new material.
 
 ```exercise
 {
   "id": "w50l1-fit",
   "type": "quiz",
   "title": "Which chords fit the hook?",
-  "spec": { "questions": [
-    { "q": "Bar 1 starts on C#. Which A-major chords contain C#?", "choices": ["A and F#m", "E and Bm", "D and Bm", "E and D"], "answer": 0 },
-    { "q": "Bar 2 starts on B. Which chord contains B?", "choices": ["A", "E", "D", "F#m"], "answer": 1 },
-    { "q": "Your verse needs contrast with the chorus. Fastest option?", "choices": ["Write new chords in a new key", "Same chords, lower melody, sparser arrangement", "Change tempo", "Add a key change"], "answer": 1 }
-  ] }
-}
-```
-
-```exercise
-{
-  "id": "w50l1-prog",
-  "type": "ear-progression",
-  "title": "Hear chorus options in A",
-  "count": 6,
-  "passScore": 0.75,
-  "spec": { "key": "A", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": {
+    "questions": [
+      {"q": "Bar 1 starts on C#. Which A-major chords contain C#?", "choices": ["A and F#m", "E and Bm", "D and Bm", "E and D"], "answer": 0, "explain": "A (A C# E) and F#m (F# A C#) — C#m (C# E G#) has it too."},
+      {"q": "Bar 2 starts on B. Which chord contains B?", "choices": ["A", "E", "D", "F#m"], "answer": 1, "explain": "E (E G# B); Bm has it too. So bar 1 – bar 2 could be A – E, F#m – E or A – Bm: try each against the hook."},
+      {"q": "Your verse needs contrast with the chorus. Fastest option?", "choices": ["New chords in a new key", "Same chords, lower melody, sparser arrangement", "Change the tempo", "Add a key change"], "answer": 1}
+    ]
+  }
 }
 ```
 
@@ -100,33 +121,46 @@ For the verse, keep the chords but *change the arrangement*: melody lower, fewer
 {
   "id": "w50l1-song",
   "type": "daw-task",
-  "title": "The 45-minute song",
+  "title": "Session 1: chorus and verse (16 bars)",
   "spec": {
-    "template": { "bpm": 96, "key": "A", "tracks": [
-      { "instrument": "lead", "seq": "C#5:8 C#5:8 B4:8 A4:8 r:8 E4:8 A4:q | B4:q. C#5:8 B4:q A4:q" },
-      { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" },
-      { "instrument": "drums", "seq": "" }, { "instrument": "pad", "seq": "" } ] },
-    "task": "Follow the timebox table exactly (use a timer). The seed hook is on the lead track — build the chorus around it, then verse, form (48 bars), groove, layers and an ending on A. Stop at 45 minutes even if unfinished, and bounce what you have.",
+    "template": {
+      "bpm": 96,
+      "key": "A",
+      "tracks": [
+        {"instrument": "lead", "seq": ""},
+        {"instrument": "piano", "seq": ""},
+        {"instrument": "bass", "seq": ""},
+        {"instrument": "drums", "seq": ""},
+        {"instrument": "pad", "seq": ""}
+      ]
+    },
+    "task": "Follow the timebox. Put the seed hook on the lead track, build an 8-bar chorus around it (chords on the piano, bass notes), then an 8-bar verse after it. Stop when the 30-minute timer runs out, even if unfinished — session 2 continues this project.",
     "checks": [
-      { "kind": "has-tracks", "instruments": ["lead", "piano", "bass", "drums"] },
-      { "kind": "bars", "min": 48, "max": 56 },
-      { "kind": "in-key", "key": "A", "scale": "major", "allowPassing": true, "track": 0 },
-      { "kind": "repetition", "motifBars": 2, "minRepeats": 3, "allowTransposed": false, "track": 0 },
-      { "kind": "ends-on", "degree": 1, "track": 0 },
-      { "kind": "ends-on", "degree": 1, "track": 2 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare"], "track": 3 },
-      { "kind": "custom", "id": "w50-timebox", "note": "Self-check: finished within the 45-minute timebox." }
+      {"kind": "has-tracks", "instruments": ["lead", "piano", "bass"]},
+      {"kind": "bars", "min": 16},
+      {"kind": "in-key", "key": "A", "scale": "major", "allowPassing": true, "track": 0},
+      {"kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": false, "track": 0},
+      {"kind": "custom", "id": "w50-timebox-a1", "note": "Self-check: I stopped when the timebox ran out."}
     ],
-    "minBars": 48, "maxBars": 56
+    "minBars": 16,
+    "projectRef": "w50-song-a",
+    "timerMin": 30
   }
 }
 ```
 
 ```exercise
 {
-  "id": "w50l1-retro",
+  "id": "w50l1-notes",
   "type": "reflect",
-  "title": "Three fixes, not today",
-  "spec": { "prompt": "Which stage overran its timebox, and why? Write the three fixes you noted in the last five minutes. Which decision did you agonise over that, in hindsight, didn't matter?", "minWords": 40 }
+  "title": "Notes for session 2",
+  "spec": {
+    "prompt": "Which stage overran its timebox, and why? List what session 2 has to add (form, drums, layers, ending) and one decision you agonised over that probably doesn't matter.",
+    "minWords": 30
+  }
 }
+```
+
+```ladder
+{"skill": "melody", "unlocks": 19, "intro": "Two minutes of melody at your own rung before you close the session."}
 ```

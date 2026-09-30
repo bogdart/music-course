@@ -13,7 +13,7 @@ describe('lesson renderer (dev fixture)', () => {
 
   it('parses the fixture without problems', () => {
     expect(lesson.problems).toEqual([]);
-    expect(lesson.blocks.map((b) => b.lang)).toEqual(['example', 'keyboard', 'staff', 'chords', ...Array(9).fill('exercise'), 'example', ...Array(22).fill('exercise')]);
+    expect(lesson.blocks.map((b) => b.lang)).toEqual(['example', 'keyboard', 'staff', 'chords', ...Array(12).fill('exercise'), 'example', ...Array(22).fill('exercise')]);
     // every catalogue type except daw-task has a demo exercise
     const types = new Set(lesson.exercises.map((e) => e.type));
     for (const t of EXERCISE_TYPES) if (t !== 'daw-task') expect(types.has(t), t).toBe(true);
@@ -44,8 +44,8 @@ describe('lesson renderer (dev fixture)', () => {
     expect(screen.getByRole('link', { name: 'next lesson' }).getAttribute('href')).toBe('/lesson/w01-l2-pitch-and-octaves');
     // GFM table
     expect(screen.getAllByRole('table').some((t) => t.closest('.lesson-body') && !t.closest('.exercise'))).toBe(true);
-    // rail lists all 31 exercises
-    expect(within(screen.getByRole('complementary', { name: 'Exercises' })).getAllByRole('listitem')).toHaveLength(31);
+    // rail lists all 34 exercises
+    expect(within(screen.getByRole('complementary', { name: 'Exercises' })).getAllByRole("listitem")).toHaveLength(34);
   });
 
   it('shows an error card for broken blocks instead of crashing', () => {

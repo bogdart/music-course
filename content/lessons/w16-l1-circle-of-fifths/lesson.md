@@ -6,108 +6,130 @@ order: 1
 phase: p2
 duration_min: 45
 goals:
-  - Recite the circle of fifths and the order of sharps and flats
+  - Build D, A and E major (and B♭, E♭, A♭) step by step round the circle of fifths
   - Name any major key from its key signature and vice versa
-  - Play and hear scale degrees in keys beyond C, G and F
+  - Listen for yourself whether roots falling by fifths sound "directed"
 prerequisites: [w15-l3-harmonising-melodies-daw]
 tags: [keys, circle-of-fifths, key-signatures, ear]
 ---
 
 # The Full Circle of Fifths
 
-In week 7 you met G major (one sharp) and F major (one flat) and a first glimpse of the circle of fifths. Now we complete it — all twelve major keys, and a map that tells you which keys are neighbours.
+In week 7 you built G major (one sharp) and F major (one flat) and saw a first glimpse of the [[circle of fifths]]. Today we build the rest of the major keys, and you'll see that the order of sharps and flats isn't something to memorise blindly: it falls out of the major-scale pattern.
 
-## Going round
+## Going up in fifths: one new sharp each time
 
-Start on C and keep going **up a fifth**: C → G → D → A → E → B → F#. Each step adds one sharp. Going **down a fifth** from C: C → F → Bb → Eb → Ab → Db → Gb. Each step adds one flat. At the bottom, F# and Gb are the same keys spelled two ways, and the circle closes.
+Start from G major: **G A B C D E F♯**. Go up a fifth from G and you reach **D**. Play the G major notes starting on D: D E F♯ G A B C. Check the pattern W-W-H-W-W-W-H: everything fits except the end. From B to C is a half step, but a major scale needs a *whole* step there, and then a half step up into D. So C becomes **C♯**, the new leading tone.
 
-| sharps | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|---|
-| key | C | G | D | A | E | B | F# |
-
-| flats | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
-| key | F | Bb | Eb | Ab | Db | Gb |
-
-The sharps always appear in the same order: **F C G D A E B** ("Father Charles Goes Down And Ends Battle"). The flats are the same list backwards: **B E A D G C F**. Two shortcuts:
-
-- **Sharp keys:** the last sharp is degree 7, so the key is a half step above it. (Last sharp C# → key of D.)
-- **Flat keys:** the second-to-last flat *is* the key. (Flats Bb, Eb, Ab → key of Eb.) F major is the one to memorise.
-
-## Why neighbours matter
-
-Keys next to each other on the circle differ by just **one note** (C and G differ only by F vs F#). They share most of their chords, so moving between them sounds smooth — we call them [[closely related keys]]. Keys across the circle (C and F#) share almost nothing and sound worlds apart.
+**D major = D E F♯ G A B C♯**, two sharps.
 
 ```example
 {
-  "title": "C major, then G major — only one note changes (F becomes F#)",
-  "bpm": 100, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 A4:8 B4:8 C5:8 | G3:8 A3:8 B3:8 C4:8 D4:8 E4:8 F#4:8 G4:8 | [C3 E3 G3]:h [B2 D3 G3]:h | [D3 F#3 A3]:h [B2 D3 G3]:h" } ],
+  "title": "G major, then D major: the same notes except C becomes C♯",
+  "bpm": 100, "timeSig": "4/4", "key": "D",
+  "tracks": [ { "instrument": "piano", "seq": "G3:8 A3:8 B3:8 C4:8 D4:8 E4:8 F#4:8 G4:8 | D4:8 E4:8 F#4:8 G4:8 A4:8 B4:8 C#5:8 D5:8 | D5:w" } ],
   "show": ["keyboard", "staff"]
 }
 ```
 
-The circle also runs *inside* your music: roots falling by fifths (like ii → V → I) are walking counter-clockwise round it. That's why that motion sounds so natural.
+The same thing happens at every step: **the new key keeps the old sharps and raises its own 7th degree.**
 
-```example
-{
-  "title": "Roots falling by fifths: Am – Dm – G – C – F (a trip round the circle)",
-  "bpm": 80, "timeSig": "4/4", "key": "C",
-  "tracks": [
-    { "instrument": "piano", "seq": "[E3 A3 C4]:w | [F3 A3 D4]:w | [F3 G3 B3]:w | [E3 G3 C4]:w | [F3 A3 C4]:w" },
-    { "instrument": "bass", "seq": "A1:w | D2:w | G1:w | C2:w | F1:w" }
-  ],
-  "show": ["pianoroll"]
-}
-```
+| key | sharps | new sharp (its 7th) |
+|---|---|---|
+| G | 1 | F♯ |
+| D | 2 | C♯ |
+| A | 3 | G♯ |
+| E | 4 | D♯ |
+| B | 5 | A♯ |
+| F♯ | 6 | E♯ (the white key F, spelled E♯ so every letter appears once) |
 
-```exercise
-{
-  "id": "e1", "type": "key-signature", "title": "Name the key from the signature",
-  "count": 12, "passScore": 0.75,
-  "spec": { "keys": ["C", "G", "D", "A", "E", "B", "F", "Bb", "Eb", "Ab", "Db", "F#"], "prompt": "staff", "answer": "name" }
-}
-```
+So the sharps always arrive in the same order, **F C G D A E B**, and there's a shortcut: the last sharp is the 7th degree, so the key is a half step above it.
+
+## Going down in fifths: one new flat each time
+
+Going down a fifth from C gives F major, which needs B♭: the 4th of a major scale must sit a half step above the 3rd (A to B♭). Down another fifth, B♭ major keeps B♭ and needs its own 4th lowered: **E♭**. **The new flat key keeps the old flats and lowers its own 4th.** Flats arrive as **B E A D G C F**, the sharp order backwards. Shortcut: with two or more flats, the second-to-last flat names the key (B♭, E♭ → E♭ major). F major (one flat) you just remember.
+
+Round the circle: C → G → D → A → E → B → F♯ going up in fifths, C → F → B♭ → E♭ → A♭ → D♭ → G♭ going down. F♯ and G♭ are the same keys spelled two ways, so the circle closes. Neighbours on the circle differ by just one note and share most chords: they're [[closely related keys]].
 
 ```exercise
 {
-  "id": "e2", "type": "key-signature", "title": "How many sharps or flats?",
-  "count": 10, "passScore": 0.75,
-  "spec": { "keys": ["D", "A", "E", "Bb", "Eb", "Ab", "B", "Db"], "prompt": "name", "answer": "count" }
-}
-```
-
-```exercise
-{
-  "id": "e3", "type": "build-scale", "title": "Build new major scales",
-  "instructions": "Use the key signature: add its sharps or flats to the white-key scale.",
-  "count": 8, "passScore": 0.8,
+  "id": "e1", "type": "build-scale", "title": "Build new major scales",
+  "instructions": "Start from the neighbouring key and add its new sharp (raise the 7th) or new flat (lower the 4th).",
+  "count": 6, "passScore": 0.7,
   "spec": { "roots": ["D", "A", "E", "Bb", "Eb", "Ab"], "scale": "major", "prompt": "name" }
 }
 ```
 
 ```exercise
 {
-  "id": "e4", "type": "play-scale", "title": "Major scales in new keys",
-  "instructions": "The app picks a key. Think of its key signature before you start.",
-  "count": 6, "passScore": 0.8,
+  "id": "e2", "type": "play-scale", "title": "Major scales in new keys",
+  "instructions": "The app picks a key. Think of its sharps or flats before you start.",
+  "count": 1, "passScore": 0.7,
   "spec": { "root": "random", "scale": "major", "octaves": 1, "direction": "asc-desc", "hands": "right", "tempo": 60, "metronome": true }
 }
 ```
 
 ```exercise
 {
-  "id": "e5", "type": "ear-note", "title": "Degrees in D major",
-  "instructions": "Degree-hearing doesn't care about the key — 5 still sounds like 5.",
-  "count": 10, "passScore": 0.7,
-  "spec": { "key": "D", "mode": "major", "degrees": [1, 2, 3, 4, 5, 6, 7], "reference": "cadence", "octaves": [3, 4], "instrument": "piano" }
+  "id": "e3", "type": "key-signature", "title": "Name the key from the signature",
+  "count": 12, "passScore": 0.7,
+  "spec": { "keys": ["C", "G", "D", "A", "E", "B", "F", "Bb", "Eb", "Ab", "Db", "F#"], "prompt": "staff", "answer": "name" }
 }
 ```
 
 ```exercise
 {
-  "id": "e6", "type": "ear-progression", "title": "Four chords in any key",
+  "id": "e4", "type": "key-signature", "title": "How many sharps or flats?",
   "count": 8, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V", "vi"], "style": "pad-bass" }
+  "spec": { "keys": ["D", "A", "E", "Bb", "Eb", "Ab", "B", "Db"], "prompt": "name", "answer": "count" }
 }
+```
+
+## Roots falling by fifths: judge for yourself
+
+The circle also shows up inside progressions. ii – V – I is two falls of a fifth (D → G → C): counter-clockwise round the circle. Musicians often say root movement by fifths sounds especially "directed", as if each chord points to the next. Don't take that on trust: listen to the same four chords in two orders.
+
+```example
+{
+  "title": "A: roots falling by fifths (Am – Dm – G – C)",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[E3 A3 C4]:w | [F3 A3 D4]:w | [D3 G3 B3]:w | [E3 G3 C4]:w" },
+    { "instrument": "bass", "seq": "A1:w | D2:w | G1:w | C2:w" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+```example
+{
+  "title": "B: the same four chords, the middle two swapped (Am – G – Dm – C)",
+  "bpm": 80, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[E3 A3 C4]:w | [D3 G3 B3]:w | [F3 A3 D4]:w | [E3 G3 C4]:w" },
+    { "instrument": "bass", "seq": "A1:w | G1:w | D2:w | C2:w" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+Same chords, same voicings, same first and last chord: only the order in the middle differs.
+
+```exercise
+{
+  "id": "e5", "type": "reflect", "title": "Which order sounds more directed?",
+  "spec": { "prompt": "Listen to A and B a few times. Which one sounds more like it's heading somewhere, and where did you feel that? If you can't tell a difference yet, say so: that's a real answer.", "minWords": 15 }
+}
+```
+
+## Ear corner: the last octave rung, and degrees in any octave
+
+This lesson opens the octave ladder's final rung, which mixes everything: any register, one or two octaves apart, and every kind of wrong note, from a half step off to the fifth trap. It also opens the next degree rung, where the note may sound an octave below the cadence: same degree, lower register, so it leans on your octave work. Both drills run at your current rung, which may still be an earlier one; take them slowly and use the "Listen again" aids.
+
+```ladder
+{ "skill": "octave", "unlocks": 14, "intro": "Opens the last rung: any register, any gap, any kind of wrong note. The drill runs at your current octave rung." }
+```
+
+```ladder
+{ "skill": "degrees", "unlocks": 17, "intro": "Opens: any key, and the note may sound an octave below the cadence. The drill runs at your current degree rung." }
 ```

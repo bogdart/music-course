@@ -70,6 +70,21 @@ A lesson link: [next lesson](../w01-l2-pitch-and-octaves/).
 ```
 
 ```exercise
+{ "id": "ear-octave-together", "type": "ear-octave", "count": 3, "seed": 2,
+  "spec": { "notes": ["C", "E"], "octaves": [3, 4], "mode": "together", "gap": [1], "foils": [1, 6, 11] } }
+```
+
+```exercise
+{ "id": "ear-octave-match", "type": "ear-octave", "count": 3, "seed": 2,
+  "spec": { "notes": ["C", "E"], "octaves": [3, 4], "mode": "match", "gap": [1], "foils": [6] } }
+```
+
+```exercise
+{ "id": "ear-octave-find", "type": "ear-octave", "count": 3, "seed": 2,
+  "spec": { "notes": ["C", "E", "A"], "octaves": [2, 5], "mode": "find" } }
+```
+
+```exercise
 { "id": "ear-interval-1", "type": "ear-interval", "count": 3, "seed": 3,
   "spec": { "intervals": ["M2", "M3", "P5"], "direction": "asc", "root": "random", "range": ["C3", "C5"] } }
 ```

@@ -15,9 +15,13 @@ tags: [setup, keyboard, pitch, ear]
 
 # Welcome
 
-This course takes you from zero to writing and decoding real songs in one year. Each week has three short lessons: one for **understanding**, one for **hands and ears**, and one for **making something**. Every session starts with a short review the app picks for you, so what you learn keeps coming back until it sticks.
+This course takes you from zero to writing and decoding real songs in one year. Each week has three short lessons: one for **understanding**, one for **hands and ears**, and one for **making something**. Every session starts with a short warm-up the app picks for you, so what you learn keeps coming back until it sticks.
 
-You don't need talent to start. You need a keyboard, headphones or speakers, and about 30–50 minutes three times a week.
+You don't need talent to start. You need a keyboard, headphones or speakers, and about 30–50 minutes three times a week. You never need to sing: every answer is given on the keyboard or with a click.
+
+## How ear training works here
+
+Hearing is a skill that grows at its own speed, so ear drills don't follow the calendar. Each ear skill is a **ladder** of small steps (rungs). Lessons open new rungs; you climb to the next one only when the current one is solid. So a drill in a lesson is always at *your* level, even if the lesson has moved on. You'll meet the first ladder next lesson.
 
 ## Step 1: make a sound
 
@@ -35,7 +39,7 @@ The highlighted keys are groups of **two** black keys. The white key just to the
 
 ## Step 3: high and low
 
-Moving **right** makes the sound **higher**; moving **left** makes it **lower**. How high or low a sound is called its [[pitch]]. Listen to the same kind of note played low, then high:
+Moving **right** makes the sound **higher**; moving **left** makes it **lower**. How high or low a sound is called its [[pitch]]. Listen to the same kind of note played low, then in the middle, then high:
 
 ```example
 {
@@ -46,7 +50,9 @@ Moving **right** makes the sound **higher**; moving **left** makes it **lower**.
 }
 ```
 
-Low notes feel heavy and dark, like a big drum or a man's deep voice. High notes feel light and bright, like birdsong. Don't worry if the difference seems obvious — we start with the obvious on purpose and make it subtler every week.
+Low notes feel heavy and dark, like a big drum or a deep voice. High notes feel light and bright, like birdsong. This difference is easy on purpose: we start with what everyone hears and make it subtler step by step.
+
+In the two listening drills below, each question first plays **middle C** as a reference, then one mystery C. Compare it with the reference: is the mystery note the low one or the high one?
 
 ## Drills
 
@@ -63,7 +69,7 @@ Low notes feel heavy and dark, like a big drum or a man's deep voice. High notes
     { "q": "What do we call how high or low a sound is?", "choices": ["volume", "pitch", "tempo"], "answer": 1 },
     { "q": "Middle C is also called…", "choices": ["C4", "C1", "C8"], "answer": 0 }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -97,7 +103,7 @@ Low notes feel heavy and dark, like a big drum or a man's deep voice. High notes
   "title": "High or low? (big gap)",
   "instructions": "You'll hear one C. Is it the low one (2) or the high one (5)?",
   "count": 8,
-  "passScore": 0.8,
+  "passScore": 0.75,
   "spec": { "notes": ["C"], "octaves": [2, 5], "mode": "which-octave" }
 }
 ```
@@ -109,7 +115,7 @@ Low notes feel heavy and dark, like a big drum or a man's deep voice. High notes
   "title": "High or low? (smaller gap)",
   "instructions": "Same idea, but the notes are closer together now: low (3) or high (5)?",
   "count": 8,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "notes": ["C"], "octaves": [3, 5], "mode": "which-octave" }
 }
 ```
@@ -123,4 +129,4 @@ Low notes feel heavy and dark, like a big drum or a man's deep voice. High notes
 }
 ```
 
-That's lesson one. Next time we'll find out why three Cs, which sound so different, share one name.
+That's lesson one. Next time: why three Cs that sound so different share one name — and what you can honestly expect to hear of that in the first weeks.

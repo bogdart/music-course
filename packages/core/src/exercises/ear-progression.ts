@@ -34,7 +34,7 @@ export const earProgression: ExerciseDefinition<'ear-progression'> = {
     } else {
       numerals = pickProgression(rng, pool, s.length ?? 4, tonic, mode);
       const voiced = voiceProgression(numerals, tonic, mode, s.inversions?.length ? s.inversions : [0], rng);
-      audio = progressionSnippet(voiced, { style: s.style ?? 'block', bpm: s.bpm ?? 72, ...(s.instrument ? { instrument: s.instrument } : {}) });
+      audio = progressionSnippet(voiced, { style: s.style ?? 'block', bpm: s.bpm ?? (s.style === 'band' ? 96 : 72), ...(s.instrument ? { instrument: s.instrument } : {}) });
     }
     const symbols = numerals.map((r) => symbolOf(r, tonic, mode));
     const keyName = `${tonic} ${mode}`;

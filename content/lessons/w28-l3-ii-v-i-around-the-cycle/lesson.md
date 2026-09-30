@@ -6,9 +6,9 @@ order: 3
 phase: p4
 duration_min: 50
 goals:
-  - Play shell ii–V–Is in all 12 major keys following the cycle of fourths
-  - Play a minor ii–V–i (m7b5 – V7 – m6)
-  - Recognise ii–V–I by ear in major and minor
+  - Follow the cycle of fourths through all twelve major keys
+  - Play shell ii–V–Is in the first six keys of the cycle (C to Db)
+  - Hear ii7–V7–Imaj7 as a progression and write four keys of the cycle in the DAW
 prerequisites: [w28-l2-rootless-voicings]
 tags: [jazz, ii-v-i, keys, ear, daw]
 songs:
@@ -17,11 +17,13 @@ songs:
 
 # ii–V–I Around the Cycle
 
-Jazz tunes change key constantly — often every two bars. "All the Things You Are" (Kern, 1939; reference only) is the famous example: its melody stays simple while ii–V–Is carry it through roughly five keys. You cannot think "D minor 7, which is D F A C…" in real time. You need your hands to *know* the ii–V–I shape in every key. Today is that workout.
+Jazz tunes change key often, sometimes every two bars. "All the Things You Are" (Kern, 1939; by reference) is the famous example: its melody stays simple while ii–V–Is carry it through several keys. You cannot think "D minor 7 is D F A C…" in real time. Your hands need to *know* the ii–V–I shape in every key. Today starts that workout; it continues for weeks.
 
-## The route: cycle of fourths
+## The route: the cycle of fourths
 
-Move the key **up a fourth** each time — C, F, Bb, Eb, Ab, Db, Gb, B, E, A, D, G — and you visit all 12. Bonus: the old tonic is always the new key's V (C is the V of F, F is the V of Bb…), so the whole cycle feels like one long chain of resolutions. Using alternating shells from the shell-voicing lesson, the hand stays in one area of the keyboard the whole time. Aim for accuracy first; speed comes from repetition over the coming weeks, not from forcing it today.
+Move the key **up a fourth** each time: C, F, B♭, E♭, A♭, D♭, G♭, B, E, A, D, G, and you have visited all twelve. (It is the circle of fifths from week 16, walked the other way.) There is a bonus: the old tonic is always the new key's V. C is the V of F, F is the V of B♭, so the whole cycle feels like one long chain of arrivals.
+
+With alternating shells from the first lesson this week, the hand stays in one area of the keyboard.
 
 ```example
 {
@@ -34,33 +36,23 @@ Move the key **up a fourth** each time — C, F, Bb, Eb, Ab, Db, Gb, B, E, A, D,
 }
 ```
 
-```example
-{
-  "title": "Shell ii–V–Is: B, E, A, D, G (then back to C)",
-  "bpm": 90, "timeSig": "4/4",
-  "tracks": [
-    { "instrument": "piano", "seq": "[C#3 E3 B3]:w | [F#2 E3 A#3]:w | [B2 D#3 A#3]:w | [F#2 E3 A3]:w | [B2 D#3 A3]:w | [E2 D#3 G#3]:w | [B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C#3 G#3]:w | [E2 D3 G3]:w | [A2 C#3 G3]:w | [D2 C#3 F#3]:w | [A2 C3 G3]:w | [D2 C3 F#3]:w | [G2 B2 F#3]:w |" }
-  ],
-  "show": ["keyboard"]
-}
+Today: the first six keys by hand. Say the key name out loud before each ii chord. Accuracy first; speed comes from coming back to this over the next weeks, not from forcing it today. The other six keys you will spell today and play later.
+
+## Hearing ii–V–I
+
+The ear rung this lesson opens uses four seventh chords of a major key: Imaj7, ii7, V7 and **vi7**. vi7 is the one you have not met in sevenths yet: in C it is Am7 (A C E G), the relative minor with its seventh. It often sits just before ii7: Imaj7–vi7–ii7–V7 is the classic jazz "turnaround". Listen to that loop.
+
+```chords
+{ "key": "C", "bars": ["Cmaj7", "Am7", "Dm7", "G7"], "roman": true, "play": true, "bpm": 80 }
 ```
 
-Gb is the one we skipped in the drills: Abm7 – Db7 – Gbmaj7. Spell it yourself below.
+**What you will actually hear.** Imaj7 is the chord that sounds like home, and V7 the one that clearly wants to go there. The hard pair is **ii7 against vi7**: both are soft minor sevenths, so their colour will not separate them. Follow the bass instead. ii7 sits one step above home and leans forward towards V7. vi7 sits a sixth above home (or a third below it) and still sounds close to home, because it shares three notes with Imaj7 (A C E G against C E G B). Compare the two, one after the other, each resolving home.
 
-## Minor ii–V–i
-
-In a minor key, ii is half-diminished (m7b5) and V is a dominant 7th borrowed from harmonic minor. The tonic is often m6 (or plain minor). This is the [[minor ii–V–i]], the backbone of every minor-key standard.
-
-```example
-{
-  "title": "Minor ii–V–i in A: Bm7b5 – E7 – Am6",
-  "bpm": 70, "timeSig": "4/4", "key": "Am",
-  "tracks": [
-    { "instrument": "piano", "seq": "[B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C3 F#3]:w | [A2 C3 F#3]:w |" }
-  ],
-  "show": ["keyboard", "staff"]
-}
+```chords
+{ "key": "C", "bars": ["Dm7", "Cmaj7", "Am7", "Cmaj7"], "roman": true, "play": true, "bpm": 72 }
 ```
+
+The drill also changes key every question. Each one begins with a short cadence and names the key, so find home first, then judge each chord against it. The drill below runs at your current progressions rung, so you may meet this four-chord choice only later.
 
 ## Drills
 
@@ -68,10 +60,10 @@ In a minor key, ii is half-diminished (m7b5) and V is a dominant 7th borrowed fr
 {
   "id": "e1-cycle-a",
   "type": "play-melody",
-  "title": "Cycle part 1: C F Bb Eb Ab Db",
-  "instructions": "Slow is fine. Say the key name out loud before each ii chord.",
-  "count": 6, "passScore": 0.7,
-  "spec": { "bpm": 60, "timeSig": "4/4", "seq": "[D3 F3 C4]:w | [G2 F3 B3]:w | [C3 E3 B3]:w | [G2 F3 Bb3]:w | [C3 E3 Bb3]:w | [F2 E3 A3]:w | [C3 Eb3 Bb3]:w | [F2 Eb3 A3]:w | [Bb2 D3 A3]:w | [F2 Eb3 Ab3]:w | [Bb2 D3 Ab3]:w | [Eb2 D3 G3]:w | [Bb2 Db3 Ab3]:w | [Eb2 Db3 G3]:w | [Ab2 C3 G3]:w | [Eb2 Db3 Gb3]:w | [Ab2 C3 Gb3]:w | [Db2 C3 F3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
+  "title": "Cycle: C, F, Bb",
+  "instructions": "Left hand shells. Say the key name before each ii chord.",
+  "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "seq": "[D3 F3 C4]:w | [G2 F3 B3]:w | [C3 E3 B3]:w | [G2 F3 Bb3]:w | [C3 E3 Bb3]:w | [F2 E3 A3]:w | [C3 Eb3 Bb3]:w | [F2 Eb3 A3]:w | [Bb2 D3 A3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
 }
 ```
 
@@ -79,69 +71,64 @@ In a minor key, ii is half-diminished (m7b5) and V is a dominant 7th borrowed fr
 {
   "id": "e2-cycle-b",
   "type": "play-melody",
-  "title": "Cycle part 2: B E A D G",
-  "count": 6, "passScore": 0.7,
-  "spec": { "bpm": 60, "timeSig": "4/4", "seq": "[C#3 E3 B3]:w | [F#2 E3 A#3]:w | [B2 D#3 A#3]:w | [F#2 E3 A3]:w | [B2 D#3 A3]:w | [E2 D#3 G#3]:w | [B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C#3 G#3]:w | [E2 D3 G3]:w | [A2 C#3 G3]:w | [D2 C#3 F#3]:w | [A2 C3 G3]:w | [D2 C3 F#3]:w | [G2 B2 F#3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
+  "title": "Cycle: Eb, Ab, Db",
+  "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "seq": "[F2 Eb3 Ab3]:w | [Bb2 D3 Ab3]:w | [Eb2 D3 G3]:w | [Bb2 Db3 Ab3]:w | [Eb2 Db3 G3]:w | [Ab2 C3 G3]:w | [Eb2 Db3 Gb3]:w | [Ab2 C3 Gb3]:w | [Db2 C3 F3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
 }
 ```
 
 ```exercise
 {
-  "id": "e3-build-gb-and-minor",
+  "id": "e3-cycle-quiz",
+  "type": "quiz-input",
+  "title": "Find your way around the cycle",
+  "passScore": 0.7,
+  "spec": { "questions": [
+    { "q": "The key a fourth above Eb?", "answer": ["Ab"], "kind": "note" },
+    { "q": "The key after Gb in the cycle of fourths?", "answer": ["B", "Cb"], "kind": "note" },
+    { "q": "The ii chord in A major (root only)?", "answer": ["B"], "kind": "note" },
+    { "q": "The V chord in E major (root only)?", "answer": ["B"], "kind": "note" }
+  ] }
+}
+```
+
+```exercise
+{
+  "id": "e4-build-other-six",
   "type": "build-chord",
-  "title": "The missing key and the minor ii–V",
-  "count": 6, "passScore": 0.8,
-  "spec": { "chords": ["Abm7", "Db7", "Gbmaj7", "Bm7b5", "E7", "Am6"], "root": "given", "prompt": "symbol" }
+  "title": "Spell the other six keys",
+  "instructions": "ii–V–I in Gb, B and E, then A, D and G. Spelling only; playing them is for the coming weeks.",
+  "count": 18, "passScore": 0.7,
+  "spec": { "chords": ["Abm7", "Db7", "Gbmaj7", "C#m7", "F#7", "Bmaj7", "F#m7", "B7", "Emaj7", "Bm7", "E7", "Amaj7", "Em7", "A7", "Dmaj7", "Am7", "D7", "Gmaj7"], "root": "given", "prompt": "symbol" }
 }
 ```
 
-```exercise
-{
-  "id": "e4-ear-major-ii-v",
-  "type": "ear-progression",
-  "title": "ii–V–I in random major keys",
-  "count": 8, "passScore": 0.75,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "ii", "IV", "V7", "vi"], "style": "pad-bass" }
-}
+## Ear: ii–V–I
+
+```ladder
+{ "skill": "progressions", "unlocks": 18, "intro": "Opens the jazz-sevenths rung (Imaj7, ii7, V7 and vi7, a new key each time); the drill runs at your current progressions rung." }
 ```
+
+## Make it
 
 ```exercise
 {
-  "id": "e5-ear-minor-prog",
-  "type": "ear-progression",
-  "title": "Minor-key progressions with V7",
-  "count": 6, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "V7", "bVI", "bVII"], "style": "block" }
-}
-```
-
-```exercise
-{
-  "id": "e6-ear-m7b5",
-  "type": "ear-chord",
-  "title": "Is it the minor ii (m7b5)?",
-  "count": 10, "passScore": 0.8,
-  "spec": { "qualities": ["min7", "dom7", "m7b5"], "inversions": [0], "voicing": "open", "range": ["C2", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e7-daw-cycle",
+  "id": "e5-daw-cycle",
   "type": "daw-task",
-  "title": "Twelve keys in the DAW",
-  "instructions": "Write ii–V–I shells (or rootless voicings) through the cycle, one chord per bar, and a bass track with roots on beat 1. 36 bars covers all 12 keys; at least the first 12 bars (four keys) are required. Loop it at 100 bpm and play along.",
+  "title": "Four keys of the cycle in the DAW",
+  "instructions": "Write ii–V–I shells (or rootless voicings) through the cycle, one chord per bar, starting in C: C, F, Bb, Eb = 12 bars. Add a bass track with the root on beat 1. Loop it and play along with your left hand. About 25 minutes.",
   "spec": {
-    "template": { "bpm": 100, "timeSig": "4/4", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" } ] },
-    "task": "ii–V–I in at least four consecutive keys of the cycle (C, F, Bb, Eb…), piano + bass.",
+    "template": { "bpm": 100, "key": "C", "timeSig": "4/4", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "" } ] },
+    "task": "12 bars: ii–V–I in C, F, Bb and Eb (the first four keys of the cycle), piano + bass.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "bass"] },
-      { "kind": "bars", "min": 12, "max": 36 },
-      { "kind": "note-count", "min": 36, "max": 200, "track": 0 },
+      { "kind": "bars", "min": 12, "max": 12 },
+      { "kind": "note-count", "min": 36, "max": 96, "track": 0 },
       { "kind": "range", "low": "C2", "high": "E4", "track": 0 },
-      { "kind": "custom", "id": "keys-follow-cycle", "note": "Self-check: each new key is a fourth above the last (C, F, Bb, Eb, Ab, Db, Gb, B, E, A, D, G)." }
+      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["ii7", "V7", "Imaj7", "v7", "I7", "IVmaj7", "i7", "IV7", "bVIImaj7", "iv7", "bVII7", "bIIImaj7"], "barsPerChord": 1, "minRatio": 0.75, "track": 1 },
+      { "kind": "custom", "id": "half-step-lines", "note": "Self-check: the shells alternate 1-3-7 and 1-7-3, so the upper notes move by a half step or stay put." }
     ],
-    "minBars": 12, "maxBars": 36
+    "minBars": 12, "maxBars": 12
   }
 }
 ```

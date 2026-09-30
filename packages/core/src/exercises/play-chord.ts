@@ -103,7 +103,10 @@ export const playChord: ExerciseDefinition<'play-chord'> = {
     const display = chord.label + (roman && !chord.label.includes('(') ? ` (${roman})` : '');
     return {
       type: 'play-chord', symbol: chord.symbol, rootPc: chord.pitchClasses[0]!, pitchClasses: chord.pitchClasses, bassPc,
-      required: req.required, allowed: req.allowed, forbidden: req.forbidden, voicing, display, midis,
+      // a slash bass that is not a chord tone (C/A) is part of the chord: required and allowed
+      required: chord.bass && bassPc !== null && !req.required.includes(bassPc) ? [...req.required, bassPc] : req.required,
+      allowed: chord.bass && bassPc !== null && !req.allowed.includes(bassPc) ? [...req.allowed, bassPc] : req.allowed,
+      forbidden: req.forbidden.filter((p) => !(chord.bass && p === bassPc)), voicing, display, midis,
       ...(s.sequence ? { position: pos, sequence: s.chords } : {}),
       prompt: `Play ${display}${invText}${vText}. Hold the notes together.`,
       solution: `${chord.symbol}: ${midis.map((m) => midiToNote(m, { flats })).join(' ')}`,

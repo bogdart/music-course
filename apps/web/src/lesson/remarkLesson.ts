@@ -5,7 +5,7 @@
  *  - [[term]] / [[term|label]] → <span class="mc-term" data-term>
  *  - {{note:C#4}} → <span class="mc-note" data-value>,  {{chord:Cmaj7}} → <span class="mc-chord" data-value>
  */
-export const BLOCK_LANGS = ['example', 'exercise', 'keyboard', 'staff', 'chords'] as const;
+export const BLOCK_LANGS = ['example', 'exercise', 'keyboard', 'staff', 'chords', 'ladder'] as const;
 
 interface MdNode {
   type: string;

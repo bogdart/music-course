@@ -7,6 +7,7 @@ import type { ContentStore } from './content.js';
 import type { Db } from './db.js';
 import { ProgressService } from './progress.js';
 import { contentRoutes } from './routes/content.js';
+import { ladderRoutes } from './routes/ladder.js';
 import { progressRoutes } from './routes/progress.js';
 import { projectRoutes } from './routes/projects.js';
 import { settingsRoutes } from './routes/settings.js';
@@ -41,6 +42,7 @@ export function createApp(deps: AppDeps): Hono {
   api.route('/content', contentRoutes(content, progress));
   api.route('/progress', progressRoutes(progress));
   api.route('/srs', srsRoutes(db, content, sessions));
+  api.route('/ladder', ladderRoutes(db, content, sessions));
   api.route('/projects', projectRoutes(db));
   api.route('/settings', settingsRoutes(db));
   api.all('*', (c) => c.json({ error: `No API route ${c.req.method} ${c.req.path}` }, 404));

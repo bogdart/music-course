@@ -80,6 +80,15 @@ export class ContentStore {
     };
   }
 
+  /** ```ladder blocks of a lesson: which skill each opens, up to which rung. */
+  ladderUnlocks(id: string): { skill: string; unlocks: number }[] {
+    const l = this.content.lessons.get(id);
+    if (!l) return [];
+    return l.blocks
+      .filter((b) => b.lang === 'ladder' && b.valid)
+      .map((b) => b.data as { skill: string; unlocks: number });
+  }
+
   hasLesson(id: string): boolean {
     return this.data.lessons.has(id);
   }

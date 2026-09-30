@@ -1,12 +1,22 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { LADDERS } from '@music/core';
 import { useProgressStore } from '../stores/progress';
+import { useLadderStore } from '../stores/ladder';
+
+/** Open-but-not-mastered rungs in one skill from which the dashboard asks for practice before new lessons. */
+export const LAG_LIMIT = 3;
 
 export function Dashboard() {
   const { summary, curriculum, refresh, error } = useProgressStore();
+  const ladder = useLadderStore((s) => s.state);
+  const loadLadder = useLadderStore((s) => s.load);
   useEffect(() => {
     void refresh();
-  }, [refresh]);
+    void loadLadder();
+  }, [refresh, loadLadder]);
+  const open = ladder?.skills.filter((s) => s.unlocked > 0) ?? [];
+  const lagging = open.filter((s) => s.behind >= LAG_LIMIT).sort((a, b) => b.behind - a.behind);
   // resume the lesson last worked on unless it is finished; otherwise the first unfinished lesson
   const last = summary?.lastLessonId ?? null;
   const resuming = !!last && summary?.lessons[last]?.status !== 'completed';
@@ -24,21 +34,55 @@ export function Dashboard() {
             <>
               <h2>{next.title}</h2>
               <div className="muted small">Week {next.week}</div>
-              <Link className="btn primary big" to={`/lesson/${next.id}`}>
-                {last ? 'Continue lesson' : 'Start lesson'} →
-              </Link>
+              {lagging.length > 0 && (
+                <p className="lag-warning small" data-testid="lag-warning">
+                  Your ear is behind the lessons: {lagging.map((s) => `${LADDERS[s.skill].title} (${s.behind} rungs)`).join(', ')}. Practise before
+                  starting new material — the lessons will wait.
+                </p>
+              )}
+              <div className="row">
+                {lagging.length > 0 && (
+                  <Link className="btn primary big" to="/practice">
+                    Practise first →
+                  </Link>
+                )}
+                <Link className={`btn ${lagging.length ? '' : 'primary big'}`} to={`/lesson/${next.id}`}>
+                  {last ? 'Continue lesson' : 'Start lesson'} →
+                </Link>
+              </div>
             </>
           ) : (
             <p>No lessons available yet.</p>
           )}
         </div>
-        <div className="card">
-          <div className="muted small">Ear-training review</div>
-          <h2>{summary?.srs.due ?? 0} due</h2>
-          <div className="muted small">{summary?.srs.total ?? 0} cards in your deck · session {summary?.srs.session ?? '–'}</div>
+        <div className="card ear-skills" data-testid="ear-skills">
+          <div className="muted small">Ear skills</div>
+          {open.length === 0 ? (
+            <p className="small">Ear ladders open as you go through the lessons.</p>
+          ) : (
+            <ul className="skill-list">
+              {open.map((s) => {
+                const mastered = s.rungs.filter((r) => r.mastered).length;
+                const total = LADDERS[s.skill].rungs.length;
+                return (
+                  <li key={s.skill} className={s.behind >= LAG_LIMIT ? 'behind' : ''}>
+                    <span>{LADDERS[s.skill].title}</span>
+                    <span className="muted small">
+                      rung {s.current} · {mastered}/{s.unlocked} open mastered
+                    </span>
+                    <div className="bar" title={`${mastered} mastered, ${s.unlocked} open, ${total} in total`}>
+                      <span style={{ width: `${(100 * mastered) / total}%` }} />
+                      <span className="open" style={{ width: `${(100 * (s.unlocked - mastered)) / total}%` }} />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <Link className="btn" to="/practice">
             Practice
           </Link>
+          {(summary?.srs.due ?? 0) > 0 && <div className="muted small">+ {summary?.srs.due} review card(s) due</div>}
         </div>
         <div className="card">
           <div className="muted small">Progress</div>

@@ -251,7 +251,15 @@ const dawTask: Answerer = async (page, section, it, correct) => {
 
 export const ANSWERERS: Record<string, Answerer> = {
   'ear-note': choiceByValue,
-  'ear-octave': choiceByValue,
+  'ear-octave': async (page, section, it, correct) => {
+    if (it.mode !== 'find') return choiceByValue(page, section, it, correct);
+    // play the heard note in another octave (right) or a half step off (wrong)
+    const m = it.midis[0] as number;
+    const target = 60 + (m % 12) + (correct ? 0 : 1);
+    await claimFocus(section);
+    await midiNotes(page, [target]);
+    await section.locator('.find-note').getByRole('button', { name: /^Check / }).click();
+  },
   'ear-interval': choiceByValue,
   'ear-chord': choiceByValue,
   'ear-scale': choiceByValue,
@@ -265,6 +273,7 @@ export const ANSWERERS: Record<string, Answerer> = {
     }
     await claimFocus(section);
     await midiNotes(page, [48 + it.rootPc + (correct ? 12 : 1)]);
+    await section.locator('.find-note').getByRole('button', { name: /^Check / }).click();
   },
   'ear-progression': (_p, section, it, correct) => fillSlots(section, it.palette, it.slots, correct),
   'roman-analysis': (_p, section, it, correct) => fillSlots(section, it.palette, it.slots, correct),

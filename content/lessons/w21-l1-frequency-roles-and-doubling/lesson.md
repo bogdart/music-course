@@ -7,8 +7,8 @@ phase: p3
 duration_min: 45
 goals:
   - Give each layer its own register so the arrangement sounds clear, not muddy
-  - Use spread chord voicings that leave room for bass and melody
-  - Strengthen a melody by doubling it in octaves or on a second instrument
+  - Use spread chord voicings that leave room for the bass and the melody
+  - Strengthen a melody by doubling it an octave lower on a second instrument
 prerequisites: [w20-l3-drum-arrangement-with-fills-daw]
 tags: [arrangement, layering, voicing, daw, ear]
 songs: []
@@ -16,16 +16,16 @@ songs: []
 
 # Frequency Roles and Doubling
 
-Your songs now have four or five tracks. When they all play in the same register, they blur into mud — you can't hear the melody, the bass loses punch, the chords go grey. The fix is not mixing, it is **arranging**: give each layer its own space. These are its [[frequency roles]]:
+Your songs now have four or five tracks. When they all play in the same register they blur together — you can't pick out the melody, the bass loses its punch, the chords go grey ("mud"). The fix is not a mixing trick, it is **arranging**: give each layer its own floor of the building. These are its [[frequency roles]]:
 
-| Register | Roughly | Who lives there |
+| Floor | Roughly | Who lives there |
 |---|---|---|
 | **Low** | E1–C3 | Bass, kick |
-| **Low-mid** | C3–E4 | Chords, pads (spread voicings) |
+| **Low-mid** | C3–E4 | Chords, pads |
 | **Mid-high** | E4–C6 | Lead melody, counter-melodies |
-| **Top** | above C6 | Hi-hats, cymbals, shimmer |
+| **Top** | above C6 | Hi-hats, cymbals |
 
-Two rules follow. **Keep chords below the melody** — the top chord note should sit under the melody's lowest note. **Keep chords above the bass** — close triads below C3 turn muddy, so spread them: root low, third and fifth higher.
+Two rules follow. **Keep chords below the melody**: the top chord note sits under the melody's lowest note. **Keep chords above the bass**: packed triads below C3 sound muddy, so use a [[spread voicing]] — root low, the other notes spread out above it (C3 G3 E4 instead of C3 E3 G3).
 
 Listen to the same four bars twice. First everything is squeezed around C3–E4:
 
@@ -44,7 +44,7 @@ Listen to the same four bars twice. First everything is squeezed around C3–E4:
 }
 ```
 
-Now each layer has its own floor of the building:
+Now each layer has its own floor. Look at the piano roll: four separate bands of notes.
 
 ```example
 {
@@ -61,19 +61,38 @@ Now each layer has its own floor of the building:
 }
 ```
 
+```exercise
+{
+  "id": "play-spread-voicings-v2",
+  "type": "play-notes",
+  "title": "Play spread voicings",
+  "instructions": "Play each voicing as one chord, left hand on the low note, right hand on the other two: C, G, Am, F.",
+  "spec": { "prompt": "names", "notes": [["C3", "G3", "E4"], ["B2", "G3", "D4"], ["C3", "A3", "E4"], ["C3", "A3", "F4"]], "ordered": false, "key": "C" }
+}
+```
+
+## Hearing through a band
+
+Frequency roles are also how you *listen*. In a full band the bass lives on the bottom floor: to find it, ignore the melody on top and follow the lowest, darkest line. This lesson opens the roots rung that plays a small band — drums, a pad, a bass and a melody — arranged exactly like the second example. The drill runs at your current roots rung, which may still be an earlier one. (The same band arrives in the progression drill next lesson — one hard band rung at a time.)
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Opens: find the bass notes inside a full band — listen to the bottom floor. The drill runs at your current roots rung." }
+```
+
 ## Doubling
 
-[[Doubling]] means two instruments play the same line. In **unison** it thickens the sound; **in octaves** it makes the line bigger and more present without adding new notes. Chorus melodies are often doubled an octave lower by strings or a synth — the verse then sounds smaller by comparison, which is exactly the contrast you want.
+[[Doubling]] means a second instrument plays the same line. Chorus melodies are often doubled **an octave lower** by strings or a synth: the line gets bigger and more present, and the verse (without the double) sounds smaller by comparison — exactly the contrast you want.
+
+Honest expectation: to you the octave double may not sound like "one fatter melody" yet. It may sound like a second, lower tune that happens to move in step with the first — a new layer. That is normal while octave hearing is still developing (the octave ladder works on exactly this). Listen for the effect anyway: with the double, the chorus feels heavier and fuller.
 
 ```example
 {
-  "title": "Lead doubled an octave lower by strings",
+  "title": "Lead alone (bars 1-4), then doubled an octave lower by strings (bars 5-8)",
   "bpm": 92, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "lead", "seq": "E5:q. D5:8 C5:q G4:q | B4:q. C5:8 D5:h | C5:q. B4:8 A4:q C5:q | A4:w" },
-    { "instrument": "strings", "seq": "E4:q. D4:8 C4:q G3:q | B3:q. C4:8 D4:h | C4:q. B3:8 A3:q C4:q | A3:w" },
-    { "instrument": "bass", "seq": "C2:h C2:h | G1:h G1:h | A1:h A1:h | F1:h F1:h" },
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8" }
+    { "instrument": "lead", "seq": "E5:q. D5:8 C5:q G4:q | B4:q. C5:8 D5:h | C5:q. B4:8 A4:q C5:q | A4:w | E5:q. D5:8 C5:q G4:q | B4:q. C5:8 D5:h | C5:q. B4:8 A4:q C5:q | A4:w" },
+    { "instrument": "strings", "seq": "r:w | r:w | r:w | r:w | E4:q. D4:8 C4:q G3:q | B3:q. C4:8 D4:h | C4:q. B3:8 A3:q C4:q | A3:w" },
+    { "instrument": "bass", "seq": "C2:h C2:h | G1:h G1:h | A1:h A1:h | F1:h F1:h | C2:h C2:h | G1:h G1:h | A1:h A1:h | F1:h F1:h" }
   ],
   "show": ["pianoroll"],
   "loop": false
@@ -82,37 +101,14 @@ Now each layer has its own floor of the building:
 
 ```exercise
 {
-  "id": "register-quiz",
+  "id": "register-quiz-v2",
   "type": "quiz",
-  "passScore": 0.8,
   "spec": { "questions": [
-    { "q": "Where should the top note of your chord voicing sit?", "choices": ["Above the melody", "Below the melody's lowest note", "In the bass register", "It doesn't matter"], "answer": 1 },
-    { "q": "Close triads below C3 tend to sound...", "choices": ["Bright", "Muddy", "Thin", "Out of tune"], "answer": 1 },
-    { "q": "Doubling a melody an octave lower mainly makes it...", "choices": ["Harmonically richer", "Bigger and more present", "Quieter", "Faster"], "answer": 1 },
-    { "q": "Which pair shares the low register?", "choices": ["Bass and kick", "Lead and hi-hat", "Pad and crash", "Snare and lead"], "answer": 0 }
+    { "q": "Where should the top note of your chord voicing sit?", "choices": ["Above the melody", "Below the melody's lowest note"], "answer": 1 },
+    { "q": "Packed triads below C3 tend to sound...", "choices": ["Bright", "Muddy"], "answer": 1 },
+    { "q": "C3 G3 E4 is a spread voicing of which chord?", "choices": ["C major", "E minor", "G major"], "answer": 0, "explain": "The notes are C, E and G — only spread over more than an octave." },
+    { "q": "Doubling a melody an octave lower adds...", "choices": ["New pitch names", "No new pitch names, but more weight"], "answer": 1, "explain": "Same note names an octave apart. Your ear may still hear it as a second line for now — the weight is there either way." }
   ] }
-}
-```
-
-```exercise
-{
-  "id": "play-spread-voicings",
-  "type": "play-notes",
-  "title": "Play spread voicings",
-  "instructions": "Play each voicing as one chord: C3 G3 E4 (C), then B2 G3 D4 (G), C3 A3 E4 (Am), C3 A3 F4 (F). Here: the C voicing.",
-  "count": 6,
-  "spec": { "prompt": "names", "notes": ["C3", "G3", "E4"], "ordered": false, "key": "C" }
-}
-```
-
-```exercise
-{
-  "id": "ear-open-voicings",
-  "type": "ear-chord",
-  "title": "Chord quality in open voicing",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": { "qualities": ["maj", "min", "maj7", "min7", "dom7"], "inversions": [0], "voicing": "open", "range": ["C2", "C5"] }
 }
 ```
 
@@ -127,7 +123,7 @@ Now each layer has its own floor of the building:
       { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w" },
       { "instrument": "bass", "seq": "C3:h C3:h | G2:h G2:h | A2:h A2:h | F2:h F2:h" }
     ] },
-    "task": "This is the crowded version. Move every part to its own register: lead up an octave, pad into spread voicings with the top note below the melody, bass down an octave. Don't change any pitch classes - only octaves and voicings.",
+    "task": "This is the crowded version. Give each part its own floor: move the lead up an octave, turn the pad into spread voicings with the top note below the melody, move the bass down an octave. Change only octaves and voicings, never the note names.",
     "checks": [
       { "kind": "range", "low": "E4", "high": "C6", "track": 0 },
       { "kind": "range", "low": "B2", "high": "G4", "track": 1 },
@@ -152,7 +148,7 @@ Now each layer has its own floor of the building:
       { "instrument": "bass", "seq": "C2:h C2:h | G1:h G1:h | A1:h A1:h | F1:h F1:h" },
       { "instrument": "strings", "seq": "" }
     ] },
-    "task": "Double the lead an octave lower on the strings track. Then try a second version: strings double only bars 3-4. Keep the version you prefer and note why in the next exercise.",
+    "task": "Copy the lead into the strings track and move it down an octave. Then try a second version where the strings double only bars 3-4. Keep the version you prefer.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["lead", "pad", "bass", "strings"] },
       { "kind": "range", "low": "G3", "high": "E5", "track": 3 },
@@ -161,16 +157,5 @@ Now each layer has its own floor of the building:
     ],
     "minBars": 4, "maxBars": 4
   }
-}
-```
-
-```exercise
-{
-  "id": "ear-melody-f-layers",
-  "type": "ear-melody",
-  "title": "Dictation in F",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "F", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 6, "rhythm": "simple", "answer": "play" }
 }
 ```

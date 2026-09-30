@@ -8,7 +8,7 @@ duration_min: 40
 goals:
   - Count 5/4 and 7/8 as groups of 2s and 3s
   - Tap and play grooves in 5/4 (3+2) and 7/8 (2+2+3)
-  - Identify the meter of a short loop by ear
+  - "Open the meter rung 'Four or five?': 5/4 against 4/4"
 prerequisites: [w33-l3-build-and-drop-daw, w04-l2-time-signatures-and-counting]
 tags: [rhythm, meter, odd-meters, ear]
 songs:
@@ -78,6 +78,36 @@ In 7/8 the pulse is the 8th note, grouped unevenly. The most common grouping is 
 
 Listen for the kick and snare: they mark the start of each group (1, 3, 5), so your body can find the pattern without counting to seven.
 
+**What you will probably hear at first.** An odd bar often sounds like "a normal bar that trips" or "one beat too short". That is a perfectly good first perception, and it is how you spot odd meters in songs.
+
+## Four or five?
+
+The first odd-meter ear rung is a two-way choice: **4/4 or 5/4?** This lesson opens it; the drill below runs at your current rhythm rung, so you may meet it later. Here is how to count it, without guessing:
+
+1. **Count beats, not hi-hat ticks.** In the drill, every beat has one drum hit (kick or snare); the hi-hat ticks twice as fast in between. Count only the drum hits.
+2. **Start on the loudest kick.** Beat 1 of every bar is a loud kick; the other kicks are softer. Count "1" on the loud kick and keep counting drum hits until the next loud kick: you get to 4 or to 5.
+3. **A shortcut at the bar line.** In the drill's 4/4 pattern, kick and snare alternate (kick–snare–kick–snare), so a snare comes right before the loud kick. In 5/4 the fifth beat is a soft kick, so you hear **two kicks in a row**: the soft one on 5, then the loud one on 1.
+
+Listen to both, one after the other, and count along.
+
+```example
+{
+  "title": "Four bars of 4/4",
+  "bpm": 100, "timeSig": "4/4",
+  "tracks": [ { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 |" } ],
+  "show": ["pianoroll"]
+}
+```
+
+```example
+{
+  "title": "Four bars of 5/4",
+  "bpm": 100, "timeSig": "5/4",
+  "tracks": [ { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 hihat:8 |" } ],
+  "show": ["pianoroll"]
+}
+```
+
 ## Drills
 
 ```exercise
@@ -87,7 +117,7 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
   "title": "Tap 5/4 group starts",
   "instructions": "Tap beats 1 and 4 only — the start of each group.",
   "count": 6,
-  "passScore": 0.8,
+  "passScore": 0.7,
   "spec": {
     "bpm": 120,
     "timeSig": "5/4",
@@ -105,7 +135,7 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
   "type": "rhythm-tap",
   "title": "Tap 7/8 as 2+2+3",
   "count": 6,
-  "passScore": 0.8,
+  "passScore": 0.7,
   "spec": {
     "bpm": 100,
     "timeSig": "7/8",
@@ -124,7 +154,7 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
   "title": "Play the 5/4 vamp",
   "instructions": "Left hand. Say '1-2-3-1-2' out loud.",
   "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "bpm": 110,
     "timeSig": "5/4",
@@ -143,31 +173,15 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
 
 ```exercise
 {
-  "id": "e4-ear-rhythm-five",
-  "type": "ear-rhythm",
-  "title": "Rhythms in 5/4",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "timeSig": "5/4",
-    "bars": 1,
-    "subdivision": "8",
-    "rests": true,
-    "answer": "choose"
-  }
-}
-```
-
-```exercise
-{
-  "id": "e5-listen-meter",
+  "id": "e4-listen-meter",
   "type": "listen",
   "title": "What's the meter?",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "example": {
       "bpm": 110,
       "timeSig": "7/8",
+      "hidden": true,
       "tracks": [
         {
           "instrument": "drums",
@@ -203,10 +217,10 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
 
 ```exercise
 {
-  "id": "e6-meter-quiz",
+  "id": "e5-meter-quiz",
   "type": "quiz",
   "title": "Grouping",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
     "questions": [
       {
@@ -244,21 +258,8 @@ Listen for the kick and snare: they mark the start of each group (1, 3, 5), so y
 }
 ```
 
-```exercise
-{
-  "id": "e7-ear-modes-odd",
-  "type": "ear-scale",
-  "title": "Mode check (odd-meter tunes love dorian)",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": {
-    "scales": [
-      "dorian",
-      "natural-minor",
-      "phrygian",
-      "mixolydian"
-    ],
-    "play": "melody"
-  }
-}
+## Ear: four or five?
+
+```ladder
+{ "skill": "rhythm", "unlocks": 15, "intro": "Opens the meter rung 'Four or five?' (4/4 against 5/4); the drill runs at your current rhythm rung." }
 ```

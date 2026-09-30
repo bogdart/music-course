@@ -6,7 +6,7 @@ order: 3
 phase: p3
 duration_min: 50
 goals:
-  - Capture a 2-bar motif by improvising over a looping progression
+  - Capture a 2-bar motif by improvising (or step-entering) over a looping progression
   - Build an 8-bar chorus from it (A A' A B) that fits the chords and has one climax
   - Finish the chorus with a bass line and drums that lock together
 prerequisites: [w18-l2-range-climax-hook]
@@ -21,7 +21,7 @@ Today you write a real chorus. The method below is the one you will use for the 
 ## The hook workflow
 
 1. **Loop the chords.** Put the chorus progression on a 2-bar loop and let it play.
-2. **Improvise badly, a lot.** Record 6–8 passes of anything — hum first, then find it on the keyboard. Don't judge yet.
+2. **Improvise badly, a lot.** Record 6–8 passes of anything on the keyboard (or step-enter little ideas). Don't judge yet.
 3. **Pick the best 2 bars.** Listen back and keep the passage you remember afterwards. That is your [[motif]].
 4. **Shape it A A' A B.** Copy, change the ending, copy, write a payoff with the [[climax]].
 5. **Check it against the chords.** Strong beats (1 and 3) should mostly land on chord tones.
@@ -58,8 +58,6 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
   "type": "play-chord",
   "title": "I-V-vi-IV in F",
   "instructions": "F - C - Dm - Bb, smooth inversions around F3-D4.",
-  "count": 8,
-  "passScore": 0.8,
   "spec": { "chords": ["F", "C", "Dm", "Bb"], "inversion": "any", "sequence": true, "bpm": 80 }
 }
 ```
@@ -68,37 +66,42 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
 
 ```exercise
 {
-  "id": "daw-capture-motif",
+  "id": "daw-capture-motif-ref",
   "type": "daw-task",
-  "title": "Step 1-3: capture a 2-bar motif",
+  "title": "Steps 1-3: capture a 2-bar motif",
   "spec": {
     "template": { "bpm": 98, "key": "F", "tracks": [
-      { "instrument": "piano", "seq": "[F3 A3 C4]:w | [E3 G3 C4]:w" },
-      { "instrument": "lead", "seq": "" }
+      { "instrument": "piano", "seq": "[F3 A3 C4]:w | [E3 G3 C4]:w | [F3 A3 D4]:w | [F3 Bb3 D4]:w | [F3 A3 C4]:w | [E3 G3 C4]:w | [F3 A3 D4]:w | [F3 Bb3 D4]:w" },
+      { "instrument": "lead", "seq": "" },
+      { "instrument": "bass", "seq": "" },
+      { "instrument": "drums", "seq": "" }
     ] },
-    "task": "Loop these 2 bars (F - C). Record at least six improvised passes on the lead track in a scratch project, then keep only your favourite 2 bars here. Use at least two note lengths and leave some space.",
+    "projectRef": "w18-chorus",
+    "task": "This project holds the whole chorus (you will keep working in it for all three steps). Loop bars 1-2 (F - C) and improvise on the lead track: record six or more passes live, or step-enter ideas one after another. Keep only your favourite 2 bars, in bars 1-2. Use at least two note lengths and leave some space. About 10 minutes.",
     "checks": [
-      { "kind": "bars", "min": 2, "max": 2 },
       { "kind": "in-key", "key": "F", "scale": "major", "track": 1 },
       { "kind": "note-count", "min": 4, "max": 12, "track": 1 },
       { "kind": "uses-rhythm", "values": ["8", "q", "h"], "minDistinct": 2, "track": 1 }
     ],
-    "minBars": 2, "maxBars": 2
+    "minBars": 8, "maxBars": 8
   }
 }
 ```
 
 ```exercise
 {
-  "id": "daw-build-chorus",
+  "id": "daw-build-chorus-ref",
   "type": "daw-task",
-  "title": "Step 4-5: build the 8-bar chorus",
+  "title": "Steps 4-5: build the 8-bar chorus",
   "spec": {
     "template": { "bpm": 98, "key": "F", "tracks": [
       { "instrument": "piano", "seq": "[F3 A3 C4]:w | [E3 G3 C4]:w | [F3 A3 D4]:w | [F3 Bb3 D4]:w | [F3 A3 C4]:w | [E3 G3 C4]:w | [F3 A3 D4]:w | [F3 Bb3 D4]:w" },
-      { "instrument": "lead", "seq": "" }
+      { "instrument": "lead", "seq": "" },
+      { "instrument": "bass", "seq": "" },
+      { "instrument": "drums", "seq": "" }
     ] },
-    "task": "Paste your motif into bars 1-2. Bars 3-4: repeat with a new ending that fits Dm-Bb. Bars 5-6: exact repeat. Bars 7-8: payoff containing your highest note. Keep it between C4 and F5.",
+    "projectRef": "w18-chorus",
+    "task": "Your motif is in bars 1-2. Bars 3-4: repeat it with a new ending that fits Dm - Bb. Bars 5-6: exact repeat of bars 1-2. Bars 7-8: a payoff containing your single highest note. Keep it between C4 and F5; check that beats 1 and 3 mostly land on chord tones. About 15 minutes.",
     "checks": [
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "in-key", "key": "F", "scale": "major", "track": 1 },
@@ -114,7 +117,7 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
 
 ```exercise
 {
-  "id": "daw-lock-groove",
+  "id": "daw-lock-groove-ref",
   "type": "daw-task",
   "title": "Step 6: bass and drums",
   "spec": {
@@ -124,13 +127,15 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
       { "instrument": "bass", "seq": "" },
       { "instrument": "drums", "seq": "" }
     ] },
-    "task": "Paste your chorus melody onto the lead track. Program a drum beat with backbeat snare, then write a root bass line whose notes start where the kick hits.",
+    "projectRef": "w18-chorus",
+    "task": "Program a drum beat with kick on 1 and 3 (add 3-and if you like), snare on 2 and 4 and eighth-note hi-hats. Then write a root bass line whose notes start where the kick hits, like the example. About 15 minutes - if time runs out, finish it at the start of next session (the project is saved).",
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "lead", "bass", "drums"] },
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "kickOnBeats": [1, 3], "snareOnBeats": [2, 4], "track": 3 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "V", "vi", "IV", "I", "V", "vi", "IV"], "barsPerChord": 1, "minRatio": 0.9, "track": 2 },
-      { "kind": "range", "low": "E1", "high": "C3", "track": 2 }
+      { "kind": "plays-progression", "progression": ["I", "V", "vi", "IV"], "barsPerChord": 1, "mode": "roots", "track": 2 },
+      { "kind": "range", "low": "E1", "high": "C3", "track": 2 },
+      { "kind": "custom", "id": "bass-on-kick", "note": "Self-check: every bass note starts on a kick hit." }
     ],
     "minBars": 8, "maxBars": 8
   }
@@ -139,21 +144,16 @@ Look at the kick (beats 1, 3 and 3-and) and the bass: same rhythm. That lock is 
 
 ## Ear
 
-```exercise
-{
-  "id": "ear-dictation-g",
-  "type": "ear-melody",
-  "title": "One-octave dictation in G (degrees)",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "G", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 6, "rhythm": "simple", "answer": "degrees" }
-}
+Your payoff in bars 7-8 probably jumps somewhere. This lesson opens the melody rung with leaps; the drill runs at your current melody rung:
+
+```ladder
+{ "skill": "melody", "unlocks": 16, "intro": "Opens: six-note melodies that may leap up to a 6th. The drill runs at your current melody rung." }
 ```
 
 ```exercise
 {
   "id": "reflect-chorus",
   "type": "reflect",
-  "spec": { "prompt": "Play your chorus three times in a row. Which bar is the strongest? Which would you rewrite tomorrow? Save the project - you will reuse this chorus in week 24.", "minWords": 25 }
+  "spec": { "prompt": "Play your chorus three times in a row. Which bar is the strongest? Which would you rewrite tomorrow? The project is saved as your \"week 18 chorus\". In week 24 you will reharmonise it, re-entering the melody in a fresh project so this one stays as it is.", "minWords": 25 }
 }
 ```

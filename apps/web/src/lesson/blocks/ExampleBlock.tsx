@@ -41,7 +41,8 @@ export function ExampleBlock({ data }: { data: ExampleData }) {
           <strong>{data.title ?? 'Example'}</strong>
           <span className="muted small">
             {' '}
-            · {snippet.bpm} bpm{data.key ? ` · ${data.key}` : ''} · {data.tracks.map((t) => t.instrument).join(' + ')}
+            {/* a hidden (dictation) example gives nothing away: tempo and key appear after Reveal */}
+            {hide ? '· play-only' : <>· {snippet.bpm} bpm{data.key ? ` · ${data.key}` : ''} · {data.tracks.map((t) => t.instrument).join(' + ')}</>}
             {data.loop ? ' · loop' : ''}
           </span>
         </figcaption>

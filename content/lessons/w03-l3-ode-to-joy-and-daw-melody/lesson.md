@@ -19,6 +19,14 @@ songs:
 
 Beethoven's "Ode to Joy" (1824) is one of the most famous melodies ever written, and it uses almost nothing: five neighbouring notes, moving mostly by **step**. That's the lesson hiding inside it — a great melody doesn't need big jumps or many notes. It needs a clear shape and a good ending.
 
+## Degrees without the drone
+
+Last lesson's degree drill held a low C underneath. This lesson opens the rung that takes it away: after the home run, the note sounds alone, and you keep home "in your ear" from the run. It's noticeably harder — expect to drop a little when you get there. The drill runs at your current rung, so if the drone rungs aren't solid yet you'll stay with them first.
+
+```ladder
+{ "skill": "degrees", "unlocks": 3, "intro": "Opens \"1, 2 or 3?\" without the drone; the drill runs at your current rung." }
+```
+
 ## The tune in degrees
 
 Your right hand sits on C–G (thumb on C, one finger per key), so every finger *is* a degree: thumb = 1, index = 2, middle = 3, ring = 4, little = 5.
@@ -34,16 +42,24 @@ Your right hand sits on C–G (thumb on C, one finger per key), so every finger 
 
 Degrees of the first line: **3 3 4 5 | 5 4 3 2 | 1 1 2 3 | 3 2 2**. Now compare the ends of the first two lines:
 
-- Line 1 ends on **2** — restless. It sounds like a question.
+- Line 1 ends on **2** — unfinished. It sounds like a question.
 - Line 2 ends on **1** — home. It sounds like the answer.
 
-Same notes, different ending, totally different feeling. That's the power of degrees: you now know *why* the second line feels finished. (In bar 12, the melody dips to a low G — degree 5 below the tonic. Stretch your thumb down, or shift your hand for that one note.)
+Same notes, different ending, a different feeling — you heard exactly this with Twinkle last lesson. (In bar 12 the melody dips to a low G, degree 5 *below* home. Stretch your thumb down, or shift your hand for that one note.)
 
-The long-short rhythm in bars 4 and 8 (`q.` then `8`) is a dotted quarter plus an eighth: hold the first note a bit longer, then hurry to the next. You'll learn the maths next week — for now, copy what you hear.
+The long-short rhythm in bars 4 and 8 is a dotted quarter plus an eighth: hold the first note a bit longer, then hurry to the next. You'll learn the maths next week — for now, copy what you hear.
+
+## Writing degrees down
+
+This lesson also opens a melody rung where you **write** what you hear as numbers instead of playing it back: three notes from 1, 2 and 3. You'll meet it once the echo rungs before it are solid. If it helps, find the notes on the keyboard first, then translate C D E into 1 2 3.
+
+```ladder
+{ "skill": "melody", "unlocks": 5, "intro": "Opens \"Write 3 notes as degrees\"; the drill runs at your current melody rung." }
+```
 
 ## Composing with five notes
 
-In the DAW today you'll write your own 4-bar melody with the same tools Beethoven used here: degrees 1–5, mostly steps, ending on 1. Some tips that always work:
+In the DAW today you'll write your own 4-bar melody with the same tools Beethoven used: degrees 1–5, mostly steps, ending on 1. Tips that always work:
 
 - **Start on 1, 3 or 5** — they sound stable.
 - Move mostly by step; allow one small leap.
@@ -51,17 +67,6 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
 - **End on 1**, ideally with a long note. Try ending on 2 first, then fix it — hear the difference.
 
 ## Drills
-
-```exercise
-{
-  "id": "e1",
-  "type": "ear-note",
-  "title": "1, 2 or 3? (review)",
-  "count": 12,
-  "passScore": 0.75,
-  "spec": { "key": "C", "mode": "major", "degrees": [1, 2, 3], "reference": "scale", "octaves": [4], "instrument": "piano" }
-}
-```
 
 ```exercise
 {
@@ -76,7 +81,7 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
     { "q": "The highest degree used in the tune is…", "answer": ["5"], "kind": "number" },
     { "q": "Which finger plays degree 4 (thumb = 1)?", "answer": ["4"], "kind": "number" }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -96,21 +101,9 @@ In the DAW today you'll write your own 4-bar melody with the same tools Beethove
   "id": "e4",
   "type": "play-melody",
   "title": "Ode to Joy, complete",
-  "instructions": "All four lines. Watch for the low G3 in bar 12.",
+  "instructions": "All four lines. Watch for the low G3 in bar 12. The soft background is made of chords — you'll learn about them in week 6; for now just play along.",
   "passScore": 0.7,
   "spec": { "bpm": 80, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h | D4:q D4:q E4:q C4:q | D4:q E4:8 F4:8 E4:q C4:q | D4:q E4:8 F4:8 E4:q D4:q | C4:q D4:q G3:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h | [B2 D3 G3]:w | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:h [B2 D3 G3]:h | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h" } }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-melody",
-  "title": "Degrees by ear",
-  "instructions": "Four notes using 1, 2 and 3. Enter the degrees.",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3], "length": 4, "rhythm": "quarters", "answer": "degrees", "reference": "scale" }
 }
 ```
 

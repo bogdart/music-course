@@ -4,11 +4,11 @@ title: Rootless Voicings
 week: 28
 order: 2
 phase: p4
-duration_min: 45
+duration_min: 40
 goals:
-  - Play A-form (3-5-7-9) and B-form (7-9-3-5) rootless voicings
-  - Connect ii–V–I in C and F with rootless voicings over a bass line
-  - Hear all four 7th colours in open voicings
+  - Play A-form (3-5-7-9) and B-form (7-9-3-5) rootless voicings in C
+  - Connect a ii–V–I by alternating the two forms over a bass line
+  - Review spread-out seventh colours and bass lines by ear
 prerequisites: [w28-l1-shell-voicings]
 tags: [jazz, voicings, rootless, keyboard]
 songs:
@@ -17,88 +17,85 @@ songs:
 
 # Rootless Voicings
 
-When a bassist is playing, the pianist's root is redundant — it doubles the bass and muddies the low end. So pianists in the Bill Evans tradition drop it and use that finger for a 9th or 13th. The result is the [[rootless voicing]]: four notes, rich colour, and a sound you will recognise on hundreds of records. (Listen to Evans's trio recordings, e.g. "Waltz for Debby", by reference: notice the left hand never thumps a root.)
+When a bass player is on the gig, the pianist's root is redundant: it doubles the bass and thickens the low end. So pianists in the Bill Evans tradition leave it out and use that finger for the 9th. The result is the [[rootless voicing]]: four notes, rich colour. (By reference: in Evans's trio recordings, e.g. "Waltz for Debby", the left hand almost never thumps a root.) You already did this in last week's neo-soul loop; today it gets a system.
 
 ## A-form and B-form
 
-Two standard shapes:
+A rootless voicing uses the 3rd, 5th, 7th and 9th. Stack them in one of two orders:
 
-- **A-form: 3–5–7–9** (3rd on the bottom). Dm9 = F A C E.
-- **B-form: 7–9–3–5** (7th on the bottom). Dm9 = C E F A.
+- **A-form: 3–5–7–9**, 3rd at the bottom. Dm9 = F A C E.
+- **B-form: 7–9–3–5**, 7th at the bottom. Dm9 = C E F A.
 
-On a dominant chord, swap the 5th for the **13th** — it sounds more modern and leads better. So G13 in A-form = B E F A (3–13–7–9), and in B-form = F A B E (7–9–3–13).
+| Chord | A-form (3 5 7 9) | B-form (7 9 3 5) |
+|-------|------------------|------------------|
+| Dm9 | F A C E | C E F A |
+| G9 | B D F A | F A B D |
+| Cmaj9 | E G B D | B D E G |
 
-Like shells, you **alternate** forms through a ii–V–I, so the hand stays in one small area:
+As with shells, you **alternate** forms through a ii–V–I, so the hand stays in one place. Only two notes move at each change: C→B and E→D, then F→E and A→G.
 
 ```example
 {
   "title": "ii–V–I in C: A-form → B-form → A-form, with bass",
   "bpm": 70, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "piano", "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 E4]:w | [E3 G3 B3 D4]:w | [E3 G3 B3 D4]:w |" },
+    { "instrument": "piano", "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 D4]:w | [E3 G3 B3 D4]:w | [E3 G3 B3 D4]:w |" },
     { "instrument": "bass", "seq": "D2:w | G2:w | C2:w | C2:w |" }
   ],
   "show": ["keyboard", "staff"]
 }
 ```
 
-Only one or two notes move per chord change: C→B, then F→E, A→G, E→D. Without the bass the chords sound "floating"; with it, they lock in. Try muting the bass track in your head as you listen.
+**An honest listening note.** Play these voicings without the bass and they sound vague: F A C E on its own could be an F major 7 as easily as a Dm9. With the bass underneath they lock into place. The bass decides what the chord *is*; the piano adds the colour.
 
 ```keyboard
-{ "range": ["C3", "C5"], "highlight": ["F3", "A3", "B3", "E4"], "labels": "names", "colors": { "F3": "seventh", "A3": "other", "B3": "third", "E4": "other" } }
+{ "range": ["C3", "C5"], "highlight": ["F3", "A3", "B3", "D4"], "labels": "names", "colors": { "F3": "seventh", "A3": "other", "B3": "third", "D4": "fifth" } }
 ```
 
-```example
-{
-  "title": "ii–V–I in F: B-form → A-form → B-form",
-  "bpm": 70, "timeSig": "4/4", "key": "F",
-  "tracks": [
-    { "instrument": "piano", "seq": "[F3 A3 Bb3 D4]:w | [E3 A3 Bb3 D4]:w | [E3 G3 A3 C4]:w | [E3 G3 A3 C4]:w |" },
-    { "instrument": "bass", "seq": "G2:w | C2:w | F2:w | F2:w |" }
-  ],
-  "show": ["keyboard"]
-}
-```
+That is B-form G9: F (7th), A (9th), B (3rd), D (5th). Later you may hear pianists swap the D for an E (the 13th); that is an option for another day.
 
 ## Drills
 
 ```exercise
 {
-  "id": "e1-build-rich",
+  "id": "e1-build-ninths",
   "type": "build-chord",
-  "title": "Spell the rich chords",
-  "count": 6, "passScore": 0.8,
-  "spec": { "chords": ["Dm9", "G13", "Cmaj9", "Gm9", "C13", "Fmaj9"], "root": "given", "prompt": "symbol" }
+  "title": "Spell the ninth chords",
+  "count": 6, "passScore": 0.7,
+  "spec": { "chords": ["Dm9", "G9", "Cmaj9", "Fmaj9", "Am9", "C9"], "root": "given", "prompt": "symbol", "key": "C" }
 }
 ```
 
 ```exercise
 {
-  "id": "e2-rootless-c",
+  "id": "e2-a-form",
+  "type": "play-chord",
+  "title": "A-form: 3rd at the bottom",
+  "instructions": "No root. Play 3–5–7–9 from the bottom.",
+  "passScore": 0.7,
+  "spec": { "chords": ["Dm9", "G9", "Cmaj9"], "voicing": "rootless-a", "sequence": true, "key": "C" }
+}
+```
+
+```exercise
+{
+  "id": "e3-b-form",
+  "type": "play-chord",
+  "title": "B-form: 7th at the bottom",
+  "instructions": "No root. Play 7–9–3–5 from the bottom.",
+  "passScore": 0.7,
+  "spec": { "chords": ["Dm9", "G9", "Cmaj9"], "voicing": "rootless-b", "sequence": true, "key": "C" }
+}
+```
+
+```exercise
+{
+  "id": "e4-rootless-c",
   "type": "play-melody",
-  "title": "Rootless ii–V–I in C over bass",
-  "count": 6, "passScore": 0.75,
-  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 E4]:w | [E3 G3 B3 D4]:w | r:w |", "showStaff": false, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "bass", "seq": "D2:w | G2:w | C2:w | r:w |" } }
-}
-```
-
-```exercise
-{
-  "id": "e3-rootless-f",
-  "type": "play-melody",
-  "title": "Rootless ii–V–I in F over bass",
-  "count": 6, "passScore": 0.75,
-  "spec": { "bpm": 60, "timeSig": "4/4", "key": "F", "seq": "[F3 A3 Bb3 D4]:w | [E3 A3 Bb3 D4]:w | [E3 G3 A3 C4]:w | r:w |", "showStaff": false, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "bass", "seq": "G2:w | C2:w | F2:w | r:w |" } }
-}
-```
-
-```exercise
-{
-  "id": "e4-ear-four-open",
-  "type": "ear-chord",
-  "title": "Four colours, open voicing",
-  "count": 12, "passScore": 0.75,
-  "spec": { "qualities": ["maj7", "min7", "dom7", "m7b5"], "inversions": [0], "voicing": "open", "range": ["C2", "C5"] }
+  "title": "Rootless ii–V–I over the bass",
+  "instructions": "A-form, B-form, A-form. Move only the notes that have to move.",
+  "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "[F3 A3 C4 E4]:w | [F3 A3 B3 D4]:w | [E3 G3 B3 D4]:w | r:w |", "showStaff": false, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "bass", "seq": "D2:w | G2:w | C2:w | r:w |" } }
 }
 ```
 
@@ -107,33 +104,22 @@ Only one or two notes move per chord change: C→B, then F→E, A→G, E→D. Wi
   "id": "e5-rootless-quiz",
   "type": "quiz",
   "title": "Rootless logic",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "questions": [
-    { "q": "Why leave the root out?", "choices": ["It is out of key", "The bass already plays it, and the finger is freed for a colour tone", "Roots are illegal in jazz", "To make the chord minor"], "answer": 1 },
-    { "q": "A-form Dm9 from the bottom is…", "choices": ["D F A C", "F A C E", "C E F A", "E F A C"], "answer": 1 },
-    { "q": "On a dominant 7th, the 5th is often replaced by…", "choices": ["the 11th", "the 13th", "the root", "the b3"], "answer": 1 },
-    { "q": "B-form G13 from the bottom is F A B E. Which note is the 3rd?", "choices": ["F", "A", "B", "E"], "answer": 2 }
+    { "q": "Why leave the root out?", "choices": ["It is out of key", "The bass already plays it, and the finger is freed for the 9th", "Roots are not allowed in jazz", "To make the chord minor"], "answer": 1 },
+    { "q": "A-form Dm9 from the bottom is…", "choices": ["D F A C", "F A C E", "C E F A", "E F A C"], "answer": 1, "explain": "A-form = 3 5 7 9: F A C E." },
+    { "q": "B-form G9 from the bottom is F A B D. Which note is the 3rd?", "choices": ["F", "A", "B", "D"], "answer": 2 },
+    { "q": "Heard without any bass, F A C E could be…", "choices": ["only Dm9", "Dm9 or Fmaj7", "only G9", "a diminished chord"], "answer": 1, "explain": "Rootless voicings need the bass to say which chord they are." }
   ] }
 }
 ```
 
-```exercise
-{
-  "id": "e6-daw-rootless",
-  "type": "daw-task",
-  "title": "Rootless comping over a walking root",
-  "instructions": "The bass is provided. On the piano track, write rootless voicings for Dm9 | G13 | Cmaj9 | Cmaj9, repeated. Try hitting each chord on beat 1 and again on the 'and' of 2.",
-  "spec": {
-    "template": { "bpm": 100, "key": "C", "timeSig": "4/4", "tracks": [ { "instrument": "piano", "seq": "" }, { "instrument": "bass", "seq": "D2:q F2:q A2:q C3:q | G2:q B2:q D3:q F2:q | C2:q E2:q G2:q B2:q | C3:q G2:q E2:q D2:q | D2:q F2:q A2:q C3:q | G2:q B2:q D3:q F2:q | C2:q E2:q G2:q B2:q | C2:w |" } ] },
-    "task": "8 bars of rootless voicings (4 notes each) between E3 and E4.",
-    "checks": [
-      { "kind": "bars", "min": 8, "max": 8 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": false, "track": 0 },
-      { "kind": "range", "low": "E3", "high": "E4", "track": 0 },
-      { "kind": "note-count", "min": 32, "max": 96, "track": 0 },
-      { "kind": "custom", "id": "no-roots-in-piano", "note": "Self-check: the piano never plays D on Dm9, G on G13 or C on Cmaj9.", "track": 0 }
-    ],
-    "minBars": 8, "maxBars": 8
-  }
-}
+## Ear review
+
+```ladder
+{ "skill": "chords", "unlocks": 13, "intro": "Seventh colours at your level, including spread-out voicings." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Follow the bass: it is the part that tells a rootless chord what it is; the drill runs at your current roots rung." }
 ```

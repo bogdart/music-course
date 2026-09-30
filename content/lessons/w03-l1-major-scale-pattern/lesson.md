@@ -15,7 +15,7 @@ tags: [scales, major, keyboard, ear]
 
 # The major scale
 
-A [[scale]] is a ladder of notes that a piece of music mostly stays on. Most of the songs you know — nursery rhymes, hymns, a huge share of pop — are built on one ladder: the [[major scale]]. It sounds bright, settled, "home-like".
+A [[scale]] is a ladder of notes that a piece of music mostly stays on. Most of the songs you know — nursery rhymes, hymns, a huge share of pop — are built on one ladder: the [[major scale]]. It sounds bright and settled.
 
 ## Why C major is all white keys
 
@@ -34,7 +34,7 @@ C →**W**→ D →**W**→ E →**H**→ F →**W**→ G →**W**→ A →**W**
 }
 ```
 
-Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W→ **F♯** →H→ G. The pattern forces one black key, F♯. You'll build more of these in week 7.
+Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W→ **F♯** →H→ G. The pattern forces one black key, F♯. You'll play in G properly in week 7.
 
 ```keyboard
 { "range": ["C3", "C5"], "highlight": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4"], "labels": "names", "colors": { "G3": "root", "G4": "root" } }
@@ -44,9 +44,9 @@ Try building G major: G →W→ A →W→ B →H→ C →W→ D →W→ E →W�
 
 Right hand, thumb = 1, little finger = 5. For C major going up: **1 2 3** (C D E), then tuck the **thumb under** onto F, and continue **1 2 3 4 5** (F G A B C). Going down, reverse it: 5 4 3 2 1, then cross finger **3 over** the thumb onto E. Slow and even beats fast and bumpy.
 
-## Why the pattern matters to your ear
+## A wrong note in the ladder
 
-Because the half steps sit in fixed places (between the 3rd–4th and 7th–8th notes), every major scale *sounds* the same, only higher or lower. Change one note and the ladder breaks. Listen — one note below is wrong:
+Because the half steps sit in fixed places (between the 3rd–4th and 7th–8th notes), every major scale has the same *shape* of sound, only higher or lower. Change one note and the ladder breaks. Listen — one note below is wrong:
 
 ```example
 {
@@ -57,7 +57,32 @@ Because the half steps sit in fixed places (between the 3rd–4th and 7th–8th 
 }
 ```
 
-The fourth note, F♯, sounds like it's leaning somewhere else. That feeling — "this note doesn't belong" — is your ear already knowing the major scale.
+The fourth note, F♯, may sound slightly "off", as if it belongs to a different tune. If you can't hear it yet, play both versions (F and F♯) yourself a few times. Noticing a wrong note is your ear starting to know the major scale.
+
+## Echo: from C to G
+
+This lesson opens the next two melody rungs: echoes that may use all five fingers, **C D E F G** (thumb on C) — first three notes long, then four. For the four-note version the app plays a short run **up the scale from C to G and back down to C** before each tune. It reminds your ear where C is, so the tune has something to hang on to. Next lesson explains why that run is so useful. The drill below runs at your current melody rung, so you'll meet these once the C-D-E echoes are solid.
+
+```example
+{
+  "title": "The run the app plays first: C D E F G F E D C",
+  "bpm": 100, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "C4:8 D4:8 E4:8 F4:8 G4:8 F4:8 E4:8 D4:8 | C4:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+```ladder
+{ "skill": "melody", "unlocks": 4, "intro": "Opens echoes from C D E F G (three notes, then four after a scale run); the drill runs at your current rung." }
+```
+
+## Octaves: a single pair
+
+This lesson also opens an octave rung that takes away the comparison: two notes one after the other, about an octave apart — **the same note again, or a different one?** This is the hardest kind so far, and the ladder gives it to you only after the rungs before it are solid. When you get there, use *Both together* after each answer: the together-sound is the clue you already trust.
+
+```ladder
+{ "skill": "octave", "unlocks": 6, "intro": "Opens \"Same or different, one after the other\"; the drill runs at your current octave rung." }
+```
 
 ## Drills
 
@@ -74,7 +99,7 @@ The fourth note, F♯, sounds like it's leaning somewhere else. That feeling —
     { "q": "C major going up: after playing E with finger 3, you…", "choices": ["tuck the thumb under onto F", "use finger 4 on F", "jump the hand"], "answer": 0 },
     { "q": "F major needs one black key. Following W-W-H from F: F G A ?", "choices": ["B", "B♭", "C"], "answer": 1, "explain": "A to the next note must be a half step: B♭." }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -85,7 +110,7 @@ The fourth note, F♯, sounds like it's leaning somewhere else. That feeling —
   "title": "Build it with the pattern",
   "instructions": "Select the seven notes of the major scale on the given root. Count W-W-H-W-W-W-H on the keyboard.",
   "count": 6,
-  "passScore": 0.8,
+  "passScore": 0.75,
   "spec": { "roots": ["C", "G", "F"], "scale": "major", "prompt": "name" }
 }
 ```
@@ -103,18 +128,6 @@ The fourth note, F♯, sounds like it's leaning somewhere else. That feeling —
 
 ```exercise
 {
-  "id": "e4",
-  "type": "ear-interval",
-  "title": "Steps inside the scale",
-  "instructions": "Two neighbouring scale notes: half step (m2) or whole step (M2)?",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
   "id": "e5",
   "type": "listen",
   "title": "Spot the wrong note",
@@ -125,17 +138,5 @@ The fourth note, F♯, sounds like it's leaning somewhere else. That feeling —
       { "q": "What should the 7th note of C major be?", "choices": ["B", "B♭", "A"], "answer": 0 }
     ]
   }
-}
-```
-
-```exercise
-{
-  "id": "e6",
-  "type": "ear-melody",
-  "title": "Echo: scale fragments",
-  "instructions": "Four notes from C D E F G. Play them back.",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "C", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "play", "reference": "scale" }
 }
 ```

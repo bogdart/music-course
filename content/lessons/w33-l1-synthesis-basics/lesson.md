@@ -8,8 +8,8 @@ duration_min: 40
 goals:
   - Explain a synth sound as oscillator → filter → envelope
   - Choose between the app's pad, pluck, lead, bass and strings by attack and sustain
-  - Voice an EDM-style vi–IV–I–V for pads and plucks
-prerequisites: [w32-l3-counter-melody-daw, w21-l1-frequency-roles-and-doubling]
+  - "Voice the minor dance loop i–VI–III–VII (Am–F–C–G) for pad, pluck and bass"
+prerequisites: [w32-l4-counter-melody-daw, w21-l1-frequency-roles-and-doubling]
 tags: [production, synthesis, electronic, sound-design]
 ---
 
@@ -49,14 +49,14 @@ Because you can't change the envelope, **note length is your envelope control**.
 }
 ```
 
-## The EDM loop
+## The dance loop
 
-Countless dance tracks use vi–IV–I–V, in A minor thought of as Am–F–C–G. Voice it with close, sus-flavoured shapes and let the pad hold while the pluck repeats.
+Countless dance tracks loop **Am – F – C – G**. You know it from week 9 as the minor loop **i – VI – III – VII** in A minor (the same four chords are vi–IV–I–V in C major; which one sounds like home decides the name). Voice it with close shapes that barely move, let the pad hold, and let the pluck repeat on the off-beats.
 
 ```example
 {
   "title": "Am – F – C – G: pad bed + pluck chords",
-  "bpm": 124, "timeSig": "4/4", "key": "C",
+  "bpm": 124, "timeSig": "4/4", "key": "Am",
   "tracks": [
     { "instrument": "pad", "seq": "[A3 C4 E4]:w | [A3 C4 F4]:w | [G3 C4 E4]:w | [G3 B3 D4]:w |" },
     { "instrument": "pluck", "seq": "r:8 [A4 C5 E5]:8 r:8 [A4 C5 E5]:8 r:8 [A4 C5 E5]:8 r:8 [A4 C5 E5]:8 | r:8 [A4 C5 F5]:8 r:8 [A4 C5 F5]:8 r:8 [A4 C5 F5]:8 r:8 [A4 C5 F5]:8 | r:8 [G4 C5 E5]:8 r:8 [G4 C5 E5]:8 r:8 [G4 C5 E5]:8 r:8 [G4 C5 E5]:8 | r:8 [G4 B4 D5]:8 r:8 [G4 B4 D5]:8 r:8 [G4 B4 D5]:8 r:8 [G4 B4 D5]:8 |" },
@@ -74,7 +74,7 @@ Countless dance tracks use vi–IV–I–V, in A minor thought of as Am–F–C�
   "id": "e1-synth-quiz",
   "type": "quiz",
   "title": "Oscillator, filter, envelope",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "questions": [
     { "q": "Which stage makes a sound darker by removing high harmonics?", "choices": ["oscillator", "low-pass filter", "attack", "release"], "answer": 1 },
     { "q": "A pad fades in slowly because of its…", "choices": ["long attack", "short decay", "square wave", "low cutoff"], "answer": 0 },
@@ -89,9 +89,10 @@ Countless dance tracks use vi–IV–I–V, in A minor thought of as Am–F–C�
   "id": "e2-listen-roles",
   "type": "listen",
   "title": "Which synth is which?",
+  "instructions": "The same Am chord twice, on two different instruments.",
   "passScore": 0.7,
   "spec": {
-    "example": { "bpm": 100, "timeSig": "4/4", "tracks": [ { "instrument": "pluck", "seq": "[A3 C4 E4]:w | r:w |" }, { "instrument": "pad", "seq": "r:w | [A3 C4 E4]:w |" } ] },
+    "example": { "bpm": 100, "timeSig": "4/4", "key": "Am", "hidden": true, "tracks": [ { "instrument": "pluck", "seq": "[A3 C4 E4]:w | r:w |" }, { "instrument": "pad", "seq": "r:w | [A3 C4 E4]:w |" } ] },
     "questions": [
       { "q": "Bar 1 sound: attack and sustain?", "choices": ["instant attack, no sustain", "slow attack, long sustain"], "answer": 0 },
       { "q": "Bar 2 sound is best used for…", "choices": ["arpeggios", "a harmony bed", "a kick drum", "a bass line"], "answer": 1 }
@@ -105,7 +106,7 @@ Countless dance tracks use vi–IV–I–V, in A minor thought of as Am–F–C�
   "id": "e3-play-loop",
   "type": "play-chord",
   "title": "Play the EDM loop voicings",
-  "count": 8, "passScore": 0.8,
+  "count": 8, "passScore": 0.7,
   "spec": { "chords": ["Am", "F", "C", "G"], "inversion": "any", "sequence": true, "bpm": 70 }
 }
 ```
@@ -115,39 +116,39 @@ Countless dance tracks use vi–IV–I–V, in A minor thought of as Am–F–C�
   "id": "e4-play-minor",
   "type": "play-scale",
   "title": "A natural minor",
-  "count": 6, "passScore": 0.8,
+  "count": 6, "passScore": 0.7,
   "spec": { "root": "A", "scale": "natural-minor", "octaves": 1, "direction": "asc-desc", "hands": "right", "tempo": 100, "metronome": true }
 }
 ```
 
 ```exercise
 {
-  "id": "e5-ear-sus",
-  "type": "ear-chord",
-  "title": "Sus and 7th colours (EDM loves sus)",
-  "count": 10, "passScore": 0.75,
-  "spec": { "qualities": ["sus2", "sus4", "min7", "maj7", "min"], "inversions": [0], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e6-daw-sound-roles",
+  "id": "e5-daw-sound-roles",
   "type": "daw-task",
   "title": "One loop, three roles",
-  "instructions": "Write Am–F–C–G (one bar each, twice = 8 bars) three ways at once: pad holds whole-note chords, pluck plays the chords in an off-beat 8th pattern, bass plays roots. Then try swapping pad and pluck parts and listen to how wrong it sounds.",
+  "instructions": "Write Am–F–C–G (one bar each, twice = 8 bars) three ways at once: pad holds whole-note chords, pluck plays the chords in an off-beat 8th pattern, bass plays roots. Then try swapping pad and pluck parts and listen to how wrong it sounds. About 20 minutes.",
   "spec": {
-    "template": { "bpm": 124, "key": "C", "timeSig": "4/4", "tracks": [ { "instrument": "pad", "seq": "" }, { "instrument": "pluck", "seq": "" }, { "instrument": "bass", "seq": "" } ] },
-    "task": "8 bars: pad bed, pluck off-beats and bass roots on vi–IV–I–V.",
+    "template": { "bpm": 124, "key": "Am", "timeSig": "4/4", "tracks": [ { "instrument": "pad", "seq": "" }, { "instrument": "pluck", "seq": "" }, { "instrument": "bass", "seq": "" } ] },
+    "task": "8 bars: pad bed, pluck off-beats and bass roots on i–VI–III–VII in A minor.",
     "checks": [
       { "kind": "has-tracks", "instruments": ["pad", "pluck", "bass"] },
       { "kind": "bars", "min": 8, "max": 8 },
       { "kind": "in-key", "key": "A", "scale": "natural-minor", "allowPassing": false },
       { "kind": "uses-rhythm", "values": ["w"], "minDistinct": 1, "track": 0 },
       { "kind": "uses-rhythm", "values": ["8"], "minDistinct": 1, "track": 1 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["vi", "IV", "I", "V"], "barsPerChord": 1, "minRatio": 0.9, "track": 2 }
+      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["i", "VI", "III", "VII"], "barsPerChord": 1, "minRatio": 0.9, "track": 2 }
     ],
     "minBars": 8, "maxBars": 8
   }
 }
+```
+
+## Ear review
+
+```ladder
+{ "skill": "chords", "unlocks": 14, "intro": "Chord colours at your level: a pad is the clearest way to hear them." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Bass lines in a full mix, like the loop you just built; the drill runs at your current roots rung." }
 ```

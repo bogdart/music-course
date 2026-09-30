@@ -6,6 +6,7 @@ import { useLesson } from '../LessonContext';
 import { ChordsBlock, type ChordsData } from './ChordsBlock';
 import { ExampleBlock, type ExampleData } from './ExampleBlock';
 import { KeyboardBlock, type KeyboardData } from './KeyboardBlock';
+import { LadderBlock, type LadderData } from './LadderBlock';
 import { StaffBlock, type StaffData } from './StaffBlock';
 
 export function BlockError({ lang, message }: { lang: string; message: string }) {
@@ -40,6 +41,14 @@ export function LessonBlockView({ lang, index, raw }: { lang: string; index: num
         return invalid ? <BlockError lang={lang} message={invalid} /> : <StaffBlock data={data as StaffData} />;
       case 'chords':
         return invalid ? <BlockError lang={lang} message={invalid} /> : <ChordsBlock data={data as ChordsData} />;
+      case 'ladder':
+        return invalid ? (
+          <BlockError lang={lang} message={invalid} />
+        ) : (
+          <div id={`ex-ladder-${index}`} className="exercise-anchor">
+            <LadderBlock data={data as LadderData} record={record} />
+          </div>
+        );
       case 'exercise': {
         const ex = data as ExerciseBlock;
         if (!ex || typeof ex !== 'object' || !isExerciseType(ex.type) || !getExerciseComponent(ex.type)) {

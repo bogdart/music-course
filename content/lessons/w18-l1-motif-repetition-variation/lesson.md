@@ -7,8 +7,8 @@ phase: p3
 duration_min: 45
 goals:
   - Grow a 4-bar phrase from a 1-bar motif using repetition, changed endings and sequence
-  - Write question-and-answer phrases that end open and closed
-  - Play back short melodies by ear in major
+  - Recognise a question-and-answer pair (week 15) inside a well-known tune
+  - Write down short melodies as degrees in any key
 prerequisites: [w17-l3-blocking-out-a-form-daw]
 tags: [melody, motif, songwriting, ear]
 songs:
@@ -44,9 +44,9 @@ The rhythm is the strongest glue: if the rhythm repeats, the listener hears "the
 
 Bar 1 is the motif. Bar 2 repeats it with a new ending that fits F. Bar 3 is a sequence — the bar-1 shape moved up a step. Bar 4 answers with the motif's rhythm turned around and lands on C.
 
-## Question and answer
+## Question and answer (a reminder)
 
-Phrases come in pairs, like a conversation: [[question and answer]]. The **question** ends open — on degree 2, 5 or 7, usually over V. The **answer** starts the same way and ends closed on degree 1 over I. "Ode to Joy" is the textbook case: the question lands on D (degree 2), the answer on C.
+You met this in week 15. Phrases come in pairs, like a conversation: [[question and answer]]. The **question** ends open — on degree 2, 5 or 7, usually over V. The **answer** starts the same way and ends closed on degree 1 over I. "Ode to Joy" is the textbook case: the question lands on D (degree 2), the answer on C.
 
 ```example
 {
@@ -65,7 +65,6 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
 {
   "id": "motif-quiz",
   "type": "quiz",
-  "passScore": 0.8,
   "spec": { "questions": [
     { "q": "Bar 3 of \"One motif, four bars\" moves the motif's shape up one step. This is called...", "choices": ["Exact repeat", "Sequence", "Question", "Climax"], "answer": 1 },
     { "q": "Which element most strongly makes two bars sound like the same idea?", "choices": ["The same rhythm", "The same instrument", "The same key", "The same velocity"], "answer": 0 },
@@ -80,19 +79,8 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
   "id": "play-ode-qa",
   "type": "play-melody",
   "title": "Play the question and the answer",
-  "passScore": 0.75,
-  "spec": { "bpm": 90, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h" } }
-}
-```
-
-```exercise
-{
-  "id": "ear-echo-motifs",
-  "type": "ear-melody",
-  "title": "Echo the motif",
-  "count": 8,
   "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
+  "spec": { "bpm": 90, "timeSig": "4/4", "key": "C", "seq": "E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | E4:q. D4:8 D4:h | E4:q E4:q F4:q G4:q | G4:q F4:q E4:q D4:q | C4:q C4:q D4:q E4:q | D4:q. C4:8 C4:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [B2 D3 G3]:h [C3 E3 G3]:h" } }
 }
 ```
 
@@ -106,7 +94,7 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
       { "instrument": "piano", "seq": "[C3 E3 G3]:w | [C3 F3 A3]:w | [D3 F3 A3]:w | [C3 E3 G3]:w" },
       { "instrument": "lead", "seq": "" }
     ] },
-    "task": "Invent a 1-bar motif with at least two different note lengths. Bar 2: repeat it with a changed ending. Bar 3: sequence it (same shape from another degree). Bar 4: land on C.",
+    "task": "Invent a 1-bar motif with at least two different note lengths (start from bar 1 of the example if you are stuck, then change it). Bar 2: repeat it with a changed ending that fits F. Bar 3: sequence it (same shape from another degree). Bar 4: land on C. Play it back after each bar. About 15 minutes.",
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "in-key", "key": "C", "scale": "major", "track": 1 },
@@ -119,36 +107,12 @@ Phrases come in pairs, like a conversation: [[question and answer]]. The **quest
 }
 ```
 
-```exercise
-{
-  "id": "daw-question-answer",
-  "type": "daw-task",
-  "title": "Write a question and an answer",
-  "spec": {
-    "template": { "bpm": 90, "key": "G", "tracks": [
-      { "instrument": "piano", "seq": "[G3 B3 D4]:w | [G3 C4 E4]:w | [G3 B3 D4]:w | [F#3 A3 D4]:w | [G3 B3 D4]:w | [G3 C4 E4]:w | [F#3 A3 D4]:w | [G3 B3 D4]:w" },
-      { "instrument": "lead", "seq": "" }
-    ] },
-    "task": "In G major: bars 1-4 are your question (I-IV-I-V) - end it on A or D over the D chord. Bars 5-8 are the answer (I-IV-V-I) - start exactly like the question, change bars 7-8 and end on G.",
-    "checks": [
-      { "kind": "bars", "min": 8, "max": 8 },
-      { "kind": "in-key", "key": "G", "scale": "major", "track": 1 },
-      { "kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": false, "track": 1 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "IV", "I", "V", "I", "IV", "V", "I"], "barsPerChord": 1, "minRatio": 0.75, "track": 1 },
-      { "kind": "ends-on", "degree": 1, "track": 1 }
-    ],
-    "minBars": 8, "maxBars": 8
-  }
-}
-```
+## Ear: melodies as degrees
 
-```exercise
-{
-  "id": "ear-degrees-dictation",
-  "type": "ear-melody",
-  "title": "Write the degrees",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5], "length": 4, "rhythm": "quarters", "answer": "degrees" }
-}
+Writing a motif and hearing one are the same skill from two sides. This lesson opens the melody rung where the key changes
+every question and you answer with degree numbers instead of keys: listen to the cadence, find home, then name each
+note's distance from home. The drill runs at your current melody rung, so it may still be an earlier one.
+
+```ladder
+{ "skill": "melody", "unlocks": 14, "intro": "Opens: a new key every time - write the degrees of the notes you hear. The drill runs at your current melody rung." }
 ```

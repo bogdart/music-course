@@ -16,7 +16,7 @@ songs: []
 
 # Workshop: From Idea to Sketch
 
-For eight weeks you have learned the parts of a song one at a time. Now you put them together — quickly. Songwriters who finish songs don't wait for inspiration; they follow a **workflow** that turns any small [[seed]] into a song.
+For eight weeks you have learned the parts of a song one at a time: form, hooks, bass, drums, layers, modes, blues, new chords. Now you put them together — quickly. Songwriters who finish songs don't wait for inspiration; they follow a **workflow** that turns any small [[seed]] into a song. Two new ideas today: the five-stage workflow, and three different ways to start.
 
 ## The workflow: Seed → Loop → Map → Build → Finish
 
@@ -25,14 +25,14 @@ For eight weeks you have learned the parts of a song one at a time. Now you put 
 | **1. Seed** | 5–10 min | Capture one idea: a hook, a progression or a beat. Record everything, judge nothing. | You have one thing you want to hear again. |
 | **2. Loop** | 10 min | Add the other two elements roughly and make a 4-bar loop — a [[song sketch]]. | The loop is fun to listen to 10 times. |
 | **3. Map** | 5 min | Write the form as text (I4 V8 C8...). The loop usually becomes the chorus; plan a contrasting verse. | Every section has chords and a purpose. |
-| **4. Build** | 15–20 min | Block out, then arrange with the arrangement map: layers, fills, drops. | The song plays from start to end. |
-| **5. Finish** | 10 min | Transitions, ending, levels, the checklist. Save and export. | You'd play it to a friend. |
+| **4. Build** | a session | Block out the form (week 17), then arrange with the [[arrangement map]] (week 21): layers, fills. | The song plays from start to end. |
+| **5. Finish** | 15 min | Transitions, ending, levels, the checklist. Save. | You'd play it to a friend. |
 
-Today is stages 1–2, three times. Tomorrow you take the best sketch through stages 3–5.
+Today is stages 1–2, three times, about 10 minutes each. Next lesson (two sessions) takes the best sketch through stages 3–5.
 
 ## Three ways in
 
-- **Hook-first.** Hum into the air until something sticks, find it on the keyboard, *then* find chords whose tones sit under the long notes. Best for catchy, melody-led songs.
+- **Hook-first.** Noodle on the keyboard (humming is fine if you like it, never required) until a 2-bar phrase sticks, *then* find chords whose tones sit under its long notes. Best for catchy, melody-led songs.
 - **Chord-first.** Loop a progression, set a groove, and improvise over it until a hook appears (your week 18 method). Best when you want a mood first.
 - **Beat-first.** Start from a groove in your library, write a bass riff that locks to the kick, then chords, then a hook on top. Best for dance, funk and hip-hop.
 
@@ -55,16 +55,15 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 
 ## Rules for sketching
 
-1. **Set a timer.** 12 minutes per sketch. Speed stops you from polishing the wrong idea.
+1. **Set a timer.** 10 minutes per sketch. Speed stops you from polishing the wrong idea.
 2. **Stay in one key per sketch** and write it down.
 3. **Don't mix or tweak sounds.** Default instruments are fine.
 4. **Save every sketch**, even the bad ones, with a name like "sketch hook-first 1".
 
 ```exercise
 {
-  "id": "workflow-quiz",
+  "id": "workflow-quiz-v2",
   "type": "quiz",
-  "passScore": 0.8,
   "spec": { "questions": [
     { "q": "What is the correct order of the workflow?", "choices": ["Loop, Seed, Build, Map, Finish", "Seed, Loop, Map, Build, Finish", "Map, Seed, Loop, Finish, Build", "Build, Map, Seed, Loop, Finish"], "answer": 1 },
     { "q": "In the Loop stage, the goal is...", "choices": ["A mixed, finished chorus", "A 4-bar sketch that's fun to hear many times", "Writing lyrics", "Choosing the form"], "answer": 1 },
@@ -76,20 +75,31 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 
 ```exercise
 {
-  "id": "daw-sketch-hook-first",
+  "id": "play-sketch-loops",
+  "type": "play-chord",
+  "title": "Warm up your hands: today's two loops",
+  "instructions": "Em – C – G – D (vi–IV–I–V in G) for the chord-first sketch, then Am – F – C – G (i–VI–III–VII in A minor) for the beat-first one.",
+  "spec": { "chords": ["Em", "C", "G", "D", "Am", "F", "C", "G"], "inversion": "any", "sequence": true, "bpm": 66 }
+}
+```
+
+```exercise
+{
+  "id": "daw-sketch-hook-first-v2",
   "type": "daw-task",
-  "title": "Sketch 1: hook-first (12 min)",
+  "title": "Sketch 1: hook-first (10 min)",
   "spec": {
     "template": { "bpm": 96, "key": "G", "tracks": [
       { "instrument": "drums", "seq": "kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q | kick:q snare:q kick:q snare:q" },
       { "instrument": "lead", "seq": "" },
       { "instrument": "piano", "seq": "" }
     ] },
-    "task": "Hum a 2-bar hook, then record it on the lead track in G major and repeat it (with a changed ending) to fill 4 bars. Only then add chords on the piano: for each bar, pick a G-major chord containing the melody's longest note.",
+    "task": "Find a 2-bar hook in G major by playing around on the keyboard, record it on the lead track and repeat it (with a changed ending) to fill 4 bars. Only then add chords on the piano: for each bar, pick a G-major chord containing the melody's longest note.",
+    "timerMin": 10,
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "in-key", "key": "G", "scale": "major", "track": 1 },
-      { "kind": "repetition", "motifBars": 1, "minRepeats": 2, "allowTransposed": true, "track": 1 },
+      { "kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": true, "minSimilarity": 0.6, "track": 1 },
       { "kind": "in-key", "key": "G", "scale": "major", "track": 2 },
       { "kind": "note-count", "min": 4, "track": 2 }
     ],
@@ -100,9 +110,9 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 
 ```exercise
 {
-  "id": "daw-sketch-chord-first",
+  "id": "daw-sketch-chord-first-v2",
   "type": "daw-task",
-  "title": "Sketch 2: chord-first (12 min)",
+  "title": "Sketch 2: chord-first (10 min)",
   "spec": {
     "template": { "bpm": 84, "key": "G", "tracks": [
       { "instrument": "epiano", "seq": "[E3 G3 B3]:w | [E3 G3 C4]:w | [D3 G3 B3]:w | [D3 F#3 A3]:w" },
@@ -110,6 +120,7 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
       { "instrument": "lead", "seq": "" }
     ] },
     "task": "Loop Em - C - G - D (vi-IV-I-V). Improvise over it for a few minutes, record, and keep a 4-bar melody built from a 2-bar idea that repeats. Beat 1 of each bar should land on a chord tone.",
+    "timerMin": 10,
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "in-key", "key": "G", "scale": "major", "track": 2 },
@@ -123,9 +134,9 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 
 ```exercise
 {
-  "id": "daw-sketch-beat-first",
+  "id": "daw-sketch-beat-first-v2",
   "type": "daw-task",
-  "title": "Sketch 3: beat-first (12 min)",
+  "title": "Sketch 3: beat-first (10 min)",
   "spec": {
     "template": { "bpm": 100, "key": "Am", "tracks": [
       { "instrument": "drums", "seq": "[kick hihat]:16 hihat:16 hihat:16 [kick hihat]:16 [snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 hihat:16 [snare hihat]:16 hihat:16 hihat:16 hihat:16 | [kick hihat]:16 hihat:16 hihat:16 [kick hihat]:16 [snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 hihat:16 [snare hihat]:16 hihat:16 hihat:16 hihat:16 | [kick hihat]:16 hihat:16 hihat:16 [kick hihat]:16 [snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 hihat:16 [snare hihat]:16 hihat:16 hihat:16 hihat:16 | [kick hihat]:16 hihat:16 hihat:16 [kick hihat]:16 [snare hihat]:16 hihat:16 [kick hihat]:16 hihat:16 hihat:16 hihat:16 [kick hihat]:16 hihat:16 [snare hihat]:16 hihat:16 hihat:16 hihat:16" },
@@ -134,6 +145,7 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
       { "instrument": "lead", "seq": "" }
     ] },
     "task": "A minor, funk groove given. 1) Write a 1-bar bass riff locked to the kick and repeat it (you may move it to another root in bar 3 or 4). 2) Add pad chords that contain each bar's bass note. 3) Add a short hook on top.",
+    "timerMin": 10,
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
       { "kind": "has-tracks", "instruments": ["drums", "bass", "pad", "lead"] },
@@ -146,31 +158,21 @@ Here is a beat-first sketch being built in D minor (i–VI–III–VII: Dm Bb F 
 }
 ```
 
-```exercise
-{
-  "id": "ear-hook-echo",
-  "type": "ear-melody",
-  "title": "Hook-first training: hear it, find it",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6, 7], "length": 7, "rhythm": "free", "answer": "play" }
-}
+## Ear break
+
+Hook-first writing is playing back what you hear in your head; beat-first writing starts from the bass under a groove. Two review drills, each at your own rung:
+
+```ladder
+{ "skill": "melody", "unlocks": 17, "intro": "Review: hear a short melody, play it back." }
+```
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "Review: play the bass notes under the chords, at your own rung." }
 ```
 
 ```exercise
 {
-  "id": "ear-chord-first-minor",
-  "type": "ear-progression",
-  "title": "Chord-first training: name the loop",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "v", "VI", "III", "VII"], "style": "pad-bass" }
-}
-```
-
-```exercise
-{
-  "id": "reflect-pick-sketch",
+  "id": "reflect-pick-sketch-v2",
   "type": "reflect",
   "spec": { "prompt": "Listen to your three sketches. Which starting point felt most natural for you? Which sketch will you finish next lesson, and what is its strongest element (hook, chords, groove)?", "minWords": 30 }
 }

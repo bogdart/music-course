@@ -35,6 +35,8 @@ export interface SpecMap {
     key: string; mode?: 'major' | 'minor'; degrees: (number | string)[];
     reference?: KeyReferenceKind; octaves?: number[]; instrument?: InstrumentId;
     chromatic?: boolean; answer?: 'degree' | 'name';
+    /** Hold the tonic (an octave below) under the question note */
+    drone?: boolean;
   };
   'ear-octave': {
     notes: string[]; octaves: number[]; mode: EarOctaveMode; instrument?: InstrumentId;
@@ -55,7 +57,7 @@ export interface SpecMap {
   'ear-scale': { scales: string[]; play?: 'asc' | 'asc-desc' | 'melody'; root?: string; instrument?: InstrumentId };
   'ear-progression': {
     key?: string; mode?: 'major' | 'minor'; length?: number; chords: string[];
-    style?: 'block' | 'arpeggio' | 'pad-bass'; bpm?: number; inversions?: number[];
+    style?: 'block' | 'arpeggio' | 'pad-bass' | 'band'; bpm?: number; inversions?: number[];
     /** Attached mix: play this instead of a generated progression; `progression` is then the answer, in order */
     example?: ExampleEnvelope; progression?: string[]; instrument?: InstrumentId;
   };
@@ -81,6 +83,8 @@ export interface SpecMap {
   };
   'ear-bass': {
     key: string; mode?: 'major' | 'minor'; chords: string[]; answer?: 'play' | 'name'; length?: number; bpm?: number; inversions?: number[];
+    /** `bass-focus` (default): chords with a prominent bass; `band`: a full mix (pad, bass, drums, lead) */
+    style?: 'bass-focus' | 'band';
     /** Attached mix: the bass line is track `track` (default: first bass track) of this example */
     example?: ExampleEnvelope; track?: number;
   };
@@ -124,7 +128,9 @@ export interface SpecMap {
   quiz: { questions: QuizQuestion[]; shuffle?: boolean };
   'quiz-input': { questions: QuizInputQuestion[] };
   'key-signature': { keys: string[]; prompt?: 'staff' | 'name'; answer?: 'name' | 'count'; mode?: 'major' | 'minor' };
-  'roman-analysis': { key: string; mode?: 'major' | 'minor'; chords: string[]; prompt?: 'symbols' | 'play' };
+  'roman-analysis': {
+    /** answer buttons: the key's chords only, or plus common chromatic numerals (default: chromatic when an answer is) */
+    palette?: 'diatonic' | 'chromatic'; key: string; mode?: 'major' | 'minor'; chords: string[]; prompt?: 'symbols' | 'play' };
   // ---- DAW / composition ----
   'daw-task': {
     template?: Record<string, unknown>; task: string; checks?: DawCheck[]; minBars?: number; maxBars?: number;
@@ -199,12 +205,14 @@ export interface ItemBase<T extends ExerciseType> {
   solutionAudio?: Snippet;
   /** Extra listening aids offered after the first answer (e.g. "both together", "the real octave") */
   compare?: { label: string; audio: Snippet }[];
+  /** Played automatically once the item is done (answered correctly or revealed), e.g. a scale degree walking home */
+  afterAnswer?: Snippet;
 }
 
 export interface EarNoteItem extends ItemBase<'ear-note'> {
   key: string; mode: 'major' | 'minor'; midi: number; answerKind: 'degree' | 'name'; answer: string;
 }
-export type EarOctaveMode = 'same-or-different' | 'together' | 'match' | 'which-octave' | 'higher-or-lower';
+export type EarOctaveMode = 'same-or-different' | 'together' | 'match' | 'find' | 'which-octave' | 'higher-or-lower';
 export interface EarOctaveItem extends ItemBase<'ear-octave'> {
   mode: EarOctaveMode; midis: number[]; answer: string;
 }

@@ -6,51 +6,51 @@ order: 2
 phase: p4
 duration_min: 40
 goals:
-  - Tell add9 apart from a full 9th chord
-  - Use 6 and m6 chords as tonic colours instead of maj7
-  - Recognise the half-diminished (m7b5) sound among the four 7th colours
+  - Tell an add9 chord from a 9th chord (add9 has no 7th)
+  - Use 6 and m6 chords as calm tonic colours instead of maj7
+  - Hear add9 and 6 chords next to a plain major chord
 prerequisites: [w27-l1-ninths-elevenths-thirteenths]
 tags: [harmony, extended-chords, ear, keyboard]
 ---
 
 # Add9 and Sixth Chords
 
-Not every colourful chord needs a 7th. Two families add sparkle to a plain triad without changing its function: [[add9 chord]]s and [[sixth chord]]s.
+Not every colourful chord needs a 7th. Two families add sparkle to a plain triad without changing its job in the key: [[add9 chord]]s and [[sixth chord]]s.
 
 ## Add9: colour without a 7th
 
-{{chord:Cadd9}} is C–E–G plus D. There is **no** B. A {{chord:C9}}, by contrast, implies a 7th underneath. The add9 is the singer-songwriter and pop-ballad chord: bright, shimmering and still totally stable. Put the 9 right next to the 3rd (D against E) and you get a gentle rub that sounds like a ringing guitar.
+{{chord:Cadd9}} is C–E–G plus D. There is **no** B. A {{chord:C9}}, by contrast, has the 7th (B♭) as well. The add9 is the singer-songwriter and pop-ballad chord: bright, a little shimmery, and completely stable. When the D sits right next to the E, you hear a gentle rub, like a ringing guitar string.
 
-## Sixth chords: the tonic that does not lean
+## Sixth chords: a tonic that does not lean
 
-A maj7 has a leading tone (B) sitting a half step under the root. If your melody lands on C, that B can clash. The {{chord:C6}} (C–E–G–A) keeps the tonic calm — which is why swing-era endings and big-band tonics love it. Add a 9th and you get the lush 6/9 chord (C–E–G–A–D), a jazz-ending favourite.
+A maj7 has its 7th (B) a half step under the root. If your melody ends on C, that B can rub against it. The {{chord:C6}} (C–E–G–A) keeps the ending calm, which is why swing-era endings love it. The minor version works the same way: {{chord:Am6}} is A–C–E–F♯ (the raised 6th you know from Dorian).
+
+Put both colours together and you get the **6/9 chord** (C–E–G–A–D), the classic final chord of a jazz tune.
 
 ```example
 {
-  "title": "Cadd9 · Cmaj9 · C6 · C6/9",
+  "title": "C · Cadd9 · C6 · C6/9",
   "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "epiano", "seq": "[C3 E3 G3 D4]:h [C3 E3 G3 B3 D4]:h | [C3 E3 G3 A3]:h [C3 E3 A3 D4 G4]:h |" } ],
+  "tracks": [ { "instrument": "epiano", "seq": "[C3 E3 G3]:h [C3 E3 G3 D4]:h | [C3 E3 G3 A3]:h [C3 G3 A3 D4 E4]:h |" } ],
   "show": ["keyboard"]
 }
 ```
 
-## A hidden twin: m6 and m7b5
-
-Play {{chord:Dm6}}: D–F–A–B. Now play {{chord:Bm7b5}}: B–D–F–A. Same four notes! Which one you *hear* depends on the bass. This is your first taste of a big jazz idea — chords are sets of notes, and the bass tells you what they mean.
-
-The half-diminished chord (m7b5) is the one 7th colour you have heard least. It is dark but not as tense as a dim7: a minor 7th chord with a lowered 5th. It is the ii chord of minor keys, and it will come back in every minor ii–V from next week on.
+Now the reason for sixth chords, in sound: the same melody ends on C twice, first over Cmaj7, then over C6.
 
 ```example
 {
-  "title": "Dm7 then Bm7b5 — only one note changes (C to B)",
-  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "title": "Melody ending on C: over Cmaj7, then over C6",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "piano", "seq": "[D3 F3 A3 C4]:w | [D3 F3 A3 B3]:w |" },
-    { "instrument": "bass", "seq": "D2:w | B1:w |" }
+    { "instrument": "lead", "seq": "E5:q D5:q C5:h | r:w | E5:q D5:q C5:h | r:w |" },
+    { "instrument": "epiano", "seq": "[C3 E3 G3 B3]:w | r:w | [C3 E3 G3 A3]:w | r:w |" }
   ],
-  "show": ["keyboard"]
+  "show": ["staff"]
 }
 ```
+
+**What you will actually hear.** Next to a plain C, Cadd9 and C6 both sound like "the same chord with something extra". Telling them apart is the hard part at first: the add9 has a small rub in the middle (D against E); the 6 sounds sweeter and a bit old-fashioned. That is today's new ear rung.
 
 ## Drills
 
@@ -59,7 +59,7 @@ The half-diminished chord (m7b5) is the one 7th colour you have heard least. It 
   "id": "e1-build-add-six",
   "type": "build-chord",
   "title": "Build add9, 6 and m6",
-  "count": 8, "passScore": 0.8,
+  "count": 8, "passScore": 0.7,
   "spec": { "chords": ["Cadd9", "Fadd9", "Gadd9", "C6", "F6", "G6", "Am6", "Dm6"], "root": "given", "prompt": "symbol", "key": "C" }
 }
 ```
@@ -68,10 +68,10 @@ The half-diminished chord (m7b5) is the one 7th colour you have heard least. It 
 {
   "id": "e2-play-pop-colours",
   "type": "play-chord",
-  "title": "Pop progression with colour",
-  "instructions": "I–vi–IV–V with add9 on the major chords and a 6 on the V. Keep your hand close; use inversions freely.",
-  "count": 8, "passScore": 0.75,
-  "spec": { "chords": ["Cadd9", "Am7", "Fadd9", "G6"], "inversion": "any", "sequence": true, "bpm": 56 }
+  "title": "A pop progression with colour",
+  "instructions": "I–vi–IV–V with add9 on C and F. Keep your hand close; use inversions freely.",
+  "passScore": 0.7,
+  "spec": { "chords": ["Cadd9", "Am7", "Fadd9", "G"], "inversion": "any", "sequence": true, "bpm": 56, "key": "C" }
 }
 ```
 
@@ -80,55 +80,28 @@ The half-diminished chord (m7b5) is the one 7th colour you have heard least. It 
   "id": "e3-six-nine",
   "type": "play-notes",
   "title": "The 6/9 ending voicing",
-  "instructions": "C3 E3 A3 D4 G4 — built from fourths on top. Play it, hold it, listen to it ring.",
-  "count": 6, "passScore": 0.8,
-  "spec": { "prompt": "names", "notes": ["C3", "E3", "A3", "D4", "G4"], "ordered": false }
+  "instructions": "C6/9 (C G A D E) and F6/9 (F C D G A), spread over both hands. Hold each one and let it ring.",
+  "spec": { "prompt": "names", "notes": [["C3", "G3", "A3", "D4", "E4"], ["F2", "C3", "D3", "G3", "A3"]], "ordered": false }
 }
 ```
 
 ```exercise
 {
-  "id": "e4-four-sevenths",
-  "type": "ear-chord",
-  "title": "Four 7th colours",
-  "instructions": "New: m7b5. Tip — it sounds like a minor 7th chord with a shadow over it.",
-  "count": 12, "passScore": 0.75,
-  "spec": { "qualities": ["maj7", "min7", "dom7", "m7b5"], "inversions": [0], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e5-sus-vs-triad",
-  "type": "ear-chord",
-  "title": "Sus and triads",
-  "instructions": "Sus2 is the triad cousin of add9 — the 3rd is replaced rather than joined.",
-  "count": 8, "passScore": 0.8,
-  "spec": { "qualities": ["maj", "min", "sus2", "sus4"], "inversions": [0], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "e6-add-six-quiz",
+  "id": "e4-add-six-quiz",
   "type": "quiz",
   "title": "Which chord, and why?",
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": { "questions": [
-    { "q": "Cadd9 contains which notes?", "choices": ["C E G B D", "C E G D", "C D G", "C E G A"], "answer": 1 },
-    { "q": "Your melody ends on the tonic C. Which tonic chord avoids a half-step clash?", "choices": ["Cmaj7", "C6", "C7", "Cm7b5"], "answer": 1, "explain": "C6 has no B under the melody's C." },
-    { "q": "Dm6 has the same notes as…", "choices": ["Fmaj7", "Bm7b5", "G7", "Am7"], "answer": 1 },
-    { "q": "In C major, the m7b5 chord is built on…", "choices": ["ii", "iii", "vi", "vii"], "answer": 3 }
+    { "q": "Cadd9 contains which notes?", "choices": ["C E G B D", "C E G D", "C D G", "C E G A"], "answer": 1, "explain": "Add9 = triad + 9th, no 7th." },
+    { "q": "Your melody ends on C. Which tonic chord avoids a half-step rub under it?", "choices": ["Cmaj7", "C6", "C7", "Cmaj9"], "answer": 1, "explain": "C6 has no B, so nothing sits a half step under the melody's C." },
+    { "q": "C9 and Cadd9 differ by one note. Which?", "choices": ["D", "Bb", "A", "G"], "answer": 1, "explain": "C9 includes the 7th (B♭); Cadd9 does not." },
+    { "q": "Am6 is…", "choices": ["A C E F#", "A C E F", "A C E G", "A C# E F#"], "answer": 0, "explain": "The 6th of A is F♯ (major 6th), the Dorian note." }
   ] }
 }
 ```
 
-```exercise
-{
-  "id": "e7-rhythm",
-  "type": "ear-rhythm",
-  "title": "Comping rhythm dictation",
-  "count": 6, "passScore": 0.75,
-  "spec": { "timeSig": "4/4", "bars": 1, "subdivision": "8", "rests": true, "answer": "tap" }
-}
+## Ear: colour chords
+
+```ladder
+{ "skill": "chords", "unlocks": 12, "intro": "Opens the colour-chord rung (plain major, add9 or 6?); the drill runs at your current chord rung." }
 ```

@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { evaluate, generateSet, isImplemented } from '@music/core';
+import { evaluate, generateSet, isImplemented, LADDERS, LADDER_SKILLS } from '@music/core';
 import { loadContent } from '../src/node.js';
 import { solve } from '../../core/test/solve.js';
 
@@ -23,6 +23,18 @@ describe('content exercises: generated items accept their ideal answers', () => 
             n++;
             const r = evaluate(item, solve(item));
             if (!r.correct || r.score !== 1) failures.push(`${id}/${e.id} (${e.type}, seed ${seed}): ${r.feedback}`);
+          }
+        }
+      }
+    }
+    // every rung of every ear-training ladder, too (graded ear drills live there now)
+    for (const skill of LADDER_SKILLS) {
+      for (const r of LADDERS[skill].rungs) {
+        for (const seed of [11, 12, 13]) {
+          for (const item of generateSet(r.block, seed).items) {
+            n++;
+            const res = evaluate(item, solve(item));
+            if (!res.correct || res.score !== 1) failures.push(`ladder ${r.id} (${r.block.type}, seed ${seed}): ${res.feedback}`);
           }
         }
       }

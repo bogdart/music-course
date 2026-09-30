@@ -1,4 +1,4 @@
-import { cleanNoteName, midiToNote, noteToMidi, pitchClass, pitchClassName, octaveOf } from '../theory/notes.js';
+import { cleanNoteName, isNoteName, midiToNote, noteToMidi, pitchClass, pitchClassName, octaveOf } from '../theory/notes.js';
 import type { EarOctaveItem, ExerciseDefinition, SpecMap } from './types.js';
 import { harmonic, melodic } from './util.js';
 import type { Rng } from '../rng.js';
@@ -25,6 +25,25 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
         solution: `${note}${octave}`,
       };
     }
+    if (s.mode === 'find') {
+      // hear one note, play the same note name anywhere on the keyboard: octave equivalence in action
+      const note = rng.pick(notes);
+      const octave = rng.pick(octaves);
+      const midi = noteToMidi(`${note}${octave}`);
+      const home = noteToMidi(`${note}4`);
+      const walk: number[] = [midi];
+      while (walk[walk.length - 1]! !== home) walk.push(walk[walk.length - 1]! + (home > midi ? 12 : -12));
+      return {
+        type: 'ear-octave', mode: 'find', midis: [midi], answer: pitchClassName(note),
+        prompt: 'Find this note on your keyboard — in any octave. (It may be far lower or higher than your keys.)',
+        audio: melodic([midi], { instrument, beats: 2 }),
+        solution: `${note} (it was ${note}${octave})`,
+        compare: [
+          ...(walk.length > 1 ? [{ label: `Walk it to octave 4: ${walk.map((m) => midiToNote(m)).join(' → ')}`, audio: melodic(walk, { instrument, beats: 1 }) }] : []),
+          { label: `${note}${octave} and ${note}4 together`, audio: harmonic([Math.min(midi, home), Math.max(midi, home)].filter((m, i, a) => a.indexOf(m) === i), { instrument, beats: 2.5 }) },
+        ],
+      };
+    }
     if (s.mode === 'higher-or-lower') {
       const pool = [...new Set(notes.flatMap((n) => octaves.map((o) => noteToMidi(`${n}${o}`))))];
       if (pool.length < 2) throw new Error('ear-octave higher-or-lower needs at least two distinct pitches');
@@ -42,6 +61,15 @@ export const earOctave: ExerciseDefinition<'ear-octave'> = {
     return comparePair(s, notes, octaves, instrument, rng);
   },
   evaluate(item, answer) {
+    if (item.mode === 'find') {
+      const pc = typeof answer === 'number' ? answer % 12 : isNoteName(String(answer ?? '')) ? pitchClass(String(answer)) : -1;
+      const correct = pc === item.midis[0]! % 12;
+      return {
+        correct, score: correct ? 1 : 0,
+        feedback: correct ? 'Correct — same note, different octave!' : `Not quite — it was ${item.solution}.`,
+        expected: item.solution,
+      };
+    }
     const a = String(answer ?? '').trim().toLowerCase();
     const correct = a === item.answer.toLowerCase();
     const octNote = item.mode === 'which-octave' ? octaveOf(item.midis[0]!) : undefined;

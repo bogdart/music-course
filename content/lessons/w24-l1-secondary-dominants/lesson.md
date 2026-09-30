@@ -1,79 +1,117 @@
 ---
 id: w24-l1-secondary-dominants
-title: Secondary Dominants
+title: "Secondary Dominants: V/V and V/vi"
 week: 24
 order: 1
 phase: p3
-duration_min: 45
+duration_min: 50
 goals:
-  - Build V/V, V/vi, V/IV and V/ii in any major key
-  - Use a secondary dominant to make the next chord feel like a small arrival
-  - Recognise the out-of-key note (often a raised note) that signals a secondary dominant
+  - Hear the raised 4 (♯4) and raised 5 (♯5) as single notes that lean up to the next degree
+  - Build V/V and V/vi in C, G and F and resolve each to its target chord
+  - Tell ii from V/V, then iii from V/vi, by ear — one contrast at a time
 prerequisites: [w23-l3-riff-and-solo-daw]
 tags: [harmony, secondary-dominants, chromaticism, ear]
 songs:
-  - { title: "Yesterday", composer: "Lennon-McCartney (The Beatles)", public_domain: false }
-  - { title: "Something", composer: "George Harrison (The Beatles)", public_domain: false }
-  - { title: "Creep", composer: "Radiohead (with Albert Hammond, Mike Hazlewood)", public_domain: false }
+  - { title: "Creep", composer: "Radiohead (1992)", public_domain: false }
+  - { title: "Yesterday", composer: "Lennon–McCartney (The Beatles, 1965)", public_domain: false }
 ---
 
-# Secondary Dominants
+# Secondary Dominants: V/V and V/vi
 
-You know that V7 pulls strongly to I (G7 → C). What if you want that same pull towards a *different* chord — say Am or G? Borrow **its** dominant. A [[secondary dominant]] is the V7 of a chord that isn't I. It's written **V/x** ("five of x").
+You know why V pulls to I: its 3rd (B in C major) is the [[leading tone]], a half step below home, and it wants to rise. Today you borrow that pull for chords *other* than I. Three ideas: the raised note, V/V, V/vi.
 
-## How to build one
+## 1. One raised note
 
-1. Pick the target chord (e.g. Am, the vi in C).
-2. Go up a perfect fifth from its root: A → **E**.
-3. Build a **dominant 7th** there: E G# B D = **E7**. That's V/vi.
-
-| Target | In C | Secondary dominant | Out-of-key note |
-|---|---|---|---|
-| V (G) | V/V | **D7** (D F# A C) | F# |
-| vi (Am) | V/vi | **E7** (E G# B D) | G# |
-| IV (F) | V/IV | **C7** (C E G Bb) | Bb |
-| ii (Dm) | V/ii | **A7** (A C# E G) | C# |
-
-That out-of-key note is the fingerprint. Your ear hears it as a new *leading tone* — G# pulls up to A, F# up to G, C# up to D — or, for C7, Bb falls down to A. For a moment, the target chord feels like a home of its own: that is [[tonicisation]].
-
-## Hear it
-
-Compare a plain C–Am–F–C–G–C with this version: E7 before Am and D7 before G. The melody sings the new leading tones (G# in bar 2, F# in bar 6).
+Start with a single note. In C major the 4th degree is F. Raise it a half step and you get **F♯ — the ♯4**. It is not in the key, and at first it may simply sound "off". Listen to where it goes: it leans up into G, exactly the way ti leans into do.
 
 ```example
 {
-  "title": "C - E7 - Am - F - C - D7 - G7 - C",
-  "bpm": 84, "timeSig": "4/4", "key": "C",
+  "title": "4 then ♯4: E F G, then E F♯ G (over a C chord)",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
   "tracks": [
-    { "instrument": "lead", "seq": "E4:q G4:q C5:q G4:q | G#4:h. B4:q | A4:h C5:h | A4:q G4:q F4:h | E4:q G4:q C5:q E5:q | F#5:h. D5:q | D5:q B4:q G4:q F4:q | E4:w" },
-    { "instrument": "piano", "seq": "[C3 E3 G3]:w | [B2 D3 G#3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w | [C3 E3 G3]:w | [A2 C3 F#3]:w | [B2 D3 F3]:w | [C3 E3 G3]:w" },
-    { "instrument": "bass", "seq": "C2:w | E2:w | A1:w | F1:w | C2:w | D2:w | G1:w | C2:w" }
+    { "instrument": "lead", "seq": "E4:q F4:q G4:h | E4:q F#4:q G4:h" },
+    { "instrument": "pad", "seq": "[C3 E3 G3]:w | [C3 E3 G3]:w" }
   ],
-  "show": ["pianoroll"],
-  "loop": false
+  "show": ["keyboard"]
 }
 ```
 
-Chain several and you get the "ragtime" progression, each dominant resolving to the next: E7 → A7 → D7 → G7 → C.
+Now raise the 5th degree, G, to **G♯ — the ♯5**. It leans up into A (degree 6).
 
-```chords
-{ "key": "C", "bars": ["C", "E7", "A7", "D7", "G7", "C"], "roman": true, "play": true, "bpm": 90 }
+```example
+{
+  "title": "5 then ♯5: G A, then G G♯ A",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "lead", "seq": "G4:h A4:h | G4:q G#4:q A4:h" },
+    { "instrument": "pad", "seq": "[C3 E3 G3]:w | [A2 C3 E3]:w" }
+  ],
+  "show": ["keyboard"]
+}
 ```
-
-**By reference:** "Yesterday" (The Beatles, F) moves Em7 → A7 → Dm in its opening line — A7 is V/vi. "Something" (George Harrison) goes C → Cmaj7 → C7 → F — the C7 is V/IV. "Creep" (Radiohead, G) uses G → B → C → Cm: B major is V/vi, but it moves to C instead of Em — a surprise resolution.
 
 ```exercise
 {
-  "id": "find-secondary",
+  "id": "play-raised-notes",
+  "type": "play-notes",
+  "title": "Play the lean: 4 – ♯4 – 5 and 5 – ♯5 – 6",
+  "instructions": "In C, then in G. Listen to the middle note pulling up.",
+  "spec": { "prompt": "names", "ordered": true, "notes": [["F4", "F#4", "G4"], ["G4", "G#4", "A4"], ["C5", "C#5", "D5"], ["D4", "D#4", "E4"]] }
+}
+```
+
+```ladder
+{ "skill": "degrees", "unlocks": 21, "intro": "Opens: the ♯4 joins the degrees. The drill runs at your current degree rung, so an earlier rung may come first." }
+```
+
+## 2. V/V — the dominant of the dominant
+
+Build a *major* chord on degree 2 instead of the minor ii: D F♯ A instead of D F A. Its 3rd is the ♯4 you just heard, so the chord leans into G the way G leans into C. It is called **V/V** ("five of five"): the V chord of G. Adding the 7th gives D7. This is a [[secondary dominant]]; for a moment G sounds like a small home of its own — [[tonicisation]].
+
+```example
+{
+  "title": "C – Dm – G – C, then C – D – G – C",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[C3 E3 G3]:w | [D3 F3 A3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w | [C3 E3 G3]:w | [D3 F#3 A3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w" },
+    { "instrument": "bass", "seq": "C2:w | D2:w | G1:w | C2:w | C2:w | D2:w | G1:w | C2:w" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+## 3. V/vi — the dominant of the relative minor
+
+Same trick on degree 3: E G♯ B instead of E G B. The G♯ (♯5) leans into A, so the chord points at Am. That is **V/vi** (E or E7 in C).
+
+```example
+{
+  "title": "C – Em – Am – F, then C – E – Am – F",
+  "bpm": 72, "timeSig": "4/4", "key": "C",
+  "tracks": [
+    { "instrument": "piano", "seq": "[C3 E3 G3]:w | [B2 E3 G3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w | [C3 E3 G3]:w | [B2 E3 G#3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w" },
+    { "instrument": "bass", "seq": "C2:w | E2:w | A1:w | F1:w | C2:w | E2:w | A1:w | F1:w" }
+  ],
+  "show": ["pianoroll"]
+}
+```
+
+| Key | V/V → V | V/vi → vi |
+|---|---|---|
+| C | D(7) → G | E(7) → Am |
+| G | A(7) → D | B(7) → Em |
+| F | G(7) → C | A(7) → Dm |
+
+```exercise
+{
+  "id": "sec-dom-names",
   "type": "quiz-input",
-  "title": "Find the secondary dominant",
-  "passScore": 0.8,
+  "title": "Name them",
   "spec": { "questions": [
-    { "q": "In G major, what is V/V? (chord symbol)", "answer": ["A7"], "kind": "text" },
-    { "q": "In G major, what is V/vi? (chord symbol)", "answer": ["B7"], "kind": "text" },
-    { "q": "In F major, what is V/IV? (chord symbol)", "answer": ["F7"], "kind": "text" },
-    { "q": "In D major, what is V/ii? (chord symbol)", "answer": ["F#7", "Gb7"], "kind": "text" },
-    { "q": "Which out-of-key note does E7 add in C major?", "answer": ["G#", "Ab"], "kind": "note" },
+    { "q": "In G major, V/V is which major chord? (chord symbol)", "answer": ["A", "A7"], "kind": "text" },
+    { "q": "In G major, V/vi is which major chord?", "answer": ["B", "B7"], "kind": "text" },
+    { "q": "In F major, V/vi is which major chord?", "answer": ["A", "A7"], "kind": "text" },
+    { "q": "Which out-of-key note does E major add in C major?", "answer": ["G#", "Ab"], "kind": "note" },
     { "q": "In C, D7 resolves to which chord?", "answer": ["G", "G7"], "kind": "text" }
   ] }
 }
@@ -81,92 +119,54 @@ Chain several and you get the "ragtime" progression, each dominant resolving to 
 
 ```exercise
 {
-  "id": "build-sec-doms",
-  "type": "build-chord",
-  "title": "Build secondary dominants",
-  "count": 8,
-  "passScore": 0.8,
-  "spec": { "chords": ["D7", "E7", "C7", "A7", "B7", "A7", "F7", "F#7"], "root": "given", "prompt": "symbol", "key": "C" }
-}
-```
-
-```exercise
-{
-  "id": "play-sec-dom-progression",
+  "id": "play-v-of-v-vi",
   "type": "play-chord",
-  "title": "Play the progression",
-  "count": 8,
-  "passScore": 0.8,
-  "spec": { "chords": ["C", "E7", "Am", "F", "C", "D7", "G7", "C"], "inversion": "any", "sequence": true, "bpm": 60 }
+  "title": "Play both pulls in C",
+  "instructions": "Keep your hand near middle C; the raised note should move up by a half step.",
+  "spec": { "chords": ["C", "D7", "G", "C", "E7", "Am", "F", "G"], "inversion": "any", "sequence": true, "bpm": 60 }
+}
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 16, "intro": "Opens: ii or V/V (minor or major on degree 2), then iii or V/vi — one contrast at a time. The drill runs at your current progression rung." }
+```
+
+## Verdict first: two real songs
+
+Listen to the opening of each song on your own before answering; the facts appear after you answer.
+
+```exercise
+{
+  "id": "songs-verdict",
+  "type": "quiz",
+  "title": "Your verdict",
+  "spec": { "questions": [
+    { "q": "\"Creep\" (Radiohead) is in G major. Its second chord is built on B. Does it sound minor (iii, Bm) or major (V/vi, B)?", "choices": ["Minor — iii", "Major — V/vi"], "answer": 1, "explain": "It is B major, V/vi, with D♯ (the ♯5 of G). But instead of resolving to Em it moves to C — a surprise, which is part of the song's uneasy mood." },
+    { "q": "\"Yesterday\" (The Beatles) is in F major. An A7 appears in its first line. Which chord would you expect next?", "choices": ["C (V)", "Dm (vi)", "B♭ (IV)"], "answer": 1, "explain": "A7 is V/vi in F; it resolves to Dm, as the song does." }
+  ] }
 }
 ```
 
 ```exercise
 {
-  "id": "ear-dom7-vs-minor",
-  "type": "ear-chord",
-  "title": "Minor, major or dominant 7th?",
-  "instructions": "A secondary dominant often replaces a chord you expect to be minor (Em becomes E7). Train the difference.",
-  "count": 10,
-  "passScore": 0.75,
-  "spec": { "qualities": ["maj", "min", "dom7"], "inversions": [0], "voicing": "close", "range": ["C3", "C5"] }
-}
-```
-
-```exercise
-{
-  "id": "ear-sec-dom-progressions",
-  "type": "ear-progression",
-  "title": "Hear V/V and V/vi",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "V", "vi", "V/V", "V/vi"], "style": "pad-bass" }
-}
-```
-
-```exercise
-{
-  "id": "daw-add-sec-doms",
+  "id": "daw-two-pulls",
   "type": "daw-task",
-  "title": "Spice up a progression",
-  "spec": {
-    "template": { "bpm": 90, "key": "G", "tracks": [
-      { "instrument": "piano", "seq": "[G3 B3 D4]:w | [E3 G3 B3]:w | [C3 E3 G3]:w | [D3 F#3 A3]:w | [G3 B3 D4]:w | [E3 G3 B3]:w | [A3 C4 E4]:w | [D3 F#3 A3]:w" },
-      { "instrument": "lead", "seq": "" }
-    ] },
-    "task": "The progression is G Em C D | G Em Am D. Add two secondary dominants: in bar 2 play Em for beats 1-2 and G7 (V/IV) for beats 3-4, so it pulls into C; replace bar 6 (Em) with E7 (V/ii), so it pulls into Am. Then write a melody that sings F natural over G7 and G# over E7, and ends on D over the last D chord - open, ready to loop.",
-    "checks": [
-      { "kind": "bars", "min": 8, "max": 8 },
-      { "kind": "has-tracks", "instruments": ["piano", "lead"] },
-      { "kind": "note-count", "min": 8, "max": 40, "track": 1 },
-      { "kind": "ends-on", "degree": 5, "track": 1 },
-      { "kind": "custom", "id": "sec-doms-placed", "note": "Self-check: G7 on beats 3-4 of bar 2 resolving to C; E7 in bar 6 resolving to Am; the melody uses F natural and G#." }
-    ],
-    "minBars": 8, "maxBars": 8
-  }
-}
-```
-
-```exercise
-{
-  "id": "daw-melody-over-v-of-ii",
-  "type": "daw-task",
-  "title": "Sing the new leading tone",
+  "title": "Add V/vi and V/V",
   "spec": {
     "template": { "bpm": 84, "key": "C", "tracks": [
-      { "instrument": "piano", "seq": "[C3 E3 G3]:w | [A2 C#3 G3]:w | [A2 D3 F3]:w | [B2 D3 F3 G3]:w" },
-      { "instrument": "bass", "seq": "C2:w | A1:w | D2:w | G1:w" },
+      { "instrument": "piano", "seq": "[C3 E3 G3]:w | [B2 E3 G3]:w | [A2 C3 E3]:w | [A2 C3 F3]:w | [C3 E3 G3]:w | [D3 F3 A3]:w | [B2 D3 G3]:w | [C3 E3 G3]:w" },
       { "instrument": "lead", "seq": "" }
     ] },
-    "task": "C - A7 - Dm - G7. Write a 4-bar melody where C# (the fingerprint of A7 = V/ii) sits on a strong beat of bar 2 and rises by a half step to D at the start of bar 3. End on G or B over G7.",
+    "task": "C Em Am F | C Dm G C. Change Em in bar 2 to E (V/vi: G becomes G♯) and Dm in bar 6 to D (V/V: F becomes F♯). Play it: bars 3 and 7 should feel like arrivals. Then write a simple lead: G♯ at the end of bar 2 rising to A in bar 3, F♯ in bar 6 rising to G in bar 7; end on C.",
     "checks": [
-      { "kind": "bars", "min": 4, "max": 4 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "V/ii", "ii", "V"], "barsPerChord": 1, "minRatio": 0.75, "track": 2 },
-      { "kind": "in-key", "key": "C", "scale": "major", "allowPassing": true, "track": 2 },
-      { "kind": "max-leap", "semitones": 7, "track": 2 },
-      { "kind": "custom", "id": "c-sharp-to-d", "note": "Self-check: a C# in bar 2 moves up to D in bar 3." }
+      { "kind": "bars", "min": 8, "max": 8 },
+      { "kind": "uses-chord", "roman": "V/vi", "track": 0 },
+      { "kind": "uses-chord", "roman": "V/V", "track": 0 },
+      { "kind": "note-count", "min": 6, "max": 32, "track": 1 },
+      { "kind": "ends-on", "degree": 1, "track": 1 },
+      { "kind": "custom", "id": "raised-notes-rise", "note": "Self-check: in the lead, G♯ rises to A and F♯ rises to G." }
     ],
-    "minBars": 4, "maxBars": 4
+    "minBars": 8, "maxBars": 8
   }
 }
 ```

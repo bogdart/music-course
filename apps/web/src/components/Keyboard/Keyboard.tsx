@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, type PointerEvent as RPointerEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { isBlackKey, midiToNote, noteToMidi, pcToDegree, parseKey } from '@music/core';
 import { noteInputBus } from '../../input/NoteInputBus';
 import { useInputStore } from '../../stores/input';
@@ -154,8 +154,26 @@ export function Keyboard(props: KeyboardProps) {
     return c.join(' ');
   };
 
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [overflows, setOverflows] = useState(false);
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const check = () => setOverflows(el.scrollWidth > el.clientWidth + 1);
+    check();
+    if (typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [whites.length]);
+
   return (
-    <div className={`${styles.scroller} ${props.className ?? ''}`}>
+    <div
+      ref={scrollerRef}
+      className={`${styles.scroller} ${props.className ?? ''}`}
+      // a keyboard wider than the screen scrolls: then it must be reachable (and scrollable) from the keyboard too
+      {...(overflows ? { tabIndex: 0, role: 'region', 'aria-label': 'Keyboard (scroll sideways)' } : {})}
+    >
       <div
         className={styles.keyboard}
         style={{ height, minWidth: whites.length * 34 }}

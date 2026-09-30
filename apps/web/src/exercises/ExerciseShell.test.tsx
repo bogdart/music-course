@@ -112,6 +112,32 @@ describe('ExerciseShell', () => {
     expect(screen.getByRole('status').textContent).toMatch(/Well played/);
   });
 
+  it('ear-octave find: any octave of the heard note counts, then the octave walk is offered', () => {
+    const block: ExerciseBlock = { id: 'f', type: 'ear-octave', seed: 3, count: 1, spec: { notes: ['E'], octaves: [2], mode: 'find' } };
+    render(<ExerciseShell block={block} lessonId="x" record={false} />);
+    act(() => {
+      noteInputBus.noteOn(65, 0.8, 'midi'); // F: just trying, nothing scored yet
+      noteInputBus.noteOff(65, 'midi');
+    });
+    expect(screen.queryByRole('status')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Check F4' }));
+    expect(screen.getByRole('status').textContent).toMatch(/Not quite/);
+    act(() => {
+      noteInputBus.noteOn(76, 0.8, 'midi'); // E5 for an E2: right
+      noteInputBus.noteOff(76, 'midi');
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Check E5' }));
+    expect(screen.getByRole('status').textContent).toMatch(/Correct/);
+    expect(screen.getByText(/Walk it to octave 4/)).toBeTruthy();
+  });
+
+  it('ear-note offers the walk home after a correct answer', () => {
+    const block: ExerciseBlock = { id: 'd', type: 'ear-note', seed: 1, count: 1, spec: { key: 'C', degrees: [6], reference: 'scale' } };
+    render(<ExerciseShell block={block} lessonId="x" record={false} />);
+    fireEvent.click(screen.getByRole('button', { name: /6/ }));
+    expect(screen.getByText(/Question, then walk home/)).toBeTruthy();
+  });
+
   it('ear-interval renders choices and evaluates', () => {
     const block: ExerciseBlock = { id: 'i', type: 'ear-interval', seed: 7, count: 1, spec: { intervals: ['M3'], direction: 'asc' } };
     render(<ExerciseShell block={block} lessonId="x" record={false} />);

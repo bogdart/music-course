@@ -20,7 +20,7 @@ The black keys don't get letters of their own. Each one is named after a white n
 - a [[sharp]] (**♯**, typed `#`) means "one key **higher**": the black key right of C is **C♯**.
 - a [[flat]] (**♭**, typed `b`) means "one key **lower**": the same black key, seen from D, is **D♭**.
 
-So C♯ and D♭ are two names for one key. Which name we use depends on the musical situation — you'll see why in week 7. For now, both are right.
+So C♯ and D♭ are two names for one key. Which name we use depends on the key you're playing in — week 7 explains the rule, when we meet keys that use sharps and keys that use flats. For now, both are right.
 
 ```keyboard
 { "range": ["C4", "C5"], "highlight": ["C#4", "D#4", "F#4", "G#4", "A#4"], "labels": "names" }
@@ -46,20 +46,41 @@ Look closely at the keyboard: between **E and F** and between **B and C** there 
 
 ## Hearing the difference
 
-A half step sounds **tight** and tense — like a squeeze, the sound of the shark approaching in a famous film score. A whole step sounds **open**, like the first two notes of "Frère Jacques" or the "do–re" you'll meet next week. Listen, then sing both:
+A half step sounds **tight** — the second note seems squeezed right up against the first. A whole step sounds more **open**: a clear step, like the E → D → C steps of "Hot Cross Buns" and "Mary Had a Little Lamb" from week 1 — each of those steps is a whole step. The difference is small, so listen to them in pairs from the same note:
 
 ```example
 {
-  "title": "Half step, whole step, half step, whole step",
+  "title": "From C: half step, whole step. From G: half step, whole step",
   "bpm": 70, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "C4:h C#4:h | r:w | C4:h D4:h | r:w | G4:h G#4:h | r:w | G4:h A4:h" } ],
   "show": ["keyboard"]
 }
 ```
 
-In the app, a half step is labelled **m2** and a whole step **M2** (minor and major second — you'll learn the reason in week 5).
+In the app, a half step is labelled **m2** and a whole step **M2** (minor and major second — the reason comes in week 5). Your interval ladder starts here, with exactly this pair.
 
-## Drills
+```ladder
+{ "skill": "intervals", "unlocks": 1, "intro": "Two notes going up: a half step (squeezed) or a whole step (open)?" }
+```
+
+## Find the note you hear
+
+This lesson also opens a new kind of octave rung (you'll meet it once the earlier octave rungs are solid): you hear **one** note and play it on your keyboard. Any octave counts. The simplest way in: find the key at about the same height first — the exact same note is always right. If it's too high or low for your keyboard, the same letter an octave closer counts too. If your first try is wrong, the app tells you and you can try again; only the first try counts toward the ladder.
+
+```example
+{
+  "title": "E4, then E3 and E5 — same letter, three heights (all correct answers)",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "piano", "seq": "E4:h r:h | E3:h E5:h" } ],
+  "show": ["keyboard"]
+}
+```
+
+```ladder
+{ "skill": "octave", "unlocks": 5, "intro": "Opens \"Find it on your keyboard\"; the drill runs at your current octave rung." }
+```
+
+## Hands
 
 ```exercise
 {
@@ -75,7 +96,7 @@ In the app, a half step is labelled **m2** and a whole step **M2** (minor and ma
     { "q": "A sharp means…", "choices": ["one half step higher", "one half step lower", "louder"], "answer": 0 },
     { "q": "G to A is a…", "choices": ["half step", "whole step"], "answer": 1 }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -86,7 +107,7 @@ In the app, a half step is labelled **m2** and a whole step **M2** (minor and ma
   "title": "Find the black keys",
   "instructions": "Each black key has two names. Find it from either neighbour.",
   "count": 10,
-  "passScore": 0.8,
+  "passScore": 0.75,
   "spec": { "prompt": "names", "notes": ["C#4", "Eb4", "F#4", "Bb3", "G#4", "Db4", "A#3", "Gb4"], "ordered": true, "key": "C" }
 }
 ```
@@ -104,7 +125,7 @@ In the app, a half step is labelled **m2** and a whole step **M2** (minor and ma
     { "q": "A whole step above B is…", "answer": ["C#", "Db"], "kind": "note" },
     { "q": "A half step above G is…", "answer": ["G#", "Ab"], "kind": "note" }
   ] },
-  "passScore": 0.8
+  "passScore": 0.75
 }
 ```
 
@@ -115,33 +136,7 @@ In the app, a half step is labelled **m2** and a whole step **M2** (minor and ma
   "title": "Play a half or whole step up",
   "instructions": "m2 = half step up, M2 = whole step up. Play the second note.",
   "count": 10,
-  "passScore": 0.8,
+  "passScore": 0.75,
   "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random" }
-}
-```
-
-```exercise
-{
-  "id": "e5",
-  "type": "ear-interval",
-  "title": "Half step or whole step?",
-  "instructions": "Two notes going up. Tight squeeze (m2 = half step) or open step (M2 = whole step)?",
-  "count": 10,
-  "passScore": 0.7,
-  "spec": { "intervals": ["m2", "M2"], "direction": "asc", "root": "random", "range": ["C3", "C5"] },
-  "hints": ["Sing the two notes. Does the second feel squeezed right against the first?"]
-}
-```
-
-```exercise
-{
-  "id": "e7",
-  "type": "ear-octave",
-  "title": "Octaves vs half-step neighbours",
-  "instructions": "Same note name an octave away, or a note one half step off? Now with black keys too.",
-  "count": 12,
-  "passScore": 0.7,
-  "spec": { "notes": ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "octaves": [3, 4, 5], "mode": "same-or-different", "gap": [1], "foils": [1, 11] },
-  "hints": ["A half step off the octave sounds sour against the first note. Press 'Octave vs this note' after answering."]
 }
 ```

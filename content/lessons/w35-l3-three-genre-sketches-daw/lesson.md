@@ -6,7 +6,7 @@ order: 3
 phase: p4
 duration_min: 50
 goals:
-  - Write three 60-second sketches, each clearly in its genre
+  - Write three 60-second sketches, each clearly in its genre (over two sessions)
   - Pick idioms deliberately from a checklist rather than by accident
   - Compare how the same skills (hook, loop, groove) change across genres
 prerequisites: [w35-l2-rock-and-folk-idioms]
@@ -15,333 +15,158 @@ tags: [songwriting, genre, daw, sketch]
 
 # Three Genre Sketches — Pop, Rock, Folk
 
-A **sketch** is not a finished song: it's 60 seconds that prove an idea works. Today you write three, fast. Speed matters — don't polish. You can return to one of them in the portfolio weeks.
+A **sketch** is not a finished song: it is about 60 seconds that prove an idea works. You will write three. **This lesson spans two sessions**: the pop sketch in the first, rock and folk in the second (about 25 minutes each). Don't polish — you can return to one of them in the portfolio weeks.
 
-At 100 bpm in 4/4, 60 seconds is 25 bars; we'll use 24 (three 8-bar sections). In 6/8 at 60 (dotted-quarter) it's 30 bars; 24 is fine.
+At 100 BPM in 4/4 a bar lasts 2.4 seconds, so 24 bars (three 8-bar sections) is just under a minute. Every task below shows the length it expects.
 
 ## Idiom checklists
 
 Tick at least **three** boxes per sketch.
 
-**Pop (verse 8 · pre 8 · chorus 8, ~100 bpm):** four-chord loop · hook repeated in the chorus · chorus higher than verse · pre-chorus build · drop-out before the chorus · pad or piano + bass + drums.
+**Pop (verse 8 · pre-chorus 8 · chorus 8, about 100 BPM):** four-chord loop · hook repeated in the chorus · chorus higher than verse · pre-chorus build · drop-out before the chorus · piano + bass + drums.
 
-**Rock (riff 8 · verse 8 · chorus 8, ~120 bpm):** power-chord riff · bVII chord · straight 8th hats + backbeat · bass doubles the riff · chorus opens up to sustained chords.
+**Rock (riff 8 · verse 8 · chorus 8, about 120 BPM):** power-chord riff · ♭VII chord · straight 8th hats + backbeat · bass doubles the riff roots · chorus opens up to longer chords.
 
-**Folk (A 8 · A 8 · B 8, 6/8 or 3/4):** fingerpicked arpeggios · I–IV–V (+vi) · drone or pedal note · simple stepwise melody · no drums or very light percussion.
+**Folk (A 8 · A 8 · B 8, 6/8):** fingerpicked arpeggios · I–IV–V (+vi) · a drone or held bass note · a simple, mostly stepwise tune · no drums or very light percussion.
 
-## A folk melody idea
+## A folk tune seed
 
-A starting point if you're stuck — an original stepwise 6/8 tune shape over I–IV–I–V in D:
+A starting point if you're stuck — an original 6/8 tune over I–IV–I–V in D. It opens with a leap up the D chord (F♯–A–D), then walks back down mostly by step:
 
 ```example
 {
   "title": "Folk tune seed in 6/8 (original)",
-  "bpm": 60,
-  "timeSig": "6/8",
-  "key": "D",
+  "bpm": 60, "timeSig": "6/8", "key": "D",
   "tracks": [
-    {
-      "instrument": "pluck",
-      "seq": "F#4:q A4:8 D5:q. | B4:q A4:8 G4:q. | F#4:q E4:8 D4:q A4:8 | E4:q. r:q. |"
-    },
-    {
-      "instrument": "strings",
-      "seq": "[D3 A3]:q. [D3 A3]:q. | [G2 D3]:q. [G2 D3]:q. | [D3 A3]:q. [D3 A3]:q. | [A2 E3]:q. [A2 E3]:q. |"
-    }
+    { "instrument": "pluck", "seq": "F#4:q A4:8 D5:q. | B4:q A4:8 G4:q. | F#4:q E4:8 D4:q A4:8 | E4:q. r:q. |" },
+    { "instrument": "strings", "seq": "[D3 A3]:q. [D3 A3]:q. | [G2 D3]:q. [G2 D3]:q. | [D3 A3]:q. [D3 A3]:q. | [A2 E3]:q. [A2 E3]:q. |" }
   ],
-  "show": [
-    "staff"
-  ]
-}
-```
-
-## Timebox it
-
-Give each sketch about 12 minutes: 3 minutes choosing idioms and chords, 6 minutes writing the core (hook, riff or tune plus its accompaniment), 3 minutes adding the remaining tracks and copying sections. When the timer ends, save and move on. You will be surprised how much a strict limit helps you commit to decisions instead of endlessly auditioning options.
-
-## Drills
-
-```exercise
-{
-  "id": "e1-ear-genre-prog",
-  "type": "ear-progression",
-  "title": "Warm-up: genre progressions",
-  "count": 6,
-  "passScore": 0.7,
-  "spec": {
-    "key": "random",
-    "mode": "major",
-    "length": 4,
-    "chords": [
-      "I",
-      "IV",
-      "V",
-      "vi",
-      "bVII"
-    ],
-    "style": "arpeggio"
-  }
+  "show": ["staff"]
 }
 ```
 
 ```exercise
 {
-  "id": "e2-play-folk-seed",
+  "id": "e1-play-folk-seed",
   "type": "play-melody",
   "title": "Play the folk seed",
-  "count": 6,
-  "passScore": 0.75,
+  "passScore": 0.7,
   "spec": {
-    "bpm": 55,
-    "timeSig": "6/8",
-    "key": "D",
+    "bpm": 55, "timeSig": "6/8", "key": "D",
     "seq": "F#4:q A4:8 D5:q. | B4:q A4:8 G4:q. | F#4:q E4:8 D4:q A4:8 | E4:q. r:q. |",
-    "showStaff": true,
-    "showKeyboard": true,
-    "countIn": 1
+    "showStaff": true, "showKeyboard": true, "countIn": 1
   }
 }
 ```
 
+## Timebox each sketch
+
+About 25 minutes each: 5 minutes choosing idioms and chords, 12 minutes writing the core (hook, riff or tune plus its accompaniment), 8 minutes adding the other tracks and copying sections. When the time is up, save and stop. A strict limit helps you commit to decisions instead of auditioning options forever.
+
+## Ear: bass lines
+
+```ladder
+{ "skill": "roots", "unlocks": 14, "intro": "All three sketches stand on a bass line — this drill runs at your current roots rung." }
+```
+
+## Session 1: pop
+
 ```exercise
 {
-  "id": "e3-daw-pop",
+  "id": "e2-daw-pop",
   "type": "daw-task",
   "title": "Sketch 1: pop",
-  "instructions": "24 bars: verse, pre-chorus, chorus. Tick 3+ pop boxes.",
+  "instructions": "24 bars in G: verse (8), pre-chorus (8), chorus (8). Tick 3+ pop boxes.",
   "spec": {
     "template": {
-      "bpm": 100,
-      "key": "G",
-      "timeSig": "4/4",
+      "bpm": 100, "key": "G", "timeSig": "4/4",
       "tracks": [
-        {
-          "instrument": "lead",
-          "seq": ""
-        },
-        {
-          "instrument": "piano",
-          "seq": ""
-        },
-        {
-          "instrument": "bass",
-          "seq": ""
-        },
-        {
-          "instrument": "drums",
-          "seq": ""
-        }
-      ]
+        { "instrument": "lead", "seq": "" },
+        { "instrument": "piano", "seq": "" },
+        { "instrument": "bass", "seq": "" },
+        { "instrument": "drums", "seq": "" }
+      ],
+      "markers": [{ "bar": 1, "name": "Verse" }, { "bar": 9, "name": "Pre-chorus" }, { "bar": 17, "name": "Chorus" }]
     },
     "task": "60-second pop sketch.",
     "checks": [
-      {
-        "kind": "has-tracks",
-        "instruments": [
-          "lead",
-          "piano",
-          "bass",
-          "drums"
-        ]
-      },
-      {
-        "kind": "bars",
-        "min": 24,
-        "max": 26
-      },
-      {
-        "kind": "in-key",
-        "key": "G",
-        "scale": "major",
-        "allowPassing": true,
-        "track": 0
-      },
-      {
-        "kind": "repetition",
-        "motifBars": 1,
-        "minRepeats": 3,
-        "allowTransposed": true,
-        "track": 0
-      },
-      {
-        "kind": "drum-pattern",
-        "requires": [
-          "kick",
-          "snare"
-        ],
-        "snareOnBeats": [
-          2,
-          4
-        ],
-        "track": 3
-      },
-      {
-        "kind": "custom",
-        "id": "pop-boxes",
-        "note": "Self-check: three or more pop idioms ticked."
-      }
+      { "kind": "has-tracks", "instruments": ["lead", "piano", "bass", "drums"] },
+      { "kind": "bars", "min": 24, "max": 26 },
+      { "kind": "in-key", "key": "G", "scale": "major", "allowPassing": true, "track": 0 },
+      { "kind": "repetition", "motifBars": 1, "minRepeats": 3, "allowTransposed": true, "track": 0 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare"], "snareOnBeats": [2, 4], "track": 3 },
+      { "kind": "custom", "id": "pop-boxes", "note": "Self-check: three or more pop idioms ticked." }
     ],
-    "minBars": 24,
-    "maxBars": 26
+    "minBars": 24, "maxBars": 26
   }
 }
 ```
 
+## Session 2: rock and folk
+
 ```exercise
 {
-  "id": "e4-daw-rock",
+  "id": "e3-daw-rock",
   "type": "daw-task",
   "title": "Sketch 2: rock",
-  "instructions": "24 bars: riff, verse, chorus. Tick 3+ rock boxes.",
+  "instructions": "24 bars in D: riff (8), verse (8), chorus (8). Power chords on the guitar track, bass on the riff roots. Tick 3+ rock boxes.",
   "spec": {
     "template": {
-      "bpm": 120,
-      "key": "D",
-      "timeSig": "4/4",
+      "bpm": 120, "key": "D", "timeSig": "4/4",
       "tracks": [
-        {
-          "instrument": "bass",
-          "seq": ""
-        },
-        {
-          "instrument": "lead",
-          "seq": ""
-        },
-        {
-          "instrument": "strings",
-          "seq": ""
-        },
-        {
-          "instrument": "drums",
-          "seq": ""
-        }
-      ]
+        { "instrument": "guitar", "seq": "" },
+        { "instrument": "bass", "seq": "" },
+        { "instrument": "lead", "seq": "" },
+        { "instrument": "drums", "seq": "" }
+      ],
+      "markers": [{ "bar": 1, "name": "Riff" }, { "bar": 9, "name": "Verse" }, { "bar": 17, "name": "Chorus" }]
     },
     "task": "60-second rock sketch.",
     "checks": [
-      {
-        "kind": "has-tracks",
-        "instruments": [
-          "bass",
-          "drums"
-        ]
-      },
-      {
-        "kind": "bars",
-        "min": 24,
-        "max": 32
-      },
-      {
-        "kind": "in-key",
-        "key": "D",
-        "scale": "mixolydian",
-        "allowPassing": true,
-        "track": 0
-      },
-      {
-        "kind": "repetition",
-        "motifBars": 2,
-        "minRepeats": 2,
-        "allowTransposed": true,
-        "track": 0
-      },
-      {
-        "kind": "drum-pattern",
-        "requires": [
-          "kick",
-          "snare",
-          "hihat"
-        ],
-        "snareOnBeats": [
-          2,
-          4
-        ],
-        "track": 3
-      },
-      {
-        "kind": "custom",
-        "id": "rock-boxes",
-        "note": "Self-check: three or more rock idioms ticked."
-      }
+      { "kind": "has-tracks", "instruments": ["guitar", "bass", "drums"] },
+      { "kind": "bars", "min": 24, "max": 32 },
+      { "kind": "in-key", "key": "D", "scale": "mixolydian", "allowPassing": true, "track": 0 },
+      { "kind": "repetition", "motifBars": 2, "minRepeats": 2, "allowTransposed": true, "track": 0 },
+      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "snareOnBeats": [2, 4], "track": 3 },
+      { "kind": "custom", "id": "rock-boxes", "note": "Self-check: three or more rock idioms ticked." }
     ],
-    "minBars": 24,
-    "maxBars": 32
+    "minBars": 24, "maxBars": 32
   }
 }
 ```
 
 ```exercise
 {
-  "id": "e5-daw-folk",
+  "id": "e4-daw-folk",
   "type": "daw-task",
   "title": "Sketch 3: folk",
-  "instructions": "24 bars in 6/8: A, A, B. Tick 3+ folk boxes. Use the seed above or your own tune.",
+  "instructions": "24 bars in 6/8 in D: A (8), A again (8), B (8). Tick 3+ folk boxes. Use the seed above or your own tune.",
   "spec": {
     "template": {
-      "bpm": 60,
-      "key": "D",
-      "timeSig": "6/8",
+      "bpm": 60, "key": "D", "timeSig": "6/8",
       "tracks": [
-        {
-          "instrument": "pluck",
-          "seq": ""
-        },
-        {
-          "instrument": "piano",
-          "seq": ""
-        },
-        {
-          "instrument": "strings",
-          "seq": ""
-        }
+        { "instrument": "pluck", "seq": "" },
+        { "instrument": "piano", "seq": "" },
+        { "instrument": "strings", "seq": "" }
       ]
     },
     "task": "60-second folk sketch.",
     "checks": [
-      {
-        "kind": "has-tracks",
-        "instruments": [
-          "pluck",
-          "piano"
-        ]
-      },
-      {
-        "kind": "bars",
-        "min": 24,
-        "max": 32
-      },
-      {
-        "kind": "in-key",
-        "key": "D",
-        "scale": "major",
-        "allowPassing": false,
-        "track": 0
-      },
-      {
-        "kind": "max-leap",
-        "semitones": 7,
-        "track": 0
-      },
-      {
-        "kind": "ends-on",
-        "degree": 1,
-        "track": 0
-      },
-      {
-        "kind": "custom",
-        "id": "folk-boxes",
-        "note": "Self-check: three or more folk idioms ticked."
-      }
+      { "kind": "has-tracks", "instruments": ["pluck", "piano"] },
+      { "kind": "bars", "min": 24, "max": 32 },
+      { "kind": "in-key", "key": "D", "scale": "major", "allowPassing": false, "track": 0 },
+      { "kind": "max-leap", "semitones": 7, "track": 0 },
+      { "kind": "ends-on", "degree": 1, "track": 0 },
+      { "kind": "custom", "id": "folk-boxes", "note": "Self-check: three or more folk idioms ticked." }
     ],
-    "minBars": 24,
-    "maxBars": 32
+    "minBars": 24, "maxBars": 32
   }
 }
 ```
 
 ```exercise
 {
-  "id": "e6-reflect",
+  "id": "e5-reflect",
   "type": "reflect",
   "title": "Genre fingerprints",
   "spec": {

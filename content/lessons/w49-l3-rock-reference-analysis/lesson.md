@@ -6,9 +6,9 @@ order: 3
 phase: p5
 duration_min: 50
 goals:
-  - Decompose three rock/indie records by reference, including two with a debatable key
-  - Hear sus2/sus4 colours and droning common tones in indie guitar parts
-  - Write a 16-bar rock section with a riff intro and a power-chord chorus
+  - Listen to three rock/indie records and commit to answers, including two with a debatable key
+  - Hear droning top notes that turn ordinary chords into sus and add9 colours
+  - Write an 8-bar rock section with a riff and a power-chord chorus
 prerequisites: [w49-l2-mixolydian-and-flat-seven-by-ear]
 tags: [transcription, rock, indie, reference-songs, sus, daw]
 songs:
@@ -19,84 +19,80 @@ songs:
 
 # Transcribe 4: Rock and Indie — Reference Analysis
 
-This week's references include two famous arguments. Musicians genuinely disagree about the key of two of these songs — which makes them perfect training. A transcriber's job isn't to find the "official" answer; it's to hear clearly and justify a decision.
+This week's references include two famous arguments: musicians disagree about the key of two of these songs. A
+transcriber's job isn't to find an "official" answer; it's to hear clearly and justify a decision with evidence.
 
 ## The indie drone
 
-First, one sound you'll hear constantly in indie and Britpop: chords that keep the **same top notes** while the bass moves, producing sus2, add9 and m7 colours almost by accident. Guitarists get it by leaving the top strings ringing.
+A sound you'll hear constantly in indie and Britpop: chords that keep the **same top notes** while the bass moves,
+producing sus2, add9 and m7 colours almost by accident — guitarists leave the top strings ringing. Shown, as the
+explanation:
 
 ```example
 {
-  "title": "Original: drone voicings — Asus2 – E/G# – F#m7 – Dsus2",
-  "bpm": 90, "timeSig": "4/4", "key": "A",
+  "title": "Drone voicings — Asus2 – E/G# – F#m7 – Dsus2",
+  "bpm": 90,
+  "timeSig": "4/4",
+  "key": "A",
   "tracks": [
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8" },
-    { "instrument": "bass", "seq": "A2:w | G#2:w | F#2:w | D2:w" },
-    { "instrument": "pluck", "seq": "[A3 B3 E4]:q [A3 B3 E4]:8 [A3 B3 E4]:8 r:8 [A3 B3 E4]:8 [A3 B3 E4]:q | [G#3 B3 E4]:q [G#3 B3 E4]:8 [G#3 B3 E4]:8 r:8 [G#3 B3 E4]:8 [G#3 B3 E4]:q | [F#3 A3 E4]:q [F#3 A3 E4]:8 [F#3 A3 E4]:8 r:8 [F#3 A3 E4]:8 [F#3 A3 E4]:q | [D3 A3 E4]:q [D3 A3 E4]:8 [D3 A3 E4]:8 r:8 [D3 A3 E4]:8 [D3 A3 E4]:q" }
+    {"instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 hihat:8 [kick hihat]:8 [kick hihat]:8 [snare hihat]:8 hihat:8"},
+    {"instrument": "bass", "seq": "A2:w | G#2:w | F#2:w | D2:w"},
+    {"instrument": "pluck", "seq": "[A3 B3 E4]:q [A3 B3 E4]:8 [A3 B3 E4]:8 r:8 [A3 B3 E4]:8 [A3 B3 E4]:q | [G#3 B3 E4]:q [G#3 B3 E4]:8 [G#3 B3 E4]:8 r:8 [G#3 B3 E4]:8 [G#3 B3 E4]:q | [F#3 A3 E4]:q [F#3 A3 E4]:8 [F#3 A3 E4]:8 r:8 [F#3 A3 E4]:8 [F#3 A3 E4]:q | [D3 A3 E4]:q [D3 A3 E4]:8 [D3 A3 E4]:8 r:8 [D3 A3 E4]:8 [D3 A3 E4]:q"}
   ],
   "show": ["keyboard"],
   "loop": true
 }
 ```
 
-The top E never moves. Listen for the colour change underneath — and for the stepwise slash-chord bass from week 42.
-
-## "Sweet Home Alabama" — Lynyrd Skynyrd (1974)
-
-**About 98 BPM. Loop: D – C – G**, repeated almost throughout. The debate: is it D Mixolydian (I – bVII – IV) or G major (V – IV – I)? Pass 1: where does each 3-chord phrase feel resolved? Where does the guitar riff start? Most listeners hear D as home, which makes this the textbook I–bVII–IV. Write your verdict and the reason.
-
-## "Seven Nation Army" — The White Stripes (2003)
-
-**E minor, about 124 BPM.** Pass 3 is a trick question: there's no bass guitar. The famous riff is a guitar pitched down an octave with an effect pedal, doing the bass's job. Pass 4: the harmony is *implied* by the riff's notes rather than played as chords. Pass 7: the song builds almost entirely by dynamics — the same riff gets louder and denser. List each change in intensity.
-
-## "Wonderwall" — Oasis (1995)
-
-**About 87 BPM. Loop commonly charted as F#m7 – A – Esus4 – B7sus4** (guitar capo on the 2nd fret). Pass 1 again: F# minor or A major? Pass 4: listen to the sus chords — neither resolves the way a classical sus4 would; they ring as colours, with droning top strings exactly like the example above.
+The top E never moves; the colour changes underneath, over a stepwise slash-chord bass (week 42). Now the records — your
+own copies, answers first.
 
 ```exercise
 {
-  "id": "w49l3-refs",
+  "id": "w49l3-alabama",
   "type": "quiz",
-  "title": "Reference check",
-  "spec": { "questions": [
-    { "q": "\"Sweet Home Alabama\": if D is home, the loop D–C–G is…", "choices": ["I–bVII–IV", "V–IV–I", "I–VII–IV", "ii–I–V"], "answer": 0 },
-    { "q": "\"Seven Nation Army\": what fills the bass role?", "choices": ["A bass guitar", "A guitar pitched down an octave with a pedal", "A synth", "Nothing — there's no low end"], "answer": 1 },
-    { "q": "\"Seven Nation Army\": how does the song build?", "choices": ["New chords each section", "Mostly dynamics and density over the same riff", "Key changes", "Tempo changes"], "answer": 1 },
-    { "q": "\"Wonderwall\": the sus chords…", "choices": ["Always resolve to major", "Ring as colours with droning top strings", "Are power chords", "Are diminished"], "answer": 1 }
-  ] }
+  "title": "\"Sweet Home Alabama\" — Lynyrd Skynyrd (1974)",
+  "spec": {
+    "questions": [
+      {"q": "How many chords in the loop that runs through most of the song?", "choices": ["Two", "Three", "Four"], "answer": 1, "explain": "Three: D – C – G, about 98 BPM."},
+      {"q": "Which chord of the loop feels most like arriving home?", "choices": ["The first (D)", "The second (C)", "The third (G)"], "answers": [0, 2], "explain": "D or G both count. The riff and the vocal phrases keep coming to rest on D, so most analyses call D home (D Mixolydian). But the loop also reads as V – IV – I in G, and G major has no C♯ to contradict it: a genuinely two-way case. Put your phrase-end evidence in the reflection below."},
+      {"q": "With D as home, the loop in numerals is…", "choices": ["I – ♭VII – IV", "V – IV – I", "I – VII – IV", "ii – I – V"], "answer": 0, "explain": "I – ♭VII – IV: C is the major chord a whole step below D, the Mixolydian ♭VII."}
+    ]
+  }
 }
 ```
 
 ```exercise
 {
-  "id": "w49l3-sus",
-  "type": "ear-chord",
-  "title": "Sus and triad colours",
-  "count": 10,
-  "passScore": 0.8,
-  "spec": { "qualities": ["maj", "min", "sus2", "sus4", "min7"], "inversions": [0], "voicing": "open", "range": ["C3", "C5"] }
+  "id": "w49l3-sevennation",
+  "type": "quiz",
+  "title": "\"Seven Nation Army\" — The White Stripes (2003)",
+  "spec": {
+    "questions": [
+      {"q": "Pass 3: is there a bass guitar?", "choices": ["Yes", "No — a guitar pitched down an octave with a pedal does the job"], "answer": 1},
+      {"q": "Home and quality?", "choices": ["E minor", "G major", "A minor", "B major"], "answer": 0, "explain": "E minor, about 124 BPM."},
+      {"q": "Pass 7: how does the song build?", "choices": ["New chords in each section", "Mostly louder, denser playing of the same riff", "Key changes", "Tempo changes"], "answer": 1}
+    ]
+  }
 }
 ```
 
 ```exercise
 {
-  "id": "w49l3-prog",
-  "type": "ear-progression",
-  "title": "Rock and indie loops in G",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "key": "G", "mode": "major", "length": 4, "chords": ["I", "bVII", "IV", "vi7", "Vsus4", "ii"], "style": "arpeggio" }
+  "id": "w49l3-wonderwall",
+  "type": "quiz",
+  "title": "\"Wonderwall\" — Oasis (1995)",
+  "spec": {
+    "questions": [
+      {"q": "Do the sus chords resolve to plain major chords the way a classic sus4 does?", "choices": ["Yes, each time", "No — they ring as colours"], "answer": 1, "explain": "No: they ring as colours, with droning top strings like the example above."},
+      {"q": "Listen for home. Which statement is fair?", "choices": ["Only F# can be home", "Only A can be home", "F# minor and A major can both be defended; the evidence decides"], "answer": 2, "explain": "The loop is commonly charted F#m7 – A – Esus4 – B7sus4 (about 87 BPM). Many hear F# minor, others A major. Give your own verdict and its evidence in the reflection below."}
+    ]
+  }
 }
 ```
 
-```exercise
-{
-  "id": "w49l3-analysis",
-  "type": "roman-analysis",
-  "title": "Same chords, two keys",
-  "instructions": "Analyse these chords in G. Then say out loud what they would be in D.",
-  "spec": { "key": "G", "chords": ["D", "C", "G", "D"], "prompt": "symbols" }
-}
+```ladder
+{"skill": "chords", "unlocks": 16, "intro": "Sus chords are rungs 8–9 of this ladder; you drill at your own current rung."}
 ```
 
 ```exercise
@@ -104,8 +100,8 @@ The top E never moves. Listen for the colour change underneath — and for the s
   "id": "w49l3-play",
   "type": "play-chord",
   "title": "Drone voicings",
-  "instructions": "Keep B and E on top of every chord.",
-  "spec": { "chords": ["Asus2", "E", "F#m7", "Dsus2"], "inversion": "any", "sequence": true, "bpm": 72 }
+  "instructions": "Keep E as the top note of every chord, as in the drone example (F#m7 needs its C# as well: F#–A–C#–E).",
+  "spec": {"chords": ["Asus2", "E/G#", "F#m7", "Dsus2"], "inversion": "any", "sequence": true, "bpm": 72}
 }
 ```
 
@@ -115,19 +111,27 @@ The top E never moves. Listen for the colour change underneath — and for the s
   "type": "daw-task",
   "title": "Your rock section",
   "spec": {
-    "template": { "bpm": 126, "key": "Em", "tracks": [
-      { "instrument": "drums", "seq": "" }, { "instrument": "bass", "seq": "" },
-      { "instrument": "pluck", "seq": "" }, { "instrument": "lead", "seq": "" } ] },
-    "task": "Write 16 bars in E minor: 8 bars of a one-bar pentatonic riff (bass and pluck in unison, bar 8 varied, drum fill into bar 9), then an 8-bar chorus of eighth-note power chords with a lead melody and a ride/crash groove.",
+    "template": {
+      "bpm": 126,
+      "key": "Em",
+      "tracks": [
+        {"instrument": "drums", "seq": ""},
+        {"instrument": "bass", "seq": ""},
+        {"instrument": "pluck", "seq": ""},
+        {"instrument": "lead", "seq": ""}
+      ]
+    },
+    "task": "Write 8 bars in E minor: 4 bars of a one-bar pentatonic riff (bass and pluck in unison, bar 4 varied, a drum fill into bar 5), then a 4-bar chorus of eighth-note power chords with a lead melody.",
     "checks": [
-      { "kind": "has-tracks", "instruments": ["drums", "bass", "pluck", "lead"] },
-      { "kind": "bars", "min": 16, "max": 16 },
-      { "kind": "repetition", "motifBars": 1, "minRepeats": 4, "allowTransposed": false, "track": 1 },
-      { "kind": "in-key", "key": "E", "scale": "blues", "allowPassing": true, "track": 1 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare"], "snareOnBeats": [2, 4], "track": 0 },
-      { "kind": "in-key", "key": "E", "scale": "natural-minor", "allowPassing": true, "track": 3 }
+      {"kind": "has-tracks", "instruments": ["drums", "bass", "pluck", "lead"]},
+      {"kind": "bars", "min": 8, "max": 8},
+      {"kind": "repetition", "motifBars": 1, "minRepeats": 3, "allowTransposed": false, "track": 1},
+      {"kind": "in-key", "key": "E", "scale": "natural-minor", "allowPassing": true, "track": 1},
+      {"kind": "drum-pattern", "requires": ["kick", "snare"], "snareOnBeats": [2, 4], "track": 0},
+      {"kind": "in-key", "key": "E", "scale": "natural-minor", "allowPassing": true, "track": 3}
     ],
-    "minBars": 16, "maxBars": 16
+    "minBars": 8,
+    "maxBars": 8
   }
 }
 ```
@@ -137,6 +141,9 @@ The top E never moves. Listen for the colour change underneath — and for the s
   "id": "w49l3-reflect",
   "type": "reflect",
   "title": "Your verdicts",
-  "spec": { "prompt": "Give your key verdict for \"Sweet Home Alabama\" and \"Wonderwall\" with the listening evidence for each (where phrases resolve, where the bass rests, what the melody ends on).", "minWords": 40 }
+  "spec": {
+    "prompt": "Give your key verdict for \"Sweet Home Alabama\" and \"Wonderwall\" with the listening evidence for each: where phrases resolve, where the bass rests, what the melody ends on.",
+    "minWords": 40
+  }
 }
 ```

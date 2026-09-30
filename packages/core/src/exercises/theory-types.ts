@@ -121,7 +121,23 @@ export const romanAnalysis: ExerciseDefinition<'roman-analysis'> = {
     const sevenths = slots.some((r) => /7|ø/.test(r));
     const diatonic = diatonicChords(k.tonic, k.mode, false).map((c) => c.roman);
     const diatonic7 = sevenths ? diatonicChords(k.tonic, k.mode, true).map((c) => c.roman) : [];
-    const all = [...new Set([...diatonic, ...diatonic7, ...slots])];
+    // With chromatic answers (or `palette: "chromatic"`) a fixed set of common chromatic numerals is always offered, so
+    // the buttons never reveal which chromatic chord it is (or that there is one)
+    const chromaticSlots = slots.some((r) => !diatonic.includes(r) && !diatonic7.includes(r));
+    const decoys = s.palette === 'chromatic' || (s.palette !== 'diatonic' && chromaticSlots)
+      ? (k.mode === 'major'
+          ? ['V/ii', 'V/iii', 'V/IV', 'V/V', 'V/vi', 'iv', 'v', 'bIII', 'bVI', 'bVII', ...(sevenths ? ['V7/ii', 'V7/IV', 'V7/V', 'V7/vi', 'v7', 'iv7'] : [])]
+          : ['V', 'V/iv', 'V/VI', 'IV', 'bII', ...(sevenths ? ['V7', 'V7/iv'] : [])]
+        ).filter((r) => {
+          try {
+            romanToChord(r, k.tonic, k.mode);
+            return true;
+          } catch {
+            return false;
+          }
+        })
+      : [];
+    const all = [...new Set([...diatonic, ...diatonic7, ...decoys, ...slots])];
     const degreeOf = (r: string) => {
       try {
         const c = romanToChord(r, k.tonic, k.mode);

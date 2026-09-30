@@ -4,73 +4,72 @@ title: Bass Dictation and the Kick Lock
 week: 19
 order: 2
 phase: p3
-duration_min: 45
+duration_min: 50
 goals:
-  - Follow the bass line in a full arrangement and write it down
-  - Check that bass rhythm and kick drum lock together
-  - Play back bass roots of pop progressions in major and hear minor progressions
+  - Take down a short bass line with a keyboard-only method (rhythm first, then find each note by matching)
+  - Hear and use the kick lock - bass notes starting where the kick hits
+  - Play back minor-key bass lines and name minor progressions at your ladder level
 prerequisites: [w19-l1-roots-fifths-octaves]
-tags: [bass, ear, transcription, groove]
+tags: [bass, ear, transcription, groove, minor]
 songs:
   - { title: "Billie Jean", composer: "Michael Jackson", public_domain: false }
-  - { title: "Stand By Me", composer: "Ben E. King, Jerry Leiber, Mike Stoller", public_domain: false }
   - { title: "Another One Bites the Dust", composer: "John Deacon (Queen)", public_domain: false }
 ---
 
 # Bass Dictation and the Kick Lock
 
-Hearing the bass is the key to decomposing any song: find the bass, and you have the chord roots. The bass is often *felt* more than heard, so we train a method.
-
-## How to take down a bass line
-
-1. **Sing the lowest thing you hear**, quietly, an octave up. Your voice filters out the rest of the band.
-2. **Find the first note against the tonic.** Is it 1? 6? Use degree hearing, not note names.
-3. **Rhythm first, pitch second.** Tap the bass rhythm — it is usually the kick rhythm.
-4. **Track the motion.** Same note, step, or leap? Big leaps in pop bass are usually root to root.
-5. **Loop and fill gaps.** One bar at a time.
+Hearing the bass is the key to taking a song apart: find the bass, and you have most of the chord roots. Today's
+examples are all in minor keys. Honest expectation: in a full mix the bass is often *felt* more than heard, and low
+notes are harder to place than middle ones. So we use a method that leans on what your ear already does well.
 
 ## The kick lock
 
-In almost every groove the bass notes start where the kick hits. When they do, the two merge into one fat low-end sound; when they don't, the groove feels messy. This [[kick lock]] also helps dictation: *watch the kick, and you know where the bass notes are.*
+In almost every groove the bass notes start where the kick drum hits. When they do, the two merge into one fat
+low-end sound; when they don't, the groove feels loose. This [[kick lock]] also helps dictation: *follow the kick,
+and you know where the bass notes start.*
 
-Here is an original 4-bar groove in A minor (i–VI–III–VII: Am F C G). Bass and kick both hit on 1, the "and" of 2 and the "and" of 3 — then the bass adds two pickups on beat 4 that lead to the next chord.
+## How to take down a bass line (keyboard only)
 
-```example
-{
-  "title": "Minor groove - bass locked to kick",
-  "bpm": 100, "timeSig": "4/4", "key": "Am",
-  "tracks": [
-    { "instrument": "bass", "seq": "A1:q. A1:8 r:8 A1:8 C2:8 D2:8 | F1:q. F1:8 r:8 F1:8 A1:8 B1:8 | C2:q. C2:8 r:8 C2:8 B1:8 A1:8 | G1:q. G1:8 r:8 G1:8 B1:8 G#1:8" },
-    { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8" },
-    { "instrument": "pad", "seq": "[A3 C4 E4]:w | [A3 C4 F4]:w | [G3 C4 E4]:w | [G3 B3 D4]:w" }
-  ],
-  "show": ["pianoroll"],
-  "loop": true
-}
-```
+1. **Rhythm first.** Tap along with the kick. Those taps are (nearly always) the bass rhythm.
+2. **Match the first note.** Loop bar 1 and hold low keys on your keyboard while it plays. A key a half or
+   whole step off the bass rubs — that part is easy. But more than one key will sound fine: the bass note itself
+   (in any octave), and also the other notes of the chord above it, above all the *fifth*, the most octave-like
+   sound (the fifth trap from the octave ladder). So check every key that blends:
+   * **Octave test:** play your key together with the bass an octave higher and lower as well. The real bass note
+     melts into one sound in every octave; a fifth sounds open or hollow, and in some octaves it turns into a 4th.
+   * **Root test:** the bass is usually the root of the chord the pad plays (week 11). If your key is the chord's
+     3rd or 5th, try the root.
+   Expect several tries per note at first; that is normal.
+3. **Track the motion.** Next note: same, a step, or a leap? Find it by matching again.
+4. **One bar at a time.** Loop, match, write, move on.
 
-## By reference
+## Dictate a groove
 
-Listen for the bass in these songs (on your own player):
-
-- **"Billie Jean"** — Michael Jackson, F# minor, ~117 BPM. A one-bar eighth-note bass ostinato that outlines the minor chord and runs almost unchanged through the song — the bass *is* the hook.
-- **"Stand By Me"** — Ben E. King, A major, ~118 BPM. The bass riff over I–vi–IV–V (A F#m D E) opens the song alone; everything else is built on it.
-- **"Another One Bites the Dust"** — Queen, E minor, ~110 BPM. A riff with rests that leaves room for the kick and handclaps — space is part of the line.
+Here is an original 4-bar groove in A minor with drums, a pad and a bass. The notation is hidden until you reveal it.
+Answer the rhythm questions first, then write the bass line in the DAW task below.
 
 ```exercise
 {
-  "id": "listen-groove",
+  "id": "listen-minor-groove-hidden",
   "type": "listen",
-  "title": "Listen for the lock",
+  "title": "Minor groove - listen for the lock",
   "spec": {
-    "example": { "bpm": 100, "timeSig": "4/4", "key": "Am", "tracks": [
-      { "instrument": "bass", "seq": "A1:q. A1:8 r:8 A1:8 C2:8 D2:8 | F1:q. F1:8 r:8 F1:8 A1:8 B1:8 | C2:q. C2:8 r:8 C2:8 B1:8 A1:8 | G1:q. G1:8 r:8 G1:8 B1:8 G#1:8" },
-      { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8" }
-    ] },
+    "example": {
+      "title": "Minor groove (4 bars, loops)",
+      "bpm": 96, "timeSig": "4/4", "key": "Am",
+      "tracks": [
+        { "instrument": "bass", "seq": "A1:q. A1:8 r:8 A1:q. | F1:q. F1:8 r:8 F1:q. | G1:q. G1:8 r:8 G1:q. | A1:q. A1:8 r:8 A1:q." },
+        { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8" },
+        { "instrument": "pad", "seq": "[A3 C4 E4]:w | [A3 C4 F4]:w | [G3 B3 D4]:w | [A3 C4 E4]:w" }
+      ],
+      "show": ["pianoroll"],
+      "hidden": true,
+      "loop": true
+    },
     "questions": [
-      { "q": "On which beats does the kick play in each bar?", "choices": ["1 and 3 only", "1, the and-of-2 and the and-of-3", "All four beats", "2 and 4"], "answer": 1 },
-      { "q": "The bass note in bar 4, beat 4-and leads up by a half step into bar 1. Which note is it?", "choices": ["G", "G#", "B", "A"], "answer": 1 },
-      { "q": "In bar 3 (C chord), the last two bass notes walk down to G. They are...", "choices": ["B, A", "D, E", "C, C", "E, F"], "answer": 0 }
+      { "q": "How many kick hits are in each bar?", "choices": ["2", "3", "4", "8"], "answer": 1, "explain": "Three: on beat 1, the 'and' of 2 and the 'and' of 3." },
+      { "q": "Does each bass note start together with a kick hit?", "choices": ["Yes", "No, the bass plays between the kicks"], "answer": 0, "explain": "Yes - three bass notes per bar, each on a kick. That is the kick lock." },
+      { "q": "Within one bar, does the bass change note?", "choices": ["No, it repeats one note per bar", "Yes, every hit is a new note"], "answer": 0, "explain": "One note per bar: the chord's root, repeated in the kick rhythm." }
     ]
   }
 }
@@ -78,78 +77,70 @@ Listen for the bass in these songs (on your own player):
 
 ```exercise
 {
-  "id": "ear-bass-g",
-  "type": "ear-bass",
-  "title": "Bass roots in G major",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "key": "G", "chords": ["I", "ii", "IV", "V", "vi"], "answer": "play" }
-}
-```
-
-```exercise
-{
-  "id": "ear-bass-f",
-  "type": "ear-bass",
-  "title": "Bass roots in F major",
-  "count": 8,
-  "passScore": 0.75,
-  "spec": { "key": "F", "chords": ["I", "iii", "IV", "V", "vi"], "answer": "play" }
-}
-```
-
-```exercise
-{
-  "id": "ear-minor-prog",
-  "type": "ear-progression",
-  "title": "Minor progressions",
-  "count": 8,
-  "passScore": 0.7,
-  "spec": { "key": "random", "mode": "minor", "length": 4, "chords": ["i", "iv", "VI", "III", "VII"], "style": "pad-bass" }
-}
-```
-
-```exercise
-{
-  "id": "daw-dictate-groove",
+  "id": "daw-dictate-minor-groove",
   "type": "daw-task",
-  "title": "Dictate the groove bass",
+  "title": "Write the groove's bass line",
   "spec": {
-    "template": { "bpm": 100, "key": "Am", "tracks": [
-      { "instrument": "pad", "seq": "[A3 C4 E4]:w | [A3 C4 F4]:w | [G3 C4 E4]:w | [G3 B3 D4]:w" },
+    "template": { "bpm": 96, "key": "Am", "tracks": [
       { "instrument": "drums", "seq": "[kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8 | [kick hihat]:8 hihat:8 [snare hihat]:8 [kick hihat]:8 hihat:8 [kick hihat]:8 [snare hihat]:8 hihat:8" },
       { "instrument": "bass", "seq": "" }
     ] },
-    "task": "Play the example above on loop (don't look at the piano roll). Then write its bass line from memory here: rhythm from the kick first, then roots, then the pickup notes. Compare afterwards and fix any bar you missed.",
+    "task": "Replay the hidden groove above (keep it hidden). Step 1: on the bass track, put notes where the kick hits - any note for now. Step 2: find each bar's note by holding keys along with the example until one blends, check it with the octave and root tests, and fix the pitches. Bar 1 is home (A). About 15 minutes. Then reveal the notation and compare.",
     "checks": [
       { "kind": "bars", "min": 4, "max": 4 },
-      { "kind": "in-key", "key": "A", "scale": "natural-minor", "allowPassing": true, "track": 2 },
-      { "kind": "chord-tones-on-beats", "beats": [1, 3], "progression": ["i", "VI", "III", "VII"], "barsPerChord": 1, "minRatio": 0.9, "track": 2 },
-      { "kind": "note-count", "min": 20, "max": 20, "track": 2 },
-      { "kind": "repetition", "motifBars": 1, "minRepeats": 4, "allowTransposed": true, "track": 2 }
+      { "kind": "in-key", "key": "Am", "scale": "natural-minor", "track": 1 },
+      { "kind": "matches-reference", "reference": { "bpm": 96, "timeSig": "4/4", "tracks": [ { "instrument": "bass", "seq": "A1:q. A1:8 r:8 A1:q. | F1:q. F1:8 r:8 F1:q. | G1:q. G1:8 r:8 G1:q. | A1:q. A1:8 r:8 A1:q." } ] }, "track": 1, "refTrack": 0, "minSimilarity": 0.7, "octave": "any" }
     ],
     "minBars": 4, "maxBars": 4
   }
 }
 ```
 
+Now play what you wrote (the answer is A – F – G – A: i – VI – VII – i), an octave higher so it fits your keyboard:
+
 ```exercise
 {
-  "id": "daw-kick-to-bass",
-  "type": "daw-task",
-  "title": "Lock the kick to a bass line",
-  "spec": {
-    "template": { "bpm": 94, "key": "C", "tracks": [
-      { "instrument": "bass", "seq": "C2:q. C2:8 r:q C2:8 C2:8 | A1:q. A1:8 r:q A1:8 A1:8 | F1:q. F1:8 r:q F1:8 F1:8 | G1:q. G1:8 r:q G1:8 G1:8" },
-      { "instrument": "drums", "seq": "" }
-    ] },
-    "task": "Program a drum pattern where the kick plays exactly where each bass note starts, the snare is on 2 and 4, and hi-hats run in eighths. Solo the bass and kick together to check the lock.",
-    "checks": [
-      { "kind": "bars", "min": 4, "max": 4 },
-      { "kind": "drum-pattern", "requires": ["kick", "snare", "hihat"], "kickOnBeats": [1], "snareOnBeats": [2, 4], "track": 1 },
-      { "kind": "custom", "id": "kick-matches-bass", "note": "Self-check: every bass note start has a kick; no kick without a bass note." }
-    ],
-    "minBars": 4, "maxBars": 4
-  }
+  "id": "play-minor-groove-bass",
+  "type": "play-melody",
+  "title": "Play the groove bass",
+  "passScore": 0.7,
+  "spec": { "bpm": 84, "timeSig": "4/4", "key": "Am", "seq": "A2:q. A2:8 r:8 A2:q. | F2:q. F2:8 r:8 F2:q. | G2:q. G2:8 r:8 G2:q. | A2:q. A2:8 r:8 A2:q.", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "pad", "seq": "[A3 C4 E4]:w | [A3 C4 F4]:w | [G3 B3 D4]:w | [A3 C4 E4]:w" } }
+}
+```
+
+## Ear: minor-key bass lines and progressions
+
+This lesson opens minor-key bass lines like today's groove, and two progression rungs: the pop minor chords i, iv, VI and VII in A minor (the i – iv – VI – VII loop from week 16, plus today's i – VI – VII), then minor progressions in a new key each question. Both drills run at your current rungs, which may still be earlier ones.
+
+```ladder
+{ "skill": "roots", "unlocks": 12, "intro": "Opens: bass lines in minor keys. The drill runs at your current roots rung." }
+```
+
+```ladder
+{ "skill": "progressions", "unlocks": 13, "intro": "Opens: the pop minor chords (i, iv, VI, VII) in A minor, then minor progressions in a new key each time. The drill runs at your current progression rung." }
+```
+
+## Two famous minor bass lines, verdict first
+
+Listen on your own player, then answer. The facts appear after you answer.
+
+```exercise
+{
+  "id": "bass-songs-verdict",
+  "type": "quiz",
+  "title": "Billie Jean and Another One Bites the Dust",
+  "spec": { "questions": [
+    { "q": "\"Billie Jean\" (Michael Jackson): how does the bass line behave through the song?", "choices": ["A short pattern that repeats almost unchanged", "A new line in every section", "It only plays in the chorus"], "answer": 0, "explain": "A one-bar eighth-note pattern (F# minor, about 117 BPM) that outlines the minor chord and runs almost unchanged - the bass is itself a hook." },
+    { "q": "\"Billie Jean\": is the bass line busy (many notes) or sparse?", "choices": ["Busy - a steady stream of eighth notes", "Sparse - a few long notes"], "answer": 0, "explain": "A steady stream of eighths, locked with a simple kick-snare beat." },
+    { "q": "\"Another One Bites the Dust\" (Queen): what makes its bass riff stand out?", "choices": ["Gaps - rests between the notes", "Very long held notes", "It is played on a piano"], "answer": 0, "explain": "The riff (E minor, about 110 BPM) has rests that leave room for the kick and handclaps. Space is part of a bass line." }
+  ] }
+}
+```
+
+```exercise
+{
+  "id": "reflect-bass-method",
+  "type": "reflect",
+  "spec": { "prompt": "How did the matching method work for you? Which was harder: the rhythm or finding the notes? Did the right note really 'blend' when you held it along? Did a wrong one (the fifth, another chord note) fool you first?", "minWords": 25 }
 }
 ```

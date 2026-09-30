@@ -1,34 +1,35 @@
 ---
 id: w10-l3-bass-clef-and-left-hand
-title: Bass Clef and the Left Hand
+title: Bass Clef, the Left Hand and Low Notes
 week: 10
 order: 3
 phase: p2
 duration_min: 50
 goals:
   - Read notes in the bass clef from C2 to C4 using three landmarks
-  - Play a bass line with the left hand while hearing chords above it
+  - Play a bass line with the left hand under chords, then under a melody
+  - Find very low notes by ear on the keyboard, in any octave
   - Build a DAW sketch with a root bass line under a melody
-prerequisites: [w10-l2-harmonic-intervals]
-tags: [reading, bass-clef, left-hand, bass, daw]
+prerequisites: [w10-l2-tritone-and-descending-intervals]
+tags: [reading, bass-clef, left-hand, bass, octaves, daw]
 songs:
   - { title: "Canon in D (ground bass)", composer: "Johann Pachelbel", public_domain: true }
   - { title: "Ode to Joy", composer: "Ludwig van Beethoven", public_domain: true }
 ---
 
-# Bass Clef and the Left Hand
+# Bass Clef, the Left Hand and Low Notes
 
-Treble clef covers your right hand. The low notes — the left hand, the bass guitar, the cello — live in the [[bass clef]]. Learning it now pays off twice: you'll read left-hand parts, and you'll start *thinking* in bass lines, the foundation of every song.
+The treble clef covers your right hand. The low notes (the left hand, the bass guitar, the cello) live in the [[bass clef]]. Today you learn to read it, play a real bass line with your left hand, and start finding very low notes by ear. (Both hands together come next week.)
 
 ## Three landmarks
 
-The bass clef is also called the F clef: its two dots sit around the 4th line, and that line is **F3** (the F just below middle C). From there:
+The bass clef is also called the F clef: its two dots sit around the 4th line, and that line is **F3**, the F just below middle C. From there:
 
-- **Middle C (C4)** sits on one ledger line *above* the bass staff — the same C that sits one ledger line *below* the treble staff.
+- **Middle C (C4)** sits on one ledger line *above* the bass staff (the same C that sits one ledger line below the treble staff).
 - **C3** is in the second space from the bottom.
-- **G2** is the bottom line; **C2** is two ledger lines below.
+- **G2** is the bottom line; **C2** is two ledger lines below the staff.
 
-Warning: the lines are *not* the same notes as in treble clef. Bottom-line-to-top in bass: **G B D F A** ("Good Boys Do Fine Always"); spaces: **A C E G** ("All Cows Eat Grass").
+Careful: the lines are *not* the same notes as in the treble clef. Bass-clef lines from the bottom: **G B D F A** ("Good Boys Do Fine Always"); spaces: **A C E G** ("All Cows Eat Grass").
 
 ```staff
 { "clef": "bass", "key": "C", "timeSig": "4/4", "seq": "C2:q G2:q C3:q F3:q | A3:q C4:h. |" }
@@ -36,7 +37,7 @@ Warning: the lines are *not* the same notes as in treble clef. Bottom-line-to-to
 
 ```example
 {
-  "title": "Bass-clef landmarks, played low to high: C2, G2, C3, F3, C4",
+  "title": "Bass-clef landmarks, low to high: C2, G2, C3, F3, C4",
   "bpm": 60, "timeSig": "4/4", "key": "C",
   "tracks": [ { "instrument": "piano", "seq": "C2:q G2:q C3:q F3:q | C4:w" } ],
   "show": ["keyboard"]
@@ -46,8 +47,8 @@ Warning: the lines are *not* the same notes as in treble clef. Bottom-line-to-to
 ```exercise
 {
   "id": "e1", "type": "read-note", "title": "Name bass-clef notes",
-  "instructions": "Find the nearest landmark (C3, F3, C4) and count lines and spaces from it.",
-  "count": 12, "passScore": 0.8,
+  "instructions": "Find the nearest landmark (C3, F3 or C4) and count lines and spaces from it.",
+  "count": 12, "passScore": 0.7,
   "spec": { "clef": "bass", "range": ["C3", "C4"], "accidentals": false, "answer": "name", "timed": 0 }
 }
 ```
@@ -56,22 +57,22 @@ Warning: the lines are *not* the same notes as in treble clef. Bottom-line-to-to
 {
   "id": "e2", "type": "read-note", "title": "Play bass-clef notes, wider range",
   "instructions": "Play each note in the right octave. Shift your keyboard down if C2 is out of reach.",
-  "count": 12, "passScore": 0.75,
+  "count": 12, "passScore": 0.7,
   "spec": { "clef": "bass", "range": ["C2", "C4"], "accidentals": false, "answer": "play", "timed": 0 }
 }
 ```
 
 ## A famous bass line
 
-Pachelbel's *Canon in D* (around 1700) is built on an eight-note bass line repeated over and over — a ground bass. Every pop song built on repeating chords is its descendant.
+Pachelbel's *Canon* (around 1700) is built on an eight-note bass line repeated again and again, a *ground bass*. Countless pop songs built on a repeating chord loop are its descendants. Pachelbel wrote it in D major; here it's moved to **C major**, so you only need white keys. The bass notes are the roots of the chords: C G Am Em F C F G.
 
 ```example
 {
-  "title": "Pachelbel, Canon in D — ground bass with chords",
-  "bpm": 60, "timeSig": "4/4", "key": "D", "loop": true,
+  "title": "Pachelbel's Canon, ground bass with chords (moved to C major)",
+  "bpm": 60, "timeSig": "4/4", "key": "C", "loop": true,
   "tracks": [
-    { "instrument": "bass", "seq": "D3:h A2:h | B2:h F#2:h | G2:h D2:h | G2:h A2:h" },
-    { "instrument": "strings", "seq": "[F#4 A4 D5]:h [E4 A4 C#5]:h | [D4 F#4 B4]:h [C#4 F#4 A4]:h | [B3 D4 G4]:h [A3 D4 F#4]:h | [B3 D4 G4]:h [C#4 E4 A4]:h" }
+    { "instrument": "bass", "seq": "C3:h G2:h | A2:h E2:h | F2:h C2:h | F2:h G2:h" },
+    { "instrument": "strings", "seq": "[E4 G4 C5]:h [D4 G4 B4]:h | [C4 E4 A4]:h [B3 E4 G4]:h | [A3 C4 F4]:h [G3 C4 E4]:h | [A3 C4 F4]:h [B3 D4 G4]:h" }
   ],
   "show": ["staff", "pianoroll"]
 }
@@ -80,45 +81,42 @@ Pachelbel's *Canon in D* (around 1700) is built on an eight-note bass line repea
 ```exercise
 {
   "id": "e3", "type": "play-melody", "title": "Canon bass, left hand",
-  "instructions": "Left hand only, reading bass clef. The strings play the chords above you.",
-  "count": 6, "passScore": 0.75,
-  "spec": { "bpm": 60, "timeSig": "4/4", "key": "D", "seq": "D3:h A2:h | B2:h F#2:h | G2:h D2:h | G2:h A2:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "strings", "seq": "[F#4 A4 D5]:h [E4 A4 C#5]:h | [D4 F#4 B4]:h [C#4 F#4 A4]:h | [B3 D4 G4]:h [A3 D4 F#4]:h | [B3 D4 G4]:h [C#4 E4 A4]:h" } }
+  "instructions": "Left hand only, reading the bass clef. The strings play the chords above you.",
+  "count": 1, "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "C", "seq": "C3:h G2:h | A2:h E2:h | F2:h C2:h | F2:h G2:h", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "strings", "seq": "[E4 G4 C5]:h [D4 G4 B4]:h | [C4 E4 A4]:h [B3 E4 G4]:h | [A3 C4 F4]:h [G3 C4 E4]:h | [A3 C4 F4]:h [B3 D4 G4]:h" } }
 }
 ```
 
-```exercise
+## Low notes by ear
+
+Here's something honest about the low register: very low notes are hard to name, for everyone at first. A bass note in octave 1 or 2 sounds more like a warm thump with a pitch somewhere inside it than like a clear note. Listen to the same C going down through four octaves on a bass sound:
+
+```example
 {
-  "id": "e4", "type": "ear-bass", "title": "Find the bass note",
-  "instructions": "You'll hear a chord with its root in the bass. Play that lowest note. Hum it first — the bass is the note you'd hum along to without thinking.",
-  "count": 8, "passScore": 0.7,
-  "spec": { "key": "random", "chords": ["I", "IV", "V"], "answer": "play" }
+  "title": "C4, C3, C2, C1 on a bass sound, then G1 and C2",
+  "bpm": 60, "timeSig": "4/4", "key": "C",
+  "tracks": [ { "instrument": "bass", "seq": "C4:q C3:q C2:q C1:q | G1:h C2:h" } ],
+  "show": ["keyboard"]
 }
 ```
 
-## Hands together
+The strategy that works: don't try to name the low note directly. **Search for it on your keyboard in a comfortable octave** (3 or 4), where your ear is sharper, and compare. Your octave training is exactly for this: the drill accepts the same note name in any octave. This lesson opens that rung — low bass notes, octaves 1 and 2 — and you'll meet it once the fifth-trap rungs are solid. Expect lots of misses at first. It gets easier with every session, and this is the skill that will one day let you hear bass lines in songs.
 
-Now the left hand plays the chord root on beat 1 while the right hand carries the melody. Start slowly: the hands only have to meet on beat 1.
-
-```exercise
-{
-  "id": "e5", "type": "play-melody", "title": "Ode to Joy with left-hand roots",
-  "instructions": "LH: C3 or G2 on the first beat of each bar. RH: the melody you know from Phase 1.",
-  "count": 6, "passScore": 0.7,
-  "spec": { "bpm": 66, "timeSig": "4/4", "key": "C", "seq": "[C3 E4]:q E4:q F4:q G4:q | [G2 G4]:q F4:q E4:q D4:q | [C3 C4]:q C4:q D4:q E4:q | [C3 E4]:q. D4:8 [G2 D4]:h |", "showStaff": true, "showKeyboard": true, "countIn": 1 }
-}
+```ladder
+{ "skill": "octave", "unlocks": 13, "intro": "Opens \"Find the bass note\" (octaves 1–2, bass sound); the drill runs at your current octave rung." }
 ```
 
 ## Make it: roots under a melody
 
 ```exercise
 {
-  "id": "e6", "type": "daw-task", "title": "Bass line on roots + melody",
+  "id": "e5", "type": "daw-task", "title": "Bass line on roots + melody",
   "spec": {
     "template": { "bpm": 90, "key": "C", "timeSig": "4/4", "tracks": [
       { "instrument": "piano", "seq": "[C4 E4 G4]:w | [C4 E4 A4]:w | [C4 F4 A4]:w | [B3 D4 G4]:w | [C4 E4 G4]:w | [C4 E4 A4]:w | [C4 F4 A4]:w | [B3 D4 G4]:w" },
       { "instrument": "bass", "seq": "" },
       { "instrument": "lead", "seq": "" } ] },
-    "task": "The piano plays I – vi – IV – V twice (C, Am, F, G). 1) Record a bass line with your left hand: the root of each chord between C2 and C4, at least two notes per bar (try half notes, then quarter notes). 2) Add an 8-bar melody on the lead track in C major. Keep leaps to a fifth or less and end on C. Look at the bass track in the staff view — can you read it in bass clef?",
+    "task": "The piano plays I – vi – IV – V twice (C, Am, F, G). 1) Record a bass line with your left hand: the root of each chord between C2 and C4, at least two notes per bar (try half notes, then quarter notes). 2) Add an 8-bar melody on the lead track in C major. Keep leaps to a fifth or less and end on C. Then look at the bass track in the staff view: can you read it in the bass clef?",
     "checks": [
       { "kind": "has-tracks", "instruments": ["piano", "bass", "lead"] },
       { "kind": "bars", "min": 8, "max": 8 },

@@ -79,6 +79,13 @@ export const MIGRATIONS: { version: number; name: string; sql: string }[] = [
       CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
     `,
   },
+  {
+    version: 2,
+    name: 'ladder-unlocks',
+    sql: `
+      CREATE TABLE ladder_unlocks (skill TEXT PRIMARY KEY, unlocked INTEGER NOT NULL, updated_at TEXT NOT NULL);
+    `,
+  },
 ];
 
 export function openDb(file: string): Db {

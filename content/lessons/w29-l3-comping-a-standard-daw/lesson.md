@@ -1,50 +1,76 @@
 ---
 id: w29-l3-comping-a-standard-daw
-title: Comping a Standard in the DAW
+title: The Minor ii–V–i and Comping a Standard
 week: 29
 order: 3
 phase: p4
 duration_min: 50
 goals:
-  - Play "When the Saints Go Marching In" with jazz changes
+  - Play the minor ii–V–i (m7b5 – V7 – i) with shells
   - Comp in the Charleston rhythm with shell voicings
-  - "Produce a 16-bar trio arrangement: melody, comping, bass"
+  - "Comp the Saints in the DAW over a given melody, bass and drums"
 prerequisites: [w29-l2-jazz-blues]
-tags: [jazz, comping, daw, public-domain]
+tags: [jazz, comping, minor, daw, public-domain]
 songs:
   - { title: "When the Saints Go Marching In", composer: "Traditional", public_domain: true }
+  - { title: "Autumn Leaves", composer: "Joseph Kosma", public_domain: false }
 ---
 
-# Comping a Standard in the DAW
+# The Minor ii–V–i and Comping a Standard
 
-Time to comp a real tune. "When the Saints Go Marching In" is traditional (public domain) and a New Orleans staple, so we can use its melody in full. We'll dress it in jazz chords and a proper comping rhythm.
+Two things today: the minor-key version of the ii–V–I, and a proper comping rhythm, which you then use on "When the Saints". In week 5 you played its first 8 bars; today you hear all 16.
 
-## The Charleston rhythm
+**This lesson spans two sessions.** Session 1: the minor ii–V–i and the Charleston rhythm, with their two drills (play the ii–V–is, tap the Charleston). Session 2: the Saints (listen, comp bars 9–16 by hand, then the DAW task) and the ear drill.
 
-Long whole-note chords make a band sound like a church organ. Jazz comping is *rhythmic*. The most famous comping figure is the [[Charleston rhythm]]: a hit on beat 1, and a second short hit on the "and" of 2. Then silence. It leaves the rest of the bar for the melody.
+## The minor ii–V–i
+
+Build the ii–V–i of A minor from what you already know:
+
+- **ii** comes from the A natural minor scale: B–D–F–A. That is **Bm7♭5**, the half-diminished chord (week 24). Written **iiø7**.
+- **V** is E7, with G♯: the raised 7th of harmonic minor (week 9), so it pulls hard to A.
+- **i** is Am, often with a 7th: **Am7**.
+
+Compared with the major ii–V–I, the minor one sounds darker and more dramatic: the ♭5 in the ii chord and the G♯ of the V7 both lean strongly toward home. By reference: "Autumn Leaves" (Kosma) alternates a major ii–V–I and a minor ii–V–i, which is why it feels like light and shadow taking turns.
 
 ```example
 {
-  "title": "Charleston comping on C6 and G7",
+  "title": "Minor ii–V–i in A: Bm7b5 – E7 – Am7 (shells)",
+  "bpm": 70, "timeSig": "4/4", "key": "Am",
+  "tracks": [
+    { "instrument": "piano", "seq": "[B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C3 G3]:w | [A2 C3 G3]:w |" },
+    { "instrument": "bass", "seq": "B1:w | E2:w | A1:w | A1:w |" }
+  ],
+  "show": ["keyboard", "staff"]
+}
+```
+
+Follow the upper notes as you did in major: D→D→C and A→G♯→G. Half steps again.
+
+## The Charleston rhythm
+
+Long whole-note chords make a band sound like a church organ. Jazz comping is rhythmic. The most famous comping figure is the [[Charleston rhythm]]: a hit on beat 1, a second short hit on the "and" of 2, then silence for the rest of the bar, which leaves room for the melody.
+
+```example
+{
+  "title": "Charleston comping on C6 and G7, with a swing ride",
   "bpm": 110, "timeSig": "4/4", "key": "C",
+  "swing": 0.6,
   "tracks": [
     { "instrument": "piano", "seq": "[C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [G2 F3 B3]:q. [G2 F3 B3]:8 r:h | [G2 F3 B3]:q. [G2 F3 B3]:8 r:h |" },
-    { "instrument": "drums", "seq": "ride:q ride:8t r:8t ride:8t ride:q ride:8t r:8t ride:8t | ride:q ride:8t r:8t ride:8t ride:q ride:8t r:8t ride:8t | ride:q ride:8t r:8t ride:8t ride:q ride:8t r:8t ride:8t | ride:q ride:8t r:8t ride:8t ride:q ride:8t r:8t ride:8t |" }
+    { "instrument": "drums", "seq": "ride:q ride:8 ride:8 ride:q ride:8 ride:8 | ride:q ride:8 ride:8 ride:q ride:8 ride:8 | ride:q ride:8 ride:8 ride:q ride:8 ride:8 | ride:q ride:8 ride:8 ride:q ride:8 ride:8 |" }
   ],
   "show": ["pianoroll"],
   "loop": true
 }
 ```
 
-Listen to the ride cymbal: "ding, ding-a-ding" — the triplet-based swing pattern, written here with 8th-note triplets.
+## Comping the Saints
 
-## The tune with jazz changes
-
-Bars 1–7 stay on C6. Bar 8 is G7. Bar 10 turns C into C7 to lead to F. Bar 12 borrows Fm6 — a sweet minor iv you will study properly next week — and bars 14–15 add vi–ii–V on the way home.
+"When the Saints Go Marching In" is traditional (public domain). With jazz changes it becomes a little standard: C6 for most of the first 8 bars, G7 in bar 8, C7 in bar 10 (the tonic turned V7/IV, as in rhythm changes), the borrowed Fm6 in bar 12 (the minor iv from week 16), and vi–ii–V on the way home.
 
 ```example
 {
-  "title": "When the Saints — melody, shells, bass (16 bars)",
+  "title": "When the Saints: melody, Charleston comping, bass (16 bars)",
   "bpm": 110, "timeSig": "4/4", "key": "C",
   "tracks": [
     { "instrument": "piano", "seq": "r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:h E4:h | C4:h E4:h | D4:w | r:q E4:q E4:q D4:q | C4:h. C4:q | E4:h G4:h | G4:q F4:h. | r:q E4:q F4:q G4:q | E4:h C4:h | D4:w | C4:w |" },
@@ -55,82 +81,71 @@ Bars 1–7 stay on C6. Bar 8 is G7. Bar 10 turns C into C7 to lead to F. Bar 12 
 }
 ```
 
-## Comping etiquette
-
-Three habits separate a comper from someone just playing chords. **Stay out of the melody's way**: when the tune holds a long note (bars 2, 4, 8), that is where your hits can speak; when it is busy, lay back. **Vary the rhythm** — a Charleston every bar gets predictable, so try a *push*: hit the chord on the "and" of 4, a beat early, and let it ring over the barline. **Keep it low and light**: shells between E2 and C4 leave the melody's register clear.
+Three comping habits: **stay out of the melody's way** (hits speak best where the tune holds a long note, as in bars 2, 4 and 8); **vary the rhythm** (try a *push*: hit on the "and" of 4, a beat early, and let it ring over the bar line); **keep it low and light** (shells between E2 and C4).
 
 ## Drills
 
 ```exercise
 {
-  "id": "e1-tap-charleston",
+  "id": "e1-minor-ii-v-i",
+  "type": "play-melody",
+  "title": "Minor ii–V–i in A, then in D",
+  "instructions": "Left-hand shells. In D minor: Em7b5 – A7 – Dm7 (spell each chord to yourself before you play it).",
+  "passScore": 0.7,
+  "spec": { "bpm": 60, "timeSig": "4/4", "key": "Am", "seq": "[B2 D3 A3]:w | [E2 D3 G#3]:w | [A2 C3 G3]:w | r:w | [E3 G3 D4]:w | [A2 G3 C#4]:w | [D3 F3 C4]:w | r:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
+}
+```
+
+```exercise
+{
+  "id": "e3-tap-charleston",
   "type": "rhythm-tap",
   "title": "Tap the Charleston",
-  "count": 6, "passScore": 0.8,
+  "passScore": 0.7,
   "spec": { "bpm": 100, "timeSig": "4/4", "seq": "x:q. x:8 r:h | x:q. x:8 r:h |", "showNotation": true, "countIn": 1, "loops": 4 }
 }
 ```
 
 ```exercise
 {
-  "id": "e2-play-saints",
+  "id": "e4-comp-last-eight",
   "type": "play-melody",
-  "title": "Play the melody",
-  "count": 6, "passScore": 0.75,
-  "spec": { "bpm": 100, "timeSig": "4/4", "key": "C", "seq": "r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:h E4:h | C4:h E4:h | D4:w | r:q E4:q E4:q D4:q | C4:h. C4:q | E4:h G4:h | G4:q F4:h. | r:q E4:q F4:q G4:q | E4:h C4:h | D4:w | C4:w |", "showStaff": true, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "bass", "seq": "C2:w | C2:w | C2:w | C2:w | C2:w | C2:w | C2:w | G1:w | C2:w | C2:w | F1:w | F1:w | C2:w | A1:w | D2:h G1:h | C2:w |" } }
+  "title": "Comp bars 9–16 in the Charleston rhythm",
+  "passScore": 0.7,
+  "spec": { "bpm": 90, "timeSig": "4/4", "key": "C", "seq": "[C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [C3 E3 Bb3]:q. [C3 E3 Bb3]:8 r:h | [F2 E3 A3]:q. [F2 E3 A3]:8 r:h | [F2 D3 Ab3]:q. [F2 D3 Ab3]:8 r:h | [C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [A2 C3 G3]:q. [A2 C3 G3]:8 r:h | [D3 F3 C4]:h [G2 F3 B3]:h | [C3 E3 A3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1, "backing": { "instrument": "bass", "seq": "C2:h G1:h | C2:h E2:h | F1:h C2:h | F1:h Ab1:h | C2:h G1:h | A1:h E2:h | D2:h G1:h | C2:w |" } }
 }
 ```
 
-```exercise
-{
-  "id": "e3-comp-last-eight",
-  "type": "play-melody",
-  "title": "Comp bars 9–16 in Charleston rhythm",
-  "count": 6, "passScore": 0.7,
-  "spec": { "bpm": 90, "timeSig": "4/4", "key": "C", "seq": "[C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [C3 E3 Bb3]:q. [C3 E3 Bb3]:8 r:h | [F2 E3 A3]:q. [F2 E3 A3]:8 r:h | [F2 D3 Ab3]:q. [F2 D3 Ab3]:8 r:h | [C3 E3 A3]:q. [C3 E3 A3]:8 r:h | [A2 C3 G3]:q. [A2 C3 G3]:8 r:h | [D3 F3 C4]:h [G2 F3 B3]:h | [C3 E3 A3]:w |", "showStaff": false, "showKeyboard": true, "countIn": 1 }
-}
-```
+## Make it
 
 ```exercise
 {
-  "id": "e4-ear-prog-iv",
-  "type": "ear-progression",
-  "title": "Spot the minor iv",
-  "count": 6, "passScore": 0.7,
-  "spec": { "key": "random", "mode": "major", "length": 4, "chords": ["I", "IV", "iv", "V7", "vi"], "style": "block" }
-}
-```
-
-```exercise
-{
-  "id": "e5-ear-melody",
-  "type": "ear-melody",
-  "title": "Saints-style fragments",
-  "count": 6, "passScore": 0.7,
-  "spec": { "key": "random", "degrees": [1, 2, 3, 4, 5, 6], "length": 5, "rhythm": "simple", "answer": "play" }
-}
-```
-
-```exercise
-{
-  "id": "e6-daw-trio",
+  "id": "e5-daw-comp-saints",
   "type": "daw-task",
-  "title": "Saints trio arrangement",
-  "instructions": "The melody is provided on track 1. Track 2 (epiano): comp with shells, mostly Charleston rhythm, but vary it in at least two bars (try a push: hit on the 'and' of 4, tied over). Track 3 (bass): two notes per bar — root then 5th or a note leading to the next root. Track 4 (drums): ride in triplet swing, hi-hat or snare on 2 and 4.",
+  "title": "Comp the Saints",
+  "instructions": "Melody (track 1), bass (track 3) and a swing ride (track 4) are ready. On the epiano track, comp all 16 bars with shells, mostly in the Charleston rhythm, following the changes above. Vary the rhythm in at least two bars (a push, or a single long chord where the melody is busy). About 30 minutes, the main part of session 2; copy and paste repeated bars. (The automatic check reads the tonic as plain C, so the A of your C6 shell counts against it a little; that is expected.)",
   "spec": {
-    "template": { "bpm": 110, "key": "C", "timeSig": "4/4", "tracks": [
+    "template": { "bpm": 110, "key": "C", "timeSig": "4/4", "swing": 0.6, "tracks": [
       { "instrument": "piano", "seq": "r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:w | r:q C4:q E4:q F4:q | G4:h E4:h | C4:h E4:h | D4:w | r:q E4:q E4:q D4:q | C4:h. C4:q | E4:h G4:h | G4:q F4:h. | r:q E4:q F4:q G4:q | E4:h C4:h | D4:w | C4:w |" },
-      { "instrument": "epiano", "seq": "" }, { "instrument": "bass", "seq": "" }, { "instrument": "drums", "seq": "" } ] },
-    "task": "Complete the 16-bar trio: comping, bass and swing drums under the Saints melody.",
+      { "instrument": "epiano", "seq": "" },
+      { "instrument": "bass", "seq": "C2:h G1:h | C2:h G1:h | C2:h G1:h | C2:h G1:h | C2:h G1:h | C2:h G1:h | C2:h E2:h | G1:h D2:h | C2:h G1:h | C2:h E2:h | F1:h C2:h | F1:h Ab1:h | C2:h G1:h | A1:h E2:h | D2:h G1:h | C2:w |" },
+      { "instrument": "drums", "seq": "ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 | ride:q ride:8 ride:8 [ride hh]:q ride:8 ride:8 |" } ] },
+    "task": "Comp 16 bars of the Saints on epiano: shells, mostly Charleston rhythm, with some variation.",
     "checks": [
-      { "kind": "has-tracks", "instruments": ["piano", "epiano", "bass", "drums"] },
       { "kind": "bars", "min": 16, "max": 16 },
+      { "kind": "note-count", "min": 40, "track": 1 },
       { "kind": "range", "low": "E2", "high": "C4", "track": 1 },
-      { "kind": "uses-rhythm", "values": ["q", "8", "h"], "minDistinct": 2, "track": 1 },
-      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "I", "I", "I", "I", "I", "I", "V7", "I", "I", "IV", "iv", "I", "vi", "ii", "I"], "barsPerChord": 1, "minRatio": 0.8, "track": 2 },
-      { "kind": "drum-pattern", "requires": ["ride"], "track": 3 }
+      { "kind": "uses-rhythm", "values": ["q.", "8", "h", "w"], "minDistinct": 2, "track": 1 },
+      { "kind": "chord-tones-on-beats", "beats": [1], "progression": ["I", "I", "I", "I", "I", "I", "I", "V7", "I", "I7", "IVmaj7", "iv", "I", "vi7", "ii7", "I"], "barsPerChord": 1, "minRatio": 0.65, "track": 1 },
+      { "kind": "custom", "id": "vary-rhythm", "note": "Self-check: at least two bars use a rhythm other than the plain Charleston." }
     ],
     "minBars": 16, "maxBars": 16
   }
 }
+```
+
+## Ear review
+
+```ladder
+{ "skill": "progressions", "unlocks": 18, "intro": "Progressions at your level, up to the ii–V–I in sevenths." }
 ```

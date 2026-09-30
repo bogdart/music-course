@@ -281,7 +281,9 @@ for (const type of CATALOGUE_TYPES) {
         await expect(section.locator('.audio-row')).toHaveCount(0);
         test.skip(true, `${type} items have no audio`);
       }
-      const expected: number[] = Array.isArray(item.midis) ? item.midis : typeof item.midi === 'number' ? [item.midi] : [];
+      // the opening notes are enough to identify the item's audio (long transcription mixes schedule later notes
+      // only as playback reaches them)
+      const expected: number[] = (Array.isArray(item.midis) ? item.midis : typeof item.midi === 'number' ? [item.midi] : []).slice(0, 3);
       await unlockAudio(page);
       await page.waitForTimeout(500);
       await clearAudio(page);
@@ -453,16 +455,18 @@ test.describe('exercise shell details', () => {
   test('unlocking audio on a lesson autoplays at most one exercise (not every ear exercise at once)', async ({ page }) => {
     // Regression for BUG-07 (fixed): every <ExerciseShell> used to autoplay its current item as soon as audio was
     // unlocked, so N ear exercises started N sequences at once.
-    const lesson = lessons().find((l) => l.exercises.filter((e) => ['ear-octave', 'ear-note', 'ear-interval', 'ear-chord'].includes(e.type)).length >= 3)!;
+    // ear drills live in ```ladder blocks now: a lesson with three of them
+    const lesson = lessons().find((l) => l.ladders.length >= 3)!;
     await goto(page, `/lesson/${lesson.id}`);
+    const drills = page.locator('[data-testid="ladder"] section.exercise');
+    await expect.poll(() => drills.count()).toBeGreaterThanOrEqual(3);
     await clearAudio(page);
     await unlockAudio(page);
     await page.waitForTimeout(1500);
     const starts = (await page.evaluate(() => (window as any).__MC_E2E__.audio as { kind: string }[])).filter((e) => e.kind === 'schedule');
     expect(starts.length, 'sequences started right after unlocking audio (nothing autoplays merely because audio got unlocked)').toBe(0);
     // engaging with one exercise: Next autoplays only that exercise's next item
-    const ears = lesson.exercises.filter((e) => ['ear-octave', 'ear-note', 'ear-interval', 'ear-chord'].includes(e.type));
-    const target = ears[1]!;
+    const target = { id: (await drills.nth(1).getAttribute('data-testid'))!.replace('exercise-', '') };
     const section = exerciseLocator(page, target.id);
     await section.scrollIntoViewIfNeeded();
     await section.getByRole('button', { name: 'Reveal' }).click();

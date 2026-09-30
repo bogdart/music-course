@@ -5,6 +5,15 @@ Core terms from Phase 1 (Foundations). Other phases add their terms in `content/
 ## Arpeggio
 The notes of a chord played one after another instead of together — a "broken chord". C–E–G–E–C is an arpeggio of C major.
 
+## Augmentation
+Developing a motif by doubling every note value, so it sounds twice as slow with the same notes and shape (often in the bass). The opposite is diminution.
+
+## Augmented triad
+Aliases: augmented chord, aug
+Two major 3rds stacked: a major triad with its 5th raised a half step (C–E–G♯, written Caug or C+). Neither major
+nor minor, it sounds wide and unresolved and usually passes on, the raised 5th climbing another half step
+(C – Caug – F). Compare the diminished triad: two minor 3rds, small and tense.
+
 ## Bar
 A group of beats with the strongest beat first (also called a measure). In 4/4 each bar holds four quarter-note beats; bar lines separate bars on the staff.
 
@@ -12,7 +21,7 @@ A group of beats with the strongest beat first (also called a measure). In 4/4 e
 The steady pulse underneath music — what you tap your foot or nod your head to. Rhythms are measured against it.
 
 ## Cadence
-The musical "punctuation" at the end of a phrase, made by a chord movement. V→I (authentic cadence) sounds final; stopping on V (half cadence) sounds like a question. In ear drills, a short I–IV–V–I cadence is played first to set the key's home note.
+The word has two uses. (1) The musical "punctuation" at the end of a phrase, made by a chord movement: V→I (authentic cadence) sounds final; stopping on V (half cadence) sounds like a question. (2) In ear drills from week 6, "the cadence" is the short reference I–IV–V–I (home → away → tension → home) played first to set the key's home; it ends with an authentic cadence.
 
 ## Chord
 Three or more notes sounding together. The basic chord is the triad.
@@ -29,11 +38,17 @@ Belonging to the current key, using only its seven scale notes. The diatonic tri
 ## Diminished
 A triad made of two minor 3rds (e.g. B–D–F), written with °. It sounds tense and unstable; in a major key it appears on degree 7 (vii°).
 
+## Diminution
+Developing a motif by halving every note value, so it sounds twice as fast and more urgent. The opposite of augmentation (not to be confused with a diminished chord).
+
 ## Dotted note
 A note followed by a dot lasts one and a half times its normal value: a dotted half = 3 beats, a dotted quarter = 1½ beats.
 
 ## Drone
 A note or pair of notes (often root and 5th) held underneath a melody for a long time. It keeps "home" constantly audible.
+
+## Drop-out
+An arrangement trick: everything (or all but one part) stops for a beat or so just before a new section, so its first downbeat hits harder.
 
 ## Eighth note
 A note lasting half a beat in 4/4 (two per quarter note). Counted "1 & 2 & …". Written `8` in the app.
@@ -41,11 +56,17 @@ A note lasting half a beat in 4/4 (two per quarter note). Counted "1 & 2 & …".
 ## Flat
 The sign ♭ (typed `b`): lowers a note by one half step. B♭ is the black key just below B.
 
+## Fragmentation
+Developing a motif by keeping only part of it (e.g. its first three notes) and repeating or sequencing that fragment — a classic way to build tension toward a climax.
+
 ## Half note
 A note lasting two beats in 4/4. Written `h` in the app.
 
 ## Half step
 The smallest distance on the keyboard: from one key to the very next key, black or white (e.g. E–F, C–C♯). Also called a semitone or minor 2nd (m2).
+
+## Home run
+The melodic reference 1 2 3 4 5 4 3 2 1 (do re mi fa sol fa mi re do) that sets home before degree questions in weeks 3–5, before chords are taught. From week 6 the chord cadence takes over.
 
 ## Interval
 The distance between two notes, named by a number (counting letter names, including both ends: C–E is a 3rd) and a quality (major, minor, perfect).
@@ -71,6 +92,9 @@ The seven-note scale built from the step pattern W-W-H-W-W-W-H. C major uses onl
 ## Major triad
 Root + major 3rd + perfect 5th (M3 then m3), e.g. C–E–G. Sounds bright and stable.
 
+## Melodic inversion
+Developing a motif by flipping the direction of every interval: where the motif steps up, the inversion steps down. The rhythm stays the same. (A chord inversion is something else: see Inversion.)
+
 ## Melody
 A line of single notes, one after another, with a shape and rhythm — the part of a song you can hum.
 
@@ -81,13 +105,16 @@ The repeating pattern of strong and weak beats, e.g. four-beat (4/4) or three-be
 Root + minor 3rd + perfect 5th (m3 then M3), e.g. A–C–E. Sounds darker and heavier than major; written with "m" (Am).
 
 ## Octave
-The distance from a note to the next note with the same name, 12 half steps up (C4 to C5). The upper note vibrates exactly twice as fast, so the two blend and sound like "the same note, higher".
+The distance from a note to the next note with the same name, 12 half steps up (C4 to C5). The upper note vibrates exactly twice as fast, so played together the two melt into one sound. Played one after the other they share a name but, to a beginner's ear, usually still sound like two different notes — hearing the shared name takes practice.
 
 ## Perfect interval
 The unison, 4th, 5th and octave. They sound especially stable and open, almost blending into one sound. P4 = 5 half steps, P5 = 7, P8 = 12.
 
 ## Phrase
 A musical sentence, usually 2 or 4 bars long, ending with a cadence. Phrases often pair up as question and answer.
+
+## Pickup
+One or more notes before the first strong beat of a phrase or section, leading into it (also called an anacrusis).
 
 ## Pitch
 How high or low a note sounds, determined by how fast it vibrates.
@@ -97,6 +124,15 @@ A note lasting one beat in 4/4. Written `q` in the app.
 
 ## Rest
 A measured silence that lasts as long as the matching note value (whole, half, quarter, eighth rest). Written `r` in the app.
+
+## Resolve (resolution, resolves)
+To move from a restless, tense note or chord to a more restful one, letting the tension go: degree 4 resolves down to 3, degree 7 up to 1, the V chord to I.
+
+## Retrograde
+A motif played backwards, last note first. Used by composers, but listeners rarely recognise it by ear.
+
+## Riser
+A transition sound that climbs in pitch or intensity (a rising line, a snare roll, a pad moving up) over the last bars before a new section.
 
 ## Roman numeral
 A label for a chord by the scale degree of its root: upper case for major (I, IV, V), lower case for minor (ii, iii, vi), ° for diminished (vii°). Numerals describe chords independently of key.
