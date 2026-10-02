@@ -203,9 +203,13 @@ export const listen: ExerciseDefinition<'listen'> = {
     }
     const questionIndex = ctx.index % qs.length;
     const q = qs[questionIndex]!;
+    // which examples this question is about: its own `example` index, or — one example per question — the matching
+    // one; `"all"` (or unequal counts) shows them all
+    const pick = q.example === 'all' ? null : typeof q.example === 'number' ? q.example : examples.length > 1 && examples.length === qs.length ? questionIndex : null;
+    const shown = pick !== null && examples[pick] ? [examples[pick]!] : examples;
     const correct = q.answers?.length ? [...q.answers] : typeof q.answer === 'number' ? [q.answer] : [];
     return {
-      type: 'listen', examples, questionIndex,
+      type: 'listen', examples: shown, questionIndex,
       question: { q: q.q, choices: q.choices, correct, multi: correct.length > 1, ...(q.explain ? { explain: q.explain } : {}) },
       prompt: q.q,
       choices: q.choices.map((c, i) => ({ value: String(i), label: c })),

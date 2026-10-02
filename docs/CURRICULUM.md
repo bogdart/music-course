@@ -44,7 +44,7 @@ time in 4/4 and 3/4; first melodies and first DAW sketch.
 
 | Wk | Theme | Lessons |
 |----|-------|---------|
-| 1 | Sound, pitch, the keyboard (5 lessons; may take two calendar weeks) | welcome, app tour, keyboard setup; **higher, lower, the same** (pitch direction and "the same note twice"); **find the note you hear** (the keyboard search: middle first, compare, move, merge); octaves — two properties of a note (height, name), octaves *melt when played together*, honest that they won't sound "the same" yet; first melody by ear (Hot Cross Buns, Mary Had a Little Lamb, 3 notes) |
+| 1 | Sound, pitch, the keyboard (3 lessons) | welcome & setup — where the course starts (up/down and one-octave note finding are already yours; the search method as a fallback); octaves — two properties of a note (height, name), octaves *melt when played together*, honest that they won't sound "the same" yet; first melody by ear (Hot Cross Buns, Mary Had a Little Lamb, 3 notes) |
 | 2 | Note names, steps, beat | white keys & landmarks; black keys, sharps/flats, half & whole steps; pulse, tempo, metronome, first DAW: 4 bars of quarter notes |
 | 3 | Major scale & home | W-W-H pattern, C major hands-on; scale degrees & solfège, "home" heard first (tunes that stop early), the melodic home run 1-2-3-4-5-4-3-2-1 as the reference; Ode to Joy, DAW melody from degrees 1–5 |
 | 4 | Rhythm & notation basics | note values & rests (degree 4, "resolve" = moving to a more restful note, defined with sound); time signatures 4/4 & 3/4, counting, hearing 3 vs 4; reading rhythm & treble clef C4–G5 |

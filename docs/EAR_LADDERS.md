@@ -29,9 +29,11 @@ Per rung, from the learner's first answer to each item (`attempts` with lesson i
 
 * **mastered** when the last 20 answers are ≥ 85% correct *and* span at least two sessions (a session starts after
   2 h without activity) — or are ≥ 95% correct in one go;
-* **placed out** when the first 10 answers on a rung are all right — a learner who already has the skill skips it in
-  one set. The **Placement** page (`/placement`, linked from the dashboard) runs sets of 10 up one ladder from the
-  first rung not yet mastered and stops at the first set with a miss: that rung is the learner's level.
+* **known**: rungs the learner already has are recorded directly (`POST /api/ladder/known {rungs}` → table
+  `ladder_known`) and count as mastered from the start — the course has one learner whose level is known; nobody is
+  asked to prove it. A lesson's ladder block whose rungs are all mastered shows "✓ already yours" (practice optional).
+* **placed out** when the first 10 answers on a rung are all right. (`/placement` runs sets of 10 up a ladder; it is
+  not linked from the lessons or the dashboard.)
 * **lost again** when the last 10 answers drop below 70% (reviews catch forgetting).
 
 `GET /api/ladder` returns, per skill: `unlocked` (highest open rung), `current`, `behind` (open rungs not mastered),
@@ -67,63 +69,63 @@ Per rung, from the learner's first answer to each item (`attempts` with lesson i
 Per lesson: the ```ladder blocks in order; **bold** = opens new rungs (the value is the highest rung open
 afterwards), plain = review of rungs already open. Regenerate with `npm run docs:ladders`.
 
-| Week | l1 | l2 | l3 | l4 | l5 |
-|---|---|---|---|---|---|
-| 1 | **pitch 1** | **pitch 3** | **pitch 5** | **pitch 6**, **octave 2** | **pitch 7**, **melody 2** |
-| 2 | **pitch 8**, **melody 3** | **pitch 9**, **octave 3** | **rhythm 1**, **melody 4** |  |  |
-| 3 | melody 4, octave 3 | **degrees 2** | **degrees 4**, melody 4 |  |  |
-| 4 | **rhythm 3**, **degrees 5** | **rhythm 5**, **melody 6**, **octave 4** | **rhythm 6** |  |  |
-| 5 | **degrees 7**, **melody 7** | **melody 8** | degrees 7, melody 8 |  |  |
-| 6 | **roots 1**, **degrees 8** | **chords 1**, **roots 2**, **octave 5** | degrees 8 |  |  |
-| 7 | **degrees 10**, octave 5 | **degrees 11**, **melody 9**, **chords 2** | **pitch 10** |  |  |
-| 8 | **degrees 13**, **melody 10**, **chords 3** | **progressions 1**, **degrees 14** | **progressions 2**, **roots 4**, **melody 11** |  |  |
-| 9 | **degrees 15**, **melody 12** | **degrees 16**, **melody 13** | **progressions 3**, **roots 5**, **octave 6** |  |  |
-| 10 | **degrees 17**, **melody 14**, **progressions 5** | **degrees 18**, **melody 16**, **progressions 6** | pitch 10, **octave 7**, degrees 18, melody 16, chords 3, roots 5, progressions 6, rhythm 6 |  |  |
-| 11 | **degrees 19**, **melody 17** | **roots 6** | **roots 7** | **progressions 7**, **roots 9** |  |
-| 12 | **intervals 2** | **intervals 4** | **intervals 6** | **intervals 7**, **roots 10** |  |
-| 13 | **scales 2**, **degrees 21** | **melody 18** |  |  |  |
-| 14 | **scales 4**, **degrees 23** | **degrees 25**, **melody 19** |  |  |  |
-| 15 | **chords 5**, **intervals 8** | **chords 7**, degrees 25, **intervals 9** | **progressions 8**, **chords 8** |  |  |
-| 16 | **progressions 9**, **roots 11** | progressions 9, **intervals 10**, **octave 8** | **roots 12** |  |  |
-| 17 | **rhythm 8**, **octave 10** | **rhythm 10** | **rhythm 11**, **melody 20** |  |  |
-| 18 | **chords 10**, **intervals 11** | **intervals 12**, **melody 21** | **melody 22**, chords 10 |  |  |
-| 19 | **octave 11**, **intervals 13** | **progressions 11** | intervals 13, degrees 25, melody 22, rhythm 11, octave 11, chords 10, **progressions 12**, roots 12 |  |  |
-| 20 | **rhythm 12**, progressions 12 | roots 12, **intervals 14** | rhythm 12, roots 12 |  |  |
-| 21 | melody 22, **intervals 15**, **octave 12** | melody 22, **intervals 16** | melody 22 |  |  |
-| 22 | **roots 13** | **progressions 14**, **roots 14** | roots 14 |  |  |
-| 23 | **rhythm 13**, **octave 13** | **rhythm 14** | rhythm 14, roots 14 |  |  |
-| 24 | **roots 15**, **progressions 15** | progressions 15, **intervals 18** | melody 22 |  |  |
-| 25 | **scales 5**, **degrees 26** | degrees 26, **scales 6** | scales 6, melody 22, degrees 26 |  |  |
-| 26 | **degrees 27**, **scales 8** | **degrees 28**, **scales 10** | degrees 28, scales 10 |  |  |
-| 27 | **degrees 29**, **progressions 17** | **chords 11**, **progressions 18** | progressions 18, degrees 29, **octave 14** |  |  |
-| 28 | melody 22, roots 15 | progressions 18, roots 15 |  |  |  |
-| 29 | progressions 18, melody 22 | rhythm 14, roots 15 | **scales 11**, **melody 23**, progressions 18, roots 15, rhythm 14, degrees 29 |  |  |
-| 30 | **chords 12** | **chords 13** | chords 13, rhythm 14 |  |  |
-| 31 | **chords 14** | chords 14, roots 15 | **progressions 19** |  |  |
-| 32 | progressions 19, roots 15 | degrees 29, scales 11 | progressions 19 |  |  |
-| 33 | **progressions 20** | **chords 15** | **degrees 30** | progressions 20, roots 15 |  |
-| 34 | **scales 12** | degrees 30, melody 23 | melody 23 |  |  |
-| 35 | **intervals 19** | **intervals 20** | **intervals 21**, octave 14 | melody 23, roots 15 |  |
-| 36 | chords 15, roots 15 | rhythm 14, progressions 20 | rhythm 14, melody 23 |  |  |
-| 37 | **rhythm 15** | rhythm 15 | **rhythm 16**, roots 15 |  |  |
-| 38 | progressions 20 | progressions 20, rhythm 16 | roots 15 |  |  |
-| 39 | rhythm 16, roots 15 | chords 15 | progressions 20 |  |  |
-| 40 | **scales 13** | melody 23, scales 13 | scales 13 |  |  |
-| 41 | intervals 21, melody 23 | melody 23, progressions 20 | rhythm 16, chords 15 |  |  |
-| 42 | rhythm 16, melody 23 | progressions 20, melody 23 | **chords 16** |  |  |
-| 43 | progressions 20 | rhythm 16 | roots 15, progressions 20, chords 16, melody 23, scales 13 |  |  |
-| 44 | **roots 16**, **progressions 21** | rhythm 16, degrees 30 | — |  |  |
-| 45 | roots 16 | roots 16 | roots 16 |  |  |
-| 46 | progressions 21 | chords 16 | progressions 21 |  |  |
-| 47 | **intervals 22**, **melody 24** | melody 24 | melody 24 |  |  |
-| 48 | rhythm 16 | progressions 21 | — |  |  |
-| 49 | roots 16 | melody 24 | rhythm 16, progressions 21 |  |  |
-| 50 | rhythm 16, progressions 21 | melody 24 | scales 13 |  |  |
-| 51 | **chords 17** | rhythm 16 | progressions 21 |  |  |
-| 52 | intervals 22 | degrees 30, progressions 21 | chords 17 |  |  |
-| 53 | melody 24 | rhythm 16 | rhythm 16 | progressions 21 |  |
-| 54 | progressions 21 | rhythm 16 | melody 24 | roots 16 |  |
-| 55 | degrees 30, intervals 22, chords 17, roots 16, progressions 21, melody 24, rhythm 16, scales 13 | roots 16 | octave 14 |  |  |
+| Week | l1 | l2 | l3 | l4 |
+|---|---|---|---|---|
+| 1 | **pitch 2** | **pitch 4**, **octave 2** | **pitch 6**, **melody 2** |  |
+| 2 | **pitch 8**, **melody 3** | **pitch 9**, **octave 3** | **rhythm 1**, **melody 4** |  |
+| 3 | melody 4, octave 3 | **degrees 2** | **degrees 4**, melody 4 |  |
+| 4 | **rhythm 3**, **degrees 5** | **rhythm 5**, **melody 6**, **octave 4** | **rhythm 6** |  |
+| 5 | **degrees 7**, **melody 7** | **melody 8** | degrees 7, melody 8 |  |
+| 6 | **roots 1**, **degrees 8** | **chords 1**, **roots 2**, **octave 5** | degrees 8 |  |
+| 7 | **degrees 10**, octave 5 | **degrees 11**, **melody 9**, **chords 2** | **pitch 10** |  |
+| 8 | **degrees 13**, **melody 10**, **chords 3** | **progressions 1**, **degrees 14** | **progressions 2**, **roots 4**, **melody 11** |  |
+| 9 | **degrees 15**, **melody 12** | **degrees 16**, **melody 13** | **progressions 3**, **roots 5**, **octave 6** |  |
+| 10 | **degrees 17**, **melody 14**, **progressions 5** | **degrees 18**, **melody 16**, **progressions 6** | pitch 10, **octave 7**, degrees 18, melody 16, chords 3, roots 5, progressions 6, rhythm 6 |  |
+| 11 | **degrees 19**, **melody 17** | **roots 6** | **roots 7** | **progressions 7**, **roots 9** |
+| 12 | **intervals 2** | **intervals 4** | **intervals 6** | **intervals 7**, **roots 10** |
+| 13 | **scales 2**, **degrees 21** | **melody 18** |  |  |
+| 14 | **scales 4**, **degrees 23** | **degrees 25**, **melody 19** |  |  |
+| 15 | **chords 5**, **intervals 8** | **chords 7**, degrees 25, **intervals 9** | **progressions 8**, **chords 8** |  |
+| 16 | **progressions 9**, **roots 11** | progressions 9, **intervals 10**, **octave 8** | **roots 12** |  |
+| 17 | **rhythm 8**, **octave 10** | **rhythm 10** | **rhythm 11**, **melody 20** |  |
+| 18 | **chords 10**, **intervals 11** | **intervals 12**, **melody 21** | **melody 22**, chords 10 |  |
+| 19 | **octave 11**, **intervals 13** | **progressions 11** | intervals 13, degrees 25, melody 22, rhythm 11, octave 11, chords 10, **progressions 12**, roots 12 |  |
+| 20 | **rhythm 12**, progressions 12 | roots 12, **intervals 14** | rhythm 12, roots 12 |  |
+| 21 | melody 22, **intervals 15**, **octave 12** | melody 22, **intervals 16** | melody 22 |  |
+| 22 | **roots 13** | **progressions 14**, **roots 14** | roots 14 |  |
+| 23 | **rhythm 13**, **octave 13** | **rhythm 14** | rhythm 14, roots 14 |  |
+| 24 | **roots 15**, **progressions 15** | progressions 15, **intervals 18** | melody 22 |  |
+| 25 | **scales 5**, **degrees 26** | degrees 26, **scales 6** | scales 6, melody 22, degrees 26 |  |
+| 26 | **degrees 27**, **scales 8** | **degrees 28**, **scales 10** | degrees 28, scales 10 |  |
+| 27 | **degrees 29**, **progressions 17** | **chords 11**, **progressions 18** | progressions 18, degrees 29, **octave 14** |  |
+| 28 | melody 22, roots 15 | progressions 18, roots 15 |  |  |
+| 29 | progressions 18, melody 22 | rhythm 14, roots 15 | **scales 11**, **melody 23**, progressions 18, roots 15, rhythm 14, degrees 29 |  |
+| 30 | **chords 12** | **chords 13** | chords 13, rhythm 14 |  |
+| 31 | **chords 14** | chords 14, roots 15 | **progressions 19** |  |
+| 32 | progressions 19, roots 15 | degrees 29, scales 11 | progressions 19 |  |
+| 33 | **progressions 20** | **chords 15** | **degrees 30** | progressions 20, roots 15 |
+| 34 | **scales 12** | degrees 30, melody 23 | melody 23 |  |
+| 35 | **intervals 19** | **intervals 20** | **intervals 21**, octave 14 | melody 23, roots 15 |
+| 36 | chords 15, roots 15 | rhythm 14, progressions 20 | rhythm 14, melody 23 |  |
+| 37 | **rhythm 15** | rhythm 15 | **rhythm 16**, roots 15 |  |
+| 38 | progressions 20 | progressions 20, rhythm 16 | roots 15 |  |
+| 39 | rhythm 16, roots 15 | chords 15 | progressions 20 |  |
+| 40 | **scales 13** | melody 23, scales 13 | scales 13 |  |
+| 41 | intervals 21, melody 23 | melody 23, progressions 20 | rhythm 16, chords 15 |  |
+| 42 | rhythm 16, melody 23 | progressions 20, melody 23 | **chords 16** |  |
+| 43 | progressions 20 | rhythm 16 | roots 15, progressions 20, chords 16, melody 23, scales 13 |  |
+| 44 | **roots 16**, **progressions 21** | rhythm 16, degrees 30 | — |  |
+| 45 | roots 16 | roots 16 | roots 16 |  |
+| 46 | progressions 21 | chords 16 | progressions 21 |  |
+| 47 | **intervals 22**, **melody 24** | melody 24 | melody 24 |  |
+| 48 | rhythm 16 | progressions 21 | — |  |
+| 49 | roots 16 | melody 24 | rhythm 16, progressions 21 |  |
+| 50 | rhythm 16, progressions 21 | melody 24 | scales 13 |  |
+| 51 | **chords 17** | rhythm 16 | progressions 21 |  |
+| 52 | intervals 22 | degrees 30, progressions 21 | chords 17 |  |
+| 53 | melody 24 | rhythm 16 | rhythm 16 | progressions 21 |
+| 54 | progressions 21 | rhythm 16 | melody 24 | roots 16 |
+| 55 | degrees 30, intervals 22, chords 17, roots 16, progressions 21, melody 24, rhythm 16, scales 13 | roots 16 | octave 14 |  |
 
 ## Rungs
 

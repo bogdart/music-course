@@ -52,10 +52,8 @@
       "title": "Sound, pitch and the keyboard",
       "lessons": [
         "w01-l1-welcome-and-setup",
-        "w01-l2-higher-lower-same",
-        "w01-l3-find-the-note",
-        "w01-l4-pitch-and-octaves",
-        "w01-l5-first-melody-by-ear"
+        "w01-l2-pitch-and-octaves",
+        "w01-l3-first-melody-by-ear"
       ]
     },
     {

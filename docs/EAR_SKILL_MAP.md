@@ -1,7 +1,7 @@
 # Ear Skill Map
 
 The ear curriculum as stages. It decides **when** each ear skill opens (the unlock table below is binding for lesson
-authors) and **why** in that order. Mechanics (ladders, mastery, placement) are in `docs/EAR_LADDERS.md`; the rungs
+authors) and **why** in that order. Mechanics (ladders, mastery, known rungs) are in `docs/EAR_LADDERS.md`; the rungs
 themselves in `packages/core/src/ladders.ts`.
 
 Assumed practice: ~30 min/day, 5–6 days/week (the owner's choice). The ladders gate by mastery, so week numbers are
@@ -27,9 +27,7 @@ Established programs (research summary, September 2026):
 * **Intervals come after scale degrees**, as names for what is already heard (Karpinski ch. 13; Cleland & Dobrea).
 * Typical span from "degrees in one octave of one key" to "any octave, any major key": **2–4 months**.
 
-The learner started able to tell higher/lower and to find notes roughly within one octave of C major; other octaves and
-other keys broke their hearing. Placement (first 10 answers on a rung all right = mastered) lets them skip what they
-already have in minutes.
+The learner started able to tell higher/lower and to find notes within one octave of C major; other octaves and other keys broke their hearing. Those skills (pitch rungs 1–8, melody rungs 1–2) are recorded as known in their profile, so lessons and practice start beyond them.
 
 ## Stages of the tonal spine (degrees + melody)
 
@@ -42,7 +40,7 @@ already have in minutes.
 | 5 Minor | A minor → near minor keys → any minor → raised 7, raised 6 | degrees 20–25, melody 18–19 | 13–14 |
 | 6 Chromatic | ♭3 (blues) → ♭7 → ♭6 (modes) → ♯4 (V/V) → all twelve | degrees 26–30 | 25–33 |
 
-Parallel strands: **pitch** (weeks 1–7, mostly placement), **octave** (weeks 1–27, one rung every ~2 weeks),
+Parallel strands: **pitch** (weeks 1–7; rungs 1–8 are recorded as the learner's already), **octave** (weeks 1–27, one rung every ~2 weeks),
 **harmony** (roots/bass and progressions follow the same key stages: C → G → near → any), **intervals** (from week 12,
 as naming; narrow register first), **chords** (qualities, narrow register first), **rhythm** and **scales**.
 
@@ -55,11 +53,9 @@ already opened, and a rung only after the prose that teaches it and not before i
 
 | Lesson | Opens |
 |---|---|
-| w01-l1 | pitch 1 |
-| w01-l2 | pitch 3 |
-| w01-l3 | pitch 5 |
-| w01-l4 | pitch 6, octave 2 |
-| w01-l5 | pitch 7, melody 2 |
+| w01-l1 | pitch 2 |
+| w01-l2 | pitch 4, octave 2 |
+| w01-l3 | pitch 6, melody 2 |
 | w02-l1 | pitch 8, melody 3 |
 | w02-l2 | pitch 9, octave 3 |
 | w02-l3 | rhythm 1, melody 4 |

@@ -88,3 +88,14 @@ describe('roman-analysis palette', () => {
     expect(forced.palette.map((p) => p.value)).toContain('bVII');
   });
 });
+
+describe('listen: one example per question', () => {
+  const ex = (t: string) => ({ title: t, bpm: 60, timeSig: '4/4', tracks: [{ instrument: 'piano', seq: 'C4:q' }] });
+  const q = (extra = {}) => ({ q: 'Up or down?', choices: ['up', 'down'], answer: 0, ...extra });
+  it('pairs question i with example i when counts match; explicit index and "all" override', () => {
+    const set = generateSet({ id: 'l', type: 'listen', spec: { examples: [ex('P1'), ex('P2'), ex('P3')], questions: [q(), q(), q()] } } as never, 1);
+    expect(set.items.map((it) => (it as { examples: { title: string }[] }).examples.map((e) => e.title))).toEqual([['P1'], ['P2'], ['P3']]);
+    const cmp = generateSet({ id: 'l', type: 'listen', spec: { examples: [ex('A'), ex('B')], questions: [q({ example: 'all' }), q({ example: 1 })] } } as never, 1);
+    expect(cmp.items.map((it) => (it as { examples: unknown[] }).examples.length)).toEqual([2, 1]);
+  });
+});

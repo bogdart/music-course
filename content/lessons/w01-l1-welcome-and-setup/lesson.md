@@ -8,127 +8,56 @@ duration_min: 30
 goals:
   - Connect the MIDI keyboard (or use the on-screen / computer keyboard) and hear sound
   - Find C on the keyboard using the groups of two and three black keys
-  - Tell whether a second note goes up or down, checking with your hand and the keyboard
-  - Use the Placement test to skip the ear rungs you already have
+  - Know where the course starts from, and how the ear ladders pace it
 prerequisites: []
 tags: [setup, keyboard, pitch, ear]
 ---
 
 # Welcome
 
-This course takes you from zero to writing and decoding real songs. You never need to sing: every answer is a key on
-the keyboard or a click.
+This course is built for one person — you — from what you've told me and what the app has recorded. You never need
+to sing: every answer is a key on the keyboard or a click.
 
-**Pace.** Week 1 has five short lessons, because the ear needs solid ground before anything else. The pace follows
-your ear, not the calendar: if you already have a skill, you skip it in minutes (next section); if you don't, week 1
-may take two calendar weeks, and that's fine too.
+## Where you start
 
-## Already hear some of this? Take the Placement test first
+You already hear whether a note goes **up or down**, and you can find any white-key note **within one octave of C
+major** on the keyboard. The app knows that: those steps of the pitch ladder are marked as yours, so no lesson drills
+them again. What's hard — and what the first months are for — is everything beyond that octave and that key: the same
+note in another octave, notes below home, other keys, then minor. Each gets its own stage, in the order ear-training
+programmes use (one change at a time); the plan is in the course docs, and the ladders pace it by what you actually
+hear.
 
-Many adults can already tell higher from lower and find a note roughly within one octave. Don't spend a week
-proving it. Open **Dashboard → Placement test** (the page `/placement`), pick **Pitch**, and press **Test me**:
+**The search** — the method later lessons call on when you're unsure of a note: play a key in the middle of the
+range, compare it with the note you heard (higher, lower, or the same?), move that way, compare again, until the two
+merge into *the same note twice*. You already do this; from now on it's also your fallback whenever a drill feels
+like guessing.
 
-- you get **sets of 10** questions, starting at your first rung not yet mastered;
-- **10 out of 10** masters that rung and the next set starts one rung higher;
-- the first set with a miss stops the test — that rung is your level, and lessons and Practice start there.
-
-Don't guess to get through: a miss is useful information. Afterwards try **Melodies** the same way.
-
-**What it means for week 1:** lessons 2 and 3 (higher/lower/same, and finding the note) cover pitch rungs 1–5. If
-placement shows those mastered, **skim them**: read the headings, do the *Check it* questions, and if they are all
-right, move on. Each has a short *fast path* at the top. Lessons 4 and 5 (octaves, first melody) are new for almost
-everyone — do those fully.
-
-**One octave, for weeks.** Everything you are asked to judge by ear in weeks 1–6 stays between middle C and the C
+**One octave, for weeks.** Everything you're asked to judge by ear in weeks 1–6 stays between middle C and the C
 above it (C4–C5). Two kinds of sound reach lower, and the lesson says so when they appear: the octave drills (their
-own strand — lesson 4 starts it, week 7 is about it), and *reference sounds* you only listen to, such as a low held
-drone or the bass of a chord cadence (C3). To most beginners a note in another octave sounds like a different note,
-and that takes many weeks of short practice to change.
+own slow strand — lesson 2 starts it, week 7 is about it), and *reference sounds* you only listen to, such as a low
+held drone or the bass of a chord cadence (C3).
 
 ## How ear training works here
 
 Each ear skill is a **ladder** of small steps (rungs). Lessons *open* rungs; you *climb* by practising, and move up
-only when the current rung is solid (about 85% over two sessions). So an ear drill is always at *your* level. Every
-drill has a **How to do it** box: a concrete method with your hands and ears. Read it before the first question —
-the method is the lesson.
+only when the current rung is solid (about 85% over two sessions). A drill is always at *your* rung, and a rung you
+already have shows as done instead of being drilled. Every drill has a **How to do it** box: a concrete method with
+your hands and ears.
 
-## Step 1: make a sound
+## Set up
 
-Plug in your MIDI keyboard, open **Settings → MIDI** and pick your device. No keyboard at hand? Click the on-screen
-keys below, or use your computer keys (`z x c v b n m ,` are white keys). Press any key. If you hear a note, you're
-ready.
+Plug in your MIDI keyboard, open **Settings → MIDI** and pick your device (or use the on-screen keys; `z x c v b n
+m ,` on the computer keyboard are white keys). Press any key: if you hear a note, you're ready.
 
-## Step 2: find C
-
-Black keys come in **groups of two and three**. That pattern repeats along the whole keyboard and is your map. The
-white key just **left of a group of two** is **C**. The C near the middle is {{note:C4}} (*middle C*).
+Black keys come in **groups of two and three**; the white key just **left of a group of two** is **C**, and the C
+near the middle is {{note:C4}} (*middle C*).
 
 ```keyboard
 { "range": ["C3", "C5"], "highlight": ["C3", "C4", "C5"], "labels": "none" }
 ```
 
-Every C looks the same on the keyboard (left of two black keys) — that's the map. For listening we stay at middle C
-and the C above it for now.
-
-## Step 3: up and down
-
-Moving **right** on the keyboard makes the sound **higher**; moving **left** makes it **lower**. How high or low a
-note is, is its [[pitch]].
-
-**Try it** (on the keyboard above or your own):
-
-1. Play C4, then C5. As the second note sounds, **lift your hand** a little. Then C5, then C4: **drop your hand**.
-2. Play C4, then G4 — a smaller lift. Then G4, then C4 — drop.
-3. Now play C4, then any key further right (up to C5), without looking which: lift your hand. Your hand is saying
-   "up".
-
-One honest warning: some beginners mix up *higher* with *louder* or *brighter*. Higher means only one thing here:
-further right on the keyboard.
-
-```example
-{
-  "title": "Up: C4, G4, C5. Then down: C5, G4, C4",
-  "bpm": 60, "timeSig": "4/4", "key": "C",
-  "tracks": [ { "instrument": "piano", "seq": "C4:h G4:h | C5:w | C5:h G4:h | C4:w" } ],
-  "show": ["keyboard"]
-}
-```
-
-### Check it
-
-Each pair below is two notes. Play it, move your hand with the notes, then answer: did the second note go up or down?
-
-```exercise
-{
-  "id": "e8",
-  "type": "listen",
-  "title": "Up or down?",
-  "spec": {
-    "examples": [
-      { "title": "Pair 1", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "C4:h C5:h" } ] },
-      { "title": "Pair 2", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "B4:h C4:h" } ] },
-      { "title": "Pair 3", "bpm": 60, "timeSig": "4/4", "key": "C", "hidden": true, "tracks": [ { "instrument": "piano", "seq": "D4:h A4:h" } ] }
-    ],
-    "questions": [
-      { "q": "Pair 1: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 0, "explain": "C4 then C5: up, the whole width of the octave." },
-      { "q": "Pair 2: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 1, "explain": "B4 then C4: a long way down." },
-      { "q": "Pair 3: the second note went…", "choices": ["up (higher)", "down (lower)"], "answer": 0, "explain": "D4 then A4: up." }
-    ]
-  }
-}
-```
-
-**If you can't hear it yet:** play both notes yourself. Start on middle C and try keys to the left and right until
-one sounds like the second note; if it's to the right of C, the answer is "up". That always works, and doing it a
-few times is how the ear learns.
-
-## Your first ladder: pitch
-
-The drill plays two notes far apart: higher or lower? Open **How to do it** and use it: replay, follow with your
-hand, and check on the keyboard whenever you're unsure. Checking is not cheating — it's practice.
-
 ```ladder
-{ "skill": "pitch", "unlocks": 1, "intro": "Two notes far apart: did the second one go up or down?" }
+{ "skill": "pitch", "unlocks": 2, "intro": "Up or down — a step you already have; it shows as done." }
 ```
 
 ## Hands
@@ -182,9 +111,4 @@ hand, and check on the keyboard whenever you're unsure. Checking is not cheating
 
 ## Between lessons
 
-- If you haven't yet: the **Placement test** for Pitch (and Melodies). It takes 5–15 minutes and may save you a
-  week.
-- Two **Practice** sessions of about 10 minutes (the Practice page picks your current rung). Replay every pair
-  and move your hand; check on the keyboard after each wrong answer.
-- Ready for lesson 2 when most pairs feel easy — you don't have to wait for rung 1 to show *mastered*; lesson 2
-  keeps practising the same skill. If placement mastered pitch rungs 1–5, skim lessons 2–3 via their fast path.
+- Nothing to drill yet beyond this lesson — go straight on to lesson 2 (octaves), where the real work starts.

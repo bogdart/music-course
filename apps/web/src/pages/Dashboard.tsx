@@ -79,14 +79,9 @@ export function Dashboard() {
               })}
             </ul>
           )}
-          <div className="row">
-            <Link className="btn" to="/practice">
-              Practice
-            </Link>
-            <Link className="btn ghost" to="/placement" title="Skip rungs you already hear">
-              Placement test
-            </Link>
-          </div>
+          <Link className="btn" to="/practice">
+            Practice
+          </Link>
           {(summary?.srs.due ?? 0) > 0 && <div className="muted small">+ {summary?.srs.due} review card(s) due</div>}
         </div>
         <div className="card">

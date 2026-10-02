@@ -159,6 +159,8 @@ export interface QuizQuestion {
   answer?: number;
   answers?: number[];
   explain?: string;
+  /** listen only: which example (index) the question is about, or "all" */
+  example?: number | 'all';
 }
 
 export interface QuizInputQuestion {

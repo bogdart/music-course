@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getRung, LADDER_LESSON_ID, LADDERS, MASTERY, type LadderSkill } from '@music/core';
 import { ExerciseShell } from '../../exercises/ExerciseShell';
 import { useLadderStore } from '../../stores/ladder';
@@ -18,6 +18,7 @@ export function LadderBlock({ data, record = true }: { data: LadderData; record?
   const unlock = useLadderStore((s) => s.unlock);
   const load = useLadderStore((s) => s.load);
   const st = useLadderStore((s) => s.state?.skills.find((k) => k.skill === data.skill));
+  const [practise, setPractise] = useState(false);
 
   useEffect(() => {
     if (record) void unlock(data.skill, data.unlocks);
@@ -32,6 +33,24 @@ export function LadderBlock({ data, record = true }: { data: LadderData; record?
   const status = st?.rungs[n - 1];
   const review = !!st?.complete;
   const mastered = st ? st.rungs.filter((r) => r.mastered && r.n <= st.unlocked).length : 0;
+  // every rung this block opens is already the learner's (mastered or recorded as known): nothing to drill here
+  const already = !!st && st.rungs.slice(0, data.unlocks).every((r) => r.mastered);
+  if (already && !practise) {
+    return (
+      <div className="card ladder done" data-testid="ladder" data-skill={data.skill}>
+        <div className="ladder-head">
+          <strong>🎧 {ladder.title}</strong>
+          <span className="muted small">✓ already yours — rungs 1–{data.unlocks}</span>
+        </div>
+        <p className="small muted">
+          {data.unlocks === 1 ? `“${target.title}”` : `Up to “${target.title}”`}: you have this already, so there's nothing to drill here.{' '}
+          <button type="button" className="btn link" onClick={() => setPractise(true)}>
+            practise anyway
+          </button>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="card ladder" data-testid="ladder" data-skill={data.skill}>

@@ -191,8 +191,8 @@ moving.
       }
     ],
     "questions": [
-      {"q": "Follow only the bass in each loop. Which loop has a pedal point?", "choices": ["Loop 1", "Loop 2", "Both", "Neither"], "answer": 0, "explain": "Loop 1: C for all four bars, a tonic pedal. In loop 2 the bass follows the roots, C – F – G – C, under the same chords."},
-      {"q": "Loop 1, bar 2: the chord above sounds like F major. With the bass as it is, the symbol is…", "choices": ["F", "F/C", "Fm", "C"], "answer": 1, "explain": "F/C — F major over its 5th. Loop 1 is C – F/C – G/C – C."}
+      {"q": "Follow only the bass in each loop. Which loop has a pedal point?", "example": "all", "choices": ["Loop 1", "Loop 2", "Both", "Neither"], "answer": 0, "explain": "Loop 1: C for all four bars, a tonic pedal. In loop 2 the bass follows the roots, C – F – G – C, under the same chords."},
+      {"example": 0, "q": "Loop 1, bar 2: the chord above sounds like F major. With the bass as it is, the symbol is…", "choices": ["F", "F/C", "Fm", "C"], "answer": 1, "explain": "F/C — F major over its 5th. Loop 1 is C – F/C – G/C – C."}
     ]
   }
 }

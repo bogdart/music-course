@@ -31,7 +31,7 @@ test.beforeEach(async ({ server }) => {
   await server.handle!.restart({ freshDb: true });
 });
 
-test('lesson ladder block → practice session: 20 good answers master rung 1, rung 2 becomes current', async ({ page, api }) => {
+test('lesson ladder block → practice session: a perfect first set masters rung 1 (placement), practice moves on', async ({ page, api }) => {
   test.setTimeout(150_000);
   const l = lessonWithLadder('pitch');
   await goto(page, `/lesson/${l.id}`);
@@ -41,18 +41,15 @@ test('lesson ladder block → practice session: 20 good answers master rung 1, r
   await block.scrollIntoViewIfNeeded();
   await expect(block).toContainText('rung 1 of');
   await expect.poll(async () => (await skill(api, 'pitch')).unlocked).toBeGreaterThanOrEqual(1);
-  // one lesson set of rung 1, all correct
+  // one lesson set of rung 1, all correct: the first 10 answers all right master the rung at once
   expect(await completeSet(page, 'pitch-1')).toContain('Passed ✓');
-  await expect.poll(async () => (await skill(api, 'pitch')).rungs[0]!.attempts).toBe(10);
-  // Practice: the ladder session starts with pitch rung 1 (the only open ladder), 10 more correct answers
-  await goto(page, '/practice');
-  await expect(page.getByText(/Set 1 of \d+/)).toBeVisible();
-  await expect(page.getByText(/Pitch · rung 1/)).toBeVisible();
-  await completeSet(page, 'pitch-1');
-  // 20/20 in one session ≥ 95% → mastered; the current rung moves on
   await expect.poll(async () => (await skill(api, 'pitch')).rungs[0]!.mastered).toBe(true);
   const st = await skill(api, 'pitch');
-  expect(st.current).toBe(st.unlocked >= 2 ? 2 : 1);
+  expect(st.rungs[0]!.attempts).toBe(10);
+  // Practice works on the next rung (or reviews, if nothing else is open)
+  await goto(page, '/practice');
+  await expect(page.getByText(/Set 1 of \d+/)).toBeVisible();
+  await expect(page.getByText(st.unlocked >= 2 ? /Pitch · rung 2/ : /Pitch · rung 1/)).toBeVisible();
   // ladder answers are not lesson attempts
   const p = await (await api.get('/api/progress')).json();
   expect(p.lastLessonId === 'ladder').toBe(false);
@@ -74,16 +71,18 @@ test('lesson warm-up: hidden with no open ladder; offers the skill furthest behi
   await api.post('/api/ladder/unlock', { data: { skill: 'octave', unlocks: 2 } });
   await goto(page, `/lesson/${lessonB.id}`);
   const warm = page.getByTestId('warmup');
+  // the skill furthest behind that this lesson doesn't drill itself: octave (the lesson drills pitch)
   await expect(warm).toContainText('Octaves, rung 1');
+  const offered = 'octave';
   await warm.getByRole('button', { name: 'Skip' }).click();
   await expect(warm).toHaveCount(0);
   await page.reload();
   await page.getByTestId('warmup').getByRole('button', { name: 'Start warm-up' }).click();
-  const { total } = await currentItem(page, 'octave-1');
+  const { total } = await currentItem(page, `${offered}-1`);
   expect(total).toBe(5);
-  await completeSet(page, 'octave-1');
+  await completeSet(page, `${offered}-1`);
   await expect(page.getByTestId('warmup')).toHaveCount(0, { timeout: 5000 });
-  await expect.poll(async () => (await skill(api, 'octave')).rungs[0]!.attempts).toBe(5);
+  await expect.poll(async () => (await skill(api, offered)).rungs[0]!.attempts).toBe(5);
   await page.reload();
   await page.waitForLoadState('networkidle');
   await expect(page.getByTestId('warmup')).toHaveCount(0);

@@ -1,15 +1,15 @@
 ---
-id: w01-l5-first-melody-by-ear
+id: w01-l3-first-melody-by-ear
 title: Your First Melody by Ear
 week: 1
-order: 5
+order: 3
 phase: p1
 duration_min: 45
 goals:
   - Hear a short tune as a chain of moves — up, down, or the same note again
   - Play back 3-note tunes on C, D and E by finding the first note and following the moves
   - Play "Hot Cross Buns" and "Mary Had a Little Lamb"
-prerequisites: [w01-l4-pitch-and-octaves]
+prerequisites: [w01-l2-pitch-and-octaves]
 tags: [melody, pitch, ear, keyboard, songs]
 songs:
   - { title: "Hot Cross Buns", composer: "Traditional", public_domain: true }
@@ -55,7 +55,7 @@ same note is always one clean sound. When a pair is unclear, that's your check: 
 together.
 
 ```ladder
-{ "skill": "pitch", "unlocks": 7, "intro": "Pitch at your current rung — including 'the same note, or a close neighbour?'." }
+{ "skill": "pitch", "unlocks": 6, "intro": "Pitch at your current rung — including 'the same note, or a close neighbour?'." }
 ```
 
 ## Playing a tune back
@@ -166,8 +166,6 @@ Same three notes plus **G** (your little finger, the fifth white key from C). Sa
 ## Between lessons (and the end of week 1)
 
 - Two or three **Practice** sessions of about 10 minutes. Practice mixes pitch, octave and melody at your level.
-- Placement works for melodies too: Dashboard → Placement test → **Melodies**. If the C-D-E echoes are easy, it
-  skips you ahead in one sitting.
 - Play Hot Cross Buns and Mary once a day, saying the moves out loud.
 - Ready for week 2 when the dashboard doesn't say **practise first** and the pitch bar has reached at least the
   *Find it* rungs. If week 1 took two calendar weeks, that's the pace working as intended.

@@ -571,3 +571,4 @@ figure.card > * + * { margin-top: 10px; }
 .ladder-how p { margin: 6px 0 0; }
 .reveal { border-left: 3px solid var(--warn); }
 .reveal.open { border-left-color: var(--ok); }
+.ladder.done { border-left-color: var(--ok); }

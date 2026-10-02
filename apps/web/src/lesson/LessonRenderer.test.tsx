@@ -55,7 +55,7 @@ describe('lesson renderer (dev fixture)', () => {
     expect(screen.getByRole('button', { name: '♪ C#4' })).toBeTruthy();
     expect(screen.getByRole('button', { name: /🎹 Cmaj7/ })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'octave' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'next lesson' }).getAttribute('href')).toBe('/lesson/w01-l2-higher-lower-same');
+    expect(screen.getByRole('link', { name: 'next lesson' }).getAttribute('href')).toBe('/lesson/w01-l2-pitch-and-octaves');
     // GFM table
     expect(screen.getAllByRole('table').some((t) => t.closest('.lesson-body') && !t.closest('.exercise'))).toBe(true);
     // rail lists all 36 exercises

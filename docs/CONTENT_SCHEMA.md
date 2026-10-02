@@ -356,6 +356,9 @@ Run `npm run validate:content` (add a lesson id to check one lesson).
   the key's mode.
 * **`ear-note`**: `mode` defaults to `major` (a key like `"Am"` also sets minor); `answer`: `"degree"`
   (default) | `"name"`; `chromatic: true` shows all 12 degree buttons.
+* **`listen`** questions may name the example they are about: `"example": 2` (index) or `"example": "all"`. Without it,
+  a listen block with one example per question pairs them (question *i* shows example *i* only); otherwise every
+  question shows all examples.
 * **`ear-octave`** `seek`: hear one note (from `notes` × `octaves`) and find the exact key; only the keys of that
   range are shown, every key pressed is a try and answers "go higher / go lower" (or "right name, wrong octave").
   `same-pitch`: two notes in one register — exactly the same note twice, or different by one of `foils` semitones.

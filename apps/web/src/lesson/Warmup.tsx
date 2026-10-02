@@ -12,7 +12,7 @@ function doneKey(lessonId: string) {
  * Warm-up at the top of every lesson (inserted by the runner, never authored): one short set at the learner's current
  * rung of the ear skill furthest behind the lessons. Hidden when no ladder is open yet; skipping is always possible.
  */
-export function Warmup({ lessonId }: { lessonId: string }) {
+export function Warmup({ lessonId, skip = [] }: { lessonId: string; skip?: string[] }) {
   const load = useLadderStore((s) => s.load);
   const [entry, setEntry] = useState<PlanEntry | null | undefined>(undefined);
   const [phase, setPhase] = useState<'offer' | 'running' | 'done' | 'skipped'>(() => {
@@ -27,11 +27,12 @@ export function Warmup({ lessonId }: { lessonId: string }) {
     let cancel = false;
     void load().then(() => {
       const st = useLadderStore.getState().state;
-      if (!cancel) setEntry(st ? warmupEntry(st) : null);
+      if (!cancel) setEntry(st ? warmupEntry(st, skip) : null);
     });
     return () => {
       cancel = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonId, load]);
 
   const finish = () => {

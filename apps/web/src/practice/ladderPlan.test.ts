@@ -20,3 +20,9 @@ describe('practice plan', () => {
     expect(warmupEntry(state({ octave: 4, melody: 1 }))).toMatchObject({ count: 5, rung: { id: 'octave-1' } });
   });
 });
+
+describe('warm-up skips what the lesson drills', () => {
+  it('leaves skills of the lesson\'s own ladder blocks to the lesson', () => {
+    expect(warmupEntry(state({ octave: 4, pitch: 2 }), ['octave'])).toMatchObject({ rung: { id: 'pitch-1' } });
+  });
+});

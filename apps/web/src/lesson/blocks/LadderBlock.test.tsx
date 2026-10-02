@@ -31,3 +31,18 @@ describe('ladder block', () => {
     expect(screen.getByRole('button', { name: 'One note (octave)' })).toBeTruthy();
   });
 });
+
+describe('ladder block when the rungs are already the learner\'s', () => {
+  it('shows a done line instead of a drill, with an optional practice', async () => {
+    const { fireEvent } = await import('@testing-library/react');
+    const known = Array.from({ length: 10 }, () => ({ correct: true, session: 1 }));
+    useLadderStore.setState({ state: null });
+    fetchMock.mockImplementation(async () =>
+      new Response(JSON.stringify({ session: 1, skills: LADDER_SKILLS.map((k) => skillState(k, k === 'pitch' ? 2 : 0, k === 'pitch' ? { 'pitch-1': known, 'pitch-2': known } : {})) }), { status: 200 }));
+    render(<LadderBlock data={{ skill: 'pitch', unlocks: 2 }} />);
+    await waitFor(() => expect(screen.getByText(/already yours/)).toBeTruthy());
+    expect(screen.queryByRole('button', { name: 'Higher' })).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'practise anyway' }));
+    expect(screen.getByRole('button', { name: 'Higher' })).toBeTruthy();
+  });
+});

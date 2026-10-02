@@ -1,15 +1,15 @@
 ---
-id: w01-l4-pitch-and-octaves
+id: w01-l2-pitch-and-octaves
 title: The Same Note, the Same Name — Octaves
 week: 1
-order: 4
+order: 2
 phase: p1
 duration_min: 40
 goals:
   - Judge whether two notes are exactly the same note or two different ones
   - Know that note names repeat every 12 keys — the octave — while the height changes
   - Hear an octave melt into one sound when both notes play together
-prerequisites: [w01-l3-find-the-note]
+prerequisites: [w01-l1-welcome-and-setup]
 tags: [pitch, octave, ear, keyboard]
 ---
 
@@ -33,7 +33,7 @@ and compare it with the question.
 **If you can't tell:** use the search from last lesson. Find the first note, then the second. Same key = same note.
 
 ```ladder
-{ "skill": "pitch", "unlocks": 6, "intro": "Up/down, find it, or same note or not — at your current pitch rung." }
+{ "skill": "pitch", "unlocks": 4, "intro": "Up/down, find it, or same note or not — at your current pitch rung." }
 ```
 
 ## The name comes back every 12 keys

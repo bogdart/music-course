@@ -135,7 +135,7 @@ export function LessonView({ lesson, record = true }: LessonViewProps) {
               </details>
             )}
           </header>
-          {record && <Warmup lessonId={lesson.id} />}
+          {record && <Warmup lessonId={lesson.id} skip={rail.flatMap((r) => (r.skill ? [r.skill] : []))} />}
           <LessonRenderer body={lesson.body} />
           <footer className="lesson-footer card">
             {lessonDone ? <p>✓ Lesson complete. Nice work!</p> : <p>Finished the exercises? Mark the lesson complete.</p>}

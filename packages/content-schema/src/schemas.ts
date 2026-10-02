@@ -142,6 +142,7 @@ const quizQuestion = obj({
   answer: z.number().int().min(0).optional(),
   answers: z.array(z.number().int().min(0)).min(1).optional(),
   explain: z.string().optional(),
+  example: z.union([z.number().int().min(0), z.literal('all')]).optional(),
 }).superRefine((q, ctx) => {
   const idx = q.answers ?? (q.answer !== undefined ? [q.answer] : []);
   if (idx.length === 0) ctx.addIssue({ code: 'custom', message: 'quiz question needs "answer" (index) or "answers"' });

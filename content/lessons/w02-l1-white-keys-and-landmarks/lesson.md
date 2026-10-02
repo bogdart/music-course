@@ -10,7 +10,7 @@ goals:
   - Find any white key fast from two landmarks, C and F
   - Find a heard note among the seven white keys by searching — jump first, then step
   - Echo short tunes on C to G, hearing steps and skips
-prerequisites: [w01-l5-first-melody-by-ear]
+prerequisites: [w01-l3-first-melody-by-ear]
 tags: [note-names, keyboard, melody, ear]
 ---
 

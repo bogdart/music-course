@@ -355,9 +355,12 @@ export interface RungStatus {
   mastered: boolean;
 }
 
-/** Replay the answer history of one rung, in order, and decide whether it is mastered now. */
-export function rungStatus(results: RungResult[]): RungStatus {
-  let mastered = false;
+/**
+ * Replay the answer history of one rung, in order, and decide whether it is mastered now. `known`: the learner already
+ * had this skill (recorded, not tested) — it starts mastered and is only lost by the usual drop rule.
+ */
+export function rungStatus(results: RungResult[], known = false): RungStatus {
+  let mastered = known;
   for (let i = 0; i < results.length; i++) {
     const upto = results.slice(0, i + 1);
     if (!mastered) {
@@ -397,10 +400,10 @@ export interface LadderStateDTO {
   skills: SkillState[];
 }
 
-export function skillState(skill: LadderSkill, unlocked: number, results: Record<string, RungResult[]>): SkillState {
+export function skillState(skill: LadderSkill, unlocked: number, results: Record<string, RungResult[]>, known: ReadonlySet<string> = new Set()): SkillState {
   const ladder = LADDERS[skill];
   const u = Math.max(0, Math.min(unlocked, ladder.rungs.length));
-  const rungs = ladder.rungs.map((r) => ({ id: r.id, n: r.n, title: r.title, step: r.step, ...rungStatus(results[r.id] ?? []) }));
+  const rungs = ladder.rungs.map((r) => ({ id: r.id, n: r.n, title: r.title, step: r.step, ...rungStatus(results[r.id] ?? [], known.has(r.id)) }));
   const open = rungs.slice(0, u);
   const firstOpen = open.find((r) => !r.mastered);
   return {

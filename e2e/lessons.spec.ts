@@ -32,7 +32,11 @@ async function check(page: import('@playwright/test').Page, l: SourceLesson) {
   // top-level ```example blocks only: `listen` exercises render their own examples inside the exercise card
   await expect(body.locator('[data-testid="example-block"]:not(section.exercise [data-testid="example-block"])')).toHaveCount(l.blocks.example);
   for (const ex of l.exercises.filter((e) => e.type === 'listen')) {
-    const n = ex.spec.example ? 1 : ((ex.spec.examples as unknown[] | undefined)?.length ?? 0);
+    // the first question shows its own example (index, or one-per-question pairing) or all of them ("all"/unequal counts)
+    const exs = (ex.spec.examples as unknown[] | undefined) ?? [];
+    const qs = (ex.spec.questions as { example?: number | 'all' }[] | undefined) ?? [];
+    const q0 = qs[0]?.example;
+    const n = ex.spec.example ? 1 : q0 === 'all' ? exs.length : typeof q0 === 'number' || (exs.length > 1 && exs.length === qs.length) ? 1 : exs.length;
     await expect(body.locator(`[data-testid="exercise-${ex.id}"] [data-testid="example-block"]`), `listen ${ex.id} examples`).toHaveCount(n);
   }
   await expect(body.getByTestId('keyboard-block')).toHaveCount(l.blocks.keyboard);

@@ -136,8 +136,6 @@ middle C in these weeks: it isn't a note to name, just home held underneath.)
 The drill's **How to do it** box uses the same two tools. The "home" feeling grows slowly for most people; the
 keyboard answer is always available meanwhile. The drill opens two rungs: *home or 3?*, then *do, mi or sol*.
 
-**Already name notes in C by ear?** Try **Dashboard → Placement test → Scale degrees**: 10/10 on a rung skips it.
-
 ```ladder
 { "skill": "degrees", "unlocks": 2, "intro": "After the home run, one note over a low C: do, mi or sol?" }
 ```

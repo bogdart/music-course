@@ -16,7 +16,7 @@ key: C
 
 This fixture is **not course content**. It exercises every block type for the renderer
 and tests. Inline helpers: an [[octave]], a playable note {{note:C#4}} and a chord {{chord:Cmaj7}}.
-A lesson link: [next lesson](../w01-l2-higher-lower-same/).
+A lesson link: [next lesson](../w01-l2-pitch-and-octaves/).
 
 | Block | Purpose |
 |-------|---------|

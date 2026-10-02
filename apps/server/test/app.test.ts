@@ -280,3 +280,15 @@ describe('restart the course from a lesson', () => {
     expect((await post('/api/progress/restart', { fromLessonId: 'nope' })).status).toBe(404);
   });
 });
+
+describe('known rungs', () => {
+  it('count as mastered from the start and can be taken back', async () => {
+    type L = { skills: { skill: string; unlocked: number; current: number | null; rungs: { mastered: boolean }[] }[] };
+    await post('/api/ladder/unlock', { skill: 'pitch', unlocks: 3 });
+    let st = await json<L>(post('/api/ladder/known', { rungs: ['pitch-1', 'pitch-2'], note: 'shown in week 1' }));
+    expect(st.skills.find((s) => s.skill === 'pitch')).toMatchObject({ current: 3 });
+    st = await json<L>(post('/api/ladder/known', { rungs: ['pitch-2'], remove: true }));
+    expect(st.skills.find((s) => s.skill === 'pitch')).toMatchObject({ current: 2 });
+    expect((await post('/api/ladder/known', { rungs: ['nope-1'] })).status).toBe(400);
+  });
+});

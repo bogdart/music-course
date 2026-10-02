@@ -36,9 +36,13 @@ export function planSession(state: LadderStateDTO, opts: { learn?: number; revie
   return [...learning, ...review];
 }
 
-/** The single most useful set for a lesson warm-up (the skill furthest behind), or null. */
-export function warmupEntry(state: LadderStateDTO): PlanEntry | null {
-  const first = planSession(state, { learn: 1, review: 1 })[0];
+/**
+ * The single most useful set for a lesson warm-up (the skill furthest behind), or null. Skills in `exclude` (the ones
+ * the lesson itself drills further down the page) are left to the lesson.
+ */
+export function warmupEntry(state: LadderStateDTO, exclude: readonly string[] = []): PlanEntry | null {
+  const others = { ...state, skills: state.skills.filter((s) => !exclude.includes(s.skill)) };
+  const first = planSession(others, { learn: 1, review: 1 })[0];
   return first ? { ...first, count: 5 } : null;
 }
 
