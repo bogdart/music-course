@@ -56,6 +56,9 @@ export class AudioEngine implements AudioEngineApi {
   private live = new Map<InstrumentId, Instrument>();
   private current: Current | null = null;
   private _started = false;
+  /** AudioContext time at which audio was unlocked (the output device is still waking up right after it) */
+  private startedAt = 0;
+  private keepAlive: Tone.Oscillator | null = null;
   private _sampled = false;
   /** Loaded sampled pianos [playback, live]; kept across piano-sound switches */
   private samplers: [Instrument, Instrument] | null = null;
@@ -71,7 +74,9 @@ export class AudioEngine implements AudioEngineApi {
     // redrawing the staff/keys during playback, a phone CPU) made notes arrive after their start time — measured 57%
     // of notes late on a desktop, 100% at 4x CPU throttling — so they were clipped or silent. Live notes use
     // Tone.immediate() and are unaffected; playback just starts ~0.1 s after the click.
-    Tone.setContext(new Tone.Context({ latencyHint: 'interactive', lookAhead: 0.1, updateInterval: 0.025 }));
+    // latencyHint 'playback': a ~20 ms device buffer instead of ~10 ms. The smallest buffer underran on Bluetooth and
+    // phones (continuous scratching); live notes cost ~15 ms more on a desktop, which is fine for practice.
+    Tone.setContext(new Tone.Context({ latencyHint: 'playback', lookAhead: 0.1, updateInterval: 0.025 }));
     const transport = Tone.getTransport();
     transport.PPQ = PPQ;
     this.master = new Tone.Volume(Tone.gainToDb(0.8)).toDestination();
@@ -103,10 +108,27 @@ export class AudioEngine implements AudioEngineApi {
     if (this._started) return this.ensureRunning();
     await Tone.start();
     this._started = true;
+    this.startedAt = Tone.immediate();
+    this.startKeepAlive();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') void this.ensureRunning();
+    });
     // build the live instrument and the playback piano now, so the first key press / first Play isn't spent on setup
     this.getLive(this._liveInstrument);
     this.getInstrument('piano');
     if (this._pianoSound === 'grand') void this.tryLoadSampledPiano();
+  }
+
+  /**
+   * An inaudible 30 Hz tone at -70 dBFS under everything, straight to the destination (not the master volume).
+   * Bluetooth headphones, phone audio paths and USB DACs power down after a moment of pure digital silence and
+   * swallow the start of the next sound while they wake (seconds on Bluetooth). Games and DAWs never output true
+   * silence; this app sat silent between notes, so every first sound after a pause was lost.
+   */
+  private startKeepAlive(): void {
+    if (this.keepAlive) return;
+    this.keepAlive = new Tone.Oscillator({ frequency: 30, type: 'sine', volume: -70 }).toDestination();
+    this.keepAlive.start();
   }
 
   /** Resume the context if the browser paused it (iOS does after calls, route changes, backgrounding). */
@@ -360,7 +382,8 @@ export class AudioEngine implements AudioEngineApi {
     }
 
     // head start after the click: the click itself triggers a React render (heavy on phones) right when the first notes are due
-    const lead = 0.12;
+    // right after unlocking, the output device is still waking up: give the very first playback more room
+    const lead = Math.max(0.12, this.startedAt + 0.5 - Tone.immediate());
     const startTime = Tone.now() + lead + ticksToSeconds(offset, bpm);
     transport.start(`+${lead}`);
     return { stop: () => finish('stopped'), done, startTime };

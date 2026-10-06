@@ -104,7 +104,11 @@ polyphony with different durations is not representable and is emitted with the 
   keyboard), `schedule(project|snippet, {loop, onBeat, onNote})`,
   `stop()`, `setBpm()`, `metronome.on/off`.
 * All time via Tone.Transport with PPQ 480 to match the domain model.
-* Latency: `interactive` latency hint. Live notes are triggered at `Tone.immediate()` (no lookAhead). Transport
+* Output keep-alive: from the unlock gesture on, an inaudible 30 Hz sine at -70 dBFS goes straight to the
+  destination. Bluetooth headphones, phone audio paths and USB DACs power down after pure digital silence and swallow
+  the start of the next sound (seconds on Bluetooth); the first playback after unlock also gets a 0.5 s lead.
+* Latency: `playback` latency hint (~20 ms device buffer; the ~10 ms `interactive` buffer underran on Bluetooth and
+  phones). Live notes are triggered at `Tone.immediate()` (no lookAhead). Transport
   playback uses `lookAhead = 0.1` plus a 0.12 s start lead: with 0.01 most notes reached Web Audio after their start
   time whenever the main thread was busy (React redraws during playback, phones) and were clipped or silent. Clocks
   that compare "now" with a playback start (`audioNow()`, DAW recording) use `Tone.immediate()`, never `Tone.now()`
